@@ -74,17 +74,15 @@
   .stat .l{font-size:12.5px;color:var(--mut);margin-top:4px}
   .s2{grid-column:span 2}.s3{grid-column:span 3}.s4{grid-column:span 4}.s6{grid-column:span 6}
   .intro{grid-column:span 4;background:linear-gradient(135deg,var(--glass2),var(--glass));justify-content:center}
-  .intro{padding:0;overflow:hidden}
-  .intro .row{display:flex;align-items:stretch;min-height:280px}
-  @media(max-width:560px){.intro .row{flex-direction:column}}
-  .intro .txt{padding:30px;display:flex;flex-direction:column;justify-content:center}
+  .intro .row{display:flex;gap:26px;align-items:center}
+  @media(max-width:520px){.intro .row{flex-direction:column;text-align:center}}
+  .intro .txt{display:flex;flex-direction:column}
   .intro h2{font-size:27px;font-weight:800;margin-bottom:8px;letter-spacing:-.02em}.intro p{color:var(--mut);font-size:15px;max-width:480px}
-  .avatar{flex:0 0 44%;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--a3),var(--a2));min-height:280px}
-  @media(max-width:560px){.avatar{flex:0 0 auto;width:100%;height:300px}}
-  .avatar img{position:relative;z-index:2;width:100%;height:100%;object-fit:cover;display:block}
-  .avatar .ph{position:absolute;inset:0;z-index:1;display:grid;place-items:center;font-size:84px;font-weight:900;color:#03130c;letter-spacing:-3px}
-  .avatar::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 60%,var(--glass));pointer-events:none}
-  @media(max-width:560px){.avatar::after{background:linear-gradient(0deg,var(--glass),transparent 60%)}}
+  .avatar{flex:0 0 auto;width:172px;height:172px;border-radius:50%;position:relative;overflow:hidden;
+    background:linear-gradient(135deg,var(--a3),var(--a2));padding:4px;box-shadow:0 0 36px -8px var(--a3)}
+  .avatar img{position:relative;z-index:2;width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}
+  .avatar .ph{position:absolute;inset:0;z-index:1;display:grid;place-items:center;font-size:58px;font-weight:900;color:#03130c;letter-spacing:-2px}
+  @media(max-width:520px){.intro .chips{justify-content:center}}
   .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
   .chip{font-size:12.5px;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:9px;padding:7px 12px;color:var(--mut);transition:.2s}
   a.chip:hover{border-color:var(--a3);color:var(--a3);background:rgba(52,211,153,.08);transform:translateY(-2px)}
