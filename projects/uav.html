@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UAV Aerial Object Classification — Muhammad Jahanzaib Awan</title>
+<meta name="description" content="7-class UAV aerial object classification: CNNs vs classical baselines, with a leakage-aware track split that exposes how naïve random splitting inflates results.">
+<meta property="og:title" content="UAV Aerial Object Classification — Case Study">
+<meta property="og:description" content="CNNs vs classical baselines on 8,903 UAV crops, and a demonstration of data-leakage inflation.">
+<meta property="og:url" content="https://muhammad-jahanzaib007.github.io/projects/uav.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body style="--hc:var(--a2)">
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><div class="navlinks"><a href="../index.html#work">All work</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow">
+  <div class="phero">
+    <a class="back" href="../index.html#work">← All case studies</a>
+    <div class="tag">Computer Vision · transfer learning · honest evaluation</div>
+    <h1>UAV Aerial Object Classification</h1>
+    <p class="lede">Seven-class classification of objects cropped from UAV video — benchmarking classical features against CNNs, and quantifying exactly how much a naïve train/test split inflates the numbers.</p>
+    <div class="pmeta"><span class="chip">PyTorch</span><span class="chip">scikit-learn</span><span class="chip">ResNet-18</span><span class="chip">EfficientNet-B0</span><span class="chip">HOG + SVM</span><span class="chip">2026</span></div>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi reveal"><div class="n">7</div><div class="l">object classes</div></div>
+    <div class="kpi reveal b1"><div class="n">8,903</div><div class="l">cropped objects</div></div>
+    <div class="kpi reveal b2"><div class="n">0.876</div><div class="l">best accuracy (EfficientNet-B0)</div></div>
+    <div class="kpi reveal b3"><div class="n">0.52</div><div class="l">macro-F1 inflation from leakage</div></div>
+  </div>
+
+  <section class="psec reveal">
+    <h2>The problem</h2>
+    <p>The task was to classify 8,903 object crops — car, bus, truck, van, person, bicycle, motor — extracted from a 146-frame UAV sequence. Two things make it hard: <strong>severe class imbalance</strong> (car ≈ 42% of samples, bicycle ≈ 1%), and the fact that crops from the <strong>same vehicle track</strong> across consecutive frames are near-duplicates. Split those randomly and the test set is full of objects the model already saw in training — the score looks great and means nothing.</p>
+  </section>
+
+  <section class="psec reveal">
+    <h2>Approach</h2>
+    <ul>
+      <li><strong>Classical baselines:</strong> HOG features fed to a Linear SVM, an RBF SVM and a Random Forest.</li>
+      <li><strong>CNNs:</strong> ResNet-18, MobileNetV2 and EfficientNet-B0 via transfer learning from ImageNet.</li>
+      <li><strong>Leakage-aware split:</strong> a track-ID <em>group</em> split so all crops from one object stay on the same side of train/test.</li>
+      <li><strong>Ablations:</strong> pretrained vs from-scratch, and with vs without class-imbalance handling.</li>
+      <li>Reported macro-F1 (not just accuracy) to respect the imbalance.</li>
+    </ul>
+  </section>
+
+  <section class="psec reveal">
+    <h2>Results</h2>
+    <table class="dtable">
+      <thead><tr><th>Model</th><th>Accuracy</th><th>Macro-F1</th></tr></thead>
+      <tbody>
+        <tr><td>HOG + Linear SVM</td><td class="num">0.776</td><td class="num">0.402</td></tr>
+        <tr><td>HOG + RBF SVM</td><td class="num">0.824</td><td class="num">0.359</td></tr>
+        <tr><td>HOG + Random Forest</td><td class="num">0.803</td><td class="num">0.256</td></tr>
+        <tr><td>MobileNetV2</td><td class="num">0.851</td><td class="num">0.480</td></tr>
+        <tr><td>ResNet-18</td><td class="num">0.868</td><td class="num">0.462</td></tr>
+        <tr class="best"><td>EfficientNet-B0</td><td class="num">0.876</td><td class="num">0.460</td></tr>
+      </tbody>
+    </table>
+    <p>CNNs clearly beat the classical baselines on macro-F1 — the imbalance hurts HOG+RF most (0.256), where minority classes collapse. Among CNNs the three backbones are close; EfficientNet-B0 edges accuracy, MobileNetV2 the macro-F1.</p>
+    <div class="figgrid">
+      <figure><img src="../assets/uav/training_curves.png" alt="Training and validation curves" loading="lazy"><figcaption>Training / validation curves across CNN backbones.</figcaption></figure>
+      <figure><img src="../assets/uav/class_distribution.png" alt="Class distribution" loading="lazy"><figcaption>Class distribution — the imbalance driving macro-F1.</figcaption></figure>
+      <figure><img src="../assets/uav/cm_resnet18.png" alt="ResNet-18 confusion matrix" loading="lazy"><figcaption>ResNet-18 confusion matrix (track-aware test).</figcaption></figure>
+      <figure><img src="../assets/uav/cm_efficientnet_b0.png" alt="EfficientNet-B0 confusion matrix" loading="lazy"><figcaption>EfficientNet-B0 confusion matrix.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="psec reveal">
+    <h2>The key finding — data leakage</h2>
+    <p>This was the real contribution. Under a <strong>naïve random split</strong>, a Random Forest scored <span class="hl">0.906 accuracy / 0.776 macro-F1</span>. The exact same model under a correct <strong>track-aware group split</strong> dropped to <span class="hl">0.803 / 0.256</span> — a macro-F1 collapse of 0.52. Almost all of the apparent "performance" was the model recognising near-duplicate crops it had already trained on.</p>
+    <table class="dtable">
+      <thead><tr><th>Split</th><th>Accuracy</th><th>Macro-F1</th></tr></thead>
+      <tbody>
+        <tr><td>Naïve random (leaky)</td><td class="num">0.906</td><td class="num">0.776</td></tr>
+        <tr class="best"><td>Track-aware (honest)</td><td class="num">0.803</td><td class="num">0.256</td></tr>
+      </tbody>
+    </table>
+    <p>The lesson generalises well beyond this dataset: <strong>the split protocol can matter more than the model.</strong></p>
+  </section>
+
+  <section class="psec reveal">
+    <h2>Ablations</h2>
+    <p>Two controlled comparisons on ResNet-18: transfer learning beat training from scratch (0.868 vs 0.820 accuracy), confirming the value of ImageNet features on a small dataset; explicit imbalance handling traded a little accuracy for more balanced per-class behaviour.</p>
+    <div class="figgrid">
+      <figure><img src="../assets/uav/cm_pretrained.png" alt="Pretrained ResNet-18 confusion matrix" loading="lazy"><figcaption>ResNet-18 — pretrained.</figcaption></figure>
+      <figure><img src="../assets/uav/cm_scratch.png" alt="From-scratch ResNet-18 confusion matrix" loading="lazy"><figcaption>ResNet-18 — trained from scratch.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="psec reveal">
+    <h2>What I took away</h2>
+    <ul>
+      <li>Always ask how correlated your samples are <em>before</em> choosing a split — group leakage is silent and flattering.</li>
+      <li>On imbalanced data, accuracy lies; macro-F1 tells the truth.</li>
+      <li>A strong classical baseline frames how much the CNN actually buys you.</li>
+    </ul>
+    <p style="margin-top:18px"><a class="prepo" href="https://github.com/muhammad-jahanzaib007/uav-aerial-object-classification" target="_blank" rel="noopener">View repository on GitHub →</a></p>
+  </section>
+
+  <div class="pnav">
+    <a href="../index.html#work">← All case studies</a>
+    <a href="nlp.html">Next: Dialogue Generation →</a>
+  </div>
+</div>
+<footer>© 2026 Muhammad Jahanzaib Awan · figures from completed taught-module coursework</footer>
+<div id="lb"><span class="x">&times;</span><img alt=""><div class="cap"></div></div><div id="toast"></div>
+<script src="../app.js"></script>
+</body></html>

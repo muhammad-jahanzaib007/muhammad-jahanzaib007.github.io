@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Traffic-Signal Fuzzy Inference System — Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A Mamdani fuzzy inference system for adaptive traffic-signal timing: membership-function design, operator and defuzzification comparison, and evaluation.">
+<meta property="og:title" content="Traffic-Signal Fuzzy Inference System — Case Study">
+<meta property="og:description" content="A Mamdani controller mapping traffic density and queue length to adaptive green-phase duration.">
+<meta property="og:url" content="https://muhammad-jahanzaib007.github.io/projects/fuzzy.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body style="--hc:var(--a6)">
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><div class="navlinks"><a href="../index.html#work">All work</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow">
+  <div class="phero">
+    <a class="back" href="../index.html#work">← All case studies</a>
+    <div class="tag">Fuzzy Logic · control systems</div>
+    <h1>Traffic-Signal Fuzzy Inference System</h1>
+    <p class="lede">A Mamdani fuzzy controller that adapts green-phase duration to live traffic conditions — designed, then compared across operators and defuzzification methods.</p>
+    <div class="pmeta"><span class="chip">MATLAB Fuzzy Logic Toolbox</span><span class="chip">Mamdani inference</span><span class="chip">control</span><span class="chip">2026</span></div>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi reveal"><div class="n">2 → 1</div><div class="l">inputs → output</div></div>
+    <div class="kpi reveal b1"><div class="n">Mamdani</div><div class="l">inference type</div></div>
+    <div class="kpi reveal b2"><div class="n">multi</div><div class="l">defuzzification methods compared</div></div>
+    <div class="kpi reveal b3"><div class="n">distinction</div><div class="l">assessed grade</div></div>
+  </div>
+
+  <section class="psec reveal">
+    <h2>The problem</h2>
+    <p>Fixed-timing traffic signals waste road capacity — they hold a red against an empty approach and cut a green short on a busy one. A fuzzy controller can reason in human terms ("if traffic is heavy and the queue is long, extend the green") without a precise mathematical model of the junction.</p>
+  </section>
+
+  <section class="psec reveal">
+    <h2>Approach</h2>
+    <ul>
+      <li>Designed <strong>membership functions</strong> for two inputs — traffic density and queue length — and one output, green-phase duration.</li>
+      <li>Authored the <strong>rule base</strong> mapping input combinations to timing decisions.</li>
+      <li>Compared <strong>fuzzy operators</strong> and <strong>defuzzification methods</strong> (e.g. centroid vs alternatives) to see how each shapes the control surface.</li>
+      <li>Evaluated the resulting system's responsiveness across the input range.</li>
+    </ul>
+  </section>
+
+  <section class="psec reveal">
+    <h2>Results</h2>
+    <p>The finished controller produces a smooth, monotonic <strong>control surface</strong>: green time rises sensibly with both density and queue length, with no dead zones or discontinuities. The operator and defuzzification comparisons showed how much the <em>same</em> rule base can shift behaviour depending on those choices — the design isn't just the rules, it's the inference machinery around them. The work was assessed at distinction level.</p>
+    <div class="figgrid">
+      <figure><img src="../assets/fuzzy/membership.png" alt="Membership functions" loading="lazy"><figcaption>Input / output membership functions.</figcaption></figure>
+      <figure><img src="../assets/fuzzy/surfaces.png" alt="Fuzzy control surface" loading="lazy"><figcaption>Control surface from the rule base.</figcaption></figure>
+      <figure><img src="../assets/fuzzy/defuzz.png" alt="Defuzzification comparison" loading="lazy"><figcaption>Defuzzification-method comparison.</figcaption></figure>
+      <figure><img src="../assets/fuzzy/operators.png" alt="Operator comparison" loading="lazy"><figcaption>Fuzzy-operator comparison.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="psec reveal">
+    <h2>What I took away</h2>
+    <ul>
+      <li>Fuzzy control is a clean way to encode expert intuition where a precise model is impractical.</li>
+      <li>The defuzzification method is a real design decision, not a default — it reshapes the output.</li>
+      <li>Visualising the control surface is the fastest way to catch a bad rule base.</li>
+    </ul>
+    <p style="margin-top:18px"><a class="prepo" href="https://github.com/muhammad-jahanzaib007/traffic-signal-fuzzy-system" target="_blank" rel="noopener">View repository on GitHub →</a></p>
+  </section>
+
+  <div class="pnav">
+    <a href="pso.html">← Previous: PSO on Rastrigin</a>
+    <a href="../index.html#work">All case studies →</a>
+  </div>
+</div>
+<footer>© 2026 Muhammad Jahanzaib Awan · figures from completed taught-module coursework</footer>
+<div id="lb"><span class="x">&times;</span><img alt=""><div class="cap"></div></div><div id="toast"></div>
+<script src="../app.js"></script>
+</body></html>

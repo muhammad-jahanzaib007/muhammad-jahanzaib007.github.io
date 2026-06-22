@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robot Localization: AMCL vs EKF vs SLAM — Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Comparing AMCL, an Extended Kalman Filter and Hector SLAM for indoor localization on a TurtleBot3 in ROS + Gazebo, measured against ground truth.">
+<meta property="og:title" content="Robot Localization: AMCL vs EKF vs SLAM — Case Study">
+<meta property="og:description" content="Three indoor-localization strategies on a TurtleBot3; EKF reached 0.0047 m mean position error.">
+<meta property="og:url" content="https://muhammad-jahanzaib007.github.io/projects/robot.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body style="--hc:var(--a3)">
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><div class="navlinks"><a href="../index.html#work">All work</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow">
+  <div class="phero">
+    <a class="back" href="../index.html#work">← All case studies</a>
+    <div class="tag">Robotics · ROS · Gazebo · state estimation</div>
+    <h1>Robot Localization: AMCL / EKF / SLAM</h1>
+    <p class="lede">Comparing three indoor-localization strategies on a TurtleBot3 in simulation, each measured against Gazebo ground-truth trajectories.</p>
+    <div class="pmeta"><span class="chip">ROS</span><span class="chip">Gazebo</span><span class="chip">TurtleBot3</span><span class="chip">Python</span><span class="chip">2026</span></div>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi reveal"><div class="n">3</div><div class="l">methods compared</div></div>
+    <div class="kpi reveal b1"><div class="n">0.0047 m</div><div class="l">EKF mean position error</div></div>
+    <div class="kpi reveal b2"><div class="n">1,100+</div><div class="l">logged samples</div></div>
+    <div class="kpi reveal b3"><div class="n">EKF</div><div class="l">most accurate overall</div></div>
+  </div>
+
+  <section class="psec reveal">
+    <h2>The problem</h2>
+    <p>A mobile robot has to know where it is. Three common answers — <strong>AMCL</strong> (a particle filter over a known map), an <strong>Extended Kalman Filter</strong> (fusing odometry and sensors), and <strong>Hector SLAM</strong> (building the map while localizing) — make different trade-offs. The goal was to quantify those trade-offs on identical runs rather than argue them in the abstract.</p>
+  </section>
+
+  <section class="psec reveal">
+    <h2>Approach</h2>
+    <ul>
+      <li>TurtleBot3 driven over identical paths in a Gazebo world, under each of the three methods.</li>
+      <li>Logged estimated pose against Gazebo ground truth — Euclidean position error and orientation error — across 1,100+ samples.</li>
+      <li>Analysed error over time, error distributions and trajectory overlay to understand <em>where</em> and <em>why</em> each method drifts.</li>
+    </ul>
+  </section>
+
+  <section class="psec reveal">
+    <h2>Results</h2>
+    <p>The <strong>EKF was the most accurate</strong>, with a mean position error of <span class="hl">0.0047 m</span> — its tight fusion of wheel odometry and sensor updates kept drift low on this well-behaved map. AMCL stayed robust but coarser (particle spread), while Hector SLAM carried a scan-matching offset from building the map online. Practically: <strong>AMCL for known-map deployment, SLAM when no map exists, EKF when odometry is trustworthy.</strong></p>
+    <div class="figgrid">
+      <figure><img src="../assets/robot/trajectory_comparison.png" alt="Estimated vs ground-truth trajectories" loading="lazy"><figcaption>Estimated vs ground-truth trajectories.</figcaption></figure>
+      <figure><img src="../assets/robot/error_over_time.png" alt="Localization error over time" loading="lazy"><figcaption>Position error over time, per method.</figcaption></figure>
+      <figure><img src="../assets/robot/error_statistics.png" alt="Error statistics" loading="lazy"><figcaption>Summary error statistics.</figcaption></figure>
+      <figure><img src="../assets/robot/error_distribution.png" alt="Error distribution" loading="lazy"><figcaption>Error distributions per method.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="psec reveal">
+    <h2>What I took away</h2>
+    <ul>
+      <li>"Best" depends on the assumption you can satisfy — a known map, trustworthy odometry, or neither.</li>
+      <li>Always validate against ground truth; in simulation that's free, so there's no excuse.</li>
+      <li>Looking at error <em>over time</em> reveals failure modes that a single mean hides.</li>
+    </ul>
+    <p style="margin-top:18px"><a class="prepo" href="https://github.com/muhammad-jahanzaib007/robot-localization-amcl-ekf-slam" target="_blank" rel="noopener">View repository on GitHub →</a></p>
+  </section>
+
+  <div class="pnav">
+    <a href="nlp.html">← Previous: Dialogue Generation</a>
+    <a href="pso.html">Next: PSO on Rastrigin →</a>
+  </div>
+</div>
+<footer>© 2026 Muhammad Jahanzaib Awan · figures from completed taught-module coursework</footer>
+<div id="lb"><span class="x">&times;</span><img alt=""><div class="cap"></div></div><div id="toast"></div>
+<script src="../app.js"></script>
+</body></html>

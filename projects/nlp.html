@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dialogue Generation: GRU vs LSTM vs GPT-2 — Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Comparing GRU/LSTM seq2seq against a LoRA-fine-tuned GPT-2 on the Cornell Movie-Dialogs Corpus. A well-tuned GRU won on perplexity, BLEU and embedding similarity.">
+<meta property="og:title" content="Dialogue Generation: GRU vs LSTM vs GPT-2 — Case Study">
+<meta property="og:description" content="A tuned GRU beat a LoRA-fine-tuned GPT-2 on every metric, at a fraction of the parameters.">
+<meta property="og:url" content="https://muhammad-jahanzaib007.github.io/projects/nlp.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body style="--hc:var(--a5)">
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><div class="navlinks"><a href="../index.html#work">All work</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow">
+  <div class="phero">
+    <a class="back" href="../index.html#work">← All case studies</a>
+    <div class="tag">Natural Language Processing · seq2seq · LoRA</div>
+    <h1>Dialogue Generation: GRU vs LSTM vs GPT-2</h1>
+    <p class="lede">Does a fine-tuned transformer always beat a recurrent baseline? On a modest dialogue dataset under limited compute, a well-tuned GRU won on every metric.</p>
+    <div class="pmeta"><span class="chip">PyTorch</span><span class="chip">Hugging Face Transformers</span><span class="chip">PEFT / LoRA</span><span class="chip">seq2seq + attention</span><span class="chip">2026</span></div>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi reveal"><div class="n">53,107</div><div class="l">dialogue pairs</div></div>
+    <div class="kpi reveal b1"><div class="n">12.39</div><div class="l">GRU perplexity (best)</div></div>
+    <div class="kpi reveal b2"><div class="n">3.7×</div><div class="l">lower perplexity than GPT-2</div></div>
+    <div class="kpi reveal b3"><div class="n">2.8×</div><div class="l">higher BLEU than GPT-2</div></div>
+  </div>
+
+  <section class="psec reveal">
+    <h2>The problem</h2>
+    <p>Open-domain dialogue response generation on the <strong>Cornell Movie-Dialogs Corpus</strong> — 53,107 utterance pairs (47,797 train / 5,310 test), vocabulary 7,822, max length 10 tokens. The question: with limited data and a single GPU, does parameter-efficient fine-tuning of a large pretrained model beat a purpose-built small one?</p>
+  </section>
+
+  <section class="psec reveal">
+    <h2>Approach</h2>
+    <ul>
+      <li><strong>GRU &amp; LSTM seq2seq</strong> with attention — hidden size 500, 2 encoder + 2 decoder layers, batch 64, 4,000 iterations.</li>
+      <li><strong>GPT-2 (355M)</strong> fine-tuned with <strong>LoRA</strong> for a parameter-efficient comparison.</li>
+      <li>Evaluated three ways: <strong>perplexity</strong> (fluency), <strong>BLEU</strong> (n-gram overlap) and <strong>embedding cosine similarity</strong> (semantic closeness).</li>
+    </ul>
+  </section>
+
+  <section class="psec reveal">
+    <h2>Results</h2>
+    <table class="dtable">
+      <thead><tr><th>Model</th><th>Perplexity ↓</th><th>BLEU ↑</th><th>Embed similarity ↑</th></tr></thead>
+      <tbody>
+        <tr class="best"><td>GRU seq2seq</td><td class="num">12.39</td><td class="num">0.0335</td><td class="num">0.402</td></tr>
+        <tr><td>LSTM seq2seq</td><td class="num">13.80</td><td class="num">0.0305</td><td class="num">0.349</td></tr>
+        <tr><td>GPT-2 (LoRA)</td><td class="num">45.62</td><td class="num">0.0119</td><td class="num">0.229</td></tr>
+      </tbody>
+    </table>
+    <p>The GRU swept every metric: <span class="hl">3.7× lower perplexity</span> and <span class="hl">2.8× higher BLEU</span> than the LoRA-tuned GPT-2, with far fewer trainable parameters. The GRU also edged the LSTM, reaching a lower final training loss (2.36 vs 2.60).</p>
+    <div class="figgrid">
+      <figure><img src="../assets/nlp/metrics_comparison.png" alt="Metric comparison across the three models" loading="lazy"><figcaption>BLEU / similarity / perplexity across models.</figcaption></figure>
+      <figure><img src="../assets/nlp/loss_comparison.png" alt="Training loss curves" loading="lazy"><figcaption>Training-loss curves: GRU vs LSTM.</figcaption></figure>
+      <figure><img src="../assets/nlp/all_models_comparison.png" alt="All-models comparison" loading="lazy"><figcaption>Side-by-side model comparison.</figcaption></figure>
+      <figure><img src="../assets/nlp/score_distributions.png" alt="Score distributions" loading="lazy"><figcaption>Per-response score distributions.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="psec reveal">
+    <h2>Why the small model won</h2>
+    <p>LoRA freezes most of GPT-2 and trains a small adapter — powerful when the base model already covers your domain, but movie dialogue is short, idiosyncratic and far from GPT-2's web-text prior. A from-scratch encoder–decoder, trained end-to-end on exactly this distribution, fit it better. <strong>Bigger and pretrained is not automatically better</strong> when the data is narrow and the compute is fixed.</p>
+  </section>
+
+  <section class="psec reveal">
+    <h2>What I took away</h2>
+    <ul>
+      <li>Match model capacity to the data you actually have, not to the leaderboard.</li>
+      <li>Evaluate generation on multiple axes — perplexity, overlap and semantics disagree, and you need all three.</li>
+      <li>A clean recurrent baseline is still a serious contender on small, domain-specific tasks.</li>
+    </ul>
+    <p style="margin-top:18px"><a class="prepo" href="https://github.com/muhammad-jahanzaib007/dialogue-generation-gru-lstm-gpt2" target="_blank" rel="noopener">View repository on GitHub →</a></p>
+  </section>
+
+  <div class="pnav">
+    <a href="uav.html">← Previous: UAV Classification</a>
+    <a href="robot.html">Next: Robot Localization →</a>
+  </div>
+</div>
+<footer>© 2026 Muhammad Jahanzaib Awan · figures from completed taught-module coursework</footer>
+<div id="lb"><span class="x">&times;</span><img alt=""><div class="cap"></div></div><div id="toast"></div>
+<script src="../app.js"></script>
+</body></html>
