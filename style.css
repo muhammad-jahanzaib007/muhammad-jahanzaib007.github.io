@@ -187,4 +187,35 @@ footer{padding:54px 0;text-align:center;color:var(--mut2);font-size:13px}
 .pnav{display:flex;justify-content:space-between;gap:14px;padding:40px 0;border-top:1px solid var(--line2);flex-wrap:wrap}
 .pnav a{font-size:14px;color:var(--mut);transition:.2s}.pnav a:hover{color:var(--a3)}
 
-@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}*{transition:none!important;animation:none!important}#glow{display:none}}
+/* hero particle canvas */
+.hero{position:relative}
+#hp{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:100%;height:130%;max-width:1200px;z-index:0;pointer-events:none}
+.hero>*:not(#hp){position:relative;z-index:1}
+
+/* page-load reveal */
+nav{animation:navdrop .7s cubic-bezier(.22,1,.36,1) both}
+@keyframes navdrop{from{transform:translateY(-130%);opacity:0}to{transform:none;opacity:1}}
+.hero .badge{animation:fadeup .7s .10s both}
+.hero h1{animation:fadeup .8s .20s both}
+.hero p{animation:fadeup .8s .32s both}
+.hero .cvbtn{animation:fadeup .8s .44s both}
+.phero .back{animation:fadeup .6s .08s both}
+.phero .tag{animation:fadeup .7s .16s both}
+.phero h1{animation:fadeup .8s .24s both}
+.phero .lede{animation:fadeup .8s .34s both}
+.phero .pmeta{animation:fadeup .8s .44s both}
+@keyframes fadeup{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+
+/* tech-logo strip */
+.logos{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center;padding:6px 0}
+.logos .lg{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;color:var(--mut);background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:11px;padding:9px 15px;transition:.25s}
+.logos .lg:hover{color:var(--txt);transform:translateY(-3px);border-color:rgba(255,255,255,.18)}
+.logos .lg img{height:20px;width:20px;display:block}
+
+/* image blur-up */
+.figgrid figure img,.pcard .thumb img{opacity:0;filter:blur(14px);transform:scale(1.04);transition:opacity .6s ease,filter .6s ease,transform .5s ease}
+.figgrid figure img.loaded,.pcard .thumb img.loaded{opacity:1;filter:none;transform:none}
+.pcard:hover .thumb img.loaded{transform:scale(1.05)}
+
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}*{transition:none!important;animation:none!important}#glow,#hp{display:none}
+  .figgrid figure img,.pcard .thumb img{opacity:1;filter:none;transform:none}}

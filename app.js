@@ -70,6 +70,36 @@
       .finally(()=>{btn.disabled=false;btn.textContent='Send message'});
   });
 
+  // image blur-up
+  document.querySelectorAll('.figgrid figure img, .pcard .thumb img').forEach(img=>{
+    if(img.complete&&img.naturalWidth)img.classList.add('loaded');
+    else{img.addEventListener('load',()=>img.classList.add('loaded'));img.addEventListener('error',()=>img.classList.add('loaded'))}
+  });
+
+  // hero particle constellation
+  const cv2=document.getElementById('hp');
+  if(cv2&&!rm){
+    const ctx=cv2.getContext('2d');let w,h,pts=[],mouse={x:-999,y:-999},raf;
+    function size(){const r=cv2.getBoundingClientRect();w=cv2.width=r.width*devicePixelRatio;h=cv2.height=r.height*devicePixelRatio;
+      const n=Math.min(64,Math.floor(r.width/20));pts=Array.from({length:n},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.25*devicePixelRatio,vy:(Math.random()-.5)*.25*devicePixelRatio}))}
+    size();addEventListener('resize',size);
+    cv2.parentElement.addEventListener('mousemove',e=>{const r=cv2.getBoundingClientRect();mouse.x=(e.clientX-r.left)*devicePixelRatio;mouse.y=(e.clientY-r.top)*devicePixelRatio});
+    cv2.parentElement.addEventListener('mouseleave',()=>{mouse.x=mouse.y=-999});
+    const LINK=110*devicePixelRatio;
+    function draw(){
+      ctx.clearRect(0,0,w,h);
+      for(const p of pts){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;
+        const dx=p.x-mouse.x,dy=p.y-mouse.y,dm=Math.hypot(dx,dy);
+        if(dm<140*devicePixelRatio&&dm>0){p.x+=dx/dm*.6;p.y+=dy/dm*.6}
+        ctx.beginPath();ctx.arc(p.x,p.y,1.6*devicePixelRatio,0,7);ctx.fillStyle='rgba(52,211,153,.55)';ctx.fill()}
+      for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){
+        const a=pts[i],b=pts[j],d=Math.hypot(a.x-b.x,a.y-b.y);
+        if(d<LINK){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);
+          ctx.strokeStyle='rgba(120,160,255,'+(0.16*(1-d/LINK))+')';ctx.lineWidth=devicePixelRatio;ctx.stroke()}}
+      raf=requestAnimationFrame(draw)}
+    draw();
+  }
+
   // CV button — graceful fallback if PDF missing
   const cv=document.getElementById('cvbtn');
   if(cv)cv.addEventListener('click',e=>{
