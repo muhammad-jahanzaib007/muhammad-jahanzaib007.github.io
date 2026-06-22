@@ -162,6 +162,29 @@
   #lb .cap{position:absolute;bottom:24px;left:0;right:0;text-align:center;color:var(--mut);font-size:13px}
   .case figure{cursor:zoom-in}
 
+  /* contact */
+  .contactgrid{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start;text-align:left;width:100%}
+  @media(max-width:760px){.contactgrid{grid-template-columns:1fr;gap:24px}}
+  .cinfo h3{font-size:26px;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
+  .cinfo p{color:var(--mut);font-size:15px;margin-bottom:18px}
+  .availpill{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--a3);border:1px solid color-mix(in srgb,var(--a3) 35%,transparent);background:rgba(52,211,153,.08);padding:6px 13px;border-radius:999px;margin-bottom:16px}
+  .availpill .d{width:7px;height:7px;border-radius:50%;background:var(--a3);box-shadow:0 0 10px var(--a3);animation:pulse 2s infinite}
+  .crow{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--mut);margin:8px 0}
+  .crow svg{width:17px;height:17px;stroke:var(--a3);flex:0 0 auto}
+  .copybtn{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--txt);background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:10px;padding:9px 14px;cursor:pointer;transition:.2s;margin:6px 0 4px}
+  .copybtn:hover{border-color:var(--a3);color:var(--a3)}
+  .copybtn svg{width:15px;height:15px}
+  .cinfo .chips{margin-top:14px}
+  form.cform{display:flex;flex-direction:column;gap:12px}
+  .cform label{font-size:12px;color:var(--mut2);text-transform:uppercase;letter-spacing:.5px;margin-bottom:-6px}
+  .cform input,.cform textarea{width:100%;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:11px;padding:12px 14px;
+    color:var(--txt);font-family:inherit;font-size:14px;transition:.2s;resize:vertical}
+  .cform input:focus,.cform textarea:focus{outline:none;border-color:var(--a3);background:rgba(52,211,153,.05);box-shadow:0 0 0 3px rgba(52,211,153,.12)}
+  .cform textarea{min-height:96px}
+  .cform button{margin-top:2px;font-size:15px;font-weight:600;color:#03130c;background:linear-gradient(120deg,var(--a3),var(--a6));border:none;border-radius:11px;padding:13px;cursor:pointer;transition:.25s}
+  .cform button:hover{transform:translateY(-2px);box-shadow:0 12px 34px -10px var(--a3)}
+  .cform button:disabled{opacity:.6;cursor:not-allowed;transform:none;box-shadow:none}
+
   /* toast */
   #toast{position:fixed;bottom:26px;left:50%;transform:translate(-50%,20px);z-index:90;opacity:0;pointer-events:none;
     background:var(--glass);backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:12px;padding:12px 20px;font-size:14px;
@@ -377,10 +400,29 @@
     <div class="tile s4 reveal b1"><div class="tag" style="color:var(--a3);font-size:11px;letter-spacing:1.4px;text-transform:uppercase;font-weight:600">ML / Deep Learning</div><div class="chips"><span class="chip">PyTorch</span><span class="chip">CNNs</span><span class="chip">RNNs (GRU/LSTM)</span><span class="chip">Transformers</span><span class="chip">Transfer Learning</span><span class="chip">LoRA</span></div></div>
     <div class="tile s3 reveal"><div class="tag" style="color:var(--a4);font-size:11px;letter-spacing:1.4px;text-transform:uppercase;font-weight:600">Domains</div><div class="chips"><span class="chip">Computer Vision</span><span class="chip">NLP</span><span class="chip">Robotics</span><span class="chip">Evolutionary</span><span class="chip">Fuzzy Logic</span></div></div>
     <div class="tile s3 reveal b1"><div class="tag" style="color:var(--a5);font-size:11px;letter-spacing:1.4px;text-transform:uppercase;font-weight:600">Tools</div><div class="chips"><span class="chip">MONAI</span><span class="chip">timm</span><span class="chip">W&amp;B</span><span class="chip">ROS</span><span class="chip">Gazebo</span><span class="chip">CoppeliaSim</span><span class="chip">Git</span></div></div>
-    <div class="tile s6 reveal" id="contact" style="background:linear-gradient(135deg,rgba(52,211,153,.12),var(--glass));align-items:center;text-align:center">
-      <h3 style="font-size:25px;font-weight:800;letter-spacing:-.02em">Let's build something.</h3>
-      <p style="margin:6px 0 14px;color:var(--mut)">Open to graduate ML Engineer &amp; Data Scientist roles.</p>
-      <div class="chips" style="justify-content:center"><a class="chip" href="mailto:hm9024462@gmail.com">Email</a><a class="chip" href="https://linkedin.com/in/muhammad-jahanzaib-awan-277082264" target="_blank" rel="noopener">LinkedIn</a><a class="chip" href="https://github.com/muhammad-jahanzaib007" target="_blank" rel="noopener">GitHub</a></div>
+    <div class="tile s6 reveal" id="contact" style="background:linear-gradient(135deg,rgba(52,211,153,.1),var(--glass))">
+      <div class="contactgrid">
+        <div class="cinfo">
+          <span class="availpill"><span class="d"></span>Open to work · available from Oct 2026</span>
+          <h3>Let's build something.</h3>
+          <p>Open to graduate Machine Learning Engineer &amp; Data Scientist roles. I usually reply within 24 hours.</p>
+          <div class="crow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Leicester, UK · open to remote / relocation</div>
+          <button class="copybtn" id="copyEmail" type="button" data-email="hm9024462@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+            hm9024462@gmail.com
+          </button>
+          <div class="chips"><a class="chip" href="https://linkedin.com/in/muhammad-jahanzaib-awan-277082264" target="_blank" rel="noopener">LinkedIn ↗</a><a class="chip" href="https://github.com/muhammad-jahanzaib007" target="_blank" rel="noopener">GitHub ↗</a></div>
+        </div>
+        <form class="cform" id="cform" action="https://formspree.io/f/xpqgzeap" method="POST">
+          <label for="cname">Name</label>
+          <input id="cname" name="name" type="text" placeholder="Your name" required>
+          <label for="cemail">Email</label>
+          <input id="cemail" name="email" type="email" placeholder="you@company.com" required>
+          <label for="cmsg">Message</label>
+          <textarea id="cmsg" name="message" placeholder="Hi Jahanzaib, we're hiring for…" required></textarea>
+          <button type="submit">Send message</button>
+        </form>
+      </div>
     </div>
   </div>
 </div>
@@ -433,6 +475,24 @@
   // toast
   const toast=document.getElementById('toast');let tt;
   function showToast(m){toast.textContent=m;toast.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>toast.classList.remove('show'),2800)}
+
+  // copy email
+  const ce=document.getElementById('copyEmail');
+  if(ce)ce.addEventListener('click',()=>{const em=ce.dataset.email;
+    navigator.clipboard.writeText(em).then(()=>showToast('Email copied: '+em)).catch(()=>showToast(em));
+  });
+
+  // contact form (Formspree) — AJAX submit, graceful if not yet configured
+  const cf=document.getElementById('cform');
+  if(cf)cf.addEventListener('submit',e=>{
+    e.preventDefault();
+    if(cf.action.includes('FORMSPREE_ID')){showToast('Contact form not configured yet — use the email above for now.');return;}
+    const btn=cf.querySelector('button');btn.disabled=true;btn.textContent='Sending…';
+    fetch(cf.action,{method:'POST',body:new FormData(cf),headers:{Accept:'application/json'}})
+      .then(r=>{if(r.ok){cf.reset();showToast('Message sent — thanks! I’ll reply within 24h.')}else throw 0})
+      .catch(()=>showToast('Something went wrong — please email me directly.'))
+      .finally(()=>{btn.disabled=false;btn.textContent='Send message'});
+  });
 
   // CV button — graceful fallback if PDF not added yet
   const cv=document.getElementById('cvbtn');
