@@ -14,6 +14,21 @@
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
+  // smooth-scroll for in-page anchors with fixed-nav offset (reliable both directions)
+  const NAV_OFFSET=88;
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const id=a.getAttribute('href').slice(1);
+      if(!id)return;
+      const el=document.getElementById(id);
+      if(!el)return;
+      e.preventDefault();
+      const top=el.getBoundingClientRect().top+window.scrollY-NAV_OFFSET;
+      window.scrollTo({top:Math.max(0,top),behavior:'smooth'});
+      history.replaceState(null,'','#'+id);
+    });
+  });
+
   // animated counters
   function animCount(el){const t=parseFloat(el.dataset.count),d=+(el.dataset.dec||0),s=el.dataset.suffix||'',dur=1300,t0=performance.now();
     (function st(n){const p=Math.min((n-t0)/dur,1),e=1-Math.pow(1-p,3);el.textContent=(t*e).toFixed(d)+s;if(p<1)requestAnimationFrame(st)})(t0)}
