@@ -48,7 +48,12 @@
     function setActive(){
       const y=scrollY+140;
       let cur=null;
-      for(const s of secs){ if(s.el.offsetTop<=y) cur=s; }
+      for(const s of secs){
+        const top=s.el.getBoundingClientRect().top+scrollY;
+        if(top<=y) cur=s;
+      }
+      // at (or near) page bottom, the last section can't reach the line — force it active
+      if(window.innerHeight+scrollY>=document.documentElement.scrollHeight-4) cur=secs[secs.length-1];
       if(cur===active) return;
       active=cur;
       links.forEach(a=>a.classList.remove('active'));
