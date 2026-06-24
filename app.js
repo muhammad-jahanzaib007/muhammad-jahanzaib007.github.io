@@ -25,14 +25,23 @@
     c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')});
   });
 
-  // active nav highlight (home)
-  const links=[...document.querySelectorAll('.navlinks a')].filter(a=>a.getAttribute('href')&&a.getAttribute('href').startsWith('#'));
+  // active nav highlight (home) — scroll-position based for reliability
+  const links=[...document.querySelectorAll('.navlinks a')].filter(a=>(a.getAttribute('href')||'').startsWith('#'));
   if(links.length){
-    const map={};links.forEach(a=>{const id=a.getAttribute('href').slice(1);if(document.getElementById(id))map[id]=a});
-    const sio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){
-      links.forEach(a=>a.classList.remove('active'));if(map[e.target.id])map[e.target.id].classList.add('active');
-    }}),{rootMargin:'-45% 0px -50% 0px'});
-    Object.keys(map).forEach(id=>sio.observe(document.getElementById(id)));
+    const secs=links.map(a=>({a,el:document.getElementById(a.getAttribute('href').slice(1))})).filter(s=>s.el);
+    let active=null;
+    function setActive(){
+      const y=scrollY+140;
+      let cur=null;
+      for(const s of secs){ if(s.el.offsetTop<=y) cur=s; }
+      if(cur===active) return;
+      active=cur;
+      links.forEach(a=>a.classList.remove('active'));
+      if(cur) cur.a.classList.add('active');
+    }
+    addEventListener('scroll',setActive,{passive:true});
+    addEventListener('resize',setActive);
+    setActive();
   }
 
   // lightbox (any <figure> with an <img>)
