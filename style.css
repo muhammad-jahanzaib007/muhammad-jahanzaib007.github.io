@@ -120,6 +120,8 @@ a.chip:hover{border-color:var(--a3);color:var(--a3);background:rgba(52,211,153,.
 
 /* sections / contact */
 .sectit{padding:54px 0 0;font-size:13px;letter-spacing:2.5px;text-transform:uppercase;color:var(--mut2);font-weight:600;text-align:center}
+/* offset anchor targets so the fixed nav doesn't cover them on click */
+#work,#method,#stack,#contact{scroll-margin-top:96px}
 .contactgrid{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start;text-align:left;width:100%}
 @media(max-width:760px){.contactgrid{grid-template-columns:1fr;gap:24px}}
 .cinfo h3{font-size:26px;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
