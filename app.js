@@ -44,21 +44,27 @@
   const links=[...document.querySelectorAll('.navlinks a')].filter(a=>(a.getAttribute('href')||'').startsWith('#'));
   if(links.length){
     const secs=links.map(a=>({a,el:document.getElementById(a.getAttribute('href').slice(1))})).filter(s=>s.el);
-    let active=null;
+    let active=null, lock=0;
+    function apply(cur){
+      if(cur===active) return;
+      active=cur;
+      links.forEach(a=>a.classList.remove('active'));
+      if(cur) cur.a.classList.add('active');
+    }
     function setActive(){
+      if(Date.now()<lock) return;            // don't fight a just-clicked link mid-scroll
       const y=scrollY+140;
       let cur=null;
       for(const s of secs){
         const top=s.el.getBoundingClientRect().top+scrollY;
         if(top<=y) cur=s;
       }
-      // at (or near) page bottom, the last section can't reach the line — force it active
+      // near page bottom, the last section can't reach the line — force it active
       if(window.innerHeight+scrollY>=document.documentElement.scrollHeight-4) cur=secs[secs.length-1];
-      if(cur===active) return;
-      active=cur;
-      links.forEach(a=>a.classList.remove('active'));
-      if(cur) cur.a.classList.add('active');
+      apply(cur);
     }
+    // clicking a nav link highlights it immediately + locks briefly so the scroll animation can't override
+    secs.forEach(s=>s.a.addEventListener('click',()=>{ apply(s); lock=Date.now()+900; }));
     addEventListener('scroll',setActive,{passive:true});
     addEventListener('resize',setActive);
     setActive();
