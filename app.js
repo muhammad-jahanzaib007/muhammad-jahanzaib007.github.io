@@ -30,7 +30,9 @@
   });
 
   // animated counters
-  function animCount(el){const t=parseFloat(el.dataset.count),d=+(el.dataset.dec||0),s=el.dataset.suffix||'',dur=1300,t0=performance.now();
+  function animCount(el){const t=parseFloat(el.dataset.count),d=+(el.dataset.dec||0),s=el.dataset.suffix||'';
+    if(rm){el.textContent=t.toFixed(d)+s;return}
+    const dur=1300,t0=performance.now();
     (function st(n){const p=Math.min((n-t0)/dur,1),e=1-Math.pow(1-p,3);el.textContent=(t*e).toFixed(d)+s;if(p<1)requestAnimationFrame(st)})(t0)}
   const cio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){animCount(e.target);cio.unobserve(e.target)}}),{threshold:.6});
   document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));

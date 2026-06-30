@@ -10,6 +10,10 @@ a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
 .wrap{max-width:1140px;margin:0 auto;padding:0 22px;position:relative;z-index:2}
 .narrow{max-width:920px}
 ::selection{background:var(--a3);color:#03130c}
+/* a11y: visible keyboard focus + skip link */
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--a3);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--a3);color:#03130c;font-weight:700;padding:10px 16px;border-radius:0 0 12px 0}
+.skip:focus{left:0}
 
 /* aurora + grain + glow + progress */
 .aurora{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
