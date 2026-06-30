@@ -1,0 +1,46 @@
+name: Auto blog
+
+# Publishes a new post 4x/week (Mon, Wed, Fri, Sun at 09:00 UTC).
+# Also runnable on demand from the Actions tab (Run workflow).
+on:
+  schedule:
+    - cron: "0 9 * * 1,3,5,0"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: auto-blog
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install --upgrade "anthropic>=0.69" "pydantic>=2"
+
+      - name: Generate post
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          BLOG_MODEL: ${{ vars.BLOG_MODEL || 'claude-opus-4-8' }}
+        run: python automation/generate_post.py
+
+      - name: Commit and push
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add blog blog.html sitemap.xml automation/posts.json automation/topics.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore: auto blog post ($(date -u +%Y-%m-%d))"
+            git push
+          fi

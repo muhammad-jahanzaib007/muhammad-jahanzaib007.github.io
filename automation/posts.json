@@ -1,0 +1,26 @@
+{
+  "posts": [
+    {
+      "slug": "gru-vs-gpt2",
+      "title": "A tuned GRU beat LoRA-fine-tuned GPT-2, here's why",
+      "excerpt": "A 117M-parameter transformer lost to a small recurrent net on every metric. Not because transformers are bad, but because the baseline was done properly.",
+      "date": "2026-06-20",
+      "read_min": 7,
+      "tag": "Baselines",
+      "color": "a5",
+      "thumb": "assets/nlp/metrics_comparison.png",
+      "thumb_alt": "NLP metric comparison"
+    },
+    {
+      "slug": "uav-data-leakage",
+      "title": "How a naïve train/test split inflated my UAV F1 by 0.5",
+      "excerpt": "The same model, the same data, and a macro-F1 that fell from 0.78 to 0.26 the moment I split the data honestly. A walk through the most expensive bug in ML.",
+      "date": "2026-06-12",
+      "read_min": 6,
+      "tag": "Evaluation",
+      "color": "a2",
+      "thumb": "assets/uav/cm_pretrained.png",
+      "thumb_alt": "UAV confusion matrix"
+    }
+  ]
+}

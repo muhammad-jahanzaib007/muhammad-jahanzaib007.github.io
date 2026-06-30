@@ -1,0 +1,34 @@
+{
+  "queue": [
+    "Why ROC-AUC can mislead on imbalanced datasets",
+    "Precision-recall curves vs ROC: when to use which",
+    "The bias-variance tradeoff, explained on one dataset",
+    "Label leakage: the subtle kind that survives code review",
+    "Why your cross-validation is probably too optimistic",
+    "Calibration: when a 0.9 probability does not mean 90%",
+    "Early stopping vs regularization: do you need both?",
+    "Class weights vs resampling for imbalanced classification",
+    "Feature scaling: which models care and which do not",
+    "The trap of optimizing the wrong metric",
+    "Train, validation, test: why three splits and not two",
+    "Embeddings 101: what cosine similarity actually measures",
+    "Attention, intuitively: queries, keys, and values",
+    "Why batch normalization helps, and when it hurts",
+    "Dropout as an ensemble, not a magic switch",
+    "Learning rate: the first hyperparameter to tune",
+    "Gradient clipping and exploding gradients in RNNs",
+    "Transfer learning: freeze, fine-tune, or LoRA?",
+    "Tokenization choices and why they change your results",
+    "Perplexity: what it rewards and what it ignores",
+    "BLEU and its limits for evaluating generated text",
+    "Reading a confusion matrix beyond accuracy",
+    "Data augmentation that helps vs augmentation that leaks",
+    "Reproducibility: seeds, configs, and runs you can re-execute",
+    "Overfitting the validation set through too many experiments",
+    "SMOTE and synthetic data: when it backfires"
+  ],
+  "published": [
+    "UAV object classification data-leakage case study",
+    "GRU vs LSTM vs GPT-2 dialogue generation baseline"
+  ]
+}
