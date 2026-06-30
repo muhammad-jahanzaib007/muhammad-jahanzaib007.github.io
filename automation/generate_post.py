@@ -2,15 +2,17 @@
 """
 Generate one blog post for jahanzaibawan.com and wire it into the site.
 
+Uses GitHub Models (free, no API key) via the Actions GITHUB_TOKEN.
 - Picks the next topic from automation/topics.json
-- Asks Claude for a structured post (title, dek, body HTML in the site's classes)
+- Asks the model for a structured post (title, dek, body HTML in the site's classes)
 - Writes blog/<slug>.html from a template
 - Updates automation/posts.json, regenerates the cards + JSON-LD on blog.html,
   and adds the new URL to sitemap.xml
 - Replenishes the topic queue when it runs low
 
-Run from the repo root. Requires ANTHROPIC_API_KEY in the environment.
-Model is configurable via BLOG_MODEL (default: claude-opus-4-8).
+Run from the repo root. Requires GITHUB_TOKEN in the environment (provided
+automatically inside GitHub Actions). Model is configurable via BLOG_MODEL
+(default: openai/gpt-4o-mini).
 """
 
 import os
@@ -20,10 +22,8 @@ import json
 import html
 import datetime as dt
 from pathlib import Path
-from typing import Optional
 
-from pydantic import BaseModel, Field
-import anthropic
+import requests
 
 ROOT = Path(__file__).resolve().parent.parent          # repo root (portfolio-publish)
 DATA = ROOT / "automation"
@@ -33,64 +33,21 @@ TOPICS_JSON = DATA / "topics.json"
 BLOG_INDEX = ROOT / "blog.html"
 SITEMAP = ROOT / "sitemap.xml"
 
-MODEL = os.environ.get("BLOG_MODEL", "claude-opus-4-8")
+MODEL = os.environ.get("BLOG_MODEL", "openai/gpt-4o-mini")
+ENDPOINT = os.environ.get("MODELS_ENDPOINT", "https://models.github.ai/inference/chat/completions")
+TOKEN = os.environ.get("GITHUB_TOKEN") or os.environ.get("MODELS_TOKEN")
+
 SITE = "https://jahanzaibawan.com"
 AUTHOR = "Muhammad Jahanzaib Awan"
 COLORS = ["a2", "a3", "a4", "a5", "a6"]
 EM_DASH = "—"
+REQUIRED = ("slug", "title", "dek", "excerpt", "description", "keywords", "tag", "read_min", "body_html")
 
 ICON = ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E"
         "%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' "
         "fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' "
         "font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' "
         "text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E")
-
-
-class BlogPost(BaseModel):
-    slug: str = Field(description="kebab-case URL slug, 3-6 words, no dates")
-    title: str = Field(description="post title, 40-72 chars, no trailing period")
-    dek: str = Field(description="one or two sentence standfirst shown under the title")
-    excerpt: str = Field(description="punchy 1-2 sentence summary for the index card, <=180 chars")
-    description: str = Field(description="meta description, <=155 chars")
-    keywords: str = Field(description="6-10 comma-separated keywords")
-    tag: str = Field(description="one short category label, e.g. Evaluation, Deep Learning, NLP")
-    read_min: int = Field(description="estimated reading time in minutes, 4-9")
-    body_html: str = Field(description=(
-        "the article body as HTML. ONLY <section class=\"psec reveal\"> blocks, each with an "
-        "<h2> and <p>/<ul>/<li>/<strong>/<em>. No <h1>, no <head>, no nav, no figures/images, "
-        "no inline styles, no markdown. 4-7 sections. British English."))
-
-
-class TopicList(BaseModel):
-    topics: list[str] = Field(description="distinct, evergreen ML/data-science blog topic titles")
-
-
-def strip_em(s: str) -> str:
-    return s.replace(f" {EM_DASH} ", ", ").replace(EM_DASH, "-") if s else s
-
-
-def fmt_date(iso: str) -> str:
-    d = dt.date.fromisoformat(iso)
-    return f"{d.day} {d.strftime('%b')} {d.year}"
-
-
-def esc(s: str) -> str:
-    return html.escape(s, quote=True)
-
-
-def load(p: Path) -> dict:
-    return json.loads(p.read_text(encoding="utf-8"))
-
-
-def save(p: Path, obj: dict) -> None:
-    p.write_text(json.dumps(obj, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-
-
-def client() -> anthropic.Anthropic:
-    if not os.environ.get("ANTHROPIC_API_KEY"):
-        sys.exit("ANTHROPIC_API_KEY is not set")
-    return anthropic.Anthropic()
-
 
 SYSTEM = (
     "You are Muhammad Jahanzaib Awan, an MSc Artificial Intelligence candidate at De Montfort "
@@ -99,69 +56,124 @@ SYSTEM = (
     "splits, strong baselines, and reproducibility. Teach one idea well with a concrete worked "
     "intuition. Be accurate: never invent specific statistics, citations, dataset names, or claims "
     "about your own projects. Keep it general and evergreen. CRITICAL STYLE RULE: never use an em "
-    "dash (the long dash). Use commas, colons, semicolons, or full stops instead. British English."
+    "dash. Use commas, colons, semicolons, or full stops instead. Use British English. "
+    "Always reply with a single valid JSON object and nothing else."
 )
 
 
-def generate_post(c: anthropic.Anthropic, topic: str) -> BlogPost:
-    user = [{"role": "user", "content": (
-        f"Write the blog post on this topic: \"{topic}\".\n\n"
-        "The body_html must use only these wrappers: "
-        "<section class=\"psec reveal\"><h2>Heading</h2><p>...</p></section>, with <p>, "
-        "<ul><li>, <strong>, <em> inside. No images, no code fences, no inline styles, no <h1>. "
-        "Open with a section that frames why this matters, then build the idea, then close with "
-        "a short practical takeaway. Do not use em dashes anywhere."
-    )}]
+def strip_em(s):
+    return s.replace(f" {EM_DASH} ", ", ").replace(EM_DASH, "-") if isinstance(s, str) else s
+
+
+def fmt_date(iso):
+    d = dt.date.fromisoformat(iso)
+    return f"{d.day} {d.strftime('%b')} {d.year}"
+
+
+def esc(s):
+    return html.escape(str(s), quote=True)
+
+
+def load(p):
+    return json.loads(p.read_text(encoding="utf-8"))
+
+
+def save(p, obj):
+    p.write_text(json.dumps(obj, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def chat_json(user, max_tokens=4000):
+    if not TOKEN:
+        sys.exit("GITHUB_TOKEN is not set (needed to call GitHub Models)")
+    resp = requests.post(
+        ENDPOINT,
+        headers={"Authorization": f"Bearer {TOKEN}", "Content-Type": "application/json",
+                 "Accept": "application/json"},
+        json={
+            "model": MODEL,
+            "messages": [{"role": "system", "content": SYSTEM}, {"role": "user", "content": user}],
+            "temperature": 0.85,
+            "max_tokens": max_tokens,
+            "response_format": {"type": "json_object"},
+        },
+        timeout=120,
+    )
+    if resp.status_code >= 400:
+        sys.exit(f"GitHub Models request failed ({resp.status_code}): {resp.text[:500]}")
+    content = resp.json()["choices"][0]["message"]["content"]
     try:
-        msg = c.messages.parse(model=MODEL, max_tokens=8000, system=SYSTEM,
-                               thinking={"type": "adaptive"}, messages=user, output_format=BlogPost)
-    except Exception as e:
-        print(f"parse with thinking failed ({e}); retrying without thinking", file=sys.stderr)
-        msg = c.messages.parse(model=MODEL, max_tokens=8000, system=SYSTEM,
-                               messages=user, output_format=BlogPost)
-    post = msg.parsed_output
-    if post is None:
-        sys.exit("model did not return a parseable post")
-    # safety net: strip em dashes from every field
-    for f in ("slug", "title", "dek", "excerpt", "description", "keywords", "tag", "body_html"):
-        setattr(post, f, strip_em(getattr(post, f)))
-    post.slug = re.sub(r"[^a-z0-9-]", "", post.slug.lower().replace(" ", "-")).strip("-")
-    if not post.slug or "<section" not in post.body_html:
+        return json.loads(content)
+    except json.JSONDecodeError:
+        m = re.search(r"\{.*\}", content, re.S)        # tolerate stray prose around the JSON
+        if not m:
+            sys.exit(f"model did not return JSON: {content[:300]}")
+        return json.loads(m.group(0))
+
+
+def generate_post(topic):
+    user = (
+        f'Write a blog post on this topic: "{topic}".\n\n'
+        "Return a single JSON object with exactly these string keys: slug, title, dek, excerpt, "
+        "description, keywords, tag, read_min, body_html.\n"
+        "- slug: kebab-case, 3-6 words, no dates\n"
+        "- title: 40-72 chars, no trailing period\n"
+        "- dek: one or two sentence standfirst shown under the title\n"
+        "- excerpt: punchy 1-2 sentence card summary, <=180 chars\n"
+        "- description: meta description, <=155 chars\n"
+        "- keywords: 6-10 comma-separated keywords\n"
+        "- tag: one short category label (e.g. Evaluation, Deep Learning, NLP)\n"
+        "- read_min: integer 4-9\n"
+        "- body_html: the article body as HTML using ONLY "
+        '<section class="psec reveal"><h2>Heading</h2><p>...</p></section> blocks, with '
+        "<p>, <ul>, <li>, <strong>, <em> inside. 4-7 sections. No <h1>, no head, no nav, no images, "
+        "no code fences, no inline styles, no markdown. Open by framing why the idea matters, build "
+        "it, then close with a short practical takeaway. No em dashes anywhere."
+    )
+    data = chat_json(user, max_tokens=4000)
+    for k in REQUIRED:
+        if k not in data:
+            sys.exit(f"model response missing key: {k}")
+    for k in ("slug", "title", "dek", "excerpt", "description", "keywords", "tag", "body_html"):
+        data[k] = strip_em(str(data[k]))
+    data["slug"] = re.sub(r"[^a-z0-9-]", "", data["slug"].lower().replace(" ", "-")).strip("-")
+    try:
+        data["read_min"] = max(3, min(12, int(data["read_min"])))
+    except (ValueError, TypeError):
+        data["read_min"] = 6
+    if not data["slug"] or "<section" not in data["body_html"]:
         sys.exit("model returned an unusable post (missing slug or body)")
-    return post
+    return data
 
 
-def replenish(c: anthropic.Anthropic, topics: dict, want: int = 14) -> None:
+def replenish(topics, want=14):
     try:
         used = topics["published"] + topics["queue"]
-        msg = c.messages.parse(
-            model=MODEL,
-            max_tokens=2000,
-            system="You suggest evergreen machine-learning and data-science blog topics.",
-            messages=[{"role": "user", "content": (
-                f"Suggest {want} distinct, specific, evergreen ML/DS post titles suitable for a "
-                "graduate ML engineer's portfolio blog (evaluation, modelling, NLP, CV, MLOps, "
-                "statistics). Avoid anything overlapping these existing titles:\n- "
-                + "\n- ".join(used) + "\nNo em dashes in the titles."
-            )}],
-            output_format=TopicList,
+        user = (
+            f"Suggest {want} distinct, specific, evergreen machine-learning / data-science blog "
+            "post titles for a graduate ML engineer's portfolio (evaluation, modelling, NLP, CV, "
+            "MLOps, statistics). Avoid anything overlapping these existing titles:\n- "
+            + "\n- ".join(used)
+            + '\nReturn a single JSON object: {"topics": ["title 1", "title 2", ...]}. No em dashes.'
         )
+        data = chat_json(user, max_tokens=1200)
         existing = {t.lower() for t in used}
-        for t in msg.parsed_output.topics:
-            t = strip_em(t).strip()
+        for t in data.get("topics", []):
+            t = strip_em(str(t)).strip()
             if t and t.lower() not in existing:
                 topics["queue"].append(t)
                 existing.add(t.lower())
-    except Exception as e:  # replenish is best-effort; never fail the run over it
+    except SystemExit:
+        raise
+    except Exception as e:
         print(f"topic replenish skipped: {e}", file=sys.stderr)
 
 
-def card_html(p: dict, idx: int) -> str:
+def card_html(p, idx):
     color = f"var(--{p['color']})"
     delay = " b1" if idx % 2 else ""
     if p.get("thumb"):
         thumb = (f'<div class="thumb"><img src="{esc(p["thumb"])}" '
-                 f'alt="{esc(p.get("thumb_alt", p["title"]))}" loading="lazy"></div>')
+                 f'alt="{esc(p.get("thumb_alt") or p["title"])}" loading="lazy"></div>')
     else:
         thumb = (f'<div class="thumb" style="background:linear-gradient(135deg,'
                  f'color-mix(in srgb,{color} 30%,#0b0b14),#06060a);display:grid;place-items:center;'
@@ -182,7 +194,7 @@ def card_html(p: dict, idx: int) -> str:
     )
 
 
-def render_post_page(p: dict) -> str:
+def render_post_page(p):
     url = f"{SITE}/blog/{p['slug']}.html"
     title = esc(p["title"])
     return f"""<!DOCTYPE html>
@@ -268,7 +280,7 @@ def render_post_page(p: dict) -> str:
 """
 
 
-def update_blog_index(posts: list[dict]) -> None:
+def update_blog_index(posts):
     text = BLOG_INDEX.read_text(encoding="utf-8")
     cards = "\n\n".join(card_html(p, i) for i, p in enumerate(posts))
     text = re.sub(r"<!--POSTS:START-->.*?<!--POSTS:END-->",
@@ -282,7 +294,7 @@ def update_blog_index(posts: list[dict]) -> None:
     BLOG_INDEX.write_text(text, encoding="utf-8")
 
 
-def update_sitemap(posts: list[dict], today: str) -> None:
+def update_sitemap(posts, today):
     text = SITEMAP.read_text(encoding="utf-8")
     rows = "\n".join(
         f'  <url><loc>{SITE}/blog/{p["slug"]}.html</loc><lastmod>{p["date"]}</lastmod>'
@@ -290,60 +302,57 @@ def update_sitemap(posts: list[dict], today: str) -> None:
         for p in posts)
     text = re.sub(r"<!--BLOGPOSTS:START-->.*?<!--BLOGPOSTS:END-->",
                   f"<!--BLOGPOSTS:START-->\n{rows}\n  <!--BLOGPOSTS:END-->", text, flags=re.S)
-    # bump blog index lastmod
     text = re.sub(r'(<loc>https://jahanzaibawan\.com/blog\.html</loc><lastmod>)[\d-]+',
                   rf'\g<1>{today}', text)
     SITEMAP.write_text(text, encoding="utf-8")
 
 
-def main() -> None:
+def main():
     posts_data = load(POSTS_JSON)
     topics = load(TOPICS_JSON)
-    c = client()
 
     if not topics["queue"]:
-        replenish(c, topics, want=14)
+        replenish(topics, want=14)
         if not topics["queue"]:
             sys.exit("no topics available and replenish failed")
 
     topic = topics["queue"].pop(0)
     print(f"Generating post for topic: {topic}")
-    post = generate_post(c, topic)
+    post = generate_post(topic)
 
     existing_slugs = {p["slug"] for p in posts_data["posts"]}
     today = os.environ.get("POST_DATE") or dt.datetime.now(dt.timezone.utc).date().isoformat()
-    if post.slug in existing_slugs:
-        post.slug = f"{post.slug}-{today.replace('-', '')}"
+    if post["slug"] in existing_slugs:
+        post["slug"] = f"{post['slug']}-{today.replace('-', '')}"
 
     entry = {
-        "slug": post.slug,
-        "title": post.title,
-        "excerpt": post.excerpt,
+        "slug": post["slug"],
+        "title": post["title"],
+        "excerpt": post["excerpt"],
         "date": today,
-        "read_min": max(3, min(12, int(post.read_min))),
-        "tag": post.tag,
+        "read_min": post["read_min"],
+        "tag": post["tag"],
         "color": COLORS[len(posts_data["posts"]) % len(COLORS)],
         "thumb": None,
         "thumb_alt": None,
     }
 
     BLOG_DIR.mkdir(exist_ok=True)
-    (BLOG_DIR / f"{post.slug}.html").write_text(render_post_page({**post.model_dump(), **entry}), encoding="utf-8")
+    (BLOG_DIR / f"{post['slug']}.html").write_text(render_post_page({**post, **entry}), encoding="utf-8")
 
     posts_data["posts"].insert(0, entry)
-    ordered = sorted(posts_data["posts"], key=lambda p: p["date"], reverse=True)
-    posts_data["posts"] = ordered
+    posts_data["posts"] = sorted(posts_data["posts"], key=lambda p: p["date"], reverse=True)
     save(POSTS_JSON, posts_data)
 
-    update_blog_index(ordered)
-    update_sitemap(ordered, today)
+    update_blog_index(posts_data["posts"])
+    update_sitemap(posts_data["posts"], today)
 
     topics["published"].append(topic)
     if len(topics["queue"]) < 6:
-        replenish(c, topics)
+        replenish(topics)
     save(TOPICS_JSON, topics)
 
-    print(f"Published blog/{post.slug}.html  ({entry['title']})")
+    print(f"Published blog/{post['slug']}.html  ({entry['title']})")
 
 
 if __name__ == "__main__":

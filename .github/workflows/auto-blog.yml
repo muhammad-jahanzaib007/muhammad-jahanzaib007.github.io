@@ -1,6 +1,7 @@
 name: Auto blog
 
 # Publishes a new post 4x/week (Mon, Wed, Fri, Sun at 09:00 UTC).
+# Free: uses GitHub Models via the built-in GITHUB_TOKEN, no API key or billing.
 # Also runnable on demand from the Actions tab (Run workflow).
 on:
   schedule:
@@ -9,6 +10,7 @@ on:
 
 permissions:
   contents: write
+  models: read
 
 concurrency:
   group: auto-blog
@@ -25,12 +27,12 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install --upgrade "anthropic>=0.69" "pydantic>=2"
+        run: pip install --upgrade requests
 
       - name: Generate post
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          BLOG_MODEL: ${{ vars.BLOG_MODEL || 'claude-opus-4-8' }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BLOG_MODEL: ${{ vars.BLOG_MODEL || 'openai/gpt-4o-mini' }}
         run: python automation/generate_post.py
 
       - name: Commit and push
