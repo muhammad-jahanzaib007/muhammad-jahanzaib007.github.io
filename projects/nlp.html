@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dialogue Generation: GRU vs LSTM vs GPT-2 — Muhammad Jahanzaib Awan</title>
+<title>Dialogue Generation: GRU vs LSTM vs GPT-2 | Muhammad Jahanzaib Awan</title>
 <meta name="description" content="Comparing GRU/LSTM seq2seq against a LoRA-fine-tuned GPT-2 on the Cornell Movie-Dialogs Corpus. A well-tuned GRU won on perplexity, BLEU and embedding similarity.">
-<meta property="og:title" content="Dialogue Generation: GRU vs LSTM vs GPT-2 — Case Study">
+<meta property="og:title" content="Dialogue Generation: GRU vs LSTM vs GPT-2 | Case Study">
 <meta property="og:description" content="A tuned GRU beat a LoRA-fine-tuned GPT-2 on every metric, at a fraction of the parameters.">
 <meta property="og:url" content="https://jahanzaibawan.com/projects/nlp.html">
 <link rel="canonical" href="https://jahanzaibawan.com/projects/nlp.html">
@@ -18,9 +18,9 @@
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Muhammad Jahanzaib Awan">
-<meta property="og:image:alt" content="Dialogue generation GRU vs LSTM vs GPT-2 — Muhammad Jahanzaib Awan">
+<meta property="og:image:alt" content="Dialogue generation GRU vs LSTM vs GPT-2, Muhammad Jahanzaib Awan">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Dialogue Generation: GRU vs LSTM vs GPT-2 — Muhammad Jahanzaib Awan">
+<meta name="twitter:title" content="Dialogue Generation: GRU vs LSTM vs GPT-2 | Muhammad Jahanzaib Awan">
 <meta name="twitter:image" content="https://jahanzaibawan.com/assets/og.png">
 <script type="application/ld+json">
 {
@@ -33,7 +33,7 @@
   "inLanguage": "en-GB",
   "author": { "@type": "Person", "name": "Muhammad Jahanzaib Awan", "url": "https://jahanzaibawan.com/" },
   "publisher": { "@type": "Person", "name": "Muhammad Jahanzaib Awan" },
-  "isPartOf": { "@type": "WebSite", "url": "https://jahanzaibawan.com/", "name": "Muhammad Jahanzaib Awan — Portfolio" }
+  "isPartOf": { "@type": "WebSite", "url": "https://jahanzaibawan.com/", "name": "Muhammad Jahanzaib Awan, Portfolio" }
 }
 </script>
 <script type="application/ld+json">
@@ -70,13 +70,13 @@
 
   <section class="psec reveal">
     <h2>The problem</h2>
-    <p>Open-domain dialogue response generation on the <strong>Cornell Movie-Dialogs Corpus</strong> — 53,107 utterance pairs (47,797 train / 5,310 test), vocabulary 7,822, max length 10 tokens. The question: with limited data and a single GPU, does parameter-efficient fine-tuning of a large pretrained model beat a purpose-built small one?</p>
+    <p>Open-domain dialogue response generation on the <strong>Cornell Movie-Dialogs Corpus</strong>, 53,107 utterance pairs (47,797 train / 5,310 test), vocabulary 7,822, max length 10 tokens. The question: with limited data and a single GPU, does parameter-efficient fine-tuning of a large pretrained model beat a purpose-built small one?</p>
   </section>
 
   <section class="psec reveal">
     <h2>Approach</h2>
     <ul>
-      <li><strong>GRU &amp; LSTM seq2seq</strong> with attention — hidden size 500, 2 encoder + 2 decoder layers, batch 64, 4,000 iterations.</li>
+      <li><strong>GRU &amp; LSTM seq2seq</strong> with attention, hidden size 500, 2 encoder + 2 decoder layers, batch 64, 4,000 iterations.</li>
       <li><strong>GPT-2 (355M)</strong> fine-tuned with <strong>LoRA</strong> for a parameter-efficient comparison.</li>
       <li>Evaluated three ways: <strong>perplexity</strong> (fluency), <strong>BLEU</strong> (n-gram overlap) and <strong>embedding cosine similarity</strong> (semantic closeness).</li>
     </ul>
@@ -103,14 +103,14 @@
 
   <section class="psec reveal">
     <h2>Why the small model won</h2>
-    <p>LoRA freezes most of GPT-2 and trains a small adapter — powerful when the base model already covers your domain, but movie dialogue is short, idiosyncratic and far from GPT-2's web-text prior. A from-scratch encoder–decoder, trained end-to-end on exactly this distribution, fit it better. <strong>Bigger and pretrained is not automatically better</strong> when the data is narrow and the compute is fixed.</p>
+    <p>LoRA freezes most of GPT-2 and trains a small adapter, powerful when the base model already covers your domain, but movie dialogue is short, idiosyncratic and far from GPT-2's web-text prior. A from-scratch encoder–decoder, trained end-to-end on exactly this distribution, fit it better. <strong>Bigger and pretrained is not automatically better</strong> when the data is narrow and the compute is fixed.</p>
   </section>
 
   <section class="psec reveal">
     <h2>What I took away</h2>
     <ul>
       <li>Match model capacity to the data you actually have, not to the leaderboard.</li>
-      <li>Evaluate generation on multiple axes — perplexity, overlap and semantics disagree, and you need all three.</li>
+      <li>Evaluate generation on multiple axes, perplexity, overlap and semantics disagree, and you need all three.</li>
       <li>A clean recurrent baseline is still a serious contender on small, domain-specific tasks.</li>
     </ul>
     <p style="margin-top:18px"><a class="prepo" href="https://github.com/muhammad-jahanzaib007/dialogue-generation-gru-lstm-gpt2" target="_blank" rel="noopener">View repository on GitHub →</a></p>

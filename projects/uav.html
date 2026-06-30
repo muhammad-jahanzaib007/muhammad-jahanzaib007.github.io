@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UAV Aerial Object Classification — Muhammad Jahanzaib Awan</title>
+<title>UAV Aerial Object Classification | Muhammad Jahanzaib Awan</title>
 <meta name="description" content="7-class UAV aerial object classification: CNNs vs classical baselines, with a leakage-aware track split that exposes how naïve random splitting inflates results.">
-<meta property="og:title" content="UAV Aerial Object Classification — Case Study">
+<meta property="og:title" content="UAV Aerial Object Classification | Case Study">
 <meta property="og:description" content="CNNs vs classical baselines on 8,903 UAV crops, and a demonstration of data-leakage inflation.">
 <meta property="og:url" content="https://jahanzaibawan.com/projects/uav.html">
 <link rel="canonical" href="https://jahanzaibawan.com/projects/uav.html">
@@ -18,9 +18,9 @@
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Muhammad Jahanzaib Awan">
-<meta property="og:image:alt" content="UAV aerial object classification — Muhammad Jahanzaib Awan">
+<meta property="og:image:alt" content="UAV aerial object classification, Muhammad Jahanzaib Awan">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="UAV Aerial Object Classification — Muhammad Jahanzaib Awan">
+<meta name="twitter:title" content="UAV Aerial Object Classification | Muhammad Jahanzaib Awan">
 <meta name="twitter:image" content="https://jahanzaibawan.com/assets/og.png">
 <script type="application/ld+json">
 {
@@ -33,7 +33,7 @@
   "inLanguage": "en-GB",
   "author": { "@type": "Person", "name": "Muhammad Jahanzaib Awan", "url": "https://jahanzaibawan.com/" },
   "publisher": { "@type": "Person", "name": "Muhammad Jahanzaib Awan" },
-  "isPartOf": { "@type": "WebSite", "url": "https://jahanzaibawan.com/", "name": "Muhammad Jahanzaib Awan — Portfolio" }
+  "isPartOf": { "@type": "WebSite", "url": "https://jahanzaibawan.com/", "name": "Muhammad Jahanzaib Awan, Portfolio" }
 }
 </script>
 <script type="application/ld+json">
@@ -57,7 +57,7 @@
     <a class="back" href="../index.html#work">← All case studies</a>
     <div class="tag">Computer Vision · transfer learning · honest evaluation</div>
     <h1>UAV Aerial Object Classification</h1>
-    <p class="lede">Seven-class classification of objects cropped from UAV video — benchmarking classical features against CNNs, and quantifying exactly how much a naïve train/test split inflates the numbers.</p>
+    <p class="lede">Seven-class classification of objects cropped from UAV video, benchmarking classical features against CNNs, and quantifying exactly how much a naïve train/test split inflates the numbers.</p>
     <div class="pmeta"><span class="chip">PyTorch</span><span class="chip">scikit-learn</span><span class="chip">ResNet-18</span><span class="chip">EfficientNet-B0</span><span class="chip">HOG + SVM</span><span class="chip">2026</span></div>
   </div>
 
@@ -70,7 +70,7 @@
 
   <section class="psec reveal">
     <h2>The problem</h2>
-    <p>The task was to classify 8,903 object crops — car, bus, truck, van, person, bicycle, motor — extracted from a 146-frame UAV sequence. Two things make it hard: <strong>severe class imbalance</strong> (car ≈ 42% of samples, bicycle ≈ 1%), and the fact that crops from the <strong>same vehicle track</strong> across consecutive frames are near-duplicates. Split those randomly and the test set is full of objects the model already saw in training — the score looks great and means nothing.</p>
+    <p>The task was to classify 8,903 object crops (car, bus, truck, van, person, bicycle, motor) extracted from a 146-frame UAV sequence. Two things make it hard: <strong>severe class imbalance</strong> (car ≈ 42% of samples, bicycle ≈ 1%), and the fact that crops from the <strong>same vehicle track</strong> across consecutive frames are near-duplicates. Split those randomly and the test set is full of objects the model already saw in training, so the score looks great and means nothing.</p>
   </section>
 
   <section class="psec reveal">
@@ -97,18 +97,18 @@
         <tr class="best"><td>EfficientNet-B0</td><td class="num">0.876</td><td class="num">0.460</td></tr>
       </tbody>
     </table>
-    <p>CNNs clearly beat the classical baselines on macro-F1 — the imbalance hurts HOG+RF most (0.256), where minority classes collapse. Among CNNs the three backbones are close; EfficientNet-B0 edges accuracy, MobileNetV2 the macro-F1.</p>
+    <p>CNNs clearly beat the classical baselines on macro-F1, the imbalance hurts HOG+RF most (0.256), where minority classes collapse. Among CNNs the three backbones are close; EfficientNet-B0 edges accuracy, MobileNetV2 the macro-F1.</p>
     <div class="figgrid">
       <figure><img src="../assets/uav/training_curves.png" alt="Training and validation curves" loading="lazy"><figcaption>Training / validation curves across CNN backbones.</figcaption></figure>
-      <figure><img src="../assets/uav/class_distribution.png" alt="Class distribution" loading="lazy"><figcaption>Class distribution — the imbalance driving macro-F1.</figcaption></figure>
+      <figure><img src="../assets/uav/class_distribution.png" alt="Class distribution" loading="lazy"><figcaption>Class distribution, the imbalance driving macro-F1.</figcaption></figure>
       <figure><img src="../assets/uav/cm_resnet18.png" alt="ResNet-18 confusion matrix" loading="lazy"><figcaption>ResNet-18 confusion matrix (track-aware test).</figcaption></figure>
       <figure><img src="../assets/uav/cm_efficientnet_b0.png" alt="EfficientNet-B0 confusion matrix" loading="lazy"><figcaption>EfficientNet-B0 confusion matrix.</figcaption></figure>
     </div>
   </section>
 
   <section class="psec reveal">
-    <h2>The key finding — data leakage</h2>
-    <p>This was the real contribution. Under a <strong>naïve random split</strong>, a Random Forest scored <span class="hl">0.906 accuracy / 0.776 macro-F1</span>. The exact same model under a correct <strong>track-aware group split</strong> dropped to <span class="hl">0.803 / 0.256</span> — a macro-F1 collapse of 0.52. Almost all of the apparent "performance" was the model recognising near-duplicate crops it had already trained on.</p>
+    <h2>The key finding, data leakage</h2>
+    <p>This was the real contribution. Under a <strong>naïve random split</strong>, a Random Forest scored <span class="hl">0.906 accuracy / 0.776 macro-F1</span>. The exact same model under a correct <strong>track-aware group split</strong> dropped to <span class="hl">0.803 / 0.256</span>, a macro-F1 collapse of 0.52. Almost all of the apparent "performance" was the model recognising near-duplicate crops it had already trained on.</p>
     <table class="dtable">
       <thead><tr><th>Split</th><th>Accuracy</th><th>Macro-F1</th></tr></thead>
       <tbody>
@@ -123,15 +123,15 @@
     <h2>Ablations</h2>
     <p>Two controlled comparisons on ResNet-18: transfer learning beat training from scratch (0.868 vs 0.820 accuracy), confirming the value of ImageNet features on a small dataset; explicit imbalance handling traded a little accuracy for more balanced per-class behaviour.</p>
     <div class="figgrid">
-      <figure><img src="../assets/uav/cm_pretrained.png" alt="Pretrained ResNet-18 confusion matrix" loading="lazy"><figcaption>ResNet-18 — pretrained.</figcaption></figure>
-      <figure><img src="../assets/uav/cm_scratch.png" alt="From-scratch ResNet-18 confusion matrix" loading="lazy"><figcaption>ResNet-18 — trained from scratch.</figcaption></figure>
+      <figure><img src="../assets/uav/cm_pretrained.png" alt="Pretrained ResNet-18 confusion matrix" loading="lazy"><figcaption>ResNet-18, pretrained.</figcaption></figure>
+      <figure><img src="../assets/uav/cm_scratch.png" alt="From-scratch ResNet-18 confusion matrix" loading="lazy"><figcaption>ResNet-18, trained from scratch.</figcaption></figure>
     </div>
   </section>
 
   <section class="psec reveal">
     <h2>What I took away</h2>
     <ul>
-      <li>Always ask how correlated your samples are <em>before</em> choosing a split — group leakage is silent and flattering.</li>
+      <li>Always ask how correlated your samples are <em>before</em> choosing a split, group leakage is silent and flattering.</li>
       <li>On imbalanced data, accuracy lies; macro-F1 tells the truth.</li>
       <li>A strong classical baseline frames how much the CNN actually buys you.</li>
     </ul>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How a naïve train/test split inflated my UAV F1 by 0.5 — Muhammad Jahanzaib Awan</title>
+<title>How a naïve train/test split inflated my UAV F1 by 0.5 | Muhammad Jahanzaib Awan</title>
 <meta name="description" content="A walk through the most expensive bug in machine learning: how random train/test splitting leaked near-duplicate video frames into the test set and inflated macro-F1 from 0.26 to 0.78 on a UAV classification task.">
 <meta name="author" content="Muhammad Jahanzaib Awan">
 <meta name="keywords" content="data leakage, train test split, model evaluation, macro F1, UAV classification, Muhammad Jahanzaib Awan, Jahanzaib Awan">
@@ -12,7 +12,7 @@
 <meta property="article:published_time" content="2026-06-12">
 <meta property="og:site_name" content="Muhammad Jahanzaib Awan">
 <meta property="og:title" content="How a naïve train/test split inflated my UAV F1 by 0.5">
-<meta property="og:description" content="Same model, same data — macro-F1 fell from 0.78 to 0.26 the moment the data was split honestly.">
+<meta property="og:description" content="Same model, same data, macro-F1 fell from 0.78 to 0.26 the moment the data was split honestly.">
 <meta property="og:image" content="https://jahanzaibawan.com/assets/og.png">
 <meta property="og:url" content="https://jahanzaibawan.com/blog/uav-data-leakage.html">
 <meta property="og:locale" content="en_GB">
@@ -69,32 +69,32 @@
 
   <section class="psec reveal" style="border-top:none">
     <h2>The task</h2>
-    <p>I had 8,903 object crops — car, bus, truck, van, person, bicycle, motorcycle — extracted from a 146-frame UAV video sequence, to be sorted into seven classes. Two things make it harder than a normal image-classification dataset. First, <strong>severe class imbalance</strong>: cars are about 42% of the samples, bicycles barely 1%. Second, and far more dangerous: the crops come from <strong>video</strong>.</p>
+    <p>I had 8,903 object crops, car, bus, truck, van, person, bicycle, motorcycle, extracted from a 146-frame UAV video sequence, to be sorted into seven classes. Two things make it harder than a normal image-classification dataset. First, <strong>severe class imbalance</strong>: cars are about 42% of the samples, bicycles barely 1%. Second, and far more dangerous: the crops come from <strong>video</strong>.</p>
   </section>
 
   <section class="psec reveal">
     <h2>Why video is a trap</h2>
-    <p>A car in frame 12 and the same car in frame 13 are almost the same pixels — a few degrees of motion apart. They are, for all practical purposes, duplicates. If you shuffle every crop into one pile and randomly assign 20% to a test set, that test set fills up with near-copies of images the model trained on.</p>
-    <p>The model isn't generalising. It's recognising photographs it has already memorised. And the score looks <em>fantastic</em>, because in a sense the model is right — it just answered the wrong question.</p>
+    <p>A car in frame 12 and the same car in frame 13 are almost the same pixels, a few degrees of motion apart. They are, for all practical purposes, duplicates. If you shuffle every crop into one pile and randomly assign 20% to a test set, that test set fills up with near-copies of images the model trained on.</p>
+    <p>The model isn't generalising. It's recognising photographs it has already memorised. And the score looks <em>fantastic</em>, because in a sense the model is right, it just answered the wrong question.</p>
   </section>
 
   <section class="psec reveal">
     <h2>The two splits</h2>
-    <p>I trained the same pipeline twice. Once with a <strong>naïve random split</strong>, once with a <strong>track-aware split</strong> — where every crop of a given object instance is forced entirely onto one side of the train/test divide, so the model is genuinely tested on objects it has never seen.</p>
+    <p>I trained the same pipeline twice. Once with a <strong>naïve random split</strong>, once with a <strong>track-aware split</strong>, where every crop of a given object instance is forced entirely onto one side of the train/test divide, so the model is genuinely tested on objects it has never seen.</p>
     <table class="dtable">
       <tr><th>Split</th><th>Accuracy</th><th>Macro-F1</th></tr>
       <tr><td>Naïve random split</td><td class="num">0.906</td><td class="num">0.776</td></tr>
       <tr class="best"><td>Track-aware split (honest)</td><td class="num">0.803</td><td class="num">0.256</td></tr>
     </table>
-    <p>Accuracy barely flinched — it dropped from 0.91 to 0.80, which you might wave away. But <strong>macro-F1 collapsed from 0.78 to 0.26</strong>. That half-point gap is the leakage, made visible.</p>
+    <p>Accuracy barely flinched: it dropped from 0.91 to 0.80, which you might wave away. But <strong>macro-F1 collapsed from 0.78 to 0.26</strong>. That half-point gap is the leakage, made visible.</p>
   </section>
 
   <section class="psec reveal">
     <h2>Why accuracy lied and macro-F1 told the truth</h2>
-    <p>Accuracy is dominated by the majority class. Get all the cars right and you're already at ~42%. Macro-F1 weights every class equally, so it exposes what happens to the rare ones — bicycles, motorcycles, vans. On the honest split, the model had genuinely never seen those rare instances, and its performance on them cratered. The naïve split had quietly shown it test-set bicycles during training.</p>
+    <p>Accuracy is dominated by the majority class. Get all the cars right and you're already at ~42%. Macro-F1 weights every class equally, so it exposes what happens to the rare ones, bicycles, motorcycles, vans. On the honest split, the model had genuinely never seen those rare instances, and its performance on them cratered. The naïve split had quietly shown it test-set bicycles during training.</p>
     <p>The lesson isn't "macro-F1 good, accuracy bad." It's <strong>pick the metric that can be embarrassed by your failure mode</strong>. Here the failure mode was rare classes, and only macro-F1 was honest about them.</p>
     <div class="figgrid one reveal">
-      <figure><img src="../assets/uav/cm_pretrained.png" alt="Confusion matrix for the pretrained model" loading="lazy"><figcaption>Per-class confusion — where the rare classes quietly fall apart under an honest split.</figcaption></figure>
+      <figure><img src="../assets/uav/cm_pretrained.png" alt="Confusion matrix for the pretrained model" loading="lazy"><figcaption>Per-class confusion, where the rare classes quietly fall apart under an honest split.</figcaption></figure>
     </div>
   </section>
 
@@ -116,7 +116,7 @@
   </div>
 </div>
 
-<footer>© 2026 Muhammad Jahanzaib Awan — AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
 <div id="lb"><span class="x">&times;</span><img alt=""><div class="cap"></div></div>
 <div id="toast"></div>
 <script src="../app.js"></script>

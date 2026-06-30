@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Particle Swarm Optimization on Rastrigin — Muhammad Jahanzaib Awan</title>
-<meta name="description" content="Tuning Particle Swarm Optimization on the multimodal Rastrigin benchmark, cutting convergence from 173 to 16 iterations — a 90.8% improvement.">
-<meta property="og:title" content="PSO on Rastrigin — Case Study">
+<title>Particle Swarm Optimization on Rastrigin | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Tuning Particle Swarm Optimization on the multimodal Rastrigin benchmark, cutting convergence from 173 to 16 iterations, a 90.8% improvement.">
+<meta property="og:title" content="PSO on Rastrigin | Case Study">
 <meta property="og:description" content="Tuned swarm dynamics converged in 90.8% fewer iterations on a notoriously multimodal benchmark.">
 <meta property="og:url" content="https://jahanzaibawan.com/projects/pso.html">
 <link rel="canonical" href="https://jahanzaibawan.com/projects/pso.html">
@@ -18,22 +18,22 @@
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Muhammad Jahanzaib Awan">
-<meta property="og:image:alt" content="Particle Swarm Optimization on Rastrigin — Muhammad Jahanzaib Awan">
+<meta property="og:image:alt" content="Particle Swarm Optimization on Rastrigin, Muhammad Jahanzaib Awan">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Particle Swarm Optimization on Rastrigin — Muhammad Jahanzaib Awan">
+<meta name="twitter:title" content="Particle Swarm Optimization on Rastrigin | Muhammad Jahanzaib Awan">
 <meta name="twitter:image" content="https://jahanzaibawan.com/assets/og.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "Particle Swarm Optimization on Rastrigin",
-  "description": "Tuning Particle Swarm Optimization on the multimodal Rastrigin benchmark, cutting convergence from 173 to 16 iterations — a 90.8% improvement.",
+  "description": "Tuning Particle Swarm Optimization on the multimodal Rastrigin benchmark, cutting convergence from 173 to 16 iterations, a 90.8% improvement.",
   "url": "https://jahanzaibawan.com/projects/pso.html",
   "image": "https://jahanzaibawan.com/assets/og.png",
   "inLanguage": "en-GB",
   "author": { "@type": "Person", "name": "Muhammad Jahanzaib Awan", "url": "https://jahanzaibawan.com/" },
   "publisher": { "@type": "Person", "name": "Muhammad Jahanzaib Awan" },
-  "isPartOf": { "@type": "WebSite", "url": "https://jahanzaibawan.com/", "name": "Muhammad Jahanzaib Awan — Portfolio" }
+  "isPartOf": { "@type": "WebSite", "url": "https://jahanzaibawan.com/", "name": "Muhammad Jahanzaib Awan, Portfolio" }
 }
 </script>
 <script type="application/ld+json">
@@ -57,7 +57,7 @@
     <a class="back" href="../index.html#work">← All case studies</a>
     <div class="tag">Evolutionary Computing · metaheuristics</div>
     <h1>Particle Swarm Optimization on Rastrigin</h1>
-    <p class="lede">Tuning swarm dynamics on a notoriously multimodal benchmark to reach the global optimum far faster — and validating it rather than trusting a single lucky run.</p>
+    <p class="lede">Tuning swarm dynamics on a notoriously multimodal benchmark to reach the global optimum far faster, and validating it rather than trusting a single lucky run.</p>
     <div class="pmeta"><span class="chip">MATLAB</span><span class="chip">PSO</span><span class="chip">Differential Evolution</span><span class="chip">parameter sweeps</span><span class="chip">2025</span></div>
   </div>
 
@@ -70,7 +70,7 @@
 
   <section class="psec reveal">
     <h2>The problem</h2>
-    <p>The <strong>Rastrigin function</strong> is a classic optimization trap: a smooth global bowl studded with dozens of regular local minima. Naïve optimizers get stuck in the nearest dip. The task was to make Particle Swarm Optimization escape them reliably — and quickly.</p>
+    <p>The <strong>Rastrigin function</strong> is a classic optimization trap: a smooth global bowl studded with dozens of regular local minima. Naïve optimizers get stuck in the nearest dip. The task was to make Particle Swarm Optimization escape them reliably, and quickly.</p>
   </section>
 
   <section class="psec reveal">
@@ -78,13 +78,13 @@
     <ul>
       <li>Implemented PSO with <strong>constriction</strong> and <strong>inertia-damping</strong> variants, plus Differential Evolution as a cross-check.</li>
       <li>Ran systematic <strong>parameter sweeps</strong> over inertia weight, the cognitive/social coefficients (c1, c2), population size and iteration budget.</li>
-      <li>Validated convergence across <strong>multiple runs</strong> with summary statistics — not a single seed.</li>
+      <li>Validated convergence across <strong>multiple runs</strong> with summary statistics, not a single seed.</li>
     </ul>
   </section>
 
   <section class="psec reveal">
     <h2>Results</h2>
-    <p>Tuned inertia damping plus a well-chosen population let the swarm converge in <span class="hl">16 iterations instead of 173</span> — a <span class="hl">90.8% reduction</span> — while still reaching the global optimum. The sweeps showed inertia weight as the dominant lever: too high and the swarm never settles, too low and it stalls in a local minimum.</p>
+    <p>Tuned inertia damping plus a well-chosen population let the swarm converge in <span class="hl">16 iterations instead of 173</span>, a <span class="hl">90.8% reduction</span>, while still reaching the global optimum. The sweeps showed inertia weight as the dominant lever: too high and the swarm never settles, too low and it stalls in a local minimum.</p>
     <div class="figgrid">
       <figure><img src="../assets/pso/convergence.png" alt="Convergence curves for PSO techniques" loading="lazy"><figcaption>Convergence across PSO techniques.</figcaption></figure>
       <figure><img src="../assets/pso/contour.png" alt="Swarm trajectory over the Rastrigin contour" loading="lazy"><figcaption>Swarm over the Rastrigin contour.</figcaption></figure>
@@ -96,7 +96,7 @@
   <section class="psec reveal">
     <h2>What I took away</h2>
     <ul>
-      <li>Metaheuristic performance lives in the hyperparameters — sweep them, don't guess them.</li>
+      <li>Metaheuristic performance lives in the hyperparameters, sweep them, don't guess them.</li>
       <li>Report convergence over multiple runs; a single run hides variance and luck.</li>
       <li>A second algorithm (DE) is a cheap sanity check on whether a result is real.</li>
     </ul>

@@ -42,7 +42,7 @@
     c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')});
   });
 
-  // active nav highlight (home) — scroll-position based for reliability
+  // active nav highlight (home), scroll-position based for reliability
   const links=[...document.querySelectorAll('.navlinks a')].filter(a=>(a.getAttribute('href')||'').startsWith('#'));
   if(links.length){
     const secs=links.map(a=>({a,el:document.getElementById(a.getAttribute('href').slice(1))})).filter(s=>s.el);
@@ -61,7 +61,7 @@
         const top=s.el.getBoundingClientRect().top+scrollY;
         if(top<=y) cur=s;
       }
-      // near page bottom, the last section can't reach the line — force it active
+      // near page bottom, the last section can't reach the line, force it active
       if(window.innerHeight+scrollY>=document.documentElement.scrollHeight-4) cur=secs[secs.length-1];
       apply(cur);
     }
@@ -99,11 +99,11 @@
   const cf=document.getElementById('cform');
   if(cf)cf.addEventListener('submit',e=>{
     e.preventDefault();
-    if(cf.action.includes('FORMSPREE_ID')){showToast('Contact form not configured yet — use the email above for now.');return;}
+    if(cf.action.includes('FORMSPREE_ID')){showToast('Contact form not configured yet, use the email above for now.');return;}
     const btn=cf.querySelector('button');btn.disabled=true;btn.textContent='Sending…';
     fetch(cf.action,{method:'POST',body:new FormData(cf),headers:{Accept:'application/json'}})
-      .then(r=>{if(r.ok){cf.reset();showToast('Message sent — thanks! I’ll reply within 24h.')}else throw 0})
-      .catch(()=>showToast('Something went wrong — please email me directly.'))
+      .then(r=>{if(r.ok){cf.reset();showToast('Message sent, thanks! I’ll reply within 24h.')}else throw 0})
+      .catch(()=>showToast('Something went wrong, please email me directly.'))
       .finally(()=>{btn.disabled=false;btn.textContent='Send message'});
   });
 
@@ -137,13 +137,13 @@
     draw();
   }
 
-  // CV button — graceful fallback if PDF missing
+  // CV button, graceful fallback if PDF missing
   const cv=document.getElementById('cvbtn');
   if(cv)cv.addEventListener('click',e=>{
     e.preventDefault();
     fetch(cv.href,{method:'HEAD'}).then(r=>{
       if(r.ok)window.open(cv.href,'_blank','noopener');
-      else showToast('CV PDF not added yet — drop it in /assets to enable download.');
-    }).catch(()=>showToast('CV PDF not added yet — drop it in /assets to enable download.'));
+      else showToast('CV PDF not added yet, drop it in /assets to enable download.');
+    }).catch(()=>showToast('CV PDF not added yet, drop it in /assets to enable download.'));
   });
 })();
