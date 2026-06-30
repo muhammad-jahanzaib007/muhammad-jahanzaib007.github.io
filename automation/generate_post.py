@@ -36,6 +36,9 @@ SITEMAP = ROOT / "sitemap.xml"
 MODEL = os.environ.get("BLOG_MODEL", "openai/gpt-4o-mini")
 ENDPOINT = os.environ.get("MODELS_ENDPOINT", "https://models.github.ai/inference/chat/completions")
 TOKEN = os.environ.get("GITHUB_TOKEN") or os.environ.get("MODELS_TOKEN")
+# If ANTHROPIC_API_KEY is set, use Claude; otherwise fall back to free GitHub Models.
+ANTHROPIC_KEY = os.environ.get("ANTHROPIC_API_KEY")
+CLAUDE_MODEL = os.environ.get("CLAUDE_MODEL", "claude-sonnet-4-6")
 
 SITE = "https://jahanzaibawan.com"
 AUTHOR = "Muhammad Jahanzaib Awan"
@@ -82,9 +85,17 @@ def save(p, obj):
     p.write_text(json.dumps(obj, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
-def chat_json(user, max_tokens=4000):
+def _raw_completion(user, max_tokens):
+    if ANTHROPIC_KEY:
+        import anthropic
+        client = anthropic.Anthropic()
+        msg = client.messages.create(
+            model=CLAUDE_MODEL, max_tokens=max_tokens, system=SYSTEM,
+            messages=[{"role": "user", "content": user}],
+        )
+        return "".join(b.text for b in msg.content if b.type == "text")
     if not TOKEN:
-        sys.exit("GITHUB_TOKEN is not set (needed to call GitHub Models)")
+        sys.exit("Set ANTHROPIC_API_KEY (Claude), or run in GitHub Actions (free GitHub Models).")
     resp = requests.post(
         ENDPOINT,
         headers={"Authorization": f"Bearer {TOKEN}", "Content-Type": "application/json",
@@ -100,7 +111,11 @@ def chat_json(user, max_tokens=4000):
     )
     if resp.status_code >= 400:
         sys.exit(f"GitHub Models request failed ({resp.status_code}): {resp.text[:500]}")
-    content = resp.json()["choices"][0]["message"]["content"]
+    return resp.json()["choices"][0]["message"]["content"]
+
+
+def chat_json(user, max_tokens=4000):
+    content = _raw_completion(user, max_tokens)
     try:
         return json.loads(content)
     except json.JSONDecodeError:

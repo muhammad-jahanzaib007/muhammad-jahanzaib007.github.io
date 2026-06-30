@@ -27,12 +27,15 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install --upgrade requests
+        run: pip install --upgrade requests anthropic
 
       - name: Generate post
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BLOG_MODEL: ${{ vars.BLOG_MODEL || 'openai/gpt-4o-mini' }}
+          # Optional: add an ANTHROPIC_API_KEY secret to use Claude instead of free GitHub Models.
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CLAUDE_MODEL: ${{ vars.CLAUDE_MODEL || 'claude-sonnet-4-6' }}
         run: python automation/generate_post.py
 
       - name: Commit and push
