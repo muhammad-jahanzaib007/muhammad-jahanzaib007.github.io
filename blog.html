@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing — Muhammad Jahanzaib Awan | ML notes on honest evaluation</title>
+<meta name="description" content="Short technical write-ups by Muhammad Jahanzaib Awan on machine-learning evaluation: data leakage, strong baselines, and why good numbers are often wrong until proven otherwise.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="Jahanzaib Awan, Muhammad Jahanzaib Awan, machine learning blog, data leakage, model evaluation, baselines, deep learning notes">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Writing — Muhammad Jahanzaib Awan">
+<meta property="og:description" content="Short technical write-ups on machine-learning evaluation: data leakage, strong baselines, and honest metrics.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/og.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Writing — Muhammad Jahanzaib Awan">
+<meta name="twitter:description" content="ML notes on honest evaluation, data leakage and strong baselines.">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/og.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "@id": "https://jahanzaibawan.com/blog.html#blog",
+  "url": "https://jahanzaibawan.com/blog.html",
+  "name": "Muhammad Jahanzaib Awan — Writing",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "name": "Muhammad Jahanzaib Awan", "url": "https://jahanzaibawan.com/" },
+  "publisher": { "@type": "Person", "name": "Muhammad Jahanzaib Awan" },
+  "blogPost": [
+    { "@type": "BlogPosting", "headline": "How a naïve train/test split inflated my UAV F1 by 0.5", "url": "https://jahanzaibawan.com/blog/uav-data-leakage.html", "datePublished": "2026-06-12", "author": { "@type": "Person", "name": "Muhammad Jahanzaib Awan" } },
+    { "@type": "BlogPosting", "headline": "A tuned GRU beat LoRA-fine-tuned GPT-2 on dialogue — here's why", "url": "https://jahanzaibawan.com/blog/gru-vs-gpt2.html", "datePublished": "2026-06-20", "author": { "@type": "Person", "name": "Muhammad Jahanzaib Awan" } }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="index.html"><span class="d"></span>Jahanzaib Awan</a><div class="navlinks"><a href="index.html#work">Work</a><a href="about.html">About</a><a href="blog.html" class="active">Writing</a><a href="index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="index.html">← Back to home</a>
+    <div class="tag">Writing</div>
+    <h1>Notes on honest evaluation</h1>
+    <p class="lede">Short write-ups on the part of machine learning that doesn't fit in a leaderboard: leakage, baselines, and why a good number is usually wrong until proven otherwise.</p>
+  </div>
+
+  <div class="bento" style="padding-top:18px">
+
+    <a class="pcard reveal" href="blog/uav-data-leakage.html" style="--hc:var(--a2)">
+      <span class="spot"></span>
+      <div class="thumb"><img src="assets/uav/cm_pretrained.png" alt="UAV confusion matrix" loading="lazy"></div>
+      <div class="pc">
+        <div class="tag">Evaluation · 6 min read</div>
+        <h3>How a naïve train/test split inflated my UAV F1 by 0.5</h3>
+        <p>The same model, the same data — and a macro-F1 that fell from 0.78 to 0.26 the moment I split the data honestly. A walk through the most expensive bug in ML.</p>
+        <span class="metric">12 Jun 2026</span>
+        <span class="more">Read →</span>
+      </div>
+    </a>
+
+    <a class="pcard reveal b1" href="blog/gru-vs-gpt2.html" style="--hc:var(--a5)">
+      <span class="spot"></span>
+      <div class="thumb"><img src="assets/nlp/metrics_comparison.png" alt="NLP metric comparison" loading="lazy"></div>
+      <div class="pc">
+        <div class="tag">Baselines · 7 min read</div>
+        <h3>A tuned GRU beat LoRA-fine-tuned GPT-2 — here's why</h3>
+        <p>A 117M-parameter transformer lost to a small recurrent net on every metric. Not because transformers are bad, but because the baseline was done properly.</p>
+        <span class="metric">20 Jun 2026</span>
+        <span class="more">Read →</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan — AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="lb"><span class="x">&times;</span><img alt=""><div class="cap"></div></div>
+<div id="toast"></div>
+<script src="app.js"></script>
+</body></html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How a naïve train/test split inflated my UAV F1 by 0.5 — Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A walk through the most expensive bug in machine learning: how random train/test splitting leaked near-duplicate video frames into the test set and inflated macro-F1 from 0.26 to 0.78 on a UAV classification task.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="data leakage, train test split, model evaluation, macro F1, UAV classification, Muhammad Jahanzaib Awan, Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-06-12">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="How a naïve train/test split inflated my UAV F1 by 0.5">
+<meta property="og:description" content="Same model, same data — macro-F1 fell from 0.78 to 0.26 the moment the data was split honestly.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/og.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/uav-data-leakage.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How a naïve train/test split inflated my UAV F1 by 0.5">
+<meta name="twitter:description" content="The most expensive bug in ML, walked through on a real UAV classification task.">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/og.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/uav-data-leakage.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How a naïve train/test split inflated my UAV F1 by 0.5",
+  "description": "How random train/test splitting leaked near-duplicate video frames into the test set and inflated macro-F1 on a UAV classification task.",
+  "url": "https://jahanzaibawan.com/blog/uav-data-leakage.html",
+  "image": "https://jahanzaibawan.com/assets/og.png",
+  "datePublished": "2026-06-12",
+  "dateModified": "2026-06-30",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "name": "Muhammad Jahanzaib Awan", "url": "https://jahanzaibawan.com/" },
+  "publisher": { "@type": "Person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/uav-data-leakage.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "How a naïve train/test split inflated my UAV F1 by 0.5", "item": "https://jahanzaibawan.com/blog/uav-data-leakage.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 6 min read · 12 Jun 2026</div>
+    <h1>How a naïve train/test split inflated my UAV F1 by 0.5</h1>
+    <p class="lede">The same model. The same data. A macro-F1 that fell from 0.78 to 0.26 the moment I split the data honestly. This is the most expensive bug in machine learning, and it almost never throws an error.</p>
+  </div>
+
+  <section class="psec reveal" style="border-top:none">
+    <h2>The task</h2>
+    <p>I had 8,903 object crops — car, bus, truck, van, person, bicycle, motorcycle — extracted from a 146-frame UAV video sequence, to be sorted into seven classes. Two things make it harder than a normal image-classification dataset. First, <strong>severe class imbalance</strong>: cars are about 42% of the samples, bicycles barely 1%. Second, and far more dangerous: the crops come from <strong>video</strong>.</p>
+  </section>
+
+  <section class="psec reveal">
+    <h2>Why video is a trap</h2>
+    <p>A car in frame 12 and the same car in frame 13 are almost the same pixels — a few degrees of motion apart. They are, for all practical purposes, duplicates. If you shuffle every crop into one pile and randomly assign 20% to a test set, that test set fills up with near-copies of images the model trained on.</p>
+    <p>The model isn't generalising. It's recognising photographs it has already memorised. And the score looks <em>fantastic</em>, because in a sense the model is right — it just answered the wrong question.</p>
+  </section>
+
+  <section class="psec reveal">
+    <h2>The two splits</h2>
+    <p>I trained the same pipeline twice. Once with a <strong>naïve random split</strong>, once with a <strong>track-aware split</strong> — where every crop of a given object instance is forced entirely onto one side of the train/test divide, so the model is genuinely tested on objects it has never seen.</p>
+    <table class="dtable">
+      <tr><th>Split</th><th>Accuracy</th><th>Macro-F1</th></tr>
+      <tr><td>Naïve random split</td><td class="num">0.906</td><td class="num">0.776</td></tr>
+      <tr class="best"><td>Track-aware split (honest)</td><td class="num">0.803</td><td class="num">0.256</td></tr>
+    </table>
+    <p>Accuracy barely flinched — it dropped from 0.91 to 0.80, which you might wave away. But <strong>macro-F1 collapsed from 0.78 to 0.26</strong>. That half-point gap is the leakage, made visible.</p>
+  </section>
+
+  <section class="psec reveal">
+    <h2>Why accuracy lied and macro-F1 told the truth</h2>
+    <p>Accuracy is dominated by the majority class. Get all the cars right and you're already at ~42%. Macro-F1 weights every class equally, so it exposes what happens to the rare ones — bicycles, motorcycles, vans. On the honest split, the model had genuinely never seen those rare instances, and its performance on them cratered. The naïve split had quietly shown it test-set bicycles during training.</p>
+    <p>The lesson isn't "macro-F1 good, accuracy bad." It's <strong>pick the metric that can be embarrassed by your failure mode</strong>. Here the failure mode was rare classes, and only macro-F1 was honest about them.</p>
+    <div class="figgrid one reveal">
+      <figure><img src="../assets/uav/cm_pretrained.png" alt="Confusion matrix for the pretrained model" loading="lazy"><figcaption>Per-class confusion — where the rare classes quietly fall apart under an honest split.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="psec reveal">
+    <h2>What I do now, every time</h2>
+    <ul>
+      <li>Before touching a model, ask: <strong>what makes two samples near-duplicates?</strong> Time, patient, document, user, device, geography. Split on <em>that</em>, not on the row.</li>
+      <li>Treat a suspiciously high score as a bug report, not a celebration. Good numbers are wrong until proven otherwise.</li>
+      <li>Report the metric that can fail loudly. If a metric can't be embarrassed by your worst case, it isn't measuring it.</li>
+      <li>Write the split logic down and version it, so "we evaluated honestly" is reproducible rather than remembered.</li>
+    </ul>
+    <p>The 0.78 was the number that would have gone in a slide deck. The 0.26 is the number that would have survived contact with reality. Knowing the difference is most of the job.</p>
+    <a class="prepo" href="../projects/uav.html">Read the full UAV case study →</a>
+  </section>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="gru-vs-gpt2.html">Next: a GRU that beat GPT-2 →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan — AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="lb"><span class="x">&times;</span><img alt=""><div class="cap"></div></div>
+<div id="toast"></div>
+<script src="../app.js"></script>
+</body></html>
