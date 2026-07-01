@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "roc-auc-imbalanced-datasets",
+      "title": "Why ROC-AUC Can Mislead on Imbalanced Datasets",
+      "excerpt": "ROC-AUC stays deceptively high even when a model is nearly useless at catching rare positives. Here is the intuition, a worked example, and what to use instead.",
+      "date": "2026-07-01",
+      "read_min": 6,
+      "tag": "Evaluation",
+      "color": "a5",
+      "thumb": "assets/blog/roc-auc-imbalanced-datasets.png",
+      "thumb_alt": "Cover image for the article: Why ROC-AUC Can Mislead on Imbalanced Datasets"
+    },
+    {
       "slug": "bias-variance-one-dataset",
       "title": "The Bias-Variance Tradeoff, Explained on One Dataset",
       "excerpt": "One small dataset, three model complexities, and a resampling experiment that makes the bias-variance tradeoff impossible to misunderstand.",
