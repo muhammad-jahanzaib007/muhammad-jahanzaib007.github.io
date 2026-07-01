@@ -139,26 +139,27 @@ def generate_post(topic):
         "- description: meta description, <=155 chars\n"
         "- keywords: 6-10 comma-separated keywords\n"
         "- tag: one short category label (e.g. Evaluation, Deep Learning, NLP)\n"
-        "- read_min: integer 4-9\n"
+        "- read_min: integer 4-9 (a rough estimate; it will be recomputed from the body)\n"
         "- body_html: the article body as HTML using ONLY "
         '<section class="psec reveal"><h2>Heading</h2><p>...</p></section> blocks, with '
-        "<p>, <ul>, <li>, <strong>, <em> inside. 4-7 sections. No <h1>, no head, no nav, no images, "
-        "no code fences, no inline styles, no markdown. Open by framing why the idea matters, build "
-        "it, then close with a short practical takeaway. No em dashes anywhere."
+        "<p>, <ul>, <li>, <strong>, <em> inside. Write 5 to 8 sections, each with 2 to 4 "
+        "substantial paragraphs. Target 1000 to 1500 words in the body overall. Develop each "
+        "point properly: give the intuition, a concrete worked example with realistic numbers, "
+        "and why it matters in practice. Do NOT be terse or write a stub. No <h1>, no head, no "
+        "nav, no images, no code fences, no inline styles, no markdown. Open by framing why the "
+        "idea matters, build it up, then close with a practical takeaway. No em dashes anywhere."
     )
-    data = chat_json(user, max_tokens=4000)
+    data = chat_json(user, max_tokens=6000)
     for k in REQUIRED:
         if k not in data:
             sys.exit(f"model response missing key: {k}")
     for k in ("slug", "title", "dek", "excerpt", "description", "keywords", "tag", "body_html"):
         data[k] = strip_em(str(data[k]))
     data["slug"] = re.sub(r"[^a-z0-9-]", "", data["slug"].lower().replace(" ", "-")).strip("-")
-    try:
-        data["read_min"] = max(3, min(12, int(data["read_min"])))
-    except (ValueError, TypeError):
-        data["read_min"] = 6
-    if not data["slug"] or "<section" not in data["body_html"]:
-        sys.exit("model returned an unusable post (missing slug or body)")
+    words = len(re.sub(r"<[^>]+>", " ", data["body_html"]).split())
+    data["read_min"] = max(4, min(12, round(words / 200)))   # honest, derived from the body
+    if not data["slug"] or data["body_html"].count("<section") < 3 or words < 500:
+        sys.exit(f"model returned an unusable/too-short post (sections/words too low: {words} words)")
     return data
 
 
