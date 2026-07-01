@@ -1,17 +1,6 @@
 {
   "posts": [
     {
-      "slug": "probability-calibration-explained",
-      "title": "Calibration: When a 0.9 Probability Does Not Mean 90%",
-      "excerpt": "High confidence is not the same as being correct. I unpack why calibration matters, how to measure it without fooling yourself, and how to fix it.",
-      "date": "2026-07-01",
-      "read_min": 9,
-      "tag": "Evaluation",
-      "color": "a4",
-      "thumb": "assets/blog/probability-calibration-explained.png",
-      "thumb_alt": "Cover image for the article: Calibration: When a 0.9 Probability Does Not Mean 90%"
-    },
-    {
       "slug": "gru-vs-gpt2",
       "title": "A tuned GRU beat LoRA-fine-tuned GPT-2, here's why",
       "excerpt": "A 117M-parameter transformer lost to a small recurrent net on every metric. Not because transformers are bad, but because the baseline was done properly.",
