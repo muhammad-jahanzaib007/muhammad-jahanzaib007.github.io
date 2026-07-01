@@ -431,8 +431,7 @@ def _fig(img, title):
         "<figure style='margin:24px 0'>"
         f"<img src='{img['url']}' alt='{esc(title)}' loading='lazy' "
         "style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'>"
-        f"<figcaption style='font-size:12px;color:var(--muted);margin-top:6px'>"
-        f"Photo: {esc(img['by'])} / Pexels</figcaption></figure>"
+        "</figure>"
     )
 
 
