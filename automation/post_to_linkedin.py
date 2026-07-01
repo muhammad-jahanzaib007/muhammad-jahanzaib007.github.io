@@ -83,7 +83,7 @@ def main():
     post = json.loads(POSTS_JSON.read_text(encoding="utf-8"))["posts"][0]
     url = f"{SITE}/blog/{post['slug']}.html"
     tags = " ".join(_hashtag(t) for t in ("MachineLearning", "DataScience", post["tag"]))
-    commentary = f"{post['title']}\n\n{post['excerpt']}\n\nRead it here: {url}\n\n{tags}"
+    commentary = f"New post: {post['title']}\n\n{post['excerpt']}\n\nRead it here: {url}\n\n{tags}"
 
     headers = {
         "Authorization": f"Bearer {TOKEN}",
