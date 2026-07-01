@@ -12,28 +12,6 @@
       "thumb_alt": "Cover image for the article: The Bias-Variance Tradeoff, Explained on One Dataset"
     },
     {
-      "slug": "precision-recall-vs-roc",
-      "title": "Precision-Recall Curves vs ROC: When to Use Which",
-      "excerpt": "ROC looks great on imbalanced data even when your model is mediocre at the thing you actually care about. Here is when precision-recall tells the truth instead.",
-      "date": "2026-07-01",
-      "read_min": 7,
-      "tag": "Evaluation",
-      "color": "a5",
-      "thumb": "assets/blog/precision-recall-vs-roc.png",
-      "thumb_alt": "Cover image for the article: Precision-Recall Curves vs ROC: When to Use Which"
-    },
-    {
-      "slug": "roc-auc-imbalanced-data",
-      "title": "Why ROC-AUC Can Mislead on Imbalanced Datasets",
-      "excerpt": "ROC-AUC looks reassuring even when a model barely finds the rare positives. Here is why, and what to check instead.",
-      "date": "2026-07-01",
-      "read_min": 6,
-      "tag": "Evaluation",
-      "color": "a4",
-      "thumb": "assets/blog/roc-auc-imbalanced-data.png",
-      "thumb_alt": "Cover image for the article: Why ROC-AUC Can Mislead on Imbalanced Datasets"
-    },
-    {
       "slug": "gru-vs-gpt2",
       "title": "A tuned GRU beat LoRA-fine-tuned GPT-2, here's why",
       "excerpt": "A 117M-parameter transformer lost to a small recurrent net on every metric. Not because transformers are bad, but because the baseline was done properly.",

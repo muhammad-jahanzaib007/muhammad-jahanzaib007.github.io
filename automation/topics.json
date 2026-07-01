@@ -1,5 +1,7 @@
 {
   "queue": [
+    "Why ROC-AUC can mislead on imbalanced datasets",
+    "Precision-recall curves versus ROC curves: when to use which",
     "Label leakage: the subtle kind that survives code review",
     "Why your cross-validation is probably too optimistic",
     "Calibration: when a 0.9 probability does not mean 90%",
