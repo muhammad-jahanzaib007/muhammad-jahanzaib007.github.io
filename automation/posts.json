@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "cross-validation-too-optimistic",
+      "title": "Why Your Cross-Validation Is Probably Too Optimistic",
+      "excerpt": "Your cross-validation score is likely inflated by leakage you have not noticed. Here is how it happens and how to fix it.",
+      "date": "2026-07-01",
+      "read_min": 9,
+      "tag": "Evaluation",
+      "color": "a3",
+      "thumb": "assets/blog/cross-validation-too-optimistic.png",
+      "thumb_alt": "Cover image for the article: Why Your Cross-Validation Is Probably Too Optimistic"
+    },
+    {
       "slug": "subtle-label-leakage-review",
       "title": "Label Leakage: The Subtle Kind That Survives Code Review",
       "excerpt": "Obvious leakage gets caught. The subtle kind hides in feature engineering, joins, and preprocessing, and it survives code review.",
