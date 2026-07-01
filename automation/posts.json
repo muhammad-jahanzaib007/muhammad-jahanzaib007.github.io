@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "roc-auc-imbalanced-data",
+      "title": "Why ROC-AUC Can Mislead on Imbalanced Datasets",
+      "excerpt": "ROC-AUC looks reassuring even when a model barely finds the rare positives. Here is why, and what to check instead.",
+      "date": "2026-07-01",
+      "read_min": 6,
+      "tag": "Evaluation",
+      "color": "a4",
+      "thumb": null,
+      "thumb_alt": null
+    },
+    {
       "slug": "gru-vs-gpt2",
       "title": "A tuned GRU beat LoRA-fine-tuned GPT-2, here's why",
       "excerpt": "A 117M-parameter transformer lost to a small recurrent net on every metric. Not because transformers are bad, but because the baseline was done properly.",
