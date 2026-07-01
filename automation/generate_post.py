@@ -146,10 +146,10 @@ def chat_json(user, max_tokens=4000, schema=None):
 
 
 def generate_post(topic):
-    user = (
+    base = (
         f'Write a blog post on this topic: "{topic}".\n\n'
-        "Return a single JSON object with exactly these string keys: slug, title, dek, excerpt, "
-        "description, keywords, tag, read_min, body_html.\n"
+        "Return a JSON object with these keys: slug, title, dek, excerpt, description, keywords, "
+        "tag, read_min, body_html.\n"
         "- slug: kebab-case, 3-6 words, no dates\n"
         "- title: 40-72 chars, no trailing period\n"
         "- dek: one or two sentence standfirst shown under the title\n"
@@ -157,31 +157,33 @@ def generate_post(topic):
         "- description: meta description, <=155 chars\n"
         "- keywords: 6-10 comma-separated keywords\n"
         "- tag: one short category label (e.g. Evaluation, Deep Learning, NLP)\n"
-        "- read_min: integer 4-9 (a rough estimate; it will be recomputed from the body)\n"
+        "- read_min: integer 4-9 (rough; recomputed from the body)\n"
         "- body_html: the article body as HTML using ONLY "
         "<section class='psec reveal'><h2>Heading</h2><p>...</p></section> blocks, with "
-        "<p>, <ul>, <li>, <strong>, <em> inside. Use SINGLE quotes for every HTML attribute "
-        "(never double quotes) so the surrounding JSON stays valid. Write 5 to 8 sections, each "
-        "with 2 to 4 substantial paragraphs. Target 1000 to 1500 words in the body overall. "
-        "Develop each point properly: give the intuition, a concrete worked example with realistic "
-        "numbers, and why it matters in practice. Do NOT be terse or write a stub. No <h1>, no head, "
-        "no nav, no images, no code fences, no inline styles, no markdown. Open by framing why the "
-        "idea matters, build it up, then close with a practical takeaway. No em dashes anywhere.\n\n"
-        "Return ONLY the raw JSON object with those keys. Do not wrap it in markdown code fences, "
-        "and do not add any text before or after it."
+        "<p>, <ul>, <li>, <strong>, <em> inside. Use single quotes for HTML attributes. "
+        "The body MUST be AT LEAST 1100 words (aim 1200 to 1600) across 6 to 8 sections, each with "
+        "2 to 4 substantial paragraphs. A short draft is NOT acceptable. Develop every point: give "
+        "the intuition, a concrete worked example with realistic numbers, and why it matters in "
+        "practice. No <h1>, no head, no nav, no images, no code fences, no inline styles, no "
+        "markdown. Open by framing why the idea matters, build it up, then close with a practical "
+        "takeaway. No em dashes anywhere."
     )
-    data = chat_json(user, max_tokens=10000, schema=POST_SCHEMA)
-    for k in REQUIRED:
-        if k not in data:
-            sys.exit(f"model response missing key: {k}")
-    for k in ("slug", "title", "dek", "excerpt", "description", "keywords", "tag", "body_html"):
-        data[k] = strip_em(str(data[k]))
-    data["slug"] = re.sub(r"[^a-z0-9-]", "", data["slug"].lower().replace(" ", "-")).strip("-")
-    words = len(re.sub(r"<[^>]+>", " ", data["body_html"]).split())
-    data["read_min"] = max(4, min(12, round(words / 200)))   # honest, derived from the body
-    if not data["slug"] or data["body_html"].count("<section") < 3 or words < 500:
-        sys.exit(f"model returned an unusable/too-short post (sections/words too low: {words} words)")
-    return data
+    words = 0
+    for attempt in range(2):
+        user = base if attempt == 0 else base + (
+            "\n\nYour previous draft was too short. Write a FULL, in-depth article of at least "
+            "1200 words across 6 to 8 well-developed sections. Do not stop early.")
+        data = chat_json(user, max_tokens=10000, schema=POST_SCHEMA)
+        for k in ("slug", "title", "dek", "excerpt", "description", "keywords", "tag", "body_html"):
+            data[k] = strip_em(str(data.get(k, "")))
+        data["slug"] = re.sub(r"[^a-z0-9-]", "", data["slug"].lower().replace(" ", "-")).strip("-")
+        words = len(re.sub(r"<[^>]+>", " ", data["body_html"]).split())
+        data["read_min"] = max(4, min(12, round(words / 200)))   # honest, derived from the body
+        if data["slug"] and data["body_html"].count("<section") >= 3 and words >= 700:
+            return data
+        print(f"attempt {attempt + 1}: post too short ({words} words); "
+              + ("retrying" if attempt == 0 else "giving up"))
+    sys.exit(f"model returned an unusable/too-short post after retries ({words} words)")
 
 
 def replenish(topics, want=14):
