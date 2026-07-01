@@ -1,11 +1,11 @@
 name: Auto blog
 
-# Publishes a new post 4x/week (Mon, Wed, Fri, Sun at 09:00 UTC).
-# Free: uses GitHub Models via the built-in GITHUB_TOKEN, no API key or billing.
+# Publishes a new post daily at 09:00 UTC.
+# Uses Claude (Anthropic API) when ANTHROPIC_API_KEY is set; else free GitHub Models.
 # Also runnable on demand from the Actions tab (Run workflow).
 on:
   schedule:
-    - cron: "0 9 * * 1,3,5,0"
+    - cron: "0 9 * * *"
   workflow_dispatch:
 
 permissions:
@@ -35,7 +35,7 @@ jobs:
           BLOG_MODEL: ${{ vars.BLOG_MODEL || 'openai/gpt-4o-mini' }}
           # Optional: add an ANTHROPIC_API_KEY secret to use Claude instead of free GitHub Models.
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          CLAUDE_MODEL: ${{ vars.CLAUDE_MODEL || 'claude-sonnet-4-6' }}
+          CLAUDE_MODEL: ${{ vars.CLAUDE_MODEL || 'claude-sonnet-5' }}
         run: python automation/generate_post.py
 
       - name: Commit and push

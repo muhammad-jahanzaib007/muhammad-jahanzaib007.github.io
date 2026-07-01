@@ -38,7 +38,7 @@ ENDPOINT = os.environ.get("MODELS_ENDPOINT", "https://models.github.ai/inference
 TOKEN = os.environ.get("GITHUB_TOKEN") or os.environ.get("MODELS_TOKEN")
 # If ANTHROPIC_API_KEY is set, use Claude; otherwise fall back to free GitHub Models.
 ANTHROPIC_KEY = os.environ.get("ANTHROPIC_API_KEY")
-CLAUDE_MODEL = os.environ.get("CLAUDE_MODEL", "claude-sonnet-4-6")
+CLAUDE_MODEL = os.environ.get("CLAUDE_MODEL", "claude-sonnet-5")
 
 SITE = "https://jahanzaibawan.com"
 AUTHOR = "Muhammad Jahanzaib Awan"
@@ -91,6 +91,7 @@ def _raw_completion(user, max_tokens):
         client = anthropic.Anthropic()
         msg = client.messages.create(
             model=CLAUDE_MODEL, max_tokens=max_tokens, system=SYSTEM,
+            thinking={"type": "disabled"},  # keep the full max_tokens for the post; no thinking spend
             messages=[{"role": "user", "content": user}],
         )
         return "".join(b.text for b in msg.content if b.type == "text")
@@ -249,7 +250,7 @@ def render_post_page(p):
   "datePublished": "{p['date']}",
   "dateModified": "{p['date']}",
   "inLanguage": "en-GB",
-  "author": {{ "@type": "Person", "name": "{AUTHOR}", "url": "{SITE}/" }},
+  "author": {{ "@type": "Person", "name": "{AUTHOR}", "url": "{SITE}/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] }},
   "publisher": {{ "@type": "Person", "name": "{AUTHOR}" }},
   "mainEntityOfPage": "{url}",
   "isPartOf": {{ "@type": "Blog", "@id": "{SITE}/blog.html#blog" }}
