@@ -149,7 +149,7 @@ def generate_post(topic):
         "nav, no images, no code fences, no inline styles, no markdown. Open by framing why the "
         "idea matters, build it up, then close with a practical takeaway. No em dashes anywhere."
     )
-    data = chat_json(user, max_tokens=6000)
+    data = chat_json(user, max_tokens=10000)
     for k in REQUIRED:
         if k not in data:
             sys.exit(f"model response missing key: {k}")
