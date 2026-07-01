@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "bias-variance-one-dataset",
+      "title": "The Bias-Variance Tradeoff, Explained on One Dataset",
+      "excerpt": "One small dataset, three model complexities, and a resampling experiment that makes the bias-variance tradeoff impossible to misunderstand.",
+      "date": "2026-07-01",
+      "read_min": 7,
+      "tag": "Evaluation",
+      "color": "a6",
+      "thumb": "assets/blog/bias-variance-one-dataset.png",
+      "thumb_alt": "Cover image for the article: The Bias-Variance Tradeoff, Explained on One Dataset"
+    },
+    {
       "slug": "precision-recall-vs-roc",
       "title": "Precision-Recall Curves vs ROC: When to Use Which",
       "excerpt": "ROC looks great on imbalanced data even when your model is mediocre at the thing you actually care about. Here is when precision-recall tells the truth instead.",
