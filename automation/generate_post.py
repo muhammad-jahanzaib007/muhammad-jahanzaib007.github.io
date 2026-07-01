@@ -40,6 +40,7 @@ TOKEN = os.environ.get("GITHUB_TOKEN") or os.environ.get("MODELS_TOKEN")
 # If ANTHROPIC_API_KEY is set, use Claude; otherwise fall back to free GitHub Models.
 ANTHROPIC_KEY = os.environ.get("ANTHROPIC_API_KEY")
 CLAUDE_MODEL = os.environ.get("CLAUDE_MODEL", "claude-sonnet-5")
+PEXELS_KEY = os.environ.get("PEXELS_API_KEY")   # optional: in-article stock photos
 
 SITE = "https://jahanzaibawan.com"
 AUTHOR = "Muhammad Jahanzaib Awan"
@@ -306,6 +307,8 @@ def render_post_page(p):
     <p class="lede">{esc(p['dek'])}</p>
   </div>
 
+  <img src="../assets/blog/{p['slug']}.png" alt="{esc(p.get('thumb_alt') or p['title'])}" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
 {p['body_html']}
 
   <div class="pnav">
@@ -402,6 +405,54 @@ def make_card(slug, title, tag):
     img.save(out / f"{slug}.png", "PNG")
 
 
+def fetch_pexels(query, n=2):
+    """Return up to n landscape stock photos for the query, or [] (no key / error)."""
+    if not PEXELS_KEY:
+        return []
+    try:
+        r = requests.get(
+            "https://api.pexels.com/v1/search",
+            headers={"Authorization": PEXELS_KEY},
+            params={"query": query, "per_page": n, "orientation": "landscape"},
+            timeout=30,
+        )
+        if r.status_code != 200:
+            print(f"pexels {r.status_code}; no body images")
+            return []
+        return [{"url": p["src"]["large"], "by": p["photographer"]}
+                for p in r.json().get("photos", [])]
+    except Exception as e:
+        print(f"pexels error: {e}; no body images")
+        return []
+
+
+def _fig(img, title):
+    return (
+        "<figure style='margin:24px 0'>"
+        f"<img src='{img['url']}' alt='{esc(title)}' loading='lazy' "
+        "style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'>"
+        f"<figcaption style='font-size:12px;color:var(--muted);margin-top:6px'>"
+        f"Photo: {esc(img['by'])} / Pexels</figcaption></figure>"
+    )
+
+
+def add_body_images(post):
+    """Insert 1-2 stock photos between sections so the article is not a wall of text."""
+    imgs = fetch_pexels(f"{post['tag']} technology")
+    if not imgs:
+        return post["body_html"]
+    wanted = {2: _fig(imgs[0], post["title"])}
+    if len(imgs) > 1:
+        wanted[4] = _fig(imgs[1], post["title"])
+    counter = {"n": 0}
+
+    def repl(m):
+        counter["n"] += 1
+        return m.group(0) + wanted.get(counter["n"], "")
+
+    return re.sub(r"</section>", repl, post["body_html"])
+
+
 def main():
     posts_data = load(POSTS_JSON)
     topics = load(TOPICS_JSON)
@@ -433,6 +484,7 @@ def main():
     }
 
     make_card(post["slug"], post["title"], post["tag"])
+    post["body_html"] = add_body_images(post)
     BLOG_DIR.mkdir(exist_ok=True)
     (BLOG_DIR / f"{post['slug']}.html").write_text(render_post_page({**post, **entry}), encoding="utf-8")
 

@@ -39,6 +39,7 @@ jobs:
           # Optional: add an ANTHROPIC_API_KEY secret to use Claude instead of free GitHub Models.
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           CLAUDE_MODEL: ${{ vars.CLAUDE_MODEL || 'claude-sonnet-5' }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
         run: python automation/generate_post.py
 
       - name: Commit and push
