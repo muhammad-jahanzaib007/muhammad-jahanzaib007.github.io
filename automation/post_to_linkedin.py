@@ -106,7 +106,6 @@ def main():
             "thirdPartyDistributionChannels": [],
         },
         "lifecycleState": "PUBLISHED",
-        "isReblogDisabledByAuthor": False,
     }
 
     image_urn = upload_image(headers, urn, post)
