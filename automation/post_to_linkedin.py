@@ -48,6 +48,33 @@ def author_urn(headers):
              f"userinfo {r.status_code}: {r.text[:200]}")
 
 
+def upload_image(headers, owner, post):
+    """Upload the post's card image, return its urn:li:image URN (or None on failure)."""
+    thumb = post.get("thumb")
+    if not thumb:
+        return None
+    path = ROOT / thumb
+    if not path.exists():
+        print(f"card image not found ({path}); posting without image.")
+        return None
+    init = requests.post(
+        "https://api.linkedin.com/rest/images?action=initializeUpload",
+        headers=headers,
+        data=json.dumps({"initializeUploadRequest": {"owner": owner}}),
+        timeout=30,
+    )
+    if init.status_code not in (200, 201):
+        print(f"image init failed ({init.status_code}): {init.text[:200]}; posting without image.")
+        return None
+    value = init.json()["value"]
+    up = requests.put(value["uploadUrl"], data=path.read_bytes(),
+                      headers={"Authorization": f"Bearer {TOKEN}"}, timeout=60)
+    if up.status_code not in (200, 201):
+        print(f"image upload failed ({up.status_code}); posting without image.")
+        return None
+    return value["image"]
+
+
 def main():
     if not TOKEN:
         print("LINKEDIN_ACCESS_TOKEN not set; skipping LinkedIn share.")
@@ -68,8 +95,9 @@ def main():
         "X-Restli-Protocol-Version": "2.0.0",
         "LinkedIn-Version": VERSION,
     }
+    urn = author_urn(headers)
     body = {
-        "author": author_urn(headers),
+        "author": urn,
         "commentary": commentary,
         "visibility": "PUBLIC",
         "distribution": {
@@ -80,6 +108,11 @@ def main():
         "lifecycleState": "PUBLISHED",
         "isReblogDisabledByAuthor": False,
     }
+
+    image_urn = upload_image(headers, urn, post)
+    if image_urn:                                   # native image post with the branded card
+        body["content"] = {"media": {"id": image_urn, "title": post["title"][:180]}}
+
     r = requests.post("https://api.linkedin.com/rest/posts", headers=headers,
                       data=json.dumps(body), timeout=30)
     if r.status_code in (200, 201):
