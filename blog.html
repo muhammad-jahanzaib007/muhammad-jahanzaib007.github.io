@@ -35,6 +35,7 @@
   "author": { "@type": "Person", "name": "Muhammad Jahanzaib Awan", "url": "https://jahanzaibawan.com/" },
   "publisher": { "@type": "Person", "name": "Muhammad Jahanzaib Awan" },
   "blogPost": [
+    { "@type": "BlogPosting", "headline": "Precision-Recall Curves vs ROC: When to Use Which", "url": "https://jahanzaibawan.com/blog/precision-recall-vs-roc.html", "datePublished": "2026-07-01", "author": { "@type": "Person", "name": "Muhammad Jahanzaib Awan" } },
     { "@type": "BlogPosting", "headline": "Why ROC-AUC Can Mislead on Imbalanced Datasets", "url": "https://jahanzaibawan.com/blog/roc-auc-imbalanced-data.html", "datePublished": "2026-07-01", "author": { "@type": "Person", "name": "Muhammad Jahanzaib Awan" } },
     { "@type": "BlogPosting", "headline": "A tuned GRU beat LoRA-fine-tuned GPT-2, here's why", "url": "https://jahanzaibawan.com/blog/gru-vs-gpt2.html", "datePublished": "2026-06-20", "author": { "@type": "Person", "name": "Muhammad Jahanzaib Awan" } },
     { "@type": "BlogPosting", "headline": "How a na\u00efve train/test split inflated my UAV F1 by 0.5", "url": "https://jahanzaibawan.com/blog/uav-data-leakage.html", "datePublished": "2026-06-12", "author": { "@type": "Person", "name": "Muhammad Jahanzaib Awan" } }
@@ -57,7 +58,19 @@
 
   <div class="bento" id="postgrid" style="padding-top:18px">
 <!--POSTS:START-->
-    <a class="pcard reveal" href="blog/roc-auc-imbalanced-data.html" style="--hc:var(--a4)">
+    <a class="pcard reveal" href="blog/precision-recall-vs-roc.html" style="--hc:var(--a5)">
+      <span class="spot"></span>
+      <div class="thumb"><img src="assets/blog/precision-recall-vs-roc.png" alt="Cover image for the article: Precision-Recall Curves vs ROC: When to Use Which" loading="lazy"></div>
+      <div class="pc">
+        <div class="tag">Evaluation · 7 min read</div>
+        <h3>Precision-Recall Curves vs ROC: When to Use Which</h3>
+        <p>ROC looks great on imbalanced data even when your model is mediocre at the thing you actually care about. Here is when precision-recall tells the truth instead.</p>
+        <span class="metric">1 Jul 2026</span>
+        <span class="more">Read →</span>
+      </div>
+    </a>
+
+    <a class="pcard reveal b1" href="blog/roc-auc-imbalanced-data.html" style="--hc:var(--a4)">
       <span class="spot"></span>
       <div class="thumb" style="background:linear-gradient(135deg,color-mix(in srgb,var(--a4) 30%,#0b0b14),#06060a);display:grid;place-items:center;border-bottom:1px solid var(--line2)"><span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--a4)">Evaluation</span></div>
       <div class="pc">
@@ -69,7 +82,7 @@
       </div>
     </a>
 
-    <a class="pcard reveal b1" href="blog/gru-vs-gpt2.html" style="--hc:var(--a5)">
+    <a class="pcard reveal" href="blog/gru-vs-gpt2.html" style="--hc:var(--a5)">
       <span class="spot"></span>
       <div class="thumb"><img src="assets/nlp/metrics_comparison.png" alt="NLP metric comparison" loading="lazy"></div>
       <div class="pc">
@@ -81,7 +94,7 @@
       </div>
     </a>
 
-    <a class="pcard reveal" href="blog/uav-data-leakage.html" style="--hc:var(--a2)">
+    <a class="pcard reveal b1" href="blog/uav-data-leakage.html" style="--hc:var(--a2)">
       <span class="spot"></span>
       <div class="thumb"><img src="assets/uav/cm_pretrained.png" alt="UAV confusion matrix" loading="lazy"></div>
       <div class="pc">
