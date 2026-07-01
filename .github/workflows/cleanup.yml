@@ -1,0 +1,42 @@
+name: Cleanup stub posts
+
+# One-off maintenance: fires when .github/cleanup-trigger.txt changes.
+on:
+  push:
+    paths:
+      - ".github/cleanup-trigger.txt"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: auto-blog
+  cancel-in-progress: false
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install --upgrade pillow requests
+
+      - name: Cleanup
+        run: python automation/cleanup_posts.py
+
+      - name: Commit and push
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore: remove stub posts and requeue their topics"
+            git push
+          fi
