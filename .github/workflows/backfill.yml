@@ -24,7 +24,7 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install --upgrade pillow
+        run: pip install --upgrade pillow requests
 
       - name: Backfill cards
         run: python automation/backfill_cards.py
