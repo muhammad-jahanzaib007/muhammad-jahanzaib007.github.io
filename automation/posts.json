@@ -19,8 +19,8 @@
       "read_min": 6,
       "tag": "Evaluation",
       "color": "a4",
-      "thumb": null,
-      "thumb_alt": null
+      "thumb": "assets/blog/roc-auc-imbalanced-data.png",
+      "thumb_alt": "Cover image for the article: Why ROC-AUC Can Mislead on Imbalanced Datasets"
     },
     {
       "slug": "gru-vs-gpt2",
