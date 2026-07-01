@@ -141,13 +141,16 @@ def generate_post(topic):
         "- tag: one short category label (e.g. Evaluation, Deep Learning, NLP)\n"
         "- read_min: integer 4-9 (a rough estimate; it will be recomputed from the body)\n"
         "- body_html: the article body as HTML using ONLY "
-        '<section class="psec reveal"><h2>Heading</h2><p>...</p></section> blocks, with '
-        "<p>, <ul>, <li>, <strong>, <em> inside. Write 5 to 8 sections, each with 2 to 4 "
-        "substantial paragraphs. Target 1000 to 1500 words in the body overall. Develop each "
-        "point properly: give the intuition, a concrete worked example with realistic numbers, "
-        "and why it matters in practice. Do NOT be terse or write a stub. No <h1>, no head, no "
-        "nav, no images, no code fences, no inline styles, no markdown. Open by framing why the "
-        "idea matters, build it up, then close with a practical takeaway. No em dashes anywhere."
+        "<section class='psec reveal'><h2>Heading</h2><p>...</p></section> blocks, with "
+        "<p>, <ul>, <li>, <strong>, <em> inside. Use SINGLE quotes for every HTML attribute "
+        "(never double quotes) so the surrounding JSON stays valid. Write 5 to 8 sections, each "
+        "with 2 to 4 substantial paragraphs. Target 1000 to 1500 words in the body overall. "
+        "Develop each point properly: give the intuition, a concrete worked example with realistic "
+        "numbers, and why it matters in practice. Do NOT be terse or write a stub. No <h1>, no head, "
+        "no nav, no images, no code fences, no inline styles, no markdown. Open by framing why the "
+        "idea matters, build it up, then close with a practical takeaway. No em dashes anywhere.\n\n"
+        "Return ONLY the raw JSON object with those keys. Do not wrap it in markdown code fences, "
+        "and do not add any text before or after it."
     )
     data = chat_json(user, max_tokens=10000)
     for k in REQUIRED:
