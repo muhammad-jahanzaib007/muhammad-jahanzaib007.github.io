@@ -42,13 +42,24 @@ jobs:
         run: python automation/generate_post.py
 
       - name: Commit and push
+        id: commit
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add blog blog.html sitemap.xml automation/posts.json automation/topics.json assets/blog
           if git diff --cached --quiet; then
             echo "No changes to commit."
+            echo "published=false" >> "$GITHUB_OUTPUT"
           else
             git commit -m "chore: auto blog post ($(date -u +%Y-%m-%d))"
             git push
+            echo "published=true" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Share to LinkedIn
+        if: steps.commit.outputs.published == 'true'
+        env:
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+          LINKEDIN_AUTHOR_URN: ${{ secrets.LINKEDIN_AUTHOR_URN }}
+          LINKEDIN_VERSION: ${{ vars.LINKEDIN_VERSION || '202505' }}
+        run: python automation/post_to_linkedin.py
