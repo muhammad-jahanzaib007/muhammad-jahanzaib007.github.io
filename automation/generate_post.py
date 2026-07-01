@@ -300,13 +300,13 @@ def update_blog_index(posts):
     text = BLOG_INDEX.read_text(encoding="utf-8")
     cards = "\n\n".join(card_html(p, i) for i, p in enumerate(posts))
     text = re.sub(r"<!--POSTS:START-->.*?<!--POSTS:END-->",
-                  f"<!--POSTS:START-->\n{cards}\n<!--POSTS:END-->", text, flags=re.S)
+                  lambda m: f"<!--POSTS:START-->\n{cards}\n<!--POSTS:END-->", text, flags=re.S)
     items = ",\n".join(
         f'    {{ "@type": "BlogPosting", "headline": {json.dumps(p["title"])}, '
         f'"url": "{SITE}/blog/{p["slug"]}.html", "datePublished": "{p["date"]}", '
         f'"author": {{ "@type": "Person", "name": "{AUTHOR}" }} }}'
         for p in posts)
-    text = re.sub(r'"blogPost":\s*\[.*?\]', f'"blogPost": [\n{items}\n  ]', text, flags=re.S)
+    text = re.sub(r'"blogPost":\s*\[.*?\]', lambda m: f'"blogPost": [\n{items}\n  ]', text, flags=re.S)
     BLOG_INDEX.write_text(text, encoding="utf-8")
 
 
@@ -317,7 +317,7 @@ def update_sitemap(posts, today):
         f'<changefreq>monthly</changefreq><priority>0.7</priority></url>'
         for p in posts)
     text = re.sub(r"<!--BLOGPOSTS:START-->.*?<!--BLOGPOSTS:END-->",
-                  f"<!--BLOGPOSTS:START-->\n{rows}\n  <!--BLOGPOSTS:END-->", text, flags=re.S)
+                  lambda m: f"<!--BLOGPOSTS:START-->\n{rows}\n  <!--BLOGPOSTS:END-->", text, flags=re.S)
     text = re.sub(r'(<loc>https://jahanzaibawan\.com/blog\.html</loc><lastmod>)[\d-]+',
                   rf'\g<1>{today}', text)
     SITEMAP.write_text(text, encoding="utf-8")

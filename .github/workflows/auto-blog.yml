@@ -7,6 +7,9 @@ on:
   schedule:
     - cron: "0 9 * * *"
   workflow_dispatch:
+  push:
+    paths:
+      - ".github/blog-trigger.txt"
 
 permissions:
   contents: write
