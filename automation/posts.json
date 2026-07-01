@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "subtle-label-leakage-review",
+      "title": "Label Leakage: The Subtle Kind That Survives Code Review",
+      "excerpt": "Obvious leakage gets caught. The subtle kind hides in feature engineering, joins, and preprocessing, and it survives code review.",
+      "date": "2026-07-01",
+      "read_min": 10,
+      "tag": "Evaluation",
+      "color": "a2",
+      "thumb": "assets/blog/subtle-label-leakage-review.png",
+      "thumb_alt": "Cover image for the article: Label Leakage: The Subtle Kind That Survives Code Review"
+    },
+    {
       "slug": "pr-curves-versus-roc-curves",
       "title": "Precision-Recall Curves vs ROC Curves: When to Use Which",
       "excerpt": "ROC curves flatter you on imbalanced data. PR curves tell the truth. Here's the intuition, a worked example, and a rule of thumb you can actually use.",
