@@ -47,6 +47,21 @@ COLORS = ["a2", "a3", "a4", "a5", "a6"]
 EM_DASH = "—"
 REQUIRED = ("slug", "title", "dek", "excerpt", "description", "keywords", "tag", "read_min", "body_html")
 
+# JSON schema for the Claude path (structured outputs) so the API guarantees valid
+# JSON regardless of quotes inside body_html.
+POST_SCHEMA = {
+    "type": "object",
+    "properties": {k: ({"type": "integer"} if k == "read_min" else {"type": "string"}) for k in REQUIRED},
+    "required": list(REQUIRED),
+    "additionalProperties": False,
+}
+TOPICS_SCHEMA = {
+    "type": "object",
+    "properties": {"topics": {"type": "array", "items": {"type": "string"}}},
+    "required": ["topics"],
+    "additionalProperties": False,
+}
+
 ICON = ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E"
         "%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' "
         "fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' "
@@ -86,15 +101,18 @@ def save(p, obj):
     p.write_text(json.dumps(obj, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
-def _raw_completion(user, max_tokens):
+def _raw_completion(user, max_tokens, schema=None):
     if ANTHROPIC_KEY:
         import anthropic
         client = anthropic.Anthropic()
-        msg = client.messages.create(
+        kwargs = dict(
             model=CLAUDE_MODEL, max_tokens=max_tokens, system=SYSTEM,
             thinking={"type": "disabled"},  # keep the full max_tokens for the post; no thinking spend
             messages=[{"role": "user", "content": user}],
         )
+        if schema:  # structured outputs -> API guarantees valid JSON
+            kwargs["output_config"] = {"format": {"type": "json_schema", "schema": schema}}
+        msg = client.messages.create(**kwargs)
         return "".join(b.text for b in msg.content if b.type == "text")
     if not TOKEN:
         sys.exit("Set ANTHROPIC_API_KEY (Claude), or run in GitHub Actions (free GitHub Models).")
@@ -116,8 +134,8 @@ def _raw_completion(user, max_tokens):
     return resp.json()["choices"][0]["message"]["content"]
 
 
-def chat_json(user, max_tokens=4000):
-    content = _raw_completion(user, max_tokens)
+def chat_json(user, max_tokens=4000, schema=None):
+    content = _raw_completion(user, max_tokens, schema)
     try:
         return json.loads(content)
     except json.JSONDecodeError:
@@ -152,7 +170,7 @@ def generate_post(topic):
         "Return ONLY the raw JSON object with those keys. Do not wrap it in markdown code fences, "
         "and do not add any text before or after it."
     )
-    data = chat_json(user, max_tokens=10000)
+    data = chat_json(user, max_tokens=10000, schema=POST_SCHEMA)
     for k in REQUIRED:
         if k not in data:
             sys.exit(f"model response missing key: {k}")
@@ -176,7 +194,7 @@ def replenish(topics, want=14):
             + "\n- ".join(used)
             + '\nReturn a single JSON object: {"topics": ["title 1", "title 2", ...]}. No em dashes.'
         )
-        data = chat_json(user, max_tokens=1200)
+        data = chat_json(user, max_tokens=1200, schema=TOPICS_SCHEMA)
         existing = {t.lower() for t in used}
         for t in data.get("topics", []):
             t = strip_em(str(t)).strip()
