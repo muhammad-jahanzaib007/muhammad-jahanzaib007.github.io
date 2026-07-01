@@ -24,6 +24,7 @@ import datetime as dt
 from pathlib import Path
 
 import requests
+from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parent.parent          # repo root (portfolio-publish)
 DATA = ROOT / "automation"
@@ -228,12 +229,12 @@ def render_post_page(p):
 <meta property="og:site_name" content="{AUTHOR}">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{esc(p['description'])}">
-<meta property="og:image" content="{SITE}/assets/og.png">
+<meta property="og:image" content="{SITE}/assets/blog/{p['slug']}.png">
 <meta property="og:url" content="{url}">
 <meta property="og:locale" content="en_GB">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{title}">
-<meta name="twitter:image" content="{SITE}/assets/og.png">
+<meta name="twitter:image" content="{SITE}/assets/blog/{p['slug']}.png">
 <link rel="canonical" href="{url}">
 <link rel="icon" href="{ICON}">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -246,7 +247,7 @@ def render_post_page(p):
   "headline": {json.dumps(p['title'])},
   "description": {json.dumps(p['description'])},
   "url": "{url}",
-  "image": "{SITE}/assets/og.png",
+  "image": "{SITE}/assets/blog/{p['slug']}.png",
   "datePublished": "{p['date']}",
   "dateModified": "{p['date']}",
   "inLanguage": "en-GB",
@@ -323,6 +324,60 @@ def update_sitemap(posts, today):
     SITEMAP.write_text(text, encoding="utf-8")
 
 
+CARD_W, CARD_H = 1200, 630
+FONT_BOLD = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+FONT_REG = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+ACCENT = (52, 211, 153)   # emerald, matches the site's #34d399 mark
+
+
+def _font(path, size):
+    try:
+        return ImageFont.truetype(path, size)
+    except OSError:
+        return ImageFont.load_default()
+
+
+def _wrap(draw, text, font, max_w):
+    lines, cur = [], ""
+    for word in text.split():
+        trial = (cur + " " + word).strip()
+        if draw.textlength(trial, font=font) <= max_w or not cur:
+            cur = trial
+        else:
+            lines.append(cur)
+            cur = word
+    if cur:
+        lines.append(cur)
+    return lines
+
+
+def make_card(slug, title, tag):
+    """Draw a branded 1200x630 title card to assets/blog/<slug>.png (OG + thumbnail)."""
+    img = Image.new("RGB", (CARD_W, CARD_H), (6, 6, 10))
+    d = ImageDraw.Draw(img)
+    d.rectangle([0, 0, CARD_W, 8], fill=ACCENT)                       # top accent bar
+
+    d.text((72, 92), tag.upper(), font=_font(FONT_BOLD, 26), fill=ACCENT)
+
+    title_font = _font(FONT_BOLD, 62)
+    y = 160
+    for line in _wrap(d, title, title_font, CARD_W - 200)[:5]:
+        d.text((72, y), line, font=title_font, fill=(246, 246, 248))
+        y += 78
+
+    d.text((72, CARD_H - 78), "Muhammad Jahanzaib Awan  |  jahanzaibawan.com",
+           font=_font(FONT_REG, 30), fill=(160, 160, 170))
+
+    cx, cy, r = CARD_W - 108, 112, 46                                # MJ monogram
+    d.ellipse([cx - r, cy - r, cx + r, cy + r], outline=ACCENT, width=3)
+    mono = _font(FONT_BOLD, 40)
+    d.text((cx - d.textlength("MJ", font=mono) / 2, cy - 28), "MJ", font=mono, fill=(246, 246, 248))
+
+    out = ROOT / "assets" / "blog"
+    out.mkdir(parents=True, exist_ok=True)
+    img.save(out / f"{slug}.png", "PNG")
+
+
 def main():
     posts_data = load(POSTS_JSON)
     topics = load(TOPICS_JSON)
@@ -349,10 +404,11 @@ def main():
         "read_min": post["read_min"],
         "tag": post["tag"],
         "color": COLORS[len(posts_data["posts"]) % len(COLORS)],
-        "thumb": None,
-        "thumb_alt": None,
+        "thumb": f"assets/blog/{post['slug']}.png",
+        "thumb_alt": f"Cover image for the article: {post['title']}",
     }
 
+    make_card(post["slug"], post["title"], post["tag"])
     BLOG_DIR.mkdir(exist_ok=True)
     (BLOG_DIR / f"{post['slug']}.html").write_text(render_post_page({**post, **entry}), encoding="utf-8")
 
