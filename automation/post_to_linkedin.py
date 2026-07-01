@@ -31,7 +31,7 @@ SITE = "https://jahanzaibawan.com"
 
 TOKEN = os.environ.get("LINKEDIN_ACCESS_TOKEN")
 AUTHOR = os.environ.get("LINKEDIN_AUTHOR_URN")
-VERSION = os.environ.get("LINKEDIN_VERSION", "202505")
+VERSION = os.environ.get("LINKEDIN_VERSION", "202606")
 
 
 def _hashtag(tag):
