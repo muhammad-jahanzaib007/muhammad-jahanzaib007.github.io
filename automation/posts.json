@@ -1,61 +1,6 @@
 {
   "posts": [
     {
-      "slug": "cross-validation-too-optimistic",
-      "title": "Why Your Cross-Validation Is Probably Too Optimistic",
-      "excerpt": "Your cross-validation score is likely inflated by leakage you have not noticed. Here is how it happens and how to fix it.",
-      "date": "2026-07-01",
-      "read_min": 9,
-      "tag": "Evaluation",
-      "color": "a3",
-      "thumb": "assets/blog/cross-validation-too-optimistic.png",
-      "thumb_alt": "Cover image for the article: Why Your Cross-Validation Is Probably Too Optimistic"
-    },
-    {
-      "slug": "subtle-label-leakage-review",
-      "title": "Label Leakage: The Subtle Kind That Survives Code Review",
-      "excerpt": "Obvious leakage gets caught. The subtle kind hides in feature engineering, joins, and preprocessing, and it survives code review.",
-      "date": "2026-07-01",
-      "read_min": 10,
-      "tag": "Evaluation",
-      "color": "a2",
-      "thumb": "assets/blog/subtle-label-leakage-review.png",
-      "thumb_alt": "Cover image for the article: Label Leakage: The Subtle Kind That Survives Code Review"
-    },
-    {
-      "slug": "pr-curves-versus-roc-curves",
-      "title": "Precision-Recall Curves vs ROC Curves: When to Use Which",
-      "excerpt": "ROC curves flatter you on imbalanced data. PR curves tell the truth. Here's the intuition, a worked example, and a rule of thumb you can actually use.",
-      "date": "2026-07-01",
-      "read_min": 7,
-      "tag": "Evaluation",
-      "color": "a6",
-      "thumb": "assets/blog/pr-curves-versus-roc-curves.png",
-      "thumb_alt": "Cover image for the article: Precision-Recall Curves vs ROC Curves: When to Use Which"
-    },
-    {
-      "slug": "roc-auc-imbalanced-datasets",
-      "title": "Why ROC-AUC Can Mislead on Imbalanced Datasets",
-      "excerpt": "ROC-AUC stays deceptively high even when a model is nearly useless at catching rare positives. Here is the intuition, a worked example, and what to use instead.",
-      "date": "2026-07-01",
-      "read_min": 6,
-      "tag": "Evaluation",
-      "color": "a5",
-      "thumb": "assets/blog/roc-auc-imbalanced-datasets.png",
-      "thumb_alt": "Cover image for the article: Why ROC-AUC Can Mislead on Imbalanced Datasets"
-    },
-    {
-      "slug": "bias-variance-one-dataset",
-      "title": "The Bias-Variance Tradeoff, Explained on One Dataset",
-      "excerpt": "One small dataset, three model complexities, and a resampling experiment that makes the bias-variance tradeoff impossible to misunderstand.",
-      "date": "2026-07-01",
-      "read_min": 7,
-      "tag": "Evaluation",
-      "color": "a6",
-      "thumb": "assets/blog/bias-variance-one-dataset.png",
-      "thumb_alt": "Cover image for the article: The Bias-Variance Tradeoff, Explained on One Dataset"
-    },
-    {
       "slug": "gru-vs-gpt2",
       "title": "A tuned GRU beat LoRA-fine-tuned GPT-2, here's why",
       "excerpt": "A 117M-parameter transformer lost to a small recurrent net on every metric. Not because transformers are bad, but because the baseline was done properly.",
