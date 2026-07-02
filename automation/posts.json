@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "early-stopping-vs-regularization",
+      "title": "Early Stopping vs Regularization: Do You Need Both",
+      "excerpt": "Early stopping and regularization both fight overfitting, but they work through different mechanisms. Understanding the difference tells you when you need one, the other, or both.",
+      "date": "2026-07-02",
+      "read_min": 9,
+      "tag": "Machine Learning",
+      "color": "a4",
+      "thumb": "assets/blog/early-stopping-vs-regularization.png",
+      "thumb_alt": "Cover image for the article: Early Stopping vs Regularization: Do You Need Both"
+    },
+    {
       "slug": "gru-vs-gpt2",
       "title": "A tuned GRU beat LoRA-fine-tuned GPT-2, here's why",
       "excerpt": "A 117M-parameter transformer lost to a small recurrent net on every metric. Not because transformers are bad, but because the baseline was done properly.",

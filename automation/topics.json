@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Early stopping vs regularization: do you need both?",
     "Class weights vs resampling for imbalanced classification",
     "Feature scaling: which models care and which do not",
     "The trap of optimizing the wrong metric",
@@ -31,6 +30,7 @@
     "Precision-recall curves versus ROC curves: when to use which",
     "Label leakage: the subtle kind that survives code review",
     "Why your cross-validation is probably too optimistic",
-    "Calibration: when a 0.9 probability does not mean 90%"
+    "Calibration: when a 0.9 probability does not mean 90%",
+    "Early stopping vs regularization: do you need both?"
   ]
 }
