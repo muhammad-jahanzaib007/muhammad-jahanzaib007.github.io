@@ -1,11 +1,13 @@
 name: Auto blog
 
-# Publishes a new post daily at 09:00 UTC.
+# Publishes a new post twice a day (09:00 + 21:00 UTC); each post auto-shares
+# to LinkedIn, so LinkedIn also gets two posts a day.
 # Uses Claude (Anthropic API) when ANTHROPIC_API_KEY is set; else free GitHub Models.
 # Also runnable on demand from the Actions tab (Run workflow).
 on:
   schedule:
     - cron: "0 9 * * *"
+    - cron: "0 21 * * *"
   workflow_dispatch:
   push:
     paths:
