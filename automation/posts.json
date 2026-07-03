@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "class-weights-vs-resampling",
+      "title": "Class Weights vs Resampling for Imbalanced Data",
+      "excerpt": "Class weights and resampling both target imbalance, but they change different things. Here is how to pick the right one and evaluate it honestly.",
+      "date": "2026-07-03",
+      "read_min": 9,
+      "tag": "Evaluation",
+      "color": "a5",
+      "thumb": "assets/blog/class-weights-vs-resampling.png",
+      "thumb_alt": "Cover image for the article: Class Weights vs Resampling for Imbalanced Data"
+    },
+    {
       "slug": "early-stopping-vs-regularization",
       "title": "Early Stopping vs Regularization: Do You Need Both",
       "excerpt": "Early stopping and regularization both fight overfitting, but they work through different mechanisms. Understanding the difference tells you when you need one, the other, or both.",
