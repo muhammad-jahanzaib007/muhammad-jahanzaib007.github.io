@@ -47,6 +47,11 @@ AUTHOR = "Muhammad Jahanzaib Awan"
 COLORS = ["a2", "a3", "a4", "a5", "a6"]
 EM_DASH = "—"
 REQUIRED = ("slug", "title", "dek", "excerpt", "description", "keywords", "tag", "read_min", "body_html")
+# Article length bounds (words). Upper cap added 2026-07-03: a post ran >2000
+# words, which the user flagged as too long. Keep posts tight and readable.
+MIN_WORDS = 550
+TARGET_WORDS = 800
+MAX_WORDS = 1200
 
 # JSON schema for the Claude path (structured outputs) so the API guarantees valid
 # JSON regardless of quotes inside body_html.
@@ -162,29 +167,38 @@ def generate_post(topic):
         "- body_html: the article body as HTML using ONLY "
         "<section class='psec reveal'><h2>Heading</h2><p>...</p></section> blocks, with "
         "<p>, <ul>, <li>, <strong>, <em> inside. Use single quotes for HTML attributes. "
-        "The body MUST be AT LEAST 1100 words (aim 1200 to 1600) across 6 to 8 sections, each with "
-        "2 to 4 substantial paragraphs. A short draft is NOT acceptable. Develop every point: give "
-        "the intuition, a concrete worked example with realistic numbers, and why it matters in "
-        "practice. No <h1>, no head, no nav, no images, no code fences, no inline styles, no "
-        "markdown. Open by framing why the idea matters, build it up, then close with a practical "
-        "takeaway. No em dashes anywhere."
+        f"The body MUST be between {MIN_WORDS} and {MAX_WORDS} words (aim ~{TARGET_WORDS}) "
+        "across 3 to 4 sections, each with 2 to 4 substantial paragraphs. Be focused and "
+        f"CONCISE: do NOT pad or ramble, and do NOT exceed {MAX_WORDS} words. Develop every "
+        "point with intuition, a concrete worked example with realistic numbers, and why it "
+        "matters in practice, but keep it tight. No <h1>, no head, no nav, no images, no code "
+        "fences, no inline styles, no markdown. Open by framing why the idea matters, build it "
+        "up, then close with a practical takeaway. No em dashes anywhere."
     )
     words = 0
-    for attempt in range(2):
-        user = base if attempt == 0 else base + (
-            "\n\nYour previous draft was too short. Write a FULL, in-depth article of at least "
-            "1200 words across 6 to 8 well-developed sections. Do not stop early.")
+    for attempt in range(3):
+        user = base
+        if attempt and words < MIN_WORDS:
+            user += ("\n\nYour previous draft was too short. Write a fuller article of at least "
+                     f"{TARGET_WORDS} words across 3 to 4 well-developed sections. Do not stop early.")
+        elif attempt and words > MAX_WORDS:
+            user += (f"\n\nYour previous draft was too long ({words} words). Rewrite it MUCH more "
+                     f"concisely: no more than {MAX_WORDS} words (aim ~{TARGET_WORDS}). Cut padding "
+                     "and repetition, keep only the strongest points.")
         data = chat_json(user, max_tokens=10000, schema=POST_SCHEMA)
         for k in ("slug", "title", "dek", "excerpt", "description", "keywords", "tag", "body_html"):
             data[k] = strip_em(str(data.get(k, "")))
         data["slug"] = re.sub(r"[^a-z0-9-]", "", data["slug"].lower().replace(" ", "-")).strip("-")
         words = len(re.sub(r"<[^>]+>", " ", data["body_html"]).split())
         data["read_min"] = max(4, min(12, round(words / 200)))   # honest, derived from the body
-        if data["slug"] and data["body_html"].count("<section") >= 3 and words >= 700:
+        if data["slug"] and data["body_html"].count("<section") >= 2 and MIN_WORDS <= words <= MAX_WORDS:
+            print(f"post OK: {words} words")
             return data
-        print(f"attempt {attempt + 1}: post too short ({words} words); "
-              + ("retrying" if attempt == 0 else "giving up"))
-    sys.exit(f"model returned an unusable/too-short post after retries ({words} words)")
+        reason = "too short" if words < MIN_WORDS else "too long" if words > MAX_WORDS else "invalid"
+        print(f"attempt {attempt + 1}: post {reason} ({words} words); "
+              + ("retrying" if attempt < 2 else "giving up"))
+    sys.exit(f"model returned an unusable post after retries ({words} words, "
+             f"want {MIN_WORDS}-{MAX_WORDS})")
 
 
 def replenish(topics, want=14):
