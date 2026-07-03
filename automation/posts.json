@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "feature-scaling-which-models-care",
+      "title": "Feature Scaling: Which Models Care and Which Do Not",
+      "excerpt": "A practical guide to why distance and gradient based models demand scaled features while tree based models shrug them off entirely.",
+      "date": "2026-07-03",
+      "read_min": 10,
+      "tag": "Machine Learning",
+      "color": "a6",
+      "thumb": "assets/blog/feature-scaling-which-models-care.png",
+      "thumb_alt": "Cover image for the article: Feature Scaling: Which Models Care and Which Do Not"
+    },
+    {
       "slug": "class-weights-vs-resampling",
       "title": "Class Weights vs Resampling for Imbalanced Data",
       "excerpt": "Class weights and resampling both target imbalance, but they change different things. Here is how to pick the right one and evaluate it honestly.",
