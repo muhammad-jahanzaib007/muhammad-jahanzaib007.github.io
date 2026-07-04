@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "train-validation-test-splits",
+      "title": "Train, Validation, Test: Why Three Splits Not Two",
+      "excerpt": "Two splits let your decisions leak into your test score. A validation set is what keeps your final number honest.",
+      "date": "2026-07-04",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a3",
+      "thumb": "assets/blog/train-validation-test-splits.png",
+      "thumb_alt": "Cover image for the article: Train, Validation, Test: Why Three Splits Not Two"
+    },
+    {
       "slug": "optimizing-the-wrong-metric",
       "title": "The Trap of Optimizing the Wrong Metric",
       "excerpt": "High accuracy can hide a useless model. Here is why the metric you optimize quietly decides what your system actually learns.",
