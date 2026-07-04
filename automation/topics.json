@@ -1,6 +1,5 @@
 {
   "queue": [
-    "The trap of optimizing the wrong metric",
     "Train, validation, test: why three splits and not two",
     "Embeddings 101: what cosine similarity actually measures",
     "Attention, intuitively: queries, keys, and values",
@@ -31,6 +30,7 @@
     "Calibration: when a 0.9 probability does not mean 90%",
     "Early stopping vs regularization: do you need both?",
     "Class weights vs resampling for imbalanced classification",
-    "Feature scaling: which models care and which do not"
+    "Feature scaling: which models care and which do not",
+    "The trap of optimizing the wrong metric"
   ]
 }

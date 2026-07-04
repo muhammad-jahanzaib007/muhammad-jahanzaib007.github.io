@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "optimizing-the-wrong-metric",
+      "title": "The Trap of Optimizing the Wrong Metric",
+      "excerpt": "High accuracy can hide a useless model. Here is why the metric you optimize quietly decides what your system actually learns.",
+      "date": "2026-07-04",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a2",
+      "thumb": "assets/blog/optimizing-the-wrong-metric.png",
+      "thumb_alt": "Cover image for the article: The Trap of Optimizing the Wrong Metric"
+    },
+    {
       "slug": "feature-scaling-which-models-care",
       "title": "Feature Scaling: Which Models Care and Which Do Not",
       "excerpt": "A practical guide to why distance and gradient based models demand scaled features while tree based models shrug them off entirely.",
