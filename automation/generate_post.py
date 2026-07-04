@@ -20,6 +20,8 @@ import re
 import sys
 import json
 import html
+import time
+import random
 import datetime as dt
 from pathlib import Path
 
@@ -201,14 +203,60 @@ def generate_post(topic):
              f"want {MIN_WORDS}-{MAX_WORDS})")
 
 
+SUGGEST_SEEDS = [
+    "machine learning", "deep learning", "llm", "rag", "fine-tuning",
+    "data science", "mlops", "computer vision", "nlp", "prompt engineering",
+    "transformers", "model evaluation",
+]
+
+
+def fetch_demand_signals():
+    """Free demand signals for topic selection: Google Suggest completions
+    (what people actually type) + top Hacker News AI/ML story titles this week
+    (what people are discussing). Any failure degrades to []; no keys needed."""
+    signals = []
+    for seed in random.sample(SUGGEST_SEEDS, 5):
+        try:
+            r = requests.get("https://suggestqueries.google.com/complete/search",
+                             params={"client": "firefox", "q": seed}, timeout=15)
+            if r.status_code == 200:
+                signals += [f"search: {s}" for s in r.json()[1] if isinstance(s, str)][:8]
+        except Exception as e:
+            print(f"suggest '{seed}' skipped: {e}", file=sys.stderr)
+    week_ago = int(time.time()) - 7 * 86400
+    for query in ("LLM", "machine learning"):
+        try:
+            r = requests.get("https://hn.algolia.com/api/v1/search",
+                             params={"query": query, "tags": "story",
+                                     "numericFilters": f"created_at_i>{week_ago}",
+                                     "hitsPerPage": 10}, timeout=15)
+            if r.status_code == 200:
+                signals += [f"discussed: {h['title']}" for h in r.json().get("hits", [])
+                            if h.get("title")]
+        except Exception as e:
+            print(f"hn '{query}' skipped: {e}", file=sys.stderr)
+    return signals
+
+
 def replenish(topics, want=14):
     try:
         used = topics["published"] + topics["queue"]
+        signals = fetch_demand_signals()
+        signal_block = ""
+        if signals:
+            signal_block = (
+                "\n\nCurrent interest signals (live search completions and Hacker News "
+                "discussion this week). Prefer topics that align with what people are "
+                "actually searching for and talking about, but keep every title evergreen "
+                "and tutorial-flavoured, not news commentary:\n- "
+                + "\n- ".join(signals[:40])
+            )
         user = (
             f"Suggest {want} distinct, specific, evergreen machine-learning / data-science blog "
             "post titles for a graduate ML engineer's portfolio (evaluation, modelling, NLP, CV, "
             "MLOps, statistics). Avoid anything overlapping these existing titles:\n- "
             + "\n- ".join(used)
+            + signal_block
             + '\nReturn a single JSON object: {"topics": ["title 1", "title 2", ...]}. No em dashes.'
         )
         data = chat_json(user, max_tokens=1200, schema=TOPICS_SCHEMA)
