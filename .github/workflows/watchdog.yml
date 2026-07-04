@@ -1,0 +1,86 @@
+name: Watchdog
+
+# Daily health check for the blog + LinkedIn pipeline. Opens a labelled GitHub
+# issue (max 1 open) when something needs attention:
+#   - no blog post landed in >26h (2/day expected)
+#   - the last LinkedIn share recorded a failure
+#   - the LinkedIn access token is near its ~60-day expiry
+#   - the latest GitHub Pages build failed (site stale / article 404)
+# Runs at 12:00 UTC, giving the 09:00 cron (which can lag) time to land.
+on:
+  schedule:
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+  actions: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check pipeline health
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          problems=""
+          add() { problems="${problems}
+          - $1"; }
+
+          # 1. Stale blog receipt (2 posts/day; >26h means at least a full day missed)
+          if [ -f .github/last-blog.txt ]; then
+            ts=$(cut -d' ' -f1 .github/last-blog.txt)
+            age=$(( ( $(date -u +%s) - $(date -u -d "$ts" +%s) ) / 3600 ))
+            echo "last blog receipt: $ts (${age}h ago)"
+            if [ "$age" -gt 26 ]; then
+              add "No blog post in ${age}h (last receipt: $ts). Check the Auto blog workflow runs."
+            fi
+          else
+            add ".github/last-blog.txt is missing: post receipts are not landing."
+          fi
+
+          # 2. LinkedIn share failures in the most recent run
+          if [ -f .github/last-share.txt ] && grep -q "fail:" .github/last-share.txt; then
+            add "Last LinkedIn share recorded a failure: $(cat .github/last-share.txt)"
+          fi
+
+          # 3. LinkedIn token age (member tokens expire after ~60 days)
+          if [ -f .github/linkedin-token-minted.txt ]; then
+            minted=$(tr -d ' \n' < .github/linkedin-token-minted.txt)
+            tage=$(( ( $(date -u +%s) - $(date -u -d "$minted" +%s) ) / 86400 ))
+            echo "LinkedIn token age: ${tage} days"
+            if [ "$tage" -ge 53 ]; then
+              add "LinkedIn access token is ${tage} days old and expires around day 60. Re-authorize, update the LINKEDIN_ACCESS_TOKEN secret, then set today's date in .github/linkedin-token-minted.txt."
+            fi
+          fi
+
+          # 4. Latest Pages build failed (a failed build once left a LinkedIn post 404ing)
+          concl=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs?per_page=20" \
+            --jq '[.workflow_runs[] | select(.name=="pages build and deployment")][0].conclusion' \
+            2>/dev/null || echo "unknown")
+          echo "latest pages build: $concl"
+          if [ "$concl" = "failure" ]; then
+            add "Latest GitHub Pages build FAILED: the live site may be stale or missing the newest article. Re-run it or push any commit to rebuild."
+          fi
+
+          if [ -z "$problems" ]; then
+            echo "All healthy."
+            exit 0
+          fi
+
+          echo "Problems found:${problems}"
+          gh label create watchdog --color D93F0B --description "automated pipeline alert" --force || true
+          open=$(gh issue list --label watchdog --state open --json number --jq length)
+          if [ "$open" -gt 0 ]; then
+            echo "A watchdog issue is already open; not duplicating."
+            exit 0
+          fi
+          gh issue create --title "Blog pipeline watchdog: attention needed" \
+            --label watchdog \
+            --body "Automated daily health check found:${problems}
+
+          Runs: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions"
