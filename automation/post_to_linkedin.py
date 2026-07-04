@@ -21,6 +21,7 @@ import os
 import re
 import sys
 import json
+import time
 from pathlib import Path
 
 import requests
@@ -36,6 +37,26 @@ VERSION = os.environ.get("LINKEDIN_VERSION", "202606")
 
 def _hashtag(tag):
     return "#" + re.sub(r"[^A-Za-z0-9]", "", tag)
+
+
+def wait_until_live(url, timeout=900, interval=20):
+    """Poll the article URL until GitHub Pages serves it.
+
+    The share step runs seconds after the git push, but the Pages build takes
+    minutes (and its CDN can briefly cache the 404), so posting immediately
+    puts a dead link on LinkedIn. Polls the exact URL readers will click.
+    """
+    deadline = time.time() + timeout
+    while time.time() < deadline:
+        try:
+            r = requests.head(url, timeout=15, allow_redirects=True)
+            if r.status_code == 200:
+                return True
+            print(f"not live yet ({r.status_code}): {url}")
+        except requests.RequestException as e:
+            print(f"not live yet ({e.__class__.__name__}): {url}")
+        time.sleep(interval)
+    return False
 
 
 def author_urn(headers):
@@ -82,6 +103,9 @@ def main():
 
     post = json.loads(POSTS_JSON.read_text(encoding="utf-8"))["posts"][0]
     url = f"{SITE}/blog/{post['slug']}.html"
+    if not wait_until_live(url):
+        sys.exit(f"Article never came live within 15 min ({url}); "
+                 "not sharing a dead link to LinkedIn.")
     tags = " ".join(_hashtag(t) for t in ("MachineLearning", "DataScience", post["tag"]))
     commentary = f"New post: {post['title']}\n\n{post['excerpt']}\n\nRead it here: {url}\n\n{tags}"
 
