@@ -496,6 +496,7 @@ def main():
         "thumb_alt": f"Cover image for the article: {post['title']}",
     }
 
+    body_words = len(re.sub(r"<[^>]+>", " ", post["body_html"]).split())
     make_card(post["slug"], post["title"], post["tag"])
     post["body_html"] = add_body_images(post)
     BLOG_DIR.mkdir(exist_ok=True)
@@ -512,6 +513,15 @@ def main():
     if len(topics["queue"]) < 6:
         replenish(topics)
     save(TOPICS_JSON, topics)
+
+    # Receipt committed with the post so the run is verifiable from the repo
+    # (Actions job logs need admin auth).
+    receipt = ROOT / ".github" / "last-blog.txt"
+    receipt.parent.mkdir(exist_ok=True)
+    receipt.write_text(
+        f"{dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')} "
+        f"slug={post['slug']} words={body_words} title={json.dumps(entry['title'])}\n",
+        encoding="utf-8")
 
     print(f"Published blog/{post['slug']}.html  ({entry['title']})")
 

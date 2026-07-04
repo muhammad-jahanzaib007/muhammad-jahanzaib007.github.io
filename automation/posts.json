@@ -9,7 +9,8 @@
       "tag": "NLP",
       "color": "a4",
       "thumb": "assets/blog/cosine-similarity-embeddings.png",
-      "thumb_alt": "Cover image for the article: Embeddings 101: What Cosine Similarity Actually Measures"
+      "thumb_alt": "Cover image for the article: Embeddings 101: What Cosine Similarity Actually Measures",
+      "li_shared": true
     },
     {
       "slug": "train-validation-test-splits",
@@ -20,7 +21,8 @@
       "tag": "Evaluation",
       "color": "a3",
       "thumb": "assets/blog/train-validation-test-splits.png",
-      "thumb_alt": "Cover image for the article: Train, Validation, Test: Why Three Splits Not Two"
+      "thumb_alt": "Cover image for the article: Train, Validation, Test: Why Three Splits Not Two",
+      "li_shared": true
     },
     {
       "slug": "optimizing-the-wrong-metric",
@@ -31,7 +33,8 @@
       "tag": "Evaluation",
       "color": "a2",
       "thumb": "assets/blog/optimizing-the-wrong-metric.png",
-      "thumb_alt": "Cover image for the article: The Trap of Optimizing the Wrong Metric"
+      "thumb_alt": "Cover image for the article: The Trap of Optimizing the Wrong Metric",
+      "li_shared": true
     },
     {
       "slug": "feature-scaling-which-models-care",
@@ -42,7 +45,8 @@
       "tag": "Machine Learning",
       "color": "a6",
       "thumb": "assets/blog/feature-scaling-which-models-care.png",
-      "thumb_alt": "Cover image for the article: Feature Scaling: Which Models Care and Which Do Not"
+      "thumb_alt": "Cover image for the article: Feature Scaling: Which Models Care and Which Do Not",
+      "li_shared": true
     },
     {
       "slug": "class-weights-vs-resampling",
@@ -53,7 +57,8 @@
       "tag": "Evaluation",
       "color": "a5",
       "thumb": "assets/blog/class-weights-vs-resampling.png",
-      "thumb_alt": "Cover image for the article: Class Weights vs Resampling for Imbalanced Data"
+      "thumb_alt": "Cover image for the article: Class Weights vs Resampling for Imbalanced Data",
+      "li_shared": true
     },
     {
       "slug": "early-stopping-vs-regularization",
@@ -64,7 +69,8 @@
       "tag": "Machine Learning",
       "color": "a4",
       "thumb": "assets/blog/early-stopping-vs-regularization.png",
-      "thumb_alt": "Cover image for the article: Early Stopping vs Regularization: Do You Need Both"
+      "thumb_alt": "Cover image for the article: Early Stopping vs Regularization: Do You Need Both",
+      "li_shared": true
     },
     {
       "slug": "gru-vs-gpt2",
@@ -75,7 +81,8 @@
       "tag": "Baselines",
       "color": "a5",
       "thumb": "assets/nlp/metrics_comparison.png",
-      "thumb_alt": "NLP metric comparison"
+      "thumb_alt": "NLP metric comparison",
+      "li_shared": true
     },
     {
       "slug": "uav-data-leakage",
@@ -86,7 +93,8 @@
       "tag": "Evaluation",
       "color": "a2",
       "thumb": "assets/uav/cm_pretrained.png",
-      "thumb_alt": "UAV confusion matrix"
+      "thumb_alt": "UAV confusion matrix",
+      "li_shared": true
     }
   ]
 }

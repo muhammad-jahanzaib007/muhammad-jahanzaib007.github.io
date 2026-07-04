@@ -22,13 +22,20 @@ import re
 import sys
 import json
 import time
+import datetime as dt
 from pathlib import Path
 
 import requests
 
 ROOT = Path(__file__).resolve().parent.parent
 POSTS_JSON = ROOT / "automation" / "posts.json"
+RECEIPT = ROOT / ".github" / "last-share.txt"
 SITE = "https://jahanzaibawan.com"
+
+# Catch-up window: share any post from the last N days that has no li_shared
+# flag yet (a failed share is retried on the next run instead of being lost).
+SHARE_WINDOW_DAYS = 3
+MAX_SHARES_PER_RUN = 2
 
 TOKEN = os.environ.get("LINKEDIN_ACCESS_TOKEN")
 AUTHOR = os.environ.get("LINKEDIN_AUTHOR_URN")
@@ -121,26 +128,18 @@ def upload_image(headers, owner, post):
     return value["image"]
 
 
-def main():
-    if not TOKEN:
-        print("LINKEDIN_ACCESS_TOKEN not set; skipping LinkedIn share.")
-        return
+def write_receipt(results):
+    """One line: `<utc-ts> slug=ok:<id> slug2=fail:<code>` (or a bare status)."""
+    ts = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+    RECEIPT.parent.mkdir(exist_ok=True)
+    RECEIPT.write_text(f"{ts} {' '.join(results) if results else 'none-pending'}\n",
+                       encoding="utf-8")
 
-    post = json.loads(POSTS_JSON.read_text(encoding="utf-8"))["posts"][0]
-    url = f"{SITE}/blog/{post['slug']}.html"
-    if not wait_until_live(url):
-        sys.exit(f"Article never came live within 15 min ({url}); "
-                 "not sharing a dead link to LinkedIn.")
+
+def share_post(headers, urn, post, url):
+    """Share one post; return 'ok:<id>' or 'fail:<reason>'."""
     tags = " ".join(_hashtag(t) for t in ("MachineLearning", "DataScience", post["tag"]))
     commentary = f"New post: {post['title']}\n\n{post['excerpt']}\n\nRead it here: {url}\n\n{tags}"
-
-    headers = {
-        "Authorization": f"Bearer {TOKEN}",
-        "Content-Type": "application/json",
-        "X-Restli-Protocol-Version": "2.0.0",
-        "LinkedIn-Version": VERSION,
-    }
-    urn = author_urn(headers)
     body = {
         "author": urn,
         "commentary": commentary,
@@ -152,7 +151,6 @@ def main():
         },
         "lifecycleState": "PUBLISHED",
     }
-
     image_urn = upload_image(headers, urn, post)
     if image_urn:                                   # native image post with the branded card
         body["content"] = {"media": {"id": image_urn, "title": post["title"][:180]}}
@@ -160,12 +158,61 @@ def main():
     r = requests.post("https://api.linkedin.com/rest/posts", headers=headers,
                       data=json.dumps(body), timeout=30)
     if r.status_code in (200, 201):
-        print(f"Shared to LinkedIn (id: {r.headers.get('x-restli-id', 'n/a')})")
-    elif r.status_code == 401:
-        sys.exit("LinkedIn 401: token invalid or expired (member tokens last ~60 days). "
-                 "Re-authorize and update the LINKEDIN_ACCESS_TOKEN secret.")
-    else:
-        sys.exit(f"LinkedIn post failed ({r.status_code}): {r.text[:400]}")
+        post_id = r.headers.get("x-restli-id", "n/a")
+        print(f"Shared to LinkedIn (id: {post_id})")
+        return f"ok:{post_id}"
+    if r.status_code == 401:
+        print("LinkedIn 401: token invalid or expired (member tokens last ~60 days). "
+              "Re-authorize and update the LINKEDIN_ACCESS_TOKEN secret.")
+        return "fail:401-token"
+    print(f"LinkedIn post failed ({r.status_code}): {r.text[:400]}")
+    return f"fail:{r.status_code}"
+
+
+def main():
+    if not TOKEN:
+        print("LINKEDIN_ACCESS_TOKEN not set; skipping LinkedIn share.")
+        write_receipt(["skip:no-token"])
+        return
+
+    data = json.loads(POSTS_JSON.read_text(encoding="utf-8"))
+    cutoff = (dt.date.today() - dt.timedelta(days=SHARE_WINDOW_DAYS)).isoformat()
+    pending = [p for p in data["posts"] if p["date"] >= cutoff and not p.get("li_shared")]
+    pending = list(reversed(pending))[:MAX_SHARES_PER_RUN]   # oldest first
+    if not pending:
+        print("No unshared recent posts; nothing to do.")
+        write_receipt([])
+        return
+
+    headers = {
+        "Authorization": f"Bearer {TOKEN}",
+        "Content-Type": "application/json",
+        "X-Restli-Protocol-Version": "2.0.0",
+        "LinkedIn-Version": VERSION,
+    }
+    urn = author_urn(headers)
+
+    results, failed = [], False
+    for post in pending:
+        url = f"{SITE}/blog/{post['slug']}.html"
+        if not wait_until_live(url):
+            print(f"Article never came live ({url}); not sharing a dead link.")
+            results.append(f"{post['slug']}=fail:dead-link")
+            failed = True
+            continue
+        status = share_post(headers, urn, post, url)
+        if status.startswith("ok"):
+            post["li_shared"] = True                # flag committed by the receipt step
+            POSTS_JSON.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n",
+                                  encoding="utf-8")
+        else:
+            failed = True
+        results.append(f"{post['slug']}={status}")
+
+    write_receipt(results)
+    print("share results: " + " ".join(results))
+    if failed:
+        sys.exit(1)
 
 
 if __name__ == "__main__":

@@ -50,13 +50,20 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add blog blog.html sitemap.xml automation/posts.json automation/topics.json assets/blog
+          git add blog blog.html sitemap.xml automation/posts.json automation/topics.json assets/blog .github/last-blog.txt
           if git diff --cached --quiet; then
             echo "No changes to commit."
             echo "published=false" >> "$GITHUB_OUTPUT"
           else
             git commit -m "chore: auto blog post ($(date -u +%Y-%m-%d))"
-            git push
+            # Rebase-retry: a concurrent push to main must not kill the run
+            # (same failure once skipped a whole publish in the YT repo).
+            for i in 1 2 3; do
+              if git push; then break; fi
+              echo "push rejected; rebasing (attempt $i)"
+              git pull --rebase
+              if [ "$i" = 3 ]; then echo "push failed after 3 attempts"; exit 1; fi
+            done
             echo "published=true" >> "$GITHUB_OUTPUT"
           fi
 
@@ -70,3 +77,18 @@ jobs:
           # (a failed Pages build once put a dead link on LinkedIn).
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python automation/post_to_linkedin.py
+
+      # Receipt + li_shared flags land in a follow-up commit so the run's
+      # outcome is verifiable from the repo (Actions logs need admin auth).
+      - name: Record share receipt
+        if: always() && steps.commit.outputs.published == 'true'
+        run: |
+          git add .github/last-share.txt automation/posts.json
+          if git diff --cached --quiet; then echo "no receipt changes"; exit 0; fi
+          git commit -m "chore: linkedin share receipt"
+          for i in 1 2 3; do
+            if git push; then exit 0; fi
+            echo "push rejected; rebasing (attempt $i)"
+            git pull --rebase
+          done
+          echo "receipt push failed"; exit 1
