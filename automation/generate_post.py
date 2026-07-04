@@ -400,6 +400,7 @@ def render_post_page(p):
 <footer>© 2026 {AUTHOR}, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
 <div id="toast"></div>
 <script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{{"token": "2787df95dbb546388bbf0bac8f5cb230"}}'></script><!-- End Cloudflare Web Analytics -->
 </body></html>
 """
 
