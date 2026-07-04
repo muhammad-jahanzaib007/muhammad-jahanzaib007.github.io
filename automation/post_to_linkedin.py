@@ -39,15 +39,37 @@ def _hashtag(tag):
     return "#" + re.sub(r"[^A-Za-z0-9]", "", tag)
 
 
-def wait_until_live(url, timeout=900, interval=20):
+def request_pages_rebuild():
+    """Ask GitHub to rebuild the Pages site (recovers from a failed deploy).
+
+    Needs GITHUB_TOKEN with the pages:write permission; silently skips without it.
+    """
+    token = os.environ.get("GITHUB_TOKEN")
+    repo = os.environ.get("GITHUB_REPOSITORY")
+    if not (token and repo):
+        print("GITHUB_TOKEN/GITHUB_REPOSITORY not set; cannot request a Pages rebuild.")
+        return
+    r = requests.post(
+        f"https://api.github.com/repos/{repo}/pages/builds",
+        headers={"Authorization": f"Bearer {token}",
+                 "Accept": "application/vnd.github+json"},
+        timeout=30,
+    )
+    print(f"requested Pages rebuild: {r.status_code} {r.text[:200]}")
+
+
+def wait_until_live(url, timeout=900, interval=20, rebuild_after=300):
     """Poll the article URL until GitHub Pages serves it.
 
     The share step runs seconds after the git push, but the Pages build takes
-    minutes (and its CDN can briefly cache the 404), so posting immediately
-    puts a dead link on LinkedIn. Polls the exact URL readers will click.
+    minutes (and the build itself sometimes fails outright — 2026-07-04 a failed
+    build left a LinkedIn post pointing at a 404 for hours). Polls the exact URL
+    readers will click; if it is still missing after `rebuild_after` seconds,
+    requests one Pages rebuild and keeps waiting.
     """
-    deadline = time.time() + timeout
-    while time.time() < deadline:
+    start = time.time()
+    rebuild_requested = False
+    while time.time() - start < timeout:
         try:
             r = requests.head(url, timeout=15, allow_redirects=True)
             if r.status_code == 200:
@@ -55,6 +77,9 @@ def wait_until_live(url, timeout=900, interval=20):
             print(f"not live yet ({r.status_code}): {url}")
         except requests.RequestException as e:
             print(f"not live yet ({e.__class__.__name__}): {url}")
+        if not rebuild_requested and time.time() - start > rebuild_after:
+            request_pages_rebuild()
+            rebuild_requested = True
         time.sleep(interval)
     return False
 

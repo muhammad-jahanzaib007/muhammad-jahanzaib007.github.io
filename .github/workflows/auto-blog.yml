@@ -16,6 +16,7 @@ on:
 permissions:
   contents: write
   models: read
+  pages: write
 
 concurrency:
   group: auto-blog
@@ -65,4 +66,7 @@ jobs:
           LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
           LINKEDIN_AUTHOR_URN: ${{ secrets.LINKEDIN_AUTHOR_URN }}
           LINKEDIN_VERSION: ${{ vars.LINKEDIN_VERSION || '202606' }}
+          # Used to request a Pages rebuild if the article URL stays 404
+          # (a failed Pages build once put a dead link on LinkedIn).
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python automation/post_to_linkedin.py
