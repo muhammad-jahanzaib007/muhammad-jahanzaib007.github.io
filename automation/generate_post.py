@@ -48,7 +48,8 @@ SITE = "https://jahanzaibawan.com"
 AUTHOR = "Muhammad Jahanzaib Awan"
 COLORS = ["a2", "a3", "a4", "a5", "a6"]
 EM_DASH = "—"
-REQUIRED = ("slug", "title", "dek", "excerpt", "description", "keywords", "tag", "read_min", "body_html")
+REQUIRED = ("slug", "title", "dek", "excerpt", "description", "keywords", "tag", "read_min",
+            "body_html", "image_queries")
 # Article length bounds (words). Upper cap added 2026-07-03: a post ran >2000
 # words, which the user flagged as too long. Keep posts tight and readable.
 MIN_WORDS = 550
@@ -57,9 +58,17 @@ MAX_WORDS = 1200
 
 # JSON schema for the Claude path (structured outputs) so the API guarantees valid
 # JSON regardless of quotes inside body_html.
+def _prop(k):
+    if k == "read_min":
+        return {"type": "integer"}
+    if k == "image_queries":
+        return {"type": "array", "items": {"type": "string"}, "maxItems": 2}
+    return {"type": "string"}
+
+
 POST_SCHEMA = {
     "type": "object",
-    "properties": {k: ({"type": "integer"} if k == "read_min" else {"type": "string"}) for k in REQUIRED},
+    "properties": {k: _prop(k) for k in REQUIRED},
     "required": list(REQUIRED),
     "additionalProperties": False,
 }
@@ -166,6 +175,12 @@ def generate_post(topic):
         "- keywords: 6-10 comma-separated keywords\n"
         "- tag: one short category label (e.g. Evaluation, Deep Learning, NLP)\n"
         "- read_min: integer 4-9 (rough; recomputed from the body)\n"
+        "- image_queries: array of 0-2 short, literal stock-photo search queries describing real "
+        "physical scenes or objects that would GENUINELY illustrate this specific article (e.g. "
+        "'gpu server rack', 'whiteboard with equations', 'security camera footage'). Stock sites "
+        "have no photos of abstract concepts, so only suggest queries whose results a reader "
+        "would recognise as relevant. Use an empty array [] if no stock photo truly fits; never "
+        "force one.\n"
         "- body_html: the article body as HTML using ONLY "
         "<section class='psec reveal'><h2>Heading</h2><p>...</p></section> blocks, with "
         "<p>, <ul>, <li>, <strong>, <em> inside. Use single quotes for HTML attributes. "
@@ -190,6 +205,9 @@ def generate_post(topic):
         data = chat_json(user, max_tokens=10000, schema=POST_SCHEMA)
         for k in ("slug", "title", "dek", "excerpt", "description", "keywords", "tag", "body_html"):
             data[k] = strip_em(str(data.get(k, "")))
+        data["image_queries"] = [strip_em(str(q)).strip()
+                                 for q in (data.get("image_queries") or [])
+                                 if str(q).strip()][:2]
         data["slug"] = re.sub(r"[^a-z0-9-]", "", data["slug"].lower().replace(" ", "-")).strip("-")
         words = len(re.sub(r"<[^>]+>", " ", data["body_html"]).split())
         data["read_min"] = max(4, min(12, round(words / 200)))   # honest, derived from the body
@@ -488,23 +506,34 @@ def fetch_pexels(query, n=2):
         return []
 
 
-def _fig(img, title):
+def _fig(img, alt):
     return (
         "<figure style='margin:24px 0'>"
-        f"<img src='{img['url']}' alt='{esc(title)}' loading='lazy' "
+        f"<img src='{img['url']}' alt='{esc(alt)}' loading='lazy' "
         "style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'>"
         "</figure>"
     )
 
 
 def add_body_images(post):
-    """Insert 1-2 stock photos between sections so the article is not a wall of text."""
-    imgs = fetch_pexels(f"{post['tag']} technology")
+    """Insert up to 2 stock photos, one per model-chosen query.
+
+    The model proposes concrete queries only when a stock photo genuinely fits
+    the article ('gpu server rack', not '<tag> technology'); an abstract topic
+    gets no queries and the article ships text-only. User feedback 2026-07-05:
+    the old generic tag-based photos looked irrelevant.
+    """
+    imgs = []
+    for q in post.get("image_queries", [])[:2]:
+        found = fetch_pexels(q, n=1)
+        if found:
+            imgs.append((found[0], q))
     if not imgs:
+        print("no relevant body images; article ships text-only")
         return post["body_html"]
-    wanted = {2: _fig(imgs[0], post["title"])}
+    wanted = {2: _fig(imgs[0][0], imgs[0][1])}
     if len(imgs) > 1:
-        wanted[4] = _fig(imgs[1], post["title"])
+        wanted[4] = _fig(imgs[1][0], imgs[1][1])
     counter = {"n": 0}
 
     def repl(m):
