@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "cosine-similarity-embeddings",
+      "title": "Embeddings 101: What Cosine Similarity Actually Measures",
+      "excerpt": "Cosine similarity measures angle, not distance. Understanding that difference will save you from subtle bugs in retrieval and clustering systems.",
+      "date": "2026-07-04",
+      "read_min": 5,
+      "tag": "NLP",
+      "color": "a4",
+      "thumb": "assets/blog/cosine-similarity-embeddings.png",
+      "thumb_alt": "Cover image for the article: Embeddings 101: What Cosine Similarity Actually Measures"
+    },
+    {
       "slug": "train-validation-test-splits",
       "title": "Train, Validation, Test: Why Three Splits Not Two",
       "excerpt": "Two splits let your decisions leak into your test score. A validation set is what keeps your final number honest.",
