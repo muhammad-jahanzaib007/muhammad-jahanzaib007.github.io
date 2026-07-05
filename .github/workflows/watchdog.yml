@@ -70,6 +70,10 @@ jobs:
 
           if [ -z "$problems" ]; then
             echo "All healthy."
+            open_issue=$(gh issue list --label watchdog --state open --json number --jq '.[0].number // empty')
+            if [ -n "$open_issue" ]; then
+              gh issue close "$open_issue" --comment "Watchdog: all checks healthy again; auto-closing."
+            fi
             exit 0
           fi
 
