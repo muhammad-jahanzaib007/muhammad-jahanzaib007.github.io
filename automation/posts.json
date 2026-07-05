@@ -9,7 +9,8 @@
       "tag": "Deep Learning",
       "color": "a5",
       "thumb": "assets/blog/attention-queries-keys-values.png",
-      "thumb_alt": "Cover image for the article: Attention, Intuitively: Queries, Keys, and Values"
+      "thumb_alt": "Cover image for the article: Attention, Intuitively: Queries, Keys, and Values",
+      "li_shared": true
     },
     {
       "slug": "cosine-similarity-embeddings",
