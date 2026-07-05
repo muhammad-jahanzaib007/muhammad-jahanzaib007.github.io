@@ -6,10 +6,11 @@ name: Watchdog
 #   - the last LinkedIn share recorded a failure
 #   - the LinkedIn access token is near its ~60-day expiry
 #   - the latest GitHub Pages build failed (site stale / article 404)
-# Runs at 12:00 UTC, giving the 09:00 cron (which can lag) time to land.
+# Runs at 12:00 UK (11:00 UTC during BST), giving the morning cron (which
+# can lag) time to land.
 on:
   schedule:
-    - cron: "0 12 * * *"
+    - cron: "0 11 * * *"
   workflow_dispatch:
 
 permissions:

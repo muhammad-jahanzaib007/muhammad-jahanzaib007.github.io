@@ -1,13 +1,15 @@
 name: Auto blog
 
-# Publishes a new post twice a day (09:00 + 21:00 UTC); each post auto-shares
-# to LinkedIn, so LinkedIn also gets two posts a day.
+# Publishes a new post twice a day at 09:00 + 21:00 UK time; each post
+# auto-shares to LinkedIn, so LinkedIn also gets two posts a day.
+# Crons are UTC: set for BST (UK = UTC+1). After the October clock change
+# these fire at 08:00/20:00 UK unless shifted back by an hour.
 # Uses Claude (Anthropic API) when ANTHROPIC_API_KEY is set; else free GitHub Models.
 # Also runnable on demand from the Actions tab (Run workflow).
 on:
   schedule:
-    - cron: "0 9 * * *"
-    - cron: "0 21 * * *"
+    - cron: "0 8 * * *"
+    - cron: "0 20 * * *"
   workflow_dispatch:
   push:
     paths:
