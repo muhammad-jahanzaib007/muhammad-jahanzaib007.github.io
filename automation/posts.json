@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "attention-queries-keys-values",
+      "title": "Attention, Intuitively: Queries, Keys, and Values",
+      "excerpt": "Attention is a soft lookup table: queries ask, keys answer, values deliver. Here is that idea made concrete with numbers.",
+      "date": "2026-07-05",
+      "read_min": 6,
+      "tag": "Deep Learning",
+      "color": "a5",
+      "thumb": "assets/blog/attention-queries-keys-values.png",
+      "thumb_alt": "Cover image for the article: Attention, Intuitively: Queries, Keys, and Values"
+    },
+    {
       "slug": "cosine-similarity-embeddings",
       "title": "Embeddings 101: What Cosine Similarity Actually Measures",
       "excerpt": "Cosine similarity measures angle, not distance. Understanding that difference will save you from subtle bugs in retrieval and clustering systems.",

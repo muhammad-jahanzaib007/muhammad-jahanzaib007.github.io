@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Attention, Intuitively: Queries, Keys, and Values | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="An intuitive, worked explanation of query, key, and value vectors in attention mechanisms, with a concrete numeric example and practical implications.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="attention mechanism, transformers, queries keys values, self-attention, deep learning, NLP, machine learning intuition, softmax attention, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-05">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Attention, Intuitively: Queries, Keys, and Values">
+<meta property="og:description" content="An intuitive, worked explanation of query, key, and value vectors in attention mechanisms, with a concrete numeric example and practical implications.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/attention-queries-keys-values.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/attention-queries-keys-values.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Attention, Intuitively: Queries, Keys, and Values">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/attention-queries-keys-values.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/attention-queries-keys-values.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Attention, Intuitively: Queries, Keys, and Values",
+  "description": "An intuitive, worked explanation of query, key, and value vectors in attention mechanisms, with a concrete numeric example and practical implications.",
+  "url": "https://jahanzaibawan.com/blog/attention-queries-keys-values.html",
+  "image": "https://jahanzaibawan.com/assets/blog/attention-queries-keys-values.png",
+  "datePublished": "2026-07-05",
+  "dateModified": "2026-07-05",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/attention-queries-keys-values.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Attention, Intuitively: Queries, Keys, and Values", "item": "https://jahanzaibawan.com/blog/attention-queries-keys-values.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Deep Learning · 6 min read · 5 Jul 2026</div>
+    <h1>Attention, Intuitively: Queries, Keys, and Values</h1>
+    <p class="lede">A worked, no-nonsense walkthrough of why attention is really just a soft lookup, and why that framing makes transformers click.</p>
+  </div>
+
+  <img src="../assets/blog/attention-queries-keys-values.png" alt="Cover image for the article: Attention, Intuitively: Queries, Keys, and Values" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this idea is worth slowing down for</h2><p>Most people meet attention through a diagram: three matrices labelled Q, K, and V, an arrow into a softmax, and a promise that this is how transformers 'know what to look at'. The equation is short enough to memorise without ever understanding it, and I think that is exactly the trap. You can recite softmax(QK^T / sqrt(d))V for months and still not have a working mental model of what a query or a key actually represents.</p><p>I want to build the idea from something ordinary: a lookup table. A dictionary maps a key to a value. You look up 'apple', you get its definition. That is a hard lookup: exact match or nothing. Attention is the same idea made soft. Instead of an exact key match, every query compares itself against every key, gets a similarity score for each, and then blends all the values together, weighted by those scores. Nothing mystical is happening; it is a weighted average where the weights are learned to depend on content rather than fixed position.</p><p>This matters practically because so much of what transformers do well, resolving pronouns, aligning words across languages, deciding which earlier token is relevant to the current one, reduces to this one operation done many times in parallel. If you understand one attention head properly, you understand the mechanical core of the architecture. Everything else, the multiple heads, the feed-forward layers, the residual connections, is scaffolding around this soft lookup.</p></section><section class='psec reveal'><h2>Building the intuition with a small worked example</h2><p>Suppose we are processing the sentence 'the trophy did not fit in the suitcase because it was too small', and we want to work out what 'it' refers to. Each word has been turned into a vector by earlier layers. For 'it', the model produces a query vector: a question the word is asking, roughly 'what earlier thing might I be referring to?'. Every word in the sentence, including 'it' itself, also produces a key vector: an advertisement of what that word offers, roughly 'here is the kind of thing I am, so match me if I'm relevant'.</p><p>The attention score between 'it' and any other word is the dot product of the query for 'it' with the key for that word. A high dot product means the query and key point in a similar direction in the learned space, which the model has arranged to mean 'these are relevant to each other'. Say the dot product between the query for 'it' and the key for 'trophy' comes out at 8.2, while the dot product with the key for 'suitcase' comes out at 3.1, and with 'small' it is 2.4. After scaling and softmax, these might turn into weights of roughly 0.79 for trophy, 0.13 for suitcase, and small residual weights spread across everything else.</p><p>Now comes the value step, which is the part people often gloss over. Each word also has a value vector: the actual content it contributes if selected. The output for 'it' is not the trophy's key, and it is not a hard selection of one word; it is a weighted sum of all the value vectors, using those softmax weights. So the new representation of 'it' becomes roughly 79 per cent trophy's content, 13 per cent suitcase's content, plus small contributions from everywhere else. That blended vector then carries forward into later layers, effectively saying 'this token is mostly about the trophy, with a little context from the suitcase'.</p><p>The reason we need three separate projections, query, key, and value, rather than reusing the same vector for all three roles, is that a word's role in asking a question is different from its role in being matched against, which is different again from its role in what it contributes once matched. Learning three separate linear projections lets the model specialise each role rather than forcing one vector to do three jobs badly.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/attention-queries-keys-values-1.jpg' alt='whiteboard with equations' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Why the scaling and the softmax are not decorative</h2><p>The division by the square root of the key dimension looks like a minor implementation detail, but it earns its place. As vector dimensionality grows, dot products between random vectors tend to grow in magnitude too, purely as a statistical artefact of summing more terms. If you feed large, unscaled dot products into a softmax, the output becomes extremely peaked, effectively collapsing to a near one-hot selection even when several keys are genuinely relevant. Scaling by the square root of the dimension keeps the pre-softmax scores in a range where the softmax can express genuine uncertainty rather than being forced into overconfident, near-binary choices.</p><p>The softmax itself is doing something specific: converting arbitrary real-valued similarity scores into a proper probability distribution that sums to one, so the values can be combined as a weighted average rather than an unbounded sum. This is why attention weights are interpretable, loosely, as 'how much of my output comes from this position', even though I would be cautious about over-reading them as a full explanation of model behaviour; a high attention weight tells you about the blending, not necessarily about causal importance downstream.</p><p>It is also worth being honest about what this mechanism does not give you for free. Attention has no inherent sense of order; the trophy and suitcase example only works because positional information has been injected elsewhere, since the raw query-key-value operation treats the input as an unordered set. And multiple heads exist precisely because one query-key-value projection can only capture one kind of relevant relationship at a time; running several in parallel with different learned projections lets the model track syntactic relationships in one head and coreference-like patterns in another, then concatenate the results.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>If you are building or debugging anything transformer-based, the query-key-value framing gives you a genuinely useful diagnostic habit. When a model attends to the wrong thing, ask which of the three roles is likely at fault: is the query poorly formed because the token's own representation is impoverished, are the keys not discriminative enough to separate relevant from irrelevant context, or are the values themselves not carrying the content that downstream layers need? These are different failure modes with different fixes, and collapsing them into one vague notion of 'attention isn't working' will not get you very far.</p><p>The other lesson I keep coming back to is that attention weights are a useful diagnostic, not a full explanation. Treat visualised attention maps as a hint about where information is flowing, worth cross-checking against ablations or probing experiments, rather than as proof of what the model has 'understood'. Intuition built from a concrete example like the trophy and the suitcase will serve you better than the formula alone, because it forces you to be precise about what is being asked, what is being matched, and what is actually being carried forward.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/attention-queries-keys-values-2.jpg' alt='server room data center' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

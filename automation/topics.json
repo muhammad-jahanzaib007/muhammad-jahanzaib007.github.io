@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Attention, intuitively: queries, keys, and values",
     "Why batch normalization helps, and when it hurts",
     "Dropout as an ensemble, not a magic switch",
     "Learning rate: the first hyperparameter to tune",
@@ -31,6 +30,7 @@
     "Feature scaling: which models care and which do not",
     "The trap of optimizing the wrong metric",
     "Train, validation, test: why three splits and not two",
-    "Embeddings 101: what cosine similarity actually measures"
+    "Embeddings 101: what cosine similarity actually measures",
+    "Attention, intuitively: queries, keys, and values"
   ]
 }
