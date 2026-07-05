@@ -1,1 +1,1 @@
-2026-07-05T13:36:22Z slug=attention-queries-keys-values words=1140 title="Attention, Intuitively: Queries, Keys, and Values"
+2026-07-05T20:59:45Z slug=batch-normalization-helps-and-hurts words=1005 title="Why Batch Normalization Helps, and When It Hurts"

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Batch Normalization Helps, and When It Hurts | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="An honest, practical explanation of why batch normalization works, with a worked example, and the cases where it hurts model performance.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="batch normalization, deep learning, neural networks, training stability, internal covariate shift, batch size, normalization layers, model evaluation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-05">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Why Batch Normalization Helps, and When It Hurts">
+<meta property="og:description" content="An honest, practical explanation of why batch normalization works, with a worked example, and the cases where it hurts model performance.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/batch-normalization-helps-and-hurts.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/batch-normalization-helps-and-hurts.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why Batch Normalization Helps, and When It Hurts">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/batch-normalization-helps-and-hurts.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/batch-normalization-helps-and-hurts.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Why Batch Normalization Helps, and When It Hurts",
+  "description": "An honest, practical explanation of why batch normalization works, with a worked example, and the cases where it hurts model performance.",
+  "url": "https://jahanzaibawan.com/blog/batch-normalization-helps-and-hurts.html",
+  "image": "https://jahanzaibawan.com/assets/blog/batch-normalization-helps-and-hurts.png",
+  "datePublished": "2026-07-05",
+  "dateModified": "2026-07-05",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/batch-normalization-helps-and-hurts.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Why Batch Normalization Helps, and When It Hurts", "item": "https://jahanzaibawan.com/blog/batch-normalization-helps-and-hurts.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Deep Learning · 5 min read · 5 Jul 2026</div>
+    <h1>Why Batch Normalization Helps, and When It Hurts</h1>
+    <p class="lede">A look at what batch norm actually fixes inside a network, and the specific situations where it quietly works against you.</p>
+  </div>
+
+  <img src="../assets/blog/batch-normalization-helps-and-hurts.png" alt="Cover image for the article: Why Batch Normalization Helps, and When It Hurts" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The problem it was built to solve</h2><p>Train a deep network without any normalisation and you will often notice training is touchy: pick a learning rate slightly too high and loss spikes, pick one slightly too low and progress crawls. Part of the reason is that as weights in early layers update, the distribution of activations feeding later layers keeps shifting. Each layer is effectively trying to learn on a moving target, because the layer below it never stops changing.</p><p>Batch normalization addresses this directly. For each mini-batch, it takes the activations at a given layer, subtracts the batch mean and divides by the batch standard deviation, then applies a learned scale and shift so the layer can still represent whatever range it needs. The practical effect is that activations arriving at each layer stay roughly zero-centred with unit variance throughout training, regardless of what the earlier layers are doing underneath.</p><p>Say a hidden layer produces activations with a mean that drifts from 0.2 to 4.0 over the first few thousand steps, purely because upstream weights are still settling. Without normalisation, the next layer's effective input scale is changing by a factor of twenty, and any learning rate tuned for one regime will be wrong for the other. With batch norm, that layer always sees inputs standardised to roughly the same scale, so the optimiser can use a larger, more consistent learning rate and converge in noticeably fewer steps.</p></section><section class='psec reveal'><h2>The knock-on benefits</h2><p>The headline benefit is faster, more stable training, but two side effects matter almost as much in practice. First, batch norm smooths the loss landscape. Empirically and in some theoretical analyses, the gradients become better behaved, less prone to the sharp cliffs and long flat plateaus that make optimisation slow. This is a large part of why networks with batch norm tolerate higher learning rates than the same architecture without it.</p><p>Second, batch norm has a mild regularising effect. Because the mean and variance used for normalisation are computed from a randomly sampled mini-batch rather than the whole dataset, each training example is normalised slightly differently depending on which other examples happen to be in its batch. This injects a small amount of noise into the forward pass, similar in spirit to dropout, and can reduce overfitting a little. It is not a substitute for proper regularisation, but it is a genuine bonus that comes for free.</p><p>There is also a practical engineering upside: networks with batch norm are typically far less sensitive to weight initialisation. Before normalisation layers were common, getting a deep network to train at all often depended on careful initialisation schemes tuned to the exact architecture. Batch norm does not remove the need for sensible initialisation, but it makes the network far more forgiving of imperfect choices.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/batch-normalization-helps-and-hurts-1.jpg' alt='gpu server rack' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Where it quietly breaks down</h2><p>The mechanism that makes batch norm useful, relying on batch statistics, is exactly what makes it fragile in certain settings. The clearest case is small batch sizes. If you train with a batch of four images because of memory constraints, the mean and variance computed from those four examples are a noisy, unreliable estimate of the true population statistics. Instead of a small helpful amount of noise, you get a large, unhelpful amount, and training can become unstable rather than smoother. As a rough intuition, going from a batch size of 256 down to 8 does not just add a bit more noise, it can change the estimated variance by a large multiple from one batch to the next, and the network ends up chasing statistics that barely resemble each other across steps.</p><p>Recurrent and sequence models are another awkward fit. Batch norm assumes that the activations at a given layer, across the batch, are drawn from a broadly similar distribution. In recurrent networks, the same layer is applied repeatedly across time steps, and the statistics at step one can look nothing like the statistics at step fifty, especially with variable-length sequences padded to a common length. Layer normalisation, which normalises across the features of a single example rather than across the batch, tends to suit these architectures far better precisely because it sidesteps the batch-dependence problem entirely.</p><p>There is also a subtler leakage-style trap at inference time. Batch norm behaves differently during training and evaluation: at test time it uses running averages of mean and variance accumulated during training, rather than statistics from the current batch. If your test-time batch composition is wildly different from training, for instance evaluating one example at a time when training used large batches, or if the running statistics were not given enough steps to stabilise, the model's effective behaviour at inference can diverge meaningfully from what you validated. This is easy to miss because nothing errors out; the model simply performs a little worse than your validation numbers suggested, and it is tempting to blame the wrong thing.</p><p>Domain shift compounds this. If deployment data has a different feature scale or distribution to training data, the frozen running statistics baked into the batch norm layers no longer match reality, and the network's normalisation is effectively wrong before a single weight is touched.</p></section><section class='psec reveal'><h2>A practical takeaway</h2><p>Batch normalization is not a universal fix, it is a tool that trades on having reasonably large, reasonably representative batches during training. When that assumption holds, the benefits are real: faster convergence, tolerance for higher learning rates, a touch of regularisation, and forgiveness for imperfect initialisation. When the assumption breaks, whether through tiny batch sizes, recurrent architectures, or a mismatch between training and deployment conditions, the same mechanism becomes a liability rather than an asset.</p><p>My rule of thumb is simple: if batch size is comfortably large and the data is reasonably i.i.d. across batches, batch norm is a sensible default. If batch size is small, or the architecture is sequential, reach for layer normalisation or group normalisation instead, and always sanity check inference-time behaviour against a validation set that reflects real deployment batch sizes rather than just the convenient large batches used during training.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/batch-normalization-helps-and-hurts-2.jpg' alt='whiteboard with equations' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

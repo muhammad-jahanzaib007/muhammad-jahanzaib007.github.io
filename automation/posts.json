@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "batch-normalization-helps-and-hurts",
+      "title": "Why Batch Normalization Helps, and When It Hurts",
+      "excerpt": "Batch norm speeds up training by taming shifting activations, but it leans on batch statistics that can betray you at small batch sizes or test time.",
+      "date": "2026-07-05",
+      "read_min": 5,
+      "tag": "Deep Learning",
+      "color": "a6",
+      "thumb": "assets/blog/batch-normalization-helps-and-hurts.png",
+      "thumb_alt": "Cover image for the article: Why Batch Normalization Helps, and When It Hurts"
+    },
+    {
       "slug": "attention-queries-keys-values",
       "title": "Attention, Intuitively: Queries, Keys, and Values",
       "excerpt": "Attention is a soft lookup table: queries ask, keys answer, values deliver. Here is that idea made concrete with numbers.",

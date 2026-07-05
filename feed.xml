@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Sun, 05 Jul 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Why Batch Normalization Helps, and When It Hurts</title>
+    <link>https://jahanzaibawan.com/blog/batch-normalization-helps-and-hurts.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/batch-normalization-helps-and-hurts.html</guid>
+    <pubDate>Sun, 05 Jul 2026 09:00:00 +0000</pubDate>
+    <description>Batch norm speeds up training by taming shifting activations, but it leans on batch statistics that can betray you at small batch sizes or test time.</description>
+    <category>Deep Learning</category>
+  </item>
+  <item>
     <title>Attention, Intuitively: Queries, Keys, and Values</title>
     <link>https://jahanzaibawan.com/blog/attention-queries-keys-values.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/attention-queries-keys-values.html</guid>
