@@ -9,7 +9,8 @@
       "tag": "Deep Learning",
       "color": "a6",
       "thumb": "assets/blog/batch-normalization-helps-and-hurts.png",
-      "thumb_alt": "Cover image for the article: Why Batch Normalization Helps, and When It Hurts"
+      "thumb_alt": "Cover image for the article: Why Batch Normalization Helps, and When It Hurts",
+      "li_shared": true
     },
     {
       "slug": "attention-queries-keys-values",
