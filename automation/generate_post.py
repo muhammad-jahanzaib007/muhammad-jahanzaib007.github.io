@@ -48,6 +48,15 @@ PEXELS_KEY = os.environ.get("PEXELS_API_KEY")   # optional: in-article stock pho
 
 SITE = "https://jahanzaibawan.com"
 AUTHOR = "Muhammad Jahanzaib Awan"
+# Name variants in every article's metadata so posts rank for name searches
+# and search engines link them to the homepage Person entity (#person).
+NAME_KEYWORDS = "Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan"
+AUTHOR_JSONLD = ('{ "@type": "Person", "@id": "https://jahanzaibawan.com/#person", '
+                 '"name": "Muhammad Jahanzaib Awan", '
+                 '"alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], '
+                 '"url": "https://jahanzaibawan.com/", '
+                 '"sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", '
+                 '"https://github.com/muhammad-jahanzaib007"] }')
 COLORS = ["a2", "a3", "a4", "a5", "a6"]
 EM_DASH = "—"
 REQUIRED = ("slug", "title", "dek", "excerpt", "description", "keywords", "tag", "read_min",
@@ -368,7 +377,7 @@ def render_post_page(p):
 <title>{title} | {AUTHOR}</title>
 <meta name="description" content="{esc(p['description'])}">
 <meta name="author" content="{AUTHOR}">
-<meta name="keywords" content="{esc(p['keywords'])}">
+<meta name="keywords" content="{esc(p['keywords'])}, {NAME_KEYWORDS}">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="{p['date']}">
@@ -398,8 +407,8 @@ def render_post_page(p):
   "datePublished": "{p['date']}",
   "dateModified": "{p['date']}",
   "inLanguage": "en-GB",
-  "author": {{ "@type": "Person", "name": "{AUTHOR}", "url": "{SITE}/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] }},
-  "publisher": {{ "@type": "Person", "name": "{AUTHOR}" }},
+  "author": {AUTHOR_JSONLD},
+  "publisher": {{ "@type": "Person", "@id": "{SITE}/#person", "name": "{AUTHOR}" }},
   "mainEntityOfPage": "{url}",
   "isPartOf": {{ "@type": "Blog", "@id": "{SITE}/blog.html#blog" }}
 }}
@@ -455,7 +464,7 @@ def update_blog_index(posts):
     items = ",\n".join(
         f'    {{ "@type": "BlogPosting", "headline": {json.dumps(p["title"])}, '
         f'"url": "{SITE}/blog/{p["slug"]}.html", "datePublished": "{p["date"]}", '
-        f'"author": {{ "@type": "Person", "name": "{AUTHOR}" }} }}'
+        f'"author": {{ "@type": "Person", "@id": "{SITE}/#person", "name": "{AUTHOR}" }} }}'
         for p in posts)
     text = re.sub(r'"blogPost":\s*\[.*?\]', lambda m: f'"blogPost": [\n{items}\n  ]', text, flags=re.S)
     BLOG_INDEX.write_text(text, encoding="utf-8")
