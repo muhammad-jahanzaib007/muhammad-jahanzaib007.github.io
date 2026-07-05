@@ -137,6 +137,22 @@
     draw();
   }
 
+  // back-to-top button (injected so every page gets it without HTML edits)
+  const totop=document.createElement('button');
+  totop.id='totop';totop.type='button';totop.setAttribute('aria-label','Back to top');
+  totop.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
+  document.body.appendChild(totop);
+  totop.addEventListener('click',()=>window.scrollTo({top:0,behavior:rm?'auto':'smooth'}));
+  addEventListener('scroll',()=>totop.classList.toggle('show',scrollY>600),{passive:true});
+
+  // mobile nav menu
+  const mb=document.getElementById('menubtn'),nl=document.querySelector('.navlinks');
+  if(mb&&nl){
+    mb.addEventListener('click',()=>{const open=nl.classList.toggle('open');mb.setAttribute('aria-expanded',open)});
+    nl.addEventListener('click',e=>{if(e.target.tagName==='A'){nl.classList.remove('open');mb.setAttribute('aria-expanded','false')}});
+    addEventListener('click',e=>{if(!e.target.closest('nav')){nl.classList.remove('open');mb.setAttribute('aria-expanded','false')}});
+  }
+
   // CV button, graceful fallback if PDF missing
   const cv=document.getElementById('cvbtn');
   if(cv)cv.addEventListener('click',e=>{

@@ -37,6 +37,10 @@ SITE = "https://jahanzaibawan.com"
 SHARE_WINDOW_DAYS = 3
 MAX_SHARES_PER_RUN = 2
 
+# IndexNow (Bing & friends; Google retired its ping endpoint). The key file
+# <key>.txt lives at the site root, as the protocol requires.
+INDEXNOW_KEY = "d20abba1e462424ca821cbf6d36021f0"
+
 TOKEN = os.environ.get("LINKEDIN_ACCESS_TOKEN")
 AUTHOR = os.environ.get("LINKEDIN_AUTHOR_URN")
 VERSION = os.environ.get("LINKEDIN_VERSION", "202606")
@@ -128,6 +132,21 @@ def upload_image(headers, owner, post):
     return value["image"]
 
 
+def ping_indexnow(urls):
+    """Tell Bing/IndexNow about new URLs. Best-effort; never fails the run."""
+    if not urls:
+        return
+    try:
+        r = requests.post("https://api.indexnow.org/indexnow",
+                          json={"host": "jahanzaibawan.com", "key": INDEXNOW_KEY,
+                                "keyLocation": f"{SITE}/{INDEXNOW_KEY}.txt",
+                                "urlList": urls},
+                          timeout=30)
+        print(f"indexnow ping ({len(urls)} urls): {r.status_code}")
+    except Exception as e:
+        print(f"indexnow skipped: {e}")
+
+
 def write_receipt(results):
     """One line: `<utc-ts> slug=ok:<id> slug2=fail:<code>` (or a bare status)."""
     ts = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
@@ -192,7 +211,7 @@ def main():
     }
     urn = author_urn(headers)
 
-    results, failed = [], False
+    results, failed, live_urls = [], False, []
     for post in pending:
         url = f"{SITE}/blog/{post['slug']}.html"
         if not wait_until_live(url):
@@ -200,6 +219,7 @@ def main():
             results.append(f"{post['slug']}=fail:dead-link")
             failed = True
             continue
+        live_urls.append(url)
         status = share_post(headers, urn, post, url)
         if status.startswith("ok"):
             post["li_shared"] = True                # flag committed by the receipt step
@@ -209,6 +229,8 @@ def main():
             failed = True
         results.append(f"{post['slug']}={status}")
 
+    if live_urls:
+        ping_indexnow(live_urls + [f"{SITE}/blog.html", f"{SITE}/feed.xml"])
     write_receipt(results)
     print("share results: " + " ".join(results))
     if failed:

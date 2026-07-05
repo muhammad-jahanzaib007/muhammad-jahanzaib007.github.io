@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Muhammad Jahanzaib Awan — Writing</title>
+  <link>https://jahanzaibawan.com/blog.html</link>
+  <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
+  <description>Short technical posts on machine learning, evaluation and data science.</description>
+  <language>en-gb</language>
+  <lastBuildDate>Sat, 04 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Embeddings 101: What Cosine Similarity Actually Measures</title>
+    <link>https://jahanzaibawan.com/blog/cosine-similarity-embeddings.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/cosine-similarity-embeddings.html</guid>
+    <pubDate>Sat, 04 Jul 2026 09:00:00 +0000</pubDate>
+    <description>Cosine similarity measures angle, not distance. Understanding that difference will save you from subtle bugs in retrieval and clustering systems.</description>
+    <category>NLP</category>
+  </item>
+  <item>
+    <title>Train, Validation, Test: Why Three Splits Not Two</title>
+    <link>https://jahanzaibawan.com/blog/train-validation-test-splits.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/train-validation-test-splits.html</guid>
+    <pubDate>Sat, 04 Jul 2026 09:00:00 +0000</pubDate>
+    <description>Two splits let your decisions leak into your test score. A validation set is what keeps your final number honest.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
+    <title>The Trap of Optimizing the Wrong Metric</title>
+    <link>https://jahanzaibawan.com/blog/optimizing-the-wrong-metric.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/optimizing-the-wrong-metric.html</guid>
+    <pubDate>Sat, 04 Jul 2026 09:00:00 +0000</pubDate>
+    <description>High accuracy can hide a useless model. Here is why the metric you optimize quietly decides what your system actually learns.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
+    <title>Feature Scaling: Which Models Care and Which Do Not</title>
+    <link>https://jahanzaibawan.com/blog/feature-scaling-which-models-care.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/feature-scaling-which-models-care.html</guid>
+    <pubDate>Fri, 03 Jul 2026 09:00:00 +0000</pubDate>
+    <description>A practical guide to why distance and gradient based models demand scaled features while tree based models shrug them off entirely.</description>
+    <category>Machine Learning</category>
+  </item>
+  <item>
+    <title>Class Weights vs Resampling for Imbalanced Data</title>
+    <link>https://jahanzaibawan.com/blog/class-weights-vs-resampling.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/class-weights-vs-resampling.html</guid>
+    <pubDate>Fri, 03 Jul 2026 09:00:00 +0000</pubDate>
+    <description>Class weights and resampling both target imbalance, but they change different things. Here is how to pick the right one and evaluate it honestly.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
+    <title>Early Stopping vs Regularization: Do You Need Both</title>
+    <link>https://jahanzaibawan.com/blog/early-stopping-vs-regularization.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/early-stopping-vs-regularization.html</guid>
+    <pubDate>Thu, 02 Jul 2026 09:00:00 +0000</pubDate>
+    <description>Early stopping and regularization both fight overfitting, but they work through different mechanisms. Understanding the difference tells you when you need one, the other, or both.</description>
+    <category>Machine Learning</category>
+  </item>
+  <item>
+    <title>A tuned GRU beat LoRA-fine-tuned GPT-2, here&#x27;s why</title>
+    <link>https://jahanzaibawan.com/blog/gru-vs-gpt2.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/gru-vs-gpt2.html</guid>
+    <pubDate>Sat, 20 Jun 2026 09:00:00 +0000</pubDate>
+    <description>A 117M-parameter transformer lost to a small recurrent net on every metric. Not because transformers are bad, but because the baseline was done properly.</description>
+    <category>Baselines</category>
+  </item>
+  <item>
+    <title>How a naïve train/test split inflated my UAV F1 by 0.5</title>
+    <link>https://jahanzaibawan.com/blog/uav-data-leakage.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/uav-data-leakage.html</guid>
+    <pubDate>Fri, 12 Jun 2026 09:00:00 +0000</pubDate>
+    <description>The same model, the same data, and a macro-F1 that fell from 0.78 to 0.26 the moment I split the data honestly. A walk through the most expensive bug in ML.</description>
+    <category>Evaluation</category>
+  </item>
+</channel>
+</rss>

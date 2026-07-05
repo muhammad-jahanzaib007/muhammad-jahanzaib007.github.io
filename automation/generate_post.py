@@ -26,6 +26,7 @@ import datetime as dt
 from pathlib import Path
 
 import requests
+from html.parser import HTMLParser
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parent.parent          # repo root (portfolio-publish)
@@ -35,6 +36,7 @@ POSTS_JSON = DATA / "posts.json"
 TOPICS_JSON = DATA / "topics.json"
 BLOG_INDEX = ROOT / "blog.html"
 SITEMAP = ROOT / "sitemap.xml"
+FEED = ROOT / "feed.xml"
 
 MODEL = os.environ.get("BLOG_MODEL", "openai/gpt-4o-mini")
 ENDPOINT = os.environ.get("MODELS_ENDPOINT", "https://models.github.ai/inference/chat/completions")
@@ -162,6 +164,43 @@ def chat_json(user, max_tokens=4000, schema=None):
         return json.loads(m.group(0))
 
 
+ALLOWED_TAGS = {"section", "h2", "h3", "p", "ul", "ol", "li", "strong", "em", "code", "br"}
+VOID_TAGS = {"br"}
+
+
+class _BodyCheck(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.stack, self.bad = [], []
+
+    def handle_starttag(self, tag, attrs):
+        if tag not in ALLOWED_TAGS:
+            self.bad.append(f"tag:{tag}")
+        if tag not in VOID_TAGS:
+            self.stack.append(tag)
+
+    def handle_endtag(self, tag):
+        if self.stack and self.stack[-1] == tag:
+            self.stack.pop()
+        else:
+            self.bad.append(f"mismatch:{tag}")
+
+
+def body_html_ok(body):
+    """Reject disallowed tags and unbalanced markup before it can wreck the page layout."""
+    c = _BodyCheck()
+    try:
+        c.feed(body)
+        c.close()
+    except Exception as e:
+        print(f"body_html parse error: {e}")
+        return False
+    if c.bad or c.stack:
+        print(f"body_html invalid: bad={c.bad[:5]} unclosed={c.stack[:5]}")
+        return False
+    return True
+
+
 def generate_post(topic):
     base = (
         f'Write a blog post on this topic: "{topic}".\n\n'
@@ -211,10 +250,12 @@ def generate_post(topic):
         data["slug"] = re.sub(r"[^a-z0-9-]", "", data["slug"].lower().replace(" ", "-")).strip("-")
         words = len(re.sub(r"<[^>]+>", " ", data["body_html"]).split())
         data["read_min"] = max(4, min(12, round(words / 200)))   # honest, derived from the body
-        if data["slug"] and data["body_html"].count("<section") >= 2 and MIN_WORDS <= words <= MAX_WORDS:
+        if (data["slug"] and data["body_html"].count("<section") >= 2
+                and MIN_WORDS <= words <= MAX_WORDS and body_html_ok(data["body_html"])):
             print(f"post OK: {words} words")
             return data
-        reason = "too short" if words < MIN_WORDS else "too long" if words > MAX_WORDS else "invalid"
+        reason = ("too short" if words < MIN_WORDS else "too long" if words > MAX_WORDS
+                  else "invalid")
         print(f"attempt {attempt + 1}: post {reason} ({words} words); "
               + ("retrying" if attempt < 2 else "giving up"))
     sys.exit(f"model returned an unusable post after retries ({words} words, "
@@ -341,6 +382,7 @@ def render_post_page(p):
 <meta name="twitter:title" content="{title}">
 <meta name="twitter:image" content="{SITE}/assets/blog/{p['slug']}.png">
 <link rel="canonical" href="{url}">
+<link rel="alternate" type="application/rss+xml" title="{AUTHOR} — Writing" href="{SITE}/feed.xml">
 <link rel="icon" href="{ICON}">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -377,7 +419,7 @@ def render_post_page(p):
 <body style="--hc:var(--{p['color']})">
 <a class="skip" href="#main">Skip to content</a>
 <div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
-<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
 
 <div class="wrap narrow" id="main">
   <div class="phero">
@@ -417,6 +459,38 @@ def update_blog_index(posts):
         for p in posts)
     text = re.sub(r'"blogPost":\s*\[.*?\]', lambda m: f'"blogPost": [\n{items}\n  ]', text, flags=re.S)
     BLOG_INDEX.write_text(text, encoding="utf-8")
+
+
+def _rfc822(iso):
+    d = dt.datetime.combine(dt.date.fromisoformat(iso), dt.time(9, 0), tzinfo=dt.timezone.utc)
+    return d.strftime("%a, %d %b %Y %H:%M:%S +0000")
+
+
+def update_feed(posts):
+    """Write feed.xml (RSS 2.0) from posts.json — newest 20."""
+    items = "\n".join(
+        f"""  <item>
+    <title>{esc(p['title'])}</title>
+    <link>{SITE}/blog/{p['slug']}.html</link>
+    <guid isPermaLink="true">{SITE}/blog/{p['slug']}.html</guid>
+    <pubDate>{_rfc822(p['date'])}</pubDate>
+    <description>{esc(p['excerpt'])}</description>
+    <category>{esc(p['tag'])}</category>
+  </item>"""
+        for p in posts[:20])
+    FEED.write_text(f"""<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>{AUTHOR} — Writing</title>
+  <link>{SITE}/blog.html</link>
+  <atom:link href="{SITE}/feed.xml" rel="self" type="application/rss+xml"/>
+  <description>Short technical posts on machine learning, evaluation and data science.</description>
+  <language>en-gb</language>
+  <lastBuildDate>{_rfc822(posts[0]['date']) if posts else _rfc822(dt.date.today().isoformat())}</lastBuildDate>
+{items}
+</channel>
+</rss>
+""", encoding="utf-8")
 
 
 def update_sitemap(posts, today):
@@ -516,19 +590,36 @@ def _fig(img, alt):
     )
 
 
+def _download_image(url, dest):
+    """Save the photo into the repo so articles never depend on Pexels keeping it."""
+    try:
+        r = requests.get(url, timeout=60)
+        r.raise_for_status()
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        dest.write_bytes(r.content)
+        return True
+    except Exception as e:
+        print(f"image download failed ({e}); skipping this photo")
+        return False
+
+
 def add_body_images(post):
     """Insert up to 2 stock photos, one per model-chosen query.
 
     The model proposes concrete queries only when a stock photo genuinely fits
     the article ('gpu server rack', not '<tag> technology'); an abstract topic
     gets no queries and the article ships text-only. User feedback 2026-07-05:
-    the old generic tag-based photos looked irrelevant.
+    the old generic tag-based photos looked irrelevant. Photos are downloaded
+    into assets/blog/body/ (hotlinks broke when Pexels removed a photo).
     """
     imgs = []
-    for q in post.get("image_queries", [])[:2]:
+    for i, q in enumerate(post.get("image_queries", [])[:2], 1):
         found = fetch_pexels(q, n=1)
-        if found:
-            imgs.append((found[0], q))
+        if not found:
+            continue
+        rel = f"assets/blog/body/{post['slug']}-{i}.jpg"
+        if _download_image(found[0]["url"], ROOT / rel):
+            imgs.append(({"url": f"../{rel}"}, q))
     if not imgs:
         print("no relevant body images; article ships text-only")
         return post["body_html"]
@@ -586,6 +677,7 @@ def main():
 
     update_blog_index(posts_data["posts"])
     update_sitemap(posts_data["posts"], today)
+    update_feed(posts_data["posts"])
 
     topics["published"].append(topic)
     if len(topics["queue"]) < 6:
