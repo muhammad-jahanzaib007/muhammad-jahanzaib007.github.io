@@ -73,7 +73,9 @@ def _prop(k):
     if k == "read_min":
         return {"type": "integer"}
     if k == "image_queries":
-        return {"type": "array", "items": {"type": "string"}, "maxItems": 2}
+        # No maxItems: the Claude structured-outputs schema subset rejects it
+        # (400 "property 'maxItems' is not supported"); the code slices [:2].
+        return {"type": "array", "items": {"type": "string"}}
     return {"type": "string"}
 
 
