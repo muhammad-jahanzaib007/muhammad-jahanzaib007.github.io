@@ -9,7 +9,8 @@
       "tag": "Deep Learning",
       "color": "a3",
       "thumb": "assets/blog/learning-rate-first-hyperparameter.png",
-      "thumb_alt": "Cover image for the article: Learning Rate: The First Hyperparameter to Tune"
+      "thumb_alt": "Cover image for the article: Learning Rate: The First Hyperparameter to Tune",
+      "li_shared": true
     },
     {
       "slug": "dropout-as-an-ensemble",
