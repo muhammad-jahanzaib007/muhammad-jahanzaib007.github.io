@@ -16,6 +16,7 @@ concurrency:
 jobs:
   backfill:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
 
@@ -24,7 +25,7 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install --upgrade pillow requests
+        run: pip install -r requirements.txt
 
       - name: Backfill cards
         run: python automation/backfill_cards.py
@@ -38,5 +39,12 @@ jobs:
             echo "No changes to commit."
           else
             git commit -m "chore: backfill title cards for older posts"
-            git push
+            ok=""
+            for i in 1 2 3; do
+              if git push; then ok=1; break; fi
+              echo "push attempt $i rejected; rebasing"
+              git pull --rebase --quiet || true
+              sleep 5
+            done
+            [ -n "$ok" ] || { echo "push failed after 3 attempts"; exit 1; }
           fi
