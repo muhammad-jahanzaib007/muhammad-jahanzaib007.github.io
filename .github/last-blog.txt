@@ -1,1 +1,1 @@
-2026-07-06T11:57:16Z slug=learning-rate-first-hyperparameter words=1003 title="Learning Rate: The First Hyperparameter to Tune"
+2026-07-06T20:56:53Z slug=gradient-clipping-exploding-gradients words=973 title="Gradient Clipping and Exploding Gradients in RNNs"

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gradient Clipping and Exploding Gradients in RNNs | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="An explanation of exploding gradients in RNNs, why they occur through repeated matrix multiplication, and how gradient clipping stabilises training.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="gradient clipping, exploding gradients, RNN training, vanishing gradients, backpropagation through time, LSTM, gradient norm, deep learning stability, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-06">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Gradient Clipping and Exploding Gradients in RNNs">
+<meta property="og:description" content="An explanation of exploding gradients in RNNs, why they occur through repeated matrix multiplication, and how gradient clipping stabilises training.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/gradient-clipping-exploding-gradients.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/gradient-clipping-exploding-gradients.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gradient Clipping and Exploding Gradients in RNNs">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/gradient-clipping-exploding-gradients.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/gradient-clipping-exploding-gradients.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Gradient Clipping and Exploding Gradients in RNNs",
+  "description": "An explanation of exploding gradients in RNNs, why they occur through repeated matrix multiplication, and how gradient clipping stabilises training.",
+  "url": "https://jahanzaibawan.com/blog/gradient-clipping-exploding-gradients.html",
+  "image": "https://jahanzaibawan.com/assets/blog/gradient-clipping-exploding-gradients.png",
+  "datePublished": "2026-07-06",
+  "dateModified": "2026-07-06",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/gradient-clipping-exploding-gradients.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Gradient Clipping and Exploding Gradients in RNNs", "item": "https://jahanzaibawan.com/blog/gradient-clipping-exploding-gradients.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Deep Learning · 5 min read · 6 Jul 2026</div>
+    <h1>Gradient Clipping and Exploding Gradients in RNNs</h1>
+    <p class="lede">Why recurrent networks blow up during training, and why clamping the gradient norm is often the simplest fix that actually works.</p>
+  </div>
+
+  <img src="../assets/blog/gradient-clipping-exploding-gradients.png" alt="Cover image for the article: Gradient Clipping and Exploding Gradients in RNNs" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The problem hiding inside backpropagation through time</h2><p>When I first trained a vanilla RNN on a moderately long sequence, the loss looked fine for a few steps and then became NaN with no warning. This is one of the most common early lessons in sequence modelling, and it is worth understanding precisely rather than just patching it away. Recurrent networks apply the same weight matrix repeatedly, once per timestep, and backpropagation through time multiplies gradients by that matrix's derivative at every step going backwards. If the dominant eigenvalue of that matrix is even slightly above one, the gradient magnitude grows exponentially with sequence length rather than linearly.</p><p>Concretely, imagine a toy recurrent weight matrix whose largest eigenvalue is 1.2. Over 50 timesteps, a naive estimate of the compounding effect is 1.2 raised to the 50th power, which is well over five thousand. In practice the real dynamics are messier because of nonlinearities and varying eigenvalues at each step, but the qualitative behaviour is the same: small multiplicative excesses compound into gradients so large that a single weight update can overshoot and destroy the parameters entirely. This is the exploding gradient problem, and it is the mirror image of the vanishing gradient problem, where an eigenvalue slightly below one causes gradients to shrink towards zero instead.</p><p>What makes this particularly frustrating in practice is that the symptom often looks like a bug rather than a numerical instability. Losses that suddenly jump to NaN, weights that saturate, or training that diverges after looking stable for many epochs are all consistent with exploding gradients, and it is easy to waste time checking data loading or label encoding before realising the actual cause is the recurrent structure itself.</p></section><section class='psec reveal'><h2>Why clipping the norm works better than clipping each value</h2><p>The standard fix is gradient clipping, and the version that matters most in practice is global norm clipping rather than clipping individual gradient values. The idea is to compute the L2 norm of the entire gradient vector across all parameters, and if that norm exceeds some threshold, rescale the whole vector down so its norm equals the threshold exactly. Crucially, this rescaling preserves the direction of the gradient; it only shrinks the step size, so the optimiser still moves the parameters the same way, just less aggressively.</p><p>Say the gradient norm on a given batch turns out to be 40, and the threshold is set to 5. Norm clipping multiplies every component of the gradient by 5/40, which is 0.125, so the update direction is untouched but the magnitude is controlled. Contrast this with clipping each gradient element independently to some fixed range, say minus one to one. That approach distorts the direction of the update, because components that were large relative to others get truncated disproportionately, effectively changing which parameters get emphasised. For recurrent networks in particular, where the relationship between weights across timesteps matters, preserving direction while controlling magnitude is usually the more sensible compromise.</p><p>It is worth being honest about what clipping does and does not fix. It does not solve exploding gradients at their root; the underlying recurrent dynamics still amplify signals across time. What clipping does is prevent any single batch from producing a catastrophic update that knocks the network out of a reasonable region of parameter space. It is a safety valve, not a cure, and that distinction affects how you should think about tuning it.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/gradient-clipping-exploding-gradients-1.jpg' alt='tangled cables server room' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Choosing a threshold without fooling yourself</h2><p>Picking the clipping threshold is often treated as an afterthought, but it deserves the same care as any other hyperparameter. A threshold set too low will cap the network's ability to make large, legitimate updates when they are genuinely needed, effectively slowing learning across the board. A threshold set too high defeats the purpose and lets occasional spikes through anyway. A practical habit is to log the unclipped gradient norm for a few hundred batches early in training and look at its distribution. If the typical norm sits around 2 to 4 but occasional batches spike to 30 or more, a threshold somewhere around the 90th or 95th percentile of the typical range is a reasonable starting point, adjusted by watching whether training stabilises.</p><p>One thing I am careful about is not letting gradient clipping mask a different problem entirely. If gradients are exploding on nearly every batch rather than occasionally, that is often a sign of a learning rate that is too high, a poorly scaled input, or an architecture choice that is fundamentally unstable for the sequence lengths involved. In that situation, clipping might make training limp along without NaNs, but the model may still learn poorly or slowly, and the honest fix is elsewhere: better initialisation, shorter truncated sequences during backpropagation through time, or switching to gated architectures such as LSTMs or GRUs, which are specifically designed to keep gradient flow closer to well behaved across long sequences.</p><p>It is also worth remembering that gradient clipping addresses explosion, not vanishing. If your recurrent model is failing to learn long range dependencies because gradients are shrinking towards zero rather than growing, clipping will do nothing useful, and you need architectural or optimisation changes aimed at the opposite problem.</p></section><section class='psec reveal'><h2>A practical takeaway</h2><p>If you are training a recurrent model and see sudden divergence, treat exploding gradients as a first suspect before assuming a data or labelling bug. Add global norm clipping early rather than as a late fix, log the unclipped norm so you can see what is actually happening rather than guessing at a threshold, and be honest with yourself about whether clipping is stabilising a fundamentally sound setup or quietly papering over a learning rate or architecture problem that deserves a real fix. Used this way, clipping is a small, well understood tool that buys you stability without pretending to solve problems it was never designed to solve.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/gradient-clipping-exploding-gradients-2.jpg' alt='whiteboard with matrix equations' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

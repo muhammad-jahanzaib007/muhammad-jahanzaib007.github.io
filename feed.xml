@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Mon, 06 Jul 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Gradient Clipping and Exploding Gradients in RNNs</title>
+    <link>https://jahanzaibawan.com/blog/gradient-clipping-exploding-gradients.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/gradient-clipping-exploding-gradients.html</guid>
+    <pubDate>Mon, 06 Jul 2026 09:00:00 +0000</pubDate>
+    <description>A practical look at why RNN gradients explode over long sequences, and how norm-based clipping keeps training stable without hiding real bugs.</description>
+    <category>Deep Learning</category>
+  </item>
+  <item>
     <title>Learning Rate: The First Hyperparameter to Tune</title>
     <link>https://jahanzaibawan.com/blog/learning-rate-first-hyperparameter.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/learning-rate-first-hyperparameter.html</guid>

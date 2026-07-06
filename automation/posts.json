@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "gradient-clipping-exploding-gradients",
+      "title": "Gradient Clipping and Exploding Gradients in RNNs",
+      "excerpt": "A practical look at why RNN gradients explode over long sequences, and how norm-based clipping keeps training stable without hiding real bugs.",
+      "date": "2026-07-06",
+      "read_min": 5,
+      "tag": "Deep Learning",
+      "color": "a4",
+      "thumb": "assets/blog/gradient-clipping-exploding-gradients.png",
+      "thumb_alt": "Cover image for the article: Gradient Clipping and Exploding Gradients in RNNs"
+    },
+    {
       "slug": "learning-rate-first-hyperparameter",
       "title": "Learning Rate: The First Hyperparameter to Tune",
       "excerpt": "Tune the learning rate before anything else: it decides whether your model converges, stalls, or blows up entirely.",
