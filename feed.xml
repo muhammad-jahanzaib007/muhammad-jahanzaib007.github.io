@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Mon, 06 Jul 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Transfer Learning: Freeze, Fine-Tune, or LoRA?</title>
+    <link>https://jahanzaibawan.com/blog/freeze-fine-tune-or-lora.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/freeze-fine-tune-or-lora.html</guid>
+    <pubDate>Mon, 06 Jul 2026 09:00:00 +0000</pubDate>
+    <description>Freezing, full fine-tuning, and LoRA all solve transfer learning differently. Here is how to choose based on data size, compute, and risk of overfitting.</description>
+    <category>Deep Learning</category>
+  </item>
+  <item>
     <title>Gradient Clipping and Exploding Gradients in RNNs</title>
     <link>https://jahanzaibawan.com/blog/gradient-clipping-exploding-gradients.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/gradient-clipping-exploding-gradients.html</guid>

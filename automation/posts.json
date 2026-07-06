@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "freeze-fine-tune-or-lora",
+      "title": "Transfer Learning: Freeze, Fine-Tune, or LoRA?",
+      "excerpt": "Freezing, full fine-tuning, and LoRA all solve transfer learning differently. Here is how to choose based on data size, compute, and risk of overfitting.",
+      "date": "2026-07-06",
+      "read_min": 6,
+      "tag": "Deep Learning",
+      "color": "a5",
+      "thumb": "assets/blog/freeze-fine-tune-or-lora.png",
+      "thumb_alt": "Cover image for the article: Transfer Learning: Freeze, Fine-Tune, or LoRA?"
+    },
+    {
       "slug": "gradient-clipping-exploding-gradients",
       "title": "Gradient Clipping and Exploding Gradients in RNNs",
       "excerpt": "A practical look at why RNN gradients explode over long sequences, and how norm-based clipping keeps training stable without hiding real bugs.",

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transfer Learning: Freeze, Fine-Tune, or LoRA? | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical comparison of freezing, full fine-tuning, and LoRA for transfer learning, with a worked example to guide the choice.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="transfer learning, LoRA, fine-tuning, feature extraction, parameter efficient tuning, deep learning, model adaptation, overfitting, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-06">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Transfer Learning: Freeze, Fine-Tune, or LoRA?">
+<meta property="og:description" content="A practical comparison of freezing, full fine-tuning, and LoRA for transfer learning, with a worked example to guide the choice.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/freeze-fine-tune-or-lora.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/freeze-fine-tune-or-lora.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Transfer Learning: Freeze, Fine-Tune, or LoRA?">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/freeze-fine-tune-or-lora.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/freeze-fine-tune-or-lora.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Transfer Learning: Freeze, Fine-Tune, or LoRA?",
+  "description": "A practical comparison of freezing, full fine-tuning, and LoRA for transfer learning, with a worked example to guide the choice.",
+  "url": "https://jahanzaibawan.com/blog/freeze-fine-tune-or-lora.html",
+  "image": "https://jahanzaibawan.com/assets/blog/freeze-fine-tune-or-lora.png",
+  "datePublished": "2026-07-06",
+  "dateModified": "2026-07-06",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/freeze-fine-tune-or-lora.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Transfer Learning: Freeze, Fine-Tune, or LoRA?", "item": "https://jahanzaibawan.com/blog/freeze-fine-tune-or-lora.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Deep Learning · 6 min read · 6 Jul 2026</div>
+    <h1>Transfer Learning: Freeze, Fine-Tune, or LoRA?</h1>
+    <p class="lede">Three ways to adapt a pretrained model, and how to pick one without wasting a week of compute on the wrong choice.</p>
+  </div>
+
+  <img src="../assets/blog/freeze-fine-tune-or-lora.png" alt="Cover image for the article: Transfer Learning: Freeze, Fine-Tune, or LoRA?" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this choice matters more than it looks</h2><p>Almost every applied deep learning project now starts with a pretrained model rather than a blank slate. The question is never whether to use transfer learning, it is how much of the pretrained model you should let move. Freeze the backbone and train only a new head, fine-tune the whole network, or insert a small set of trainable low-rank adapters through LoRA. Each choice trades off compute, data requirements, and risk of overfitting differently, and getting it wrong wastes far more time than the decision itself takes to make.</p><p>I have seen people default to full fine-tuning because it is the most familiar recipe, then wonder why their model with three hundred labelled examples has memorised the training set. I have also seen people freeze everything out of caution and leave meaningful accuracy on the table because the pretrained features were a reasonable but imperfect match for the new domain. The right answer depends on how much labelled data you have, how different your task is from the pretraining distribution, and how much compute and storage you can spend. None of that is exotic, but it is easy to skip the reasoning and just copy whatever recipe appeared in the most recent tutorial.</p></section><section class='psec reveal'><h2>Freezing: cheap, safe, and sometimes just enough</h2><p>Freezing the pretrained backbone and training only a new head on top is the lightest option. You run the frozen network once to extract features, then train a small classifier, often logistic regression or a shallow layer, on those fixed representations. The number of trainable parameters can be tiny, sometimes a few thousand, so the method works with remarkably little labelled data and almost no risk of catastrophic overfitting.</p><p>Suppose you have a pretrained image encoder trained on a broad, general-purpose dataset, and you want to classify a few hundred photos of manufacturing defects into three categories. With only four hundred labelled images, full fine-tuning of a network with tens of millions of parameters is asking for trouble: the model can fit noise long before it learns anything generalisable, and your validation curve will confirm it by diverging early. Freezing the backbone and training a small head on extracted features is often the more sensible starting point here, because it respects how little signal you actually have to work with.</p><p>The limitation is equally clear. If your new domain is visually or structurally distant from what the backbone saw during pretraining, frozen features may simply not encode the distinctions you need. A backbone trained on natural photographs may struggle to separate subtle textures in satellite imagery or medical scans, no matter how good the head is, because the relevant information was never preserved in the frozen representation. Freezing is a strong baseline precisely because it is cheap to try, and a leakage-aware validation split will tell you quickly whether it is enough.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/freeze-fine-tune-or-lora-1.jpg' alt='laptop with neural network diagram on screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Full fine-tuning: powerful, hungry, and easy to overdo</h2><p>Full fine-tuning updates every parameter in the pretrained network, usually with a small learning rate so as not to destroy the useful structure already learned. When you have enough labelled data and a task that genuinely benefits from adjusting low-level features, this tends to outperform both frozen extraction and lightweight adapters, because nothing in the network is held back from adapting.</p><p>Return to the defect classification example, but now imagine you have forty thousand labelled images instead of four hundred, with clear class imbalance and a domain shift that a frozen backbone visibly struggles with. With that much data, full fine-tuning has enough signal to safely reshape the earlier layers without collapsing into memorisation, and the accuracy gain over a frozen-head baseline can be substantial, often several percentage points on a held-out test set drawn from a genuinely separate batch of production images rather than a random split of the same shoot.</p><p>The cost is real, though. You need enough compute to backpropagate through the entire network for many steps, enough memory to store gradients and optimiser states for every parameter, and enough storage if you plan to keep a separately fine-tuned copy of the model for each downstream task. If you are supporting ten different clients or ten different tasks from one base model, ten full copies of a large network is not a trivial storage or maintenance burden, and it makes reproducibility harder because now there are ten sets of weights, each with its own training run, learning rate schedule, and checkpoint to track.</p></section><section class='psec reveal'><h2>LoRA: a practical middle ground, not a magic trick</h2><p>Low-Rank Adaptation freezes the original pretrained weights entirely and instead learns small low-rank matrices that are added to specific layers, typically the attention projections in a transformer. Only these small matrices are trained, so the number of trainable parameters can be a tiny fraction, often under one percent, of the full model, while the frozen base weights remain untouched and shareable across tasks.</p><p>Consider a language model with a few hundred million parameters that you want to adapt to a specific customer support domain using perhaps five thousand labelled examples. Full fine-tuning at that data size risks overfitting and definitely requires storing a full new copy of the model. LoRA instead trains adapter matrices that might total a few million parameters, small enough to store per task as a lightweight file measured in megabytes rather than gigabytes, while the shared frozen backbone stays fixed and reusable. In practice this gives results close to full fine-tuning on many tasks, though not always identical, and the gap depends heavily on how much the task requires reshaping the model's earlier representations rather than just its output behaviour.</p><p>LoRA is not free of judgement calls either. You still choose the rank of the adapter matrices, which layers to attach them to, and a learning rate, and each of these affects the outcome. Too low a rank and the adapters cannot capture the needed adjustment; too high and you approach the cost and overfitting risk of full fine-tuning without necessarily gaining anything. It is a genuinely useful middle ground for teams serving many tasks from one base model, but it is a technique to validate against a proper held-out set, not a default you apply blindly because it is currently fashionable.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/freeze-fine-tune-or-lora-2.jpg' alt='server room racks of gpus' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Choosing without guessing</h2><p>My practical rule is to start cheap and escalate only when the evidence demands it. Try frozen feature extraction first, because it costs almost nothing and tells you quickly whether the pretrained representations are already close to sufficient. If that clearly underperforms and you have enough labelled data and compute, and only need one or a few adapted models, full fine-tuning is worth the cost. If you need to support many tasks from a shared backbone, or your labelled data is moderate rather than abundant, LoRA is usually the sensible middle path.</p><p>Whatever you choose, evaluate on a split that genuinely reflects deployment conditions, not a random shuffle that leaks information from near-duplicate examples across train and test. The method matters less than knowing, with an honest held-out evaluation, whether it actually worked.</p></section>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
