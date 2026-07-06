@@ -32,6 +32,9 @@ should read it before touching anything.
 - `self-heal.yml`: failed Auto blog run auto-retried once; second failure →
   ONE `watchdog` issue (NEEDS A HUMAN when it greps as token/credentials).
   Backstops 08:50/20:50 UTC re-dispatch when the GitHub cron never fired.
+  Every invocation also re-runs the latest Pages build if it failed —
+  GitHub Pages throws intermittent "Deployment failed, try again later"
+  transients (4x on 2026-07-06); a re-run of the same artifact clears them.
 - `watchdog.yml` (11:00 UTC daily = 12:00 UK BST): stale receipt >26h,
   `fail:` in last-share.txt, LinkedIn token ≥53 days old, latest Pages build
   failed. Auto-closes its issue when checks pass again.
@@ -95,3 +98,14 @@ commit, so the other sessions know who did what.
   deployments. If it recurs: just re-run the failed run (safe here — the
   deploy re-runs its own commit, which IS the intended content); no code
   change needed.
+- 2026-07-06 — claude.ai/code web session (same as above): throttling
+  theory REVISED — a third deploy failure (46d2c2f, 01:35) also failed on
+  re-run 9 min after a success, so this is an intermittent GitHub-side
+  Pages incident, not just back-to-back throttling. Permanent mitigation
+  shipped: self-heal.yml now re-runs the latest failed Pages build on
+  every invocation, and watchdog.yml heals-then-alerts (re-run + 90s
+  re-check before opening an issue). The managed pages workflow can't be
+  patched or watched via workflow_run, so scheduled re-kicks are the
+  strongest fix available short of migrating Pages to a repo-owned deploy
+  workflow (build_type=workflow) — do that only if transients keep
+  recurring across days.

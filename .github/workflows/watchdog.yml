@@ -16,7 +16,7 @@ on:
 permissions:
   contents: read
   issues: write
-  actions: read
+  actions: write   # re-run a failed Pages deploy before alerting on it
 
 jobs:
   check:
@@ -60,13 +60,26 @@ jobs:
             fi
           fi
 
-          # 4. Latest Pages build failed (a failed build once left a LinkedIn post 404ing)
-          concl=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs?per_page=20" \
-            --jq '[.workflow_runs[] | select(.name=="pages build and deployment")][0].conclusion' \
-            2>/dev/null || echo "unknown")
+          # 4. Latest Pages build failed (a failed build once left a LinkedIn post
+          #    404ing). GitHub Pages throws intermittent "Deployment failed, try
+          #    again later" transients (4x on 2026-07-06); a re-run of the same
+          #    artifact clears them, so heal first and only alert if that fails.
+          pages=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs?per_page=20" \
+            --jq '[.workflow_runs[] | select(.name=="pages build and deployment")][0] // empty' \
+            2>/dev/null || echo "")
+          concl=$(jq -r '.conclusion // "unknown"' <<<"$pages" 2>/dev/null || echo "unknown")
           echo "latest pages build: $concl"
           if [ "$concl" = "failure" ]; then
-            add "Latest GitHub Pages build FAILED: the live site may be stale or missing the newest article. Re-run it or push any commit to rebuild."
+            id=$(jq -r '.id' <<<"$pages")
+            echo "attempting self-heal: re-running failed Pages deploy $id"
+            gh run rerun "$id" --failed --repo "$GITHUB_REPOSITORY" || true
+            sleep 90
+            concl=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$id" \
+                    --jq '.conclusion // "in_progress"' 2>/dev/null || echo "unknown")
+            echo "after re-run: $concl"
+          fi
+          if [ "$concl" = "failure" ]; then
+            add "Latest GitHub Pages build FAILED and a re-run did not clear it: the live site may be stale or missing the newest article. Check https://www.githubstatus.com/ and re-run manually."
           fi
 
           if [ -z "$problems" ]; then

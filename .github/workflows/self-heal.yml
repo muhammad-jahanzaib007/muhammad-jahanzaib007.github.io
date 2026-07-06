@@ -85,3 +85,34 @@ jobs:
           fi
           echo "no auto-blog run in the last 60 min; the cron was missed — dispatching"
           gh workflow run auto-blog.yml --repo "$GITHUB_REPOSITORY"
+
+      # GitHub's managed "pages build and deployment" workflow intermittently
+      # fails with "Deployment failed, try again later" (4x on 2026-07-06
+      # alone) — a GitHub-side transient we can't patch, only re-kick. It is
+      # not in .github/workflows, so workflow_run can't watch it; instead
+      # every self-heal invocation checks the latest Pages build and re-runs
+      # it if it failed. A re-run redeploys the SAME commit's artifact, so
+      # this is always safe.
+      - name: Heal a failed Pages deploy
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          for attempt in 1 2 3; do
+            run=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs?per_page=20" \
+                  --jq '[.workflow_runs[] | select(.name=="pages build and deployment")][0] // empty')
+            if [ -z "$run" ]; then echo "no pages runs found"; exit 0; fi
+            id=$(jq -r '.id' <<<"$run")
+            concl=$(jq -r '.conclusion // "in_progress"' <<<"$run")
+            echo "latest pages build $id: $concl (check $attempt)"
+            case "$concl" in
+              success) exit 0 ;;
+              failure)
+                echo "re-running failed Pages deploy"
+                gh run rerun "$id" --failed --repo "$GITHUB_REPOSITORY" || true
+                sleep 90 ;;
+              *) sleep 60 ;;   # queued / in_progress: wait and re-check
+            esac
+          done
+          echo "Pages build still not green after healing attempts (watchdog will alert if it stays red)"
