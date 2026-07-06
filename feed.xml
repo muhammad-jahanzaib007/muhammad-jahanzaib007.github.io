@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Sun, 05 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Mon, 06 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Dropout as an Ensemble, Not a Magic Switch</title>
+    <link>https://jahanzaibawan.com/blog/dropout-as-an-ensemble.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/dropout-as-an-ensemble.html</guid>
+    <pubDate>Mon, 06 Jul 2026 09:00:00 +0000</pubDate>
+    <description>Dropout works because it approximates ensembling thousands of thinned networks, not because randomness alone regularises. Here is the intuition, worked through with numbers.</description>
+    <category>Deep Learning</category>
+  </item>
   <item>
     <title>Why Batch Normalization Helps, and When It Hurts</title>
     <link>https://jahanzaibawan.com/blog/batch-normalization-helps-and-hurts.html</link>

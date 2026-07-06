@@ -1,1 +1,1 @@
-2026-07-05T20:59:45Z slug=batch-normalization-helps-and-hurts words=1005 title="Why Batch Normalization Helps, and When It Hurts"
+2026-07-06T09:47:43Z slug=dropout-as-an-ensemble words=1119 title="Dropout as an Ensemble, Not a Magic Switch"

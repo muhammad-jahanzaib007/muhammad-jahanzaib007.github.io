@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Dropout as an ensemble, not a magic switch",
     "Learning rate: the first hyperparameter to tune",
     "Gradient clipping and exploding gradients in RNNs",
     "Transfer learning: freeze, fine-tune, or LoRA?",
@@ -31,6 +30,7 @@
     "Train, validation, test: why three splits and not two",
     "Embeddings 101: what cosine similarity actually measures",
     "Attention, intuitively: queries, keys, and values",
-    "Why batch normalization helps, and when it hurts"
+    "Why batch normalization helps, and when it hurts",
+    "Dropout as an ensemble, not a magic switch"
   ]
 }

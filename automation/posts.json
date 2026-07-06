@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "dropout-as-an-ensemble",
+      "title": "Dropout as an Ensemble, Not a Magic Switch",
+      "excerpt": "Dropout works because it approximates ensembling thousands of thinned networks, not because randomness alone regularises. Here is the intuition, worked through with numbers.",
+      "date": "2026-07-06",
+      "read_min": 6,
+      "tag": "Deep Learning",
+      "color": "a2",
+      "thumb": "assets/blog/dropout-as-an-ensemble.png",
+      "thumb_alt": "Cover image for the article: Dropout as an Ensemble, Not a Magic Switch"
+    },
+    {
       "slug": "batch-normalization-helps-and-hurts",
       "title": "Why Batch Normalization Helps, and When It Hurts",
       "excerpt": "Batch norm speeds up training by taming shifting activations, but it leans on batch statistics that can betray you at small batch sizes or test time.",
