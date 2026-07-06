@@ -1,0 +1,6 @@
+# Pinned 2026-07-06 (same policy as the YT repo): bump deliberately, never
+# blind — unpinned `pip install --upgrade` 2x/day meant any breaking release
+# could halt the blog + LinkedIn schedule.
+requests==2.34.2
+anthropic==0.116.0
+pillow==12.3.0

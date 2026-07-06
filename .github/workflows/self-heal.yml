@@ -1,0 +1,86 @@
+name: Self-heal
+
+# Same self-sustaining pattern as the YT repo:
+# Layer 1: a failed Auto blog run is retried once (transient LLM/network
+#   flakes clear on retry); a second failure opens ONE labelled issue,
+#   titled needs-human when the receipts look like credentials (the LinkedIn
+#   token expiring ~every 60 days is the known out-of-domain case).
+# Layer 2: backstops ~50 min after each blog cron re-dispatch the workflow
+#   when GitHub's cron never fired (same silent-miss class as the YT repo's
+#   eaten 12:13 slot on 2026-07-05).
+on:
+  workflow_run:
+    workflows: ["Auto blog"]
+    types: [completed]
+  schedule:
+    - cron: "50 8 * * *"    # after the 08:00 UTC blog slot
+    - cron: "50 20 * * *"   # after the 20:00 UTC blog slot
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+  issues: write
+
+concurrency:
+  group: self-heal
+  cancel-in-progress: false
+
+jobs:
+  heal:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Retry a failed blog run once, escalate a repeat
+        if: github.event_name == 'workflow_run'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
+          CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+          ATTEMPT: ${{ github.event.workflow_run.run_attempt }}
+          RUN_URL: ${{ github.event.workflow_run.html_url }}
+        run: |
+          set -euo pipefail
+          if [ "$CONCLUSION" != "failure" ]; then
+            echo "auto blog concluded: $CONCLUSION; nothing to heal"
+            exit 0
+          fi
+          if [ "$ATTEMPT" -lt 2 ]; then
+            echo "retrying failed auto-blog run $RUN_ID (was attempt $ATTEMPT)"
+            gh run rerun "$RUN_ID" --failed --repo "$GITHUB_REPOSITORY"
+            exit 0
+          fi
+          echo "auto blog failed twice; escalating"
+          share=$(curl -fsSL "https://raw.githubusercontent.com/$GITHUB_REPOSITORY/main/.github/last-share.txt" || echo "(no receipt)")
+          title="Self-heal: auto blog failed twice, retry did not fix it"
+          if printf '%s' "$share" | grep -qiE "401|403|invalid_grant|unauthorized|token|expired"; then
+            title="Self-heal: auto blog NEEDS A HUMAN (LinkedIn token / credentials)"
+          fi
+          existing=$(gh issue list --repo "$GITHUB_REPOSITORY" --label watchdog --state open --json number --jq 'length')
+          if [ "$existing" -gt 0 ]; then
+            echo "watchdog issue already open; not duplicating"
+            exit 0
+          fi
+          gh label create watchdog --repo "$GITHUB_REPOSITORY" \
+            --description "automated pipeline health alert" --color D93F0B 2>/dev/null || true
+          gh issue create --repo "$GITHUB_REPOSITORY" --label watchdog \
+            --title "$title" \
+            --body "$(printf 'Auto blog failed on both attempts: %s\n\nLast share receipt:\n```\n%s\n```\n' "$RUN_URL" "$share")"
+
+      - name: Backstop a missed blog slot
+        if: github.event_name != 'workflow_run'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          latest=$(gh api "repos/$GITHUB_REPOSITORY/actions/workflows/auto-blog.yml/runs?per_page=1" \
+                   --jq '.workflow_runs[0].created_at // empty')
+          if [ -n "$latest" ]; then
+            age_min=$(( ( $(date -u +%s) - $(date -u -d "$latest" +%s) ) / 60 ))
+            echo "latest auto-blog run: $latest (${age_min} min ago)"
+            if [ "$age_min" -le 60 ]; then
+              echo "slot was served; no action"
+              exit 0
+            fi
+          fi
+          echo "no auto-blog run in the last 60 min; the cron was missed — dispatching"
+          gh workflow run auto-blog.yml --repo "$GITHUB_REPOSITORY"
