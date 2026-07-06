@@ -32,8 +32,9 @@ should read it before touching anything.
 - `self-heal.yml`: failed Auto blog run auto-retried once; second failure →
   ONE `watchdog` issue (NEEDS A HUMAN when it greps as token/credentials).
   Backstops 08:50/20:50 UTC re-dispatch when the GitHub cron never fired.
-- `watchdog.yml` (12:00 UTC daily): stale receipt >26h, `fail:` in
-  last-share.txt, LinkedIn token ≥53 days old, latest Pages build failed.
+- `watchdog.yml` (11:00 UTC daily = 12:00 UK BST): stale receipt >26h,
+  `fail:` in last-share.txt, LinkedIn token ≥53 days old, latest Pages build
+  failed. Auto-closes its issue when checks pass again.
 - `tests.yml` runs `tests/` on every automation push.
 
 ## Hard-won rules
