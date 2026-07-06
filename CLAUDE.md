@@ -87,3 +87,11 @@ commit, so the other sessions know who did what.
   rebase). Also verified: 2026-07-06 00:28 Pages deploy failure was a
   GitHub-side transient on a CLAUDE.md-only commit; site content
   unaffected.
+- 2026-07-06 — claude.ai/code web session (same as above): second Pages
+  deploy failure at 01:30 UTC (15ce7de), identical "Deployment failed,
+  try again later" transient; re-run of the failed job went green in ~30s.
+  Pattern: both failures tonight hit deploys fired ~4-6 min after a
+  successful deploy — likely GitHub throttling rapid back-to-back Pages
+  deployments. If it recurs: just re-run the failed run (safe here — the
+  deploy re-runs its own commit, which IS the intended content); no code
+  change needed.
