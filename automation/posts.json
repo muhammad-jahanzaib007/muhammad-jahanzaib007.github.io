@@ -9,7 +9,8 @@
       "tag": "Deep Learning",
       "color": "a5",
       "thumb": "assets/blog/freeze-fine-tune-or-lora.png",
-      "thumb_alt": "Cover image for the article: Transfer Learning: Freeze, Fine-Tune, or LoRA?"
+      "thumb_alt": "Cover image for the article: Transfer Learning: Freeze, Fine-Tune, or LoRA?",
+      "li_shared": true
     },
     {
       "slug": "gradient-clipping-exploding-gradients",
