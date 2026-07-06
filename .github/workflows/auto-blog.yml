@@ -27,6 +27,9 @@ concurrency:
 jobs:
   post:
     runs-on: ubuntu-latest
+    # Generation retries + the 15-min LinkedIn liveness wait fit well inside
+    # this; a hung API call must not hold the job for GitHub's 6h default.
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
 
@@ -52,7 +55,12 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add blog blog.html sitemap.xml feed.xml automation/posts.json automation/topics.json assets/blog .github/last-blog.txt
+          # Add each path individually: one missing pathspec in a combined
+          # `git add a b c` fails the WHOLE add (nothing staged) — the exact
+          # failure that lost the YT repo's receipts on 2026-07-05.
+          for f in blog blog.html sitemap.xml feed.xml automation/posts.json automation/topics.json assets/blog .github/last-blog.txt; do
+            [ -e "$f" ] && git add "$f"
+          done
           if git diff --cached --quiet; then
             echo "No changes to commit."
             echo "published=false" >> "$GITHUB_OUTPUT"

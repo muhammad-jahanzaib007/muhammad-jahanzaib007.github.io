@@ -29,6 +29,7 @@ concurrency:
 jobs:
   heal:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Retry a failed blog run once, escalate a repeat
         if: github.event_name == 'workflow_run'
