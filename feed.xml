@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Mon, 06 Jul 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Learning Rate: The First Hyperparameter to Tune</title>
+    <link>https://jahanzaibawan.com/blog/learning-rate-first-hyperparameter.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/learning-rate-first-hyperparameter.html</guid>
+    <pubDate>Mon, 06 Jul 2026 09:00:00 +0000</pubDate>
+    <description>Tune the learning rate before anything else: it decides whether your model converges, stalls, or blows up entirely.</description>
+    <category>Deep Learning</category>
+  </item>
+  <item>
     <title>Dropout as an Ensemble, Not a Magic Switch</title>
     <link>https://jahanzaibawan.com/blog/dropout-as-an-ensemble.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/dropout-as-an-ensemble.html</guid>

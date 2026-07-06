@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learning Rate: The First Hyperparameter to Tune | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why learning rate should be the first hyperparameter you tune, with a worked example showing how it governs convergence, stability and generalisation.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="learning rate, hyperparameter tuning, gradient descent, deep learning training, learning rate schedule, optimisation, neural network convergence, model training, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-06">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Learning Rate: The First Hyperparameter to Tune">
+<meta property="og:description" content="Why learning rate should be the first hyperparameter you tune, with a worked example showing how it governs convergence, stability and generalisation.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/learning-rate-first-hyperparameter.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/learning-rate-first-hyperparameter.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Learning Rate: The First Hyperparameter to Tune">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/learning-rate-first-hyperparameter.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/learning-rate-first-hyperparameter.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Learning Rate: The First Hyperparameter to Tune",
+  "description": "Why learning rate should be the first hyperparameter you tune, with a worked example showing how it governs convergence, stability and generalisation.",
+  "url": "https://jahanzaibawan.com/blog/learning-rate-first-hyperparameter.html",
+  "image": "https://jahanzaibawan.com/assets/blog/learning-rate-first-hyperparameter.png",
+  "datePublished": "2026-07-06",
+  "dateModified": "2026-07-06",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/learning-rate-first-hyperparameter.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Learning Rate: The First Hyperparameter to Tune", "item": "https://jahanzaibawan.com/blog/learning-rate-first-hyperparameter.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Deep Learning · 5 min read · 6 Jul 2026</div>
+    <h1>Learning Rate: The First Hyperparameter to Tune</h1>
+    <p class="lede">Before touching architecture, regularisation or batch size, get the learning rate right. Almost everything else in training depends on it.</p>
+  </div>
+
+  <img src="../assets/blog/learning-rate-first-hyperparameter.png" alt="Cover image for the article: Learning Rate: The First Hyperparameter to Tune" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this one knob matters more than the rest</h2><p>When people start tuning a model, there is a temptation to reach for the exciting levers first: add a layer, try a fancier architecture, bolt on some regularisation. I understand the appeal, but in practice almost none of that matters if the learning rate is wrong. Get it wrong and a beautifully designed network will either sit there barely learning or diverge into useless noise within a few steps. Get it roughly right and even a plain baseline will train sensibly, giving you something honest to compare against.</p><p>The reason learning rate deserves first place is that it controls the step size in gradient descent, and every other hyperparameter is downstream of that step size. Batch size interacts with it. Weight decay interacts with it. The effective capacity of a schedule, warmup, or optimiser like Adam versus plain SGD all interact with it. If you tune architecture or regularisation while the learning rate is badly chosen, you are optimising on top of a broken foundation, and any conclusion you draw about what helped or hurt is unreliable.</p><p>There is also a practical, time-based argument. Learning rate sweeps are cheap. You can often tell within a few hundred or a few thousand steps whether a rate is hopeless, because loss curves diverge or flatline early. Compare that to tuning something like network depth, where each configuration might need a full training run to judge fairly. Spending your limited compute budget on learning rate first gives you the best information per pound spent.</p></section><section class='psec reveal'><h2>A worked intuition: three rates, three outcomes</h2><p>Picture a simple regression problem where you are fitting a curve to noisy data using gradient descent, and suppose the loss surface has a fairly narrow valley. Say a sensible learning rate for this problem, given the scale of the gradients, sits somewhere around 0.01. Now imagine trying three different values around that point.</p><p>At a learning rate of 0.0001, training is stable but painfully slow. After a thousand steps, loss has barely moved from its starting value, and you might reasonably conclude the model architecture is too weak or the features are unhelpful. In fact the model is fine; it is simply crawling towards the minimum in steps so small it will take tens of thousands of iterations to get anywhere useful. If you stop early and judge the architecture based on this run, you draw the wrong conclusion entirely.</p><p>At a learning rate of 0.01, the loss drops sharply for the first few dozen steps and then settles into a steady, mostly monotonic decline. This is the behaviour you want: fast early progress followed by fine adjustment as the loss surface narrows. Small oscillations near the minimum are normal and expected, not a sign of failure.</p><p>At a learning rate of 1.0, the update step is so large that each gradient step overshoots the valley and lands on the opposite wall, often with a higher loss than before. A few steps in, the loss can start increasing rather than decreasing, sometimes diverging to very large values or producing numerical overflow. This is the classic instability signature: a loss curve that looks like it is bouncing or growing rather than settling. It has nothing to do with the model's capacity and everything to do with step size.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/learning-rate-first-hyperparameter-1.jpg' alt='laptop screen showing loss curve graph' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>How to search for it without guesswork</h2><p>A sensible first move is a learning rate range test: start training with a very small rate and increase it, often on a logarithmic scale, over the course of a few hundred to a couple of thousand steps, plotting loss against the rate used at each step. The resulting curve typically shows a flat or slowly decreasing region at small rates, a sharp drop where the model is learning fastest, and then a sudden explosion once the rate is too high. A good starting point for full training is usually somewhere just before that explosion point, not at the very edge of it, since the edge is often unstable across random seeds.</p><p>It is worth doing this range test on a held-out slice of training data that never touches your validation or test sets. The point is purely to characterise the loss surface's sensitivity to step size, not to select a final model, so leakage here is less about test contamination and more about wasting the diagnostic on data you will need later for honest comparisons. Keep the range test lightweight and separate from your main evaluation protocol.</p><p>Once you have a rough working rate, the next decision is whether to keep it fixed or schedule it. In my experience a short warmup followed by a decay, whether step-based, cosine, or linear, tends to be more forgiving than a single fixed value, especially for larger models or larger batch sizes where the initial gradients can be noisy. But schedules are a refinement, not a substitute for the initial search. If the base rate is wrong, no schedule will rescue the run; it will just delay or reshape the failure.</p><p>One caution worth stating plainly: learning rate is not independent of batch size. Increase the batch size substantially and the effective noise in each gradient estimate drops, which often means the learning rate that worked before is now too conservative. If you change batch size, treat the learning rate as needing a fresh look rather than assuming the old value still applies.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>Before you tune architecture, regularisation strength, or anything else, spend a small, cheap experiment establishing a workable learning rate. Use a range test or a simple grid across orders of magnitude, watch for the signatures of too small (flat, slow loss) and too large (diverging, oscillating loss), and settle on a value in the stable, fast-decreasing region rather than at its unstable edge. Everything else you tune afterwards will be more meaningful, because you will be improving a model that is actually learning, rather than papering over a training process that was broken from the first step.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/learning-rate-first-hyperparameter-2.jpg' alt='whiteboard with training graph sketch' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

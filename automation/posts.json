@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "learning-rate-first-hyperparameter",
+      "title": "Learning Rate: The First Hyperparameter to Tune",
+      "excerpt": "Tune the learning rate before anything else: it decides whether your model converges, stalls, or blows up entirely.",
+      "date": "2026-07-06",
+      "read_min": 5,
+      "tag": "Deep Learning",
+      "color": "a3",
+      "thumb": "assets/blog/learning-rate-first-hyperparameter.png",
+      "thumb_alt": "Cover image for the article: Learning Rate: The First Hyperparameter to Tune"
+    },
+    {
       "slug": "dropout-as-an-ensemble",
       "title": "Dropout as an Ensemble, Not a Magic Switch",
       "excerpt": "Dropout works because it approximates ensembling thousands of thinned networks, not because randomness alone regularises. Here is the intuition, worked through with numbers.",

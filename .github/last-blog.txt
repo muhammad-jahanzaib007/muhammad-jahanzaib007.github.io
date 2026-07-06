@@ -1,1 +1,1 @@
-2026-07-06T09:47:43Z slug=dropout-as-an-ensemble words=1119 title="Dropout as an Ensemble, Not a Magic Switch"
+2026-07-06T11:57:16Z slug=learning-rate-first-hyperparameter words=1003 title="Learning Rate: The First Hyperparameter to Tune"

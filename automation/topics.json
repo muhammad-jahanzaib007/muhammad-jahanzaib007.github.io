@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Learning rate: the first hyperparameter to tune",
     "Gradient clipping and exploding gradients in RNNs",
     "Transfer learning: freeze, fine-tune, or LoRA?",
     "Tokenization choices and why they change your results",
@@ -31,6 +30,7 @@
     "Embeddings 101: what cosine similarity actually measures",
     "Attention, intuitively: queries, keys, and values",
     "Why batch normalization helps, and when it hurts",
-    "Dropout as an ensemble, not a magic switch"
+    "Dropout as an ensemble, not a magic switch",
+    "Learning rate: the first hyperparameter to tune"
   ]
 }
