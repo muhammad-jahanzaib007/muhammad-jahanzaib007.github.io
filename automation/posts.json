@@ -9,7 +9,8 @@
       "tag": "Deep Learning",
       "color": "a2",
       "thumb": "assets/blog/dropout-as-an-ensemble.png",
-      "thumb_alt": "Cover image for the article: Dropout as an Ensemble, Not a Magic Switch"
+      "thumb_alt": "Cover image for the article: Dropout as an Ensemble, Not a Magic Switch",
+      "li_shared": true
     },
     {
       "slug": "batch-normalization-helps-and-hurts",
