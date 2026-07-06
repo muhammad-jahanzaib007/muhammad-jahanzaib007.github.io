@@ -9,7 +9,8 @@
       "tag": "Deep Learning",
       "color": "a4",
       "thumb": "assets/blog/gradient-clipping-exploding-gradients.png",
-      "thumb_alt": "Cover image for the article: Gradient Clipping and Exploding Gradients in RNNs"
+      "thumb_alt": "Cover image for the article: Gradient Clipping and Exploding Gradients in RNNs",
+      "li_shared": true
     },
     {
       "slug": "learning-rate-first-hyperparameter",
