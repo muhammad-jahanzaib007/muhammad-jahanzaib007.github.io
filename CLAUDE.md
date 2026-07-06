@@ -109,3 +109,13 @@ commit, so the other sessions know who did what.
   strongest fix available short of migrating Pages to a repo-owned deploy
   workflow (build_type=workflow) — do that only if transients keep
   recurring across days.
+- 2026-07-06 09:45 — claude.ai/code web session (same as above): GitHub
+  silently ate BOTH morning crons (08:00 Auto blog AND the 08:50
+  self-heal backstop — the backstop is itself a cron, so it cannot catch
+  a morning where GitHub's scheduler is down wholesale). Recovered by
+  manual workflow_dispatch at 09:46; post + LinkedIn share landed by
+  09:53, receipts fresh. The 09:44 Pages deploy transient also recurred
+  and was cleared by re-run. If a whole morning goes quiet again: check
+  the Actions tab for missing scheduled runs and dispatch auto-blog.yml
+  by hand; only the human-visible watchdog issue (or a session doing a
+  health check) catches a full scheduler outage.
