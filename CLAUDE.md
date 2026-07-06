@@ -63,3 +63,22 @@ LinkedIn token re-mint (~every 60 days; watchdog warns from day 53 — next
 
 Owner is UK-based (Leicester). Site doubles as the "genuine business"
 signal for affiliate applications — keep quality high, no padded posts.
+
+## Session log (cross-device attribution — KEEP UPDATED)
+
+Multiple Claude sessions touch this repo (laptop, claude.ai/code web,
+mobile). ANY session that changes code or makes a notable finding must
+append an entry here (date, surface, branch, one-line summary) in the same
+commit, so the other sessions know who did what.
+
+- 2026-07-06 — claude.ai/code web session, branch
+  `claude/pipeline-health-check-gtnyzy` (merged to main via PR #2):
+  health check + audit + hardening. Closed stale watchdog issue #1
+  (receipt existed again). Findings fixed: combined `git add` in
+  auto-blog (per-path now), no timeout-minutes on any job (added
+  everywhere), backfill/cleanup installed unpinned deps + bare `git push`
+  (now requirements.txt + rebase-retry). Watchdog-time doc fix landed
+  independently from both sessions the same night (main's a6aeb87 kept on
+  rebase). Also verified: 2026-07-06 00:28 Pages deploy failure was a
+  GitHub-side transient on a CLAUDE.md-only commit; site content
+  unaffected.
