@@ -9,7 +9,8 @@
       "tag": "NLP",
       "color": "a6",
       "thumb": "assets/blog/tokenization-choices-change-results.png",
-      "thumb_alt": "Cover image for the article: Tokenization Choices and Why They Change Your Results"
+      "thumb_alt": "Cover image for the article: Tokenization Choices and Why They Change Your Results",
+      "li_shared": true
     },
     {
       "slug": "freeze-fine-tune-or-lora",
