@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a2",
       "thumb": "assets/blog/perplexity-rewards-and-ignores.png",
-      "thumb_alt": "Cover image for the article: Perplexity: What It Rewards and What It Ignores"
+      "thumb_alt": "Cover image for the article: Perplexity: What It Rewards and What It Ignores",
+      "li_shared": true
     },
     {
       "slug": "tokenization-choices-change-results",
