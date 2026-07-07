@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Tue, 07 Jul 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Perplexity: What It Rewards and What It Ignores</title>
+    <link>https://jahanzaibawan.com/blog/perplexity-rewards-and-ignores.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/perplexity-rewards-and-ignores.html</guid>
+    <pubDate>Tue, 07 Jul 2026 09:00:00 +0000</pubDate>
+    <description>Perplexity tells you how well a model predicts held-out text, but it says nothing about coherence, factuality, or usefulness. Here is what it quietly rewards and ignores.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Tokenization Choices and Why They Change Your Results</title>
     <link>https://jahanzaibawan.com/blog/tokenization-choices-change-results.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/tokenization-choices-change-results.html</guid>

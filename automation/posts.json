@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "perplexity-rewards-and-ignores",
+      "title": "Perplexity: What It Rewards and What It Ignores",
+      "excerpt": "Perplexity tells you how well a model predicts held-out text, but it says nothing about coherence, factuality, or usefulness. Here is what it quietly rewards and ignores.",
+      "date": "2026-07-07",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a2",
+      "thumb": "assets/blog/perplexity-rewards-and-ignores.png",
+      "thumb_alt": "Cover image for the article: Perplexity: What It Rewards and What It Ignores"
+    },
+    {
       "slug": "tokenization-choices-change-results",
       "title": "Tokenization Choices and Why They Change Your Results",
       "excerpt": "Tokenization looks like plumbing, but it decides what your model can see. Get it wrong and no amount of tuning will fix it.",

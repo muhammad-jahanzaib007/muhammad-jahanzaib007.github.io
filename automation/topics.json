@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Perplexity: what it rewards and what it ignores",
     "BLEU and its limits for evaluating generated text",
     "Reading a confusion matrix beyond accuracy",
     "Data augmentation that helps vs augmentation that leaks",
@@ -31,6 +30,7 @@
     "Learning rate: the first hyperparameter to tune",
     "Gradient clipping and exploding gradients in RNNs",
     "Transfer learning: freeze, fine-tune, or LoRA?",
-    "Tokenization choices and why they change your results"
+    "Tokenization choices and why they change your results",
+    "Perplexity: what it rewards and what it ignores"
   ]
 }
