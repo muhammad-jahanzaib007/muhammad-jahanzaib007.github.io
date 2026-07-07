@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Mon, 06 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 07 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Tokenization Choices and Why They Change Your Results</title>
+    <link>https://jahanzaibawan.com/blog/tokenization-choices-change-results.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/tokenization-choices-change-results.html</guid>
+    <pubDate>Tue, 07 Jul 2026 09:00:00 +0000</pubDate>
+    <description>Tokenization looks like plumbing, but it decides what your model can see. Get it wrong and no amount of tuning will fix it.</description>
+    <category>NLP</category>
+  </item>
   <item>
     <title>Transfer Learning: Freeze, Fine-Tune, or LoRA?</title>
     <link>https://jahanzaibawan.com/blog/freeze-fine-tune-or-lora.html</link>

@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Tokenization choices and why they change your results",
     "Perplexity: what it rewards and what it ignores",
     "BLEU and its limits for evaluating generated text",
     "Reading a confusion matrix beyond accuracy",
@@ -31,6 +30,7 @@
     "Dropout as an ensemble, not a magic switch",
     "Learning rate: the first hyperparameter to tune",
     "Gradient clipping and exploding gradients in RNNs",
-    "Transfer learning: freeze, fine-tune, or LoRA?"
+    "Transfer learning: freeze, fine-tune, or LoRA?",
+    "Tokenization choices and why they change your results"
   ]
 }

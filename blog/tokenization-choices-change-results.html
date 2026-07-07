@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tokenization Choices and Why They Change Your Results | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical look at how tokenization choices affect NLP model performance, with a worked example comparing word, subword, and character level splits.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="tokenization, NLP, subword tokenization, BPE, vocabulary size, sequence length, evaluation, machine learning, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-07">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Tokenization Choices and Why They Change Your Results">
+<meta property="og:description" content="A practical look at how tokenization choices affect NLP model performance, with a worked example comparing word, subword, and character level splits.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/tokenization-choices-change-results.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/tokenization-choices-change-results.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tokenization Choices and Why They Change Your Results">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/tokenization-choices-change-results.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/tokenization-choices-change-results.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Tokenization Choices and Why They Change Your Results",
+  "description": "A practical look at how tokenization choices affect NLP model performance, with a worked example comparing word, subword, and character level splits.",
+  "url": "https://jahanzaibawan.com/blog/tokenization-choices-change-results.html",
+  "image": "https://jahanzaibawan.com/assets/blog/tokenization-choices-change-results.png",
+  "datePublished": "2026-07-07",
+  "dateModified": "2026-07-07",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/tokenization-choices-change-results.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Tokenization Choices and Why They Change Your Results", "item": "https://jahanzaibawan.com/blog/tokenization-choices-change-results.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">NLP · 5 min read · 7 Jul 2026</div>
+    <h1>Tokenization Choices and Why They Change Your Results</h1>
+    <p class="lede">The way you split text into tokens is not a preprocessing footnote. It quietly shapes vocabulary, sequence length, and what your model can even learn.</p>
+  </div>
+
+  <img src="../assets/blog/tokenization-choices-change-results.png" alt="Cover image for the article: Tokenization Choices and Why They Change Your Results" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this is not a footnote</h2><p>When people write up an NLP experiment, tokenization usually gets a single throwaway sentence: 'we used a standard tokenizer'. I understand the impulse. Tokenization feels like plumbing, something you set once and forget. But the split you choose determines your vocabulary, your sequence lengths, how rare words are represented, and ultimately what patterns your model is even capable of learning. Two teams can train the same architecture on the same corpus and get meaningfully different results purely because one used word level splitting and the other used a subword scheme.</p><p>The reason this matters more than people admit is that tokenization decisions are rarely tuned as hyperparameters. They are baked in at the start of the pipeline, often inherited from whatever library defaults ship with a pretrained model, and then everything downstream, embeddings, attention patterns, evaluation metrics, is built on top of that choice. If the foundation is wrong for your data, you are compensating for it everywhere else without realising it.</p></section><section class='psec reveal'><h2>A worked comparison: word, subword, character</h2><p>Take a concrete case: a dataset of product reviews containing a fair number of misspellings, brand names, and compound words like 'waterproof-ish' or 'overpriced-but-worth-it'. Suppose the vocabulary of unique words across the corpus is around 40,000 terms, but roughly 15% of those words appear fewer than five times.</p><p>With a pure word level tokenizer, every one of those rare words becomes either its own embedding, learned from very few examples, or gets mapped to an out-of-vocabulary token and effectively erased. If 'overpriced-but-worth-it' appears three times in your training set, the model has almost nothing to learn from and no way to relate it to the word 'overpriced', which appears constantly. You lose the compositional signal entirely.</p><p>Switch to a subword scheme, something like byte pair encoding trained with a vocabulary of 30,000 merges, and that same compound term gets broken into pieces such as 'over', 'priced', '-but-', 'worth', '-it'. Each of those fragments appears far more often across the corpus, so each gets a well-trained embedding, and the model can compose meaning from parts it has actually seen enough times to learn something stable. The out-of-vocabulary problem essentially disappears, because any string can be built from a small set of subword units or, worst case, individual characters.</p><p>Character level tokenization goes further still: no unknown tokens ever, but now your sequences are five to seven times longer for the same sentence, your model has to learn spelling and word boundaries from scratch, and you pay for that in training time and in how far back the model can effectively attend. On the review dataset, a character level model might match the subword model's accuracy eventually, but it typically needs more data and more epochs to get there, and in a project with a fixed compute budget, that gap is not academic. It is the difference between a result you can ship and one you cannot.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/tokenization-choices-change-results-1.jpg' alt='open dictionary pages close up' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Where this quietly breaks evaluation</h2><p>The subtler danger is that tokenization choices interact with evaluation in ways that are easy to miss. If you compute perplexity or any length normalised metric, changing the tokenizer changes what a 'token' means, so numbers from two different tokenization schemes are not comparable even if they are labelled with the same metric name. I have seen comparisons in papers and blog posts that quietly stack a subword model's perplexity against a word level baseline as though they were on equal footing. They are not, because the denominator itself has shifted.</p><p>Sequence length effects also bleed into leakage-adjacent problems. Suppose you truncate inputs at 128 tokens for a classification task. Under word level tokenization, 128 tokens might cover a full customer review. Under a subword tokenizer with more fragments per word, that same review might get truncated halfway through the sentence that actually contains the sentiment-bearing clause. Your model's apparent weakness on long reviews might have nothing to do with modelling capacity and everything to do with the tokenizer silently eating your signal before the model ever sees it.</p><p>There is also a domain mismatch trap. A subword vocabulary trained on general web text will fragment domain-specific vocabulary, drug names in clinical text, function names in code, ticker symbols in financial text, into awkward pieces that do not correspond to any meaningful unit. This inflates sequence length, dilutes attention, and can make a domain-specific model look worse than it is, purely because the tokenizer was never adapted to the domain. Retraining or extending the vocabulary on in-domain text is often a larger single improvement than switching architectures.</p></section><section class='psec reveal'><h2>What to actually do about it</h2><p>Treat your tokenizer as part of the experimental design, not a fixed preprocessing step, and report it explicitly: vocabulary size, algorithm, and whether it was trained on your data or inherited from a pretrained checkpoint. When comparing models, keep the tokenizer identical unless the tokenizer itself is the variable under test; otherwise you are running a confounded experiment and drawing conclusions about architecture that might really be conclusions about vocabulary.</p><p>Before committing to a scheme, look at your own data's token length distribution and out-of-vocabulary rate under a couple of candidate tokenizers. This takes an afternoon and tells you immediately whether truncation will bite, whether rare terms will be shredded into meaningless fragments, and whether a pretrained tokenizer actually fits your domain or needs retraining. That small diagnostic step has saved me from chasing phantom modelling problems that were really tokenization artefacts, and it is the cheapest form of rigour available in an NLP pipeline.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/tokenization-choices-change-results-2.jpg' alt='hands typing on laptop keyboard' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "tokenization-choices-change-results",
+      "title": "Tokenization Choices and Why They Change Your Results",
+      "excerpt": "Tokenization looks like plumbing, but it decides what your model can see. Get it wrong and no amount of tuning will fix it.",
+      "date": "2026-07-07",
+      "read_min": 5,
+      "tag": "NLP",
+      "color": "a6",
+      "thumb": "assets/blog/tokenization-choices-change-results.png",
+      "thumb_alt": "Cover image for the article: Tokenization Choices and Why They Change Your Results"
+    },
+    {
       "slug": "freeze-fine-tune-or-lora",
       "title": "Transfer Learning: Freeze, Fine-Tune, or LoRA?",
       "excerpt": "Freezing, full fine-tuning, and LoRA all solve transfer learning differently. Here is how to choose based on data size, compute, and risk of overfitting.",
