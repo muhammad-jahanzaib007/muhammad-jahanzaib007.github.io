@@ -1,1 +1,1 @@
-2026-07-07T21:23:41Z slug=perplexity-rewards-and-ignores words=931 title="Perplexity: What It Rewards and What It Ignores"
+2026-07-08T10:08:56Z slug=bleu-and-its-limits words=1086 title="BLEU and Its Limits for Evaluating Generated Text"

@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "bleu-and-its-limits",
+      "title": "BLEU and Its Limits for Evaluating Generated Text",
+      "excerpt": "BLEU counts matching word chunks, not meaning. Here is why that gap matters and how to evaluate generated text more honestly.",
+      "date": "2026-07-08",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a3",
+      "thumb": "assets/blog/bleu-and-its-limits.png",
+      "thumb_alt": "Cover image for the article: BLEU and Its Limits for Evaluating Generated Text"
+    },
+    {
       "slug": "perplexity-rewards-and-ignores",
       "title": "Perplexity: What It Rewards and What It Ignores",
       "excerpt": "Perplexity tells you how well a model predicts held-out text, but it says nothing about coherence, factuality, or usefulness. Here is what it quietly rewards and ignores.",

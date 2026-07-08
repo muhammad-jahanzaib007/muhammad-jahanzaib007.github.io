@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Tue, 07 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 08 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>BLEU and Its Limits for Evaluating Generated Text</title>
+    <link>https://jahanzaibawan.com/blog/bleu-and-its-limits.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/bleu-and-its-limits.html</guid>
+    <pubDate>Wed, 08 Jul 2026 09:00:00 +0000</pubDate>
+    <description>BLEU counts matching word chunks, not meaning. Here is why that gap matters and how to evaluate generated text more honestly.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Perplexity: What It Rewards and What It Ignores</title>
     <link>https://jahanzaibawan.com/blog/perplexity-rewards-and-ignores.html</link>

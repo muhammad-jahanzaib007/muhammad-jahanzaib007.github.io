@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLEU and Its Limits for Evaluating Generated Text | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A precise look at how BLEU works, where its n-gram overlap assumption breaks down, and what to use alongside it when evaluating generated text.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="BLEU score, text generation evaluation, machine translation metrics, n-gram overlap, NLG evaluation, ROUGE, METEOR, human evaluation, natural language processing, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-08">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="BLEU and Its Limits for Evaluating Generated Text">
+<meta property="og:description" content="A precise look at how BLEU works, where its n-gram overlap assumption breaks down, and what to use alongside it when evaluating generated text.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/bleu-and-its-limits.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/bleu-and-its-limits.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BLEU and Its Limits for Evaluating Generated Text">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/bleu-and-its-limits.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/bleu-and-its-limits.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "BLEU and Its Limits for Evaluating Generated Text",
+  "description": "A precise look at how BLEU works, where its n-gram overlap assumption breaks down, and what to use alongside it when evaluating generated text.",
+  "url": "https://jahanzaibawan.com/blog/bleu-and-its-limits.html",
+  "image": "https://jahanzaibawan.com/assets/blog/bleu-and-its-limits.png",
+  "datePublished": "2026-07-08",
+  "dateModified": "2026-07-08",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/bleu-and-its-limits.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "BLEU and Its Limits for Evaluating Generated Text", "item": "https://jahanzaibawan.com/blog/bleu-and-its-limits.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 8 Jul 2026</div>
+    <h1>BLEU and Its Limits for Evaluating Generated Text</h1>
+    <p class="lede">BLEU is cheap, fast, and everywhere in machine translation papers. It also rewards surface overlap over meaning, which makes it a risky judge for anything beyond narrow benchmarking.</p>
+  </div>
+
+  <img src="../assets/blog/bleu-and-its-limits.png" alt="Cover image for the article: BLEU and Its Limits for Evaluating Generated Text" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why BLEU became the default</h2><p>BLEU exists because comparing generated sentences to human references by hand does not scale. Someone needed a number that could be computed in milliseconds and compared across model checkpoints without ever paying an annotator. BLEU delivers exactly that: a score between zero and one, computed purely from overlap between a candidate sentence and one or more reference sentences, with no learned model and no human in the loop.</p><p>The mechanism is simple and that simplicity is the whole appeal. BLEU counts how many n-grams, contiguous sequences of one, two, three, and four words, in the candidate also appear in the reference, then applies a brevity penalty so that short, safe outputs cannot game the score by only producing words they are confident about. The result is a metric that correlates reasonably well with human judgement when comparing similar systems on similar tasks, particularly in the machine translation literature it was built for.</p><p>I use BLEU myself when I need a fast, leakage-aware sanity check during development: does this checkpoint look worse than the last one, did the beam search change break something obvious. For that narrow purpose it earns its keep. The trouble starts when people treat it as a proxy for quality rather than a proxy for lexical overlap, because those are not the same thing and the gap between them widens exactly in the cases that matter most.</p></section><section class='psec reveal'><h2>A worked example of where it breaks</h2><p>Take a reference sentence: <em>the cat sat quietly on the warm windowsill</em>. Now consider two candidate outputs. Candidate A says <em>the cat sat quietly on the warm windowsill</em>, an exact match, and scores essentially 1.0. Candidate B says <em>a feline rested peacefully on the sunlit ledge</em>, a fluent, accurate paraphrase that any human reader would call correct, but it shares almost no n-grams with the reference and so scores close to zero.</p><p>This is not a contrived edge case. It is the everyday reality of language, where the same meaning can be expressed with entirely different words. BLEU has no concept of synonymy, no concept of paraphrase, and no concept of semantic equivalence. It is a string-matching exercise dressed up as a quality metric, and the moment a task rewards diversity of expression, such as summarisation, dialogue, or open-ended generation, that string-matching assumption starts actively punishing good outputs.</p><p>The reverse failure is just as revealing. Consider a candidate that says <em>the cat sat quietly on the warm floor</em>, changing only one word, but that word flips the meaning of the sentence in a way a reader would notice. BLEU sees three of four words unchanged and gives a high score anyway, because it has no mechanism for weighting semantically load-bearing words more heavily than filler words. A metric that cannot tell the difference between a harmless paraphrase and a meaning-altering substitution is not measuring what we actually care about.</p><p>Reference coverage compounds the problem. BLEU compares against the references it is given, typically one to four per source sentence in standard benchmarks, but any reasonable sentence has dozens of valid phrasings. A system that produces a perfectly fluent, faithful translation using vocabulary the reference writer simply did not choose will be marked down through no fault of its own. In low-resource settings with a single reference per example, this effect is not a rounding error, it can dominate the score.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/bleu-and-its-limits-1.jpg' alt='open book with highlighted text' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Where the gap actually bites in practice</h2><p>The failure mode gets worse as tasks move away from translation. BLEU was designed for a setting where there is a reasonably constrained space of correct outputs and references are plentiful. Summarisation, open-domain dialogue, and creative generation have none of those properties: there are many valid summaries of the same article, many valid replies to the same message, and BLEU's overlap assumption starts measuring something closer to noise than signal. Studies comparing automatic metrics against human ratings in these settings consistently find weak or unstable correlation, which is exactly what the mechanism predicts.</p><p>There is also a subtler risk for anyone doing model comparison or leaderboard-style research: BLEU can be gamed, even unintentionally. A model fine-tuned with an objective that rewards n-gram overlap, or a decoding strategy tuned to maximise BLEU on a validation set, will learn to produce safe, high-frequency phrasing that matches references well without necessarily being more useful, more accurate, or more fluent to a human reader. Optimising a metric that only weakly reflects the thing you actually care about is a classic way to make numbers go up while quality stands still or drops.</p><p>None of this means BLEU should be discarded. It remains genuinely useful as a fast regression check, as a way to flag catastrophic failures, and as a common reference point when replicating older work that reported BLEU numbers. The mistake is using it as the sole or final word on quality, especially when comparing systems that differ architecturally or when the task allows for genuine diversity in correct answers.</p></section><section class='psec reveal'><h2>What to do instead</h2><p>The practical fix is not to find a single metric that replaces BLEU, because no such metric exists. It is to triangulate. Metrics such as ROUGE remain useful for summarisation where recall of key content matters more than exact phrasing. Embedding-based metrics that compare sentence meaning rather than surface tokens catch paraphrases that BLEU misses entirely, though they bring their own biases from whatever model produced the embeddings. None of these are ground truth; they are all approximations with different failure modes.</p><p>Human evaluation, done properly with clear rubrics, blind comparisons, and enough annotators to compute inter-rater agreement, is still the most trustworthy signal available, and it is worth budgeting for even in small-scale student or portfolio projects. It does not need to be expensive: a handful of careful pairwise comparisons on a held-out set, with the evaluator blind to which system produced which output, tells you more than another decimal place on a BLEU score.</p><p>My own rule of thumb is to treat BLEU, or any single automatic metric, as one column in a table rather than the final verdict. Report it alongside a second automatic metric with different assumptions, a small human evaluation where feasible, and a handful of qualitative examples so a reader can judge for themselves whether the number matches their intuition. If the metric and the examples disagree, trust the examples, and go find out why the metric is lying to you. That habit will save you from shipping a model that scores well and reads badly.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/bleu-and-its-limits-2.jpg' alt='two documents side by side comparison' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
