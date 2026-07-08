@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a3",
       "thumb": "assets/blog/bleu-and-its-limits.png",
-      "thumb_alt": "Cover image for the article: BLEU and Its Limits for Evaluating Generated Text"
+      "thumb_alt": "Cover image for the article: BLEU and Its Limits for Evaluating Generated Text",
+      "li_shared": true
     },
     {
       "slug": "perplexity-rewards-and-ignores",
