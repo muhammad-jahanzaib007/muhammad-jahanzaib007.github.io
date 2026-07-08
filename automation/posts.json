@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a4",
       "thumb": "assets/blog/reading-a-confusion-matrix.png",
-      "thumb_alt": "Cover image for the article: Reading a Confusion Matrix Beyond Accuracy"
+      "thumb_alt": "Cover image for the article: Reading a Confusion Matrix Beyond Accuracy",
+      "li_shared": true
     },
     {
       "slug": "bleu-and-its-limits",
