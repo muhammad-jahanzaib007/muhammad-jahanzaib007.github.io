@@ -4,6 +4,9 @@ GitHub Pages portfolio/blog with a fully automated posting pipeline. This
 file is the ops runbook: any Claude session (laptop, claude.ai/code, mobile)
 should read it before touching anything.
 
+**Keep replies TERSE** (owner ask, 2026-07-08): answer, state the action,
+done — no walls of text, no restating what the owner knows. Conserves tokens.
+
 ## Architecture
 
 `auto-blog.yml` (crons 08:00 + 20:00 UTC = 09:00/21:00 UK BST):
