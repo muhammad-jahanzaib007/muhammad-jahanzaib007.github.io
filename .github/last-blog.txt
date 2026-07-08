@@ -1,1 +1,1 @@
-2026-07-08T10:08:56Z slug=bleu-and-its-limits words=1086 title="BLEU and Its Limits for Evaluating Generated Text"
+2026-07-08T21:07:21Z slug=reading-a-confusion-matrix words=1000 title="Reading a Confusion Matrix Beyond Accuracy"

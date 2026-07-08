@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Wed, 08 Jul 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Reading a Confusion Matrix Beyond Accuracy</title>
+    <link>https://jahanzaibawan.com/blog/reading-a-confusion-matrix.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/reading-a-confusion-matrix.html</guid>
+    <pubDate>Wed, 08 Jul 2026 09:00:00 +0000</pubDate>
+    <description>Accuracy is a single number that can lie to you. A confusion matrix, read properly, tells you where and why your model actually fails.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>BLEU and Its Limits for Evaluating Generated Text</title>
     <link>https://jahanzaibawan.com/blog/bleu-and-its-limits.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/bleu-and-its-limits.html</guid>

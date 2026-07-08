@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "reading-a-confusion-matrix",
+      "title": "Reading a Confusion Matrix Beyond Accuracy",
+      "excerpt": "Accuracy is a single number that can lie to you. A confusion matrix, read properly, tells you where and why your model actually fails.",
+      "date": "2026-07-08",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a4",
+      "thumb": "assets/blog/reading-a-confusion-matrix.png",
+      "thumb_alt": "Cover image for the article: Reading a Confusion Matrix Beyond Accuracy"
+    },
+    {
       "slug": "bleu-and-its-limits",
       "title": "BLEU and Its Limits for Evaluating Generated Text",
       "excerpt": "BLEU counts matching word chunks, not meaning. Here is why that gap matters and how to evaluate generated text more honestly.",
