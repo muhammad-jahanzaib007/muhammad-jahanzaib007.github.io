@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "augmentation-that-leaks",
+      "title": "Data Augmentation That Helps vs Augmentation That Leaks",
+      "excerpt": "Augmentation only helps when it happens after splitting. Get the order wrong and your validation score becomes a lie.",
+      "date": "2026-07-09",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a5",
+      "thumb": "assets/blog/augmentation-that-leaks.png",
+      "thumb_alt": "Cover image for the article: Data Augmentation That Helps vs Augmentation That Leaks"
+    },
+    {
       "slug": "reading-a-confusion-matrix",
       "title": "Reading a Confusion Matrix Beyond Accuracy",
       "excerpt": "Accuracy is a single number that can lie to you. A confusion matrix, read properly, tells you where and why your model actually fails.",

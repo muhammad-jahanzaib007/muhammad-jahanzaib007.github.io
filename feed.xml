@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Wed, 08 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 09 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Data Augmentation That Helps vs Augmentation That Leaks</title>
+    <link>https://jahanzaibawan.com/blog/augmentation-that-leaks.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/augmentation-that-leaks.html</guid>
+    <pubDate>Thu, 09 Jul 2026 09:00:00 +0000</pubDate>
+    <description>Augmentation only helps when it happens after splitting. Get the order wrong and your validation score becomes a lie.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Reading a Confusion Matrix Beyond Accuracy</title>
     <link>https://jahanzaibawan.com/blog/reading-a-confusion-matrix.html</link>

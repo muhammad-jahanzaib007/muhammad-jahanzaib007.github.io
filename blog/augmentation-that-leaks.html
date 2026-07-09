@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Augmentation That Helps vs Augmentation That Leaks | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical look at when data augmentation improves generalisation versus when it leaks information across train and validation splits.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="data augmentation, data leakage, cross validation, evaluation, machine learning, overfitting, train test split, reproducibility, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-09">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Data Augmentation That Helps vs Augmentation That Leaks">
+<meta property="og:description" content="A practical look at when data augmentation improves generalisation versus when it leaks information across train and validation splits.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/augmentation-that-leaks.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/augmentation-that-leaks.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Data Augmentation That Helps vs Augmentation That Leaks">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/augmentation-that-leaks.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/augmentation-that-leaks.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Data Augmentation That Helps vs Augmentation That Leaks",
+  "description": "A practical look at when data augmentation improves generalisation versus when it leaks information across train and validation splits.",
+  "url": "https://jahanzaibawan.com/blog/augmentation-that-leaks.html",
+  "image": "https://jahanzaibawan.com/assets/blog/augmentation-that-leaks.png",
+  "datePublished": "2026-07-09",
+  "dateModified": "2026-07-09",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/augmentation-that-leaks.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Data Augmentation That Helps vs Augmentation That Leaks", "item": "https://jahanzaibawan.com/blog/augmentation-that-leaks.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 9 Jul 2026</div>
+    <h1>Data Augmentation That Helps vs Augmentation That Leaks</h1>
+    <p class="lede">Augmentation can make a model more robust or it can quietly hand your validation set the answers. The difference is where in the pipeline it happens.</p>
+  </div>
+
+  <img src="../assets/blog/augmentation-that-leaks.png" alt="Cover image for the article: Data Augmentation That Helps vs Augmentation That Leaks" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this quietly ruins so many results</h2><p>Data augmentation has a good reputation, and mostly it deserves it. Flip an image, add a bit of noise to a sensor reading, paraphrase a sentence, and you have manufactured a slightly different view of the same underlying example. Done properly, this teaches a model to ignore irrelevant variation and focus on the signal that actually matters. Done improperly, it does something much worse: it leaks information from the validation or test set into training, and your reported accuracy becomes a number that describes nothing real.</p><p>The failure mode is almost always the same shape. Someone augments the full dataset first, generating extra rows or extra images, and only afterwards splits the enlarged dataset into train and validation. This feels harmless because the augmented examples look different from the originals. But if an augmented copy of example A ends up in training and another augmented copy of the same example A ends up in validation, the model has effectively already seen the validation example under a light disguise. It is not generalising, it is recognising.</p><p>I think this matters more than most leakage discussions because augmentation is usually framed as a purely beneficial regularisation technique, so people do not audit it the way they audit, say, feature engineering. Nobody double checks whether their rotation and colour jitter pipeline respects the split. It just runs, the validation accuracy goes up, and everyone moves on. The bug is invisible precisely because the symptom looks like success.</p></section><section class='psec reveal'><h2>A worked example with concrete numbers</h2><p>Suppose I have five hundred photographs of a rare plant disease, and I want to train a classifier. Five hundred images is thin, so I decide to augment each one eight times using rotations, crops, and brightness shifts, giving me four thousand five hundred images in total. If I now shuffle this pool and take an eighty-twenty split, roughly nine hundred images land in validation. Because each original photograph produced nine near-identical versions of itself, it is almost certain that several originals have some of their augmented siblings in training and others in validation.</p><p>Say the true, honest test accuracy of a reasonably trained model on this problem is around seventy-eight per cent, a believable number given how few original examples exist. With the leaked split, I might see validation accuracy climb to ninety-four per cent, because for a good fraction of the validation images the model has already trained on a rotated or slightly brighter twin. That sixteen-point gap is not model skill, it is memorisation of near-duplicates dressed up as strong performance. If I then present this ninety-four per cent figure in a report or use it to pick a final model configuration, every downstream decision is built on sand.</p><p>The fix is mechanically simple even though it is easy to forget under deadline pressure: split first, augment second. Take the original five hundred images, decide which four hundred go to training and which hundred go to validation, and only then generate augmented versions of the training four hundred. The validation hundred stay completely untouched, seen by the model exactly once, at evaluation time, in their original unaltered form. Now the ninety-four per cent illusion disappears and I am back to something close to the honest seventy-eight per cent, which is disappointing but true, and truth is the entire point of running a validation set at all.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/augmentation-that-leaks-1.jpg' alt='photographer taking multiple angles of plant leaf' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Where this gets subtler: text, time series, and cross validation</h2><p>Images make the leakage easy to picture, but the same problem shows up in less obvious forms elsewhere. In text classification, a common augmentation trick is paraphrasing sentences using synonym substitution or back-translation. If you paraphrase before splitting, two paraphrases of the same original sentence can straddle the train and validation boundary, and because paraphrases share vocabulary, sentence structure, and often the exact same label, the model gets a shortcut. It learns to match phrasing patterns rather than to genuinely classify the underlying meaning.</p><p>Time series is another place this bites people, often more severely. A sliding window augmentation that generates overlapping subsequences from a longer signal will produce windows that share large stretches of raw data with their neighbours. If neighbouring windows end up on opposite sides of a random split, the model has essentially seen most of the validation window already, just shifted by a few timesteps. This is the same disease as the image example, but harder to spot because nobody thinks of overlapping windows as duplicates in the same intuitive way they think of a rotated photograph as a duplicate.</p><p>Cross validation adds one more wrinkle worth naming explicitly. If you augment before running k-fold cross validation, the augmented siblings of a given original example can be scattered across multiple folds rather than confined to one. Every fold then suffers the same contamination, so the problem does not average out across folds, it repeats itself k times. The correct pattern is to group all augmented versions of an original example together and assign the whole group to a single fold, sometimes called grouped cross validation, so that no fold ever contains both an example and something derived from it.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>The rule that keeps me safe is short enough to write on a sticky note: identify the original examples first, decide their split assignment, and only generate augmented data inside each partition afterwards, never across the boundary. If you ever find yourself augmenting a dataset before you have decided who goes where, stop and reorder the pipeline.</p><p>It is also worth building a habit of sanity-checking suspiciously good validation numbers rather than simply celebrating them. If augmentation is in play and your validation accuracy jumped by double digits the moment you introduced it, that is worth a direct investigation into whether siblings of the same original example crossed the split, rather than an assumption that your model got substantially better overnight. Augmentation should make a model more robust to variation it will meet in the real world; it should never be the mechanism by which your evaluation quietly stops measuring generalisation at all.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/augmentation-that-leaks-2.jpg' alt='laptop screen showing confusion matrix results' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
