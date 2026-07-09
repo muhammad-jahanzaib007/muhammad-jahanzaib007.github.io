@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a2",
       "thumb": "assets/blog/overfitting-the-validation-set.png",
-      "thumb_alt": "Cover image for the article: Overfitting the Validation Set Through Too Many Experiments"
+      "thumb_alt": "Cover image for the article: Overfitting the Validation Set Through Too Many Experiments",
+      "li_shared": true
     },
     {
       "slug": "reproducibility-seeds-configs-runs",
