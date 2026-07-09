@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a5",
       "thumb": "assets/blog/augmentation-that-leaks.png",
-      "thumb_alt": "Cover image for the article: Data Augmentation That Helps vs Augmentation That Leaks"
+      "thumb_alt": "Cover image for the article: Data Augmentation That Helps vs Augmentation That Leaks",
+      "li_shared": true
     },
     {
       "slug": "reading-a-confusion-matrix",
