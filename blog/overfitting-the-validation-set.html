@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Overfitting the Validation Set Through Too Many Experiments | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why repeatedly tuning models against a fixed validation set inflates apparent performance, with a worked example and practical fixes for reliable evaluation.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="overfitting validation set, model selection bias, leakage aware evaluation, hyperparameter tuning, holdout set, cross validation, reproducibility, machine learning evaluation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-09">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Overfitting the Validation Set Through Too Many Experiments">
+<meta property="og:description" content="Why repeatedly tuning models against a fixed validation set inflates apparent performance, with a worked example and practical fixes for reliable evaluation.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/overfitting-the-validation-set.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/overfitting-the-validation-set.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Overfitting the Validation Set Through Too Many Experiments">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/overfitting-the-validation-set.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/overfitting-the-validation-set.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Overfitting the Validation Set Through Too Many Experiments",
+  "description": "Why repeatedly tuning models against a fixed validation set inflates apparent performance, with a worked example and practical fixes for reliable evaluation.",
+  "url": "https://jahanzaibawan.com/blog/overfitting-the-validation-set.html",
+  "image": "https://jahanzaibawan.com/assets/blog/overfitting-the-validation-set.png",
+  "datePublished": "2026-07-09",
+  "dateModified": "2026-07-09",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/overfitting-the-validation-set.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Overfitting the Validation Set Through Too Many Experiments", "item": "https://jahanzaibawan.com/blog/overfitting-the-validation-set.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 6 min read · 9 Jul 2026</div>
+    <h1>Overfitting the Validation Set Through Too Many Experiments</h1>
+    <p class="lede">Every time you tune a model against the same validation set, you spend a little bit of its trustworthiness. Eventually the leaderboard lies to you.</p>
+  </div>
+
+  <img src="../assets/blog/overfitting-the-validation-set.png" alt="Cover image for the article: Overfitting the Validation Set Through Too Many Experiments" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The quiet leak nobody labels as leakage</h2><p>We talk a lot about data leakage when a feature accidentally encodes the label, or when the same patient shows up in both train and test. That kind of leakage is easy to spot once you know to look for it. There is a subtler version that gets far less attention: leakage through repeated evaluation. Every time you check a model against the validation set and then change something based on what you saw, you are feeding information from that set back into your modelling decisions. Do this once and it is harmless. Do it two hundred times across a hyperparameter search, a feature ablation, three architectures, and a dozen random seeds, and the validation set stops being a fair judge. It becomes an accomplice.</p><p>This matters because the validation set exists specifically to answer one question honestly: how well does this model generalise to data it has not seen? The moment you use its verdict to steer your choices, you have started to fit the model, and yourself, to that particular sample of data rather than to the underlying pattern you actually care about. The validation score keeps climbing, and it feels like progress. Often it is not progress on the real task, it is progress on beating one fixed set of examples through sheer number of attempts.</p><p>The insidious part is that nothing about the workflow looks wrong. You are not touching the test set. You are following good practice by keeping training and validation separate. The problem is purely statistical: with enough tries, some configuration will look good on the validation set by chance alone, even if it has learned nothing more useful than the others.</p></section><section class='psec reveal'><h2>A worked example with numbers</h2><p>Suppose you have a validation set of 500 examples and a model that genuinely has a 70 percent chance of getting any given example right, with no way to improve further. Because the set is finite, the measured accuracy will bounce around 70 percent with some sampling noise, roughly plus or minus two percentage points from run to run just from which examples happen to be easy or hard in that particular sample.</p><p>Now imagine you try 100 different hyperparameter settings, all roughly equivalent in true quality, differing only in cosmetic ways: a slightly different learning rate, a different dropout value, a different random seed. None of them is actually better than 70 percent in expectation. But you evaluate all 100 on the same 500-example validation set and keep the best one. Because you are taking the maximum over 100 noisy measurements, the winner will very likely show something like 74 or 75 percent, not because it generalises better, but because it happened to land on the favourable side of the noise. You then report that number, and worse, you make further design decisions believing it reflects real improvement.</p><p>This is the same logic as running 100 independent tests and being surprised when one comes back significant purely by chance. The more configurations you try against a fixed evaluation set, the more the best-looking one is inflated by noise rather than by genuine skill. If you then take that model and evaluate it on a completely fresh set of 500 examples it has never influenced any decision about, the score often drops back down towards 70 percent. That drop is not bad luck on the new set, it is the validation set finally telling the truth.</p><p>The effect compounds with every additional axis of experimentation. Tune the learning rate, then the architecture, then the feature set, then the seed, each stage picking the best of several options against the same validation set, and the total number of effective comparisons multiplies quickly. A project that feels like ten deliberate decisions might actually represent hundreds of implicit comparisons once you count every configuration that was tried and discarded.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/overfitting-the-validation-set-1.jpg' alt='laptop with graphs and spreadsheet' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Why this bites in practice, not just in theory</h2><p>Small validation sets make the problem worse, and small validation sets are extremely common, especially in domains where labelled data is expensive: medical imaging, niche text classification, small-scale time series. The smaller the set, the larger the sampling noise, and the larger the gap between validation performance and what you will actually see in deployment. A team can spend weeks convinced they have found a strong architecture when they have really just found the configuration that best exploits the quirks of one particular 300-row validation split.</p><p>Long-running projects and shared benchmarks suffer from a slower version of the same thing. If a research community reuses the same public validation or test set across thousands of published results over several years, the collective search over model designs starts to resemble the 100-configuration example above, but at a much larger scale. Reported gains on that benchmark can shrink noticeably when the same models are checked against a freshly collected set drawn from the same distribution, because a portion of the apparent progress was never real, it was accumulated overfitting to one fixed set of examples.</p><p>The practical warning sign is a widening gap between validation performance and performance on genuinely new data, appearing precisely when you have done the most tuning. If your validation accuracy has climbed steadily over dozens of experiments but a fresh holdout or a live deployment shows a smaller improvement than you expected, that gap is worth taking seriously rather than explaining away.</p></section><section class='psec reveal'><h2>What to actually do about it</h2><p>Treat the validation set as a limited resource, not a free oracle. A few habits help. First, hold out a separate test set that you touch only once, at the very end, after every design decision has been frozen. Its whole value comes from never being consulted during the search, so protect it deliberately rather than assuming discipline will hold under deadline pressure.</p><p>Second, reduce the number of decisions you make purely on validation score. Use cross-validation or repeated resampling to get a more stable estimate before comparing configurations, since a single noisy number invites exactly the kind of chance-driven selection described above. Prefer a small number of well-motivated experiments over a large sweep of near-identical variants; a broad grid search over many hyperparameters that all matter little is a good way to manufacture a false winner.</p><p>Third, if you must run many experiments, budget for it statistically rather than pretending it did not happen. Track how many comparisons you have made against the validation set and be sceptical of small gains once that count grows large; a two-point improvement after five experiments is far more believable than the same two points after two hundred. Where possible, refresh the validation set periodically, or reserve a second holdout specifically to check whether gains found on the first one actually replicate.</p><p>None of this removes the need to experiment. It simply means treating validation score as one signal among several, rather than as ground truth to be squeezed until it confesses the answer you want. The model that survives an honest test set, evaluated only once, is worth far more than the one that merely won the largest search.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/overfitting-the-validation-set-2.jpg' alt='whiteboard with equations' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

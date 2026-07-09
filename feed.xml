@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Thu, 09 Jul 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Overfitting the Validation Set Through Too Many Experiments</title>
+    <link>https://jahanzaibawan.com/blog/overfitting-the-validation-set.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/overfitting-the-validation-set.html</guid>
+    <pubDate>Thu, 09 Jul 2026 09:00:00 +0000</pubDate>
+    <description>Run enough experiments against one validation set and you stop measuring generalisation, you start measuring luck. Here is why, with numbers.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Reproducibility: Seeds, Configs, and Runs You Can Rerun</title>
     <link>https://jahanzaibawan.com/blog/reproducibility-seeds-configs-runs.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/reproducibility-seeds-configs-runs.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Sat, 20 Jun 2026 09:00:00 +0000</pubDate>
     <description>A 117M-parameter transformer lost to a small recurrent net on every metric. Not because transformers are bad, but because the baseline was done properly.</description>
     <category>Baselines</category>
-  </item>
-  <item>
-    <title>How a naïve train/test split inflated my UAV F1 by 0.5</title>
-    <link>https://jahanzaibawan.com/blog/uav-data-leakage.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/uav-data-leakage.html</guid>
-    <pubDate>Fri, 12 Jun 2026 09:00:00 +0000</pubDate>
-    <description>The same model, the same data, and a macro-F1 that fell from 0.78 to 0.26 the moment I split the data honestly. A walk through the most expensive bug in ML.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>

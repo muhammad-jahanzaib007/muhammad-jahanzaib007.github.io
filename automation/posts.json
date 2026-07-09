@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "overfitting-the-validation-set",
+      "title": "Overfitting the Validation Set Through Too Many Experiments",
+      "excerpt": "Run enough experiments against one validation set and you stop measuring generalisation, you start measuring luck. Here is why, with numbers.",
+      "date": "2026-07-09",
+      "read_min": 6,
+      "tag": "Evaluation",
+      "color": "a2",
+      "thumb": "assets/blog/overfitting-the-validation-set.png",
+      "thumb_alt": "Cover image for the article: Overfitting the Validation Set Through Too Many Experiments"
+    },
+    {
       "slug": "reproducibility-seeds-configs-runs",
       "title": "Reproducibility: Seeds, Configs, and Runs You Can Rerun",
       "excerpt": "Most 'irreproducible' ML results fail for boring reasons: unpinned seeds, missing configs, undocumented data splits. Here is how to fix that properly.",
