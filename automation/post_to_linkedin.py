@@ -155,29 +155,15 @@ def write_receipt(results):
                        encoding="utf-8")
 
 
-def add_link_comment(headers, urn, post_id, url):
-    """Post the article URL as the FIRST comment. LinkedIn throttles reach on
-    posts with an external link in the body, so the link lives here instead."""
-    from urllib.parse import quote
-    try:
-        r = requests.post(
-            f"https://api.linkedin.com/rest/socialActions/{quote(post_id, safe='')}/comments",
-            headers=headers, timeout=30,
-            data=json.dumps({"actor": urn, "message": {"text": f"Read the full post: {url}"}}),
-        )
-        print(f"link comment: {r.status_code}")
-        return r.status_code in (200, 201)
-    except Exception as e:
-        print(f"link comment failed: {e}")
-        return False
-
-
 def share_post(headers, urn, post, url):
     """Share one post; return 'ok:<id>' or 'fail:<reason>'."""
     tags = " ".join(_hashtag(t) for t in ("MachineLearning", "DataScience", post["tag"]))
-    # Link goes in the first comment (add_link_comment), NOT the body — an
-    # external link in the body gets the post's reach throttled.
-    commentary = f"{post['title']}\n\n{post['excerpt']}\n\n{tags}"
+    # The link ideally goes in the first comment (LinkedIn throttles reach on
+    # posts with a body link), but comment-creation is 403 for standard apps —
+    # it needs the gated Community Management API. So the link stays in the
+    # body (at the end) to guarantee every post is clickable automatically;
+    # for max reach on a given post, add + pin the link comment by hand.
+    commentary = f"{post['title']}\n\n{post['excerpt']}\n\n{tags}\n\n{url}"
     body = {
         "author": urn,
         "commentary": commentary,
@@ -198,8 +184,6 @@ def share_post(headers, urn, post, url):
     if r.status_code in (200, 201):
         post_id = r.headers.get("x-restli-id", "n/a")
         print(f"Shared to LinkedIn (id: {post_id})")
-        if post_id != "n/a":
-            add_link_comment(headers, urn, post_id, url)
         return f"ok:{post_id}"
     if r.status_code == 401:
         print("LinkedIn 401: token invalid or expired (member tokens last ~60 days). "
