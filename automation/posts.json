@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a6",
       "thumb": "assets/blog/reproducibility-seeds-configs-runs.png",
-      "thumb_alt": "Cover image for the article: Reproducibility: Seeds, Configs, and Runs You Can Rerun"
+      "thumb_alt": "Cover image for the article: Reproducibility: Seeds, Configs, and Runs You Can Rerun",
+      "li_shared": true
     },
     {
       "slug": "augmentation-that-leaks",
