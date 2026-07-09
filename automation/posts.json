@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "reproducibility-seeds-configs-runs",
+      "title": "Reproducibility: Seeds, Configs, and Runs You Can Rerun",
+      "excerpt": "Most 'irreproducible' ML results fail for boring reasons: unpinned seeds, missing configs, undocumented data splits. Here is how to fix that properly.",
+      "date": "2026-07-09",
+      "read_min": 6,
+      "tag": "Evaluation",
+      "color": "a6",
+      "thumb": "assets/blog/reproducibility-seeds-configs-runs.png",
+      "thumb_alt": "Cover image for the article: Reproducibility: Seeds, Configs, and Runs You Can Rerun"
+    },
+    {
       "slug": "augmentation-that-leaks",
       "title": "Data Augmentation That Helps vs Augmentation That Leaks",
       "excerpt": "Augmentation only helps when it happens after splitting. Get the order wrong and your validation score becomes a lie.",

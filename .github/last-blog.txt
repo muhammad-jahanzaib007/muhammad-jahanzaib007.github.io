@@ -1,1 +1,1 @@
-2026-07-09T11:02:12Z slug=augmentation-that-leaks words=1015 title="Data Augmentation That Helps vs Augmentation That Leaks"
+2026-07-09T11:45:52Z slug=reproducibility-seeds-configs-runs words=1183 title="Reproducibility: Seeds, Configs, and Runs You Can Rerun"

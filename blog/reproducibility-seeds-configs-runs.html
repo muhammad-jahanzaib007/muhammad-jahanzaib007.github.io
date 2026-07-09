@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reproducibility: Seeds, Configs, and Runs You Can Rerun | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to reproducible machine learning experiments: managing seeds, configs, environments, and data versions so runs can be re-executed exactly.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="reproducibility, random seeds, experiment configs, machine learning evaluation, MLOps, leakage-aware splits, version control, deterministic training, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-09">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Reproducibility: Seeds, Configs, and Runs You Can Rerun">
+<meta property="og:description" content="A practical guide to reproducible machine learning experiments: managing seeds, configs, environments, and data versions so runs can be re-executed exactly.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/reproducibility-seeds-configs-runs.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/reproducibility-seeds-configs-runs.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Reproducibility: Seeds, Configs, and Runs You Can Rerun">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/reproducibility-seeds-configs-runs.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/reproducibility-seeds-configs-runs.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Reproducibility: Seeds, Configs, and Runs You Can Rerun",
+  "description": "A practical guide to reproducible machine learning experiments: managing seeds, configs, environments, and data versions so runs can be re-executed exactly.",
+  "url": "https://jahanzaibawan.com/blog/reproducibility-seeds-configs-runs.html",
+  "image": "https://jahanzaibawan.com/assets/blog/reproducibility-seeds-configs-runs.png",
+  "datePublished": "2026-07-09",
+  "dateModified": "2026-07-09",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/reproducibility-seeds-configs-runs.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Reproducibility: Seeds, Configs, and Runs You Can Rerun", "item": "https://jahanzaibawan.com/blog/reproducibility-seeds-configs-runs.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 6 min read · 9 Jul 2026</div>
+    <h1>Reproducibility: Seeds, Configs, and Runs You Can Rerun</h1>
+    <p class="lede">A result you cannot regenerate is not a result, it is an anecdote. Here is what it actually takes to make an experiment re-executable.</p>
+  </div>
+
+  <img src="../assets/blog/reproducibility-seeds-configs-runs.png" alt="Cover image for the article: Reproducibility: Seeds, Configs, and Runs You Can Rerun" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why 'it worked on my machine' is not enough</h2><p>Every so often I read a result that looks impressive, a model beating a baseline by a comfortable margin, and my first question is not whether the number is correct but whether anyone, including the author six months later, could get that same number again. In my experience this is the quiet failure mode of applied machine learning. Nobody falsifies results on purpose. They just lose track of which random seed was active, which version of a preprocessing script produced the training file, or which of three near-identical config files was actually used for the run that got reported.</p><p>Reproducibility sounds like a hygiene issue, something you tidy up after the real work is done. I think that framing is backwards. If you cannot rerun an experiment and get the same, or statistically the same, outcome, you have not actually finished the experiment. You have produced a single uncontrolled observation. Treating reproducibility as a first-class part of the method, not an afterthought, changes how you write code, how you log runs, and how much you trust your own conclusions.</p><p>The good news is that most of the failure is mundane and fixable. It is rarely a deep philosophical problem about the nature of randomness. It is usually three specific, boring gaps: seeds that are not actually fixed everywhere they need to be, configuration that lives in someone's head or a Jupyter cell instead of a file, and a run history that cannot tell you what code and data produced a given number. Fix those three and you have solved most of the practical problem.</p></section><section class='psec reveal'><h2>Seeds: fixing the ones you forgot about</h2><p>Setting a random seed feels like a solved problem, you call one function and move on. The trouble is that a typical training pipeline draws randomness from several independent sources, and setting one does not set the others. Consider a fairly ordinary image classification run: the data loader shuffles the training set, the model initialises its weights, dropout masks are sampled during training, and if you are using a GPU, certain operations are non-deterministic by default for speed. If you fix the seed for your deep learning framework but not for the underlying array library, or you fix both but leave the data loader's shuffling on a separate unseeded generator, you can rerun the 'same' experiment and land on a validation accuracy that differs by a percentage point or two for no reason you control.</p><p>That gap matters more than it sounds. Suppose two model variants differ in true performance by half a percentage point, a modest but real improvement. If your own unseeded randomness contributes a swing of one to two points between runs of the identical configuration, that noise is larger than the effect you are trying to measure. You will happily report whichever run landed favourably and call it an improvement, when in fact you have measured seed variance, not model quality. This is a specific, avoidable version of the more general problem where noise gets mistaken for signal.</p><p>The fix is unglamorous but complete: set the seed for every source of randomness your pipeline touches, including the language's own random module, the numerical library, the deep learning framework, and the data loading or shuffling mechanism, and where relevant force deterministic algorithm selection even at some cost to speed. Then go a step further and run the exact same configuration three to five times with different seeds deliberately, not to get a lucky number but to see the spread. Reporting a mean and a spread across seeds is far more honest than reporting a single best run, and it tells you immediately whether the effect you found is bigger than the noise floor of your own pipeline.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/reproducibility-seeds-configs-runs-1.jpg' alt='laptop with code and terminal windows' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Configs: making every decision an artefact, not a memory</h2><p>The second gap is configuration. It is common, especially under deadline pressure, to have the 'real' settings for a run scattered across command-line flags typed once and never saved, a few lines edited directly in a script, and a mental note about which checkpoint corresponds to which learning rate. Three weeks later nobody, including the person who ran it, can reconstruct exactly what produced the reported result.</p><p>A workable habit is to treat the full configuration for a run, learning rate, batch size, number of epochs, optimiser settings, data split identifiers, model architecture choices, and the seed itself, as a single structured file that gets saved alongside the run's outputs, not edited in place for the next experiment. Concretely, if you are comparing five learning rates, that is five saved configuration files and five corresponding output folders, not one file edited five times with the previous values lost. This feels like overhead when you are moving fast, but the alternative is that your only record of what worked is a plot with no caption explaining how it was produced.</p><p>This matters even more once data preprocessing enters the picture, because a config should also pin down which version of the data and which split you used. A model trained on 'the training set' is not reproducible if that phrase can refer to three slightly different files created at different points as you cleaned the data. Recording a hash or version tag for the dataset file, alongside the exact indices or filter used to build the split, closes a gap that seeds alone cannot fix: you can have a perfectly deterministic training run on the wrong or shifted data and still get a number nobody can reproduce, because nobody recorded which data actually went in.</p></section><section class='psec reveal'><h2>Runs you can actually rerun</h2><p>The third gap is the run log itself. A reproducible experiment needs a record connecting a specific code version, a specific config, a specific data version, and the resulting metrics, all in one place. Without that link, even perfect seeding and perfect configs are useless, because you cannot trace a reported number back to the exact combination that produced it. A simple, low-tech version of this is a spreadsheet or log file where every run gets a unique identifier, a timestamp, a note on the code commit used, the path to its saved config, and the final metrics. A more automated version uses an experiment tracking tool, but the underlying discipline is the same regardless of tooling: every number you are willing to put in a report or a chart should be traceable to an exact, rerunnable combination of code, config, data, and seed.</p><p>The payoff shows up exactly when you need it least: during a deadline, when a reviewer or colleague asks why a number changed, or six months later when you want to extend the work. If your pipeline is genuinely rerunnable, you answer that question by rerunning it, not by guessing. That single capability, being able to regenerate a result on demand rather than defending it from memory, is what separates a robust piece of empirical work from a plausible-looking one. It costs a little discipline up front. It is far cheaper than the alternative, which is not trusting your own numbers.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/reproducibility-seeds-configs-runs-2.jpg' alt='organised file folders on a desk' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
