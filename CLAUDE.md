@@ -77,6 +77,16 @@ mobile). ANY session that changes code or makes a notable finding must
 append an entry here (date, surface, branch, one-line summary) in the same
 commit, so the other sessions know who did what.
 
+- 2026-07-10 — claude.ai/code web session, branch
+  `claude/ai-video-director-app-3ycq25`: planning only (owner ask — no
+  build yet). Added `docs/ai-video-director-blueprint.md`: full product
+  spec + architecture for the "AI Video Director" app (idea/script →
+  scene-by-scene shooting plan with storyboard frames + environment photo
+  critique). Key decisions: React+TS+Vite PWA → Capacitor; Cloudflare
+  Worker AI proxy (structured outputs + vision); v1 storyboards via
+  programmatic canvas compositing (not image-gen); local-first IndexedDB,
+  Supabase later; recommend a separate repo for the build. Blog pipeline
+  untouched.
 - 2026-07-05/06 — laptop Claude Code session (direct commits to main):
   pinned requirements.txt + auto-blog installs from it, tests/ +
   tests.yml, self-heal.yml (retry-once + 08:50/20:50 backstops +
