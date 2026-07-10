@@ -9,7 +9,8 @@
       "tag": "MLOps",
       "color": "a5",
       "thumb": "assets/blog/model-registries-beyond-weights.png",
-      "thumb_alt": "Cover image for the article: Model Registries Explained: Versioning More Than Weights"
+      "thumb_alt": "Cover image for the article: Model Registries Explained: Versioning More Than Weights",
+      "li_shared": true
     },
     {
       "slug": "before-you-need-kubernetes",
