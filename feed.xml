@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Fri, 10 Jul 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>What an MLOps Pipeline Actually Needs Before Kubernetes</title>
+    <link>https://jahanzaibawan.com/blog/before-you-need-kubernetes.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/before-you-need-kubernetes.html</guid>
+    <pubDate>Fri, 10 Jul 2026 09:00:00 +0000</pubDate>
+    <description>Kubernetes solves a scaling problem you probably don&#x27;t have yet. Here&#x27;s what to fix first, from data versioning to leakage-aware evaluation.</description>
+    <category>MLOps</category>
+  </item>
+  <item>
     <title>SMOTE and Synthetic Data: When It Backfires</title>
     <link>https://jahanzaibawan.com/blog/smote-synthetic-data-backfires.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/smote-synthetic-data-backfires.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Fri, 03 Jul 2026 09:00:00 +0000</pubDate>
     <description>Class weights and resampling both target imbalance, but they change different things. Here is how to pick the right one and evaluate it honestly.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Early Stopping vs Regularization: Do You Need Both</title>
-    <link>https://jahanzaibawan.com/blog/early-stopping-vs-regularization.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/early-stopping-vs-regularization.html</guid>
-    <pubDate>Thu, 02 Jul 2026 09:00:00 +0000</pubDate>
-    <description>Early stopping and regularization both fight overfitting, but they work through different mechanisms. Understanding the difference tells you when you need one, the other, or both.</description>
-    <category>Machine Learning</category>
   </item>
 </channel>
 </rss>

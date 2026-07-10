@@ -1,6 +1,5 @@
 {
   "queue": [
-    "What an MLOps pipeline actually needs before it needs Kubernetes",
     "Model registries explained: versioning more than just weights",
     "Feature stores: solving a real problem or adding ceremony?",
     "LLM leaderboards: what they measure and what they hide",
@@ -45,6 +44,7 @@
     "Data augmentation that helps vs augmentation that leaks",
     "Reproducibility: seeds, configs, and runs you can re-execute",
     "Overfitting the validation set through too many experiments",
-    "SMOTE and synthetic data: when it backfires"
+    "SMOTE and synthetic data: when it backfires",
+    "What an MLOps pipeline actually needs before it needs Kubernetes"
   ]
 }

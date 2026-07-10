@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What an MLOps Pipeline Actually Needs Before Kubernetes | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why most ML teams should fix data versioning, reproducibility, and evaluation before adopting Kubernetes for their MLOps pipeline.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="MLOps, Kubernetes, reproducibility, data versioning, model evaluation, data leakage, ML pipelines, model monitoring, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-10">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="What an MLOps Pipeline Actually Needs Before Kubernetes">
+<meta property="og:description" content="Why most ML teams should fix data versioning, reproducibility, and evaluation before adopting Kubernetes for their MLOps pipeline.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/before-you-need-kubernetes.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/before-you-need-kubernetes.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What an MLOps Pipeline Actually Needs Before Kubernetes">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/before-you-need-kubernetes.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/before-you-need-kubernetes.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "What an MLOps Pipeline Actually Needs Before Kubernetes",
+  "description": "Why most ML teams should fix data versioning, reproducibility, and evaluation before adopting Kubernetes for their MLOps pipeline.",
+  "url": "https://jahanzaibawan.com/blog/before-you-need-kubernetes.html",
+  "image": "https://jahanzaibawan.com/assets/blog/before-you-need-kubernetes.png",
+  "datePublished": "2026-07-10",
+  "dateModified": "2026-07-10",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/before-you-need-kubernetes.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "What an MLOps Pipeline Actually Needs Before Kubernetes", "item": "https://jahanzaibawan.com/blog/before-you-need-kubernetes.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">MLOps · 5 min read · 10 Jul 2026</div>
+    <h1>What an MLOps Pipeline Actually Needs Before Kubernetes</h1>
+    <p class="lede">Before you reach for orchestration, most model pipelines need a boring, reliable foundation: reproducible data, versioned models, and honest evaluation.</p>
+  </div>
+
+  <img src="../assets/blog/before-you-need-kubernetes.png" alt="Cover image for the article: What an MLOps Pipeline Actually Needs Before Kubernetes" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The orchestration trap</h2><p>Every few months I see a team decide that their model pipeline needs Kubernetes. The reasoning usually sounds sensible: they have several models, a training job that runs on a schedule, and a growing set of dependencies between steps. Surely this is a container orchestration problem. In my experience it rarely is, at least not yet. What these teams actually have is a reproducibility problem wearing an orchestration costume.</p><p>Kubernetes is very good at one thing: scheduling and scaling containerised workloads across a cluster reliably. It does nothing for you if your training data changes silently between runs, if nobody can tell which model version is currently serving predictions, or if your validation score doesn't reflect how the model behaves in production. Adding a scheduler on top of a pipeline with those problems just means the problems now fail faster and in more places.</p><p>I think the honest ordering of priorities looks something like this: get your data and code reproducible, get your models and datasets versioned, get your evaluation methodology trustworthy, and only then start worrying about how many pods you need. Skipping to orchestration is tempting because it feels like engineering progress. Fixing evaluation feels like admitting the model was never as good as the demo suggested. That discomfort is exactly why it gets skipped.</p></section><section class='psec reveal'><h2>Reproducibility comes before scale</h2><p>Consider a concrete case. A team trains a churn model weekly. The pipeline pulls data from a warehouse table, does some feature engineering, trains a gradient boosted model, and pushes it to a serving endpoint. Six weeks in, someone notices that last month's model, when retrained on this month's data pull, gives a materially different AUC: 0.81 instead of 0.77. Nobody can explain why, because nobody pinned the exact rows used, the feature code has had two small edits, and the random seed was never fixed.</p><p>This is not an orchestration failure, it is a provenance failure. Before any of this pipeline touches a cluster, it needs three unglamorous things: a fixed snapshot or query that defines exactly which rows counted as training data on a given date, a hash or tag on the code that produced the features, and a logged seed and library version for the model itself. With those three things in place, that 0.81 versus 0.77 discrepancy becomes debuggable in an afternoon rather than a mystery that erodes trust in the whole pipeline.</p><p>None of this requires distributed infrastructure. It requires discipline: a data versioning tool or even a simple convention of storing dated parquet snapshots, a model registry that records which artefact is live, and a habit of logging enough metadata that a run can be explained after the fact. A single well-organised virtual machine running a cron job can do this perfectly well. The moment you can explain every number your pipeline has ever produced, you've solved a harder problem than scaling.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/before-you-need-kubernetes-1.jpg' alt='server room data center racks' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Evaluation that survives contact with reality</h2><p>The second thing that has to exist before scaling matters is an evaluation setup you actually trust, and this is where I see the most damage done quietly. Suppose the churn model above is validated with a random 80/20 split of historical customers. It scores 0.81 AUC. In production, three months later, it scores something closer to 0.68. The gap is not bad luck, it is very likely leakage: features built using aggregates computed over the full dataset, including future information relative to some customers' observation windows, or duplicate customers appearing in both the train and test split because of account changes.</p><p>A leakage-aware split for this problem means splitting by time, not randomly: train on customers observed up to month six, validate on month seven, and make sure every feature is computed using only information available as of the customer's observation cutoff. This is more annoying to implement than a random split and it will almost always produce a lower, less flattering validation score. That lower score is the honest one. Scaling a pipeline that reports 0.81 but delivers 0.68 in production doesn't make the business better off, it just makes the disappointment arrive at higher throughput.</p><p>The same logic applies to any strong baseline comparison. If a new deep model beats a simple logistic regression by two points of AUC on a leaky split, and by nothing on a correctly time-split evaluation, you've learned something valuable: the complexity wasn't buying you anything. This kind of check is cheap to run and should happen before a model is even considered for the registry, let alone for a Kubernetes deployment with autoscaling and canary rollouts.</p></section><section class='psec reveal'><h2>Monitoring, and when Kubernetes actually earns its place</h2><p>Once data provenance and evaluation are solid, the next unglamorous requirement is monitoring that checks the right things. Tracking uptime and latency is necessary but not sufficient for a model service. You also need drift checks on input features, checks on the distribution of predictions, and ideally a slow trickle of ground truth labels feeding back so you can recompute real performance metrics on a schedule, not just at launch. A model can be perfectly available, fast, and silently wrong for weeks, and infrastructure monitoring alone will never tell you that.</p><p>Only after these things exist, reproducible data and code, versioned models, leakage-aware evaluation, and metric-aware monitoring, does it make sense to ask whether you need Kubernetes. The honest trigger for that question is usually one of: multiple models with genuinely different resource profiles that need independent scaling, a real requirement for zero-downtime rollouts across many replicas, or a team large enough that shared cluster tooling saves more time than it costs to maintain. If your actual load is one model served a few thousand times a day, a simple container on a managed service will do the job with a fraction of the operational burden.</p><p>The practical takeaway is this: treat orchestration as a scaling tool, not a maturity signal. Before reaching for Kubernetes, make sure you can answer, with evidence, exactly what data trained your current model, why your validation score is trustworthy, and whether your monitoring would catch a silent quality regression. If you can't answer those questions confidently, more infrastructure will only add more places for the same underlying problems to hide.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/before-you-need-kubernetes-2.jpg' alt='engineer reviewing dashboard on laptop' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

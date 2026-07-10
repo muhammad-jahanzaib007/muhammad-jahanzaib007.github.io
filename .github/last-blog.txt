@@ -1,1 +1,1 @@
-2026-07-10T10:45:24Z slug=smote-synthetic-data-backfires words=1060 title="SMOTE and Synthetic Data: When It Backfires"
+2026-07-10T20:38:50Z slug=before-you-need-kubernetes words=1037 title="What an MLOps Pipeline Actually Needs Before Kubernetes"
