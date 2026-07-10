@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "model-registries-beyond-weights",
+      "title": "Model Registries Explained: Versioning More Than Weights",
+      "excerpt": "A weights file is not a model. Here is what a proper model registry actually needs to track, and why skipping it quietly breaks reproducibility.",
+      "date": "2026-07-10",
+      "read_min": 5,
+      "tag": "MLOps",
+      "color": "a5",
+      "thumb": "assets/blog/model-registries-beyond-weights.png",
+      "thumb_alt": "Cover image for the article: Model Registries Explained: Versioning More Than Weights"
+    },
+    {
       "slug": "before-you-need-kubernetes",
       "title": "What an MLOps Pipeline Actually Needs Before Kubernetes",
       "excerpt": "Kubernetes solves a scaling problem you probably don't have yet. Here's what to fix first, from data versioning to leakage-aware evaluation.",

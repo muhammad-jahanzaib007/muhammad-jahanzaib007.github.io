@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Fri, 10 Jul 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Model Registries Explained: Versioning More Than Weights</title>
+    <link>https://jahanzaibawan.com/blog/model-registries-beyond-weights.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/model-registries-beyond-weights.html</guid>
+    <pubDate>Fri, 10 Jul 2026 09:00:00 +0000</pubDate>
+    <description>A weights file is not a model. Here is what a proper model registry actually needs to track, and why skipping it quietly breaks reproducibility.</description>
+    <category>MLOps</category>
+  </item>
+  <item>
     <title>What an MLOps Pipeline Actually Needs Before Kubernetes</title>
     <link>https://jahanzaibawan.com/blog/before-you-need-kubernetes.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/before-you-need-kubernetes.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Fri, 03 Jul 2026 09:00:00 +0000</pubDate>
     <description>A practical guide to why distance and gradient based models demand scaled features while tree based models shrug them off entirely.</description>
     <category>Machine Learning</category>
-  </item>
-  <item>
-    <title>Class Weights vs Resampling for Imbalanced Data</title>
-    <link>https://jahanzaibawan.com/blog/class-weights-vs-resampling.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/class-weights-vs-resampling.html</guid>
-    <pubDate>Fri, 03 Jul 2026 09:00:00 +0000</pubDate>
-    <description>Class weights and resampling both target imbalance, but they change different things. Here is how to pick the right one and evaluate it honestly.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>

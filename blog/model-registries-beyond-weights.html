@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Model Registries Explained: Versioning More Than Weights | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to model registries: why versioning weights alone fails, and what metadata, data lineage, and environment details you actually need to track.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="model registry, MLOps, reproducibility, model versioning, data lineage, experiment tracking, machine learning pipelines, model governance, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-10">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Model Registries Explained: Versioning More Than Weights">
+<meta property="og:description" content="A practical guide to model registries: why versioning weights alone fails, and what metadata, data lineage, and environment details you actually need to track.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/model-registries-beyond-weights.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/model-registries-beyond-weights.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Model Registries Explained: Versioning More Than Weights">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/model-registries-beyond-weights.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/model-registries-beyond-weights.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Model Registries Explained: Versioning More Than Weights",
+  "description": "A practical guide to model registries: why versioning weights alone fails, and what metadata, data lineage, and environment details you actually need to track.",
+  "url": "https://jahanzaibawan.com/blog/model-registries-beyond-weights.html",
+  "image": "https://jahanzaibawan.com/assets/blog/model-registries-beyond-weights.png",
+  "datePublished": "2026-07-10",
+  "dateModified": "2026-07-10",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/model-registries-beyond-weights.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Model Registries Explained: Versioning More Than Weights", "item": "https://jahanzaibawan.com/blog/model-registries-beyond-weights.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">MLOps · 5 min read · 10 Jul 2026</div>
+    <h1>Model Registries Explained: Versioning More Than Weights</h1>
+    <p class="lede">A model file on its own tells you almost nothing. Real reproducibility means versioning the data, code, environment, and decisions that produced it.</p>
+  </div>
+
+  <img src="../assets/blog/model-registries-beyond-weights.png" alt="Cover image for the article: Model Registries Explained: Versioning More Than Weights" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The weights file is a red herring</h2><p>I used to think a saved model was, well, the model. You train something, checkpoint the weights, and that file becomes the artefact you ship. It is only after watching a 'reproduce last quarter's result' request go badly wrong that you realise the weights are the least interesting part of the story. A tensor of floating point numbers tells you nothing about how it got that way.</p><p>Say a colleague hands you a checkpoint that scored 0.91 F1 on some internal benchmark. Can you retrain it if the file gets corrupted? Can you explain to an auditor why it makes a particular decision? Can you tell whether it is safe to swap into a new pipeline that feeds it slightly different features? With only the weights, the honest answer to all three is no. You are holding the output of a process without any record of the process itself.</p><p>This is the gap a model registry is supposed to close. Not a folder of .pt or .pkl files with timestamps in the name, but a system that treats a model as a bundle: the weights, yes, but also the data snapshot, the training code commit, the hyperparameters, the environment, the evaluation results, and the approval history. Miss any one of these and the version number you assign is decorative rather than meaningful.</p></section><section class='psec reveal'><h2>What actually needs a version number</h2><p>Start with data. If you retrain a fraud detection model next month on an updated transaction table, you have not made 'the same model with fresh weights'; you have made a different model, because the underlying distribution has shifted and the label definitions may have quietly changed too. A registry entry should point to an exact, immutable snapshot or a content hash of the training set, not a live table name that will look different by the time someone checks it. Without that, 'v3 of the fraud model' is a name attached to a moving target.</p><p>Then there is code. It is tempting to assume the model architecture is fixed once training starts, but preprocessing scripts, feature engineering, and even the random seed handling change constantly during development. I have seen two 'identical' training runs produce meaningfully different validation curves because a tokenisation step was silently updated between them. Tying a registry entry to a specific git commit hash, not a branch name, is the only way to guarantee that 're-running the pipeline' actually reruns the same pipeline.</p><p>Environment matters more than most people expect. A model trained with one version of a numerical library can produce measurably different outputs than the same code run with a newer version, especially anywhere floating point operations or random initialisation are involved. Recording the container image or a locked dependency file alongside the model means the difference between 'this regressed because the data changed' and 'this regressed because someone upgraded a package' becomes answerable in minutes rather than days.</p><p>Finally, hyperparameters and evaluation protocol. A learning rate, a class-weighting scheme, the exact split used for validation: these decisions shape the model as much as the architecture does. If your evaluation numbers were computed on a split that later turns out to share rows with the training set, the whole comparison between model versions collapses. The registry should store the split definition itself, or a hash of it, not just the resulting metric.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/model-registries-beyond-weights-1.jpg' alt='server room data center' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>A worked example of why this matters</h2><p>Imagine a team maintaining a churn prediction model. Version 4 scores 0.78 AUC on the holdout set and gets deployed. Three months later, version 5 is trained on more recent data and scores 0.81 AUC, so it replaces version 4 in production. A month after that, complaints roll in: the new model is flagging loyal, long-tenure customers as high churn risk far more often than before.</p><p>With a proper registry, tracing this takes an afternoon. You pull up the two entries and compare data snapshots: version 5's training window happened to overlap with a billing system migration that temporarily mislabelled a batch of cancelled accounts as active. You compare feature definitions: the 'days since last login' feature was recomputed slightly differently after a schema change, shifting its distribution. You compare the evaluation split: reassuringly, both used disjoint, time-ordered holdouts, so the AUC comparison itself was fair; the problem was upstream in the data, not in the metric.</p><p>Without the registry, this same investigation could take days of asking around, and the temptation is to just retrain again and hope the problem goes away, which is how silent regressions become permanent. The registry does not prevent the mistake; it makes the mistake findable, and it lets you roll back to version 4 with confidence about exactly what you are rolling back to, rather than a vague sense that 'the old one was fine'.</p><p>There is also a governance angle that becomes unavoidable once a model touches real decisions about people. If a regulator or an internal review asks why a specific prediction was made six months ago, 'we don't have that exact model version any more' is not an acceptable answer. A registry entry with a fixed data snapshot, code commit, and environment lets you reconstruct the exact conditions under which a decision was produced, which is a much stronger position than trying to reason about it after the fact from memory or scattered notebooks.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>If you are setting up a registry, or evaluating whether your current one is doing its job, ask a simple test question: given only a version identifier, can someone with no other context reconstruct exactly what was trained, on what data, with what code, in what environment, and evaluated how? If the answer involves phrases like 'probably' or 'I think it was around then', the registry is tracking a filename, not a model.</p><p>The discipline is not glamorous. It means writing down data hashes, pinning dependency versions, and storing split definitions even when it feels like bureaucratic overhead during a fast-moving project. But the cost of skipping it is paid later, usually at the worst possible time: during an incident, an audit, or a comparison between two models that turns out to be quietly unfair. Treat the weights as one field in a larger record, not the record itself, and version everything that would need to be true for someone else to trust your result.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/model-registries-beyond-weights-2.jpg' alt='whiteboard with version diagram' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
