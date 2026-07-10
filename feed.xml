@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Thu, 09 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 10 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>SMOTE and Synthetic Data: When It Backfires</title>
+    <link>https://jahanzaibawan.com/blog/smote-synthetic-data-backfires.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/smote-synthetic-data-backfires.html</guid>
+    <pubDate>Fri, 10 Jul 2026 09:00:00 +0000</pubDate>
+    <description>SMOTE fixes imbalance in theory but often just teaches your model to memorise interpolated noise, especially when it leaks into your test set.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Overfitting the Validation Set Through Too Many Experiments</title>
     <link>https://jahanzaibawan.com/blog/overfitting-the-validation-set.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Thu, 02 Jul 2026 09:00:00 +0000</pubDate>
     <description>Early stopping and regularization both fight overfitting, but they work through different mechanisms. Understanding the difference tells you when you need one, the other, or both.</description>
     <category>Machine Learning</category>
-  </item>
-  <item>
-    <title>A tuned GRU beat LoRA-fine-tuned GPT-2, here&#x27;s why</title>
-    <link>https://jahanzaibawan.com/blog/gru-vs-gpt2.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/gru-vs-gpt2.html</guid>
-    <pubDate>Sat, 20 Jun 2026 09:00:00 +0000</pubDate>
-    <description>A 117M-parameter transformer lost to a small recurrent net on every metric. Not because transformers are bad, but because the baseline was done properly.</description>
-    <category>Baselines</category>
   </item>
 </channel>
 </rss>

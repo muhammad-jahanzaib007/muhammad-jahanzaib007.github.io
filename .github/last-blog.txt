@@ -1,1 +1,1 @@
-2026-07-09T21:22:44Z slug=overfitting-the-validation-set words=1184 title="Overfitting the Validation Set Through Too Many Experiments"
+2026-07-10T10:45:24Z slug=smote-synthetic-data-backfires words=1060 title="SMOTE and Synthetic Data: When It Backfires"

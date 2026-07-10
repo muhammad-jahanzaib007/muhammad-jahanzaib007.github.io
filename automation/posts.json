@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "smote-synthetic-data-backfires",
+      "title": "SMOTE and Synthetic Data: When It Backfires",
+      "excerpt": "SMOTE fixes imbalance in theory but often just teaches your model to memorise interpolated noise, especially when it leaks into your test set.",
+      "date": "2026-07-10",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a3",
+      "thumb": "assets/blog/smote-synthetic-data-backfires.png",
+      "thumb_alt": "Cover image for the article: SMOTE and Synthetic Data: When It Backfires"
+    },
+    {
       "slug": "overfitting-the-validation-set",
       "title": "Overfitting the Validation Set Through Too Many Experiments",
       "excerpt": "Run enough experiments against one validation set and you stop measuring generalisation, you start measuring luck. Here is why, with numbers.",

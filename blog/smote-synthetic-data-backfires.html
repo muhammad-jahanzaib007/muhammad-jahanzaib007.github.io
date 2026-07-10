@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMOTE and Synthetic Data: When It Backfires | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A look at when SMOTE and synthetic oversampling help imbalanced classification, and when they cause leakage, distorted decision boundaries, or false confidence.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="SMOTE, class imbalance, synthetic data, oversampling, data leakage, cross validation, imbalanced classification, model evaluation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-10">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="SMOTE and Synthetic Data: When It Backfires">
+<meta property="og:description" content="A look at when SMOTE and synthetic oversampling help imbalanced classification, and when they cause leakage, distorted decision boundaries, or false confidence.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/smote-synthetic-data-backfires.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/smote-synthetic-data-backfires.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SMOTE and Synthetic Data: When It Backfires">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/smote-synthetic-data-backfires.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/smote-synthetic-data-backfires.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "SMOTE and Synthetic Data: When It Backfires",
+  "description": "A look at when SMOTE and synthetic oversampling help imbalanced classification, and when they cause leakage, distorted decision boundaries, or false confidence.",
+  "url": "https://jahanzaibawan.com/blog/smote-synthetic-data-backfires.html",
+  "image": "https://jahanzaibawan.com/assets/blog/smote-synthetic-data-backfires.png",
+  "datePublished": "2026-07-10",
+  "dateModified": "2026-07-10",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/smote-synthetic-data-backfires.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "SMOTE and Synthetic Data: When It Backfires", "item": "https://jahanzaibawan.com/blog/smote-synthetic-data-backfires.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 10 Jul 2026</div>
+    <h1>SMOTE and Synthetic Data: When It Backfires</h1>
+    <p class="lede">Oversampling can rescue a model from a severe class imbalance, or it can quietly poison your evaluation. The difference lies almost entirely in where you apply it.</p>
+  </div>
+
+  <img src="../assets/blog/smote-synthetic-data-backfires.png" alt="Cover image for the article: SMOTE and Synthetic Data: When It Backfires" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The appeal, and the trap</h2><p>Class imbalance is one of the first walls every practitioner hits. You have a fraud detection dataset with a handful of positives per thousand transactions, or a medical dataset where the condition of interest appears in three percent of cases. A model trained naively on this will often just predict the majority class and still post a respectable accuracy figure. SMOTE, the Synthetic Minority Oversampling Technique, offers a tempting fix: generate new synthetic minority examples by interpolating between existing minority points and their nearest neighbours, then rebalance the training set before fitting a classifier.</p><p>The trap is that SMOTE is frequently applied in a way that makes results look better without making the model actually better. The most common failure is applying oversampling before splitting into train and test, or before cross validation folds are created. If you generate synthetic minority samples from the full dataset and then split, synthetic points derived from a test-set example can end up in your training fold, and the near-identical original can end up in the test fold. Your model isn't learning to generalise; it's partially memorising interpolated copies of the very data it will be scored against.</p><p>This isn't a hypothetical edge case. It's one of the most reproducible ways to inflate a paper's or a portfolio project's reported F1 score. I've seen the same dataset produce a reported recall in the high nineties with leaky SMOTE and a much more modest, and far more honest, recall once oversampling was moved strictly inside the cross validation loop, fitted only on the training fold each time.</p></section><section class='psec reveal'><h2>A worked example of the leak</h2><p>Suppose you have 1,000 examples, 950 negative and 50 positive. You apply SMOTE to the whole dataset, generating 900 synthetic positive examples so the classes are balanced at 950 versus 950. Now you do a standard 80/20 train-test split on this augmented set of 1,900 rows. Because SMOTE interpolates between a real minority point and its nearest minority neighbours, many synthetic points sit extremely close in feature space to the real points they were derived from. Some of those real points, and some of their synthetic near-duplicates, will land on opposite sides of your split by pure chance.</p><p>The test set now contains points that are almost identical to training examples. Your classifier, particularly a nearest-neighbour-based one or a tree ensemble that partitions feature space finely, doesn't need to learn the true minority-class boundary at all. It just needs to recognise the local neighbourhood, which it has effectively already seen. The evaluation metric rewards this recognition as if it were generalisation. When the model later meets genuinely new fraud patterns or genuinely new patient presentations, none of which resemble the interpolated training neighbourhoods, performance collapses.</p><p>The fix is mechanical but non-negotiable: oversampling belongs strictly inside each training fold, refitted from scratch every time, using only the labels and features available in that fold. In practice this means SMOTE goes inside a pipeline object alongside the classifier, not as a preprocessing step applied once to the whole dataset. Any library that supports this properly will let you chain the resampler and the estimator so that cross validation calls fit_resample only on the training portion of each fold.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/smote-synthetic-data-backfires-1.jpg' alt='laboratory scatter plot data points on screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Beyond leakage: distortion of the decision boundary</h2><p>Even when SMOTE is applied correctly, with no leakage, it can still backfire for a subtler reason: it assumes the minority class is locally smooth and that interpolating between neighbours produces plausible new examples. That assumption holds reasonably well for dense, well-separated clusters. It breaks down for minority classes that are themselves noisy, overlapping with the majority class, or scattered across several disconnected subclusters.</p><p>Consider a minority class formed of two distinct subpopulations, say early-stage and late-stage presentations of a rare condition, sitting in different regions of feature space with a gap of majority-class points between them. SMOTE's nearest-neighbour interpolation can generate synthetic points that fall inside that gap, effectively inventing minority examples that look like blends of majority and minority characteristics. The classifier then learns a decision boundary shaped by these fabricated in-between cases, which don't correspond to anything that occurs in reality. Precision on real minority cases can actually fall even as the reported balanced accuracy on synthetic-augmented validation data looks fine.</p><p>There's also a scale problem. If your minority class has only twenty or thirty examples, SMOTE's nearest-neighbour calculation is working with an extremely thin sample of the true distribution. Every synthetic point is an interpolation of interpolations after enough oversampling, and the effective diversity of your training set doesn't grow the way the row count suggests. You end up with more rows but not more information, and some classifiers, especially those sensitive to local density like k-nearest neighbours, are particularly easy to fool this way.</p></section><section class='psec reveal'><h2>What actually works, and the honest takeaway</h2><p>None of this means SMOTE is a bad idea; it means SMOTE is a tool with specific assumptions that need checking, not a default switch to flip whenever you see an imbalanced label column. Before reaching for it, I'd rather try class weighting in the loss function, which changes how errors are penalised without inventing any new rows at all, and compare it honestly against SMOTE using the same nested cross validation setup. Often the weighted model matches or beats the oversampled one, with far less risk of leakage or boundary distortion.</p><p>If you do use SMOTE, treat it as part of the model, not part of the data. Put it inside the pipeline, refit it per fold, and evaluate on metrics that actually reflect the cost of your errors, such as precision-recall curves or a cost-weighted score, rather than accuracy or a naively computed F1 that can be gamed by near-duplicate synthetic points. Inspect a sample of the generated synthetic examples directly; if they look implausible or sit in regions your domain knowledge says shouldn't contain minority cases, that's a signal the interpolation assumption has failed for your data.</p><p>The broader lesson generalises well past SMOTE. Any technique that manufactures data, whether it's oversampling, data augmentation for images, or generative upsampling, must sit downstream of your train-test split, never upstream of it. The moment synthetic generation touches information from outside the training fold, your evaluation stops measuring generalisation and starts measuring memorisation, and no amount of algorithmic sophistication in the classifier afterwards will save you from that.</p></section>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
