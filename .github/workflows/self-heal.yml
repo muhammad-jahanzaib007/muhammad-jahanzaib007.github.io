@@ -5,16 +5,23 @@ name: Self-heal
 #   flakes clear on retry); a second failure opens ONE labelled issue,
 #   titled needs-human when the receipts look like credentials (the LinkedIn
 #   token expiring ~every 60 days is the known out-of-domain case).
-# Layer 2: backstops ~50 min after each blog cron re-dispatch the workflow
-#   when GitHub's cron never fired (same silent-miss class as the YT repo's
-#   eaten 12:13 slot on 2026-07-05).
+# Layer 2 (missed-slot dispatch) RETIRED 2026-07-10: the external Cloudflare
+#   heartbeat now covers a missed 08:00/20:00 blog slot per-slot (verified
+#   dispatching — /?probe returned 204). A cron backstop dies in a wholesale
+#   GitHub scheduler outage anyway, and — like the YT self-heal backstops
+#   retired 2026-07-08 — a LATE-replayed backstop cron over-fires an EXTRA
+#   blog post (last run reads as >60 min stale). On a quality-sensitive site
+#   an extra padded post is worse than a briefly-missed slot.
+# The 08:50/20:50 schedule crons are KEPT solely to drive the `if: always()`
+#   Pages-deploy heal below (safe — re-runs the same commit's artifact);
+#   they no longer dispatch auto-blog.
 on:
   workflow_run:
     workflows: ["Auto blog"]
     types: [completed]
   schedule:
-    - cron: "50 8 * * *"    # after the 08:00 UTC blog slot
-    - cron: "50 20 * * *"   # after the 20:00 UTC blog slot
+    - cron: "50 8 * * *"    # 08:50 UTC — Pages-deploy heal only
+    - cron: "50 20 * * *"   # 20:50 UTC — Pages-deploy heal only
   workflow_dispatch:
 
 permissions:
@@ -66,25 +73,6 @@ jobs:
           gh issue create --repo "$GITHUB_REPOSITORY" --label watchdog \
             --title "$title" \
             --body "$(printf 'Auto blog failed on both attempts: %s\n\nLast share receipt:\n```\n%s\n```\n' "$RUN_URL" "$share")"
-
-      - name: Backstop a missed blog slot
-        if: github.event_name != 'workflow_run'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          set -euo pipefail
-          latest=$(gh api "repos/$GITHUB_REPOSITORY/actions/workflows/auto-blog.yml/runs?per_page=1" \
-                   --jq '.workflow_runs[0].created_at // empty')
-          if [ -n "$latest" ]; then
-            age_min=$(( ( $(date -u +%s) - $(date -u -d "$latest" +%s) ) / 60 ))
-            echo "latest auto-blog run: $latest (${age_min} min ago)"
-            if [ "$age_min" -le 60 ]; then
-              echo "slot was served; no action"
-              exit 0
-            fi
-          fi
-          echo "no auto-blog run in the last 60 min; the cron was missed — dispatching"
-          gh workflow run auto-blog.yml --repo "$GITHUB_REPOSITORY"
 
       # GitHub's managed "pages build and deployment" workflow intermittently
       # fails with "Deployment failed, try again later" (4x on 2026-07-06

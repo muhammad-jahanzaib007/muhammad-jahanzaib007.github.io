@@ -34,7 +34,10 @@ done — no walls of text, no restating what the owner knows. Conserves tokens.
 
 - `self-heal.yml`: failed Auto blog run auto-retried once; second failure →
   ONE `watchdog` issue (NEEDS A HUMAN when it greps as token/credentials).
-  Backstops 08:50/20:50 UTC re-dispatch when the GitHub cron never fired.
+  The 08:50/20:50 UTC missed-slot re-dispatch was RETIRED 2026-07-10 (the
+  Cloudflare heartbeat covers a missed blog slot now, and a late-replayed
+  backstop cron over-fired an EXTRA post — same bug that retired the YT
+  backstops). Those two crons are KEPT only to drive the Pages-deploy heal.
   Every invocation also re-runs the latest Pages build if it failed —
   GitHub Pages throws intermittent "Deployment failed, try again later"
   transients (4x on 2026-07-06); a re-run of the same artifact clears them.
@@ -141,3 +144,12 @@ commit, so the other sessions know who did what.
   LinkedIn share ok 07-09 21:23). Still-open blog TODO from 07-08: the
   08:50/20:50 self-heal backstops are now redundant with the working
   heartbeat and can be retired (not yet done).
+- 2026-07-10 — claude.ai/code web session (branch
+  claude/memory-file-github-voe2u3): RETIRED the 08:50/20:50 missed-slot
+  re-dispatch in self-heal.yml. Two reasons: (1) the heartbeat now covers a
+  missed blog slot per-slot (verified — /?probe 204); (2) it carried the same
+  over-fire bug that retired the YT self-heal backstops on 07-08 — a
+  LATE-replayed backstop cron reads the last run as >60 min stale and fires
+  an EXTRA blog post, and a padded post hurts the "genuine business" quality
+  signal more than a briefly-missed slot does. KEPT the two schedule crons
+  (now Pages-heal-only) + the workflow_run retry/escalate layer untouched.
