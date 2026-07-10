@@ -9,7 +9,8 @@
       "tag": "MLOps",
       "color": "a4",
       "thumb": "assets/blog/before-you-need-kubernetes.png",
-      "thumb_alt": "Cover image for the article: What an MLOps Pipeline Actually Needs Before Kubernetes"
+      "thumb_alt": "Cover image for the article: What an MLOps Pipeline Actually Needs Before Kubernetes",
+      "li_shared": true
     },
     {
       "slug": "smote-synthetic-data-backfires",
