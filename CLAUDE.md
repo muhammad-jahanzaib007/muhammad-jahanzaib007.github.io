@@ -131,3 +131,13 @@ commit, so the other sessions know who did what.
   the owner to add+pin a comment by hand. NOTE the 2026-07-09 11:07 post
   (augmentation-that-leaks) shipped during the broken window with NO link —
   add manually if wanted. Groups auto-posting is also impossible (no API).
+- 2026-07-10 — claude.ai/code web session (branch
+  claude/memory-file-github-voe2u3): shared heartbeat Worker (in the YT repo,
+  covers this repo's 08:00/20:00 blog slots too) 403 is RESOLVED — owner
+  updated the Worker GH_TOKEN and `<worker-url>/?probe` returned 204 ok, so
+  its workflow_dispatch WRITE path works now. Missed blog slots will
+  self-dispatch unattended going forward. Blog pipeline itself was healthy
+  throughout (GitHub scheduler delivering since 07-08; last post +
+  LinkedIn share ok 07-09 21:23). Still-open blog TODO from 07-08: the
+  08:50/20:50 self-heal backstops are now redundant with the working
+  heartbeat and can be retired (not yet done).
