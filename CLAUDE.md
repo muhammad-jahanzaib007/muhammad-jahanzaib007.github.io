@@ -122,3 +122,12 @@ commit, so the other sessions know who did what.
   the Actions tab for missing scheduled runs and dispatch auto-blog.yml
   by hand; only the human-visible watchdog issue (or a session doing a
   health check) catches a full scheduler outage.
+- 2026-07-10 — claude.ai/code web session (branch
+  claude/pipeline-health-check-gtnyzy): LinkedIn reach fix. Tried moving the
+  article link to the first comment (body links get reach-throttled), but the
+  comment-create API returns 403 — LinkedIn gates programmatic commenting
+  behind the Community Management API, and pinning has NO API. Reverted to
+  link-in-body (at the end) so posts stay auto-clickable; max-reach requires
+  the owner to add+pin a comment by hand. NOTE the 2026-07-09 11:07 post
+  (augmentation-that-leaks) shipped during the broken window with NO link —
+  add manually if wanted. Groups auto-posting is also impossible (no API).
