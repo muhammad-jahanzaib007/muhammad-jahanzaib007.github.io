@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a2",
       "thumb": "assets/blog/llm-leaderboards-hidden-costs.png",
-      "thumb_alt": "Cover image for the article: LLM Leaderboards: What They Measure and What They Hide"
+      "thumb_alt": "Cover image for the article: LLM Leaderboards: What They Measure and What They Hide",
+      "li_shared": true
     },
     {
       "slug": "feature-stores-real-problem",
