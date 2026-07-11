@@ -9,7 +9,8 @@
       "tag": "Computer Vision",
       "color": "a4",
       "thumb": "assets/blog/cv-pipelines-distribution-shift.png",
-      "thumb_alt": "Cover image for the article: Building a Computer Vision Pipeline That Survives Shift"
+      "thumb_alt": "Cover image for the article: Building a Computer Vision Pipeline That Survives Shift",
+      "li_shared": true
     },
     {
       "slug": "evaluating-llms-beyond-accuracy",
