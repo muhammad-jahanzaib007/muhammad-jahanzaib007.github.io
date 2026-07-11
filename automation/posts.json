@@ -9,7 +9,8 @@
       "tag": "MLOps",
       "color": "a6",
       "thumb": "assets/blog/feature-stores-real-problem.png",
-      "thumb_alt": "Cover image for the article: Feature Stores: Real Problem or Just Ceremony?"
+      "thumb_alt": "Cover image for the article: Feature Stores: Real Problem or Just Ceremony?",
+      "li_shared": true
     },
     {
       "slug": "model-registries-beyond-weights",
