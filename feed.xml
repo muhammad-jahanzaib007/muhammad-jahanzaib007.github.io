@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Fri, 10 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 11 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Feature Stores: Real Problem or Just Ceremony?</title>
+    <link>https://jahanzaibawan.com/blog/feature-stores-real-problem.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/feature-stores-real-problem.html</guid>
+    <pubDate>Sat, 11 Jul 2026 09:00:00 +0000</pubDate>
+    <description>Feature stores promise consistency between training and serving, but the value depends entirely on whether your pipeline actually has that problem.</description>
+    <category>MLOps</category>
+  </item>
   <item>
     <title>Model Registries Explained: Versioning More Than Weights</title>
     <link>https://jahanzaibawan.com/blog/model-registries-beyond-weights.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Sat, 04 Jul 2026 09:00:00 +0000</pubDate>
     <description>High accuracy can hide a useless model. Here is why the metric you optimize quietly decides what your system actually learns.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Feature Scaling: Which Models Care and Which Do Not</title>
-    <link>https://jahanzaibawan.com/blog/feature-scaling-which-models-care.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/feature-scaling-which-models-care.html</guid>
-    <pubDate>Fri, 03 Jul 2026 09:00:00 +0000</pubDate>
-    <description>A practical guide to why distance and gradient based models demand scaled features while tree based models shrug them off entirely.</description>
-    <category>Machine Learning</category>
   </item>
 </channel>
 </rss>

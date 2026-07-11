@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Feature stores: solving a real problem or adding ceremony?",
     "LLM leaderboards: what they measure and what they hide",
     "Evaluating LLMs beyond accuracy: helpfulness, harm, and hallucination",
     "Building a computer vision pipeline that survives distribution shift",
@@ -45,6 +44,7 @@
     "Overfitting the validation set through too many experiments",
     "SMOTE and synthetic data: when it backfires",
     "What an MLOps pipeline actually needs before it needs Kubernetes",
-    "Model registries explained: versioning more than just weights"
+    "Model registries explained: versioning more than just weights",
+    "Feature stores: solving a real problem or adding ceremony?"
   ]
 }

@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "feature-stores-real-problem",
+      "title": "Feature Stores: Real Problem or Just Ceremony?",
+      "excerpt": "Feature stores promise consistency between training and serving, but the value depends entirely on whether your pipeline actually has that problem.",
+      "date": "2026-07-11",
+      "read_min": 6,
+      "tag": "MLOps",
+      "color": "a6",
+      "thumb": "assets/blog/feature-stores-real-problem.png",
+      "thumb_alt": "Cover image for the article: Feature Stores: Real Problem or Just Ceremony?"
+    },
+    {
       "slug": "model-registries-beyond-weights",
       "title": "Model Registries Explained: Versioning More Than Weights",
       "excerpt": "A weights file is not a model. Here is what a proper model registry actually needs to track, and why skipping it quietly breaks reproducibility.",

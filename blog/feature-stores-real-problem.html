@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feature Stores: Real Problem or Just Ceremony? | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical look at when feature stores solve genuine training-serving skew and leakage problems, and when they just add process without fixing anything.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="feature store, machine learning infrastructure, training serving skew, data leakage, MLOps, feature engineering, reproducibility, ML pipelines, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-11">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Feature Stores: Real Problem or Just Ceremony?">
+<meta property="og:description" content="A practical look at when feature stores solve genuine training-serving skew and leakage problems, and when they just add process without fixing anything.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/feature-stores-real-problem.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/feature-stores-real-problem.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Feature Stores: Real Problem or Just Ceremony?">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/feature-stores-real-problem.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/feature-stores-real-problem.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Feature Stores: Real Problem or Just Ceremony?",
+  "description": "A practical look at when feature stores solve genuine training-serving skew and leakage problems, and when they just add process without fixing anything.",
+  "url": "https://jahanzaibawan.com/blog/feature-stores-real-problem.html",
+  "image": "https://jahanzaibawan.com/assets/blog/feature-stores-real-problem.png",
+  "datePublished": "2026-07-11",
+  "dateModified": "2026-07-11",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/feature-stores-real-problem.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Feature Stores: Real Problem or Just Ceremony?", "item": "https://jahanzaibawan.com/blog/feature-stores-real-problem.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">MLOps · 6 min read · 11 Jul 2026</div>
+    <h1>Feature Stores: Real Problem or Just Ceremony?</h1>
+    <p class="lede">Before adopting a feature store, it is worth asking what specific failure mode it fixes, because the answer determines whether it is infrastructure or theatre.</p>
+  </div>
+
+  <img src="../assets/blog/feature-stores-real-problem.png" alt="Cover image for the article: Feature Stores: Real Problem or Just Ceremony?" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The problem feature stores claim to solve</h2><p>The pitch for a feature store is usually framed around two failure modes: training-serving skew and duplicated feature logic. Training-serving skew happens when the code that computes a feature during model training differs, even slightly, from the code that computes it in production. A feature defined as 'average order value over the last thirty days' might be computed with a batch job that looks back exactly thirty calendar days in training, but with a streaming job that looks back thirty rolling days including partial data in production. The model was validated on one distribution and serves on another. This is not a hypothetical: it is one of the most common reasons offline accuracy and online accuracy diverge, and it is genuinely hard to debug because both pipelines look correct in isolation.</p><p>The second failure mode is organisational rather than technical. In a team with several models, each data scientist often writes their own version of 'customer tenure in days' or 'days since last login'. Six slightly different implementations exist across six model repositories, each with subtly different handling of nulls, time zones, or edge cases like accounts created and cancelled on the same day. A feature store centralises this: one definition, one computation, one place to fix a bug. That is a real, boring, valuable thing, not a research idea but a plumbing idea.</p><p>So the underlying problem is real. The question is whether the specific feature store you are about to adopt, with its registry, its online and offline stores, its point-in-time join engine, actually addresses these two failure modes for your situation, or whether it is solving a problem you do not have while introducing several you did not have before.</p></section><section class='psec reveal'><h2>Where the value is concrete: point-in-time correctness</h2><p>The clearest, most defensible value of a proper feature store is point-in-time joins done correctly. Imagine you are predicting loan default and one feature is 'number of missed payments in the last six months'. If you build your training set naively, by joining today's aggregated payment history to historical loan applications, you leak future information: a loan application from eighteen months ago gets joined against payment behaviour that includes events which happened well after that application. The model then looks unreasonably accurate offline, because it has effectively seen the future, and it disappoints badly once deployed.</p><p>A feature store that supports time-travel joins solves this by construction. You specify the event timestamp for each training row, and the store retrieves the feature value as it would have existed at that exact moment, using an as-of join against the historical feature table. This is not glamorous work, but it is precisely the kind of thing that is easy to get wrong by hand and expensive to get wrong in production. If your team has been burned by leakage of this shape, or if you have multiple models sharing dozens of time-sensitive features across a large history, the infrastructure earns its complexity.</p><p>The honest caveat is that you can achieve the same correctness with a disciplined, well-tested batch pipeline and a strict convention for timestamp columns, without touching a dedicated feature store product at all. A small team with three models and a handful of features can implement point-in-time joins in a few hundred lines of well-reviewed SQL or pandas, version it properly, and get the same guarantee. The feature store buys you scale and reuse, not correctness that was otherwise unattainable.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/feature-stores-real-problem-1.jpg' alt='server data pipeline diagram whiteboard' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Where the ceremony creeps in</h2><p>The ceremony shows up when the tooling is adopted before the organisational pain exists. If you have one model, one team, and features that are recomputed fresh for every training run anyway, a feature store adds a registry to maintain, an online store to keep in sync, and a new set of abstractions for engineers to learn, in exchange for solving a duplication problem that does not yet exist. I have seen the pattern where the feature store becomes the second system to keep consistent with the actual data warehouse, and now instead of one source of truth you have two, plus a synchronisation job that itself needs monitoring and can itself drift.</p><p>There is also a subtler cost: feature stores encourage premature feature sharing. Once a feature is registered centrally, there is pressure to keep it stable and backward compatible for the sake of other consumers, which makes it harder for the original model owner to iterate on the definition. A feature that made sense as 'transactions in the last 7 days' for fraud detection gets reused, unmodified, for a churn model where a 90 day window would have been more appropriate, simply because the shared definition was convenient. Shared infrastructure without shared understanding of intent is how subtly wrong features spread quietly across several models.</p><p>None of this means feature stores are bad; it means the decision should follow the pain, not precede it. A useful diagnostic question is concrete: can you point to an actual incident, in your own pipeline, where a feature differed between training and serving, or where two models silently used different definitions of the same concept and it caused a measurable accuracy gap? If the answer is yes and it has happened more than once, the infrastructure investment is justified. If the answer is a hypothetical 'it could happen', you are probably solving next year's problem with this year's engineering budget, and that budget is rarely free.</p></section><section class='psec reveal'><h2>A practical way to decide</h2><p>Start by auditing your current pipeline for the two specific failure modes rather than adopting tooling on faith. Check whether your training feature computation and your serving feature computation are literally the same code path, or two independent implementations that happen to agree today. If they are two implementations, that is a genuine risk worth fixing, and a feature store is one legitimate fix, though not the only one; a shared library imported by both training and serving code achieves much of the same benefit with far less operational overhead.</p><p>Second, count how many models in your organisation actually share features today, not how many might in future. If the number is small, invest in disciplined, testable, well-documented feature pipelines instead of centralised infrastructure. If the number is large and growing, and you can already see engineers quietly copying feature logic between repositories with small, undocumented variations, the registry and reuse benefits of a feature store start to outweigh its cost.</p><p>Finally, treat the point-in-time correctness guarantee as the one benefit worth adopting even at small scale, because leakage from naive joins is expensive and easy to miss. You do not need a commercial feature store platform to get it: a disciplined as-of join pattern, tested against synthetic data with known future leakage, will catch the same class of bug. The tool matters less than making sure someone has actually verified, with a concrete test case, that your training labels cannot see data from after their own timestamp.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/feature-stores-real-problem-2.jpg' alt='engineer reviewing data warehouse dashboard' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
