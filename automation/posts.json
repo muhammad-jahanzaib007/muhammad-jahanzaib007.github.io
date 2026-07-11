@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "evaluating-llms-beyond-accuracy",
+      "title": "Evaluating LLMs Beyond Accuracy",
+      "excerpt": "A single accuracy number hides three separate failure modes in LLMs: unhelpfulness, harm, and hallucination. Each needs its own metric and its own test set.",
+      "date": "2026-07-11",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a3",
+      "thumb": "assets/blog/evaluating-llms-beyond-accuracy.png",
+      "thumb_alt": "Cover image for the article: Evaluating LLMs Beyond Accuracy"
+    },
+    {
       "slug": "llm-leaderboards-hidden-costs",
       "title": "LLM Leaderboards: What They Measure and What They Hide",
       "excerpt": "A high leaderboard rank is not the same as a trustworthy model. Here is what the numbers quietly leave out.",

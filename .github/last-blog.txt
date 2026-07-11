@@ -1,1 +1,1 @@
-2026-07-11T09:18:36Z slug=llm-leaderboards-hidden-costs words=1046 title="LLM Leaderboards: What They Measure and What They Hide"
+2026-07-11T20:42:15Z slug=evaluating-llms-beyond-accuracy words=982 title="Evaluating LLMs Beyond Accuracy"

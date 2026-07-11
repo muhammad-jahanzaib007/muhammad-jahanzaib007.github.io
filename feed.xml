@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Sat, 11 Jul 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Evaluating LLMs Beyond Accuracy</title>
+    <link>https://jahanzaibawan.com/blog/evaluating-llms-beyond-accuracy.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/evaluating-llms-beyond-accuracy.html</guid>
+    <pubDate>Sat, 11 Jul 2026 09:00:00 +0000</pubDate>
+    <description>A single accuracy number hides three separate failure modes in LLMs: unhelpfulness, harm, and hallucination. Each needs its own metric and its own test set.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>LLM Leaderboards: What They Measure and What They Hide</title>
     <link>https://jahanzaibawan.com/blog/llm-leaderboards-hidden-costs.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/llm-leaderboards-hidden-costs.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Sat, 04 Jul 2026 09:00:00 +0000</pubDate>
     <description>Cosine similarity measures angle, not distance. Understanding that difference will save you from subtle bugs in retrieval and clustering systems.</description>
     <category>NLP</category>
-  </item>
-  <item>
-    <title>Train, Validation, Test: Why Three Splits Not Two</title>
-    <link>https://jahanzaibawan.com/blog/train-validation-test-splits.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/train-validation-test-splits.html</guid>
-    <pubDate>Sat, 04 Jul 2026 09:00:00 +0000</pubDate>
-    <description>Two splits let your decisions leak into your test score. A validation set is what keeps your final number honest.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evaluating LLMs Beyond Accuracy | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why accuracy alone fails to evaluate LLMs, and how to measure helpfulness, harm, and hallucination separately with concrete worked examples.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="LLM evaluation, hallucination detection, model safety, helpfulness metrics, benchmark leakage, RLHF, NLP evaluation, AI alignment, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-11">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Evaluating LLMs Beyond Accuracy">
+<meta property="og:description" content="Why accuracy alone fails to evaluate LLMs, and how to measure helpfulness, harm, and hallucination separately with concrete worked examples.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/evaluating-llms-beyond-accuracy.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/evaluating-llms-beyond-accuracy.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Evaluating LLMs Beyond Accuracy">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/evaluating-llms-beyond-accuracy.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/evaluating-llms-beyond-accuracy.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Evaluating LLMs Beyond Accuracy",
+  "description": "Why accuracy alone fails to evaluate LLMs, and how to measure helpfulness, harm, and hallucination separately with concrete worked examples.",
+  "url": "https://jahanzaibawan.com/blog/evaluating-llms-beyond-accuracy.html",
+  "image": "https://jahanzaibawan.com/assets/blog/evaluating-llms-beyond-accuracy.png",
+  "datePublished": "2026-07-11",
+  "dateModified": "2026-07-11",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/evaluating-llms-beyond-accuracy.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Evaluating LLMs Beyond Accuracy", "item": "https://jahanzaibawan.com/blog/evaluating-llms-beyond-accuracy.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 11 Jul 2026</div>
+    <h1>Evaluating LLMs Beyond Accuracy</h1>
+    <p class="lede">Accuracy scores tell you almost nothing about whether a language model is safe or useful to deploy. Helpfulness, harm, and hallucination need their own measurements.</p>
+  </div>
+
+  <img src="../assets/blog/evaluating-llms-beyond-accuracy.png" alt="Cover image for the article: Evaluating LLMs Beyond Accuracy" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why one number is not enough</h2><p>When people ask how good a language model is, they usually want a single number. Accuracy on some benchmark, a leaderboard rank, a percentage. That instinct comes from classical machine learning, where a model either predicts the correct class or it does not. Language generation does not work that way. A model can be fluent, confident, and completely wrong. It can be factually correct but useless because it dodges the question. It can be helpful in one context and dangerous in another. Squeezing all of that into one accuracy figure hides more than it reveals.</p><p>I think the most useful move is to stop treating evaluation as a single axis and instead track at least three separate ones: helpfulness, harm, and hallucination. They are not the same failure mode, they do not trade off in predictable ways, and they need different test sets and different metrics. A model that scores well on a multiple choice benchmark can still fail badly on all three.</p><p>Consider a customer support assistant. Accuracy on a held out set of factual questions might sit at ninety two percent. That sounds solid. But if the assistant refuses to answer a further fifteen percent of legitimate questions out of excessive caution, its helpfulness is much lower than the accuracy figure suggests. And if, on a separate set of adversarial prompts, it leaks internal policy text three times out of a hundred, that is a harm problem that the accuracy number never touched. Three different failure surfaces, three different measurements.</p></section><section class='psec reveal'><h2>Helpfulness: measuring whether the answer actually helps</h2><p>Helpfulness is not the same as correctness. A response can be technically accurate and still fail the user: too long, too hedged, missing the actual point of the question, or answering a slightly different question than the one asked. The way most labs measure this is through pairwise preference judgements, where a human or a calibrated judge model picks the better of two responses to the same prompt. This produces something closer to an Elo-style ranking than a percentage.</p><p>A concrete example: suppose you run five hundred prompts through two model versions and collect preference votes. Model A wins sixty percent of the time. That sixty percent win rate is far more informative than any accuracy score, because it directly encodes what users actually prefer, including tone, structure, and relevance, not just factual overlap with a reference answer.</p><p>The trap here is annotator drift and prompt selection. If your prompt set is dominated by easy factual questions, you are not measuring helpfulness on the messy, ambiguous requests that make up most real usage. I always push for a held out prompt set that is deliberately skewed towards ambiguity, multi step reasoning, and underspecified requests, because that is where helpfulness gaps actually show up. A model that looks identical on clean benchmark questions can diverge sharply once instructions get vague.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/evaluating-llms-beyond-accuracy-1.jpg' alt='security camera footage monitor room' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Harm: testing for the failure you are not looking for</h2><p>Harm evaluation is different again, because you are not measuring average case performance, you are measuring worst case behaviour under adversarial pressure. This means the test set cannot be a random sample of ordinary prompts. It has to be built specifically to probe known risky categories: instructions for dangerous activities, private information extraction, biased or discriminatory completions, and prompt injection attempts that try to override the model's instructions.</p><p>A useful framing is attack success rate rather than accuracy. If you run two hundred adversarial prompts designed to extract a system prompt or bypass a safety instruction, and the model complies in fourteen of them, your attack success rate is seven percent. That number matters far more for deployment risk than a benchmark accuracy of ninety five percent on unrelated tasks. A model can be excellent at maths and still leak sensitive instructions under a cleverly worded jailbreak.</p><p>The practical difficulty is that harm categories keep expanding as people find new attack strategies, so a static test set goes stale quickly. Treat it the same way you would treat a security test suite: version it, keep adding newly discovered attack patterns, and rerun it every time you change the model, the system prompt, or the retrieval pipeline. A single clean run six months ago tells you nothing about current risk.</p></section><section class='psec reveal'><h2>Hallucination: the failure that looks like confidence</h2><p>Hallucination is the hardest of the three to catch because it wears the same voice as correct output. The model states something false with exactly the same fluency and certainty it uses for something true. Accuracy metrics built on multiple choice questions rarely catch this, because they only test whether the model can select a correct option among a few candidates, not whether it fabricates specific claims, citations, or numbers when generating open ended text.</p><p>A workable evaluation approach is claim level fact checking: break a generated answer into individual factual assertions, then verify each one against a trusted source or retrieval index. If a model writes a paragraph containing eight distinct factual claims and two of them are unsupported or contradicted by the source material, that gives you a hallucination rate of twenty five percent for that response, a number that a simple accuracy check on the final answer would never surface, because the paragraph as a whole might still read as broadly correct.</p><p>Leakage is a serious risk here too. If your fact checking source overlaps with data the model was trained or fine tuned on, you will systematically underestimate hallucination, because the model may reproduce memorised text that happens to be correct for reasons unrelated to reasoning. I always check the provenance of the verification corpus against the training data before trusting a hallucination score, the same way I would check for train test leakage in any other supervised setting. A hallucination rate that looks reassuringly low can simply mean your check set was not independent of training data.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/evaluating-llms-beyond-accuracy-2.jpg' alt='open notebook with handwritten checklist' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
