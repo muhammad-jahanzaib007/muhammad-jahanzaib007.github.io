@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "llm-leaderboards-hidden-costs",
+      "title": "LLM Leaderboards: What They Measure and What They Hide",
+      "excerpt": "A high leaderboard rank is not the same as a trustworthy model. Here is what the numbers quietly leave out.",
+      "date": "2026-07-11",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a2",
+      "thumb": "assets/blog/llm-leaderboards-hidden-costs.png",
+      "thumb_alt": "Cover image for the article: LLM Leaderboards: What They Measure and What They Hide"
+    },
+    {
       "slug": "feature-stores-real-problem",
       "title": "Feature Stores: Real Problem or Just Ceremony?",
       "excerpt": "Feature stores promise consistency between training and serving, but the value depends entirely on whether your pipeline actually has that problem.",

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LLM Leaderboards: What They Measure and What They Hide | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="An honest look at how LLM leaderboards work, where their scores mislead, and how to evaluate models more rigorously in practice.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="LLM leaderboards, model evaluation, benchmark leakage, NLP evaluation, prompt sensitivity, AI benchmarking, machine learning reproducibility, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-11">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="LLM Leaderboards: What They Measure and What They Hide">
+<meta property="og:description" content="An honest look at how LLM leaderboards work, where their scores mislead, and how to evaluate models more rigorously in practice.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/llm-leaderboards-hidden-costs.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/llm-leaderboards-hidden-costs.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LLM Leaderboards: What They Measure and What They Hide">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/llm-leaderboards-hidden-costs.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/llm-leaderboards-hidden-costs.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "LLM Leaderboards: What They Measure and What They Hide",
+  "description": "An honest look at how LLM leaderboards work, where their scores mislead, and how to evaluate models more rigorously in practice.",
+  "url": "https://jahanzaibawan.com/blog/llm-leaderboards-hidden-costs.html",
+  "image": "https://jahanzaibawan.com/assets/blog/llm-leaderboards-hidden-costs.png",
+  "datePublished": "2026-07-11",
+  "dateModified": "2026-07-11",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/llm-leaderboards-hidden-costs.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "LLM Leaderboards: What They Measure and What They Hide", "item": "https://jahanzaibawan.com/blog/llm-leaderboards-hidden-costs.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 11 Jul 2026</div>
+    <h1>LLM Leaderboards: What They Measure and What They Hide</h1>
+    <p class="lede">Leaderboard rank feels like objective truth, but the gap between a benchmark score and real-world reliability is wider than most people admit.</p>
+  </div>
+
+  <img src="../assets/blog/llm-leaderboards-hidden-costs.png" alt="Cover image for the article: LLM Leaderboards: What They Measure and What They Hide" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the rank number feels more solid than it is</h2><p>Every few weeks a new leaderboard update circulates, and a model climbs three places, and suddenly it is described as 'the best open model' or 'nearly frontier-level'. I understand the appeal. A single number is easy to share, easy to screenshot, and easy to use as a decision rule. But a leaderboard rank is a compressed summary of a specific test administered under specific conditions, and compression always throws something away.</p><p>The trouble is not that leaderboards are dishonest. Most are built with genuine care, published methodology, and public data. The trouble is that a rank answers a narrower question than the one people think it answers. It usually answers 'how well does this model perform on this benchmark, scored this way, with this prompting template' rather than 'how well will this model perform on my task, with my users, in production'. Those two questions can diverge sharply, and the divergence is exactly what gets hidden by the act of turning performance into a single sorted list.</p><p>This matters practically because model selection has real cost. Swapping a backend model affects latency budgets, API pricing, fine-tuning pipelines, and downstream product behaviour. If the swap is driven by a leaderboard delta of two or three points that does not transfer to your domain, you have paid an engineering cost for a number that never meant what you assumed it meant.</p></section><section class='psec reveal'><h2>A worked example: what a two-point gap actually contains</h2><p>Suppose Model A scores 78.4 on a popular reasoning benchmark and Model B scores 76.1. On the leaderboard, A sits comfortably above B. Now unpack that 2.3-point gap. The benchmark likely has a few hundred to a few thousand questions, each scored right or wrong, then averaged. A 2.3-point difference on a thousand-question set corresponds to roughly 23 questions changing outcome. That is a thin margin to hang a procurement decision on, especially once you account for the fact that many benchmarks are scored with exact-match or regex-based answer extraction, which can silently penalise a model that gives a correct answer in an unexpected format.</p><p>Now add prompt sensitivity. Published results are typically obtained with a fixed prompt template, few-shot exemplar set, and decoding temperature chosen by whoever ran the evaluation. Change the system prompt wording, or move from five-shot to zero-shot, and it is entirely plausible for scores to shift by several points in either direction, sometimes enough to flip the ranking between A and B. If the leaderboard does not report variance across prompt variants or multiple sampling seeds, the ranking is a single draw from a distribution, not a stable estimate of it.</p><p>Then there is contamination. Many of these benchmarks were built from publicly available text, and large training corpora scrape enormous portions of the public internet. If a benchmark's questions, or close paraphrases of them, existed anywhere in a model's training data, its score reflects partial memorisation rather than the reasoning ability the benchmark claims to test. Detecting this reliably is hard, and most leaderboards cannot certify contamination-free status with confidence. So the honest reading of that 2.3-point gap is: a small, noisy, prompt-dependent, possibly contamination-inflated signal, which is a far cry from 'Model A is better'.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/llm-leaderboards-hidden-costs-1.jpg' alt='leaderboard screen ranking numbers' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What leaderboards systematically leave out</h2><p>Aggregate benchmarks average across task types, which flattens genuinely useful information. A model can be excellent at arithmetic word problems and mediocre at multi-step legal reasoning, yet the leaderboard reports one blended number. If your application only touches one of those skills, the aggregate score tells you almost nothing about the skill you actually need.</p><p>Cost, latency, and context-length behaviour rarely appear on the same table as accuracy, but they determine whether a model is usable at all. A model that scores one point higher but costs three times as much per token, or degrades badly past sixteen thousand tokens of context, may be strictly worse for a production system, even though the leaderboard makes it look strictly better.</p><p>Robustness and safety failure modes are almost never captured by a static accuracy number. A model can score well on a benchmark of factual questions while still hallucinating confidently on inputs slightly outside that distribution, or behaving inconsistently when the same question is rephrased. Leaderboards test a fixed, known distribution; deployment exposes a model to an open, shifting one. The gap between those two distributions is precisely where most real-world failures occur, and it is invisible on the leaderboard by construction.</p><p>Finally, many leaderboards rely partly or fully on model-based judges, where a strong LLM scores the outputs of other models. Judge models have their own biases: they tend to favour longer, more confident-sounding answers, and they can be gamed by outputs formatted to match what the judge rewards. A ranking built on a judge with known stylistic preferences is not measuring capability in a vacuum; it is measuring capability filtered through another model's taste.</p></section><section class='psec reveal'><h2>How to use leaderboards without being misled by them</h2><p>None of this means leaderboards are useless. They are a reasonable first filter for narrowing a large field of models down to a shortlist, and they make lazy or dishonest capability claims harder to sustain. The mistake is treating the top of the list as a final verdict rather than a starting point.</p><p>In practice, I treat a leaderboard rank as a hypothesis, not a conclusion. Before committing to a model, I build a small, held-out evaluation set drawn from the actual task distribution, kept separate from anything used during development, so there is no risk of quietly tuning against it. I run each candidate model through that set with the same prompt template and decoding settings, report variance across a few repeated runs, and look at failure cases individually rather than trusting a single averaged score. It is more work than reading a table, but it is the only way to know whether a leaderboard's ordering survives contact with your own problem.</p><p>The broader habit worth building is scepticism proportional to the stakes. For casual experimentation, trust the leaderboard and move on. For anything shipping to real users, insist on your own leakage-aware evaluation, examine cost and latency alongside accuracy, and read a sample of actual outputs before trusting any aggregate number, however confidently it is ranked.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/llm-leaderboards-hidden-costs-2.jpg' alt='laptop with spreadsheet data charts' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
