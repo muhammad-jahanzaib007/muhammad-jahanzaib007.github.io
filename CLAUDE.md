@@ -34,7 +34,8 @@ done — no walls of text, no restating what the owner knows. Conserves tokens.
 
 - `self-heal.yml`: failed Auto blog run auto-retried once; second failure →
   ONE `watchdog` issue (NEEDS A HUMAN when it greps as token/credentials).
-  Backstops 08:50/20:50 UTC re-dispatch when the GitHub cron never fired.
+  (The 08:50/20:50 slot backstops were RETIRED 2026-07-11 — the external
+  heartbeat Worker covers missed slots; see the YT repo's 2026-07-08 call.)
   Every invocation also re-runs the latest Pages build if it failed —
   GitHub Pages throws intermittent "Deployment failed, try again later"
   transients (4x on 2026-07-06); a re-run of the same artifact clears them.
@@ -131,3 +132,15 @@ commit, so the other sessions know who did what.
   the owner to add+pin a comment by hand. NOTE the 2026-07-09 11:07 post
   (augmentation-that-leaks) shipped during the broken window with NO link —
   add manually if wanted. Groups auto-posting is also impossible (no API).
+- 2026-07-11 ~23:30 — laptop Claude Code session (direct commit to main):
+  DUPLICATE POSTS diagnosed and fixed. Since the heartbeat's write path came
+  alive (2026-07-10), every slot got covered twice: the Worker dispatched
+  ~35-40 min after slot time, then GitHub's late cron ALSO ran (no dedupe
+  here — only the YT repo had a precheck). Result: 2 posts + 2 LinkedIn
+  shares per slot on 07-10 evening, 07-11 morning AND 07-11 evening (6
+  duplicate posts total; owner may want to prune the extra posts/shares).
+  Fix: ported the YT repo's deterministic precheck to auto-blog.yml (a
+  scheduled run skips itself when ANY other auto-blog run was created
+  at/after its slot time) and retired self-heal.yml's 08:50/20:50 slot
+  backstops (redundant with the heartbeat, and one more duplicate path —
+  the YT repo retired its own on 2026-07-08).

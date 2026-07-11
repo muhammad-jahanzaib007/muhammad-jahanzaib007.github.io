@@ -25,7 +25,46 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # A GitHub cron can fire late or be REPLAYED after the heartbeat Worker
+  # already covered the slot — that double-posted the blog (and LinkedIn)
+  # three slots in a row on 2026-07-10/11. Same deterministic dedupe as the
+  # YT repo's publish.yml: a scheduled run skips itself whenever ANY other
+  # auto-blog run was created at/after its slot time. Manual dispatches and
+  # trigger pushes are never blocked.
+  precheck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      skip: ${{ steps.dedupe.outputs.skip }}
+    steps:
+      - name: Skip a cron whose slot another run already covers
+        id: dedupe
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          skip=false
+          if [ "$GITHUB_EVENT_NAME" = "schedule" ]; then
+            slot='${{ github.event.schedule }}'
+            m=$(echo "$slot" | cut -d' ' -f1)
+            h=$(echo "$slot" | cut -d' ' -f2)
+            slot_ts=$(date -u -d "$(date -u +%F) ${h}:${m}:00" +%s)
+            lag_min=$(( ( $(date -u +%s) - slot_ts ) / 60 ))
+            echo "cron slot '$slot' fired ${lag_min} min after its slot time"
+            slot_iso=$(date -u -d "@${slot_ts}" +%FT%TZ)
+            others=$(gh api "repos/$GITHUB_REPOSITORY/actions/workflows/auto-blog.yml/runs?per_page=20" \
+                     --jq "[.workflow_runs[] | select(.id != ${{ github.run_id }} and .created_at >= \"$slot_iso\")] | length" \
+                     2>/dev/null || echo 0)
+            if [ "${others:-0}" -gt 0 ]; then
+              echo "slot already covered by ${others} other run(s) since ${slot_iso} - skipping"
+              skip=true
+            fi
+          fi
+          echo "skip=$skip" >> "$GITHUB_OUTPUT"
+
   post:
+    needs: precheck
+    if: needs.precheck.outputs.skip != 'true'
     runs-on: ubuntu-latest
     # Generation retries + the 15-min LinkedIn liveness wait fit well inside
     # this; a hung API call must not hold the job for GitHub's 6h default.
