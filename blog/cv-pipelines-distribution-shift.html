@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building a Computer Vision Pipeline That Survives Shift | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to designing computer vision pipelines that remain reliable under distribution shift, with worked examples and leakage-aware evaluation advice.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="distribution shift, computer vision, domain generalisation, dataset leakage, model evaluation, robustness testing, deep learning pipelines, out of distribution, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-11">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Building a Computer Vision Pipeline That Survives Shift">
+<meta property="og:description" content="A practical guide to designing computer vision pipelines that remain reliable under distribution shift, with worked examples and leakage-aware evaluation advice.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/cv-pipelines-distribution-shift.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/cv-pipelines-distribution-shift.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Building a Computer Vision Pipeline That Survives Shift">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/cv-pipelines-distribution-shift.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/cv-pipelines-distribution-shift.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Building a Computer Vision Pipeline That Survives Shift",
+  "description": "A practical guide to designing computer vision pipelines that remain reliable under distribution shift, with worked examples and leakage-aware evaluation advice.",
+  "url": "https://jahanzaibawan.com/blog/cv-pipelines-distribution-shift.html",
+  "image": "https://jahanzaibawan.com/assets/blog/cv-pipelines-distribution-shift.png",
+  "datePublished": "2026-07-11",
+  "dateModified": "2026-07-11",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/cv-pipelines-distribution-shift.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Building a Computer Vision Pipeline That Survives Shift", "item": "https://jahanzaibawan.com/blog/cv-pipelines-distribution-shift.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Computer Vision · 5 min read · 11 Jul 2026</div>
+    <h1>Building a Computer Vision Pipeline That Survives Shift</h1>
+    <p class="lede">A model that scores 97% in the lab and falls apart in the field has not failed by accident. It has failed because nobody tested it against the world it will actually meet.</p>
+  </div>
+
+  <img src="../assets/blog/cv-pipelines-distribution-shift.png" alt="Cover image for the article: Building a Computer Vision Pipeline That Survives Shift" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The problem hiding inside a good validation score</h2><p>Every computer vision project I have worked through eventually runs into the same uncomfortable question: does this model actually generalise, or has it simply memorised the quirks of one dataset collected under one set of conditions? A model trained on daytime factory floor images and validated on a held-out slice of the same footage will often report accuracy above 95%. That number is real, but it describes performance on data that shares lighting, camera angle, sensor noise and even compression artefacts with the training set. The moment you deploy that model on a different camera, in a different building, on a slightly overcast day, the accuracy can fall sharply, sometimes into the 60s or lower, with no code change at all.</p><p>This is distribution shift: the mismatch between the data a model was trained on and the data it meets in deployment. It comes in several flavours. Covariate shift changes the inputs, for example new lighting or a different camera sensor, while the underlying task stays the same. Label shift changes the frequency of classes, for example a defect that was rare in training becoming common in a new production line. Concept shift changes the relationship between input and label entirely, which is rarer in vision but happens when the definition of a category evolves, such as a safety standard being redefined. Each type demands a different diagnostic, but all three share one root cause: the validation set was too similar to the training set to expose the weakness.</p><p>I think the biggest mistake teams make is treating a random train/test split as sufficient evidence of generalisation. A random split only tests interpolation within the same distribution. It says nothing about extrapolation to new sites, new sensors, or new seasons. If your images come from ten factories and you split randomly across all images, every factory appears in both training and test sets. Your model can learn factory-specific shortcuts, such as a particular shadow pattern or a watermark from a specific camera model, and still score well, because that shortcut is present in both splits.</p></section><section class='psec reveal'><h2>A worked example: the shortcut that inflated the score</h2><p>Imagine a defect detection pipeline trained on 8,000 images from three production lines, with a random 80/20 split producing a validation accuracy of 94%. That looks strong. Now suppose you instead split by production line, training on two lines and validating entirely on the third, unseen line. The accuracy on that held-out line might drop to 78%. The gap of sixteen points is the actual measure of how much the model was relying on line-specific cues, such as a slightly different conveyor belt colour or a camera mounted at a marginally different angle, rather than on the visual features that genuinely indicate a defect.</p><p>This kind of leakage-aware split, grouping by source rather than shuffling everything together, is the single most useful diagnostic I know for catching distribution shift before deployment. It costs nothing beyond a bit of discipline in how you write the split function, yet it routinely reveals problems that a random split hides completely. The same logic applies to splitting by patient in medical imaging, by camera ID in surveillance, by batch in manufacturing, or by time period in any dataset collected over months. If your deployment environment will include units the model has never seen, your evaluation must include units the model has never seen too.</p><p>Once you have an honest number, the fix usually falls into one of three categories: collect more varied training data that spans the conditions you expect to meet, apply data augmentation that simulates the shift, such as varying brightness, contrast, blur and colour jitter to mimic different cameras and lighting, or explicitly test and tune for robustness using a held-out shift set that is never touched during model selection. Augmentation is cheap and often recovers a meaningful chunk of the lost accuracy, perhaps closing that sixteen point gap to six or seven points, but it rarely closes it entirely, because synthetic variation cannot perfectly reproduce every real-world nuisance.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/cv-pipelines-distribution-shift-1.jpg' alt='factory conveyor belt camera inspection' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Building the pipeline so shift is expected, not discovered</h2><p>A pipeline that survives distribution shift is designed with shift in mind from the first data collection decision, not patched in afterwards. That starts with metadata discipline: every image should carry a record of its source, camera, date and site, so that later you can group splits meaningfully and audit where performance is weakest. Without this metadata, diagnosing shift after deployment becomes guesswork, because you cannot separate a genuine model weakness from a data collection artefact.</p><p>Next comes a tiered evaluation strategy rather than a single accuracy number. I like to report at least three figures: in-distribution accuracy on a random split, out-of-distribution accuracy on a held-out site or camera, and a stress-test accuracy under deliberately corrupted inputs, such as reduced resolution, added noise or altered colour balance. Reporting all three, honestly, even when they disagree, gives stakeholders a realistic picture instead of a single flattering headline number. It also gives you an early warning system: if the gap between in-distribution and out-of-distribution accuracy widens over successive model versions, something in the training process is encouraging shortcut learning, and it is worth investigating before the gap becomes a production incident.</p><p>Finally, monitoring after deployment matters as much as evaluation before it. Distribution shift is not a one-time event you solve and forget; sensors degrade, seasons change, new product variants appear. A lightweight production check, such as tracking the distribution of model confidence scores or a simple statistical test comparing recent input feature statistics against the training distribution, can flag drift before accuracy visibly collapses. Cheap monitoring beats expensive retraining after the fact, and it turns distribution shift from a surprise into a manageable, expected part of the system's lifecycle.</p><p>The practical takeaway is simple to state and easy to skip under deadline pressure: never trust a validation score that could plausibly have been achieved by memorising the source rather than learning the task. Split by group, not by row. Report the out-of-distribution number alongside the flattering one. Treat that gap as the real headline metric, and design your data collection, augmentation and monitoring around closing it, because that gap is exactly what will determine whether your model survives contact with the real world.</p></section>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

@@ -1,1 +1,1 @@
-2026-07-11T20:42:15Z slug=evaluating-llms-beyond-accuracy words=982 title="Evaluating LLMs Beyond Accuracy"
+2026-07-11T20:45:37Z slug=cv-pipelines-distribution-shift words=1052 title="Building a Computer Vision Pipeline That Survives Shift"

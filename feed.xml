@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Sat, 11 Jul 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Building a Computer Vision Pipeline That Survives Shift</title>
+    <link>https://jahanzaibawan.com/blog/cv-pipelines-distribution-shift.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/cv-pipelines-distribution-shift.html</guid>
+    <pubDate>Sat, 11 Jul 2026 09:00:00 +0000</pubDate>
+    <description>High test accuracy means little if your test set secretly resembles your training set. Here is how to build vision pipelines that hold up when the world changes.</description>
+    <category>Computer Vision</category>
+  </item>
+  <item>
     <title>Evaluating LLMs Beyond Accuracy</title>
     <link>https://jahanzaibawan.com/blog/evaluating-llms-beyond-accuracy.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/evaluating-llms-beyond-accuracy.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Sun, 05 Jul 2026 09:00:00 +0000</pubDate>
     <description>Attention is a soft lookup table: queries ask, keys answer, values deliver. Here is that idea made concrete with numbers.</description>
     <category>Deep Learning</category>
-  </item>
-  <item>
-    <title>Embeddings 101: What Cosine Similarity Actually Measures</title>
-    <link>https://jahanzaibawan.com/blog/cosine-similarity-embeddings.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/cosine-similarity-embeddings.html</guid>
-    <pubDate>Sat, 04 Jul 2026 09:00:00 +0000</pubDate>
-    <description>Cosine similarity measures angle, not distance. Understanding that difference will save you from subtle bugs in retrieval and clustering systems.</description>
-    <category>NLP</category>
   </item>
 </channel>
 </rss>

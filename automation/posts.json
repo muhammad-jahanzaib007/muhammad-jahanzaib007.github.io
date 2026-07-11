@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "cv-pipelines-distribution-shift",
+      "title": "Building a Computer Vision Pipeline That Survives Shift",
+      "excerpt": "High test accuracy means little if your test set secretly resembles your training set. Here is how to build vision pipelines that hold up when the world changes.",
+      "date": "2026-07-11",
+      "read_min": 5,
+      "tag": "Computer Vision",
+      "color": "a4",
+      "thumb": "assets/blog/cv-pipelines-distribution-shift.png",
+      "thumb_alt": "Cover image for the article: Building a Computer Vision Pipeline That Survives Shift"
+    },
+    {
       "slug": "evaluating-llms-beyond-accuracy",
       "title": "Evaluating LLMs Beyond Accuracy",
       "excerpt": "A single accuracy number hides three separate failure modes in LLMs: unhelpfulness, harm, and hallucination. Each needs its own metric and its own test set.",
