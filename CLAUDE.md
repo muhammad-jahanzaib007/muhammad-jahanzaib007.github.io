@@ -144,3 +144,10 @@ commit, so the other sessions know who did what.
   at/after its slot time) and retired self-heal.yml's 08:50/20:50 slot
   backstops (redundant with the heartbeat, and one more duplicate path —
   the YT repo retired its own on 2026-07-08).
+- 2026-07-11 ~23:55 — laptop Claude Code session (same): SINGLE FIRING
+  SOURCE cutover — `schedule:` crons REMOVED from auto-blog.yml (mirrors the
+  YT repo, same commit-night). The heartbeat Worker is now the only
+  scheduled trigger for this pipeline (dispatches 08:00/20:00 UTC exactly,
+  retries via :20/:40 sweeps). Precheck stays as a dead-code safety net.
+  Never re-add crons here — the cron-vs-Worker race is what double-posted
+  every slot on 2026-07-10/11.

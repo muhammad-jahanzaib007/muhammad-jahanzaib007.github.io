@@ -2,14 +2,16 @@ name: Auto blog
 
 # Publishes a new post twice a day at 09:00 + 21:00 UK time; each post
 # auto-shares to LinkedIn, so LinkedIn also gets two posts a day.
-# Crons are UTC: set for BST (UK = UTC+1). After the October clock change
-# these fire at 08:00/20:00 UK unless shifted back by an hour.
+#
+# SINGLE FIRING SOURCE (2026-07-11): NO `schedule:` crons here. GitHub's
+# scheduler fires late and replays hours later — racing it against the
+# heartbeat Worker double-posted 3 slots in a row on 2026-07-10/11. The
+# Cloudflare heartbeat Worker (ai-tools-yt repo, heartbeat/) is the ONLY
+# scheduled trigger; it dispatches at 08:00/20:00 UTC exactly and retries
+# via :20/:40 sweeps. Do NOT re-add crons here.
 # Uses Claude (Anthropic API) when ANTHROPIC_API_KEY is set; else free GitHub Models.
 # Also runnable on demand from the Actions tab (Run workflow).
 on:
-  schedule:
-    - cron: "0 8 * * *"
-    - cron: "0 20 * * *"
   workflow_dispatch:
   push:
     paths:
@@ -25,12 +27,12 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # A GitHub cron can fire late or be REPLAYED after the heartbeat Worker
-  # already covered the slot — that double-posted the blog (and LinkedIn)
-  # three slots in a row on 2026-07-10/11. Same deterministic dedupe as the
-  # YT repo's publish.yml: a scheduled run skips itself whenever ANY other
-  # auto-blog run was created at/after its slot time. Manual dispatches and
-  # trigger pushes are never blocked.
+  # SAFETY NET ONLY: with schedule crons removed (single firing source =
+  # heartbeat Worker) this never triggers. It stays so that if anyone ever
+  # re-adds a cron, a late replay skips itself whenever ANY other auto-blog
+  # run was created at/after its slot time (this exact race double-posted
+  # 3 slots on 2026-07-10/11). Manual dispatches and trigger pushes are
+  # never blocked.
   precheck:
     runs-on: ubuntu-latest
     timeout-minutes: 5
