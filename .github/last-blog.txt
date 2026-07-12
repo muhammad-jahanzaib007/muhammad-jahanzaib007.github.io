@@ -1,1 +1,1 @@
-2026-07-12T08:01:56Z slug=map-explained-without-hand-waving words=1072 title="Object Detection Metrics: mAP Without Hand-Waving"
+2026-07-12T20:01:43Z slug=image-augmentation-what-generalises words=1064 title="Image Augmentation: What Actually Generalises"

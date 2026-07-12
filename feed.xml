@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Sun, 12 Jul 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Image Augmentation: What Actually Generalises</title>
+    <link>https://jahanzaibawan.com/blog/image-augmentation-what-generalises.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/image-augmentation-what-generalises.html</guid>
+    <pubDate>Sun, 12 Jul 2026 09:00:00 +0000</pubDate>
+    <description>Most augmentation choices are copied from tutorials rather than justified. Here&#x27;s how to test which ones actually improve generalisation for your task.</description>
+    <category>Computer Vision</category>
+  </item>
+  <item>
     <title>Object Detection Metrics: mAP Without Hand-Waving</title>
     <link>https://jahanzaibawan.com/blog/map-explained-without-hand-waving.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/map-explained-without-hand-waving.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/dropout-as-an-ensemble.html</guid>
     <pubDate>Mon, 06 Jul 2026 09:00:00 +0000</pubDate>
     <description>Dropout works because it approximates ensembling thousands of thinned networks, not because randomness alone regularises. Here is the intuition, worked through with numbers.</description>
-    <category>Deep Learning</category>
-  </item>
-  <item>
-    <title>Why Batch Normalization Helps, and When It Hurts</title>
-    <link>https://jahanzaibawan.com/blog/batch-normalization-helps-and-hurts.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/batch-normalization-helps-and-hurts.html</guid>
-    <pubDate>Sun, 05 Jul 2026 09:00:00 +0000</pubDate>
-    <description>Batch norm speeds up training by taming shifting activations, but it leans on batch statistics that can betray you at small batch sizes or test time.</description>
     <category>Deep Learning</category>
   </item>
 </channel>

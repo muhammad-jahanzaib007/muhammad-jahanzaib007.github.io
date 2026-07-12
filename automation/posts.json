@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "image-augmentation-what-generalises",
+      "title": "Image Augmentation: What Actually Generalises",
+      "excerpt": "Most augmentation choices are copied from tutorials rather than justified. Here's how to test which ones actually improve generalisation for your task.",
+      "date": "2026-07-12",
+      "read_min": 5,
+      "tag": "Computer Vision",
+      "color": "a6",
+      "thumb": "assets/blog/image-augmentation-what-generalises.png",
+      "thumb_alt": "Cover image for the article: Image Augmentation: What Actually Generalises"
+    },
+    {
       "slug": "map-explained-without-hand-waving",
       "title": "Object Detection Metrics: mAP Without Hand-Waving",
       "excerpt": "mAP gets thrown around as a single number, but few people can actually derive it. Here is the arithmetic behind it, worked through by hand.",

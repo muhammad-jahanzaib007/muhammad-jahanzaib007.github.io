@@ -12,6 +12,7 @@
   <url><loc>https://jahanzaibawan.com/about.html</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://jahanzaibawan.com/blog.html</loc><lastmod>2026-07-12</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <!--BLOGPOSTS:START-->
+  <url><loc>https://jahanzaibawan.com/blog/image-augmentation-what-generalises.html</loc><lastmod>2026-07-12</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://jahanzaibawan.com/blog/map-explained-without-hand-waving.html</loc><lastmod>2026-07-12</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://jahanzaibawan.com/blog/cv-pipelines-distribution-shift.html</loc><lastmod>2026-07-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://jahanzaibawan.com/blog/evaluating-llms-beyond-accuracy.html</loc><lastmod>2026-07-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>

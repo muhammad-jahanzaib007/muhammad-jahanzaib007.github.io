@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Augmentation: What Actually Generalises | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to choosing image augmentations that genuinely improve generalisation, with a worked example and evaluation advice.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="image augmentation, data augmentation, computer vision, generalisation, overfitting, model evaluation, deep learning, robustness, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-12">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Image Augmentation: What Actually Generalises">
+<meta property="og:description" content="A practical guide to choosing image augmentations that genuinely improve generalisation, with a worked example and evaluation advice.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/image-augmentation-what-generalises.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/image-augmentation-what-generalises.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Image Augmentation: What Actually Generalises">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/image-augmentation-what-generalises.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/image-augmentation-what-generalises.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Image Augmentation: What Actually Generalises",
+  "description": "A practical guide to choosing image augmentations that genuinely improve generalisation, with a worked example and evaluation advice.",
+  "url": "https://jahanzaibawan.com/blog/image-augmentation-what-generalises.html",
+  "image": "https://jahanzaibawan.com/assets/blog/image-augmentation-what-generalises.png",
+  "datePublished": "2026-07-12",
+  "dateModified": "2026-07-12",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/image-augmentation-what-generalises.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Image Augmentation: What Actually Generalises", "item": "https://jahanzaibawan.com/blog/image-augmentation-what-generalises.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Computer Vision · 5 min read · 12 Jul 2026</div>
+    <h1>Image Augmentation: What Actually Generalises</h1>
+    <p class="lede">Not every flip, crop, or colour jitter helps your model. Here&#x27;s how to reason about which augmentations earn their place in a training pipeline.</p>
+  </div>
+
+  <img src="../assets/blog/image-augmentation-what-generalises.png" alt="Cover image for the article: Image Augmentation: What Actually Generalises" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why augmentation choices are usually made on faith</h2><p>Most computer vision tutorials hand you a fixed recipe: random crop, horizontal flip, colour jitter, maybe cutout, and a rotation for good measure. It works well enough on the benchmark in the notebook, so it gets copied into the next project, and the next. The trouble is that augmentation is not a free lunch. Every transform you apply encodes an assumption about what kind of variation your model should be invariant to, and that assumption is only correct if it matches the variation your deployment data will actually contain.</p><p>Consider a classifier trained to sort handwritten digits versus one trained to read house numbers photographed by a delivery driver. Horizontal flipping helps neither, because a flipped 6 looks like a 9 and a flipped house number is nonsense, but vertical flipping would actively harm both. Meanwhile, aggressive colour jitter might be irrelevant for digits scanned under controlled lighting but essential for the driver's photos taken at dusk, in shade, or under sodium streetlights. The point is that augmentation is not a generic regulariser you sprinkle on top; it is a hypothesis about the test distribution.</p><p>This matters because augmentation interacts with your evaluation in a way that is easy to miss. If you augment your training set with rotations and then report validation accuracy on a clean, unrotated set, you have learned nothing about whether rotation invariance was worth having. You have only checked that adding noise didn't hurt too much. The real test is whether the augmentation improves performance on data that resembles your actual deployment conditions, which means your validation and test sets need to reflect those conditions honestly, not just be held-out slices of the same clean distribution you trained on.</p></section><section class='psec reveal'><h2>A worked example: crops, flips, and what they buy you</h2><p>Suppose you are training a model to classify plant leaf diseases from photos taken by farmers on mobile phones. Your training set has around eight thousand images, collected under fairly controlled conditions: leaves photographed flat, centred, good lighting. Your deployment reality will involve leaves at odd angles, partial occlusion by fingers or other leaves, and inconsistent lighting from outdoor conditions.</p><p>Random horizontal and vertical flips are nearly free here: a leaf disease pattern does not care about orientation, so flipping roughly doubles your effective training diversity along an axis that genuinely varies in deployment. If your baseline model gets, say, 82 percent accuracy on a held-out set that mimics real farmer photos, adding flips alone might nudge that to 84 percent, because you have removed a spurious cue (leaves in the training set might have been photographed in a consistent orientation) without introducing any distortion that doesn't occur in reality.</p><p>Random cropping and scaling is a slightly different bet: it assumes the disease signature is locally identifiable even when the leaf isn't fully in frame or is photographed from a different distance. This tends to pay off when your deployment photos genuinely vary in framing, which mobile phone photos almost always do. Colour jitter is where things get more delicate. A mild jitter, small perturbations in brightness and saturation, generally helps because outdoor lighting varies. But push it too far, say wildly shifting hue, and you risk teaching the model that colour is irrelevant to disease diagnosis, when in fact colour (yellowing, browning, dark spots) is often the primary diagnostic signal. In that case an aggressive colour augmentation could quietly erode the very feature your model needs, and your validation accuracy might drop from 84 percent to 79 percent even though the augmentation looks superficially similar to the mild version.</p><p>The lesson from this worked case is that augmentations should be chosen by asking what symmetry or nuisance variable exists in your deployment data, not by reaching for a standard library and switching everything on. Flips and crops are attractive because they usually reflect genuine, harmless variation. Colour and geometric distortions need to be checked against whether they destroy task-relevant signal.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/image-augmentation-what-generalises-1.jpg' alt='farmer photographing plant leaf with phone' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>How to actually test whether an augmentation helps</h2><p>The only reliable way to know if an augmentation generalises is to run an ablation against a validation set that is leakage-aware and distribution-matched to your real use case. Leakage-aware means your validation images come from genuinely different sources, patients, sessions, or devices than your training images, not just a random split of the same batch, because random splits of correlated data will overestimate how much any augmentation, or indeed any model, actually helps in the wild. Distribution-matched means your validation set should look like what the model will see in production, including the messiness, not a cleaned-up version of it.</p><p>With that in place, the test is simple: train an identical architecture with and without the augmentation in question, holding everything else fixed, including random seed where feasible, and compare validation performance across a few repeated runs to account for training variance. If flips give you a consistent one to two point accuracy gain across three runs, that's a real signal. If a fancier augmentation like mixup or heavy elastic distortion gives you a gain on one run and a loss on the next, you are looking at noise, and you should not ship it based on a single lucky number.</p><p>It is also worth checking augmentations against a slice-level breakdown rather than a single aggregate accuracy figure. An augmentation might raise overall accuracy while quietly hurting a specific subgroup, for instance images taken in low light, if that subgroup is small enough that its degradation is masked by improvement elsewhere. This is the same failure mode as any aggregate metric hiding subgroup harm, and it is worth the extra ten minutes to check a confusion matrix or per-class breakdown before deciding an augmentation is a net positive.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>Treat every augmentation as a claim about your deployment data, not a default setting. Ask which physical or optical variations genuinely occur between your training images and the real-world inputs your model will face, and reach only for transforms that mimic those variations plausibly. Then verify the claim with a proper ablation on a leakage-aware, representative validation set, checked at both the aggregate and subgroup level, and repeated enough times to distinguish a real effect from noise. Augmentation that generalises is augmentation you can justify with a specific reason tied to your data, and can defend with a number you trust.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/image-augmentation-what-generalises-2.jpg' alt='close up leaf disease spots' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
