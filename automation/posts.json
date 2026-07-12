@@ -9,7 +9,8 @@
       "tag": "Computer Vision",
       "color": "a6",
       "thumb": "assets/blog/image-augmentation-what-generalises.png",
-      "thumb_alt": "Cover image for the article: Image Augmentation: What Actually Generalises"
+      "thumb_alt": "Cover image for the article: Image Augmentation: What Actually Generalises",
+      "li_shared": true
     },
     {
       "slug": "map-explained-without-hand-waving",
