@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Sat, 11 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 12 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Object Detection Metrics: mAP Without Hand-Waving</title>
+    <link>https://jahanzaibawan.com/blog/map-explained-without-hand-waving.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/map-explained-without-hand-waving.html</guid>
+    <pubDate>Sun, 12 Jul 2026 09:00:00 +0000</pubDate>
+    <description>mAP gets thrown around as a single number, but few people can actually derive it. Here is the arithmetic behind it, worked through by hand.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Building a Computer Vision Pipeline That Survives Shift</title>
     <link>https://jahanzaibawan.com/blog/cv-pipelines-distribution-shift.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/batch-normalization-helps-and-hurts.html</guid>
     <pubDate>Sun, 05 Jul 2026 09:00:00 +0000</pubDate>
     <description>Batch norm speeds up training by taming shifting activations, but it leans on batch statistics that can betray you at small batch sizes or test time.</description>
-    <category>Deep Learning</category>
-  </item>
-  <item>
-    <title>Attention, Intuitively: Queries, Keys, and Values</title>
-    <link>https://jahanzaibawan.com/blog/attention-queries-keys-values.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/attention-queries-keys-values.html</guid>
-    <pubDate>Sun, 05 Jul 2026 09:00:00 +0000</pubDate>
-    <description>Attention is a soft lookup table: queries ask, keys answer, values deliver. Here is that idea made concrete with numbers.</description>
     <category>Deep Learning</category>
   </item>
 </channel>

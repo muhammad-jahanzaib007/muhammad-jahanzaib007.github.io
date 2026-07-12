@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Object Detection Metrics: mAP Without Hand-Waving | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A clear, worked explanation of how mean average precision (mAP) is computed for object detection, including IoU thresholds, precision-recall curves, and common pitfalls.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="mAP, mean average precision, object detection metrics, IoU, precision recall curve, evaluation, COCO metrics, PASCAL VOC, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-12">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Object Detection Metrics: mAP Without Hand-Waving">
+<meta property="og:description" content="A clear, worked explanation of how mean average precision (mAP) is computed for object detection, including IoU thresholds, precision-recall curves, and common pitfalls.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/map-explained-without-hand-waving.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/map-explained-without-hand-waving.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Object Detection Metrics: mAP Without Hand-Waving">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/map-explained-without-hand-waving.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/map-explained-without-hand-waving.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Object Detection Metrics: mAP Without Hand-Waving",
+  "description": "A clear, worked explanation of how mean average precision (mAP) is computed for object detection, including IoU thresholds, precision-recall curves, and common pitfalls.",
+  "url": "https://jahanzaibawan.com/blog/map-explained-without-hand-waving.html",
+  "image": "https://jahanzaibawan.com/assets/blog/map-explained-without-hand-waving.png",
+  "datePublished": "2026-07-12",
+  "dateModified": "2026-07-12",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/map-explained-without-hand-waving.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Object Detection Metrics: mAP Without Hand-Waving", "item": "https://jahanzaibawan.com/blog/map-explained-without-hand-waving.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 12 Jul 2026</div>
+    <h1>Object Detection Metrics: mAP Without Hand-Waving</h1>
+    <p class="lede">A precise walkthrough of how mean average precision is actually computed, and why sloppy implementations quietly mislead you about model quality.</p>
+  </div>
+
+  <img src="../assets/blog/map-explained-without-hand-waving.png" alt="Cover image for the article: Object Detection Metrics: mAP Without Hand-Waving" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why mAP deserves scrutiny</h2><p>Object detection papers report a single number, mAP, and readers nod as if it were self-explanatory. In practice, very few people who cite it can reconstruct it from scratch, and that matters because mAP is not one calculation but a stack of decisions: what counts as a correct detection, how confidence thresholds are swept, how precision-recall curves get summarised, and whether that summary is averaged over classes, IoU thresholds, or both. Change any of those decisions and the number moves, sometimes by several points, without the model itself changing at all.</p><p>This is not a pedantic complaint. I have seen two detectors compared on a headline mAP figure where one used the eleven-point interpolation from older PASCAL VOC conventions and the other used the all-points interpolation typical of COCO-style evaluation. The comparison was meaningless, but it looked authoritative because both numbers were labelled mAP. If you are going to lean on this metric for a dissertation, a report, or a production decision, it is worth understanding the arithmetic well enough to catch that kind of mismatch yourself.</p></section><section class='psec reveal'><h2>From a single box to precision and recall</h2><p>Everything starts with Intersection over Union, IoU: the area where a predicted bounding box overlaps the ground truth box, divided by the total area covered by both. An IoU of 1.0 means a perfect match; an IoU of 0.5 means substantial overlap but real disagreement about the box's edges. To decide whether a prediction counts as a true positive, you fix an IoU threshold, commonly 0.5, and say: if this prediction's best-matching ground truth box has IoU at or above the threshold, and that ground truth has not already been claimed by a higher-confidence prediction, it is a true positive. Otherwise it is a false positive. Any ground truth box left unmatched at the end is a false negative.</p><p>Suppose a model produces ten detections for the class 'bicycle' in a test set that contains seven actual bicycles, ranked by confidence score from highest to lowest. Walking down that ranked list, at each point you can compute cumulative precision, true positives divided by all detections seen so far, and cumulative recall, true positives divided by all seven ground truths. Early on, when the model is only picking the detections it is most confident about, precision tends to be high and recall low. As you include lower-confidence detections, recall climbs but precision typically falls because you start including more mistakes.</p><p>Plotting cumulative precision against cumulative recall at every rank gives the precision-recall curve for that class. It is a jagged, sawtooth-shaped curve in practice, not the smooth arc that toy diagrams suggest, because each new true positive nudges precision up sharply while each new false positive drags it down. Average Precision, AP, is the area under this curve, and it is this area, not any single precision or recall value, that captures how well the model ranks correct detections above incorrect ones across the full range of confidence thresholds.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/map-explained-without-hand-waving-1.jpg' alt='precision recall curve graph' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Turning the curve into one number</h2><p>Computing the exact area under a jagged curve needs a convention, and this is where the hand-waving usually creeps in. The older PASCAL VOC approach used eleven-point interpolation: take the maximum precision achieved at recall levels of 0.0, 0.1, 0.2, up to 1.0, and average those eleven values. It is simple but coarse, and it can overstate AP slightly because it only samples eleven points. Modern practice, including COCO-style evaluation, uses all-point interpolation: at every distinct recall value where precision could change, take the maximum precision for any recall greater than or equal to that point, then integrate properly across the whole curve. This gives a finer-grained and generally more honest estimate of the area.</p><p>Take a concrete case: a class with five ground truth objects and detections that, in rank order, are correct, wrong, correct, correct, wrong. After the first detection, precision is 1.0 at recall 0.2. After the second, precision drops to 0.5 at recall 0.2 still. After the third, precision is 0.67 at recall 0.4. After the fourth, precision is 0.75 at recall 0.6. Interpolating properly, you take the running maximum precision looking forward at each recall level, sum the precision values weighted by the recall gaps between them, and that sum is AP for this one class at this one IoU threshold. It rewards a model that stacks its correct detections early far more than one that scatters them evenly, which is exactly the behaviour you want a good ranking function to have.</p><p>Mean Average Precision, mAP, is simply the mean of AP across all classes. If your dataset has twenty classes, you compute twenty separate AP values, one curve each, and average them. This is where class imbalance quietly bites: a class with only a handful of ground truth instances contributes to the mean with the same weight as a class with thousands, so a model that is excellent on common classes but poor on rare ones can still post a middling mAP that hides the real problem. COCO's convention goes a step further and averages AP across ten IoU thresholds from 0.5 to 0.95, which is stricter and penalises loosely fitted boxes far more than the traditional single-threshold 0.5 measure. That single design choice is why a model's COCO mAP is almost always noticeably lower than its PASCAL-style AP at IoU 0.5, and the two are not comparable across papers.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>When you read or report an mAP figure, treat it as shorthand for a specific recipe, not a universal truth about model quality. Always state the IoU threshold or range, the interpolation method, and whether small, medium and large objects were evaluated separately, because these choices change the number more than most architectural tweaks do. If you are comparing two models, insist they were evaluated with the identical script and settings; comparing across evaluation conventions is comparing apples counted in different currencies.</p><p>Beyond reporting conventions, look at the precision-recall curve itself rather than the single scalar whenever you can. A model with a lower AP but a curve that stays flat and high across most recall values might be more reliable in deployment than a model with a slightly higher AP driven by a handful of very confident, very correct detections at the top of the ranking. The number is a compression of a much richer picture, and knowing how it was built is what lets you decompress it responsibly.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/map-explained-without-hand-waving-2.jpg' alt='bounding box object detection example' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

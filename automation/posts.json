@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "map-explained-without-hand-waving",
+      "title": "Object Detection Metrics: mAP Without Hand-Waving",
+      "excerpt": "mAP gets thrown around as a single number, but few people can actually derive it. Here is the arithmetic behind it, worked through by hand.",
+      "date": "2026-07-12",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a5",
+      "thumb": "assets/blog/map-explained-without-hand-waving.png",
+      "thumb_alt": "Cover image for the article: Object Detection Metrics: mAP Without Hand-Waving"
+    },
+    {
       "slug": "cv-pipelines-distribution-shift",
       "title": "Building a Computer Vision Pipeline That Survives Shift",
       "excerpt": "High test accuracy means little if your test set secretly resembles your training set. Here is how to build vision pipelines that hold up when the world changes.",
