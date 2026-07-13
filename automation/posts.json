@@ -9,7 +9,8 @@
       "tag": "MLOps",
       "color": "a3",
       "thumb": "assets/blog/monitoring-model-drift.png",
-      "thumb_alt": "Cover image for the article: Monitoring Model Drift: What to Log and When to Retrain"
+      "thumb_alt": "Cover image for the article: Monitoring Model Drift: What to Log and When to Retrain",
+      "li_shared": true
     },
     {
       "slug": "notebook-to-production-checklist",
