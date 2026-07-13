@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "monitoring-model-drift",
+      "title": "Monitoring Model Drift: What to Log and When to Retrain",
+      "excerpt": "Drift monitoring is not a dashboard of pretty charts. It is a disciplined logging habit and a retraining trigger you can defend with evidence.",
+      "date": "2026-07-13",
+      "read_min": 5,
+      "tag": "MLOps",
+      "color": "a3",
+      "thumb": "assets/blog/monitoring-model-drift.png",
+      "thumb_alt": "Cover image for the article: Monitoring Model Drift: What to Log and When to Retrain"
+    },
+    {
       "slug": "notebook-to-production-checklist",
       "title": "A Practical Checklist for Notebook to Production",
       "excerpt": "A working checklist for taking a model out of a notebook safely, covering data leakage, baselines, monitoring, and the questions reviewers should always ask.",

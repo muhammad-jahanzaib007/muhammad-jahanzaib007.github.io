@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Mon, 13 Jul 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Monitoring Model Drift: What to Log and When to Retrain</title>
+    <link>https://jahanzaibawan.com/blog/monitoring-model-drift.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/monitoring-model-drift.html</guid>
+    <pubDate>Mon, 13 Jul 2026 09:00:00 +0000</pubDate>
+    <description>Drift monitoring is not a dashboard of pretty charts. It is a disciplined logging habit and a retraining trigger you can defend with evidence.</description>
+    <category>MLOps</category>
+  </item>
+  <item>
     <title>A Practical Checklist for Notebook to Production</title>
     <link>https://jahanzaibawan.com/blog/notebook-to-production-checklist.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/notebook-to-production-checklist.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/gradient-clipping-exploding-gradients.html</guid>
     <pubDate>Mon, 06 Jul 2026 09:00:00 +0000</pubDate>
     <description>A practical look at why RNN gradients explode over long sequences, and how norm-based clipping keeps training stable without hiding real bugs.</description>
-    <category>Deep Learning</category>
-  </item>
-  <item>
-    <title>Learning Rate: The First Hyperparameter to Tune</title>
-    <link>https://jahanzaibawan.com/blog/learning-rate-first-hyperparameter.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/learning-rate-first-hyperparameter.html</guid>
-    <pubDate>Mon, 06 Jul 2026 09:00:00 +0000</pubDate>
-    <description>Tune the learning rate before anything else: it decides whether your model converges, stalls, or blows up entirely.</description>
     <category>Deep Learning</category>
   </item>
 </channel>

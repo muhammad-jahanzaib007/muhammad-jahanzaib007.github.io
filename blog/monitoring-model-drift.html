@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monitoring Model Drift: What to Log and When to Retrain | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to logging the right signals for model drift and deciding when retraining is genuinely justified, based on evaluation rigour rather than guesswork.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="model drift, concept drift, data drift, ML monitoring, retraining strategy, model evaluation, production machine learning, MLOps, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-13">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Monitoring Model Drift: What to Log and When to Retrain">
+<meta property="og:description" content="A practical guide to logging the right signals for model drift and deciding when retraining is genuinely justified, based on evaluation rigour rather than guesswork.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/monitoring-model-drift.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/monitoring-model-drift.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Monitoring Model Drift: What to Log and When to Retrain">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/monitoring-model-drift.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/monitoring-model-drift.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Monitoring Model Drift: What to Log and When to Retrain",
+  "description": "A practical guide to logging the right signals for model drift and deciding when retraining is genuinely justified, based on evaluation rigour rather than guesswork.",
+  "url": "https://jahanzaibawan.com/blog/monitoring-model-drift.html",
+  "image": "https://jahanzaibawan.com/assets/blog/monitoring-model-drift.png",
+  "datePublished": "2026-07-13",
+  "dateModified": "2026-07-13",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/monitoring-model-drift.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Monitoring Model Drift: What to Log and When to Retrain", "item": "https://jahanzaibawan.com/blog/monitoring-model-drift.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">MLOps · 5 min read · 13 Jul 2026</div>
+    <h1>Monitoring Model Drift: What to Log and When to Retrain</h1>
+    <p class="lede">A model that scored well at launch can quietly degrade for months before anyone notices. Here is what to track, and how to decide when retraining actually earns its cost.</p>
+  </div>
+
+  <img src="../assets/blog/monitoring-model-drift.png" alt="Cover image for the article: Monitoring Model Drift: What to Log and When to Retrain" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why silent decay is the real risk</h2><p>Most people worry about a model breaking loudly: an exception, a null prediction, a service outage. In practice, the more damaging failure mode is quiet. A fraud detection model trained on last year's transaction patterns keeps returning confident scores, the dashboard stays green, and nobody notices that its precision has slipped from 0.91 to 0.78 because the fraud tactics changed. No alarm fires because nothing crashed. The model is simply wrong more often, and wrong in a way that looks like normal variance until someone audits the outcomes.</p><p>This is the core reason drift monitoring deserves the same rigour as the original evaluation. When a model ships, we usually have a held-out test set, a clear metric, and a leakage-aware split that gave us honest confidence in the numbers. Once deployed, that discipline tends to evaporate. Teams watch latency and throughput because those are easy to instrument, and they neglect the statistical health of the predictions themselves, because that requires labels, comparison distributions, and a bit more thought.</p><p>The fix is not exotic. It is deciding in advance what to log, logging it consistently, and setting explicit thresholds for when a retrain is worth the engineering cost. Without that plan, drift monitoring becomes a reactive exercise: someone notices complaints rising, digs through logs after the fact, and discovers the input distribution shifted three months ago. By then the cost has already been paid.</p></section><section class='psec reveal'><h2>What to log: inputs, outputs, and the gap between them</h2><p>There are three distinct things worth tracking, and conflating them is the most common mistake I see. The first is data drift: has the distribution of the input features changed, regardless of whether the model's accuracy has moved yet. The second is concept drift: has the relationship between inputs and the true outcome changed. The third is performance drift: is the model's actual accuracy or error rate declining, which is usually the downstream consequence of the first two but the thing we actually care about.</p><p>For data drift, log summary statistics of your input features on a rolling window, and compare them against the training distribution using something like population stability index or a Kolmogorov-Smirnov test for continuous features, and a chi-squared test for categorical ones. Say a credit scoring model was trained when average applicant income was £34,000 with a standard deviation of £9,000. If this month's incoming applicants average £41,000, that is worth flagging even before you see a single wrong prediction, because it tells you the model is now extrapolating into territory it saw rarely during training.</p><p>For concept drift, you need labels, which is the hard part. If your outcome arrives with a delay, such as loan default status six months after approval, you cannot know your live accuracy until then. In that case, log proxy signals: the model's confidence distribution, the rate of predictions near the decision boundary, and any available partial feedback like early repayment behaviour. A sudden jump in predictions sitting between 0.45 and 0.55 confidence, when historically only 8% of predictions fell in that band and now 22% do, is a strong hint that the model is becoming less certain about cases it used to handle cleanly.</p><p>For performance drift, once labels do arrive, log the full metric you optimised for originally, not a simplified proxy. If the model was tuned for F1 because classes are imbalanced, do not monitor raw accuracy in production, because accuracy can look stable while F1 quietly collapses. Log the metric on a rolling basis with confidence intervals, not a single point estimate, because a small evaluation window will show noisy swings that look like drift but are just sampling variance.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/monitoring-model-drift-1.jpg' alt='server room monitoring dashboard' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Deciding when to retrain, not just when to worry</h2><p>Detecting drift and deciding to retrain are separate decisions, and treating them as the same thing leads to either paralysis or wasted effort. A useful habit is to set two thresholds ahead of time: a monitoring threshold that triggers investigation, and a retraining threshold that triggers action, with the gap between them deliberately wide enough to avoid reacting to noise.</p><p>Suppose your churn model was validated at 0.83 AUC with a bootstrap confidence interval of roughly plus or minus 0.02. A weekly rolling AUC of 0.81 is well within that noise band and does not justify retraining; it justifies a note and continued watching. A sustained drop to 0.76 over four consecutive weeks, consistently below the lower bound of the original interval, is a genuine signal. The key word is sustained: a single bad week is usually a data quality blip, a marketing campaign that temporarily changed the applicant mix, or a holiday effect, not true drift.</p><p>Retraining itself is not free, and that cost should factor into the decision. Every retrain needs a fresh leakage-aware evaluation, not just a swap of the old model for a new one trained on recent data. I would always insist on comparing the retrained model against the current production model on the same recent holdout, using the same metric, before promoting it. It is entirely possible for a retrained model to perform worse than the incumbent if the recent data is noisier or smaller than the original training set, and skipping this check is how teams end up degrading a system while believing they improved it.</p><p>Finally, log the retraining decisions themselves, not just the model's predictions. Keep a record of when each retrain happened, what triggered it, what the before-and-after metrics were on a shared holdout, and what changed in the data pipeline. This audit trail is what turns drift monitoring from an ad hoc habit into something reproducible: six months later, when someone asks why the model behaves differently to the version described in an old report, you want an answer that takes two minutes to find rather than an afternoon of archaeology.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>Treat monitoring as an extension of evaluation, not a separate afterthought bolted on after deployment. Log input distributions and confidence patterns continuously, since these are available immediately and give early warning. Log the true performance metric on a rolling basis with uncertainty estimates the moment labels arrive, and resist the urge to substitute a simpler proxy metric for convenience. Set a monitoring threshold and a stricter, well-separated retraining threshold in advance, so decisions are made from a plan rather than from panic. And whenever you do retrain, validate the new model against the old one on shared, recent, leakage-free data before you trust it. Drift is inevitable; being caught by surprise is not.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/monitoring-model-drift-2.jpg' alt='analyst reviewing data charts on screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
