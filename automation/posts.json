@@ -9,7 +9,8 @@
       "tag": "MLOps",
       "color": "a2",
       "thumb": "assets/blog/notebook-to-production-checklist.png",
-      "thumb_alt": "Cover image for the article: A Practical Checklist for Notebook to Production"
+      "thumb_alt": "Cover image for the article: A Practical Checklist for Notebook to Production",
+      "li_shared": true
     },
     {
       "slug": "image-augmentation-what-generalises",
