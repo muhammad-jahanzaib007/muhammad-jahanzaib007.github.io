@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "notebook-to-production-checklist",
+      "title": "A Practical Checklist for Notebook to Production",
+      "excerpt": "A working checklist for taking a model out of a notebook safely, covering data leakage, baselines, monitoring, and the questions reviewers should always ask.",
+      "date": "2026-07-13",
+      "read_min": 5,
+      "tag": "MLOps",
+      "color": "a2",
+      "thumb": "assets/blog/notebook-to-production-checklist.png",
+      "thumb_alt": "Cover image for the article: A Practical Checklist for Notebook to Production"
+    },
+    {
       "slug": "image-augmentation-what-generalises",
       "title": "Image Augmentation: What Actually Generalises",
       "excerpt": "Most augmentation choices are copied from tutorials rather than justified. Here's how to test which ones actually improve generalisation for your task.",

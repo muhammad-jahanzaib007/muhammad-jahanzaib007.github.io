@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Sun, 12 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Mon, 13 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>A Practical Checklist for Notebook to Production</title>
+    <link>https://jahanzaibawan.com/blog/notebook-to-production-checklist.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/notebook-to-production-checklist.html</guid>
+    <pubDate>Mon, 13 Jul 2026 09:00:00 +0000</pubDate>
+    <description>A working checklist for taking a model out of a notebook safely, covering data leakage, baselines, monitoring, and the questions reviewers should always ask.</description>
+    <category>MLOps</category>
+  </item>
   <item>
     <title>Image Augmentation: What Actually Generalises</title>
     <link>https://jahanzaibawan.com/blog/image-augmentation-what-generalises.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/learning-rate-first-hyperparameter.html</guid>
     <pubDate>Mon, 06 Jul 2026 09:00:00 +0000</pubDate>
     <description>Tune the learning rate before anything else: it decides whether your model converges, stalls, or blows up entirely.</description>
-    <category>Deep Learning</category>
-  </item>
-  <item>
-    <title>Dropout as an Ensemble, Not a Magic Switch</title>
-    <link>https://jahanzaibawan.com/blog/dropout-as-an-ensemble.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/dropout-as-an-ensemble.html</guid>
-    <pubDate>Mon, 06 Jul 2026 09:00:00 +0000</pubDate>
-    <description>Dropout works because it approximates ensembling thousands of thinned networks, not because randomness alone regularises. Here is the intuition, worked through with numbers.</description>
     <category>Deep Learning</category>
   </item>
 </channel>

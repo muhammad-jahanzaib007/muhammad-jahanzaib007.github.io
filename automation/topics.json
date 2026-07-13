@@ -1,11 +1,24 @@
 {
   "queue": [
-    "A practical checklist for taking a model from notebook to production",
     "Monitoring model drift: what to log and when to retrain",
     "Named entity recognition: rule-based, statistical, and neural approaches compared",
     "Prompt engineering versus fine-tuning: choosing the right lever",
     "Vector databases and retrieval-augmented generation, explained simply",
-    "Statistical significance testing for comparing two ML models honestly"
+    "Statistical significance testing for comparing two ML models honestly",
+    "Machine learning versus deep learning: a distinction that actually matters",
+    "Machine learning versus AI: drawing the line without hand-waving",
+    "What a machine learning model actually is, explained with one worked example",
+    "Computer vision for manufacturing defect detection: a realistic evaluation walkthrough",
+    "Why computer vision models fail silently on the factory floor",
+    "Choosing between classical and deep computer vision: a practical decision guide",
+    "Model evaluation frameworks compared: what they automate and what they hide",
+    "Building your own model evaluation harness before reaching for a framework",
+    "Fine-tuning versus prompt design: a worked comparison on one small task",
+    "What fine-tuning actually changes inside a pretrained model",
+    "An MLOps roadmap for engineers coming from research, not software",
+    "What an MLOps engineer does day to day, beyond the job title",
+    "The machine learning engineer skill set: modelling is the smaller half",
+    "Threat modelling for ML systems: evaluating failure, not just accuracy"
   ],
   "published": [
     "UAV object classification data-leakage case study",
@@ -45,6 +58,7 @@
     "Evaluating LLMs beyond accuracy: helpfulness, harm, and hallucination",
     "Building a computer vision pipeline that survives distribution shift",
     "Object detection metrics: mAP explained without the hand-waving",
-    "Image augmentation for computer vision: what actually generalises"
+    "Image augmentation for computer vision: what actually generalises",
+    "A practical checklist for taking a model from notebook to production"
   ]
 }

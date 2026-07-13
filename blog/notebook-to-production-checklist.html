@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Practical Checklist for Notebook to Production | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical, leakage-aware checklist for moving a machine learning model from a research notebook into a reliable production system.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="model deployment, data leakage, MLOps, baseline models, model monitoring, reproducibility, train test split, production machine learning, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-13">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="A Practical Checklist for Notebook to Production">
+<meta property="og:description" content="A practical, leakage-aware checklist for moving a machine learning model from a research notebook into a reliable production system.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/notebook-to-production-checklist.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/notebook-to-production-checklist.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A Practical Checklist for Notebook to Production">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/notebook-to-production-checklist.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/notebook-to-production-checklist.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "A Practical Checklist for Notebook to Production",
+  "description": "A practical, leakage-aware checklist for moving a machine learning model from a research notebook into a reliable production system.",
+  "url": "https://jahanzaibawan.com/blog/notebook-to-production-checklist.html",
+  "image": "https://jahanzaibawan.com/assets/blog/notebook-to-production-checklist.png",
+  "datePublished": "2026-07-13",
+  "dateModified": "2026-07-13",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/notebook-to-production-checklist.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "A Practical Checklist for Notebook to Production", "item": "https://jahanzaibawan.com/blog/notebook-to-production-checklist.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">MLOps · 5 min read · 13 Jul 2026</div>
+    <h1>A Practical Checklist for Notebook to Production</h1>
+    <p class="lede">Most models die between the notebook and the deployment ticket. Here is the checklist I actually use to close that gap without fooling myself.</p>
+  </div>
+
+  <img src="../assets/blog/notebook-to-production-checklist.png" alt="Cover image for the article: A Practical Checklist for Notebook to Production" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the gap is wider than it looks</h2><p>A notebook that reports strong accuracy is not a finished piece of work; it is a hypothesis. I have seen models that scored well in a notebook fall apart within a week of going live, not because the maths was wrong but because the notebook answered a slightly different question than the one production actually asks. The notebook usually asks: can this model separate the classes in this fixed dataset. Production asks: can this model keep working as the data drifts, as inputs arrive one at a time, and as the definitions of the labels quietly change underneath it.</p><p>The gap matters because the failure modes are silent. A model that is technically wrong but confidently wrong does not throw an error; it just makes bad predictions that look plausible. Unless you have built in the right checks beforehand, you often find out weeks later, from a downstream complaint, not from a dashboard. A checklist is not bureaucracy for its own sake; it is a way of forcing yourself to ask the uncomfortable questions before someone else has to ask them for you.</p><p>Below is the checklist I run through before I let a model near anything real. It is organised around three themes: whether the evaluation can be trusted, whether the model is actually better than doing something simple, and whether the system around the model will keep it honest once it is running.</p></section><section class='psec reveal'><h2>Can I trust the number I am reporting</h2><p>The first question is always about leakage, because leakage is the single most common reason a notebook result does not survive contact with reality. Concretely: if you are predicting customer churn and you split rows randomly into train and test sets, but the same customer appears in both sets across different months, the model can effectively memorise that customer's behaviour rather than learning general patterns. Suppose this inflates test accuracy from a genuine 78 percent to a reported 91 percent. That 13 point gap is not a modelling improvement, it is a measurement error, and it will evaporate in production along with your credibility.</p><p>The fix is to split along the axis that matches how the model will actually be used. For churn, that usually means splitting by customer, or better, splitting by time: train on everything before a cut-off date, test on everything after it. Time-based splits also catch a second problem, which is using features that would not have been available at prediction time. A feature like 'total purchases this month' computed with hindsight over the full month is fine in a notebook and fatal in production, where you only have partial data for the current month.</p><p>Once the split is trustworthy, check the evaluation metric matches the business cost, not just what is easy to compute. If false positives and false negatives have very different costs, accuracy hides that difference; a model with 95 percent accuracy on a rare event can be worse than useless if it is achieving that by predicting the majority class almost every time. I always report a confusion matrix alongside any single summary number, because a single number can be technically correct and practically misleading.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/notebook-to-production-checklist-1.jpg' alt='server room dashboard monitors' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Is the model actually earning its complexity</h2><p>Before defending a gradient-boosted ensemble or a fine-tuned network, I make it beat a boring baseline, on the same leakage-aware split. For a classification task that might be predicting the majority class, or a simple rule based on one strong feature. For a regression task it might be predicting the historical mean, or last period's value carried forward. If the boring baseline gets a mean absolute error of 4.2 units and the sophisticated model gets 4.0, that 5 percent improvement needs to be weighed against the extra latency, the extra infrastructure, and the extra maintenance burden the complex model brings with it.</p><p>This matters because complexity has a cost that does not show up in the notebook. A model that needs a GPU to serve in real time, or that depends on a fragile feature pipeline pulling from three different databases, is a liability every single day it runs, not just on the day it was trained. I have watched teams choose a marginally better model over a much simpler one and then spend months paying for that choice in on-call incidents. Simplicity is not a consolation prize; it is a legitimate design goal.</p><p>I also stress-test the model against small, deliberate perturbations of the input before trusting it. Feed it slightly shifted dates, missing fields, or a duplicated row, and see whether the predictions change in ways that make sense. A model that swings wildly because one optional field went from present to missing is telling you something about how it will behave on the messier inputs production will inevitably send it, long before any user complains.</p></section><section class='psec reveal'><h2>Will the system keep the model honest</h2><p>Getting a good model is only half the job; the other half is making sure you would notice if it stopped being good. That means logging the inputs and outputs of every prediction, so that six months from now you can reconstruct exactly what the model saw and what it decided. Without that log, debugging a production incident becomes guesswork.</p><p>It also means monitoring the distribution of inputs over time, not just the outputs. If the average value of a key feature drifts by 20 percent over a quarter, that is a signal worth investigating even if the model has not obviously broken yet, because it means the world the model was trained on no longer matches the world it is operating in. Pair that with a scheduled retraining or review cadence rather than an ad hoc one; deciding in advance that the model gets re-evaluated every month is far more reliable than waiting for someone to notice a problem.</p><p>Finally, make the whole pipeline reproducible: pin the library versions, save the exact training data snapshot, and record the random seed and hyperparameters used. If you cannot rebuild the exact model from scratch a year later, you do not really own it, you are just hoping it keeps working. The checklist is not glamorous, but every item on it has, at some point, saved a project from quietly failing in a way nobody would have caught until it was expensive.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/notebook-to-production-checklist-2.jpg' alt='engineer reviewing charts on laptop' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
