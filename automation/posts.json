@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "prompt-engineering-vs-fine-tuning",
+      "title": "Prompt Engineering versus Fine-Tuning: Choosing the Lever",
+      "excerpt": "A practical guide to choosing between prompt engineering and fine-tuning, with a worked example showing when each lever actually pays off.",
+      "date": "2026-07-14",
+      "read_min": 5,
+      "tag": "NLP",
+      "color": "a5",
+      "thumb": "assets/blog/prompt-engineering-vs-fine-tuning.png",
+      "thumb_alt": "Cover image for the article: Prompt Engineering versus Fine-Tuning: Choosing the Lever"
+    },
+    {
       "slug": "ner-rule-statistical-neural",
       "title": "Named Entity Recognition: Three Approaches Compared",
       "excerpt": "A practical comparison of rule-based, statistical, and neural NER, with a worked example showing where each approach wins and where it quietly fails.",

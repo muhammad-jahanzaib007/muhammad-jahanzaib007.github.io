@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompt Engineering versus Fine-Tuning: Choosing the Lever | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A clear, practical comparison of prompt engineering and fine-tuning for language model tasks, with a worked example and evaluation advice.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="prompt engineering, fine-tuning, large language models, LLM evaluation, few-shot prompting, model adaptation, machine learning practice, NLP, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-14">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Prompt Engineering versus Fine-Tuning: Choosing the Lever">
+<meta property="og:description" content="A clear, practical comparison of prompt engineering and fine-tuning for language model tasks, with a worked example and evaluation advice.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/prompt-engineering-vs-fine-tuning.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/prompt-engineering-vs-fine-tuning.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Prompt Engineering versus Fine-Tuning: Choosing the Lever">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/prompt-engineering-vs-fine-tuning.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/prompt-engineering-vs-fine-tuning.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Prompt Engineering versus Fine-Tuning: Choosing the Lever",
+  "description": "A clear, practical comparison of prompt engineering and fine-tuning for language model tasks, with a worked example and evaluation advice.",
+  "url": "https://jahanzaibawan.com/blog/prompt-engineering-vs-fine-tuning.html",
+  "image": "https://jahanzaibawan.com/assets/blog/prompt-engineering-vs-fine-tuning.png",
+  "datePublished": "2026-07-14",
+  "dateModified": "2026-07-14",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/prompt-engineering-vs-fine-tuning.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Prompt Engineering versus Fine-Tuning: Choosing the Lever", "item": "https://jahanzaibawan.com/blog/prompt-engineering-vs-fine-tuning.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">NLP · 5 min read · 14 Jul 2026</div>
+    <h1>Prompt Engineering versus Fine-Tuning: Choosing the Lever</h1>
+    <p class="lede">Two ways to steer a language model toward a task, with very different costs, risks, and failure modes. Here is how I decide which one to pull.</p>
+  </div>
+
+  <img src="../assets/blog/prompt-engineering-vs-fine-tuning.png" alt="Cover image for the article: Prompt Engineering versus Fine-Tuning: Choosing the Lever" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this choice matters more than it looks</h2><p>Every time I need a language model to do something specific, be it extracting fields from invoices, classifying support tickets, or writing in a particular house style, I face the same fork in the road. I can describe the task better through the prompt, or I can change the model's weights through fine-tuning. These are not interchangeable options with the same effect dialled up or down. They are different levers attached to different parts of the machine, and pulling the wrong one wastes time, money, and sometimes introduces risks that are hard to spot until the system is in front of real users.</p><p>The temptation is to treat this as a maturity ladder: start with prompting, and once you are serious, graduate to fine-tuning. I think that framing is wrong more often than it is right. Fine-tuning is not a more advanced version of prompting; it solves a different kind of problem. Prompting adjusts what the model is asked to do at inference time, using its existing knowledge and behaviour. Fine-tuning adjusts the model itself, baking a pattern into its parameters so it no longer needs to be told every time.</p><p>Getting this choice wrong has concrete costs. I have seen effort poured into fine-tuning when a better-structured prompt with a couple of well-chosen examples would have solved the problem in an afternoon. I have also seen prompts grow into unwieldy walls of instructions and edge-case patches, trying to compensate for a behaviour that really needed to be trained in. Neither situation is a technical failure so much as a diagnostic one: the practitioner picked a lever before understanding what kind of problem they had.</p></section><section class='psec reveal'><h2>What each lever actually changes</h2><p>Prompt engineering works within the model's existing capabilities. You are choosing how to phrase the task, what context to supply, which examples to show, and how to structure the output format, so that the model's pretrained knowledge gets routed toward the behaviour you want. It costs no training compute, requires no labelled dataset beyond a handful of examples, and can be changed in seconds. Its ceiling, however, is set by what the model already knows and can express through instructions alone.</p><p>Fine-tuning changes the model's parameters using a training set of input-output pairs. It is the right tool when the task requires a consistent, narrow behaviour that is expensive to specify in words every time, or when you need the model to internalise patterns that are not easily explained, such as a very particular tone, a domain-specific taxonomy, or a mapping between inputs and outputs that has many exceptions. It costs data curation time, training compute, and ongoing maintenance, since every change to the task may mean retraining.</p><p>Consider a concrete case: a company wants a model to tag customer emails into twelve internal categories that map loosely, but not exactly, onto common-sense categories. With prompting, you write out the twelve definitions, give two or three examples per category, and ask the model to pick one. On a sample of two hundred held-out emails, this might get eighty-four per cent accuracy, with most errors clustering around three categories whose definitions overlap in ways hard to explain in a sentence. You try refining the definitions, adding more examples, restructuring the prompt: accuracy edges up to eighty-seven per cent, but with diminishing returns and a prompt that is now nine hundred words long.</p><p>At that point, fine-tuning becomes attractive, not because it is inherently superior, but because the residual errors are exactly the kind of nuanced, hard-to-verbalise pattern that training on a few thousand labelled examples handles well. After fine-tuning on three thousand labelled emails with a leakage-aware train and test split, accuracy might reach ninety-four per cent, and crucially, the prompt at inference time shrinks back down to a short instruction, because the category boundaries are now learned rather than explained. The lesson is not that fine-tuning wins outright; it is that the two levers were solving different parts of the same problem, and the second was only worth pulling once the first had been pushed close to its ceiling and the remaining errors had a specific character.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/prompt-engineering-vs-fine-tuning-1.jpg' alt='person writing on whiteboard with diagram' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>How I decide, and how I evaluate the decision</h2><p>My first question is always whether the task can be fully specified in language. If the rule can be written down and the model demonstrably follows it when given clear instructions and a few examples, prompting is very likely sufficient, and fine-tuning would just be an expensive way of encoding something you could have written in the system prompt. My second question is about volume and stability: if the task will run millions of times a day, a shorter fine-tuned inference path can be cheaper and faster than a long, example-laden prompt, even if the accuracy gain is modest.</p><p>My third question is about the shape of the errors. Errors from an under-specified prompt tend to look inconsistent across similar inputs and improve noticeably as you add examples or restructure instructions. Errors that persist despite well-crafted prompts, and cluster around genuinely ambiguous or nuanced cases, are a signal that the model needs to learn a pattern rather than be told one. I try to resist fine-tuning as a reflex fix for what is actually a prompt design problem, because I have wasted time doing exactly that.</p><p>Whichever lever I use, the evaluation has to be honest. A held-out test set must never overlap with anything used to write prompt examples or to fine-tune, and I always check for near-duplicate leakage, not just exact matches, since paraphrased examples slipping between train and test sets will quietly inflate scores. I also insist on a strong baseline: a simple, well-written prompt as the floor that any fine-tuned model must clearly beat, and a plain rule-based or nearest-neighbour classifier where relevant, because it is embarrassingly common to fine-tune a model that performs no better than a baseline nobody bothered to build.</p><p>The practical takeaway is this: treat prompting as the default, low-cost probe into what the model can already do, and treat fine-tuning as the deliberate, higher-cost step you take once you know precisely which residual behaviour needs to be learned rather than described. Choosing the lever is really a diagnostic act, and the diagnosis should come from a careful look at error patterns under a leakage-free evaluation, not from habit, budget, or which technique happens to be fashionable that month.</p></section>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

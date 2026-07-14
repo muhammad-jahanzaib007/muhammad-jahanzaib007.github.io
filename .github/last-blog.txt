@@ -1,1 +1,1 @@
-2026-07-14T08:01:14Z slug=ner-rule-statistical-neural words=1173 title="Named Entity Recognition: Three Approaches Compared"
+2026-07-14T20:01:16Z slug=prompt-engineering-vs-fine-tuning words=1071 title="Prompt Engineering versus Fine-Tuning: Choosing the Lever"
