@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Mon, 13 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 14 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Named Entity Recognition: Three Approaches Compared</title>
+    <link>https://jahanzaibawan.com/blog/ner-rule-statistical-neural.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/ner-rule-statistical-neural.html</guid>
+    <pubDate>Tue, 14 Jul 2026 09:00:00 +0000</pubDate>
+    <description>A practical comparison of rule-based, statistical, and neural NER, with a worked example showing where each approach wins and where it quietly fails.</description>
+    <category>NLP</category>
+  </item>
   <item>
     <title>Monitoring Model Drift: What to Log and When to Retrain</title>
     <link>https://jahanzaibawan.com/blog/monitoring-model-drift.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/freeze-fine-tune-or-lora.html</guid>
     <pubDate>Mon, 06 Jul 2026 09:00:00 +0000</pubDate>
     <description>Freezing, full fine-tuning, and LoRA all solve transfer learning differently. Here is how to choose based on data size, compute, and risk of overfitting.</description>
-    <category>Deep Learning</category>
-  </item>
-  <item>
-    <title>Gradient Clipping and Exploding Gradients in RNNs</title>
-    <link>https://jahanzaibawan.com/blog/gradient-clipping-exploding-gradients.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/gradient-clipping-exploding-gradients.html</guid>
-    <pubDate>Mon, 06 Jul 2026 09:00:00 +0000</pubDate>
-    <description>A practical look at why RNN gradients explode over long sequences, and how norm-based clipping keeps training stable without hiding real bugs.</description>
     <category>Deep Learning</category>
   </item>
 </channel>

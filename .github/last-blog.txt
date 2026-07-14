@@ -1,1 +1,1 @@
-2026-07-13T20:01:41Z slug=monitoring-model-drift words=1091 title="Monitoring Model Drift: What to Log and When to Retrain"
+2026-07-14T08:01:14Z slug=ner-rule-statistical-neural words=1173 title="Named Entity Recognition: Three Approaches Compared"

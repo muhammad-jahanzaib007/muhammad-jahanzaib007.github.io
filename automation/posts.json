@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "ner-rule-statistical-neural",
+      "title": "Named Entity Recognition: Three Approaches Compared",
+      "excerpt": "A practical comparison of rule-based, statistical, and neural NER, with a worked example showing where each approach wins and where it quietly fails.",
+      "date": "2026-07-14",
+      "read_min": 6,
+      "tag": "NLP",
+      "color": "a4",
+      "thumb": "assets/blog/ner-rule-statistical-neural.png",
+      "thumb_alt": "Cover image for the article: Named Entity Recognition: Three Approaches Compared"
+    },
+    {
       "slug": "monitoring-model-drift",
       "title": "Monitoring Model Drift: What to Log and When to Retrain",
       "excerpt": "Drift monitoring is not a dashboard of pretty charts. It is a disciplined logging habit and a retraining trigger you can defend with evidence.",

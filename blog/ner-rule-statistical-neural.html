@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Named Entity Recognition: Three Approaches Compared | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="An honest, worked comparison of rule-based, statistical, and neural named entity recognition, covering strengths, failure modes, and when each is the right choice.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="named entity recognition,NER,rule-based NLP,CRF,statistical NLP,neural NER,BiLSTM,transformers,information extraction, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-14">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Named Entity Recognition: Three Approaches Compared">
+<meta property="og:description" content="An honest, worked comparison of rule-based, statistical, and neural named entity recognition, covering strengths, failure modes, and when each is the right choice.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/ner-rule-statistical-neural.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/ner-rule-statistical-neural.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Named Entity Recognition: Three Approaches Compared">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/ner-rule-statistical-neural.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/ner-rule-statistical-neural.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Named Entity Recognition: Three Approaches Compared",
+  "description": "An honest, worked comparison of rule-based, statistical, and neural named entity recognition, covering strengths, failure modes, and when each is the right choice.",
+  "url": "https://jahanzaibawan.com/blog/ner-rule-statistical-neural.html",
+  "image": "https://jahanzaibawan.com/assets/blog/ner-rule-statistical-neural.png",
+  "datePublished": "2026-07-14",
+  "dateModified": "2026-07-14",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/ner-rule-statistical-neural.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Named Entity Recognition: Three Approaches Compared", "item": "https://jahanzaibawan.com/blog/ner-rule-statistical-neural.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">NLP · 6 min read · 14 Jul 2026</div>
+    <h1>Named Entity Recognition: Three Approaches Compared</h1>
+    <p class="lede">Rule-based, statistical, and neural methods solve the same labelling problem in very different ways. Understanding their trade-offs matters more than chasing the newest model.</p>
+  </div>
+
+  <img src="../assets/blog/ner-rule-statistical-neural.png" alt="Cover image for the article: Named Entity Recognition: Three Approaches Compared" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the choice of approach still matters</h2><p>Named entity recognition sounds like a solved problem until you try to deploy it on text that does not look like a benchmark. The task is simple to state: find spans in a sentence that refer to people, organisations, locations, dates, or whatever category set you care about, and label them correctly. What is not simple is that the three dominant families of solutions, rule-based, statistical, and neural, make very different assumptions about what signal is reliable, and those assumptions show up as very different failure modes once you leave clean training-like text.</p><p>I think this comparison is worth doing carefully because the temptation in 2024 is to reach straight for a transformer and assume it dominates on every axis. It often does on accuracy for well-resourced languages and domains. It does not always win on cost, latency, interpretability, or robustness to a narrow, well-defined entity set. A sensible engineer picks the tool that matches the constraints of the problem, not the tool with the most recent paper attached to it.</p></section><section class='psec reveal'><h2>Rule-based systems: transparent but brittle</h2><p>A rule-based NER system is built from hand-written patterns: gazetteers of known names, regular expressions for dates and phone numbers, and heuristics like capitalisation or trigger words such as 'Mr' or 'Inc'. Consider a simple rule for detecting company names: match a capitalised sequence of one to three words immediately followed by a suffix from a fixed list such as 'Ltd', 'Inc', or 'GmbH'. On a set of formal business documents, a rule like this can achieve genuinely high precision, sometimes above ninety-five percent, because the pattern is specific and the domain is narrow.</p><p>The weakness appears the moment coverage matters. That same rule will miss 'Deutsche Bank' with no suffix, misfire on 'Ford' the common surname versus 'Ford' the car company, and say nothing useful about a name it has never seen in a gazetteer, such as a newly founded startup. Recall tends to be the casualty: precision stays respectable while recall drops sharply outside the patterns you anticipated. Maintenance is the other hidden cost. Every new entity type or new domain means someone sits down and writes more rules, and those rules interact with each other in ways that become hard to reason about once the rule set grows past a few hundred lines.</p><p>Where rule-based systems genuinely earn their place is in narrow, high-stakes, well-specified domains: extracting drug dosages from a fixed prescription format, or pulling case numbers from a specific legal document template. When the format is stable and the cost of a false positive is high, a transparent rule that a domain expert can read and audit is often preferable to a model whose decision boundary nobody can fully explain.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/ner-rule-statistical-neural-1.jpg' alt='highlighted text document with annotations' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Statistical sequence models: the middle ground</h2><p>Statistical approaches, most commonly Hidden Markov Models and Conditional Random Fields, treat NER as a sequence labelling problem using the BIO tagging scheme, where each token gets a label such as B-PER, I-PER, or O for outside any entity. A CRF learns weights over hand-engineered features: the word itself, its part-of-speech tag, whether it is capitalised, whether it appears in a gazetteer, and the labels of neighbouring tokens. Crucially, it models the dependencies between adjacent labels directly, which matters because an I-PER tag almost never follows an O tag in a well-formed sequence, and the model can learn that constraint explicitly rather than hoping a classifier infers it token by token.</p><p>The practical gain over pure rules is graceful handling of ambiguity through learned probabilities rather than brittle if-then logic. Imagine a CRF trained on newswire text seeing the token 'Washington'. Context features, such as the preceding word being 'President' or the following word being 'D.C.', shift the probability towards PER or LOC respectively, without anyone writing an explicit rule for that specific case. On a moderately sized labelled corpus, a well-tuned CRF with good features can reach competitive performance, often within a few points of a neural model on the same data, while training in minutes on a laptop rather than hours on a GPU.</p><p>The catch is feature engineering. Getting a CRF to perform well requires deciding which context window to use, which gazetteers to build, and how to encode morphology for rare or unseen words. That effort does not transfer cleanly between domains; a feature set tuned for financial news needs substantial rework for clinical notes. Statistical models also struggle with genuinely novel surface forms that share no features with anything seen in training, since they cannot lean on the kind of distributed semantic similarity a neural embedding provides.</p></section><section class='psec reveal'><h2>Neural approaches and the honest trade-offs</h2><p>Neural NER, whether a BiLSTM with a CRF layer on top or a fine-tuned transformer, replaces hand-built features with learned representations. A pretrained transformer arrives already knowing that 'Aspirin' and 'Ibuprofen' sit in similar semantic space to other drug names it saw during pretraining, even if the exact token never appeared in your labelled data. This is the main practical advantage: far better generalisation to unseen entity mentions, which directly addresses the recall problem that plagued the rule-based approach.</p><p>The worked comparison is useful here. Suppose all three systems are evaluated on a test set containing an entity type unseen in training, like a newly coined product name. The rule-based system misses it entirely unless someone adds a specific pattern. The CRF partially catches it if the surrounding context features are strong enough, capitalisation, position, neighbouring words, but confidence is often low. The fine-tuned transformer frequently gets it right, because the surrounding sentence structure and subword patterns resemble entities it has implicitly learned to recognise as a class, not just as memorised strings.</p><p>None of this is free. Transformer-based NER needs labelled data to fine-tune, computational resources to train and serve, and it is considerably harder to debug when it makes a confident, wrong prediction with no obvious reason attached. It also inherits whatever biases sit in its pretraining data, which can quietly skew entity recognition towards names and formats common in the training corpus and away from underrepresented naming conventions. And on small, narrow, template-like datasets, the accuracy gap over a well-tuned CRF can be small enough that the added complexity is not worth it.</p><p>My practical takeaway is to treat this as a decision problem rather than a leaderboard. If the domain is narrow and stable, start with rules and measure precision and recall honestly on a held-out set that reflects real deployment text, not just your development examples. If you have moderate labelled data and need something interpretable and cheap to run, a CRF with good features is a strong, underrated baseline that many neural comparisons skip. Reach for a neural model, ideally a pretrained transformer fine-tuned on your labelled data, when generalisation to novel entities matters more than latency or interpretability, and always validate on a split that genuinely resembles production, since leakage between similar documents in training and test sets is the fastest way to overstate how well any of these three approaches will actually perform.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/ner-rule-statistical-neural-2.jpg' alt='server room computer racks' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

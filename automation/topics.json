@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Named entity recognition: rule-based, statistical, and neural approaches compared",
     "Prompt engineering versus fine-tuning: choosing the right lever",
     "Vector databases and retrieval-augmented generation, explained simply",
     "Statistical significance testing for comparing two ML models honestly",
@@ -59,6 +58,7 @@
     "Object detection metrics: mAP explained without the hand-waving",
     "Image augmentation for computer vision: what actually generalises",
     "A practical checklist for taking a model from notebook to production",
-    "Monitoring model drift: what to log and when to retrain"
+    "Monitoring model drift: what to log and when to retrain",
+    "Named entity recognition: rule-based, statistical, and neural approaches compared"
   ]
 }
