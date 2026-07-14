@@ -9,7 +9,8 @@
       "tag": "NLP",
       "color": "a5",
       "thumb": "assets/blog/prompt-engineering-vs-fine-tuning.png",
-      "thumb_alt": "Cover image for the article: Prompt Engineering versus Fine-Tuning: Choosing the Lever"
+      "thumb_alt": "Cover image for the article: Prompt Engineering versus Fine-Tuning: Choosing the Lever",
+      "li_shared": true
     },
     {
       "slug": "ner-rule-statistical-neural",
