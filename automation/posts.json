@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "vector-databases-and-rag-explained",
+      "title": "Vector Databases and RAG, Explained Simply",
+      "excerpt": "How embeddings and vector search let language models look things up instead of guessing, and why the plumbing matters more than the hype.",
+      "date": "2026-07-15",
+      "read_min": 5,
+      "tag": "NLP",
+      "color": "a6",
+      "thumb": "assets/blog/vector-databases-and-rag-explained.png",
+      "thumb_alt": "Cover image for the article: Vector Databases and RAG, Explained Simply"
+    },
+    {
       "slug": "prompt-engineering-vs-fine-tuning",
       "title": "Prompt Engineering versus Fine-Tuning: Choosing the Lever",
       "excerpt": "A practical guide to choosing between prompt engineering and fine-tuning, with a worked example showing when each lever actually pays off.",

@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Tue, 14 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 15 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Vector Databases and RAG, Explained Simply</title>
+    <link>https://jahanzaibawan.com/blog/vector-databases-and-rag-explained.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/vector-databases-and-rag-explained.html</guid>
+    <pubDate>Wed, 15 Jul 2026 09:00:00 +0000</pubDate>
+    <description>How embeddings and vector search let language models look things up instead of guessing, and why the plumbing matters more than the hype.</description>
+    <category>NLP</category>
+  </item>
   <item>
     <title>Prompt Engineering versus Fine-Tuning: Choosing the Lever</title>
     <link>https://jahanzaibawan.com/blog/prompt-engineering-vs-fine-tuning.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Tue, 07 Jul 2026 09:00:00 +0000</pubDate>
     <description>Perplexity tells you how well a model predicts held-out text, but it says nothing about coherence, factuality, or usefulness. Here is what it quietly rewards and ignores.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Tokenization Choices and Why They Change Your Results</title>
-    <link>https://jahanzaibawan.com/blog/tokenization-choices-change-results.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/tokenization-choices-change-results.html</guid>
-    <pubDate>Tue, 07 Jul 2026 09:00:00 +0000</pubDate>
-    <description>Tokenization looks like plumbing, but it decides what your model can see. Get it wrong and no amount of tuning will fix it.</description>
-    <category>NLP</category>
   </item>
 </channel>
 </rss>

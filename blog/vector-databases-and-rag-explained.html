@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vector Databases and RAG, Explained Simply | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A clear, jargon-light explanation of vector databases and retrieval-augmented generation, with a worked example and practical evaluation advice.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="vector database, retrieval-augmented generation, RAG, embeddings, similarity search, large language models, NLP, information retrieval, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-15">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Vector Databases and RAG, Explained Simply">
+<meta property="og:description" content="A clear, jargon-light explanation of vector databases and retrieval-augmented generation, with a worked example and practical evaluation advice.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/vector-databases-and-rag-explained.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/vector-databases-and-rag-explained.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Vector Databases and RAG, Explained Simply">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/vector-databases-and-rag-explained.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/vector-databases-and-rag-explained.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Vector Databases and RAG, Explained Simply",
+  "description": "A clear, jargon-light explanation of vector databases and retrieval-augmented generation, with a worked example and practical evaluation advice.",
+  "url": "https://jahanzaibawan.com/blog/vector-databases-and-rag-explained.html",
+  "image": "https://jahanzaibawan.com/assets/blog/vector-databases-and-rag-explained.png",
+  "datePublished": "2026-07-15",
+  "dateModified": "2026-07-15",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/vector-databases-and-rag-explained.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Vector Databases and RAG, Explained Simply", "item": "https://jahanzaibawan.com/blog/vector-databases-and-rag-explained.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">NLP · 5 min read · 15 Jul 2026</div>
+    <h1>Vector Databases and RAG, Explained Simply</h1>
+    <p class="lede">A plain-language walkthrough of how embeddings, similarity search, and retrieval-augmented generation combine to make language models less prone to making things up.</p>
+  </div>
+
+  <img src="../assets/blog/vector-databases-and-rag-explained.png" alt="Cover image for the article: Vector Databases and RAG, Explained Simply" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this matters</h2><p>Large language models are fluent, but fluency and correctness are not the same thing. A model trained on a fixed snapshot of text has no way of knowing about your company's latest pricing sheet, a paper published last week, or the contents of a private document store. Ask it anyway, and it will often answer with total confidence, drawing on patterns rather than facts. This is the core problem that retrieval-augmented generation, usually shortened to RAG, is designed to solve.</p><p>The idea is simple to state: instead of relying purely on what the model memorised during training, you fetch relevant passages from a trusted source at the moment someone asks a question, and hand those passages to the model as extra context. The model then generates its answer grounded in that retrieved text, ideally citing it, rather than inventing an answer from scratch. The trick that makes this fast enough to use in practice is the vector database, so it is worth understanding what it actually does before treating it as a black box.</p><p>I find it useful to separate the system into two honest jobs: finding the right text, and writing a good answer from it. Most of the interesting engineering, and most of the ways things go wrong, live in the first job. A brilliant language model given the wrong three paragraphs will still produce a confident, wrong answer. So the retrieval half deserves as much scrutiny as the generation half, even though it gets far less attention in casual conversation.</p></section><section class='psec reveal'><h2>Embeddings and similarity search, worked through</h2><p>An embedding is a way of turning a piece of text into a list of numbers, a vector, such that texts with similar meaning end up close together in that numerical space. A sentence about refunds and a sentence about returns policy might end up near each other even if they share almost no words in common, because the embedding model has learned to represent meaning rather than surface spelling. This is the property that makes semantic search possible: you are no longer matching keywords, you are measuring distance between meanings.</p><p>Concretely, imagine you have a support knowledge base of ten thousand articles. You run each article through an embedding model once, offline, and store the resulting vector, say 768 numbers long, alongside a pointer back to the original text. That is the vector database: a specialised index built to store millions of these vectors and answer one recurring question extremely quickly, namely, given a new vector, which stored vectors are closest to it?</p><p>Now a user asks, 'why was I charged twice for one order?' You embed that question with the same model, producing another 768-number vector, and ask the database for the nearest neighbours by a distance measure such as cosine similarity. Suppose it returns the three articles on duplicate billing, payment retries, and refund timing. Those three passages, perhaps two thousand words in total, get inserted into the prompt sent to the language model, along with an instruction to answer using only that material. The model now has the specific, current facts it needs, rather than a vague statistical impression of billing policy from its training data.</p><p>The reason this scales is the index structure underneath, things like approximate nearest neighbour graphs, which trade a small amount of accuracy for enormous speed gains, letting you search millions of vectors in single-digit milliseconds instead of comparing against every one linearly. That trade-off is usually fine in practice, but it is a real trade-off, and it is worth knowing it exists rather than assuming retrieval is perfectly exhaustive.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/vector-databases-and-rag-explained-1.jpg' alt='server room data center' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Where it quietly breaks</h2><p>The failure mode I would watch most closely is chunking. Documents get split into passages before embedding, because a whole fifty-page manual is too large and too unfocused to embed as one vector. Split too coarsely and a chunk mixes two unrelated topics, diluting its embedding until it matches nothing well. Split too finely and you lose context: a chunk that says 'this fee applies in that case' with no surrounding sentence to say what 'that case' means is retrieved perfectly and is still useless. Getting chunk size and overlap right is unglamorous, but it often has more effect on answer quality than swapping to a fancier embedding model.</p><p>A second trap is evaluating the system only by whether the final answer sounds plausible. That tells you almost nothing about whether retrieval actually worked. A more honest evaluation checks, separately, whether the retrieved passages contain the information needed to answer correctly, and only then checks whether the generated answer used them faithfully. I would build a small labelled set of questions with known correct source passages, held out from anything used to tune the pipeline, and measure retrieval accuracy on that set before ever judging the generated text. Without that separation, you cannot tell whether a wrong answer is a retrieval failure or a generation failure, and you will end up tuning the wrong component.</p><p>Leakage is the other quiet danger. If your test questions were written by looking at the documents, or if near-duplicate passages exist across your training and evaluation splits, retrieval will look artificially strong because the system is effectively matching on things it has seen framed before. This mirrors the same leakage problems that show up in any machine learning evaluation: the fix is the same discipline of keeping evaluation data genuinely unseen and structurally separated from anything used during development.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>RAG is not magic that eliminates hallucination, it is a way of narrowing the model's job from 'recall everything you might know' to 'summarise this specific handful of passages faithfully', which is a much easier and more checkable task. The vector database is simply the fast lookup mechanism that finds those passages by meaning rather than exact wording, using embeddings and approximate nearest neighbour search under the hood.</p><p>If you are building or assessing one of these systems, treat retrieval as the thing to measure first and separately: check that the right passages come back before worrying about how eloquently the model writes about them. Pay attention to chunking choices, keep a genuinely held-out evaluation set free of leakage, and remember that a strong baseline, even a simple keyword search compared side by side with your embedding search, will tell you honestly whether the added complexity is earning its keep.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/vector-databases-and-rag-explained-2.jpg' alt='library bookshelves rows' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
