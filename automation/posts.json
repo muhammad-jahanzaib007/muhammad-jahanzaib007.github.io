@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a2",
       "thumb": "assets/blog/significance-testing-two-models.png",
-      "thumb_alt": "Cover image for the article: Comparing Two ML Models Without Fooling Yourself"
+      "thumb_alt": "Cover image for the article: Comparing Two ML Models Without Fooling Yourself",
+      "li_shared": true
     },
     {
       "slug": "vector-databases-and-rag-explained",
