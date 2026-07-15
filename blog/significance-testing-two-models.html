@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comparing Two ML Models Without Fooling Yourself | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to statistical significance testing when comparing two machine learning models, with a worked example and honest caveats.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="statistical significance, model comparison, McNemar test, paired bootstrap, machine learning evaluation, p-value, cross-validation, model selection, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-15">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Comparing Two ML Models Without Fooling Yourself">
+<meta property="og:description" content="A practical guide to statistical significance testing when comparing two machine learning models, with a worked example and honest caveats.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/significance-testing-two-models.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/significance-testing-two-models.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Comparing Two ML Models Without Fooling Yourself">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/significance-testing-two-models.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/significance-testing-two-models.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Comparing Two ML Models Without Fooling Yourself",
+  "description": "A practical guide to statistical significance testing when comparing two machine learning models, with a worked example and honest caveats.",
+  "url": "https://jahanzaibawan.com/blog/significance-testing-two-models.html",
+  "image": "https://jahanzaibawan.com/assets/blog/significance-testing-two-models.png",
+  "datePublished": "2026-07-15",
+  "dateModified": "2026-07-15",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/significance-testing-two-models.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Comparing Two ML Models Without Fooling Yourself", "item": "https://jahanzaibawan.com/blog/significance-testing-two-models.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 15 Jul 2026</div>
+    <h1>Comparing Two ML Models Without Fooling Yourself</h1>
+    <p class="lede">One accuracy number beating another by a point means nothing on its own. Here is how to check whether a difference between models is real or just noise from your test split.</p>
+  </div>
+
+  <img src="../assets/blog/significance-testing-two-models.png" alt="Cover image for the article: Comparing Two ML Models Without Fooling Yourself" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why a single number is not enough</h2><p>I have lost count of the times I have seen a table in a paper or a report where Model B beats Model A by half a percentage point on accuracy, and the conclusion is written as if that settles the matter. It rarely does. Test sets are finite samples. If your test set has a thousand examples, a difference of five correct predictions can easily be the kind of wobble you would get just from reshuffling which examples happened to land in the split.</p><p>This matters because model comparison decisions get baked into real choices: which architecture to ship, which paper claim to trust, which baseline to beat in a thesis. If the difference you are celebrating is indistinguishable from noise, you are not making a decision based on evidence, you are making it based on the specific random draw of your test set. Statistical significance testing gives you a disciplined way to ask: is this difference big enough, given the amount of data I evaluated on, that I should believe it reflects something real about the models rather than sampling luck?</p><p>The honest answer is often uncomfortable. Many published improvements in machine learning are small enough that a proper significance test would call them inconclusive on the reported test set size. That is not a reason to abandon testing, it is a reason to test properly rather than skip the question entirely.</p></section><section class='psec reveal'><h2>Picking a test that matches your evaluation, not a generic one</h2><p>The mistake I see most often is using a test designed for comparing two independent samples, such as a plain t-test on two separate accuracy figures, when the two models were evaluated on the exact same test examples. That independence assumption is wrong here, and it wastes information. If both models see the same items, you want a paired test that looks at where they disagree, not a test that compares two summary statistics as if they came from unrelated populations.</p><p>For classification with a single test set, McNemar's test is the classic tool. It looks only at the examples where the two models disagree: how many did Model A get right and Model B get wrong, and vice versa. Suppose out of a thousand test examples, both models agree on 900 of them, entirely irrelevant to the comparison. Of the remaining 100, Model A alone is correct on 65 and Model B alone is correct on 35. McNemar's test asks whether a 65 to 35 split is surprising under the assumption that disagreements should go either way with equal probability. That split is quite lopsided, and it would typically produce a p-value comfortably below 0.05, giving you reasonable grounds to say Model A's edge is unlikely to be pure chance. Compare that with a 55 to 45 split on the same 100 disagreements: far less convincing, and the test would usually tell you so.</p><p>If you have run repeated cross-validation or multiple training seeds, a paired t-test or a Wilcoxon signed-rank test across the per-fold or per-seed score differences is more appropriate than McNemar's, because now your unit of comparison is the fold-level score rather than the individual prediction. For regression or continuous metrics, the paired bootstrap is often the most flexible option: resample the test set with replacement many times, compute the metric difference each time, and see how often that difference crosses zero. If, across ten thousand bootstrap resamples, the difference favours Model A in 9,600 of them, you have a strong signal; if it is closer to 5,300, you do not.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/significance-testing-two-models-1.jpg' alt='whiteboard with statistics equations' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>The traps that make significance tests lie to you</h2><p>A significance test is only as trustworthy as the independence of your evaluation data, and this is where leakage quietly ruins everything. If your test examples are not truly independent draws, duplicate rows, near-duplicate images, multiple samples from the same patient or the same user, then your effective sample size is far smaller than the number of rows suggests, and the test will report a confidence it has not earned. I would rather run a test on 300 genuinely independent examples than on 3,000 examples with hidden clusters, because the second number is a comforting illusion.</p><p>Multiple comparisons are the second trap. If you test five model variants against a baseline and report the one significant result at the conventional 0.05 threshold, you have not found a real effect, you have found what you would expect from chance alone roughly one time in twenty when running five tests. Correcting for this, even with something as simple as a Bonferroni adjustment, is not optional once you are hunting across several candidate models or several metrics.</p><p>Finally, remember that statistical significance and practical significance are different questions. With a large enough test set, a genuinely trivial difference, say a tenth of a percentage point in accuracy, can become statistically significant. That does not mean it is worth the added complexity, latency, or training cost of the fancier model. Always ask whether the effect size, not just the p-value, is large enough to matter for your actual use case.</p></section><section class='psec reveal'><h2>A practical checklist for honest comparisons</h2><p>Before I trust a claim that one model beats another, I check a short list: were the models evaluated on the same held-out data, ideally the same exact examples; is the comparison test paired rather than treating the two models as independent samples; is the test set free of duplicates or leaked groups that inflate the apparent sample size; and has the number of comparisons been accounted for if several models were tried.</p><p>In practice, my workflow is to compute the paired disagreement counts for classification tasks and run McNemar's test as a quick sanity check, then fall back to a paired bootstrap over an appropriate metric when the outcome is continuous or when I have run multiple seeds. I report the p-value alongside the raw effect size and, where possible, a confidence interval on the difference, because a confidence interval tells a fuller story than a single threshold decision ever can.</p><p>None of this replaces good judgement. A test can only tell you whether an observed difference is likely to be noise given your assumptions; it cannot tell you whether your test set represents the real deployment distribution, or whether the better model on paper is worth the engineering cost in practice. Use significance testing as one honest filter among several, not as a rubber stamp, and be just as suspicious of your own promising results as you would be of someone else's.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/significance-testing-two-models-2.jpg' alt='two computer monitors showing data charts' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

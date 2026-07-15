@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "significance-testing-two-models",
+      "title": "Comparing Two ML Models Without Fooling Yourself",
+      "excerpt": "A higher accuracy score does not mean a better model. Here is a practical, honest way to test whether the difference between two models is real.",
+      "date": "2026-07-15",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a2",
+      "thumb": "assets/blog/significance-testing-two-models.png",
+      "thumb_alt": "Cover image for the article: Comparing Two ML Models Without Fooling Yourself"
+    },
+    {
       "slug": "vector-databases-and-rag-explained",
       "title": "Vector Databases and RAG, Explained Simply",
       "excerpt": "How embeddings and vector search let language models look things up instead of guessing, and why the plumbing matters more than the hype.",

@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Statistical significance testing for comparing two ML models honestly",
     "Machine learning versus deep learning: a distinction that actually matters",
     "Machine learning versus AI: drawing the line without hand-waving",
     "What a machine learning model actually is, explained with one worked example",
@@ -59,6 +58,7 @@
     "Monitoring model drift: what to log and when to retrain",
     "Named entity recognition: rule-based, statistical, and neural approaches compared",
     "Prompt engineering versus fine-tuning: choosing the right lever",
-    "Vector databases and retrieval-augmented generation, explained simply"
+    "Vector databases and retrieval-augmented generation, explained simply",
+    "Statistical significance testing for comparing two ML models honestly"
   ]
 }

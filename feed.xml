@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Wed, 15 Jul 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Comparing Two ML Models Without Fooling Yourself</title>
+    <link>https://jahanzaibawan.com/blog/significance-testing-two-models.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/significance-testing-two-models.html</guid>
+    <pubDate>Wed, 15 Jul 2026 09:00:00 +0000</pubDate>
+    <description>A higher accuracy score does not mean a better model. Here is a practical, honest way to test whether the difference between two models is real.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Vector Databases and RAG, Explained Simply</title>
     <link>https://jahanzaibawan.com/blog/vector-databases-and-rag-explained.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/vector-databases-and-rag-explained.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/bleu-and-its-limits.html</guid>
     <pubDate>Wed, 08 Jul 2026 09:00:00 +0000</pubDate>
     <description>BLEU counts matching word chunks, not meaning. Here is why that gap matters and how to evaluate generated text more honestly.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Perplexity: What It Rewards and What It Ignores</title>
-    <link>https://jahanzaibawan.com/blog/perplexity-rewards-and-ignores.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/perplexity-rewards-and-ignores.html</guid>
-    <pubDate>Tue, 07 Jul 2026 09:00:00 +0000</pubDate>
-    <description>Perplexity tells you how well a model predicts held-out text, but it says nothing about coherence, factuality, or usefulness. Here is what it quietly rewards and ignores.</description>
     <category>Evaluation</category>
   </item>
 </channel>
