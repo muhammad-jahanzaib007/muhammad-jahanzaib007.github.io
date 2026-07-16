@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a3",
       "thumb": "assets/blog/ml-versus-deep-learning.png",
-      "thumb_alt": "Cover image for the article: Machine Learning versus Deep Learning: A Distinction That Matters"
+      "thumb_alt": "Cover image for the article: Machine Learning versus Deep Learning: A Distinction That Matters",
+      "li_shared": true
     },
     {
       "slug": "significance-testing-two-models",
