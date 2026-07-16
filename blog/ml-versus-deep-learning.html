@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Machine Learning versus Deep Learning: A Distinction That Matters | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why treating machine learning and deep learning as interchangeable leads to poor model choices, and how to pick the right tool with a worked tabular example.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="machine learning, deep learning, model selection, tabular data, baselines, feature engineering, gradient boosting, neural networks, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-16">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Machine Learning versus Deep Learning: A Distinction That Matters">
+<meta property="og:description" content="Why treating machine learning and deep learning as interchangeable leads to poor model choices, and how to pick the right tool with a worked tabular example.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/ml-versus-deep-learning.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/ml-versus-deep-learning.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Machine Learning versus Deep Learning: A Distinction That Matters">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/ml-versus-deep-learning.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/ml-versus-deep-learning.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Machine Learning versus Deep Learning: A Distinction That Matters",
+  "description": "Why treating machine learning and deep learning as interchangeable leads to poor model choices, and how to pick the right tool with a worked tabular example.",
+  "url": "https://jahanzaibawan.com/blog/ml-versus-deep-learning.html",
+  "image": "https://jahanzaibawan.com/assets/blog/ml-versus-deep-learning.png",
+  "datePublished": "2026-07-16",
+  "dateModified": "2026-07-16",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/ml-versus-deep-learning.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Machine Learning versus Deep Learning: A Distinction That Matters", "item": "https://jahanzaibawan.com/blog/ml-versus-deep-learning.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 16 Jul 2026</div>
+    <h1>Machine Learning versus Deep Learning: A Distinction That Matters</h1>
+    <p class="lede">Not every problem needs a neural network, and knowing when to reach for one is a practical skill, not a philosophical stance.</p>
+  </div>
+
+  <img src="../assets/blog/ml-versus-deep-learning.png" alt="Cover image for the article: Machine Learning versus Deep Learning: A Distinction That Matters" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the confusion costs you something</h2><p>In casual conversation, and increasingly in job adverts, machine learning and deep learning get used as if they were synonyms, or worse, as if deep learning were simply the more advanced, more correct version of machine learning. Neither is true. Deep learning is a subset of machine learning, specifically the branch built on layered neural networks that learn their own feature representations from raw data. Machine learning as a whole is much broader, and includes methods like linear and logistic regression, decision trees, gradient boosted trees, support vector machines, and k-nearest neighbours, none of which require anything resembling a neural network.</p><p>This is not a pedantic distinction. I have seen project time burned on training a multi-layer network for a task that a gradient boosted tree would have solved in a fraction of the time, with better accuracy and far easier explainability. The confusion is understandable, because deep learning has produced genuinely remarkable results in vision, speech, and language, where raw signals are high-dimensional and the relevant features are not obvious in advance. But that success does not generalise automatically to every kind of data, and assuming it does is where the practical cost shows up.</p><p>The distinction matters most sharply when you are deciding what to build first. If your instinct is always to reach for a neural network regardless of the data, you are skipping a step that experienced practitioners never skip: understanding what kind of structure your data actually has, and whether that structure needs to be learned from scratch or can be engineered by hand.</p></section><section class='psec reveal'><h2>A worked example: tabular data versus pixels</h2><p>Suppose you are predicting whether a customer will cancel a subscription, using a table with twelve columns: tenure in months, monthly charge, number of support tickets, contract type, and so on. This is classic tabular data. Each column already has a clear, human-interpretable meaning, and the relationships between them, while not trivial, are the kind of thing a tree-based model can carve up efficiently through splits. In practice, on this sort of dataset, a well-tuned gradient boosted tree model will very often match or beat a deep neural network, train in minutes rather than hours, and require no GPU. You can also inspect feature importances directly and explain to a stakeholder why a customer was flagged as high-risk.</p><p>Now compare that with a task like classifying whether a photograph contains a cat or a dog, from raw pixel values. There is no column called 'has pointy ears'. The informative structure is buried in spatial patterns across pixels, at multiple scales, and hand-engineering features to capture that would be enormously laborious and probably worse than letting a convolutional network learn its own filters through training. Here, deep learning is not a luxury choice, it is the mechanism that makes the problem tractable at all, because it automates the feature extraction step that would otherwise dominate the project.</p><p>The lesson from putting these two examples side by side is that the deciding factor is not how important or difficult the problem feels, it is where the useful structure in your data actually lives. Tabular, already-structured data with a modest number of features tends to favour classical machine learning. Raw, high-dimensional, unstructured data such as images, audio waveforms, or free text tends to favour deep learning, because that is precisely the setting in which manual feature engineering becomes the bottleneck rather than the model.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/ml-versus-deep-learning-1.jpg' alt='gpu server rack' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Data volume and cost are part of the decision too</h2><p>There is a second axis to this decision that is easy to overlook: how much labelled data you actually have, and what your compute budget looks like. Deep networks are, generally, data-hungry. A tree-based model might reach a respectable accuracy on a few thousand labelled rows. A deep network trained from scratch on a few thousand images is far more likely to overfit badly, because it has many more parameters to fit and no strong prior baked in the way a tree's inductive bias provides. This is why transfer learning exists, borrowing a network already trained on a large dataset and fine-tuning it, precisely to get around the data-hunger problem when your own labelled set is small.</p><p>Cost matters in a way that is easy to underweight when you are focused only on accuracy. Training a gradient boosted model on a laptop CPU in ten minutes and training a deep network on a rented GPU instance for six hours are not equivalent options, even if the deep network eventually edges out the accuracy by a percentage point or two. In a research context that percentage point might justify itself. In most applied settings, the classical model that gets you ninety-five percent of the way there, cheaply and reproducibly, is the more defensible engineering decision, and it leaves you a simpler system to maintain, monitor, and explain later.</p><p>None of this is an argument against deep learning. It is an argument for treating the choice between them as an empirical question tied to your specific data and constraints, rather than a status hierarchy where deep learning is always the more sophisticated answer. The right approach is usually to start with the strongest sensible classical baseline for your data type, measure it properly on a leakage-aware split, and only escalate to a deep architecture if the baseline genuinely falls short and the data or transfer-learning options exist to support the escalation.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>Before choosing an architecture, ask what kind of data you have and how much of it exists. Structured, tabular, moderate-sized data with meaningful columns almost always deserves a strong classical baseline first, something like a gradient boosted tree, evaluated honestly. Raw, unstructured, high-dimensional data such as images, audio, or text at scale is where deep learning tends to earn its cost, particularly when pretrained models are available for transfer learning.</p><p>Keeping this distinction sharp in your own head does two useful things. It stops you from wasting compute and time chasing a fashionable architecture that your data does not need, and it stops you from underselling deep learning in the settings where it is genuinely doing something a classical model cannot. Treat the choice as a hypothesis to test against a proper baseline, not a default, and you will end up with models that are not just more accurate, but easier to justify, maintain, and trust.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/ml-versus-deep-learning-2.jpg' alt='laptop showing data spreadsheet' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
