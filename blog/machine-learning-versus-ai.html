@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Machine Learning versus AI: Drawing the Line Properly | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A precise, hand-waving-free explanation of how machine learning relates to AI, with a worked example showing why the distinction matters in practice.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="machine learning, artificial intelligence, AI definitions, ML versus AI, symbolic AI, supervised learning, terminology, model evaluation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-16">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Machine Learning versus AI: Drawing the Line Properly">
+<meta property="og:description" content="A precise, hand-waving-free explanation of how machine learning relates to AI, with a worked example showing why the distinction matters in practice.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/machine-learning-versus-ai.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/machine-learning-versus-ai.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Machine Learning versus AI: Drawing the Line Properly">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/machine-learning-versus-ai.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/machine-learning-versus-ai.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Machine Learning versus AI: Drawing the Line Properly",
+  "description": "A precise, hand-waving-free explanation of how machine learning relates to AI, with a worked example showing why the distinction matters in practice.",
+  "url": "https://jahanzaibawan.com/blog/machine-learning-versus-ai.html",
+  "image": "https://jahanzaibawan.com/assets/blog/machine-learning-versus-ai.png",
+  "datePublished": "2026-07-16",
+  "dateModified": "2026-07-16",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/machine-learning-versus-ai.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Machine Learning versus AI: Drawing the Line Properly", "item": "https://jahanzaibawan.com/blog/machine-learning-versus-ai.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Foundations · 5 min read · 16 Jul 2026</div>
+    <h1>Machine Learning versus AI: Drawing the Line Properly</h1>
+    <p class="lede">People use the two terms interchangeably in meetings and marketing copy, but the confusion has real costs when it shapes hiring, budgets, and expectations.</p>
+  </div>
+
+  <img src="../assets/blog/machine-learning-versus-ai.png" alt="Cover image for the article: Machine Learning versus AI: Drawing the Line Properly" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the confusion is expensive, not just annoying</h2><p>I have sat in meetings where someone asks for an 'AI solution' and the room nods, and yet nobody could tell you whether they meant a rule-based decision engine, a large language model, or a logistic regression trained on last quarter's spreadsheet. This is not pedantry. If a hiring manager writes 'AI experience required' when they actually need someone who can build and validate a gradient boosted tree on tabular data, they will filter out perfectly qualified candidates and attract people who talk about AGI at the interview stage instead of discussing cross-validation.</p><p>The terms get flattened partly because marketing benefits from the bigger word, and partly because the field itself has never had a clean taxonomy. But there is a defensible way to draw the line, and it is not about vibes or how impressive the output looks. It comes down to what problem is being solved and how the solution gets there.</p><p>Artificial intelligence, at the broadest and least controversial level, is a goal: build systems that perform tasks we associate with intelligent behaviour, such as reasoning, planning, perception, or language use. It says nothing about method. A chess engine that exhaustively searches a game tree with hand-written heuristics is AI. So is a spam filter built from statistical patterns in email text. So is a thermostat that adjusts heating based on a decision tree tuned by a human, arguably, though most people would balk at calling that intelligent.</p><p>Machine learning is one method for achieving AI goals, not the only one, and not synonymous with it. It is the specific approach of having a system improve its performance on a task by learning patterns from data, rather than following rules a person wrote down explicitly. That distinction, learned versus hand-coded, is the actual line, and it holds up under scrutiny far better than 'AI is the futuristic stuff and ML is the boring stuff', which is the informal definition most people actually use.</p></section><section class='psec reveal'><h2>A worked example: two spam filters</h2><p>Imagine two engineers independently build a spam filter for the same inbox of ten thousand emails, four thousand of which are spam.</p><p>Engineer A writes explicit rules: if the subject line contains 'FREE MONEY' or the sender domain is on a known blacklist, flag as spam. She refines these rules by reading through misclassified examples and adding new conditions. After a week, her rule set catches 78 percent of spam with a false positive rate of 3 percent on legitimate mail. This system is unambiguously AI, in the broad sense that it automates a task requiring judgement, but it involves no machine learning at all. Every rule was authored by a human and never adjusted itself.</p><p>Engineer B instead extracts word frequency features from the same ten thousand emails, splits them into a training set of eight thousand and a held-out test set of two thousand emails drawn from a later time window to avoid leakage, and trains a naive Bayes classifier. The model learns, from the data, that certain word co-occurrences correlate with spam, without anyone writing 'FREE MONEY' into any rule. On the held-out set it achieves 91 percent recall on spam with a 2 percent false positive rate. This is machine learning: the system's behaviour was shaped by statistical patterns discovered in data, not dictated line by line.</p><p>Both systems are AI, because both automate a task associated with human judgement. Only the second is machine learning, because only the second improves through exposure to data rather than through explicit programming. If someone in a meeting says 'we used AI to filter spam', that sentence is true for both engineers. If someone says 'we used machine learning', only Engineer B can honestly claim it. The distinction is not about which system performed better, notice that B happened to outperform A here, but performance is not the defining criterion; a hand-coded rule set can beat a poorly trained model, and often does on small, well-understood problems.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/machine-learning-versus-ai-1.jpg' alt='spam email inbox screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Where the boundary gets genuinely blurry</h2><p>The line is clean in the spam filter example, but it gets harder in practice, and it is worth being honest about where.</p><p>Expert systems from the 1980s, built from thousands of hand-crafted if-then rules elicited from domain specialists, are AI without being machine learning by most definitions, yet some of them included simple statistical weighting schemes that blur the boundary. Reinforcement learning sits closer to what most people mean by 'learning', since an agent adjusts its behaviour based on reward signals from an environment, but the environment and reward function are often still hand-designed by engineers, so the line between 'learned' and 'engineered' is a matter of degree rather than a hard binary.</p><p>Deep learning, which trains large neural networks on large datasets, is a subset of machine learning, not a separate category, though public discourse increasingly treats 'AI' as a synonym for 'deep learning' specifically, which erases decades of AI work that predates neural networks entirely and ignores machine learning methods, like gradient boosted trees or support vector machines, that remain the stronger and more interpretable choice for many tabular problems.</p><p>Large language models complicate things further because they are trained with machine learning techniques, next-token prediction over enormous text corpora, but their behaviour at inference time can look like reasoning or planning, which are classic AI-goal descriptions rather than ML-method descriptions. The model is a machine learning artefact; whether its outputs constitute 'intelligence' in any meaningful sense is a separate and much harder philosophical question that the engineering definition does not try to answer.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>When you hear 'AI' or 'machine learning' used in a job posting, a product pitch, or a research claim, ask one concrete question: is the described behaviour the result of a system learning patterns from data, or is it the result of a human encoding rules or logic directly? That single question resolves most of the ambiguity without needing a philosophy seminar.</p><p>It also has a direct payoff for evaluation. If a system is machine learning, you should immediately ask about the train and test split, whether there is any temporal or feature leakage, and what the baseline was. If a system is AI but not machine learning, those questions are irrelevant and you should instead ask about rule coverage and maintenance cost as the underlying data drifts. Knowing which category you are in tells you which questions are worth asking, and that, more than any dictionary definition, is why the distinction is worth keeping precise.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/machine-learning-versus-ai-2.jpg' alt='decision tree diagram whiteboard' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

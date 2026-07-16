@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "machine-learning-versus-ai",
+      "title": "Machine Learning versus AI: Drawing the Line Properly",
+      "excerpt": "AI is the goal, machine learning is one method for reaching it. Confusing the two leads to bad hiring briefs and worse product decisions.",
+      "date": "2026-07-16",
+      "read_min": 5,
+      "tag": "Foundations",
+      "color": "a4",
+      "thumb": "assets/blog/machine-learning-versus-ai.png",
+      "thumb_alt": "Cover image for the article: Machine Learning versus AI: Drawing the Line Properly"
+    },
+    {
       "slug": "ml-versus-deep-learning",
       "title": "Machine Learning versus Deep Learning: A Distinction That Matters",
       "excerpt": "Deep learning is a subset of machine learning, not a replacement for it. Confusing the two leads to wasted compute and weaker baselines.",

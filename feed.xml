@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Thu, 16 Jul 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Machine Learning versus AI: Drawing the Line Properly</title>
+    <link>https://jahanzaibawan.com/blog/machine-learning-versus-ai.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/machine-learning-versus-ai.html</guid>
+    <pubDate>Thu, 16 Jul 2026 09:00:00 +0000</pubDate>
+    <description>AI is the goal, machine learning is one method for reaching it. Confusing the two leads to bad hiring briefs and worse product decisions.</description>
+    <category>Foundations</category>
+  </item>
+  <item>
     <title>Machine Learning versus Deep Learning: A Distinction That Matters</title>
     <link>https://jahanzaibawan.com/blog/ml-versus-deep-learning.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/ml-versus-deep-learning.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/augmentation-that-leaks.html</guid>
     <pubDate>Thu, 09 Jul 2026 09:00:00 +0000</pubDate>
     <description>Augmentation only helps when it happens after splitting. Get the order wrong and your validation score becomes a lie.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Reading a Confusion Matrix Beyond Accuracy</title>
-    <link>https://jahanzaibawan.com/blog/reading-a-confusion-matrix.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/reading-a-confusion-matrix.html</guid>
-    <pubDate>Wed, 08 Jul 2026 09:00:00 +0000</pubDate>
-    <description>Accuracy is a single number that can lie to you. A confusion matrix, read properly, tells you where and why your model actually fails.</description>
     <category>Evaluation</category>
   </item>
 </channel>
