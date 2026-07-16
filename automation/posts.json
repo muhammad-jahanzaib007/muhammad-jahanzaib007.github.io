@@ -9,7 +9,8 @@
       "tag": "Foundations",
       "color": "a4",
       "thumb": "assets/blog/machine-learning-versus-ai.png",
-      "thumb_alt": "Cover image for the article: Machine Learning versus AI: Drawing the Line Properly"
+      "thumb_alt": "Cover image for the article: Machine Learning versus AI: Drawing the Line Properly",
+      "li_shared": true
     },
     {
       "slug": "ml-versus-deep-learning",
