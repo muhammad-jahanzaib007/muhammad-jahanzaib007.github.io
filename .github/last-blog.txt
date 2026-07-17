@@ -1,1 +1,1 @@
-2026-07-17T08:02:19Z slug=what-a-model-actually-is words=1099 title="What a Machine Learning Model Actually Is"
+2026-07-17T20:01:03Z slug=cv-defect-detection-evaluation words=1035 title="Manufacturing Defect Detection: A Realistic Evaluation"

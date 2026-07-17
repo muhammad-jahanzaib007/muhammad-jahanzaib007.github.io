@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Computer vision for manufacturing defect detection: a realistic evaluation walkthrough",
     "Why computer vision models fail silently on the factory floor",
     "Choosing between classical and deep computer vision: a practical decision guide",
     "Model evaluation frameworks compared: what they automate and what they hide",
@@ -59,6 +58,7 @@
     "Statistical significance testing for comparing two ML models honestly",
     "Machine learning versus deep learning: a distinction that actually matters",
     "Machine learning versus AI: drawing the line without hand-waving",
-    "What a machine learning model actually is, explained with one worked example"
+    "What a machine learning model actually is, explained with one worked example",
+    "Computer vision for manufacturing defect detection: a realistic evaluation walkthrough"
   ]
 }

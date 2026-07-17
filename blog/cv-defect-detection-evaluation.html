@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manufacturing Defect Detection: A Realistic Evaluation | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical walkthrough of evaluating computer vision defect detection models, covering class imbalance, leakage, and the metrics that matter on the line.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="defect detection, computer vision, manufacturing AI, class imbalance, model evaluation, precision recall, data leakage, anomaly detection, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-17">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Manufacturing Defect Detection: A Realistic Evaluation">
+<meta property="og:description" content="A practical walkthrough of evaluating computer vision defect detection models, covering class imbalance, leakage, and the metrics that matter on the line.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/cv-defect-detection-evaluation.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/cv-defect-detection-evaluation.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Manufacturing Defect Detection: A Realistic Evaluation">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/cv-defect-detection-evaluation.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/cv-defect-detection-evaluation.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Manufacturing Defect Detection: A Realistic Evaluation",
+  "description": "A practical walkthrough of evaluating computer vision defect detection models, covering class imbalance, leakage, and the metrics that matter on the line.",
+  "url": "https://jahanzaibawan.com/blog/cv-defect-detection-evaluation.html",
+  "image": "https://jahanzaibawan.com/assets/blog/cv-defect-detection-evaluation.png",
+  "datePublished": "2026-07-17",
+  "dateModified": "2026-07-17",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/cv-defect-detection-evaluation.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Manufacturing Defect Detection: A Realistic Evaluation", "item": "https://jahanzaibawan.com/blog/cv-defect-detection-evaluation.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 17 Jul 2026</div>
+    <h1>Manufacturing Defect Detection: A Realistic Evaluation</h1>
+    <p class="lede">Why a 99% accurate defect detector can still be useless on the factory floor, and how to evaluate it honestly.</p>
+  </div>
+
+  <img src="../assets/blog/cv-defect-detection-evaluation.png" alt="Cover image for the article: Manufacturing Defect Detection: A Realistic Evaluation" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The seductive trap of accuracy</h2><p>Say a factory produces 10,000 metal components a day and, historically, 200 of them (2%) carry a genuine surface defect: a scratch, a crack, a misaligned weld. You train a convolutional network to flag defective parts from camera images. It reports 99% accuracy on a held-out test set. Someone on the production team is thrilled. I would not be, and here is why.</p><p>A model that simply predicts 'no defect' for every single image achieves 98% accuracy on this line, without looking at a single pixel. Your 99% model is barely better than doing nothing, and it might be doing nothing in disguise: perhaps it flags one defect correctly and misses 150 others while making a handful of false alarms elsewhere, and the arithmetic still rounds to a headline number that looks excellent. Accuracy is dominated by the majority class, and in defect detection the majority class (good parts) is almost always overwhelming. This is not a subtle statistical footnote; it is the single most common way defect detection projects mislead their own stakeholders.</p><p>The fix starts with asking a sharper question than 'how often is the model right'. Ask instead: of the parts it flags as defective, how many actually are (precision), and of the parts that are actually defective, how many did it catch (recall)? These two numbers, not accuracy, tell you whether the system is fit for a production line, because the two failure modes have wildly different costs. A missed defect (false negative) might mean a faulty part reaches a customer. A false alarm (false positive) means a good part gets pulled for manual inspection, costing time but not safety or reputation. Confusing these costs, or reporting a single blended metric that hides them, is the first evaluation mistake I look for.</p></section><section class='psec reveal'><h2>Worked intuition: precision, recall and the confusion matrix</h2><p>Return to the 10,000 parts with 200 true defects. Suppose the model flags 300 parts as defective, and of those, 180 are genuinely defective. That gives a precision of 180/300, which is 60%, and a recall of 180/200, which is 90%. Now the picture is far more informative than '99% accurate'. The model catches 90% of real defects (good) but four in ten flagged parts are false alarms (a real inspection burden). Whether that trade-off is acceptable depends entirely on the cost structure of the line, which is a business decision, not a modelling one.</p><p>This is where the F-beta score earns its place, because it lets you encode that business decision explicitly rather than pretending one number fits every context. If a missed defect is far more costly than a wasted inspection, you weight recall more heavily using something like an F2 score; if inspection capacity is the real bottleneck, you might weight precision instead. I would rather present a stakeholder with a precision-recall curve and let them pick an operating threshold that matches their tolerance for each error type, than hand over a single scalar and imply it is objective.</p><p>Threshold choice matters more in defect detection than in many other computer vision tasks, because most models output a continuous score (probability of defect) that gets converted into a binary decision via a cutoff. Lowering the threshold catches more defects but raises false alarms; raising it does the opposite. Reporting a single accuracy figure silently bakes in one threshold choice, usually 0.5, which has no special status on a real production line. Reporting the full precision-recall curve, or at minimum the area under it, keeps that choice visible and adjustable.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/cv-defect-detection-evaluation-1.jpg' alt='factory production line camera inspection' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Where the split leaks, the results lie</h2><p>Even with the right metrics, an evaluation can still be dishonest if the train and test data are not truly independent, and in manufacturing imagery this happens constantly. Images of the same physical part are often captured from multiple angles or under repeated lighting conditions during data collection. If frames from the same defective part end up in both the training and test sets, purely by random shuffling, the model can partially memorise that part's specific texture or geometry rather than learning what defects look like in general. Test performance then looks excellent and collapses on the next batch of genuinely unseen parts.</p><p>The practical safeguard is to split by part identity, batch, or production run, never by individual image, whenever those groupings exist in your data. If a component was photographed six times, all six images belong entirely to train or entirely to test, never split across both. I treat this as a non-negotiable step before I even look at a model's numbers, because no amount of clever architecture compensates for a leaky evaluation; it just produces a more convincing wrong answer.</p><p>Temporal drift is the second, quieter leakage risk. Manufacturing lines change: lighting rigs get adjusted, camera lenses get swapped, suppliers change materials, and defect patterns themselves shift with tooling wear. A model validated on last month's data can degrade on this month's line without any coding error, simply because the distribution moved. A more realistic evaluation splits by time, training on earlier production runs and testing on later ones, which at least surfaces drift during development rather than after deployment. It is a less flattering number than a random split usually gives, and that is exactly why it is more useful.</p></section><section class='psec reveal'><h2>A practical takeaway</h2><p>Before trusting any defect detection result, I check three things in order. First, is the reported metric precision, recall, or a curve, rather than bare accuracy, given how skewed the class balance almost always is? Second, does the split respect part identity and, ideally, time, so that no information leaks between training and test in ways the deployed system will never enjoy? Third, is there an explicit, stated threshold and a business-informed reason for choosing it, rather than a default that nobody examined?</p><p>None of this requires exotic tooling. It requires discipline: writing the split logic before touching the model, computing a confusion matrix alongside any headline number, and being willing to report a less impressive but honest figure. A 90% recall at 60% precision, clearly stated, is a far more useful sentence than '99% accurate', because it actually tells the people running the line what will happen tomorrow morning.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/cv-defect-detection-evaluation-2.jpg' alt='metal part surface scratch defect close up' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

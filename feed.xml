@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Fri, 17 Jul 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Manufacturing Defect Detection: A Realistic Evaluation</title>
+    <link>https://jahanzaibawan.com/blog/cv-defect-detection-evaluation.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/cv-defect-detection-evaluation.html</guid>
+    <pubDate>Fri, 17 Jul 2026 09:00:00 +0000</pubDate>
+    <description>A high accuracy score means little for rare defects. Here is how to evaluate a manufacturing vision model the way production actually needs.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>What a Machine Learning Model Actually Is</title>
     <link>https://jahanzaibawan.com/blog/what-a-model-actually-is.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/what-a-model-actually-is.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/overfitting-the-validation-set.html</guid>
     <pubDate>Thu, 09 Jul 2026 09:00:00 +0000</pubDate>
     <description>Run enough experiments against one validation set and you stop measuring generalisation, you start measuring luck. Here is why, with numbers.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Reproducibility: Seeds, Configs, and Runs You Can Rerun</title>
-    <link>https://jahanzaibawan.com/blog/reproducibility-seeds-configs-runs.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/reproducibility-seeds-configs-runs.html</guid>
-    <pubDate>Thu, 09 Jul 2026 09:00:00 +0000</pubDate>
-    <description>Most &#x27;irreproducible&#x27; ML results fail for boring reasons: unpinned seeds, missing configs, undocumented data splits. Here is how to fix that properly.</description>
     <category>Evaluation</category>
   </item>
 </channel>

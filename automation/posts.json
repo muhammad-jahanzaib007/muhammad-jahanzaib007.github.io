@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "cv-defect-detection-evaluation",
+      "title": "Manufacturing Defect Detection: A Realistic Evaluation",
+      "excerpt": "A high accuracy score means little for rare defects. Here is how to evaluate a manufacturing vision model the way production actually needs.",
+      "date": "2026-07-17",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a6",
+      "thumb": "assets/blog/cv-defect-detection-evaluation.png",
+      "thumb_alt": "Cover image for the article: Manufacturing Defect Detection: A Realistic Evaluation"
+    },
+    {
       "slug": "what-a-model-actually-is",
       "title": "What a Machine Learning Model Actually Is",
       "excerpt": "A machine learning model is a function with adjustable parameters, tuned by data to reduce error. One worked example makes this concrete.",
