@@ -9,7 +9,8 @@
       "tag": "Fundamentals",
       "color": "a5",
       "thumb": "assets/blog/what-a-model-actually-is.png",
-      "thumb_alt": "Cover image for the article: What a Machine Learning Model Actually Is"
+      "thumb_alt": "Cover image for the article: What a Machine Learning Model Actually Is",
+      "li_shared": true
     },
     {
       "slug": "machine-learning-versus-ai",
