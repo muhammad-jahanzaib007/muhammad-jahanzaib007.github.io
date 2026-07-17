@@ -151,3 +151,12 @@ commit, so the other sessions know who did what.
   retries via :20/:40 sweeps). Precheck stays as a dead-code safety net.
   Never re-add crons here — the cron-vs-Worker race is what double-posted
   every slot on 2026-07-10/11.
+- 2026-07-17 — laptop Claude Code session (direct commit to main): ported a
+  conflict-recovery fix from the YT repo (where it had failed a publish that
+  day). Both push loops (post-commit + share receipt) did a plain `git pull
+  --rebase` that, on a conflict in a pointer/ledger file (posts.json,
+  feed.xml), left a stuck rebase whose "unmerged files" state failed every
+  later retry. Now `git pull --rebase -X theirs` (keeps this run's post) with
+  `git rebase --abort` before retrying; 3→5 attempts. Same-day twin-repo fix
+  per the rule that a fix to one of a twin-pipeline pair must be checked
+  against the other. No live blog failure had hit this yet — pre-emptive.
