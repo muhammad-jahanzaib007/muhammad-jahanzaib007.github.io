@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a6",
       "thumb": "assets/blog/cv-defect-detection-evaluation.png",
-      "thumb_alt": "Cover image for the article: Manufacturing Defect Detection: A Realistic Evaluation"
+      "thumb_alt": "Cover image for the article: Manufacturing Defect Detection: A Realistic Evaluation",
+      "li_shared": true
     },
     {
       "slug": "what-a-model-actually-is",
