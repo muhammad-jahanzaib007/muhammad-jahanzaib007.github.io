@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What a Machine Learning Model Actually Is | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A plain-English, worked-example explanation of what a machine learning model really is: a parameterised function fitted to data by minimising error.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="machine learning basics, what is a model, linear regression example, parameters and weights, loss function, gradient descent, supervised learning explained, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-17">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="What a Machine Learning Model Actually Is">
+<meta property="og:description" content="A plain-English, worked-example explanation of what a machine learning model really is: a parameterised function fitted to data by minimising error.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/what-a-model-actually-is.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/what-a-model-actually-is.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What a Machine Learning Model Actually Is">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/what-a-model-actually-is.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/what-a-model-actually-is.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "What a Machine Learning Model Actually Is",
+  "description": "A plain-English, worked-example explanation of what a machine learning model really is: a parameterised function fitted to data by minimising error.",
+  "url": "https://jahanzaibawan.com/blog/what-a-model-actually-is.html",
+  "image": "https://jahanzaibawan.com/assets/blog/what-a-model-actually-is.png",
+  "datePublished": "2026-07-17",
+  "dateModified": "2026-07-17",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/what-a-model-actually-is.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "What a Machine Learning Model Actually Is", "item": "https://jahanzaibawan.com/blog/what-a-model-actually-is.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Fundamentals · 5 min read · 17 Jul 2026</div>
+    <h1>What a Machine Learning Model Actually Is</h1>
+    <p class="lede">Strip away the jargon and a model is just a function with knobs, tuned by data. Here is that idea made concrete with one worked example.</p>
+  </div>
+
+  <img src="../assets/blog/what-a-model-actually-is.png" alt="Cover image for the article: What a Machine Learning Model Actually Is" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this question matters</h2><p>Ask someone to explain what a machine learning model is and you will usually get an answer full of borrowed words: neural networks, training, intelligence. None of that is wrong exactly, but it skips the one idea that actually matters if you want to reason about these systems rather than just use them. A model is a function with adjustable numbers inside it, and training is the process of nudging those numbers so the function's outputs match reality as closely as possible on the data we have.</p><p>I think this framing matters because it demystifies the whole field without dumbing it down. Once you see a model as a function with knobs, you can ask the right questions of any system, however large: what does the function look like, what are the knobs, what error are we minimising, and on what data. A transformer with billions of parameters is still, structurally, this same idea scaled up enormously. If the simple version does not make sense to you, the complicated version will not either, it will just be harder to doubt.</p><p>So rather than talk in the abstract, I want to build the idea with one small, honest example: predicting house prices from size alone. It is deliberately unglamorous. That is the point. The mechanics you see here are the same mechanics running underneath almost everything else in the field.</p></section><section class='psec reveal'><h2>The worked example, step by step</h2><p>Suppose we have a handful of houses with their size in square metres and their sale price in thousands of pounds: a 50 sqm flat sold for 150, a 70 sqm house for 210, a 90 sqm house for 260, and a 120 sqm house for 340. We want a model that, given size, predicts price. The simplest reasonable function is a straight line: price equals a slope multiplied by size, plus an intercept. Written out, that is price = w times size + b. The numbers w and b are the model's parameters, its knobs. Everything else, the shape of the function itself, is called the architecture, and here the architecture is just "a straight line".</p><p>Before training, w and b are unknown, maybe initialised to something arbitrary like w = 1 and b = 0. Plug in size 70 and the model predicts a price of 70, which is wildly wrong against the true value of 210. We need a way to measure how wrong the model is across all four examples at once, not just one. That is the job of a loss function. A common choice is squared error: for each house, take the difference between predicted and actual price, square it, then average across all houses. Squaring matters because it punishes big misses more than small ones and keeps everything positive so errors cannot cancel out.</p><p>Training is nothing more than searching for the values of w and b that make this average squared error as small as possible. You could imagine trying values by hand: raise w a bit, see if the average error drops, raise it more, see if it drops further, then start adjusting b too. In practice this search is done automatically by an algorithm such as gradient descent, which calculates the direction that reduces the loss fastest and takes a small step that way, repeating this thousands of times. For our four houses, this process would converge to something like w around 2.1 and b around 35, meaning each extra square metre adds roughly two hundred and ten pounds to the predicted price, plus a base of thirty-five thousand pounds. Those two numbers, tuned from data rather than guessed by us, are the entire trained model.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/what-a-model-actually-is-1.jpg' alt='whiteboard with equations' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Why the framing scales up</h2><p>Now stretch this picture. A logistic regression classifier is the same straight-line idea passed through a squashing function so its output lands between zero and one, read as a probability. A decision tree is a function built from a set of if-then splits rather than a slope and intercept, with the splitting thresholds acting as its parameters. A neural network is a stack of these linear-then-squash steps repeated across layers, with millions or billions of weights instead of two. In every case, the questions are identical: what is the function, what are its parameters, what loss are we minimising, and what data are we minimising it on.</p><p>This is why the choice of loss function and data matters so much more than people often assume. If our four houses had all come from one wealthy postcode, our neat little w and b would be a fine description of that postcode and a poor description of anywhere else. The model is not learning "the truth about house prices", it is finding parameters that minimise error on exactly the data it was shown. Anything systematically missing or overrepresented in that data becomes a blind spot baked into the numbers. This is also why leakage-aware evaluation, testing the model only on data it genuinely could not have seen during fitting, is not a bureaucratic nicety but the only honest way to know whether those parameters generalise at all.</p><p>It is also why a strong, boring baseline is worth respecting. If a straight line predicts house prices almost as well as a complicated ensemble, that tells you the extra complexity is buying you very little, and you should be suspicious of anyone quoting an impressive accuracy figure without comparing it against something simple first. Complexity should earn its place through measured improvement, not assumption.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>Next time you meet a model, whether it is a spreadsheet regression or a large language model, try translating the marketing language back into this vocabulary. Ask what the function actually computes, how many parameters it has and what they represent, what loss it was trained to minimise, and on what data that minimisation happened. Those four questions will not tell you everything, but they will strip away most of the mystique and leave you with something you can actually reason about and, crucially, actually doubt.</p><p>The house price example is trivial on purpose. Two numbers, four data points, one straight line. But the honesty of that smallness is exactly why it is useful: you can see every step, you can check the arithmetic, and you can trust that nothing is hidden. Every larger model you encounter afterwards is doing the same thing, just with more knobs, more data, and a function shape too large to hold in your head at once. Keep the small picture in mind and the large one becomes far less intimidating.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/what-a-model-actually-is-2.jpg' alt='house exterior for sale' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

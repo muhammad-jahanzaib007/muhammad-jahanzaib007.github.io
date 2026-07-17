@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Thu, 16 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 17 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>What a Machine Learning Model Actually Is</title>
+    <link>https://jahanzaibawan.com/blog/what-a-model-actually-is.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/what-a-model-actually-is.html</guid>
+    <pubDate>Fri, 17 Jul 2026 09:00:00 +0000</pubDate>
+    <description>A machine learning model is a function with adjustable parameters, tuned by data to reduce error. One worked example makes this concrete.</description>
+    <category>Fundamentals</category>
+  </item>
   <item>
     <title>Machine Learning versus AI: Drawing the Line Properly</title>
     <link>https://jahanzaibawan.com/blog/machine-learning-versus-ai.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/reproducibility-seeds-configs-runs.html</guid>
     <pubDate>Thu, 09 Jul 2026 09:00:00 +0000</pubDate>
     <description>Most &#x27;irreproducible&#x27; ML results fail for boring reasons: unpinned seeds, missing configs, undocumented data splits. Here is how to fix that properly.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Data Augmentation That Helps vs Augmentation That Leaks</title>
-    <link>https://jahanzaibawan.com/blog/augmentation-that-leaks.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/augmentation-that-leaks.html</guid>
-    <pubDate>Thu, 09 Jul 2026 09:00:00 +0000</pubDate>
-    <description>Augmentation only helps when it happens after splitting. Get the order wrong and your validation score becomes a lie.</description>
     <category>Evaluation</category>
   </item>
 </channel>

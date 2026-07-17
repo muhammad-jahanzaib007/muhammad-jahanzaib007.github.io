@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "what-a-model-actually-is",
+      "title": "What a Machine Learning Model Actually Is",
+      "excerpt": "A machine learning model is a function with adjustable parameters, tuned by data to reduce error. One worked example makes this concrete.",
+      "date": "2026-07-17",
+      "read_min": 5,
+      "tag": "Fundamentals",
+      "color": "a5",
+      "thumb": "assets/blog/what-a-model-actually-is.png",
+      "thumb_alt": "Cover image for the article: What a Machine Learning Model Actually Is"
+    },
+    {
       "slug": "machine-learning-versus-ai",
       "title": "Machine Learning versus AI: Drawing the Line Properly",
       "excerpt": "AI is the goal, machine learning is one method for reaching it. Confusing the two leads to bad hiring briefs and worse product decisions.",

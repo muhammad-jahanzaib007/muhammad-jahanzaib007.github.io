@@ -1,1 +1,1 @@
-2026-07-16T20:01:06Z slug=machine-learning-versus-ai words=1090 title="Machine Learning versus AI: Drawing the Line Properly"
+2026-07-17T08:02:19Z slug=what-a-model-actually-is words=1099 title="What a Machine Learning Model Actually Is"
