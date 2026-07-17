@@ -107,13 +107,18 @@ jobs:
             echo "published=false" >> "$GITHUB_OUTPUT"
           else
             git commit -m "chore: auto blog post ($(date -u +%Y-%m-%d))"
-            # Rebase-retry: a concurrent push to main must not kill the run
-            # (same failure once skipped a whole publish in the YT repo).
-            for i in 1 2 3; do
+            # Rebase-retry: a concurrent push to main must not kill the run.
+            # `-X theirs` + abort-on-fail: a plain `git pull --rebase` that
+            # hits a conflict in a pointer/ledger file (posts.json, feed.xml)
+            # leaves a stuck rebase whose "unmerged files" state then fails
+            # every later retry (this deadlocked the YT repo's publish on
+            # 2026-07-17). `-X theirs` keeps THIS run's post; abort clears any
+            # half-finished rebase before the next attempt.
+            for i in 1 2 3 4 5; do
               if git push; then break; fi
-              echo "push rejected; rebasing (attempt $i)"
-              git pull --rebase
-              if [ "$i" = 3 ]; then echo "push failed after 3 attempts"; exit 1; fi
+              echo "push rejected; cleaning up + rebasing (attempt $i)"
+              git pull --rebase -X theirs || { git rebase --abort 2>/dev/null || true; }
+              if [ "$i" = 5 ]; then echo "push failed after 5 attempts"; exit 1; fi
             done
             echo "published=true" >> "$GITHUB_OUTPUT"
           fi
@@ -137,9 +142,9 @@ jobs:
           git add .github/last-share.txt automation/posts.json
           if git diff --cached --quiet; then echo "no receipt changes"; exit 0; fi
           git commit -m "chore: linkedin share receipt"
-          for i in 1 2 3; do
+          for i in 1 2 3 4 5; do
             if git push; then exit 0; fi
-            echo "push rejected; rebasing (attempt $i)"
-            git pull --rebase
+            echo "push rejected; cleaning up + rebasing (attempt $i)"
+            git pull --rebase -X theirs || { git rebase --abort 2>/dev/null || true; }
           done
           echo "receipt push failed"; exit 1
