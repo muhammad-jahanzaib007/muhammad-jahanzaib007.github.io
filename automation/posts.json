@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a2",
       "thumb": "assets/blog/vision-models-fail-silently-factory.png",
-      "thumb_alt": "Cover image for the article: Why Computer Vision Models Fail Silently on the Factory Floor"
+      "thumb_alt": "Cover image for the article: Why Computer Vision Models Fail Silently on the Factory Floor",
+      "li_shared": true
     },
     {
       "slug": "cv-defect-detection-evaluation",
