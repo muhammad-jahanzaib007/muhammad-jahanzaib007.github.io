@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Computer Vision Models Fail Silently on the Factory Floor | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="An examination of why computer vision models pass validation but fail quietly in factory deployment, and how leakage-aware evaluation prevents it.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="computer vision, model evaluation, distribution shift, data leakage, industrial AI, defect detection, deployment, MLOps, validation split, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-18">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Why Computer Vision Models Fail Silently on the Factory Floor">
+<meta property="og:description" content="An examination of why computer vision models pass validation but fail quietly in factory deployment, and how leakage-aware evaluation prevents it.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/vision-models-fail-silently-factory.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/vision-models-fail-silently-factory.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why Computer Vision Models Fail Silently on the Factory Floor">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/vision-models-fail-silently-factory.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/vision-models-fail-silently-factory.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Why Computer Vision Models Fail Silently on the Factory Floor",
+  "description": "An examination of why computer vision models pass validation but fail quietly in factory deployment, and how leakage-aware evaluation prevents it.",
+  "url": "https://jahanzaibawan.com/blog/vision-models-fail-silently-factory.html",
+  "image": "https://jahanzaibawan.com/assets/blog/vision-models-fail-silently-factory.png",
+  "datePublished": "2026-07-18",
+  "dateModified": "2026-07-18",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/vision-models-fail-silently-factory.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Why Computer Vision Models Fail Silently on the Factory Floor", "item": "https://jahanzaibawan.com/blog/vision-models-fail-silently-factory.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 6 min read · 18 Jul 2026</div>
+    <h1>Why Computer Vision Models Fail Silently on the Factory Floor</h1>
+    <p class="lede">A model that scored 98% in the lab can still miss real defects on the line, and the gap between validation metrics and production reality is rarely announced with an error message.</p>
+  </div>
+
+  <img src="../assets/blog/vision-models-fail-silently-factory.png" alt="Cover image for the article: Why Computer Vision Models Fail Silently on the Factory Floor" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The metric said 98%, the line said otherwise</h2><p>A common story in industrial computer vision goes like this: a defect detection model is trained on thousands of labelled images, tuned carefully, and reports a validation accuracy above 98%. It gets deployed on the line. Within a few weeks, quality engineers notice that scratched parts are slipping through, or that good parts are being flagged and pulled for no reason. Nobody sees a stack trace. There is no crash, no exception, no red banner. The model simply keeps producing confident predictions that are wrong in ways the validation set never captured.</p><p>This is what I mean by failing silently. A vision model does not know when it has left the distribution it was trained on. It will happily assign a high softmax probability to an image that looks nothing like anything in training, because nothing in its architecture forces it to say 'I don't recognise this'. The confidence score is a property of the training distribution, not a measure of truth about the world. On the factory floor, where lighting changes with the season, cameras drift out of focus, and new part variants get introduced without anyone updating the dataset, that gap between confidence and correctness becomes the whole story.</p><p>The frustrating part is that the validation metric was not lying. It was answering a narrower question than the one the business actually cares about. It said: on images that resemble the training set closely, in distribution and often in time, the model separates classes well. It did not say: on images captured six months from now, under a different shift's lighting rig, with a supplier's slightly different part geometry, the model will still work. Those are different claims, and conflating them is where the silent failure begins.</p></section><section class='psec reveal'><h2>A worked example: the leakage you don't notice</h2><p>Suppose a team collects 10,000 images of components on a conveyor belt, some defective, some not, and splits them randomly into 80% train and 20% validation. The validation accuracy comes back at 97.5%. This looks solid. But if the images were captured in short bursts, say ten consecutive frames per physical part as it passed under the camera, then a random split almost certainly puts near-duplicate frames of the same part on both sides of the split. The model is not being tested on unseen parts; it is being tested on unseen frames of parts it has already partially seen, sharing the same scratch, the same reflection, the same background clutter.</p><p>Do the arithmetic on what that means. If each part contributes ten frames and the split is random at the frame level, roughly eight of those ten frames end up in training and two in validation, for almost every part in the dataset. The validation set is not an independent sample of new parts; it is a near-copy of the training distribution with a bit of jitter. A model that has effectively memorised the specific glare pattern on Part 4,417 will score very well on the two held-out frames of that same part, and that inflated score has nothing to do with generalisation to Part 9,000 next month.</p><p>The correct split respects the unit that actually varies in production: the physical part, or better still, the time window or production batch. Splitting by part ID, so that all frames of a given part are entirely in train or entirely in validation, usually drops the reported accuracy. It might fall from 97.5% to something like 89%, and that drop is not the model getting worse; it is the metric finally telling the truth. If you can, go further and hold out an entire batch or shift, since that mimics the real deployment gap of encountering conditions the model has never seen rather than parts it has never seen.</p><p>This is not a hypothetical quirk of one dataset. Anywhere images are collected as bursts, sequences, or repeated inspections of the same physical object, random splitting leaks information across the train/validation boundary. The fix costs nothing in compute; it just requires knowing which axis of variation you are actually trying to generalise across, and grouping your splits along that axis rather than shuffling everything into a bag.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/vision-models-fail-silently-factory-1.jpg' alt='factory conveyor belt camera inspection' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Why confidence scores make it worse, not better</h2><p>Once a leakage-inflated model is deployed, the next problem compounds the first: the model's own confidence output cannot be trusted to flag its own failures. Neural networks trained with standard cross-entropy loss tend to produce overconfident predictions on inputs that differ from training data, a well-documented tendency rather than an edge case. A part with a novel type of surface finish, one the model never saw in training, will not typically produce a cautious 55% confidence. It often produces 99% confidence for whichever class happens to be nearest in the model's learned feature space, because nothing in training taught the model to recognise unfamiliarity.</p><p>This matters enormously for how factories set thresholds. A common pattern is to deploy the model and reject anything below, say, 90% confidence for manual review. That threshold was calibrated against the validation set, the same validation set that was leakage-inflated and drawn from a narrow slice of conditions. Once the camera lens picks up a light film of dust, or a new supplier's part arrives with a slightly different texture, the model does not lower its confidence in proportion to how unfamiliar the input actually is. It keeps issuing confident, wrong verdicts, and the review queue that was meant to catch uncertain cases stays empty while defects pass straight through.</p><p>What actually helps is treating distribution shift as an expected operating condition rather than an exception. That means monitoring input statistics in production, not just output accuracy, since you often will not have real-time labels to compute accuracy against. Simple signals such as the distribution of pixel intensities, the rate of low-confidence predictions over time, or the similarity of incoming feature embeddings to the training embedding cloud can flag drift long before defect counts spike. It also means periodically re-validating on freshly collected, honestly split data rather than trusting a single number generated at launch and never revisited.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>None of this requires exotic techniques. It requires discipline about what a validation number is actually measuring, and honesty about the axes along which real deployment will differ from the training set: time, batch, camera, part supplier, lighting rig. Split your data along those axes before you trust an accuracy figure, not after a customer complains. Treat a model's confidence score as a learned artefact of its training distribution, not a calibrated statement about truth, and build monitoring that watches the inputs, not only the outputs. A vision model on a factory floor will never tell you it is wrong. Your evaluation strategy is the only thing that can.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/vision-models-fail-silently-factory-2.jpg' alt='industrial quality control assembly line' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

@@ -1,1 +1,1 @@
-2026-07-17T20:01:03Z slug=cv-defect-detection-evaluation words=1035 title="Manufacturing Defect Detection: A Realistic Evaluation"
+2026-07-18T08:02:23Z slug=vision-models-fail-silently-factory words=1133 title="Why Computer Vision Models Fail Silently on the Factory Floor"

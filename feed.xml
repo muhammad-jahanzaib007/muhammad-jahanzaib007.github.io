@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Fri, 17 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 18 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Why Computer Vision Models Fail Silently on the Factory Floor</title>
+    <link>https://jahanzaibawan.com/blog/vision-models-fail-silently-factory.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/vision-models-fail-silently-factory.html</guid>
+    <pubDate>Sat, 18 Jul 2026 09:00:00 +0000</pubDate>
+    <description>High lab accuracy hides a fragile model. On the factory floor, distribution shift and leakage-prone splits let vision systems fail quietly, with no crash to warn you.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Manufacturing Defect Detection: A Realistic Evaluation</title>
     <link>https://jahanzaibawan.com/blog/cv-defect-detection-evaluation.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/smote-synthetic-data-backfires.html</guid>
     <pubDate>Fri, 10 Jul 2026 09:00:00 +0000</pubDate>
     <description>SMOTE fixes imbalance in theory but often just teaches your model to memorise interpolated noise, especially when it leaks into your test set.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Overfitting the Validation Set Through Too Many Experiments</title>
-    <link>https://jahanzaibawan.com/blog/overfitting-the-validation-set.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/overfitting-the-validation-set.html</guid>
-    <pubDate>Thu, 09 Jul 2026 09:00:00 +0000</pubDate>
-    <description>Run enough experiments against one validation set and you stop measuring generalisation, you start measuring luck. Here is why, with numbers.</description>
     <category>Evaluation</category>
   </item>
 </channel>

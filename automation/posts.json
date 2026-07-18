@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "vision-models-fail-silently-factory",
+      "title": "Why Computer Vision Models Fail Silently on the Factory Floor",
+      "excerpt": "High lab accuracy hides a fragile model. On the factory floor, distribution shift and leakage-prone splits let vision systems fail quietly, with no crash to warn you.",
+      "date": "2026-07-18",
+      "read_min": 6,
+      "tag": "Evaluation",
+      "color": "a2",
+      "thumb": "assets/blog/vision-models-fail-silently-factory.png",
+      "thumb_alt": "Cover image for the article: Why Computer Vision Models Fail Silently on the Factory Floor"
+    },
+    {
       "slug": "cv-defect-detection-evaluation",
       "title": "Manufacturing Defect Detection: A Realistic Evaluation",
       "excerpt": "A high accuracy score means little for rare defects. Here is how to evaluate a manufacturing vision model the way production actually needs.",
