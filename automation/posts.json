@@ -9,7 +9,8 @@
       "tag": "Computer Vision",
       "color": "a3",
       "thumb": "assets/blog/classical-vs-deep-vision.png",
-      "thumb_alt": "Cover image for the article: Choosing Between Classical and Deep Computer Vision"
+      "thumb_alt": "Cover image for the article: Choosing Between Classical and Deep Computer Vision",
+      "li_shared": true
     },
     {
       "slug": "vision-models-fail-silently-factory",
