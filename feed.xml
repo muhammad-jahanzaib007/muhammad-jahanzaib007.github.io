@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Sat, 18 Jul 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Choosing Between Classical and Deep Computer Vision</title>
+    <link>https://jahanzaibawan.com/blog/classical-vs-deep-vision.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/classical-vs-deep-vision.html</guid>
+    <pubDate>Sat, 18 Jul 2026 09:00:00 +0000</pubDate>
+    <description>A practical guide to deciding when classical vision techniques beat deep learning, and when they don&#x27;t, based on data, constraints, and honest evaluation.</description>
+    <category>Computer Vision</category>
+  </item>
+  <item>
     <title>Why Computer Vision Models Fail Silently on the Factory Floor</title>
     <link>https://jahanzaibawan.com/blog/vision-models-fail-silently-factory.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/vision-models-fail-silently-factory.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Fri, 10 Jul 2026 09:00:00 +0000</pubDate>
     <description>Kubernetes solves a scaling problem you probably don&#x27;t have yet. Here&#x27;s what to fix first, from data versioning to leakage-aware evaluation.</description>
     <category>MLOps</category>
-  </item>
-  <item>
-    <title>SMOTE and Synthetic Data: When It Backfires</title>
-    <link>https://jahanzaibawan.com/blog/smote-synthetic-data-backfires.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/smote-synthetic-data-backfires.html</guid>
-    <pubDate>Fri, 10 Jul 2026 09:00:00 +0000</pubDate>
-    <description>SMOTE fixes imbalance in theory but often just teaches your model to memorise interpolated noise, especially when it leaks into your test set.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>

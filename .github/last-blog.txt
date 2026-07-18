@@ -1,1 +1,1 @@
-2026-07-18T08:02:23Z slug=vision-models-fail-silently-factory words=1133 title="Why Computer Vision Models Fail Silently on the Factory Floor"
+2026-07-18T20:01:53Z slug=classical-vs-deep-vision words=1183 title="Choosing Between Classical and Deep Computer Vision"

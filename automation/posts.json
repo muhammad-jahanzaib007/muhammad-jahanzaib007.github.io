@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "classical-vs-deep-vision",
+      "title": "Choosing Between Classical and Deep Computer Vision",
+      "excerpt": "A practical guide to deciding when classical vision techniques beat deep learning, and when they don't, based on data, constraints, and honest evaluation.",
+      "date": "2026-07-18",
+      "read_min": 6,
+      "tag": "Computer Vision",
+      "color": "a3",
+      "thumb": "assets/blog/classical-vs-deep-vision.png",
+      "thumb_alt": "Cover image for the article: Choosing Between Classical and Deep Computer Vision"
+    },
+    {
       "slug": "vision-models-fail-silently-factory",
       "title": "Why Computer Vision Models Fail Silently on the Factory Floor",
       "excerpt": "High lab accuracy hides a fragile model. On the factory floor, distribution shift and leakage-prone splits let vision systems fail quietly, with no crash to warn you.",
