@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a5",
       "thumb": "assets/blog/build-your-own-eval-harness.png",
-      "thumb_alt": "Cover image for the article: Building Your Own Evaluation Harness Before a Framework"
+      "thumb_alt": "Cover image for the article: Building Your Own Evaluation Harness Before a Framework",
+      "li_shared": true
     },
     {
       "slug": "model-evaluation-frameworks-compared",
