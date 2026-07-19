@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Sun, 19 Jul 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Building Your Own Evaluation Harness Before a Framework</title>
+    <link>https://jahanzaibawan.com/blog/build-your-own-eval-harness.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/build-your-own-eval-harness.html</guid>
+    <pubDate>Sun, 19 Jul 2026 09:00:00 +0000</pubDate>
+    <description>Frameworks hide the plumbing of evaluation. Build your own harness first so you know precisely what a metric means before you trust one.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Model Evaluation Frameworks: What They Hide, Not Just Automate</title>
     <link>https://jahanzaibawan.com/blog/model-evaluation-frameworks-compared.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/model-evaluation-frameworks-compared.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/feature-stores-real-problem.html</guid>
     <pubDate>Sat, 11 Jul 2026 09:00:00 +0000</pubDate>
     <description>Feature stores promise consistency between training and serving, but the value depends entirely on whether your pipeline actually has that problem.</description>
-    <category>MLOps</category>
-  </item>
-  <item>
-    <title>Model Registries Explained: Versioning More Than Weights</title>
-    <link>https://jahanzaibawan.com/blog/model-registries-beyond-weights.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/model-registries-beyond-weights.html</guid>
-    <pubDate>Fri, 10 Jul 2026 09:00:00 +0000</pubDate>
-    <description>A weights file is not a model. Here is what a proper model registry actually needs to track, and why skipping it quietly breaks reproducibility.</description>
     <category>MLOps</category>
   </item>
 </channel>

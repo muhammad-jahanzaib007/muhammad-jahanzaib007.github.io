@@ -1,1 +1,1 @@
-2026-07-19T08:01:32Z slug=model-evaluation-frameworks-compared words=1026 title="Model Evaluation Frameworks: What They Hide, Not Just Automate"
+2026-07-19T20:01:11Z slug=build-your-own-eval-harness words=976 title="Building Your Own Evaluation Harness Before a Framework"

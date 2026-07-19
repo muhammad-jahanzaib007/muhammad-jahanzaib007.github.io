@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "build-your-own-eval-harness",
+      "title": "Building Your Own Evaluation Harness Before a Framework",
+      "excerpt": "Frameworks hide the plumbing of evaluation. Build your own harness first so you know precisely what a metric means before you trust one.",
+      "date": "2026-07-19",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a5",
+      "thumb": "assets/blog/build-your-own-eval-harness.png",
+      "thumb_alt": "Cover image for the article: Building Your Own Evaluation Harness Before a Framework"
+    },
+    {
       "slug": "model-evaluation-frameworks-compared",
       "title": "Model Evaluation Frameworks: What They Hide, Not Just Automate",
       "excerpt": "Evaluation frameworks automate metrics, splitting, and reporting, but they can quietly hide leakage, weak baselines, and the wrong question entirely.",

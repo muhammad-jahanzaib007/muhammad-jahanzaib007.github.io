@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building Your Own Evaluation Harness Before a Framework | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why writing a minimal evaluation harness by hand teaches you more about leakage, splits, and metrics than adopting a framework straight away.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="model evaluation, evaluation harness, machine learning metrics, data leakage, reproducibility, train test split, benchmarking, ML engineering, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-19">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Building Your Own Evaluation Harness Before a Framework">
+<meta property="og:description" content="Why writing a minimal evaluation harness by hand teaches you more about leakage, splits, and metrics than adopting a framework straight away.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/build-your-own-eval-harness.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/build-your-own-eval-harness.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Building Your Own Evaluation Harness Before a Framework">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/build-your-own-eval-harness.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/build-your-own-eval-harness.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Building Your Own Evaluation Harness Before a Framework",
+  "description": "Why writing a minimal evaluation harness by hand teaches you more about leakage, splits, and metrics than adopting a framework straight away.",
+  "url": "https://jahanzaibawan.com/blog/build-your-own-eval-harness.html",
+  "image": "https://jahanzaibawan.com/assets/blog/build-your-own-eval-harness.png",
+  "datePublished": "2026-07-19",
+  "dateModified": "2026-07-19",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/build-your-own-eval-harness.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Building Your Own Evaluation Harness Before a Framework", "item": "https://jahanzaibawan.com/blog/build-your-own-eval-harness.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 19 Jul 2026</div>
+    <h1>Building Your Own Evaluation Harness Before a Framework</h1>
+    <p class="lede">Before you install a benchmarking library, write the twenty lines of code that force you to understand exactly what you are measuring.</p>
+  </div>
+
+  <img src="../assets/blog/build-your-own-eval-harness.png" alt="Cover image for the article: Building Your Own Evaluation Harness Before a Framework" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the shortcut costs you later</h2><p>It is tempting, the moment you have a trained model, to reach for an evaluation framework. There are good ones: they give you leaderboards, pretty tables, standard metrics computed in a single call. The problem is that they also give you distance. You stop asking how the split was made, whether the metric aggregates fairly across classes, or whether your test set has quietly leaked into training through a shared identifier. The framework answers questions you never explicitly asked, and that is exactly the danger.</p><p>I have come to treat a hand-built evaluation harness as a forcing function. Writing the splitting logic, the metric computation, and the reporting by hand means every assumption has to be typed out. You cannot hide behind a default argument called <em>shuffle=True</em> without noticing that shuffling a time series before splitting is precisely how you manufacture an optimistic result. The friction is the point.</p><p>None of this is an argument against frameworks. Once you understand your problem, a mature library will save you time and reduce bugs. The order matters, though: understand first, automate second. Reversing that order is how teams end up reporting a headline accuracy number that nobody can explain six months later, because the pipeline that produced it was assembled from defaults nobody read.</p></section><section class='psec reveal'><h2>A worked example: the leak you cannot see in a summary table</h2><p>Suppose you are building a model to predict whether a customer will cancel a subscription within thirty days, using ten thousand historical rows collected over eighteen months. A framework, given a dataframe and a target column, will happily do a random eighty-twenty split and report an AUC of, say, 0.91. That number looks respectable. It is also very likely a lie.</p><p>Customers appear multiple times in this kind of dataset: once per billing cycle, once per support ticket, once per login event. A random row-level split scatters the same customer across both train and test. The model does not need to learn general cancellation behaviour; it can partially memorise customer-specific quirks from rows it saw in training and recognise them again in test. That inflates the score without telling you anything about how the model will behave on a genuinely new customer next quarter.</p><p>When you build the harness yourself, you are forced to decide the unit of splitting before you can write a single line. Do you split by customer ID, ensuring no customer appears in both sets? Do you split by time, training on the first fourteen months and testing on the last four, so the evaluation mimics the real deployment scenario of predicting the future from the past? In my experience, once you switch from a random row split to a customer-level, time-respecting split on a dataset like this, the AUC of 0.91 tends to fall, sometimes sharply, and that drop is not a bug. It is the harness telling you the truth for the first time.</p><p>A framework will implement whichever split you ask for, but it will not ask you the question. Building the split logic yourself means you cannot proceed without confronting it, and that is worth an afternoon of extra work.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/build-your-own-eval-harness-1.jpg' alt='whiteboard with equations and graphs' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What a minimal harness actually needs</h2><p>A useful evaluation harness is smaller than people expect. At minimum it needs four pieces: a documented splitting rule, a fixed random seed with the seed value recorded alongside results, a small set of metrics chosen for the specific failure modes you care about, and a report format that always shows the metric alongside the sample size and class balance it was computed on. That last part matters more than it sounds. An F1 score of 0.82 on a test set with four hundred positive examples means something quite different from the same score on a test set with twelve.</p><p>Class imbalance is another place where hand-rolling pays off. If your positive class is five per cent of the data, accuracy will happily reward a model that predicts the negative class every time with a score around 0.95, which looks excellent and is worthless. Writing your own metric code means you decide, explicitly, to report precision, recall, and a calibration check instead, or a metric weighted by class frequency, rather than accepting accuracy because it was the first thing printed by a library's summary method.</p><p>The other habit worth building is treating the test set as something you touch exactly once per genuine model candidate, not once per hyperparameter tweak. A common failure is using the test set repeatedly to choose between five model variants, then reporting the best test score as if it were an honest estimate. It is not; it is the maximum of five noisy estimates, and it will overstate performance on the next batch of real data. A harness that logs every evaluation call, with a timestamp and the model version, makes this pattern visible. You will see the same test set being queried nine times in an afternoon and realise you have quietly turned it into a validation set without meaning to.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>Building your own harness is not about rejecting tools. It is about earning the right to use them. Once you have written the split logic, the metric code, and the logging by hand for a couple of projects, you develop an instinct for where frameworks hide their assumptions, and you know exactly which defaults to override the moment you adopt one.</p><p>The concrete habit I would recommend: before your next project touches a framework, write a plain function that takes your raw data, splits it by the correct unit (customer, time, session, whatever prevents leakage), computes two or three metrics chosen for the actual decision the model will drive, and prints the sample size next to every number. If that function embarrasses your first model's score, it has already done its job.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/build-your-own-eval-harness-2.jpg' alt='laptop showing spreadsheet of data tables' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
