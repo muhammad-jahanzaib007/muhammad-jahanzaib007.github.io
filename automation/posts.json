@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a4",
       "thumb": "assets/blog/model-evaluation-frameworks-compared.png",
-      "thumb_alt": "Cover image for the article: Model Evaluation Frameworks: What They Hide, Not Just Automate"
+      "thumb_alt": "Cover image for the article: Model Evaluation Frameworks: What They Hide, Not Just Automate",
+      "li_shared": true
     },
     {
       "slug": "classical-vs-deep-vision",
