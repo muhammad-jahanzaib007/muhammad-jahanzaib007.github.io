@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Sat, 18 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 19 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Model Evaluation Frameworks: What They Hide, Not Just Automate</title>
+    <link>https://jahanzaibawan.com/blog/model-evaluation-frameworks-compared.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/model-evaluation-frameworks-compared.html</guid>
+    <pubDate>Sun, 19 Jul 2026 09:00:00 +0000</pubDate>
+    <description>Evaluation frameworks automate metrics, splitting, and reporting, but they can quietly hide leakage, weak baselines, and the wrong question entirely.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Choosing Between Classical and Deep Computer Vision</title>
     <link>https://jahanzaibawan.com/blog/classical-vs-deep-vision.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/model-registries-beyond-weights.html</guid>
     <pubDate>Fri, 10 Jul 2026 09:00:00 +0000</pubDate>
     <description>A weights file is not a model. Here is what a proper model registry actually needs to track, and why skipping it quietly breaks reproducibility.</description>
-    <category>MLOps</category>
-  </item>
-  <item>
-    <title>What an MLOps Pipeline Actually Needs Before Kubernetes</title>
-    <link>https://jahanzaibawan.com/blog/before-you-need-kubernetes.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/before-you-need-kubernetes.html</guid>
-    <pubDate>Fri, 10 Jul 2026 09:00:00 +0000</pubDate>
-    <description>Kubernetes solves a scaling problem you probably don&#x27;t have yet. Here&#x27;s what to fix first, from data versioning to leakage-aware evaluation.</description>
     <category>MLOps</category>
   </item>
 </channel>

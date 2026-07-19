@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Model Evaluation Frameworks: What They Hide, Not Just Automate | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A comparison of what popular model evaluation frameworks automate versus what they silently hide, with a worked example on leakage and baselines.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="model evaluation, evaluation frameworks, cross validation, data leakage, machine learning metrics, baseline models, reproducibility, scikit-learn, MLOps, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-19">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Model Evaluation Frameworks: What They Hide, Not Just Automate">
+<meta property="og:description" content="A comparison of what popular model evaluation frameworks automate versus what they silently hide, with a worked example on leakage and baselines.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/model-evaluation-frameworks-compared.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/model-evaluation-frameworks-compared.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Model Evaluation Frameworks: What They Hide, Not Just Automate">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/model-evaluation-frameworks-compared.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/model-evaluation-frameworks-compared.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Model Evaluation Frameworks: What They Hide, Not Just Automate",
+  "description": "A comparison of what popular model evaluation frameworks automate versus what they silently hide, with a worked example on leakage and baselines.",
+  "url": "https://jahanzaibawan.com/blog/model-evaluation-frameworks-compared.html",
+  "image": "https://jahanzaibawan.com/assets/blog/model-evaluation-frameworks-compared.png",
+  "datePublished": "2026-07-19",
+  "dateModified": "2026-07-19",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/model-evaluation-frameworks-compared.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Model Evaluation Frameworks: What They Hide, Not Just Automate", "item": "https://jahanzaibawan.com/blog/model-evaluation-frameworks-compared.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 19 Jul 2026</div>
+    <h1>Model Evaluation Frameworks: What They Hide, Not Just Automate</h1>
+    <p class="lede">Evaluation libraries save you from writing metric code by hand, but they also make it easy to trust a number you have not actually understood.</p>
+  </div>
+
+  <img src="../assets/blog/model-evaluation-frameworks-compared.png" alt="Cover image for the article: Model Evaluation Frameworks: What They Hide, Not Just Automate" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the tooling matters more than it looks</h2><p>Every serious machine learning stack now comes with an evaluation framework bolted on: scikit-learn's cross-validation utilities, Hugging Face's evaluate library, MLflow's tracking of metrics, or a bespoke internal harness built by a team tired of copy-pasting accuracy calculations. These tools exist because computing a metric correctly, consistently, and repeatably is harder than it sounds. That is a genuine win. But I have noticed a pattern in my own work and in papers I review casually: the more a framework automates, the less scrutiny each number receives. People stop asking what the split actually contains once the split function just runs.</p><p>This matters because evaluation is not a neutral bookkeeping step. It is the only evidence you have that a model will behave sensibly outside your notebook. If the framework quietly does something you did not intend, the resulting number is not wrong in a way that throws an error; it is wrong in a way that looks perfectly plausible. A model reporting 94 percent accuracy is not obviously broken. You only find out later, in production, when performance drops to something closer to 70 percent and nobody can explain why.</p><p>So it is worth being precise about what these frameworks actually do for you, and, separately, what decisions they make on your behalf that you may not have noticed you delegated.</p></section><section class='psec reveal'><h2>What gets automated, and why it is genuinely useful</h2><p>Most frameworks handle three things well. First, metric computation itself: precision, recall, F1, AUC, calibration error, and so on, computed with consistent definitions so you are not accidentally using a micro-average when you meant macro. Second, the mechanics of splitting: k-fold cross-validation, stratification by class, train-test partitioning with a fixed random seed. Third, reporting and logging: aggregating results across runs, storing them alongside model artefacts, and letting you compare experiments without a spreadsheet.</p><p>This is not trivial. Before these tools were standard, it was common to see two papers reporting F1 scores on the same dataset that were not actually comparable, because one averaged per class and the other averaged per instance. Automating that removes a genuine source of silent inconsistency. Stratified splitting similarly protects you from a bad-luck fold where the minority class in a fraud detection problem happens to land almost entirely in the training set, leaving the test set uninformative.</p><p>Consider a concrete case: a binary classifier for detecting equipment failure from sensor readings, where failures make up roughly 3 percent of the data. A naive random split without stratification could, on an unlucky seed, put nearly all failure cases into training, leaving a test set with only a handful of positives. Your F1 score on that test set becomes almost meaningless, dominated by noise from perhaps four or five examples. A framework that enforces stratified k-fold by default quietly prevents this exact failure. That is real value, and it is why I default to these tools rather than writing splitting logic from scratch each time.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/model-evaluation-frameworks-compared-1.jpg' alt='laptop showing data charts and code' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What gets hidden, and why it bites later</h2><p>The trouble starts with what the framework does not ask you about. Most evaluation libraries have no concept of temporal or grouping structure in your data unless you explicitly tell them. If your dataset contains multiple rows per patient, per customer, or per sensor unit, a standard random or stratified split will happily scatter rows from the same patient across both training and test sets. The model then partly memorises patient-specific quirks during training and gets rewarded for recognising them again at test time. This is leakage, and it is invisible in the code: nothing crashes, nothing warns you, the cross-validation loop runs cleanly and returns an optimistic number.</p><p>I have seen this play out with a churn prediction setup where each customer had several monthly snapshots. A standard five-fold cross-validation, using the default row-level split, produced an AUC around 0.91. Once the split was changed to group by customer, so that all of a given customer's snapshots stayed entirely within one fold, the AUC dropped to about 0.79. Neither number is a bug; both are correctly computed given their respective splits. But only the second one tells you anything honest about performance on a genuinely new customer, which is the situation the model will actually face in deployment.</p><p>Baselines are the second thing that gets hidden. Frameworks report your model's metric, but they rarely insist you also report a majority-class baseline, a simple logistic regression, or a persistence forecast for time series. A framework will happily tell you your neural network achieves 0.85 F1 without ever mentioning that a trivial rule-based classifier achieves 0.83. The gap between those two numbers is the actual value your modelling effort added, and it is often far smaller than the headline figure suggests. Metric choice is the third silent decision: optimising and reporting on accuracy when your real-world cost of a false negative is twenty times that of a false positive will make almost any model look fine on paper while being useless in practice, and the framework will not stop you.</p></section><section class='psec reveal'><h2>A practical way to use these tools without being misled by them</h2><p>None of this is an argument against using evaluation frameworks; writing your own metric code from scratch each time introduces more risk, not less. The fix is to treat the framework as a calculator, not a judge. Before trusting a number, check three things explicitly: whether the split respects any grouping or temporal structure in your data, whether you have a trivial baseline computed on the identical split for comparison, and whether the chosen metric actually reflects the real-world cost of the errors you care about.</p><p>Concretely, when I set up a new evaluation, I write down the grouping key (patient ID, customer ID, time window) before choosing a splitting function, and I compute at least one naive baseline on the same folds as the real model, logged side by side. This turns evaluation from a single trusted number into a small, honest comparison table. It takes perhaps twenty extra minutes and it is the difference between a result that survives contact with production data and one that does not.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/model-evaluation-frameworks-compared-2.jpg' alt='server room data cables' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
