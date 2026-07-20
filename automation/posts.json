@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a6",
       "thumb": "assets/blog/finetuning-vs-prompt-design.png",
-      "thumb_alt": "Cover image for the article: Fine-Tuning versus Prompt Design: A Worked Comparison"
+      "thumb_alt": "Cover image for the article: Fine-Tuning versus Prompt Design: A Worked Comparison",
+      "li_shared": true
     },
     {
       "slug": "build-your-own-eval-harness",
