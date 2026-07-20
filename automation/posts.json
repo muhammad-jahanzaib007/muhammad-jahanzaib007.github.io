@@ -9,7 +9,8 @@
       "tag": "Deep Learning",
       "color": "a2",
       "thumb": "assets/blog/what-fine-tuning-changes.png",
-      "thumb_alt": "Cover image for the article: What Fine-Tuning Actually Changes Inside a Model"
+      "thumb_alt": "Cover image for the article: What Fine-Tuning Actually Changes Inside a Model",
+      "li_shared": true
     },
     {
       "slug": "finetuning-vs-prompt-design",
