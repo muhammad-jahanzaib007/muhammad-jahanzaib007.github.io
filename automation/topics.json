@@ -1,6 +1,5 @@
 {
   "queue": [
-    "What fine-tuning actually changes inside a pretrained model",
     "An MLOps roadmap for engineers coming from research, not software",
     "What an MLOps engineer does day to day, beyond the job title",
     "The machine learning engineer skill set: modelling is the smaller half",
@@ -73,6 +72,7 @@
     "Choosing between classical and deep computer vision: a practical decision guide",
     "Model evaluation frameworks compared: what they automate and what they hide",
     "Building your own model evaluation harness before reaching for a framework",
-    "Fine-tuning versus prompt design: a worked comparison on one small task"
+    "Fine-tuning versus prompt design: a worked comparison on one small task",
+    "What fine-tuning actually changes inside a pretrained model"
   ]
 }

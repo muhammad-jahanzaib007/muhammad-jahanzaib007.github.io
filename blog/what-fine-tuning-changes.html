@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Fine-Tuning Actually Changes Inside a Model | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A precise look at what fine-tuning changes inside a pretrained model, with a worked example of weight updates and why the distinction matters for evaluation.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="fine-tuning, pretrained models, transfer learning, weight updates, gradient descent, model evaluation, catastrophic forgetting, LoRA, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-20">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="What Fine-Tuning Actually Changes Inside a Model">
+<meta property="og:description" content="A precise look at what fine-tuning changes inside a pretrained model, with a worked example of weight updates and why the distinction matters for evaluation.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/what-fine-tuning-changes.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/what-fine-tuning-changes.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What Fine-Tuning Actually Changes Inside a Model">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/what-fine-tuning-changes.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/what-fine-tuning-changes.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "What Fine-Tuning Actually Changes Inside a Model",
+  "description": "A precise look at what fine-tuning changes inside a pretrained model, with a worked example of weight updates and why the distinction matters for evaluation.",
+  "url": "https://jahanzaibawan.com/blog/what-fine-tuning-changes.html",
+  "image": "https://jahanzaibawan.com/assets/blog/what-fine-tuning-changes.png",
+  "datePublished": "2026-07-20",
+  "dateModified": "2026-07-20",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/what-fine-tuning-changes.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "What Fine-Tuning Actually Changes Inside a Model", "item": "https://jahanzaibawan.com/blog/what-fine-tuning-changes.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Deep Learning · 6 min read · 20 Jul 2026</div>
+    <h1>What Fine-Tuning Actually Changes Inside a Model</h1>
+    <p class="lede">Fine-tuning feels like magic until you ask which weights move, by how much, and why the pretrained backbone still matters afterwards.</p>
+  </div>
+
+  <img src="../assets/blog/what-fine-tuning-changes.png" alt="Cover image for the article: What Fine-Tuning Actually Changes Inside a Model" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The question people skip</h2><p>Everyone talks about fine-tuning as though it were a simple continuation of training: take a pretrained model, show it new data, and it learns the new task. That description is not wrong, but it hides the interesting part. A pretrained model already encodes an enormous amount of structure: statistical regularities about language, images, or whatever domain it was trained on. Fine-tuning does not erase that structure and replace it with something new. It perturbs it. Understanding the size and shape of that perturbation is the difference between using fine-tuning competently and using it as a black box you hope will work.</p><p>I think this matters because a lot of practical failures in fine-tuning come from treating it like training from scratch with a head start. People pick learning rates, epoch counts, and data volumes as if the model were a blank slate absorbing information for the first time. It is not. It is a highly organised system of weights that already sits in a good region of the loss landscape, and fine-tuning is a local search around that region. The geometry of that search is what actually determines whether you get a useful specialist model or a model that has quietly forgotten half of what made it useful in the first place.</p></section><section class='psec reveal'><h2>What moves, and by how much</h2><p>Concretely, fine-tuning updates weights via gradient descent on a new loss computed from your task-specific data, exactly as pretraining did. The mechanism is identical. What differs is the starting point and, usually, the learning rate and number of steps. Pretraining might involve hundreds of thousands of update steps starting from random initialisation. Fine-tuning often involves a few thousand steps, or even a few hundred, starting from weights that already produce coherent, useful representations. Because the starting point is good and the number of steps is small, the resulting weight changes tend to be small in magnitude relative to the original weights, even though they can have an outsized effect on behaviour.</p><p>Here is a way to make that concrete. Suppose a particular weight matrix in a transformer layer has values with a typical magnitude around 0.02 after pretraining, which is a realistic order of magnitude for many layers in normalised architectures. During fine-tuning on a modest dataset, say a few thousand labelled examples, over a handful of epochs with a small learning rate, the updates to that same matrix might shift individual values by something on the order of 0.001 to 0.005 per relevant entry. That sounds tiny. But if those shifts are concentrated in the directions that matter for the new task, specifically the directions the model uses to decide between a small set of output classes or to attend to task-relevant tokens, the net effect on output behaviour can be dramatic. A small rotation in a high-dimensional space can change which region of that space an input lands in, and that region is what ultimately gets mapped to a prediction.</p><p>This is why fine-tuning can look like it has taught the model an entirely new skill while, in weight space, almost nothing has changed. Most of the pretrained representation, the part that encodes general syntactic or visual structure, stays close to where it started. A comparatively small subset of parameters, often concentrated in the later layers and in components that feed directly into the final prediction, absorbs most of the adaptation. This is also the empirical observation that motivates parameter-efficient methods like low-rank adapters: if the useful update lives in a small subspace, you do not need to touch every parameter to capture it, you can approximate the update with a much smaller number of trainable parameters and get similar results at a fraction of the memory cost.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/what-fine-tuning-changes-1.jpg' alt='laptop with neural network diagram on screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Why this changes how you should evaluate</h2><p>If fine-tuning is a small, targeted perturbation rather than a rebuild, then the biggest practical risk is not that the model fails to learn the new task, it is that the perturbation quietly damages capabilities you were relying on and did not test for. This is usually called catastrophic forgetting, though in most realistic fine-tuning regimes it is rarely total and rarely catastrophic in the dramatic sense; it is more often a gradual erosion of performance on inputs that differ from your fine-tuning distribution. If you fine-tune a general-purpose model on a narrow set of customer support tickets, you should expect its behaviour on inputs well outside that domain to drift, even if nothing in your training loop explicitly told it to forget anything.</p><p>The practical consequence is that evaluating a fine-tuned model only on your target task's held-out set is not enough. Suppose your fine-tuning set achieves a validation accuracy improvement from 78 percent to 91 percent on the target task, which looks like an unambiguous win. If you do not also check performance on a broader, held-out distribution that resembles what the model will actually see in production, you cannot tell whether that 13-point gain came at the cost of a 5-point regression on inputs that were previously handled correctly. This is a leakage-adjacent problem, not because your test set is contaminated with training data, but because your evaluation coverage is contaminated with your own assumptions about what the model will be asked to do.</p><p>A second, more subtle consequence concerns how much data and how many steps you actually need. Because fine-tuning starts from a good region of weight space, it typically requires far less data than training from scratch to reach a given level of task performance, and it is correspondingly easy to overshoot. Training for too many epochs on a small fine-tuning set pushes the weights further from the pretrained region than necessary, and the marginal gains on your task metric often come paired with disproportionate drift elsewhere. Tracking a validation metric that reflects general capability, not just task accuracy, and stopping early when that broader metric starts to slip, is a cheap and effective safeguard against this.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>Fine-tuning is best understood as a small, structured nudge to a system that already works, not a rewrite. The updates are usually modest in magnitude, concentrated in specific components, and highly effective precisely because they operate within a representation space the pretrained model has already organised sensibly. That efficiency is also the source of the risk: small perturbations can have large behavioural consequences in directions you did not measure. Before you fine-tune anything, decide what your model needs to keep doing well, not just what you want it to newly do, and build that into your evaluation from the start rather than discovering the gap afterwards.</p></section>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

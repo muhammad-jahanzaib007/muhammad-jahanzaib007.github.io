@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "what-fine-tuning-changes",
+      "title": "What Fine-Tuning Actually Changes Inside a Model",
+      "excerpt": "Fine-tuning does not rewrite a model, it nudges it. Here is what actually shifts inside the weights and why that distinction matters for evaluation.",
+      "date": "2026-07-20",
+      "read_min": 6,
+      "tag": "Deep Learning",
+      "color": "a2",
+      "thumb": "assets/blog/what-fine-tuning-changes.png",
+      "thumb_alt": "Cover image for the article: What Fine-Tuning Actually Changes Inside a Model"
+    },
+    {
       "slug": "finetuning-vs-prompt-design",
       "title": "Fine-Tuning versus Prompt Design: A Worked Comparison",
       "excerpt": "A small worked example shows where fine-tuning earns its keep and where good prompt design gets you nearly as far, faster and cheaper.",

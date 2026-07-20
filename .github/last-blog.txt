@@ -1,1 +1,1 @@
-2026-07-20T08:01:00Z slug=finetuning-vs-prompt-design words=1039 title="Fine-Tuning versus Prompt Design: A Worked Comparison"
+2026-07-20T20:01:48Z slug=what-fine-tuning-changes words=1101 title="What Fine-Tuning Actually Changes Inside a Model"

@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Mon, 20 Jul 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>What Fine-Tuning Actually Changes Inside a Model</title>
+    <link>https://jahanzaibawan.com/blog/what-fine-tuning-changes.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/what-fine-tuning-changes.html</guid>
+    <pubDate>Mon, 20 Jul 2026 09:00:00 +0000</pubDate>
+    <description>Fine-tuning does not rewrite a model, it nudges it. Here is what actually shifts inside the weights and why that distinction matters for evaluation.</description>
+    <category>Deep Learning</category>
+  </item>
+  <item>
     <title>Fine-Tuning versus Prompt Design: A Worked Comparison</title>
     <link>https://jahanzaibawan.com/blog/finetuning-vs-prompt-design.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/finetuning-vs-prompt-design.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/evaluating-llms-beyond-accuracy.html</guid>
     <pubDate>Sat, 11 Jul 2026 09:00:00 +0000</pubDate>
     <description>A single accuracy number hides three separate failure modes in LLMs: unhelpfulness, harm, and hallucination. Each needs its own metric and its own test set.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>LLM Leaderboards: What They Measure and What They Hide</title>
-    <link>https://jahanzaibawan.com/blog/llm-leaderboards-hidden-costs.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/llm-leaderboards-hidden-costs.html</guid>
-    <pubDate>Sat, 11 Jul 2026 09:00:00 +0000</pubDate>
-    <description>A high leaderboard rank is not the same as a trustworthy model. Here is what the numbers quietly leave out.</description>
     <category>Evaluation</category>
   </item>
 </channel>
