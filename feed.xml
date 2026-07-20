@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Sun, 19 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Mon, 20 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Fine-Tuning versus Prompt Design: A Worked Comparison</title>
+    <link>https://jahanzaibawan.com/blog/finetuning-vs-prompt-design.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/finetuning-vs-prompt-design.html</guid>
+    <pubDate>Mon, 20 Jul 2026 09:00:00 +0000</pubDate>
+    <description>A small worked example shows where fine-tuning earns its keep and where good prompt design gets you nearly as far, faster and cheaper.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Building Your Own Evaluation Harness Before a Framework</title>
     <link>https://jahanzaibawan.com/blog/build-your-own-eval-harness.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Sat, 11 Jul 2026 09:00:00 +0000</pubDate>
     <description>A high leaderboard rank is not the same as a trustworthy model. Here is what the numbers quietly leave out.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Feature Stores: Real Problem or Just Ceremony?</title>
-    <link>https://jahanzaibawan.com/blog/feature-stores-real-problem.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/feature-stores-real-problem.html</guid>
-    <pubDate>Sat, 11 Jul 2026 09:00:00 +0000</pubDate>
-    <description>Feature stores promise consistency between training and serving, but the value depends entirely on whether your pipeline actually has that problem.</description>
-    <category>MLOps</category>
   </item>
 </channel>
 </rss>

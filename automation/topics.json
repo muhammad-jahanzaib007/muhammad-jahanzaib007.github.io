@@ -1,11 +1,24 @@
 {
   "queue": [
-    "Fine-tuning versus prompt design: a worked comparison on one small task",
     "What fine-tuning actually changes inside a pretrained model",
     "An MLOps roadmap for engineers coming from research, not software",
     "What an MLOps engineer does day to day, beyond the job title",
     "The machine learning engineer skill set: modelling is the smaller half",
-    "Threat modelling for ML systems: evaluating failure, not just accuracy"
+    "Threat modelling for ML systems: evaluating failure, not just accuracy",
+    "Held-out test sets: how large is large enough to trust the number",
+    "Nested cross-validation: why one loop is not enough for model selection",
+    "Data drift versus concept drift: two problems that look identical in a dashboard",
+    "The stationarity assumption behind most evaluation metrics, and when it breaks",
+    "Baseline models you should always try before anything fancy",
+    "Ablation studies: isolating what actually made your model better",
+    "Multi-label versus multi-class evaluation: metrics that get quietly misapplied",
+    "Time series cross-validation: why shuffling your folds ruins everything",
+    "A worked example of Bayesian model comparison instead of a single p-value",
+    "What a learning curve tells you that a single accuracy score cannot",
+    "Synthetic benchmarks versus real-world data: why leaderboard rank does not transfer",
+    "Deciding when a model is good enough to ship: thresholds beyond accuracy",
+    "Interpretability methods compared: SHAP, LIME, and when neither is honest",
+    "The cost matrix nobody writes down: turning business risk into a loss function"
   ],
   "published": [
     "UAV object classification data-leakage case study",
@@ -59,6 +72,7 @@
     "Why computer vision models fail silently on the factory floor",
     "Choosing between classical and deep computer vision: a practical decision guide",
     "Model evaluation frameworks compared: what they automate and what they hide",
-    "Building your own model evaluation harness before reaching for a framework"
+    "Building your own model evaluation harness before reaching for a framework",
+    "Fine-tuning versus prompt design: a worked comparison on one small task"
   ]
 }

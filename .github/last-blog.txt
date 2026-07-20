@@ -1,1 +1,1 @@
-2026-07-19T20:01:11Z slug=build-your-own-eval-harness words=976 title="Building Your Own Evaluation Harness Before a Framework"
+2026-07-20T08:01:00Z slug=finetuning-vs-prompt-design words=1039 title="Fine-Tuning versus Prompt Design: A Worked Comparison"

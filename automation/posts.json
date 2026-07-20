@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "finetuning-vs-prompt-design",
+      "title": "Fine-Tuning versus Prompt Design: A Worked Comparison",
+      "excerpt": "A small worked example shows where fine-tuning earns its keep and where good prompt design gets you nearly as far, faster and cheaper.",
+      "date": "2026-07-20",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a6",
+      "thumb": "assets/blog/finetuning-vs-prompt-design.png",
+      "thumb_alt": "Cover image for the article: Fine-Tuning versus Prompt Design: A Worked Comparison"
+    },
+    {
       "slug": "build-your-own-eval-harness",
       "title": "Building Your Own Evaluation Harness Before a Framework",
       "excerpt": "Frameworks hide the plumbing of evaluation. Build your own harness first so you know precisely what a metric means before you trust one.",

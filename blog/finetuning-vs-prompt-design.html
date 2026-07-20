@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fine-Tuning versus Prompt Design: A Worked Comparison | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A concrete, leakage-aware comparison of fine-tuning versus prompt design on a small classification task, with practical guidance on when each approach earns its cost.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="fine-tuning, prompt engineering, few-shot learning, model evaluation, NLP, text classification, machine learning, reproducibility, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-20">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Fine-Tuning versus Prompt Design: A Worked Comparison">
+<meta property="og:description" content="A concrete, leakage-aware comparison of fine-tuning versus prompt design on a small classification task, with practical guidance on when each approach earns its cost.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/finetuning-vs-prompt-design.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/finetuning-vs-prompt-design.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fine-Tuning versus Prompt Design: A Worked Comparison">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/finetuning-vs-prompt-design.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/finetuning-vs-prompt-design.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Fine-Tuning versus Prompt Design: A Worked Comparison",
+  "description": "A concrete, leakage-aware comparison of fine-tuning versus prompt design on a small classification task, with practical guidance on when each approach earns its cost.",
+  "url": "https://jahanzaibawan.com/blog/finetuning-vs-prompt-design.html",
+  "image": "https://jahanzaibawan.com/assets/blog/finetuning-vs-prompt-design.png",
+  "datePublished": "2026-07-20",
+  "dateModified": "2026-07-20",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/finetuning-vs-prompt-design.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Fine-Tuning versus Prompt Design: A Worked Comparison", "item": "https://jahanzaibawan.com/blog/finetuning-vs-prompt-design.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 20 Jul 2026</div>
+    <h1>Fine-Tuning versus Prompt Design: A Worked Comparison</h1>
+    <p class="lede">On one small classification task, I compare a fine-tuned model against careful prompting to see where the real trade-offs actually live.</p>
+  </div>
+
+  <img src="../assets/blog/finetuning-vs-prompt-design.png" alt="Cover image for the article: Fine-Tuning versus Prompt Design: A Worked Comparison" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this comparison matters</h2><p>Every time I start a small text classification task, the same question shows up before any modelling begins: do I fine-tune a model on labelled examples, or do I write a careful prompt and lean on a general-purpose model's existing knowledge? The honest answer is that it depends on the task, the data budget, and how much you trust your evaluation, but that answer is unsatisfying without numbers attached to it. So I want to walk through a worked comparison on a small, concrete task rather than argue in the abstract.</p><p>The task I will use is short customer feedback snippets, each one to three sentences long, labelled as one of three categories: complaint, praise, or neutral query. This is deliberately unglamorous. It is exactly the kind of task that shows up in real products, and it is small enough that the difference between fine-tuning and prompting is not settled by sheer data volume alone. Suppose we have six hundred labelled examples total: four hundred for training, one hundred for validation, and one hundred held out as a genuinely untouched test set.</p><p>That test set matters more than people admit. If you peek at it while tuning prompts, or while choosing which fine-tuning checkpoint to keep, you have quietly turned it into a second validation set, and your final number is optimistic. I treat the hundred held-out examples as sealed: no prompt wording decisions, no hyperparameter choices, and no early stopping criteria are ever chosen by looking at test performance. Everything is decided on the validation split first.</p></section><section class='psec reveal'><h2>Setting up a fair fight</h2><p>For fine-tuning, I take a small pretrained encoder and add a classification head, training on the four hundred labelled examples for a handful of epochs, watching validation accuracy to decide when to stop. This is a cheap, ordinary setup: nothing exotic, just a sensible learning rate and early stopping based on validation loss rather than a fixed epoch count.</p><p>For prompt design, I do not just write one prompt and call it done. I treat prompt development the same way I would treat model selection: several candidate prompts, each evaluated on the validation set, with the best one carried forward to the sealed test set. My candidates range from a bare instruction ('classify this feedback as complaint, praise, or neutral') to a version with three worked examples embedded directly in the prompt, one per class, chosen to be typical rather than cherry-picked for difficulty.</p><p>This last point deserves emphasis: it is tempting to pick your few-shot examples because they happen to make the model perform well on cases you have already seen fail. That is a subtle form of leakage into your prompt design process, functionally similar to tuning hyperparameters on the test set. I chose the three examples before looking at any validation results, based only on them being clear, representative instances of each class.</p><p>With that discipline in place, suppose the fine-tuned model reaches eighty-nine per cent accuracy on the held-out test set, and the best prompt, the one with three worked examples, reaches eighty-four per cent. The bare-instruction prompt, for comparison, lands at seventy-six per cent. These are the kinds of numbers I would actually expect on a task like this: fine-tuning wins, few-shot prompting helps a lot over zero-shot, but there is still a real gap.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/finetuning-vs-prompt-design-1.jpg' alt='laptop with text data spreadsheet' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Where the gap actually comes from</h2><p>An eighty-nine versus eighty-four split sounds decisive, but it is worth asking what that five-point gap is made of before drawing conclusions. Looking at the confusion matrix for the prompted model, most of the errors are neutral queries being classified as mild complaints. That makes sense: a neutral query like 'how do I change my delivery address' shares surface vocabulary with complaints about delivery, and without seeing many labelled neutral examples, the model's prior leans towards treating anything logistics-related as negative.</p><p>The fine-tuned model, having seen roughly one hundred and thirty neutral examples during training, has learned this specific boundary directly from the label distribution of this dataset. The prompted model has not seen this dataset's particular quirks at all; it is relying on general language understanding plus three examples. That is precisely the trade-off: fine-tuning buys you dataset-specific calibration, prompting buys you a model that never needed labelled training data in the first place.</p><p>This matters enormously for practical decisions. If four hundred labelled examples took two analysts a week to produce and label consistently, and the task is going to run for years, that five-point accuracy gain is probably worth the fixed cost. If the task is a one-off classification you need results for by tomorrow afternoon, or if the label categories are likely to shift in a month, the eighty-four per cent prompt-based result deployed today is worth more than a theoretically superior model deployed next week.</p><p>There is also a maintenance dimension that raw accuracy numbers hide. The fine-tuned model needs retraining if the label definitions change, if new categories appear, or if the underlying data distribution drifts. The prompt-based approach can often absorb small changes just by editing the instruction text and swapping one worked example, no retraining pipeline required. That flexibility has real value that a single accuracy figure does not capture.</p></section><section class='psec reveal'><h2>A practical takeaway</h2><p>The comparison I would encourage is not fine-tuning against prompting in the abstract, but fine-tuning against the best prompt you can honestly justify, evaluated with the same discipline you would apply to any other model: a validation set for decisions, a sealed test set for the final number, and prompt examples chosen before you see how well they perform. Skipping that discipline on either side makes the comparison meaningless, because you cannot tell whether a win came from genuine capability or from quietly optimising against your own scorecard.</p><p>On this small task, fine-tuning bought roughly five points of accuracy in exchange for four hundred labelled examples and a training pipeline to maintain. Whether that trade is worth it depends entirely on how long the task will live, how often its definition will change, and how expensive labelling actually was. There is no universal answer, but there is a universal method: measure both fairly, on the same sealed data, before deciding which cost is worth paying.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/finetuning-vs-prompt-design-2.jpg' alt='sticky notes sorted into categories on desk' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
