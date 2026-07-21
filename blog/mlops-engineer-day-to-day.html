@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What an MLOps Engineer Actually Does Day to Day | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A grounded look at what MLOps engineers really do daily: data plumbing, retraining decisions, monitoring, and incident response, beyond the job title.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="MLOps, machine learning operations, model monitoring, model deployment, data pipelines, retraining, model drift, production ML, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-21">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="What an MLOps Engineer Actually Does Day to Day">
+<meta property="og:description" content="A grounded look at what MLOps engineers really do daily: data plumbing, retraining decisions, monitoring, and incident response, beyond the job title.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/mlops-engineer-day-to-day.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/mlops-engineer-day-to-day.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What an MLOps Engineer Actually Does Day to Day">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/mlops-engineer-day-to-day.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/mlops-engineer-day-to-day.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "What an MLOps Engineer Actually Does Day to Day",
+  "description": "A grounded look at what MLOps engineers really do daily: data plumbing, retraining decisions, monitoring, and incident response, beyond the job title.",
+  "url": "https://jahanzaibawan.com/blog/mlops-engineer-day-to-day.html",
+  "image": "https://jahanzaibawan.com/assets/blog/mlops-engineer-day-to-day.png",
+  "datePublished": "2026-07-21",
+  "dateModified": "2026-07-21",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/mlops-engineer-day-to-day.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "What an MLOps Engineer Actually Does Day to Day", "item": "https://jahanzaibawan.com/blog/mlops-engineer-day-to-day.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">MLOps · 5 min read · 21 Jul 2026</div>
+    <h1>What an MLOps Engineer Actually Does Day to Day</h1>
+    <p class="lede">The job title suggests pipelines and deployment. The reality is mostly about trust, plumbing, and stopping small problems from becoming production incidents.</p>
+  </div>
+
+  <img src="../assets/blog/mlops-engineer-day-to-day.png" alt="Cover image for the article: What an MLOps Engineer Actually Does Day to Day" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The title undersells the job</h2><p>When people hear 'MLOps engineer', they usually picture someone wiring up a CI/CD pipeline for models, or clicking deploy on a dashboard. That is part of it, but it is the smallest part. Most of the actual work is closer to plumbing and risk management than to machine learning research. You spend far more time asking 'why did this number change on Tuesday' than you spend training anything new.</p><p>The reason the job looks different from its title is that models do not fail the way normal software fails. A web service either returns the wrong status code or it does not. A model can return a perfectly valid, well-formatted prediction that is quietly wrong, and nothing in the system will complain. Finding that kind of failure requires a different mindset: you are not just keeping the lights on, you are keeping the lights honest.</p><p>So the day-to-day work sits at the intersection of software engineering discipline and statistical scepticism. You need enough engineering sense to build reliable pipelines, and enough evaluation sense to know when a pipeline is producing garbage that still looks like a sensible number. Neither skill alone is enough; the interesting failures live in the gap between them.</p></section><section class='psec reveal'><h2>A concrete week: data, retraining, and the quiet decisions</h2><p>Consider a fraud detection model that scores transactions in real time. On a typical day, a large share of your attention goes to the data feeding it, not the model itself. Suppose the upstream team changes a currency field from a string like '£45.00' to a numeric cents value like 4500. Nothing crashes. The model still returns a score between 0 and 1. But the feature that used to represent transaction size now means something ninety times smaller, and the model's learned weight for that feature is now nonsense. Precision at a fixed threshold might drift from around 0.82 to 0.61 over a few days, and the first sign is usually a spike in customer complaints, not an alert.</p><p>Catching that before it reaches customers means building checks that compare the statistical shape of incoming data against a reference distribution, not just checking that a field exists and is numeric. A simple population stability check on that one field, comparing the current week's distribution to last month's, would have flagged the currency change within hours. This is unglamorous work: writing assertions about medians, ranges, and null rates, and deciding what threshold of change should page someone at 2am versus what should just log a warning.</p><p>Then there is the retraining decision, which sounds automated but rarely is in practice. Say the model's weekly AUC has dipped from 0.88 to 0.85. Is that seasonal, is it drift, or is it noise from a smaller-than-usual evaluation window? Retraining on the latest data feels like the obvious fix, but if the latest data includes a batch of mislabelled transactions from a support team backlog, you have just baked that mislabelling into the next model version. Part of the job is resisting the urge to retrain reflexively and instead asking whether the labels themselves are trustworthy this week.</p><p>Leakage-aware evaluation matters here too. If transactions from the same customer appear in both training and validation splits, the offline AUC will look better than it deserves, sometimes by several points, and the gap only shows up once the model is live and scoring genuinely new customers. A meaningful part of the week is spent auditing splits, checking that time boundaries are respected, and making sure a promising offline number is not just an artefact of the evaluation setup.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/mlops-engineer-day-to-day-1.jpg' alt='server room data center' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Monitoring is a design problem, not a dashboard</h2><p>Most teams start monitoring by tracking infrastructure metrics: latency, error rate, requests per second. Those matter, but they tell you nothing about whether the model is still doing its job. The harder, more valuable metrics are things like prediction distribution shift, feature drift, and calibration, which is whether a predicted probability of 0.7 actually corresponds to something happening seventy percent of the time.</p><p>Building this well means deciding in advance what 'wrong' looks like for this specific model, because generic anomaly detection rarely captures it. For the fraud model, a useful signal might be the weekly fraction of scores above 0.9, tracked against a rolling baseline. If that fraction triples overnight with no corresponding change in actual confirmed fraud, that is a strong hint the feature pipeline broke somewhere, even before any label is available to confirm it. Labels for fraud often arrive weeks later, once disputes are resolved, so you need proxy signals that do not depend on ground truth you will not have for a month.</p><p>This is also where the job overlaps with incident response. When something does break, the useful question is never 'what is the model doing wrong' in isolation; it is 'what changed upstream in the last 48 hours', because models rarely break on their own. A postmortem for a model incident tends to read more like a supply chain investigation: which feature source updated, which library version shipped, which upstream table schema changed. Writing these up honestly, including the false alarms and the near misses, is what makes the monitoring system better next time rather than just noisier.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>If you are trying to understand or break into this role, the useful preparation is not more model architectures. It is getting comfortable with data pipelines that can silently corrupt inputs, evaluation setups that can silently leak information, and monitoring that has to infer problems from proxies because ground truth arrives late or never. The job title says 'operations' but the actual skill being exercised most days is scepticism applied consistently: assuming the number in front of you might be wrong until you have checked how it was produced.</p><p>The single habit that pays off most is treating every dashboard metric as a claim that needs a source, not a fact. Before trusting a drop in accuracy or a rise in latency, trace it back to the pipeline stage that produced it. Most of the genuinely hard incidents in production machine learning are not model problems at all; they are data problems wearing a model's clothes.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/mlops-engineer-day-to-day-2.jpg' alt='engineer monitoring dashboard screens' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

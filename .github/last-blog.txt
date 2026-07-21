@@ -1,1 +1,1 @@
-2026-07-21T08:02:28Z slug=mlops-roadmap-for-researchers words=1120 title="An MLOps Roadmap for Engineers Coming From Research"
+2026-07-21T20:01:52Z slug=mlops-engineer-day-to-day words=1031 title="What an MLOps Engineer Actually Does Day to Day"

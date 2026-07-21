@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "mlops-engineer-day-to-day",
+      "title": "What an MLOps Engineer Actually Does Day to Day",
+      "excerpt": "MLOps is less about fancy tooling and more about babysitting data, retraining models responsibly, and catching silent failures before customers do.",
+      "date": "2026-07-21",
+      "read_min": 5,
+      "tag": "MLOps",
+      "color": "a4",
+      "thumb": "assets/blog/mlops-engineer-day-to-day.png",
+      "thumb_alt": "Cover image for the article: What an MLOps Engineer Actually Does Day to Day"
+    },
+    {
       "slug": "mlops-roadmap-for-researchers",
       "title": "An MLOps Roadmap for Engineers Coming From Research",
       "excerpt": "A practical MLOps roadmap for researchers moving into engineering: version control, pipelines, monitoring, and the mindset shift that ties it together.",

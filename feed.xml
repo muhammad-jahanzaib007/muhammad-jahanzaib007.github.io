@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Tue, 21 Jul 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>What an MLOps Engineer Actually Does Day to Day</title>
+    <link>https://jahanzaibawan.com/blog/mlops-engineer-day-to-day.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/mlops-engineer-day-to-day.html</guid>
+    <pubDate>Tue, 21 Jul 2026 09:00:00 +0000</pubDate>
+    <description>MLOps is less about fancy tooling and more about babysitting data, retraining models responsibly, and catching silent failures before customers do.</description>
+    <category>MLOps</category>
+  </item>
+  <item>
     <title>An MLOps Roadmap for Engineers Coming From Research</title>
     <link>https://jahanzaibawan.com/blog/mlops-roadmap-for-researchers.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/mlops-roadmap-for-researchers.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Sun, 12 Jul 2026 09:00:00 +0000</pubDate>
     <description>mAP gets thrown around as a single number, but few people can actually derive it. Here is the arithmetic behind it, worked through by hand.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Building a Computer Vision Pipeline That Survives Shift</title>
-    <link>https://jahanzaibawan.com/blog/cv-pipelines-distribution-shift.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/cv-pipelines-distribution-shift.html</guid>
-    <pubDate>Sat, 11 Jul 2026 09:00:00 +0000</pubDate>
-    <description>High test accuracy means little if your test set secretly resembles your training set. Here is how to build vision pipelines that hold up when the world changes.</description>
-    <category>Computer Vision</category>
   </item>
 </channel>
 </rss>
