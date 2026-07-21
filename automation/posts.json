@@ -9,7 +9,8 @@
       "tag": "MLOps",
       "color": "a4",
       "thumb": "assets/blog/mlops-engineer-day-to-day.png",
-      "thumb_alt": "Cover image for the article: What an MLOps Engineer Actually Does Day to Day"
+      "thumb_alt": "Cover image for the article: What an MLOps Engineer Actually Does Day to Day",
+      "li_shared": true
     },
     {
       "slug": "mlops-roadmap-for-researchers",
