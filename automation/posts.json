@@ -9,7 +9,8 @@
       "tag": "MLOps",
       "color": "a3",
       "thumb": "assets/blog/mlops-roadmap-for-researchers.png",
-      "thumb_alt": "Cover image for the article: An MLOps Roadmap for Engineers Coming From Research"
+      "thumb_alt": "Cover image for the article: An MLOps Roadmap for Engineers Coming From Research",
+      "li_shared": true
     },
     {
       "slug": "what-fine-tuning-changes",
