@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "mlops-roadmap-for-researchers",
+      "title": "An MLOps Roadmap for Engineers Coming From Research",
+      "excerpt": "A practical MLOps roadmap for researchers moving into engineering: version control, pipelines, monitoring, and the mindset shift that ties it together.",
+      "date": "2026-07-21",
+      "read_min": 6,
+      "tag": "MLOps",
+      "color": "a3",
+      "thumb": "assets/blog/mlops-roadmap-for-researchers.png",
+      "thumb_alt": "Cover image for the article: An MLOps Roadmap for Engineers Coming From Research"
+    },
+    {
       "slug": "what-fine-tuning-changes",
       "title": "What Fine-Tuning Actually Changes Inside a Model",
       "excerpt": "Fine-tuning does not rewrite a model, it nudges it. Here is what actually shifts inside the weights and why that distinction matters for evaluation.",

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>An MLOps Roadmap for Engineers Coming From Research | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical roadmap to MLOps for people trained in research, covering versioning, pipelines, deployment, and monitoring with concrete examples.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="MLOps, machine learning engineering, model deployment, reproducibility, data versioning, pipelines, monitoring, research to industry, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-21">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="An MLOps Roadmap for Engineers Coming From Research">
+<meta property="og:description" content="A practical roadmap to MLOps for people trained in research, covering versioning, pipelines, deployment, and monitoring with concrete examples.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/mlops-roadmap-for-researchers.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/mlops-roadmap-for-researchers.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="An MLOps Roadmap for Engineers Coming From Research">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/mlops-roadmap-for-researchers.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/mlops-roadmap-for-researchers.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "An MLOps Roadmap for Engineers Coming From Research",
+  "description": "A practical roadmap to MLOps for people trained in research, covering versioning, pipelines, deployment, and monitoring with concrete examples.",
+  "url": "https://jahanzaibawan.com/blog/mlops-roadmap-for-researchers.html",
+  "image": "https://jahanzaibawan.com/assets/blog/mlops-roadmap-for-researchers.png",
+  "datePublished": "2026-07-21",
+  "dateModified": "2026-07-21",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/mlops-roadmap-for-researchers.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "An MLOps Roadmap for Engineers Coming From Research", "item": "https://jahanzaibawan.com/blog/mlops-roadmap-for-researchers.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">MLOps · 6 min read · 21 Jul 2026</div>
+    <h1>An MLOps Roadmap for Engineers Coming From Research</h1>
+    <p class="lede">Notebooks and one-off experiments do not survive contact with production. Here is a practical path from research habits to engineering discipline.</p>
+  </div>
+
+  <img src="../assets/blog/mlops-roadmap-for-researchers.png" alt="Cover image for the article: An MLOps Roadmap for Engineers Coming From Research" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The gap nobody warns you about</h2><p>If your training came from a lab or an MSc research project, you learned to optimise for a single metric on a fixed test set, usually inside a Jupyter notebook that ran once, produced a nice plot, and then sat untouched. That workflow is fine for a thesis. It is a liability in production, because production systems are not judged by a single number at a single point in time. They are judged by whether they keep working next month, when the data has drifted, a colleague has changed the feature pipeline, and someone else needs to debug a prediction from three weeks ago.</p><p>The habit that causes the most damage is treating the notebook as the final artefact rather than a scratchpad. I have seen (and written) notebooks where cell execution order matters, where a variable defined in cell 14 is silently reused in cell 40, and where the only record of which data version produced the reported accuracy is a comment that says 'ran this on Tuesday'. None of that is reproducible, and reproducibility is not a nice-to-have in engineering, it is the baseline requirement for anyone else to trust your work.</p><p>This roadmap is not about learning Kubernetes on day one. It is about building the habits that make your existing modelling skill actually deployable, in a sensible order: version everything, build pipelines instead of scripts, separate training from serving, and monitor what you ship. Skipping steps to jump straight to fashionable tooling is how people end up with a Kubernetes cluster running a model nobody can retrain.</p></section><section class='psec reveal'><h2>Step one: version control that actually covers your experiment</h2><p>Git for code is assumed knowledge at this point, but the research habit that needs breaking is treating data and model artefacts as outside the versioning story. Suppose you train a classifier, get 91% accuracy, and six weeks later a stakeholder asks you to reproduce that exact result because a downstream decision depended on it. If your training data was a CSV you later overwrote, or a database table that has since been updated with new rows, you cannot answer that question honestly. This is not a hypothetical: data drifts constantly, and 'the same table' rarely means the same rows over time.</p><p>The fix is to version data and model artefacts alongside code, using something like DVC or a simple convention of immutable, hash-named snapshots stored separately from Git but referenced by it. Practically, this means every training run should log: the exact commit hash of the code, a pointer to the exact data snapshot, the hyperparameters, and the resulting metrics, ideally with an experiment tracker such as MLflow or Weights and Biases rather than a spreadsheet you update by hand. The spreadsheet approach works for ten runs. It fails silently at run number two hundred, when nobody remembers which row corresponds to which checkpoint file.</p><p>There is a second, subtler benefit here that matters more in industry than in research: versioning gives you an audit trail. If a model starts behaving badly in production, the first question is always 'what changed', and if you cannot answer that in minutes because everything is versioned and timestamped, you will spend hours reconstructing history that should have been free.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/mlops-roadmap-for-researchers-1.jpg' alt='server rack data center' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Step two: pipelines, not scripts, and a real separation of concerns</h2><p>A research script typically does everything in one file: load data, clean it, engineer features, split it, train, evaluate, plot. That is fine for exploration, but it hides a dangerous failure mode called data leakage, where information from the evaluation set quietly influences the training process, usually through a preprocessing step applied before the split rather than after. I have seen this happen with something as innocuous as fitting a scaler on the entire dataset before doing a train test split; the reported accuracy looks respectable, but it is measuring something other than genuine generalisation, and it will not survive contact with new, unseen data.</p><p>The engineering fix is to build an explicit pipeline with clearly ordered, testable stages: ingestion, validation, splitting, feature transformation fit only on training data, model training, and evaluation on a held-out set that the pipeline never touches during fitting. Tools like scikit-learn's Pipeline object, or heavier orchestrators such as Airflow or Prefect for scheduled retraining, exist precisely so that the split happens once, early, and nothing downstream can accidentally see across it. This is not bureaucracy for its own sake; it is the only reliable defence against a specific, well-documented category of silent bug.</p><p>Once the pipeline exists as code rather than a linear notebook, you also get something research workflows rarely have: the ability to rerun the exact same process on new data without manually re-executing cells in the right order. A retraining job that takes one command and produces a versioned model artefact is worth more, in practice, than a marginal improvement in model accuracy, because it is what allows the model to be maintained by someone other than the person who built it.</p></section><section class='psec reveal'><h2>Step three: serving and monitoring, the part research skips entirely</h2><p>Training a good model is roughly the first third of the job. The remaining two-thirds is making it available to a system that needs an answer in under a hundred milliseconds, and then watching what happens after it leaves your hands. Serving means wrapping the model behind an API, with input validation that rejects malformed requests before they reach the model, sensible logging of inputs and outputs for later debugging, and a clear contract for what happens when the model is unavailable, none of which appears in a research paper's methodology section.</p><p>Monitoring is the piece I think researchers underestimate most, because research treats evaluation as a one-off event at the end of a project, whereas production requires continuous evaluation against a moving target. A model trained on last year's customer behaviour can degrade steadily as the underlying population shifts, a phenomenon usually called data or concept drift, and the accuracy number you validated at deployment time tells you nothing about whether that is happening six months later. Concretely, this means tracking the distribution of input features over time, tracking prediction confidence, and where possible collecting ground truth labels on a delay so you can compute real accuracy retrospectively rather than assuming the launch-day number still holds.</p><p>The practical takeaway, if you take nothing else from this: treat 'can someone else rerun this and get the same answer' as the single test your work must pass before you consider it finished. Everything else in this roadmap, versioning, pipelines, serving, monitoring, is really just infrastructure built to keep that one property true as the system scales, the team grows, and the data underneath you keeps changing.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/mlops-roadmap-for-researchers-2.jpg' alt='engineer looking at monitoring dashboard' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
