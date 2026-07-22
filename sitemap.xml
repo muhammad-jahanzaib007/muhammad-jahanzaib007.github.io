@@ -12,6 +12,7 @@
   <url><loc>https://jahanzaibawan.com/about.html</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://jahanzaibawan.com/blog.html</loc><lastmod>2026-07-22</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <!--BLOGPOSTS:START-->
+  <url><loc>https://jahanzaibawan.com/blog/threat-modelling-for-ml-systems.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://jahanzaibawan.com/blog/modelling-is-the-smaller-half.html</loc><lastmod>2026-07-22</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://jahanzaibawan.com/blog/mlops-engineer-day-to-day.html</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://jahanzaibawan.com/blog/mlops-roadmap-for-researchers.html</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>

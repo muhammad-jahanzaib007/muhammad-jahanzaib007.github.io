@@ -1,1 +1,1 @@
-2026-07-22T08:02:10Z slug=modelling-is-the-smaller-half words=974 title="The ML Engineer Skill Set: Modelling Is the Smaller Half"
+2026-07-22T20:01:55Z slug=threat-modelling-for-ml-systems words=1065 title="Threat Modelling for ML Systems, Not Just Accuracy"

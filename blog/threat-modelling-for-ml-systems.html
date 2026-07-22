@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Threat Modelling for ML Systems, Not Just Accuracy | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why accuracy alone hides dangerous failure modes in ML systems, and how threat modelling helps evaluate risk, not just performance.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="threat modelling, ML evaluation, model failure, robustness testing, adversarial examples, distribution shift, error analysis, safety-critical ML, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-22">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Threat Modelling for ML Systems, Not Just Accuracy">
+<meta property="og:description" content="Why accuracy alone hides dangerous failure modes in ML systems, and how threat modelling helps evaluate risk, not just performance.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/threat-modelling-for-ml-systems.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/threat-modelling-for-ml-systems.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Threat Modelling for ML Systems, Not Just Accuracy">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/threat-modelling-for-ml-systems.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/threat-modelling-for-ml-systems.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Threat Modelling for ML Systems, Not Just Accuracy",
+  "description": "Why accuracy alone hides dangerous failure modes in ML systems, and how threat modelling helps evaluate risk, not just performance.",
+  "url": "https://jahanzaibawan.com/blog/threat-modelling-for-ml-systems.html",
+  "image": "https://jahanzaibawan.com/assets/blog/threat-modelling-for-ml-systems.png",
+  "datePublished": "2026-07-22",
+  "dateModified": "2026-07-22",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/threat-modelling-for-ml-systems.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Threat Modelling for ML Systems, Not Just Accuracy", "item": "https://jahanzaibawan.com/blog/threat-modelling-for-ml-systems.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 22 Jul 2026</div>
+    <h1>Threat Modelling for ML Systems, Not Just Accuracy</h1>
+    <p class="lede">A model with 97% accuracy can still fail catastrophically. Here is how to think about failure modes before they find you in production.</p>
+  </div>
+
+  <img src="../assets/blog/threat-modelling-for-ml-systems.png" alt="Cover image for the article: Threat Modelling for ML Systems, Not Just Accuracy" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Accuracy tells you almost nothing about safety</h2><p>Suppose I build a classifier for detecting fraudulent transactions and it scores 97% accuracy on a held-out test set. That number sounds impressive until I ask what the base rate of fraud actually is. If only 2% of transactions are fraudulent, a model that predicts 'not fraud' for everything scores 98% accuracy while catching precisely zero fraud. This is not a contrived edge case; it is the default shape of most real-world classification problems, where the interesting class is rare and the cost of missing it is wildly asymmetric to the cost of a false alarm.</p><p>The deeper problem is that accuracy, and most single-number metrics, compress every kind of error into one undifferentiated bucket. A missed cancer diagnosis and a missed spam email get treated as equivalent mistakes if you only look at overall correctness. Threat modelling is the discipline of refusing that compression. Instead of asking 'how often is this model right', you ask 'when this model is wrong, who is harmed, how badly, and under what conditions does that wrongness become likely'. That is a fundamentally different question, and it changes what you build, test, and monitor.</p><p>I think of threat modelling for ML as borrowing the mindset of security engineering rather than statistics. A security engineer does not ask whether a system usually resists attack; they ask what happens under the worst plausible input, deliberately constructed or otherwise. Applied to ML, this means enumerating the ways a model's assumptions can be violated in deployment: shifted input distributions, adversarial manipulation, rare subgroups, feedback loops, and silent data drift. None of these show up in a standard accuracy figure, yet all of them are common causes of real incidents.</p></section><section class='psec reveal'><h2>A worked example: the failure modes hiding behind one number</h2><p>Take a concrete case. Imagine a model for triaging support tickets, trained on a year of historical data, achieving 91% accuracy at classifying urgency. That single figure hides several distinct threats worth separating out individually.</p><ul><li><strong>Subgroup failure:</strong> the model might be 96% accurate on tickets written in fluent English and 74% accurate on tickets containing typos, slang, or a second language mixed in. Overall accuracy averages these away, but the second group is exactly where urgent problems from frustrated, non-native-speaking users are most likely to be misclassified as low priority.</li><li><strong>Temporal drift:</strong> the training data covers a year with no major product outage. If a new feature launches and generates an unfamiliar cluster of complaints, the model has never seen that vocabulary and may default to whatever class was most common in training, silently misrouting a spike of genuinely urgent tickets during the exact period when accuracy matters most.</li><li><strong>Feedback contamination:</strong> if the model's own past predictions influenced how tickets were labelled or routed historically (for instance, tickets it marked low priority were reviewed less carefully and thus less likely to be relabelled as urgent), the training data itself encodes the model's prior mistakes, and retraining on it can entrench the same blind spot rather than correcting it.</li><li><strong>Adversarial or gaming behaviour:</strong> if users learn that certain keywords trigger faster response, they may start inserting them regardless of true urgency, degrading the signal the model was trained to rely on.</li></ul><p>Each of these is invisible to a single accuracy number computed on an i.i.d. test split, and each requires a different mitigation: stratified evaluation for the first, a monitored retraining or alerting policy for the second, careful audit of label provenance for the third, and ongoing feature stability checks for the fourth. Notice that none of these are exotic; they are the ordinary, boring ways deployed systems degrade.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/threat-modelling-for-ml-systems-1.jpg' alt='security camera monitor wall' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Building the threat model: questions before metrics</h2><p>A practical threat model for an ML system does not start with a metric. It starts with a small set of structured questions, asked before a single model is trained. First: what does a false negative cost, and to whom, compared with a false positive? Writing this down explicitly, even roughly, forces you to design the evaluation around the asymmetry rather than discovering it after deployment when the cost has already been paid by a real person or a real budget.</p><p>Second: what subpopulations exist in the data, and does performance hold across them? This means deliberately slicing evaluation by known covariates, not waiting for a complaint to reveal the slice that matters. If ticket language, device type, or geography plausibly correlates with error rate, evaluate on those slices explicitly rather than hoping the aggregate number is representative of every group inside it.</p><p>Third: what happens when the input distribution shifts, and how would you know? This is where leakage-aware evaluation becomes essential. A test set drawn from the same time window as training data will always look healthier than reality, because it cannot capture drift that has not happened yet. A more honest evaluation holds out the most recent slice of data chronologically, simulating the actual condition the model will face: predicting on data it has never conceptually seen, generated after the model was frozen.</p><p>Fourth: is there a strong, boring baseline that this model actually needs to beat, and by how much, given the cost structure from the first question? A model that edges out a simple rule-based baseline by half a percentage point of accuracy, while being far less interpretable and harder to audit for the specific failure modes above, may not be worth deploying at all. Threat modelling and baseline comparison are two sides of the same discipline: both refuse to let a single flattering number end the conversation.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>None of this requires exotic tooling. It requires discipline in how you frame evaluation before you start, and honesty about what a single aggregate metric cannot tell you. Concretely: define the cost asymmetry of your errors in writing, slice your evaluation by every subgroup you can plausibly identify, test against a time-based or otherwise leakage-aware split that mimics real deployment conditions, and always compare against a baseline strong enough to be genuinely humbling.</p><p>Threat modelling is not a replacement for accuracy, precision, or recall; it is the frame that tells you which of those numbers actually matter, and for whom. The models that fail badly in production are rarely the ones with a mediocre accuracy score. They are the ones where a good aggregate score concealed a specific, foreseeable failure that nobody bothered to look for.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/threat-modelling-for-ml-systems-2.jpg' alt='server room warning light' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

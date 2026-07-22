@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Wed, 22 Jul 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Threat Modelling for ML Systems, Not Just Accuracy</title>
+    <link>https://jahanzaibawan.com/blog/threat-modelling-for-ml-systems.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/threat-modelling-for-ml-systems.html</guid>
+    <pubDate>Wed, 22 Jul 2026 09:00:00 +0000</pubDate>
+    <description>High accuracy hides where a model breaks. Threat modelling forces you to ask how it fails, for whom, and at what cost.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>The ML Engineer Skill Set: Modelling Is the Smaller Half</title>
     <link>https://jahanzaibawan.com/blog/modelling-is-the-smaller-half.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/modelling-is-the-smaller-half.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Mon, 13 Jul 2026 09:00:00 +0000</pubDate>
     <description>A working checklist for taking a model out of a notebook safely, covering data leakage, baselines, monitoring, and the questions reviewers should always ask.</description>
     <category>MLOps</category>
-  </item>
-  <item>
-    <title>Image Augmentation: What Actually Generalises</title>
-    <link>https://jahanzaibawan.com/blog/image-augmentation-what-generalises.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/image-augmentation-what-generalises.html</guid>
-    <pubDate>Sun, 12 Jul 2026 09:00:00 +0000</pubDate>
-    <description>Most augmentation choices are copied from tutorials rather than justified. Here&#x27;s how to test which ones actually improve generalisation for your task.</description>
-    <category>Computer Vision</category>
   </item>
 </channel>
 </rss>

@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Threat modelling for ML systems: evaluating failure, not just accuracy",
     "Held-out test sets: how large is large enough to trust the number",
     "Nested cross-validation: why one loop is not enough for model selection",
     "Data drift versus concept drift: two problems that look identical in a dashboard",
@@ -73,6 +72,7 @@
     "What fine-tuning actually changes inside a pretrained model",
     "An MLOps roadmap for engineers coming from research, not software",
     "What an MLOps engineer does day to day, beyond the job title",
-    "The machine learning engineer skill set: modelling is the smaller half"
+    "The machine learning engineer skill set: modelling is the smaller half",
+    "Threat modelling for ML systems: evaluating failure, not just accuracy"
   ]
 }

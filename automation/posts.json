@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "threat-modelling-for-ml-systems",
+      "title": "Threat Modelling for ML Systems, Not Just Accuracy",
+      "excerpt": "High accuracy hides where a model breaks. Threat modelling forces you to ask how it fails, for whom, and at what cost.",
+      "date": "2026-07-22",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a6",
+      "thumb": "assets/blog/threat-modelling-for-ml-systems.png",
+      "thumb_alt": "Cover image for the article: Threat Modelling for ML Systems, Not Just Accuracy"
+    },
+    {
       "slug": "modelling-is-the-smaller-half",
       "title": "The ML Engineer Skill Set: Modelling Is the Smaller Half",
       "excerpt": "Training a model is the easy bit. The real work is data quality, leakage-aware evaluation, and keeping the system honest after deployment.",
