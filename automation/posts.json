@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a6",
       "thumb": "assets/blog/threat-modelling-for-ml-systems.png",
-      "thumb_alt": "Cover image for the article: Threat Modelling for ML Systems, Not Just Accuracy"
+      "thumb_alt": "Cover image for the article: Threat Modelling for ML Systems, Not Just Accuracy",
+      "li_shared": true
     },
     {
       "slug": "modelling-is-the-smaller-half",
