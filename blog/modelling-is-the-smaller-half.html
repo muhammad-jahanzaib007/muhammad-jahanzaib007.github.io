@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The ML Engineer Skill Set: Modelling Is the Smaller Half | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why machine learning engineering is mostly data pipelines, evaluation rigour, and monitoring, with modelling as the smaller, easier half of the job.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="machine learning engineering, model evaluation, data leakage, MLOps, feature engineering, train test split, model monitoring, reproducibility, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-22">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="The ML Engineer Skill Set: Modelling Is the Smaller Half">
+<meta property="og:description" content="Why machine learning engineering is mostly data pipelines, evaluation rigour, and monitoring, with modelling as the smaller, easier half of the job.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/modelling-is-the-smaller-half.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/modelling-is-the-smaller-half.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The ML Engineer Skill Set: Modelling Is the Smaller Half">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/modelling-is-the-smaller-half.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/modelling-is-the-smaller-half.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The ML Engineer Skill Set: Modelling Is the Smaller Half",
+  "description": "Why machine learning engineering is mostly data pipelines, evaluation rigour, and monitoring, with modelling as the smaller, easier half of the job.",
+  "url": "https://jahanzaibawan.com/blog/modelling-is-the-smaller-half.html",
+  "image": "https://jahanzaibawan.com/assets/blog/modelling-is-the-smaller-half.png",
+  "datePublished": "2026-07-22",
+  "dateModified": "2026-07-22",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/modelling-is-the-smaller-half.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "The ML Engineer Skill Set: Modelling Is the Smaller Half", "item": "https://jahanzaibawan.com/blog/modelling-is-the-smaller-half.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">MLOps · 5 min read · 22 Jul 2026</div>
+    <h1>The ML Engineer Skill Set: Modelling Is the Smaller Half</h1>
+    <p class="lede">Fitting a model is a small, well-supported part of the job. The rest is data plumbing, evaluation discipline, and keeping systems honest over time.</p>
+  </div>
+
+  <img src="../assets/blog/modelling-is-the-smaller-half.png" alt="Cover image for the article: The ML Engineer Skill Set: Modelling Is the Smaller Half" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this surprises people</h2><p>When I started studying machine learning properly, I assumed the job was mostly about choosing the right architecture and tuning it well. That assumption survives about one real project. In practice, calling <em>fit</em> on a model is often an afternoon's work once the data is ready. The weeks before and after that call are where the actual engineering happens: sourcing and cleaning data, building a split that does not lie to you, defining a metric that reflects the real cost of errors, and then watching the model in production as the world quietly shifts underneath it.</p><p>This is not a fashionable opinion to hold, because modelling is the part that gets taught, written about, and shown off in tutorials. It is genuinely interesting: there is elegant maths behind gradient descent, and a satisfying moment when a loss curve finally bends the right way. But interesting and important are not the same thing. A mediocre model trained on a clean, well-understood dataset with a trustworthy evaluation protocol will beat a brilliant model trained on leaky, mislabelled data almost every time it matters, which is in production, not in a notebook.</p></section><section class='psec reveal'><h2>A worked example: the leak you do not see</h2><p>Suppose you are building a model to predict whether a customer will cancel a subscription in the next thirty days, using eighteen months of historical account data. You engineer features: number of support tickets, days since last login, whether the last invoice failed. You do a standard random train test split, 80/20, and get an impressive area under the curve of around 0.93. That number feels great. It is also almost certainly wrong in a way that will hurt you later.</p><p>The problem is that a random split scatters rows from the same customer's timeline across both train and test sets, and it lets the model see information from after the prediction point, because features like total lifetime support tickets are computed over the whole history, including the weeks right before cancellation. The model is not learning to forecast churn; it is learning to recognise the fingerprints of a cancellation that has already effectively happened. In production, where you only have data up to today, that 0.93 collapses, sometimes to something only modestly better than a simple rule based on days since last login.</p><p>The fix is unglamorous: split by time and by customer, so that every training example is computed strictly using information available before the cutoff date, and no customer appears in both train and test. Once you do that properly, a realistic AUC might land closer to 0.78. That is a worse number on paper and a far more useful model in practice, because it tells you the truth about what the system can actually do once deployed. Getting to that honest 0.78 took far more thought than the model architecture did; the gradient boosted tree or logistic regression you choose at the end barely moves the needle compared with getting the split and the feature timing right.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/modelling-is-the-smaller-half-1.jpg' alt='data pipeline server room' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>The parts that actually consume the calendar</h2><p>If you map out where the hours actually go on a typical project, a rough and honest picture looks like this: understanding the business problem and translating it into a measurable target, perhaps a week; sourcing, joining, and cleaning data from systems that were never designed to talk to each other, several weeks; building a leakage-aware evaluation harness and defining the right metric, days that feel like they should take hours; the modelling step itself, often a few days of trying two or three sensible baselines and one more sophisticated approach; and then, if the project is real rather than a demo, an open-ended commitment to monitoring, retraining, and explaining the model to people who did not build it.</p><ul><li><strong>Data quality work</strong>: deduplication, handling missing values honestly rather than silently, reconciling inconsistent labels across time or across annotators.</li><li><strong>Evaluation design</strong>: choosing a split that matches how the model will actually be used, picking metrics that reflect asymmetric costs, and reporting uncertainty rather than a single point estimate.</li><li><strong>Pipeline and infrastructure</strong>: making feature computation reproducible between training and serving, so the numbers a model was trained on match what it sees live.</li><li><strong>Monitoring after deployment</strong>: tracking input drift, output distributions, and downstream business metrics, because a model that was accurate in January can degrade quietly by June without a single line of code changing.</li></ul><p>None of these tasks require inventing a new loss function or reading the latest architecture paper. They require the kind of patience that treats a pandas dataframe with the same scepticism you would apply to a stranger's claim. That scepticism is the actual differentiator between engineers whose models survive contact with production and those whose models look excellent in a slide deck and quietly get switched off six months later.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>None of this is an argument against learning modelling well. You still need to understand bias and variance, regularisation, and why a particular architecture suits a particular kind of data. But it is an argument for sequencing your effort correctly. Before you tune a single hyperparameter, ask whether your split respects time and grouping, whether your metric reflects the actual cost of the mistakes you will make, and whether the features you are computing in training will be computable, identically, at serving time.</p><p>A useful habit is to write down, before touching a model, exactly how you will know if it has failed: what baseline it must beat, on what slice of data, measured by what metric, and evaluated on a split that could not have leaked information from the future. If you cannot answer that clearly, the choice of algorithm is the least of your problems, and no amount of modelling skill will rescue an evaluation that was quietly rigged from the start.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/modelling-is-the-smaller-half-2.jpg' alt='analyst reviewing charts on monitor' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

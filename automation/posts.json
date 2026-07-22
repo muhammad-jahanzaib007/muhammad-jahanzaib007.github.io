@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "modelling-is-the-smaller-half",
+      "title": "The ML Engineer Skill Set: Modelling Is the Smaller Half",
+      "excerpt": "Training a model is the easy bit. The real work is data quality, leakage-aware evaluation, and keeping the system honest after deployment.",
+      "date": "2026-07-22",
+      "read_min": 5,
+      "tag": "MLOps",
+      "color": "a5",
+      "thumb": "assets/blog/modelling-is-the-smaller-half.png",
+      "thumb_alt": "Cover image for the article: The ML Engineer Skill Set: Modelling Is the Smaller Half"
+    },
+    {
       "slug": "mlops-engineer-day-to-day",
       "title": "What an MLOps Engineer Actually Does Day to Day",
       "excerpt": "MLOps is less about fancy tooling and more about babysitting data, retraining models responsibly, and catching silent failures before customers do.",

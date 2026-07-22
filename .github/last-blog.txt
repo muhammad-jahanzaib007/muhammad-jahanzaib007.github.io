@@ -1,1 +1,1 @@
-2026-07-21T20:01:52Z slug=mlops-engineer-day-to-day words=1031 title="What an MLOps Engineer Actually Does Day to Day"
+2026-07-22T08:02:10Z slug=modelling-is-the-smaller-half words=974 title="The ML Engineer Skill Set: Modelling Is the Smaller Half"

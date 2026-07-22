@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Tue, 21 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 22 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>The ML Engineer Skill Set: Modelling Is the Smaller Half</title>
+    <link>https://jahanzaibawan.com/blog/modelling-is-the-smaller-half.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/modelling-is-the-smaller-half.html</guid>
+    <pubDate>Wed, 22 Jul 2026 09:00:00 +0000</pubDate>
+    <description>Training a model is the easy bit. The real work is data quality, leakage-aware evaluation, and keeping the system honest after deployment.</description>
+    <category>MLOps</category>
+  </item>
   <item>
     <title>What an MLOps Engineer Actually Does Day to Day</title>
     <link>https://jahanzaibawan.com/blog/mlops-engineer-day-to-day.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Sun, 12 Jul 2026 09:00:00 +0000</pubDate>
     <description>Most augmentation choices are copied from tutorials rather than justified. Here&#x27;s how to test which ones actually improve generalisation for your task.</description>
     <category>Computer Vision</category>
-  </item>
-  <item>
-    <title>Object Detection Metrics: mAP Without Hand-Waving</title>
-    <link>https://jahanzaibawan.com/blog/map-explained-without-hand-waving.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/map-explained-without-hand-waving.html</guid>
-    <pubDate>Sun, 12 Jul 2026 09:00:00 +0000</pubDate>
-    <description>mAP gets thrown around as a single number, but few people can actually derive it. Here is the arithmetic behind it, worked through by hand.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>
