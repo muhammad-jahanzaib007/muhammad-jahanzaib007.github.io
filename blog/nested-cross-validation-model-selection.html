@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nested Cross-Validation: Why One Loop Isn&#x27;t Enough | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why using a single cross-validation loop for both hyperparameter tuning and evaluation overestimates performance, and how nested CV fixes it.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="nested cross-validation, model selection, hyperparameter tuning, overfitting, evaluation bias, leakage, machine learning, cross-validation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-23">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Nested Cross-Validation: Why One Loop Isn&#x27;t Enough">
+<meta property="og:description" content="Why using a single cross-validation loop for both hyperparameter tuning and evaluation overestimates performance, and how nested CV fixes it.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/nested-cross-validation-model-selection.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/nested-cross-validation-model-selection.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nested Cross-Validation: Why One Loop Isn&#x27;t Enough">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/nested-cross-validation-model-selection.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/nested-cross-validation-model-selection.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Nested Cross-Validation: Why One Loop Isn't Enough",
+  "description": "Why using a single cross-validation loop for both hyperparameter tuning and evaluation overestimates performance, and how nested CV fixes it.",
+  "url": "https://jahanzaibawan.com/blog/nested-cross-validation-model-selection.html",
+  "image": "https://jahanzaibawan.com/assets/blog/nested-cross-validation-model-selection.png",
+  "datePublished": "2026-07-23",
+  "dateModified": "2026-07-23",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/nested-cross-validation-model-selection.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Nested Cross-Validation: Why One Loop Isn't Enough", "item": "https://jahanzaibawan.com/blog/nested-cross-validation-model-selection.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 23 Jul 2026</div>
+    <h1>Nested Cross-Validation: Why One Loop Isn&#x27;t Enough</h1>
+    <p class="lede">A single cross-validation loop tells you how well a tuned model performs on the same folds used to tune it. That number is optimistic, and nested cross-validation is the fix.</p>
+  </div>
+
+  <img src="../assets/blog/nested-cross-validation-model-selection.png" alt="Cover image for the article: Nested Cross-Validation: Why One Loop Isn&#x27;t Enough" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The quiet leak in a familiar workflow</h2><p>Most people learn cross-validation as a single, tidy loop: split the data into k folds, train on k-1, test on the held-out fold, average the scores, done. It feels rigorous because you are no longer testing on the training set. But the moment you introduce hyperparameter tuning into that same loop, the rigour quietly leaks away. If you try ten values of a regularisation strength, pick the one with the best average cross-validation score, and then report that score as your estimate of generalisation, you have used the test folds twice: once to choose the model and once to judge it. The score you report is no longer an estimate of how the model will do on new data; it is an estimate of how well you can find a hyperparameter that happens to suit those particular folds.</p><p>This matters because the bias is not obvious from the numbers themselves. A single-loop cross-validation score of 0.87 accuracy looks exactly as trustworthy as a nested one of 0.83, but only one of them was earned honestly. The gap grows with the number of hyperparameter combinations you search and shrinks with dataset size, which is precisely why it catches people out on smaller, noisier datasets where careful evaluation matters most and where the temptation to squeeze out a better-looking number is strongest.</p></section><section class='psec reveal'><h2>A worked intuition</h2><p>Imagine a dataset of 300 samples split into five folds of 60 each. You want to tune a single hyperparameter with ten candidate values. In the single-loop approach, for each candidate you run the standard five-fold procedure, average the five test scores, and end up with ten average scores, one per candidate. You pick the highest, say 0.85, and report that as the model's expected accuracy.</p><p>The problem is that all five folds contributed to choosing which candidate looked best. Even if none of the candidates was truly superior, ordinary sampling noise across folds means one of the ten will look best by chance, and it can look best by a meaningful margin when the dataset is small and scores are noisy. You have effectively run ten experiments and reported only the winner, which is the same statistical sin as multiple testing without correction. The reported 0.85 is inflated by exactly the amount of luck involved in that selection.</p><p>Nested cross-validation separates the two decisions cleanly. An outer loop, say five folds, is reserved purely for evaluation. Within each outer training set, an inner loop, say another five folds, is used to search the ten candidate hyperparameters and pick the best one using only that inner data. The chosen hyperparameter is then retrained on the full outer training set and tested once on the outer test fold, which the inner loop never saw. This happens five times, once per outer fold, and the five outer test scores are averaged to give the final estimate. Note that the inner loop may pick a different hyperparameter value in each of the five outer iterations, which is expected and fine: you are not trying to find one single best hyperparameter here, you are trying to estimate how well your entire tuning procedure generalises.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/nested-cross-validation-model-selection-1.jpg' alt='laptop showing data spreadsheet grid' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What you actually get from each loop</h2><p>It helps to be precise about what each version of cross-validation answers. Single-loop cross-validation with tuning answers: given that I search this hyperparameter space on this data, what is the best score I can find. Nested cross-validation answers: if I apply this entire pipeline, including its tuning step, to a fresh sample of data, what score should I expect. Only the second question is the one you actually care about when you write a report, choose between two candidate modelling approaches, or decide whether a model is ready to be trusted.</p><p>A practical consequence is that nested cross-validation is not meant to hand you a final tuned model. It is meant to give you a trustworthy estimate of performance for a modelling pipeline as a whole. Once you are satisfied with that estimate, you still run one more hyperparameter search, this time using all the data you have, to produce the actual model you deploy. The nested procedure and the final model-fitting step are separate jobs with separate purposes, and conflating them is another common source of confusion.</p><p>The computational cost is real and worth naming honestly. With five outer folds and five inner folds searching ten candidates, you are fitting roughly 5 times 5 times 10, that is 250 models, plus the five final refits on the outer training sets, compared with 50 fits for the naive single-loop search. For expensive models this cost is a genuine constraint, and it is why people sometimes settle for a single held-out validation set plus a separate held-out test set instead of full nested cross-validation. That compromise can be reasonable when data is abundant, but on smaller datasets the extra variance from a single split usually outweighs the computational saving.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>If your pipeline involves any choice, a hyperparameter, a feature selection threshold, a choice of model family, made by looking at cross-validation scores, then those same folds cannot also be used to report your final performance number without bias. Nested cross-validation is not an academic nicety; it is the mechanism that keeps the tuning decision and the evaluation decision from contaminating each other.</p><p>In practice, use an outer loop purely to hold out data for honest scoring, an inner loop purely to search hyperparameters, and only report the outer scores as your estimate of generalisation. When someone shows you an impressively high cross-validation score alongside a wide hyperparameter search, it is worth asking a simple question: was the search inside the loop or outside it. That one question often explains more about whether a result will replicate than any amount of scrutiny of the model architecture itself.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/nested-cross-validation-model-selection-2.jpg' alt='scientist writing on whiteboard with diagram' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

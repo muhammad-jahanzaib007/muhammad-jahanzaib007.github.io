@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Nested cross-validation: why one loop is not enough for model selection",
     "Data drift versus concept drift: two problems that look identical in a dashboard",
     "The stationarity assumption behind most evaluation metrics, and when it breaks",
     "Baseline models you should always try before anything fancy",
@@ -73,6 +72,7 @@
     "What an MLOps engineer does day to day, beyond the job title",
     "The machine learning engineer skill set: modelling is the smaller half",
     "Threat modelling for ML systems: evaluating failure, not just accuracy",
-    "Held-out test sets: how large is large enough to trust the number"
+    "Held-out test sets: how large is large enough to trust the number",
+    "Nested cross-validation: why one loop is not enough for model selection"
   ]
 }

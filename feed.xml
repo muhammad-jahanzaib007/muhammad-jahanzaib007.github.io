@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Thu, 23 Jul 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Nested Cross-Validation: Why One Loop Isn&#x27;t Enough</title>
+    <link>https://jahanzaibawan.com/blog/nested-cross-validation-model-selection.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/nested-cross-validation-model-selection.html</guid>
+    <pubDate>Thu, 23 Jul 2026 09:00:00 +0000</pubDate>
+    <description>One CV loop for both tuning and evaluation leaks information. Nested CV separates the two jobs and gives you an honest estimate of generalisation.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Held-Out Test Sets: How Large Is Large Enough</title>
     <link>https://jahanzaibawan.com/blog/how-large-should-test-sets-be.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/how-large-should-test-sets-be.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Tue, 14 Jul 2026 09:00:00 +0000</pubDate>
     <description>A practical comparison of rule-based, statistical, and neural NER, with a worked example showing where each approach wins and where it quietly fails.</description>
     <category>NLP</category>
-  </item>
-  <item>
-    <title>Monitoring Model Drift: What to Log and When to Retrain</title>
-    <link>https://jahanzaibawan.com/blog/monitoring-model-drift.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/monitoring-model-drift.html</guid>
-    <pubDate>Mon, 13 Jul 2026 09:00:00 +0000</pubDate>
-    <description>Drift monitoring is not a dashboard of pretty charts. It is a disciplined logging habit and a retraining trigger you can defend with evidence.</description>
-    <category>MLOps</category>
   </item>
 </channel>
 </rss>

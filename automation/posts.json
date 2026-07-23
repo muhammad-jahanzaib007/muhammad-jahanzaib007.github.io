@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "nested-cross-validation-model-selection",
+      "title": "Nested Cross-Validation: Why One Loop Isn't Enough",
+      "excerpt": "One CV loop for both tuning and evaluation leaks information. Nested CV separates the two jobs and gives you an honest estimate of generalisation.",
+      "date": "2026-07-23",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a3",
+      "thumb": "assets/blog/nested-cross-validation-model-selection.png",
+      "thumb_alt": "Cover image for the article: Nested Cross-Validation: Why One Loop Isn't Enough"
+    },
+    {
       "slug": "how-large-should-test-sets-be",
       "title": "Held-Out Test Sets: How Large Is Large Enough",
       "excerpt": "A test accuracy of 91% means little without knowing how many examples it was measured on. Here is the maths behind that intuition.",
