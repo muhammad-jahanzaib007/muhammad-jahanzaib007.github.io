@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a2",
       "thumb": "assets/blog/how-large-should-test-sets-be.png",
-      "thumb_alt": "Cover image for the article: Held-Out Test Sets: How Large Is Large Enough"
+      "thumb_alt": "Cover image for the article: Held-Out Test Sets: How Large Is Large Enough",
+      "li_shared": true
     },
     {
       "slug": "threat-modelling-for-ml-systems",
