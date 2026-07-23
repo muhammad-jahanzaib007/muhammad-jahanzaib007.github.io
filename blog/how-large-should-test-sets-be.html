@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Held-Out Test Sets: How Large Is Large Enough | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why held-out test set size matters for trusting reported accuracy, with a worked example using confidence intervals for binomial proportions.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="held-out test set, model evaluation, confidence intervals, machine learning statistics, test set size, evaluation methodology, data splits, leakage, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-23">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Held-Out Test Sets: How Large Is Large Enough">
+<meta property="og:description" content="Why held-out test set size matters for trusting reported accuracy, with a worked example using confidence intervals for binomial proportions.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/how-large-should-test-sets-be.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/how-large-should-test-sets-be.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Held-Out Test Sets: How Large Is Large Enough">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/how-large-should-test-sets-be.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/how-large-should-test-sets-be.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Held-Out Test Sets: How Large Is Large Enough",
+  "description": "Why held-out test set size matters for trusting reported accuracy, with a worked example using confidence intervals for binomial proportions.",
+  "url": "https://jahanzaibawan.com/blog/how-large-should-test-sets-be.html",
+  "image": "https://jahanzaibawan.com/assets/blog/how-large-should-test-sets-be.png",
+  "datePublished": "2026-07-23",
+  "dateModified": "2026-07-23",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/how-large-should-test-sets-be.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Held-Out Test Sets: How Large Is Large Enough", "item": "https://jahanzaibawan.com/blog/how-large-should-test-sets-be.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 23 Jul 2026</div>
+    <h1>Held-Out Test Sets: How Large Is Large Enough</h1>
+    <p class="lede">A single accuracy number from a small test set can look precise while hiding a wide margin of error. Here is how to reason about that margin before you trust it.</p>
+  </div>
+
+  <img src="../assets/blog/how-large-should-test-sets-be.png" alt="Cover image for the article: Held-Out Test Sets: How Large Is Large Enough" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The number that looks more certain than it is</h2><p>A held-out test set exists to answer one question honestly: how will this model behave on data it has never seen. That is a good instinct, but it quietly assumes the test set is large enough for the resulting number to mean something. In practice I see test sets of a few hundred examples reported alongside a single accuracy figure to two decimal places, as if the number were a physical constant rather than an estimate with noise attached to it.</p><p>The problem is not that small test sets are useless. It is that the uncertainty around the estimate is rarely reported, and readers, including the person who ran the experiment, tend to treat a point estimate as the truth. Two models scoring 88% and 90% on a three hundred example test set can be statistically indistinguishable, yet one gets shipped and the other gets shelved on the strength of a two point gap that could easily flip on a different random split.</p><p>This matters more as models get better. Early in a project, accuracy differences between approaches are often large enough that sample size barely matters; a 65% baseline against an 85% model is obviously a real difference even on a small set. Late in a project, when you are comparing 91.2% against 91.8%, sample size is the whole story.</p></section><section class='psec reveal'><h2>Working through the arithmetic</h2><p>Treat each test example as a Bernoulli trial: the model gets it right or wrong. If the true accuracy is <em>p</em> and you evaluate on <em>n</em> independent examples, the standard error of your observed accuracy is roughly the square root of p times (1 minus p) divided by n. For a rough binary classifier sitting around 90% accuracy, p(1-p) is about 0.09.</p><p>With n equal to 100, the standard error works out to roughly 0.03, so a 95% confidence interval spans about plus or minus 6 percentage points. An observed 90% could genuinely reflect a true accuracy anywhere from about 84% to 96%. With n equal to 1,000, the standard error shrinks to roughly 0.0095, giving an interval of about plus or minus 1.9 points, so 90% observed sits somewhere between about 88% and 92%. Push n to 10,000 and the interval tightens to roughly plus or minus 0.6 points.</p><p>The pattern is the familiar square root law: to halve your margin of error you need four times as much data, not twice. Going from 100 to 1,000 examples buys you a big improvement because you are moving along the steep part of the curve. Going from 10,000 to 40,000 buys you a much smaller absolute gain, even though it is the same fourfold increase in effort. This is why doubling a test set from 200 to 400 examples rarely changes your decision, but growing it from 200 to 5,000 usually does.</p><p>The consequence for comparing two models is sharper still. If both models are evaluated on the same 300 examples and score 88% and 90%, the difference of 2 points is smaller than the standard error of either estimate individually. A paired test, such as McNemar's test on the disagreements between the two models, will often tell you there is no evidence the difference is real. Reporting the raw percentages without that check invites a false sense of confidence in whichever number happens to be higher.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/how-large-should-test-sets-be-1.jpg' alt='laptop with data spreadsheet' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Where the real risk hides</h2><p>Sample size interacts badly with class imbalance and with subgroup analysis. If a dataset is 95% negative and 5% positive, a test set of a thousand examples contains only around fifty positive cases. Any accuracy or F1 score broken down by class is really being estimated from that smaller count, so the confidence interval around your recall on the positive class is far wider than the headline number suggests. I have seen reported recall figures on minority classes that were essentially single estimates from a few dozen examples, dressed up as a stable performance characteristic.</p><p>The same shrinkage happens whenever you slice the test set for a fairness check, an error analysis by category, or a comparison across subpopulations. A test set that is comfortably large in aggregate can be dangerously small once you split it into ten subgroups. Before trusting a subgroup number, ask how many examples actually fed into it, not how many are in the full test set.</p><p>There is also a subtler risk: a test set can be numerically large but effectively small if its examples are not independent. Sentences drawn from the same document, frames from the same video, or transactions from the same customer are correlated, so the effective sample size is smaller than the raw count suggests, and confidence intervals computed as if each row were independent will be too narrow. This is a leakage problem dressed up as a sample size problem, and it is worth checking the provenance of your test rows before trusting any interval calculation built on top of them.</p></section><section class='psec reveal'><h2>A practical way to trust the number</h2><p>Before reporting a test result, work out the confidence interval implied by your test set size, using the simple binomial formula as a starting point even if your final metric is more complex. If the interval is wide enough to swallow the difference you are claiming between models, say so plainly rather than presenting the point estimate as decisive. It costs one extra sentence and saves you from a conclusion that will not replicate.</p><p>When comparing models on the same test set, use a paired statistical test rather than eyeballing the gap between two percentages. When reporting subgroup performance, quote the subgroup size next to the metric, because a recall of 100% on eight examples is not evidence of anything. And when a test set is small by necessity, be explicit that the headline number is a rough estimate, not a precise measurement, and consider whether cross-validation or repeated sampling can give a more honest picture of the variance.</p><p>None of this requires new tools, just the discipline to ask how many independent examples actually produced the number in front of you. A held-out test set earns trust not from its existence but from its size relative to the claim being made on top of it.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/how-large-should-test-sets-be-2.jpg' alt='statistics chart on whiteboard' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

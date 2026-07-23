@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "how-large-should-test-sets-be",
+      "title": "Held-Out Test Sets: How Large Is Large Enough",
+      "excerpt": "A test accuracy of 91% means little without knowing how many examples it was measured on. Here is the maths behind that intuition.",
+      "date": "2026-07-23",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a2",
+      "thumb": "assets/blog/how-large-should-test-sets-be.png",
+      "thumb_alt": "Cover image for the article: Held-Out Test Sets: How Large Is Large Enough"
+    },
+    {
       "slug": "threat-modelling-for-ml-systems",
       "title": "Threat Modelling for ML Systems, Not Just Accuracy",
       "excerpt": "High accuracy hides where a model breaks. Threat modelling forces you to ask how it fails, for whom, and at what cost.",

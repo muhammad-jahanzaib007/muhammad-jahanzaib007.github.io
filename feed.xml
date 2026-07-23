@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Wed, 22 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 23 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Held-Out Test Sets: How Large Is Large Enough</title>
+    <link>https://jahanzaibawan.com/blog/how-large-should-test-sets-be.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/how-large-should-test-sets-be.html</guid>
+    <pubDate>Thu, 23 Jul 2026 09:00:00 +0000</pubDate>
+    <description>A test accuracy of 91% means little without knowing how many examples it was measured on. Here is the maths behind that intuition.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Threat Modelling for ML Systems, Not Just Accuracy</title>
     <link>https://jahanzaibawan.com/blog/threat-modelling-for-ml-systems.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/monitoring-model-drift.html</guid>
     <pubDate>Mon, 13 Jul 2026 09:00:00 +0000</pubDate>
     <description>Drift monitoring is not a dashboard of pretty charts. It is a disciplined logging habit and a retraining trigger you can defend with evidence.</description>
-    <category>MLOps</category>
-  </item>
-  <item>
-    <title>A Practical Checklist for Notebook to Production</title>
-    <link>https://jahanzaibawan.com/blog/notebook-to-production-checklist.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/notebook-to-production-checklist.html</guid>
-    <pubDate>Mon, 13 Jul 2026 09:00:00 +0000</pubDate>
-    <description>A working checklist for taking a model out of a notebook safely, covering data leakage, baselines, monitoring, and the questions reviewers should always ask.</description>
     <category>MLOps</category>
   </item>
 </channel>
