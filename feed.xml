@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Fri, 24 Jul 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>The Stationarity Assumption Hiding Inside Your Metrics</title>
+    <link>https://jahanzaibawan.com/blog/stationarity-assumption-evaluation-metrics.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/stationarity-assumption-evaluation-metrics.html</guid>
+    <pubDate>Fri, 24 Jul 2026 09:00:00 +0000</pubDate>
+    <description>Accuracy, AUC and their friends all assume tomorrow looks like today. I unpack that assumption and show, with numbers, how quietly it can fail.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Data Drift Versus Concept Drift: Same Dashboard, Different Fix</title>
     <link>https://jahanzaibawan.com/blog/data-drift-vs-concept-drift.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/data-drift-vs-concept-drift.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/vector-databases-and-rag-explained.html</guid>
     <pubDate>Wed, 15 Jul 2026 09:00:00 +0000</pubDate>
     <description>How embeddings and vector search let language models look things up instead of guessing, and why the plumbing matters more than the hype.</description>
-    <category>NLP</category>
-  </item>
-  <item>
-    <title>Prompt Engineering versus Fine-Tuning: Choosing the Lever</title>
-    <link>https://jahanzaibawan.com/blog/prompt-engineering-vs-fine-tuning.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/prompt-engineering-vs-fine-tuning.html</guid>
-    <pubDate>Tue, 14 Jul 2026 09:00:00 +0000</pubDate>
-    <description>A practical guide to choosing between prompt engineering and fine-tuning, with a worked example showing when each lever actually pays off.</description>
     <category>NLP</category>
   </item>
 </channel>

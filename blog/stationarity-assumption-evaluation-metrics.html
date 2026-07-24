@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Stationarity Assumption Hiding Inside Your Metrics | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="An explanation of the stationarity assumption underlying common evaluation metrics, with a worked example showing how distribution shift silently breaks reported performance.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="stationarity, distribution shift, evaluation metrics, model drift, machine learning evaluation, non-stationary data, leakage, generalisation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-24">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="The Stationarity Assumption Hiding Inside Your Metrics">
+<meta property="og:description" content="An explanation of the stationarity assumption underlying common evaluation metrics, with a worked example showing how distribution shift silently breaks reported performance.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/stationarity-assumption-evaluation-metrics.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/stationarity-assumption-evaluation-metrics.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Stationarity Assumption Hiding Inside Your Metrics">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/stationarity-assumption-evaluation-metrics.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/stationarity-assumption-evaluation-metrics.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The Stationarity Assumption Hiding Inside Your Metrics",
+  "description": "An explanation of the stationarity assumption underlying common evaluation metrics, with a worked example showing how distribution shift silently breaks reported performance.",
+  "url": "https://jahanzaibawan.com/blog/stationarity-assumption-evaluation-metrics.html",
+  "image": "https://jahanzaibawan.com/assets/blog/stationarity-assumption-evaluation-metrics.png",
+  "datePublished": "2026-07-24",
+  "dateModified": "2026-07-24",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/stationarity-assumption-evaluation-metrics.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "The Stationarity Assumption Hiding Inside Your Metrics", "item": "https://jahanzaibawan.com/blog/stationarity-assumption-evaluation-metrics.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 24 Jul 2026</div>
+    <h1>The Stationarity Assumption Hiding Inside Your Metrics</h1>
+    <p class="lede">Most evaluation metrics quietly assume the world stays put between training and deployment. Here is what that assumption buys you, and what happens when it fails.</p>
+  </div>
+
+  <img src="../assets/blog/stationarity-assumption-evaluation-metrics.png" alt="Cover image for the article: The Stationarity Assumption Hiding Inside Your Metrics" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The quiet assumption nobody states</h2><p>When we compute accuracy, precision, recall, AUC or any other standard metric on a held-out test set, we are implicitly claiming something much stronger than 'this model did well on these examples'. We are claiming that the process generating the test set is the same process that will generate future data. In statistical terms, we are assuming the data is stationary: the joint distribution of inputs and outputs does not change over time. Without that assumption, a single number computed on a fixed test set tells you almost nothing about what will happen next week.</p><p>This assumption is so deeply baked into machine learning practice that it rarely gets named. Train/test splits, cross-validation, even the very idea of a leaderboard, all rest on the belief that the past is a fair sample of the future. Most of the time this is a reasonable working assumption, and it is why the field has made progress at all. But it is worth being explicit about it, because the moment it breaks, your evaluation numbers stop measuring what you think they measure.</p><p>I find it useful to separate two things that often get conflated: the model's ability to fit patterns, and the metric's ability to certify that fit will generalise in time. A model can be excellent at the first and the metric can still lie to you about the second, purely because the world moved.</p></section><section class='psec reveal'><h2>A worked example: the fraud detector that stopped working</h2><p>Imagine a binary classifier trained to flag fraudulent transactions, evaluated by a leakage-aware time-based split: train on January to June, test on July. Suppose it achieves an AUC of 0.94 and, at the chosen threshold, a precision of 0.81 and recall of 0.76. Those numbers look solid, and because the split respects time order rather than shuffling randomly, we can be fairly confident they reflect genuine generalisation across that boundary, not memorisation leaking backwards from the future into training.</p><p>Now roll the model into production for August. A new fraud pattern emerges, say a coordinated attack using a payment method that barely existed in the training window. The feature distribution for that payment method shifts, and more importantly the relationship between features and the fraud label shifts too: transactions that used to be low risk with that method are now high risk. This is not just covariate shift, where inputs move but the underlying relationship stays fixed; it is a change in the conditional distribution itself, sometimes called concept drift.</p><p>Precision in August might fall to 0.52 while recall drops to 0.58, even though nothing about the model changed. The AUC computed back in July, 0.94, is still a true statement about July's population. It was never a promise about August. The mistake is not in the metric's arithmetic; it is in treating a single stationary-world snapshot as if it were a permanent certificate of quality.</p><p>What makes this insidious is that the same numeric value, 0.94 AUC, can represent two very different realities depending on whether the underlying process is stable or drifting. A practitioner who only checks the dashboard once a quarter can go months believing the model is fine, because the number they last saw was good and nobody told them the assumption underneath it had quietly expired.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/stationarity-assumption-evaluation-metrics-1.jpg' alt='stock market ticker screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Where stationarity is more fragile than it looks</h2><p>Some domains are close enough to stationary that the assumption barely matters: image classification of static object categories, for instance, where a cat looks like a cat regardless of the decade. Other domains are almost never stationary, and evaluation practice has to account for that explicitly. Recommendation systems face shifting user tastes and seasonal effects. Any model touching human behaviour, pricing, or adversarial actors faces a moving target almost by definition, because people react to the model itself, which is a form of feedback loop that guarantees non-stationarity.</p><p>Random train/test splitting is particularly dangerous in non-stationary settings, because it hides the problem rather than revealing it. If you shuffle a year of transactions randomly instead of splitting by time, information from August leaks into training via near-duplicate records, seasonal correlations or entities that appear in both sets. The resulting metric looks even better than the time-based split, precisely because it violates the temporal structure of the real deployment scenario. This is a leakage problem dressed up as a stationarity problem: the test set stops being an honest proxy for the future the moment it is allowed to peek at it.</p><p>A more subtle version shows up in metrics aggregated over long periods. Reporting a single accuracy figure over eighteen months of deployment can average away a serious mid-period collapse and a later recovery, presenting a flat, reassuring number that never existed at any single point in time. Sliced, time-windowed evaluation, plotting the metric over rolling periods rather than collapsing it to one scalar, is the simplest defence, and it costs almost nothing extra to compute.</p></section><section class='psec reveal'><h2>What to actually do about it</h2><p>The practical fix is not a clever new metric; it is a change in evaluation discipline. Always split by time when time is meaningful, never by random shuffling, so your test performance reflects genuine forward prediction rather than interpolation within a static blob of data. Track metrics as a time series against deployment, not as a single frozen number from validation day, and set up monitoring that compares live performance against the training-time baseline rather than assuming it will hold indefinitely.</p><p>It also helps to distinguish, when performance drops, whether the inputs have shifted, the labels have shifted, or the relationship between them has shifted, because each calls for a different response: retraining on fresh data, recalibrating thresholds, or redesigning features entirely. None of this requires exotic statistics. It requires accepting that a metric is a statement about a particular slice of history, and treating any claim about the future as a hypothesis to be checked again, not a fact already proven.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/stationarity-assumption-evaluation-metrics-2.jpg' alt='calendar pages time series chart' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

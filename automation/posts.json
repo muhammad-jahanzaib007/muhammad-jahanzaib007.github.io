@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "stationarity-assumption-evaluation-metrics",
+      "title": "The Stationarity Assumption Hiding Inside Your Metrics",
+      "excerpt": "Accuracy, AUC and their friends all assume tomorrow looks like today. I unpack that assumption and show, with numbers, how quietly it can fail.",
+      "date": "2026-07-24",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a5",
+      "thumb": "assets/blog/stationarity-assumption-evaluation-metrics.png",
+      "thumb_alt": "Cover image for the article: The Stationarity Assumption Hiding Inside Your Metrics"
+    },
+    {
       "slug": "data-drift-vs-concept-drift",
       "title": "Data Drift Versus Concept Drift: Same Dashboard, Different Fix",
       "excerpt": "Your model's accuracy dropped and the input distribution shifted too. That doesn't mean the shift caused the drop. Here's how to tell drift types apart.",

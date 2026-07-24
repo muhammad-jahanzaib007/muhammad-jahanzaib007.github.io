@@ -1,1 +1,1 @@
-2026-07-24T08:01:55Z slug=data-drift-vs-concept-drift words=984 title="Data Drift Versus Concept Drift: Same Dashboard, Different Fix"
+2026-07-24T20:03:44Z slug=stationarity-assumption-evaluation-metrics words=989 title="The Stationarity Assumption Hiding Inside Your Metrics"
