@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a4",
       "thumb": "assets/blog/data-drift-vs-concept-drift.png",
-      "thumb_alt": "Cover image for the article: Data Drift Versus Concept Drift: Same Dashboard, Different Fix"
+      "thumb_alt": "Cover image for the article: Data Drift Versus Concept Drift: Same Dashboard, Different Fix",
+      "li_shared": true
     },
     {
       "slug": "nested-cross-validation-model-selection",
