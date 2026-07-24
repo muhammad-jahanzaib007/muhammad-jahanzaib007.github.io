@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Drift Versus Concept Drift: Same Dashboard, Different Fix | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="An explainer on distinguishing data drift from concept drift in machine learning monitoring, with a worked example and practical diagnostic steps.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="data drift, concept drift, model monitoring, distribution shift, ML in production, model evaluation, drift detection, dataset shift, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-24">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Data Drift Versus Concept Drift: Same Dashboard, Different Fix">
+<meta property="og:description" content="An explainer on distinguishing data drift from concept drift in machine learning monitoring, with a worked example and practical diagnostic steps.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/data-drift-vs-concept-drift.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/data-drift-vs-concept-drift.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Data Drift Versus Concept Drift: Same Dashboard, Different Fix">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/data-drift-vs-concept-drift.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/data-drift-vs-concept-drift.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Data Drift Versus Concept Drift: Same Dashboard, Different Fix",
+  "description": "An explainer on distinguishing data drift from concept drift in machine learning monitoring, with a worked example and practical diagnostic steps.",
+  "url": "https://jahanzaibawan.com/blog/data-drift-vs-concept-drift.html",
+  "image": "https://jahanzaibawan.com/assets/blog/data-drift-vs-concept-drift.png",
+  "datePublished": "2026-07-24",
+  "dateModified": "2026-07-24",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/data-drift-vs-concept-drift.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Data Drift Versus Concept Drift: Same Dashboard, Different Fix", "item": "https://jahanzaibawan.com/blog/data-drift-vs-concept-drift.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 24 Jul 2026</div>
+    <h1>Data Drift Versus Concept Drift: Same Dashboard, Different Fix</h1>
+    <p class="lede">A monitoring alert tells you something changed, but not what. Confusing these two failure modes wastes time and points teams at the wrong fix.</p>
+  </div>
+
+  <img src="../assets/blog/data-drift-vs-concept-drift.png" alt="Cover image for the article: Data Drift Versus Concept Drift: Same Dashboard, Different Fix" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the dashboard lies to you</h2><p>Most model monitoring dashboards show two things side by side: a chart of feature distributions drifting over time, and a chart of accuracy or AUC declining over time. When both lines move at once, the natural reading is that the first caused the second. That reading is often wrong, and acting on it wastes engineering effort on the wrong fix.</p><p>Data drift means the distribution of inputs has changed while the relationship between inputs and outputs stays the same. Concept drift means that relationship itself has changed, regardless of whether the inputs look different. A model can suffer badly from concept drift while its input distribution looks perfectly stable, and it can tolerate substantial data drift with no drop in performance at all. Treating them as the same problem leads to fixes that don't touch the actual cause.</p><p>I find it useful to separate the question into two: has the world that generates my features changed, and has the mapping from features to labels changed. These are independent questions, and a dashboard that only plots feature histograms and a performance metric cannot answer the second one on its own, because it needs current ground truth labels that are often delayed or unavailable at scoring time.</p></section><section class='psec reveal'><h2>A worked example: the credit scoring model</h2><p>Suppose a credit risk model was trained on applicants with average declared income of £32,000 and a default rate of 6%. Six months later, the applicant pool shifts because a marketing campaign attracts younger applicants with average declared income of £26,000. The income feature distribution has clearly moved, so any dashboard tracking population stability index or KL divergence on that feature will flag it immediately. That is data drift.</p><p>Now suppose separately that a change in the labour market means that, for a given income and credit history, applicants are now 1.5 times more likely to default than they were at training time, because job security in certain sectors has weakened. The relationship between features and the default label has changed even though, in this scenario, the income distribution itself stayed put. That is concept drift, and it is invisible to any monitor that only watches inputs.</p><p>In practice these two often arrive together, which is exactly why the dashboard is confusing. The younger applicant pool brings both a shifted income distribution and, plausibly, a different risk profile at each income level, since younger applicants may have shorter credit histories that behave differently. If accuracy drops, you cannot tell from the input drift chart alone whether the model is failing because it is extrapolating into an unfamiliar region of income (a data drift problem, fixable by retraining on representative data) or because the old mapping from income to risk no longer holds even for familiar income levels (a concept drift problem, which retraining on old-plus-new data with equal weighting will not fully fix, because you need the model to actually relearn the relationship, not just see more examples).</p><p>The diagnostic move is to check performance conditional on region of the input space that has not shifted. If the model's error rate has risen even among applicants with income close to £32,000, the training-time average, that is strong evidence of concept drift, because the population there hasn't moved much but the outcomes have. If errors are concentrated among the new, lower-income applicants and the model was never good at scoring that segment even in a held-out slice of the original data, that points more towards a coverage gap, a data drift problem.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/data-drift-vs-concept-drift-1.jpg' alt='financial documents and calculator on desk' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Why the distinction changes what you do next</h2><p>If the real issue is data drift with a stable concept, the fix is usually about representation: collect more labelled examples from the new region of the input space, retrain or fine-tune so the model has seen it, and consider whether the feature space itself needs to be checked for extrapolation risk. Techniques like importance weighting, where you upweight training examples that resemble the new distribution, can help without waiting for fresh labels, since they only require knowing the new input distribution, not new outcomes.</p><p>If the real issue is concept drift, more data from the same broken relationship doesn't help unless it's recent enough to reflect the new relationship. Here the fix is closer to a retraining cadence problem: how quickly can you get fresh labelled data reflecting the current mapping, and is your evaluation set leaking old-concept examples into a supposedly current test split. A model can look fine on a backtest that mixes eras together while quietly failing on this week's decisions, which is a leakage problem dressed up as a performance problem.</p><p>There's also a case, easy to miss, where neither drift is visible in aggregate metrics but both are present locally, cancelling out. A model can be getting worse for one subgroup and, coincidentally, better for another because of a genuinely improved concept there, leaving the headline accuracy roughly flat. This is why I prefer monitoring performance by meaningful segment rather than trusting a single overall number, and why any drift detection system should be paired with a labelling pipeline fast enough to periodically check the actual feature-to-label relationship, not just the feature distribution.</p></section><section class='psec reveal'><h2>A practical takeaway</h2><p>When a monitoring alert fires, resist the urge to explain a performance drop with the first drift chart you see. Ask two separate questions: has the input distribution moved, and, in the region where it hasn't moved, has performance still dropped. The first question is answerable immediately from unlabelled data using distributional distance measures. The second requires labels, even a small, carefully sampled batch of recent ground truth, and it is the one that actually tells you whether retraining on more of the same kind of data will help or whether you need the model to learn a genuinely different relationship. Spend the labelling budget on answering that second question before committing to a fix.</p></section>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

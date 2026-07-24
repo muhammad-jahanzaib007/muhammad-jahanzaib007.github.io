@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "data-drift-vs-concept-drift",
+      "title": "Data Drift Versus Concept Drift: Same Dashboard, Different Fix",
+      "excerpt": "Your model's accuracy dropped and the input distribution shifted too. That doesn't mean the shift caused the drop. Here's how to tell drift types apart.",
+      "date": "2026-07-24",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a4",
+      "thumb": "assets/blog/data-drift-vs-concept-drift.png",
+      "thumb_alt": "Cover image for the article: Data Drift Versus Concept Drift: Same Dashboard, Different Fix"
+    },
+    {
       "slug": "nested-cross-validation-model-selection",
       "title": "Nested Cross-Validation: Why One Loop Isn't Enough",
       "excerpt": "One CV loop for both tuning and evaluation leaks information. Nested CV separates the two jobs and gives you an honest estimate of generalisation.",

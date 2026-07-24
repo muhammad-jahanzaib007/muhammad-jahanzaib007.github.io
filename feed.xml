@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Thu, 23 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 24 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Data Drift Versus Concept Drift: Same Dashboard, Different Fix</title>
+    <link>https://jahanzaibawan.com/blog/data-drift-vs-concept-drift.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/data-drift-vs-concept-drift.html</guid>
+    <pubDate>Fri, 24 Jul 2026 09:00:00 +0000</pubDate>
+    <description>Your model&#x27;s accuracy dropped and the input distribution shifted too. That doesn&#x27;t mean the shift caused the drop. Here&#x27;s how to tell drift types apart.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Nested Cross-Validation: Why One Loop Isn&#x27;t Enough</title>
     <link>https://jahanzaibawan.com/blog/nested-cross-validation-model-selection.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/prompt-engineering-vs-fine-tuning.html</guid>
     <pubDate>Tue, 14 Jul 2026 09:00:00 +0000</pubDate>
     <description>A practical guide to choosing between prompt engineering and fine-tuning, with a worked example showing when each lever actually pays off.</description>
-    <category>NLP</category>
-  </item>
-  <item>
-    <title>Named Entity Recognition: Three Approaches Compared</title>
-    <link>https://jahanzaibawan.com/blog/ner-rule-statistical-neural.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/ner-rule-statistical-neural.html</guid>
-    <pubDate>Tue, 14 Jul 2026 09:00:00 +0000</pubDate>
-    <description>A practical comparison of rule-based, statistical, and neural NER, with a worked example showing where each approach wins and where it quietly fails.</description>
     <category>NLP</category>
   </item>
 </channel>
