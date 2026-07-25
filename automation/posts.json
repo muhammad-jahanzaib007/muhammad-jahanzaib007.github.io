@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "ablation-studies-isolating-gains",
+      "title": "Ablation Studies: Isolating What Actually Helped",
+      "excerpt": "A new module, a new loss, a better score: but which change actually mattered? Ablations tell you, if you design them properly.",
+      "date": "2026-07-25",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a2",
+      "thumb": "assets/blog/ablation-studies-isolating-gains.png",
+      "thumb_alt": "Cover image for the article: Ablation Studies: Isolating What Actually Helped"
+    },
+    {
       "slug": "always-try-baseline-models-first",
       "title": "Baseline Models You Should Always Try First",
       "excerpt": "A strong baseline is not a formality, it is the number every fancy model must beat to justify its cost.",

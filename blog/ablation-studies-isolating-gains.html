@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ablation Studies: Isolating What Actually Helped | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to designing ablation studies that reliably isolate which components of a model actually contribute to performance gains.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="ablation studies, machine learning evaluation, model interpretability, experiment design, deep learning research, baselines, reproducibility, leakage, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-25">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Ablation Studies: Isolating What Actually Helped">
+<meta property="og:description" content="A practical guide to designing ablation studies that reliably isolate which components of a model actually contribute to performance gains.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/ablation-studies-isolating-gains.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/ablation-studies-isolating-gains.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ablation Studies: Isolating What Actually Helped">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/ablation-studies-isolating-gains.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/ablation-studies-isolating-gains.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Ablation Studies: Isolating What Actually Helped",
+  "description": "A practical guide to designing ablation studies that reliably isolate which components of a model actually contribute to performance gains.",
+  "url": "https://jahanzaibawan.com/blog/ablation-studies-isolating-gains.html",
+  "image": "https://jahanzaibawan.com/assets/blog/ablation-studies-isolating-gains.png",
+  "datePublished": "2026-07-25",
+  "dateModified": "2026-07-25",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/ablation-studies-isolating-gains.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Ablation Studies: Isolating What Actually Helped", "item": "https://jahanzaibawan.com/blog/ablation-studies-isolating-gains.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 25 Jul 2026</div>
+    <h1>Ablation Studies: Isolating What Actually Helped</h1>
+    <p class="lede">When a model improves, it is tempting to credit the flashiest new idea. Ablation studies force you to check whether that credit is deserved.</p>
+  </div>
+
+  <img src="../assets/blog/ablation-studies-isolating-gains.png" alt="Cover image for the article: Ablation Studies: Isolating What Actually Helped" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the win is rarely what you think it is</h2><p>You change five things at once: a new attention variant, a bigger batch size, label smoothing, a different learning rate schedule, and an extra regularisation term. Accuracy goes up by three points. It is enormously tempting to write a paper, or a report, that attributes the gain to the attention variant, because that is the interesting idea you set out to test. The uncomfortable truth is that you have no evidence for that claim. You have evidence that the combination works better than the old combination, and nothing more specific than that.</p><p>This is not a pedantic concern. In my own experiments I have seen a supposedly clever architectural tweak contribute almost nothing once I checked, with the actual improvement coming from a longer warmup schedule that I had changed at the same time out of habit. Had I not gone back and isolated the variables, I would have carried a false belief into the next project, tried to reuse the wrong idea, and been confused when it failed to generalise elsewhere.</p><p>An ablation study is simply the discipline of removing or replacing one component at a time and re-measuring, so that each claim about causation is backed by a controlled comparison rather than a single before-and-after number. It is unglamorous work. It rarely produces a paragraph you want to write. But it is the difference between an empirical finding and a story you have told yourself about your own model.</p></section><section class='psec reveal'><h2>A worked example: three changes, one score</h2><p>Suppose your baseline model gets sixty eight percent accuracy on a held-out test set. You introduce three changes at once and your new model gets seventy four percent. Six points is a meaningful jump, so it is worth understanding where it came from. The three changes are: swapping mean pooling for an attention pooling layer, adding dropout of zero point two before the final classifier, and switching from a fixed learning rate to cosine decay.</p><p>A proper ablation reintroduces the baseline and removes one change at a time, keeping everything else fixed, including the random seed where feasible. Say the results come out as follows: baseline plus attention pooling alone reaches seventy percent; baseline plus dropout alone reaches sixty nine percent; baseline plus cosine decay alone reaches seventy two percent. None of these single changes reaches seventy four percent on its own, which tells you the components interact, but it also tells you something sharper: cosine decay is doing most of the work, attention pooling adds a modest amount, and dropout alone is barely distinguishable from noise given a typical run to run variance of about one point on a dataset this size.</p><p>That last detail matters enormously and is the part people skip. If your test set is small enough that repeated runs with different seeds swing by a point or more, then a one point difference between two ablation conditions is not evidence of anything. You need either a large enough evaluation set, or multiple seeds with reported variance, before you can say with a straight face which piece of your pipeline earned its place. Reporting a single ablation number per condition, without any sense of its spread, is a way of dressing up noise as insight.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/ablation-studies-isolating-gains-1.jpg' alt='scientist adjusting dials on lab equipment' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Designing ablations that do not lie to you</h2><p>The first rule is to change one thing at a time relative to a fixed, well-understood baseline, not relative to your full final model. Removing one component from the full model and calling the drop its contribution assumes the components do not interact, which is often false, as the example above shows. Where interactions are plausible, a leave-one-out grid across a small number of components, ideally combined with an additive build-up from the baseline, gives you a much more honest picture than either approach alone.</p><p>The second rule is to keep the evaluation protocol identical across every condition. This sounds obvious but is where leakage quietly creeps in. If your baseline was tuned on a validation split that later got folded into training data for the ablated variants, or if early stopping was applied inconsistently, then differences between conditions reflect the inconsistency rather than the component you are studying. I have caught this in my own work by simply checking that the exact same data indices, the exact same preprocessing code path, and the exact same stopping criterion were used everywhere, and it is worth the tedium because the failure mode is silent: your numbers look fine, they are just wrong.</p><p>The third rule is to ablate the boring things too, not just the novel ones. Researchers naturally want to ablate the part of the model they invented, because that is the part they are emotionally invested in. But a stronger baseline, better data cleaning, or a longer training schedule can quietly account for most of an improvement, and if you never test those against your novel component, you will never find out. A fair ablation study treats your own clever idea with the same suspicion it applies to everything else.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>Before you claim that a specific change improved your model, ask whether you actually isolated that change or merely changed several things and watched the total move. If it is the latter, budget time for a proper ablation before you trust the result, let alone report it. Keep the baseline fixed, change one factor at a time, hold the evaluation protocol rigidly constant, and check the variance across seeds before treating small differences as real.</p><p>None of this is exciting work, and that is precisely the point. The value of an ablation study is not in producing a headline number, it is in letting you say, with some confidence, which part of your system is doing the work. That confidence is what makes a result reusable in the next project rather than a one-off number that nobody, including you, can fully explain.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/ablation-studies-isolating-gains-2.jpg' alt='whiteboard with crossed out experiment list' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

@@ -1,1 +1,1 @@
-2026-07-25T08:01:47Z slug=always-try-baseline-models-first words=1062 title="Baseline Models You Should Always Try First"
+2026-07-25T20:02:13Z slug=ablation-studies-isolating-gains words=991 title="Ablation Studies: Isolating What Actually Helped"
