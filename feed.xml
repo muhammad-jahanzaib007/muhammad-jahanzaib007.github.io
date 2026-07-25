@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Fri, 24 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 25 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Baseline Models You Should Always Try First</title>
+    <link>https://jahanzaibawan.com/blog/always-try-baseline-models-first.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/always-try-baseline-models-first.html</guid>
+    <pubDate>Sat, 25 Jul 2026 09:00:00 +0000</pubDate>
+    <description>A strong baseline is not a formality, it is the number every fancy model must beat to justify its cost.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>The Stationarity Assumption Hiding Inside Your Metrics</title>
     <link>https://jahanzaibawan.com/blog/stationarity-assumption-evaluation-metrics.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Wed, 15 Jul 2026 09:00:00 +0000</pubDate>
     <description>A higher accuracy score does not mean a better model. Here is a practical, honest way to test whether the difference between two models is real.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Vector Databases and RAG, Explained Simply</title>
-    <link>https://jahanzaibawan.com/blog/vector-databases-and-rag-explained.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/vector-databases-and-rag-explained.html</guid>
-    <pubDate>Wed, 15 Jul 2026 09:00:00 +0000</pubDate>
-    <description>How embeddings and vector search let language models look things up instead of guessing, and why the plumbing matters more than the hype.</description>
-    <category>NLP</category>
   </item>
 </channel>
 </rss>

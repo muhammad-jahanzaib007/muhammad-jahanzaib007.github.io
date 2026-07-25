@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Baseline models you should always try before anything fancy",
     "Ablation studies: isolating what actually made your model better",
     "Multi-label versus multi-class evaluation: metrics that get quietly misapplied",
     "Time series cross-validation: why shuffling your folds ruins everything",
@@ -73,6 +72,7 @@
     "Held-out test sets: how large is large enough to trust the number",
     "Nested cross-validation: why one loop is not enough for model selection",
     "Data drift versus concept drift: two problems that look identical in a dashboard",
-    "The stationarity assumption behind most evaluation metrics, and when it breaks"
+    "The stationarity assumption behind most evaluation metrics, and when it breaks",
+    "Baseline models you should always try before anything fancy"
   ]
 }

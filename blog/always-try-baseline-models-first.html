@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baseline Models You Should Always Try First | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why simple baseline models matter in machine learning, with a worked example showing how they expose leakage, class imbalance, and inflated claims.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="baseline models,machine learning evaluation,majority class baseline,logistic regression,model comparison,data leakage,reproducibility,evaluation metrics, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-25">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Baseline Models You Should Always Try First">
+<meta property="og:description" content="Why simple baseline models matter in machine learning, with a worked example showing how they expose leakage, class imbalance, and inflated claims.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/always-try-baseline-models-first.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/always-try-baseline-models-first.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Baseline Models You Should Always Try First">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/always-try-baseline-models-first.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/always-try-baseline-models-first.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Baseline Models You Should Always Try First",
+  "description": "Why simple baseline models matter in machine learning, with a worked example showing how they expose leakage, class imbalance, and inflated claims.",
+  "url": "https://jahanzaibawan.com/blog/always-try-baseline-models-first.html",
+  "image": "https://jahanzaibawan.com/assets/blog/always-try-baseline-models-first.png",
+  "datePublished": "2026-07-25",
+  "dateModified": "2026-07-25",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/always-try-baseline-models-first.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Baseline Models You Should Always Try First", "item": "https://jahanzaibawan.com/blog/always-try-baseline-models-first.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 25 Jul 2026</div>
+    <h1>Baseline Models You Should Always Try First</h1>
+    <p class="lede">Before reaching for a transformer or an ensemble, spend an afternoon with the boring models. They tell you what you are actually up against.</p>
+  </div>
+
+  <img src="../assets/blog/always-try-baseline-models-first.png" alt="Cover image for the article: Baseline Models You Should Always Try First" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The number everything else has to beat</h2><p>I have a rule I apply to every project before I let myself touch anything interesting: build the dumbest model that could plausibly work, evaluate it properly, and write the number down. Only then do I allow myself gradient boosting, neural networks, or whatever architecture is fashionable that month. This is not false modesty. It is the only way I know to find out whether the problem is hard, whether my data is leaking information it should not, and whether my eventual fancy model is earning its complexity.</p><p>Consider a churn prediction task with ten thousand customers, of whom eight hundred churned. A majority class baseline, always predict 'stays', gets ninety two percent accuracy without learning anything at all. If someone hands me a deep learning model that reports ninety three percent accuracy on this dataset, I am not impressed, I am suspicious. That one point of lift could easily be noise from a bad split, and it tells me almost nothing about whether the model has found real structure in the churn signal.</p><p>This is why baselines are not a courtesy step before the real work starts. They are the real work. A baseline defines the floor, and every subsequent hour spent on feature engineering or architecture search has to be justified against that floor, in the units that actually matter for the task, not in the metric that flatters the result.</p></section><section class='psec reveal'><h2>Which baselines actually earn their place</h2><p>For classification, I reach for three in order. First, the majority class predictor, which sets the accuracy floor and forces me to look at precision, recall, and F1 rather than accuracy alone whenever classes are imbalanced. Second, a simple rule built from one obvious feature, for instance predicting churn purely from 'has the customer contacted support more than twice in the last month'. This tells me how far a single, interpretable signal can carry the problem. Third, logistic regression or a shallow decision tree on the full feature set, with no tuning beyond sensible defaults. This is usually the baseline that actually matters, because it is fast to train, easy to explain to a non-technical stakeholder, and surprisingly hard to beat by a wide margin on tabular data.</p><p>For regression, the equivalents are predicting the mean or median of the target, predicting the previous value in a time series, which is the naive forecast, and linear regression with minimal feature engineering. I have seen forecasting projects where a naive 'tomorrow will look like today' baseline achieved a mean absolute error that a carefully tuned recurrent network only improved on by a few percent, after weeks of work. That is a legitimate and useful finding, not a failure. It tells the team that the series is close to a random walk and that the effort is better spent elsewhere, perhaps on better features rather than a more powerful model.</p><p>For anything involving text or images, a bag of words with logistic regression, or a simple pretrained embedding with a linear classifier on top, plays the same role. These are unglamorous, but they are quick to build, cheap to run, and give a number within an hour rather than a week. That speed matters because it lets you fail fast on approaches that were never going to work, and it gives you a sanity check for every later result.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/always-try-baseline-models-first-1.jpg' alt='whiteboard with equations' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>A worked example: when the baseline catches a mistake</h2><p>Imagine a fraud detection dataset with fifty thousand transactions, five hundred of them fraudulent. A team builds a random forest, tunes it carefully with cross-validation, and reports ninety nine point one percent accuracy along with an F1 score of 0.71 on fraud detection. That sounds respectable. But the majority class baseline here already achieves ninety nine percent accuracy by predicting 'not fraud' every time, so accuracy was never a useful headline number, and to their credit this team used F1 instead.</p><p>Now suppose a second team, working on the same data, engineers a feature called 'transaction flagged by manual review', which happens to be set after a human analyst already suspected fraud. Their random forest reports an F1 score of 0.94. Without a baseline for comparison, this looks like a genuine breakthrough. With a baseline in hand, specifically the single-rule baseline of predicting fraud whenever that same flag is set, it becomes obvious that the flag alone gets an F1 close to 0.90. The sophisticated model has barely improved on a trivial rule built from a feature that leaks the outcome. That single-feature baseline did not just set a floor, it exposed a leakage problem that cross-validation alone did not catch, because the leaky feature was present in both training and validation folds.</p><p>This is the pattern I keep seeing: baselines do not only measure performance, they diagnose the evaluation itself. A model that barely beats a naive rule usually means one of three things, the naive rule is unexpectedly strong, there is leakage inflating both scores, or the fancy model has not actually learned anything beyond what the naive rule captures. All three are things you want to know before you ship anything or write up a result.</p></section><section class='psec reveal'><h2>Making it a habit, not a chore</h2><p>The practical fix is procedural rather than technical. Before writing any model that involves hyperparameter tuning, I write a short script that computes the majority class or mean baseline, the single-best-feature baseline, and a simple linear model, all evaluated on the same held-out split that the final model will use. I record these three numbers alongside every result I report afterwards, in the same table, so nobody, including me, can quietly forget them.</p><p>This costs perhaps thirty minutes on a typical tabular problem, and it pays for itself the first time a fancy model turns out to be indistinguishable from a coin flip or a lookup table. It also builds a habit of leakage-aware thinking, because a baseline that performs suspiciously well is usually the first sign that something in the data is wrong.</p><p>None of this is an argument against complex models. Sometimes the neural network genuinely does earn its keep, and the honest way to demonstrate that is precisely by showing the gap over a baseline that a sceptical reader would otherwise ask about anyway. The baseline is not the enemy of ambition, it is the evidence that the ambition was justified.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/always-try-baseline-models-first-2.jpg' alt='laptop showing data charts' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

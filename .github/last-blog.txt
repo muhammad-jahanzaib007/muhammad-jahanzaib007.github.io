@@ -1,1 +1,1 @@
-2026-07-24T20:03:44Z slug=stationarity-assumption-evaluation-metrics words=989 title="The Stationarity Assumption Hiding Inside Your Metrics"
+2026-07-25T08:01:47Z slug=always-try-baseline-models-first words=1062 title="Baseline Models You Should Always Try First"
