@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a6",
       "thumb": "assets/blog/always-try-baseline-models-first.png",
-      "thumb_alt": "Cover image for the article: Baseline Models You Should Always Try First"
+      "thumb_alt": "Cover image for the article: Baseline Models You Should Always Try First",
+      "li_shared": true
     },
     {
       "slug": "stationarity-assumption-evaluation-metrics",
