@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a2",
       "thumb": "assets/blog/ablation-studies-isolating-gains.png",
-      "thumb_alt": "Cover image for the article: Ablation Studies: Isolating What Actually Helped"
+      "thumb_alt": "Cover image for the article: Ablation Studies: Isolating What Actually Helped",
+      "li_shared": true
     },
     {
       "slug": "always-try-baseline-models-first",
