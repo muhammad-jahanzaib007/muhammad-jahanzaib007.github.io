@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a4",
       "thumb": "assets/blog/time-series-cross-validation-leakage.png",
-      "thumb_alt": "Cover image for the article: Time Series Cross-Validation: Why Shuffled Folds Ruin Everything"
+      "thumb_alt": "Cover image for the article: Time Series Cross-Validation: Why Shuffled Folds Ruin Everything",
+      "li_shared": true
     },
     {
       "slug": "multi-label-vs-multi-class-metrics",
