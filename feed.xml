@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Sun, 26 Jul 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Time Series Cross-Validation: Why Shuffled Folds Ruin Everything</title>
+    <link>https://jahanzaibawan.com/blog/time-series-cross-validation-leakage.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/time-series-cross-validation-leakage.html</guid>
+    <pubDate>Sun, 26 Jul 2026 09:00:00 +0000</pubDate>
+    <description>Shuffling time series folds lets the future leak into training, inflating validation scores and hiding models that will fail in production.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Multi-Label vs Multi-Class: Metrics Quietly Misapplied</title>
     <link>https://jahanzaibawan.com/blog/multi-label-vs-multi-class-metrics.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/multi-label-vs-multi-class-metrics.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Fri, 17 Jul 2026 09:00:00 +0000</pubDate>
     <description>A machine learning model is a function with adjustable parameters, tuned by data to reduce error. One worked example makes this concrete.</description>
     <category>Fundamentals</category>
-  </item>
-  <item>
-    <title>Machine Learning versus AI: Drawing the Line Properly</title>
-    <link>https://jahanzaibawan.com/blog/machine-learning-versus-ai.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/machine-learning-versus-ai.html</guid>
-    <pubDate>Thu, 16 Jul 2026 09:00:00 +0000</pubDate>
-    <description>AI is the goal, machine learning is one method for reaching it. Confusing the two leads to bad hiring briefs and worse product decisions.</description>
-    <category>Foundations</category>
   </item>
 </channel>
 </rss>

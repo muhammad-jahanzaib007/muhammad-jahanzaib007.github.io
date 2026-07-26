@@ -1,1 +1,1 @@
-2026-07-26T08:02:33Z slug=multi-label-vs-multi-class-metrics words=1154 title="Multi-Label vs Multi-Class: Metrics Quietly Misapplied"
+2026-07-26T20:01:59Z slug=time-series-cross-validation-leakage words=1077 title="Time Series Cross-Validation: Why Shuffled Folds Ruin Everything"

@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Time series cross-validation: why shuffling your folds ruins everything",
     "A worked example of Bayesian model comparison instead of a single p-value",
     "What a learning curve tells you that a single accuracy score cannot",
     "Synthetic benchmarks versus real-world data: why leaderboard rank does not transfer",
@@ -73,6 +72,7 @@
     "The stationarity assumption behind most evaluation metrics, and when it breaks",
     "Baseline models you should always try before anything fancy",
     "Ablation studies: isolating what actually made your model better",
-    "Multi-label versus multi-class evaluation: metrics that get quietly misapplied"
+    "Multi-label versus multi-class evaluation: metrics that get quietly misapplied",
+    "Time series cross-validation: why shuffling your folds ruins everything"
   ]
 }

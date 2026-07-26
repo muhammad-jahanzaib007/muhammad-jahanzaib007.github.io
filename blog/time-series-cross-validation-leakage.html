@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Time Series Cross-Validation: Why Shuffled Folds Ruin Everything | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why standard shuffled cross-validation fails on time series data, and how leakage-aware, forward-chaining splits give honest, reproducible evaluation.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="time series cross-validation, data leakage, forward chaining, walk-forward validation, model evaluation, temporal splits, reproducible machine learning, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-26">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Time Series Cross-Validation: Why Shuffled Folds Ruin Everything">
+<meta property="og:description" content="Why standard shuffled cross-validation fails on time series data, and how leakage-aware, forward-chaining splits give honest, reproducible evaluation.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/time-series-cross-validation-leakage.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/time-series-cross-validation-leakage.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Time Series Cross-Validation: Why Shuffled Folds Ruin Everything">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/time-series-cross-validation-leakage.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/time-series-cross-validation-leakage.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Time Series Cross-Validation: Why Shuffled Folds Ruin Everything",
+  "description": "Why standard shuffled cross-validation fails on time series data, and how leakage-aware, forward-chaining splits give honest, reproducible evaluation.",
+  "url": "https://jahanzaibawan.com/blog/time-series-cross-validation-leakage.html",
+  "image": "https://jahanzaibawan.com/assets/blog/time-series-cross-validation-leakage.png",
+  "datePublished": "2026-07-26",
+  "dateModified": "2026-07-26",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/time-series-cross-validation-leakage.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Time Series Cross-Validation: Why Shuffled Folds Ruin Everything", "item": "https://jahanzaibawan.com/blog/time-series-cross-validation-leakage.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 26 Jul 2026</div>
+    <h1>Time Series Cross-Validation: Why Shuffled Folds Ruin Everything</h1>
+    <p class="lede">Random k-fold splits quietly leak the future into the past, producing validation scores that flatter your model and collapse the moment it meets real data.</p>
+  </div>
+
+  <img src="../assets/blog/time-series-cross-validation-leakage.png" alt="Cover image for the article: Time Series Cross-Validation: Why Shuffled Folds Ruin Everything" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The seductive lie of a high validation score</h2><p>Cross-validation exists to give an honest estimate of how a model will perform on data it has never seen. The standard recipe, shuffle everything, split into k folds, train on k minus one and test on the rest, works well when the assumption behind it holds: that observations are exchangeable, meaning the order in which you see them carries no information. For most tabular problems drawn from a static population, that assumption is roughly fine. For time series, it is false, and it is false in a way that is easy to miss because the resulting numbers look perfectly plausible.</p><p>Here is the mechanism. Suppose you have five years of daily sales data and you want to predict tomorrow's demand from recent history, seasonality, and a handful of lagged features. If you shuffle the rows and do standard k-fold, some of your training folds will contain observations from next week, next month, or even next year, sitting right next to the point you are trying to predict. Lagged features built from surrounding days, rolling averages, and interpolated values all quietly encode information from the future into the past. Your model is not learning to forecast; it is learning to interpolate inside a fully observed timeline, which is a much easier task that has almost nothing to do with production.</p><p>The result is a validation score that looks excellent and a deployed model that disappoints within weeks. I have seen this pattern often enough that I treat any time series result validated with shuffled folds as suspect until proven otherwise. The gap between validation and reality is not a rounding error; it can be the difference between a model that looks publishable and one that is genuinely useless.</p></section><section class='psec reveal'><h2>A concrete worked example</h2><p>Imagine forecasting daily electricity demand using yesterday's demand, a seven day rolling mean, and a day-of-week indicator. You have 1,000 days of data. With shuffled five-fold cross-validation, each test fold of 200 days is scattered randomly across the full range, so roughly 80 percent of each test point's temporal neighbours, meaning the days immediately before and after it, end up in the training set. The seven day rolling mean feature is built using a centred window in many naive pipelines, which means it already contains values from days after the target date. Even with a trailing window, shuffled folds still let the model see demand patterns from the following week during training, because those days sit in a different fold.</p><p>Suppose this shuffled setup reports a mean absolute percentage error of 3.2 percent. That looks like a strong forecasting model. Now switch to a walk-forward evaluation: train on days 1 to 600, test on 601 to 650; train on days 1 to 650, test on 651 to 700; and so on, always testing on a block that comes strictly after everything the model has seen. Under this honest protocol the same feature set and model often produce something closer to 7 or 8 percent error, sometimes worse if there is a regime change partway through the series, such as a shift in weather patterns or a change in tariff structure that the model never encountered during training.</p><p>The difference is not noise. It is the model exploiting information it will never have at prediction time in production, where tomorrow genuinely has not happened yet. Shuffled cross-validation cannot detect this because it never asks the model to extrapolate; it only asks it to fill in gaps in a timeline it has already partially observed.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/time-series-cross-validation-leakage-1.jpg' alt='calendar with pinned notes' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What proper temporal validation looks like</h2><p>The fix is conceptually simple: never let a training fold contain information from after the test fold. This is usually implemented as forward chaining, also called walk-forward validation or expanding window validation. You pick an initial training window, evaluate on the block immediately following it, then expand the training window to include that block and move the test window forward again. Each fold respects the arrow of time, so the model is always asked to predict genuinely unseen future data, which is exactly the task it will face in deployment.</p><p>There are a few practical details that matter as much as the splitting logic itself. First, any feature engineering that uses rolling statistics, lags, or scaling parameters must be recomputed within each fold using only training data up to that point; fitting a scaler on the full dataset before splitting is a subtler form of the same leakage and it is astonishingly common in otherwise careful pipelines. Second, if your data has a natural granularity, such as daily, weekly, or per customer session, consider whether a gap is needed between the end of training and the start of testing. In problems where labels take time to resolve, for example predicting thirty-day customer churn, you need a purge window so that training examples whose outcome would only be known after the test period begins are excluded entirely.</p><p>Third, be wary of cross-validation strategies that group by time bucket but still shuffle within buckets, or that use random splits for hyperparameter tuning and only apply temporal splits for the final test. Leakage in the tuning loop is just as damaging as leakage in the headline metric, because you end up selecting a model and hyperparameters that were implicitly optimised to exploit the leak. If you are using nested cross-validation, the outer and inner loops both need to respect temporal order, otherwise your hyperparameter search will favour whichever configuration cheats hardest.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>If you remember one thing, remember this: for time series problems, ask whether any training example could, even indirectly, contain information from after the point you are predicting. If the answer is yes, your validation score is not measuring what you think it is measuring. Forward chaining is more expensive to compute than shuffled k-fold, since you retrain repeatedly on growing windows, and it usually gives you fewer effective folds because early windows may be too small to be reliable. That cost is worth paying.</p><p>A model evaluated honestly with a mediocre-looking score that holds up in production is worth far more than one with an impressive shuffled cross-validation number that quietly falls apart the first time it meets a date it has never seen before. Build your splits around the calendar, not around convenience, and treat any time series result you cannot explain in terms of what the model actually knew at prediction time with real suspicion.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/time-series-cross-validation-leakage-2.jpg' alt='stock market chart on screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "time-series-cross-validation-leakage",
+      "title": "Time Series Cross-Validation: Why Shuffled Folds Ruin Everything",
+      "excerpt": "Shuffling time series folds lets the future leak into training, inflating validation scores and hiding models that will fail in production.",
+      "date": "2026-07-26",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a4",
+      "thumb": "assets/blog/time-series-cross-validation-leakage.png",
+      "thumb_alt": "Cover image for the article: Time Series Cross-Validation: Why Shuffled Folds Ruin Everything"
+    },
+    {
       "slug": "multi-label-vs-multi-class-metrics",
       "title": "Multi-Label vs Multi-Class: Metrics Quietly Misapplied",
       "excerpt": "Multi-class metrics silently misused on multi-label problems produce numbers that look fine and mean almost nothing.",
