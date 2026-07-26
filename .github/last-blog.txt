@@ -1,1 +1,1 @@
-2026-07-25T20:02:13Z slug=ablation-studies-isolating-gains words=991 title="Ablation Studies: Isolating What Actually Helped"
+2026-07-26T08:02:33Z slug=multi-label-vs-multi-class-metrics words=1154 title="Multi-Label vs Multi-Class: Metrics Quietly Misapplied"

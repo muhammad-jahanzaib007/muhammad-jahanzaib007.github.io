@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multi-Label vs Multi-Class: Metrics Quietly Misapplied | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why standard accuracy and F1 often break down for multi-label problems, with a worked example and practical fixes for evaluation.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="multi-label classification, multi-class classification, evaluation metrics, F1 score, accuracy, machine learning evaluation, hamming loss, micro macro averaging, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-26">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Multi-Label vs Multi-Class: Metrics Quietly Misapplied">
+<meta property="og:description" content="Why standard accuracy and F1 often break down for multi-label problems, with a worked example and practical fixes for evaluation.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/multi-label-vs-multi-class-metrics.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/multi-label-vs-multi-class-metrics.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Multi-Label vs Multi-Class: Metrics Quietly Misapplied">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/multi-label-vs-multi-class-metrics.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/multi-label-vs-multi-class-metrics.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Multi-Label vs Multi-Class: Metrics Quietly Misapplied",
+  "description": "Why standard accuracy and F1 often break down for multi-label problems, with a worked example and practical fixes for evaluation.",
+  "url": "https://jahanzaibawan.com/blog/multi-label-vs-multi-class-metrics.html",
+  "image": "https://jahanzaibawan.com/assets/blog/multi-label-vs-multi-class-metrics.png",
+  "datePublished": "2026-07-26",
+  "dateModified": "2026-07-26",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/multi-label-vs-multi-class-metrics.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Multi-Label vs Multi-Class: Metrics Quietly Misapplied", "item": "https://jahanzaibawan.com/blog/multi-label-vs-multi-class-metrics.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 6 min read · 26 Jul 2026</div>
+    <h1>Multi-Label vs Multi-Class: Metrics Quietly Misapplied</h1>
+    <p class="lede">A lot of reported accuracy and F1 scores are computed for the wrong problem entirely. Here is how to tell, and what to do instead.</p>
+  </div>
+
+  <img src="../assets/blog/multi-label-vs-multi-class-metrics.png" alt="Cover image for the article: Multi-Label vs Multi-Class: Metrics Quietly Misapplied" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Two problems that look similar and are not</h2><p>Multi-class classification assigns exactly one label from a set of mutually exclusive options: a photo is a cat, a dog, or a bird, never two at once. Multi-label classification assigns any number of labels from a set, including zero or all of them: a news article might be tagged politics and economics and foreign-affairs simultaneously. The mathematics of evaluation for these two settings diverges quickly, but the vocabulary does not. People say accuracy, precision, recall and F1 in both contexts, and the reader assumes the same meaning is intended. It usually is not.</p><p>I have seen this most often in text classification and medical coding tasks, where each document can carry several correct tags. A team reports ninety-two percent accuracy and everyone nods, but accuracy for multi-label problems is not the fraction of correct predictions in the multi-class sense at all. It is either subset accuracy, which demands every single label be exactly right, or some looser per-label average, and the two numbers can differ by tens of percentage points on the same predictions. Nobody misled anyone on purpose. The metric name just travelled across a boundary where its definition quietly changed.</p><p>The practical danger is that these numbers get compared across papers, dashboards and stakeholder reports as if they are the same currency. A multi-label model reported at ninety percent subset accuracy sounds worse than a multi-class model at ninety-five percent accuracy, until you realise the multi-label task is strictly harder because it demands an exact match on a combinatorial output space. Without knowing which flavour of accuracy is in play, that comparison is meaningless, yet it gets made in meetings constantly.</p></section><section class='psec reveal'><h2>A worked example with real numbers</h2><p>Suppose we have a document tagging system with five possible tags, and a test set of one thousand documents, each carrying between one and three true tags. Consider a single document with true tags {politics, economics}. The model predicts {politics, sport}. In multi-class evaluation this comparison would not even arise, because multi-class assumes one true label and one predicted label. Forcing this into a multi-class frame by picking the top prediction only would score this as correct if politics happened to be ranked first, discarding the fact that economics was missed and sport was wrongly added.</p><p>Now score it properly as multi-label. Subset accuracy: the predicted set does not exactly equal the true set, so this document scores zero, full stop, no partial credit. Hamming-based accuracy, which looks at each of the five possible tags independently as its own binary decision, tells a different story: politics correct (true positive), economics wrong (false negative), sport wrong (false positive), and the two remaining tags correctly predicted as absent (true negatives). That is three correct out of five binary decisions, so sixty percent under this view. Per-example precision here is one correct prediction out of two predicted, fifty percent, and per-example recall is one correct out of two true tags, also fifty percent.</p><p>Three numbers, zero percent, sixty percent and fifty percent, all legitimately describing the same single prediction. None of them is wrong. They answer different questions: did we get the whole set exactly right, how good are our individual tag decisions across the whole label space, and how good is our set overlap ignoring the easy true negatives. Averaged across a thousand documents these three views routinely produce headline numbers that differ by twenty or thirty points, and a report that states just one number, unlabelled, is not really reporting anything a reader can act on.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/multi-label-vs-multi-class-metrics-1.jpg' alt='stack of colour coded document folders' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Why averaging choice matters just as much</h2><p>Even once you have settled on set-based precision, recall and F1 for a multi-label problem, there is a second, quieter decision: how to average across labels. Micro-averaging pools every true positive, false positive and false negative across all labels and all examples before computing precision and recall, which means frequent labels dominate the result. Macro-averaging computes precision and recall separately for each label and then takes the unweighted mean across labels, which gives a rare label exactly the same voice as a common one.</p><p>Imagine our five tags again, but now politics appears in six hundred of the thousand documents while a niche tag like agriculture appears in only ten. Suppose the model is excellent on politics, ninety-five percent F1, but essentially guesses on agriculture, twenty percent F1, because there is so little training signal for it. Micro-averaged F1 will sit close to the politics number, because politics contributes the overwhelming majority of the true positives and false positives being pooled; the headline might read ninety-one percent. Macro-averaged F1 treats agriculture as equally important as politics in the average, so the same model might score sixty-two percent macro F1. Both numbers are computed correctly from the same confusion counts. They tell a stakeholder wildly different stories about whether the model is fit for purpose, and the right choice depends entirely on whether rare tags matter to the business problem or whether overall throughput on common tags is what counts.</p><p>This is exactly the kind of detail that gets lost when a metric is copied from a multi-class habit. In multi-class work, accuracy is often the default because classes are frequently reasonably balanced or the cost of imbalance is at least visible in a single confusion matrix. In multi-label work, silently defaulting to micro-averaged F1 because it looks like the highest number, without checking whether rare labels are the ones that actually matter clinically, legally or commercially, is a very easy way to ship a model that fails exactly where it needed to succeed.</p></section><section class='psec reveal'><h2>What to actually do about it</h2><p>First, name the metric precisely in any report or paper, including the averaging scheme: micro-F1, macro-F1, subset accuracy, or Hamming score, not just F1 or accuracy on their own. This single habit prevents most of the confusion I have described. Second, report more than one view when the problem is multi-label: subset accuracy tells you how often the whole prediction is exactly usable, macro-F1 tells you how well rare labels are served, and micro-F1 tells you overall tagging quality weighted by frequency. Together they triangulate a much more honest picture than any single number.</p><p>Third, check your label split before trusting any of these numbers at all. Leakage across a train and test split is even easier to introduce in multi-label settings, because stratifying by a single label is not enough when documents carry combinations of tags; a document with a rare label combination can end up entirely in training or entirely in test by chance, distorting exactly the macro-averaged rare-label scores you are relying on to catch failure. Finally, when reading someone else's reported number, ask which of these definitions they used before comparing it to anything else. A quietly misapplied metric is rarely a lie, but it is very often a misunderstanding waiting to be repeated by the next person who reads the report.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/multi-label-vs-multi-class-metrics-2.jpg' alt='whiteboard with confusion matrix diagram' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

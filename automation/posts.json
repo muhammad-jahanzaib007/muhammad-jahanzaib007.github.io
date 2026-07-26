@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "multi-label-vs-multi-class-metrics",
+      "title": "Multi-Label vs Multi-Class: Metrics Quietly Misapplied",
+      "excerpt": "Multi-class metrics silently misused on multi-label problems produce numbers that look fine and mean almost nothing.",
+      "date": "2026-07-26",
+      "read_min": 6,
+      "tag": "Evaluation",
+      "color": "a3",
+      "thumb": "assets/blog/multi-label-vs-multi-class-metrics.png",
+      "thumb_alt": "Cover image for the article: Multi-Label vs Multi-Class: Metrics Quietly Misapplied"
+    },
+    {
       "slug": "ablation-studies-isolating-gains",
       "title": "Ablation Studies: Isolating What Actually Helped",
       "excerpt": "A new module, a new loss, a better score: but which change actually mattered? Ablations tell you, if you design them properly.",
