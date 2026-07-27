@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Worked Example of Bayesian Model Comparison | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A worked example showing how Bayesian model comparison and Bayes factors give a more informative alternative to a single p-value.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="bayesian statistics, model comparison, bayes factor, p-value, hypothesis testing, statistical evaluation, machine learning evaluation, reproducibility, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-27">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="A Worked Example of Bayesian Model Comparison">
+<meta property="og:description" content="A worked example showing how Bayesian model comparison and Bayes factors give a more informative alternative to a single p-value.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/bayesian-model-comparison-example.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/bayesian-model-comparison-example.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A Worked Example of Bayesian Model Comparison">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/bayesian-model-comparison-example.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/bayesian-model-comparison-example.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "A Worked Example of Bayesian Model Comparison",
+  "description": "A worked example showing how Bayesian model comparison and Bayes factors give a more informative alternative to a single p-value.",
+  "url": "https://jahanzaibawan.com/blog/bayesian-model-comparison-example.html",
+  "image": "https://jahanzaibawan.com/assets/blog/bayesian-model-comparison-example.png",
+  "datePublished": "2026-07-27",
+  "dateModified": "2026-07-27",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/bayesian-model-comparison-example.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "A Worked Example of Bayesian Model Comparison", "item": "https://jahanzaibawan.com/blog/bayesian-model-comparison-example.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 27 Jul 2026</div>
+    <h1>A Worked Example of Bayesian Model Comparison</h1>
+    <p class="lede">Instead of asking whether a p-value crossed 0.05, I show how to ask a more useful question: how much more should I believe in one model over another, given the data.</p>
+  </div>
+
+  <img src="../assets/blog/bayesian-model-comparison-example.png" alt="Cover image for the article: A Worked Example of Bayesian Model Comparison" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why a single p-value undersells the question</h2><p>A p-value answers a narrow question: if the null hypothesis were exactly true, how surprising would data this extreme (or more extreme) be. It says nothing about how plausible the alternative hypothesis actually is, and it says nothing about the size or practical relevance of an effect. Two experiments can produce the same p-value of 0.03 while telling completely different stories about the underlying effect, depending on sample size and the actual magnitude involved.</p><p>What I actually want to know, most of the time, is something closer to: given what I observed, how much more should I believe model A over model B. That is a comparison between two explanations of the data, weighted by how well each one predicts what actually happened. Bayesian model comparison, through the Bayes factor, answers exactly that question, and it does so on a continuous scale rather than a binary reject-or-not decision at an arbitrary threshold.</p><p>This matters practically because thresholded decisions hide information. A p-value of 0.049 and a p-value of 0.051 lead to opposite headlines under the usual 0.05 convention, even though the underlying evidence is nearly identical. A Bayes factor does not force that cliff-edge behaviour; it just reports a ratio of evidence, and you decide how much ratio is enough for your purposes.</p></section><section class='psec reveal'><h2>Setting up a concrete comparison</h2><p>Suppose I am testing whether a new feature in a classifier improves accuracy on a held-out, leakage-free test set of 200 examples. The baseline model gets 120 correct out of 200. The new model gets 132 correct out of 200. A quick two-proportion test might return a p-value around 0.09, which under the usual convention would be reported as 'not significant', and the new feature would likely be dropped.</p><p>Now consider the same data through model comparison. I define two models of how the improved accuracy arose. Model B0 says the true accuracy of the new model equals the baseline's true accuracy, roughly 0.60, with no improvement. Model B1 says the true accuracy is unknown and could plausibly be anywhere in a sensible range, say I place a Beta(6,4) prior over it, reflecting genuine uncertainty but centred a bit above chance, consistent with what a reasonable practitioner might believe before seeing this result.</p><p>To compare them, I compute the marginal likelihood of the observed 132 successes out of 200 trials under each model. Under B0, this is just the binomial probability of 132 successes given a fixed probability of 0.60, which comes out fairly small because 132/200 = 0.66 is somewhat away from 0.60. Under B1, I integrate the binomial likelihood over the Beta(6,4) prior, which is analytically tractable and produces a Beta-Binomial marginal likelihood. Because B1 allows the true rate to shift towards 0.66 rather than being pinned at 0.60, its marginal likelihood is noticeably larger.</p><p>Dividing the two marginal likelihoods gives the Bayes factor, and in a case like this the ratio typically lands somewhere in the range of 2 to 4 in favour of B1. That is worth stating plainly: this is modest evidence for an improvement, not strong evidence, and definitely not proof. But it is a more honest and more granular statement than 'p equals 0.09, therefore no effect', because it tells me the improvement is more likely real than not, just not by an overwhelming margin.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/bayesian-model-comparison-example-1.jpg' alt='whiteboard with probability equations' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Reading the Bayes factor honestly</h2><p>A Bayes factor of 3 means the data are three times more likely under the model that assumes an improvement than under the model that assumes none. That is useful information for deciding what to do next, but it is not a licence to declare victory. Conventional guidance treats Bayes factors below 3 as barely worth mentioning, values between 3 and 10 as moderate evidence, and values above 10 as strong evidence. A result of 3 sits right at the boundary of being interesting, which is itself an honest and informative place to land, unlike a p-value that forces a binary verdict.</p><p>It is also worth being explicit that the Bayes factor depends on the prior I chose for B1. If I had instead used a much wider, flatter prior that spread belief thinly across the whole 0 to 1 range, the marginal likelihood for B1 would drop, because that prior wastes probability mass on accuracy values far from what was actually observed, and the resulting Bayes factor would shrink. This sensitivity is not a flaw to hide; it is a feature to report. Stating the prior alongside the result, and ideally showing how the conclusion changes under a couple of reasonable alternative priors, is part of doing this properly. A Bayes factor without a stated prior is about as informative as a p-value without a stated sample size.</p><p>Where this really earns its keep is in comparing more than two models at once, something a p-value struggles to do gracefully. If I have a baseline, a model with one new feature, and a model with two new features, I can compute marginal likelihoods for all three and directly rank them, then normalise into posterior model probabilities that sum to one. That gives me a distribution over 'which explanation is best' rather than a sequence of pairwise significance tests that quietly inflate the false positive rate the more comparisons I run.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>None of this requires abandoning frequentist tools outright; p-values still have a place, particularly when the goal is strict error-rate control across many repeated decisions. But when the goal is to reason about which explanation the evidence actually favours, and by how much, Bayesian model comparison gives a sharper and more honest answer. It replaces a single threshold-crossing verdict with a ratio that reflects the actual weight of evidence, and it forces the prior assumptions into the open where they can be scrutinised rather than smuggled in silently.</p><p>My practical rule is this: whenever I catch myself about to report only a p-value for a model comparison, I try to also compute, or at least sketch, the corresponding Bayes factor under a couple of sensible priors. If the two methods agree, that agreement is reassuring. If they disagree, the disagreement is usually the most interesting and honest part of the whole analysis, and it is exactly the sort of thing a single number at the 0.05 line would have hidden from view.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/bayesian-model-comparison-example-2.jpg' alt='statistician analysing data charts on laptop' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "bayesian-model-comparison-example",
+      "title": "A Worked Example of Bayesian Model Comparison",
+      "excerpt": "A concrete walkthrough of Bayesian model comparison, showing how Bayes factors give a richer answer than a single p-value ever can.",
+      "date": "2026-07-27",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a5",
+      "thumb": "assets/blog/bayesian-model-comparison-example.png",
+      "thumb_alt": "Cover image for the article: A Worked Example of Bayesian Model Comparison"
+    },
+    {
       "slug": "time-series-cross-validation-leakage",
       "title": "Time Series Cross-Validation: Why Shuffled Folds Ruin Everything",
       "excerpt": "Shuffling time series folds lets the future leak into training, inflating validation scores and hiding models that will fail in production.",

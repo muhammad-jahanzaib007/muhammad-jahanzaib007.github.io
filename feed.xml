@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Sun, 26 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Mon, 27 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>A Worked Example of Bayesian Model Comparison</title>
+    <link>https://jahanzaibawan.com/blog/bayesian-model-comparison-example.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/bayesian-model-comparison-example.html</guid>
+    <pubDate>Mon, 27 Jul 2026 09:00:00 +0000</pubDate>
+    <description>A concrete walkthrough of Bayesian model comparison, showing how Bayes factors give a richer answer than a single p-value ever can.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Time Series Cross-Validation: Why Shuffled Folds Ruin Everything</title>
     <link>https://jahanzaibawan.com/blog/time-series-cross-validation-leakage.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Fri, 17 Jul 2026 09:00:00 +0000</pubDate>
     <description>A high accuracy score means little for rare defects. Here is how to evaluate a manufacturing vision model the way production actually needs.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>What a Machine Learning Model Actually Is</title>
-    <link>https://jahanzaibawan.com/blog/what-a-model-actually-is.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/what-a-model-actually-is.html</guid>
-    <pubDate>Fri, 17 Jul 2026 09:00:00 +0000</pubDate>
-    <description>A machine learning model is a function with adjustable parameters, tuned by data to reduce error. One worked example makes this concrete.</description>
-    <category>Fundamentals</category>
   </item>
 </channel>
 </rss>
