@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a5",
       "thumb": "assets/blog/bayesian-model-comparison-example.png",
-      "thumb_alt": "Cover image for the article: A Worked Example of Bayesian Model Comparison"
+      "thumb_alt": "Cover image for the article: A Worked Example of Bayesian Model Comparison",
+      "li_shared": true
     },
     {
       "slug": "time-series-cross-validation-leakage",
