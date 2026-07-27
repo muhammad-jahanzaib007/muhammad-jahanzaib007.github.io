@@ -1,6 +1,5 @@
 {
   "queue": [
-    "What a learning curve tells you that a single accuracy score cannot",
     "Synthetic benchmarks versus real-world data: why leaderboard rank does not transfer",
     "Deciding when a model is good enough to ship: thresholds beyond accuracy",
     "Interpretability methods compared: SHAP, LIME, and when neither is honest",
@@ -87,6 +86,7 @@
     "Ablation studies: isolating what actually made your model better",
     "Multi-label versus multi-class evaluation: metrics that get quietly misapplied",
     "Time series cross-validation: why shuffling your folds ruins everything",
-    "A worked example of Bayesian model comparison instead of a single p-value"
+    "A worked example of Bayesian model comparison instead of a single p-value",
+    "What a learning curve tells you that a single accuracy score cannot"
   ]
 }

@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "what-learning-curves-reveal",
+      "title": "What a Learning Curve Tells You That Accuracy Cannot",
+      "excerpt": "One accuracy score tells you where you are. A learning curve tells you why, and what to do about it.",
+      "date": "2026-07-27",
+      "read_min": 4,
+      "tag": "Evaluation",
+      "color": "a6",
+      "thumb": "assets/blog/what-learning-curves-reveal.png",
+      "thumb_alt": "Cover image for the article: What a Learning Curve Tells You That Accuracy Cannot"
+    },
+    {
       "slug": "bayesian-model-comparison-example",
       "title": "A Worked Example of Bayesian Model Comparison",
       "excerpt": "A concrete walkthrough of Bayesian model comparison, showing how Bayes factors give a richer answer than a single p-value ever can.",

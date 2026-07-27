@@ -1,1 +1,1 @@
-2026-07-27T08:01:59Z slug=bayesian-model-comparison-example words=1058 title="A Worked Example of Bayesian Model Comparison"
+2026-07-27T20:01:44Z slug=what-learning-curves-reveal words=858 title="What a Learning Curve Tells You That Accuracy Cannot"

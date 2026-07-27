@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What a Learning Curve Tells You That Accuracy Cannot | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why plotting training and validation performance against dataset size reveals bias, variance, and leakage problems that a single accuracy score hides.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="learning curves, model evaluation, bias variance tradeoff, overfitting, underfitting, machine learning diagnostics, cross validation, data leakage, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-27">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="What a Learning Curve Tells You That Accuracy Cannot">
+<meta property="og:description" content="Why plotting training and validation performance against dataset size reveals bias, variance, and leakage problems that a single accuracy score hides.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/what-learning-curves-reveal.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/what-learning-curves-reveal.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What a Learning Curve Tells You That Accuracy Cannot">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/what-learning-curves-reveal.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/what-learning-curves-reveal.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "What a Learning Curve Tells You That Accuracy Cannot",
+  "description": "Why plotting training and validation performance against dataset size reveals bias, variance, and leakage problems that a single accuracy score hides.",
+  "url": "https://jahanzaibawan.com/blog/what-learning-curves-reveal.html",
+  "image": "https://jahanzaibawan.com/assets/blog/what-learning-curves-reveal.png",
+  "datePublished": "2026-07-27",
+  "dateModified": "2026-07-27",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/what-learning-curves-reveal.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "What a Learning Curve Tells You That Accuracy Cannot", "item": "https://jahanzaibawan.com/blog/what-learning-curves-reveal.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 4 min read · 27 Jul 2026</div>
+    <h1>What a Learning Curve Tells You That Accuracy Cannot</h1>
+    <p class="lede">A single accuracy number is a snapshot. A learning curve is a diagnosis, and the difference matters when you decide what to fix next.</p>
+  </div>
+
+  <img src="../assets/blog/what-learning-curves-reveal.png" alt="Cover image for the article: What a Learning Curve Tells You That Accuracy Cannot" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The problem with a single number</h2><p>Say a model reaches 87% accuracy on a held-out test set. That number feels like an answer, but it is really just a coordinate. It tells you nothing about whether the model would improve with more data, whether it is memorising the training set, or whether it has already plateaued and no amount of extra labelling will help. Two models can both report 87% and be in completely different states: one starving for data, the other saturated and limited by its own capacity or by noisy features.</p><p>This matters because the next decision you make, collect more data, add regularisation, engineer better features, switch architectures, depends entirely on which state you are in. Chasing more data for a saturated model wastes budget and time. Adding regularisation to a starving model can make things worse by suppressing signal it desperately needs. A single accuracy score cannot tell these situations apart, because it collapses a dynamic process into one static snapshot.</p><p>A learning curve fixes this by showing performance as a function of something that changes, usually training set size, plotted for both training and validation data. It turns one point into a trajectory, and trajectories carry information that points simply cannot.</p></section><section class='psec reveal'><h2>Reading the shape, not just the height</h2><p>Imagine training a classifier on subsets of increasing size: 500, 1000, 2000, 4000, and 8000 examples, recording training and validation accuracy at each step. Suppose the results look like this: training accuracy stays near 98% throughout, while validation accuracy climbs from 70% at 500 examples to 82% at 8000, still rising when the curve ends. That gap between a flat, high training line and a rising validation line is the signature of high variance, overfitting driven by insufficient data relative to model complexity. The practical implication is direct: collecting more labelled data is likely to keep improving validation performance, because the curve has not flattened yet.</p><p>Now imagine a different shape: training accuracy sits at 74%, validation accuracy sits at 71%, and both have been essentially flat since 2000 examples. This is the signature of high bias, or underfitting. The model has run out of capacity to represent the patterns in the data, or the features are not informative enough, and no amount of additional data will close that gap on its own. Here the fix is architectural or representational: a more expressive model, better features, or removing a bottleneck, not more rows in a spreadsheet.</p><p>A third shape is arguably the most useful one to recognise early: training accuracy near 99%, validation accuracy near 65%, with a gap that barely narrows as data grows. This can indicate a model with far too much capacity for the problem, or, more worryingly, a leakage problem where the validation set shares information with training, such as duplicated records, correlated timestamps, or features derived from the target. When the gap refuses to close even as the dataset grows substantially, it is worth checking the split itself before touching the model at all.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/what-learning-curves-reveal-1.jpg' alt='hand drawn line graph on whiteboard' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Why this beats a leaderboard mentality</h2><p>It is tempting to treat model development as a leaderboard exercise: try architecture A, get 84%; try architecture B, get 86%; ship B. Learning curves push back against this by asking a better question: is B actually a better model, or did it simply cope better with a small, noisy validation set this one time? If both curves are still rising steeply at the largest data point you have, the ranking between A and B might flip entirely once more data arrives. Reporting a single accuracy figure without the curve behind it hides that uncertainty from anyone reading the result later, including your future self.</p><p>There is also a cost dimension that matters in any real project. Labelling data is expensive, and so is engineering time. A learning curve that has clearly plateaued tells you that spending another few weeks on data collection is probably not the best use of resources; the ceiling is being set by the model or the features, not the sample size. Conversely, a steeply rising curve is a strong argument to a manager or supervisor for investing in more labelled examples rather than more model tuning, because the evidence is visible rather than asserted.</p><p>None of this requires exotic tooling. It requires discipline: holding out a validation set correctly, training on progressively larger, non-overlapping subsets of the training data, and recording both training and validation performance at each size, then plotting the two lines together. The habit of doing this before drawing conclusions from a single accuracy figure is, in my view, one of the cheapest ways to avoid an expensive mistake later.</p></section><section class='psec reveal'><h2>A practical takeaway</h2><p>Before trusting any accuracy score, ask what it would look like at half the data and at twice the data. If you cannot answer that question, you do not yet know whether your model is underfitting, overfitting, or leaking information, and any single number you report is doing less work than it appears to. A learning curve does not replace accuracy as a metric; it explains the metric, and that explanation is usually worth more than the number itself.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/what-learning-curves-reveal-2.jpg' alt='laptop screen showing data chart' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
