@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a6",
       "thumb": "assets/blog/what-learning-curves-reveal.png",
-      "thumb_alt": "Cover image for the article: What a Learning Curve Tells You That Accuracy Cannot"
+      "thumb_alt": "Cover image for the article: What a Learning Curve Tells You That Accuracy Cannot",
+      "li_shared": true
     },
     {
       "slug": "bayesian-model-comparison-example",
