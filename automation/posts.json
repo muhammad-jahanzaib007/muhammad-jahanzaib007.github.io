@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a3",
       "thumb": "assets/blog/thresholds-beyond-accuracy.png",
-      "thumb_alt": "Cover image for the article: When Is a Model Good Enough to Ship? Beyond Accuracy"
+      "thumb_alt": "Cover image for the article: When Is a Model Good Enough to Ship? Beyond Accuracy",
+      "li_shared": true
     },
     {
       "slug": "synthetic-benchmarks-vs-real-data",
