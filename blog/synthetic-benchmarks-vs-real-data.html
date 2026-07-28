@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Synthetic Benchmarks vs Real Data: Why Rank Slips | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why leaderboard rankings on synthetic benchmarks often fail to predict real-world model performance, and how to evaluate more honestly.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="synthetic benchmarks, leaderboard evaluation, distribution shift, dataset leakage, model evaluation, generalisation, benchmark overfitting, real-world data, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-28">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Synthetic Benchmarks vs Real Data: Why Rank Slips">
+<meta property="og:description" content="Why leaderboard rankings on synthetic benchmarks often fail to predict real-world model performance, and how to evaluate more honestly.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/synthetic-benchmarks-vs-real-data.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/synthetic-benchmarks-vs-real-data.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Synthetic Benchmarks vs Real Data: Why Rank Slips">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/synthetic-benchmarks-vs-real-data.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/synthetic-benchmarks-vs-real-data.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Synthetic Benchmarks vs Real Data: Why Rank Slips",
+  "description": "Why leaderboard rankings on synthetic benchmarks often fail to predict real-world model performance, and how to evaluate more honestly.",
+  "url": "https://jahanzaibawan.com/blog/synthetic-benchmarks-vs-real-data.html",
+  "image": "https://jahanzaibawan.com/assets/blog/synthetic-benchmarks-vs-real-data.png",
+  "datePublished": "2026-07-28",
+  "dateModified": "2026-07-28",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/synthetic-benchmarks-vs-real-data.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Synthetic Benchmarks vs Real Data: Why Rank Slips", "item": "https://jahanzaibawan.com/blog/synthetic-benchmarks-vs-real-data.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 28 Jul 2026</div>
+    <h1>Synthetic Benchmarks vs Real Data: Why Rank Slips</h1>
+    <p class="lede">A model that tops a curated leaderboard can still fail quietly in production. Here is why benchmark rank and real-world usefulness are different things measured by different tapes.</p>
+  </div>
+
+  <img src="../assets/blog/synthetic-benchmarks-vs-real-data.png" alt="Cover image for the article: Synthetic Benchmarks vs Real Data: Why Rank Slips" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The seduction of a clean number</h2><p>A leaderboard gives you a single number and a rank, and both feel like truth. If model A scores 91.2 percent on a benchmark and model B scores 88.4 percent, it is tempting to conclude that A is simply the better model. I understand the appeal: a scalar is easy to compare, easy to report, and easy to put in a slide. But that scalar was produced against one specific distribution of examples, collected under one specific procedure, often years before your actual data existed.</p><p>The trouble is that benchmarks are usually built to be tractable, not representative. Labels are cleaned, ambiguous cases are dropped, class balance is engineered, and the text or images are drawn from a narrower slice of the world than production traffic ever is. A benchmark curated this way rewards models that are very good at that narrow slice. It says little about models facing typos, sensor noise, adversarial users, or the slow drift of language and behaviour over time.</p><p>Consider a concrete case. Suppose a sentiment classifier scores 94 percent accuracy on a well-known movie review dataset. Reviews there tend to be long, written by people who bothered to sit down and articulate an opinion, mostly in standard English. Deploy that same model on short customer support chat messages, full of abbreviations, sarcasm, and code-switching, and accuracy might fall to 78 percent. The leaderboard number never lied; it just described a different population than the one you now care about.</p></section><section class='psec reveal'><h2>Why leakage makes the gap worse</h2><p>Part of the problem is leakage, in a broad sense. Popular benchmarks get scraped into pretraining corpora, get their test sets partially memorised, or get their splits reused so many times that researchers have implicitly tuned architectures and hyperparameters against them for years. A model that ranks first is not just good at the underlying task; it is also, unavoidably, the product of a community optimising against that exact test set through thousands of published attempts.</p><p>Here is a worked intuition. Imagine two research groups each try fifty variations of a model on the same public test set of 10,000 examples, tweaking learning rate, architecture depth, and regularisation, then reporting only their best run. Even with no explicit cheating, the best of fifty noisy estimates is a biased estimate of true performance. If the standard error of accuracy on that test set is around 0.5 percentage points, picking the best of fifty attempts can inflate the reported number by close to a point or more, purely from selection, before any genuine improvement is counted. Multiply that across an entire subfield submitting to the same leaderboard for years, and the top of the table reflects a mix of real progress and accumulated selection pressure.</p><p>This is distinct from data leakage in the strict sense, where test examples literally appear in training data, but it produces a similar effect: the number at the top of the leaderboard overstates how the model will behave on genuinely new data drawn from the same distribution, let alone data from a different one. Both problems point the same way: treat any single benchmark score as an upper bound on real performance, not a promise.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/synthetic-benchmarks-vs-real-data-1.jpg' alt='leaderboard scoreboard display' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What actually transfers</h2><p>What tends to transfer better than raw benchmark rank is behaviour under distribution shift that resembles your actual deployment conditions. If you care about a support chatbot, the more informative test is performance on genuine, recent support transcripts, including the messy ones with typos and mixed intent, not performance on curated review text. If you care about a medical imaging model, the informative test is performance across different scanners, hospitals, and patient demographics, not just the single institution that curated the original dataset.</p><p>A practical way to check this is to build a small, honest holdout that mirrors your real conditions as closely as possible, even if it is only a few hundred examples, and compare model rankings on it against the public leaderboard rankings. I have seen cases, and this is a common pattern reported across the field, where the model ranked second or third on a public benchmark outperforms the top-ranked model on a domain-specific holdout, simply because the top model overfit subtle quirks of the benchmark's collection process rather than the underlying task.</p><p>It is also worth tracking the gap itself over time rather than a single snapshot. If a new model's advantage on the public benchmark is two points but its advantage on your internal holdout is half a point or negative, that gap is valuable information. It tells you the model's improvements are concentrated in benchmark-specific patterns rather than the general capability you actually need, and it should temper how much weight you put on the leaderboard rank when making a deployment decision.</p></section><section class='psec reveal'><h2>A practical takeaway</h2><p>None of this means synthetic and public benchmarks are useless; they are cheap, standardised, and genuinely useful for catching regressions and comparing methods on equal footing during early development. The mistake is treating leaderboard rank as a proxy for real-world quality without checking whether the benchmark's distribution resembles your own.</p><p>The discipline I try to keep is simple: use public benchmarks for sanity checks and rapid iteration, but make the final decision on a held-out sample that reflects your actual users, actual noise, and actual edge cases, collected and labelled with the same care you would want from any other experiment. If a model cannot maintain its ranking once you switch the test distribution, its leaderboard position was never really about your problem in the first place.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/synthetic-benchmarks-vs-real-data-2.jpg' alt='messy handwritten customer notes' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

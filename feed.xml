@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Mon, 27 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 28 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Synthetic Benchmarks vs Real Data: Why Rank Slips</title>
+    <link>https://jahanzaibawan.com/blog/synthetic-benchmarks-vs-real-data.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/synthetic-benchmarks-vs-real-data.html</guid>
+    <pubDate>Tue, 28 Jul 2026 09:00:00 +0000</pubDate>
+    <description>Topping a leaderboard tells you about the leaderboard. It rarely tells you what happens when your model meets the messy world.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>What a Learning Curve Tells You That Accuracy Cannot</title>
     <link>https://jahanzaibawan.com/blog/what-learning-curves-reveal.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Sat, 18 Jul 2026 09:00:00 +0000</pubDate>
     <description>A practical guide to deciding when classical vision techniques beat deep learning, and when they don&#x27;t, based on data, constraints, and honest evaluation.</description>
     <category>Computer Vision</category>
-  </item>
-  <item>
-    <title>Why Computer Vision Models Fail Silently on the Factory Floor</title>
-    <link>https://jahanzaibawan.com/blog/vision-models-fail-silently-factory.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/vision-models-fail-silently-factory.html</guid>
-    <pubDate>Sat, 18 Jul 2026 09:00:00 +0000</pubDate>
-    <description>High lab accuracy hides a fragile model. On the factory floor, distribution shift and leakage-prone splits let vision systems fail quietly, with no crash to warn you.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>
