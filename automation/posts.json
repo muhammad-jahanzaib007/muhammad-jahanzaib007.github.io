@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a2",
       "thumb": "assets/blog/synthetic-benchmarks-vs-real-data.png",
-      "thumb_alt": "Cover image for the article: Synthetic Benchmarks vs Real Data: Why Rank Slips"
+      "thumb_alt": "Cover image for the article: Synthetic Benchmarks vs Real Data: Why Rank Slips",
+      "li_shared": true
     },
     {
       "slug": "what-learning-curves-reveal",
