@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Tue, 28 Jul 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>When Is a Model Good Enough to Ship? Beyond Accuracy</title>
+    <link>https://jahanzaibawan.com/blog/thresholds-beyond-accuracy.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/thresholds-beyond-accuracy.html</guid>
+    <pubDate>Tue, 28 Jul 2026 09:00:00 +0000</pubDate>
+    <description>Accuracy alone can&#x27;t tell you if a model is safe to deploy. Here&#x27;s how to set real thresholds around cost, calibration, and failure modes before you ship.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Synthetic Benchmarks vs Real Data: Why Rank Slips</title>
     <link>https://jahanzaibawan.com/blog/synthetic-benchmarks-vs-real-data.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/synthetic-benchmarks-vs-real-data.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Sun, 19 Jul 2026 09:00:00 +0000</pubDate>
     <description>Evaluation frameworks automate metrics, splitting, and reporting, but they can quietly hide leakage, weak baselines, and the wrong question entirely.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Choosing Between Classical and Deep Computer Vision</title>
-    <link>https://jahanzaibawan.com/blog/classical-vs-deep-vision.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/classical-vs-deep-vision.html</guid>
-    <pubDate>Sat, 18 Jul 2026 09:00:00 +0000</pubDate>
-    <description>A practical guide to deciding when classical vision techniques beat deep learning, and when they don&#x27;t, based on data, constraints, and honest evaluation.</description>
-    <category>Computer Vision</category>
   </item>
 </channel>
 </rss>

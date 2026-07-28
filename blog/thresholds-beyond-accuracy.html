@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>When Is a Model Good Enough to Ship? Beyond Accuracy | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to deciding when a model is ready for production, covering cost-weighted thresholds, calibration, subgroup performance, and leakage-aware evaluation.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="model evaluation, accuracy is not enough, decision thresholds, calibration, cost-sensitive learning, model deployment, subgroup performance, machine learning evaluation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-28">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="When Is a Model Good Enough to Ship? Beyond Accuracy">
+<meta property="og:description" content="A practical guide to deciding when a model is ready for production, covering cost-weighted thresholds, calibration, subgroup performance, and leakage-aware evaluation.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/thresholds-beyond-accuracy.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/thresholds-beyond-accuracy.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="When Is a Model Good Enough to Ship? Beyond Accuracy">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/thresholds-beyond-accuracy.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/thresholds-beyond-accuracy.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "When Is a Model Good Enough to Ship? Beyond Accuracy",
+  "description": "A practical guide to deciding when a model is ready for production, covering cost-weighted thresholds, calibration, subgroup performance, and leakage-aware evaluation.",
+  "url": "https://jahanzaibawan.com/blog/thresholds-beyond-accuracy.html",
+  "image": "https://jahanzaibawan.com/assets/blog/thresholds-beyond-accuracy.png",
+  "datePublished": "2026-07-28",
+  "dateModified": "2026-07-28",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/thresholds-beyond-accuracy.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "When Is a Model Good Enough to Ship? Beyond Accuracy", "item": "https://jahanzaibawan.com/blog/thresholds-beyond-accuracy.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 6 min read · 28 Jul 2026</div>
+    <h1>When Is a Model Good Enough to Ship? Beyond Accuracy</h1>
+    <p class="lede">Accuracy is a single number that hides the decisions that matter. Shipping well means setting thresholds around cost, calibration, and failure modes, not just a headline metric.</p>
+  </div>
+
+  <img src="../assets/blog/thresholds-beyond-accuracy.png" alt="Cover image for the article: When Is a Model Good Enough to Ship? Beyond Accuracy" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why accuracy is the wrong finish line</h2><p>I have seen a lot of projects treat 'accuracy above some round number' as the definition of done. Ninety per cent accuracy sounds impressive until you ask what the other ten per cent costs you. A single scalar collapses every kind of mistake into one bucket, and in most real systems mistakes are not interchangeable. A false alarm that wastes a reviewer's five minutes and a missed case that lets a fraudulent transaction through are not the same error, yet accuracy treats them identically.</p><p>Consider a churn prediction model evaluated on a dataset where twelve per cent of customers actually leave. A model that simply predicts 'stays' for everyone achieves eighty-eight per cent accuracy without learning anything. That is an extreme case, but the same distortion shows up more subtly whenever classes are imbalanced, which is most of the time in fraud detection, medical screening, defect detection, and churn. The headline number can rise while the model becomes less useful for the decision it was built to support.</p><p>The fix is not a different single metric, it is a different question. Instead of asking 'is this model accurate enough', I ask 'what happens on each side of the decision boundary, and can the business or the users tolerate that'. That reframing forces you to define thresholds tied to consequences rather than to statistical convenience, and it is the difference between a model that looks good in a notebook and one that survives contact with production traffic.</p></section><section class='psec reveal'><h2>Cost-weighted thresholds: a worked example</h2><p>Suppose we are screening insurance claims for potential fraud. Out of ten thousand claims, three hundred are genuinely fraudulent, a five per cent floor once you account for related noise. Investigating a flagged claim costs the company forty pounds in analyst time. Missing a fraudulent claim costs, on average, six hundred pounds in payout. These numbers are illustrative, but the shape of the trade-off is realistic and it changes everything about what threshold makes sense.</p><p>If we set the classification threshold high, we flag very few claims, catching only the most obvious fraud but missing many others. If we set it low, we flag almost everything, catching nearly all fraud but burying analysts in false positives. Accuracy alone cannot tell you where to sit on that curve because it does not know that a missed fraud costs fifteen times more than an unnecessary investigation. What you actually want is the threshold that minimises total expected cost: false positives times forty pounds, plus false negatives times six hundred pounds, summed over the whole claim volume.</p><p>Walking through it: at a threshold that yields two hundred false positives and ninety false negatives, the cost is roughly two hundred times forty, eight thousand pounds, plus ninety times six hundred, fifty four thousand pounds, for a total of sixty two thousand pounds. Nudge the threshold down so false positives rise to five hundred but false negatives drop to forty, and the cost becomes twenty thousand pounds plus twenty four thousand pounds, forty four thousand pounds total, a clear improvement even though more claims are being flagged. This is the calculation accuracy never performs, because accuracy does not know that these two error types have different prices.</p><p>The practical habit worth building is to write down the cost of each error type before you look at any model output. If you cannot state a number, even a rough one, you are choosing a threshold by instinct and calling it a metric. Once the costs are explicit, you can sweep the threshold, plot expected cost against it, and pick the minimum, or better, present the curve to whoever owns the business decision so the threshold reflects their risk appetite rather than yours.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/thresholds-beyond-accuracy-1.jpg' alt='whiteboard with equations' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Calibration, subgroups, and the questions accuracy cannot answer</h2><p>A second threshold worth checking before shipping is calibration: when the model says there is a seventy per cent chance of an event, does that event actually happen roughly seventy per cent of the time across many such predictions? A model can be reasonably accurate at a fixed decision point while being badly calibrated, which matters enormously if anyone downstream treats the score as a probability, for instance when ranking claims by urgency or setting a risk-based price. I check this with a reliability diagram, bucketing predictions by score and comparing predicted rate to observed rate in each bucket, and I set a threshold for acceptable calibration error, not just for accuracy.</p><p>A third check is performance across subgroups rather than performance averaged over everyone. A model with ninety two per cent overall accuracy might be sitting at ninety seven per cent for the majority group in the training data and seventy eight per cent for a minority group that is underrepresented. The overall number hides that gap completely, and if the underperforming group happens to be the one where errors are most costly or most scrutinised, shipping on the overall number alone is a genuine risk. My practice is to define a minimum acceptable performance per subgroup, not just an average, and refuse to ship if any group falls below it, treating that as a hard threshold rather than a nice-to-have.</p><p>None of this works, of course, if the evaluation itself is compromised. Leakage between training and test data, whether through duplicated records, features that encode the label indirectly, or a temporal split that lets future information leak backwards, will inflate every metric discussed here, cost-weighted or not. Before I trust any threshold, I check that the split respects time where time matters, that no identifier links rows across the split, and that the test set was genuinely untouched during model selection. A threshold built on a leaking evaluation is not a threshold at all, it is a number that will fail quietly the moment real data arrives.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>Shipping readiness is not a single gate, it is a small set of thresholds, each answering a distinct question: what does each type of error cost, is the model's confidence trustworthy, does performance hold up across the groups that matter, and was the evaluation clean enough to believe. Accuracy can still be one input into that picture, but it should never be the only one, and it should certainly never be the first thing you optimise before the cost structure is written down.</p><p>Before your next launch decision, try writing three numbers on a whiteboard: the cost of a false positive, the cost of a false negative, and the minimum acceptable performance for your most vulnerable subgroup. If your model clears all three under a leakage-checked evaluation, you have a genuine case for shipping. If it cannot, no accuracy figure, however impressive, should change that answer.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/thresholds-beyond-accuracy-2.jpg' alt='insurance claim documents on desk' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

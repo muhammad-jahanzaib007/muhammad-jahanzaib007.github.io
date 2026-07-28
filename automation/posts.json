@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "thresholds-beyond-accuracy",
+      "title": "When Is a Model Good Enough to Ship? Beyond Accuracy",
+      "excerpt": "Accuracy alone can't tell you if a model is safe to deploy. Here's how to set real thresholds around cost, calibration, and failure modes before you ship.",
+      "date": "2026-07-28",
+      "read_min": 6,
+      "tag": "Evaluation",
+      "color": "a3",
+      "thumb": "assets/blog/thresholds-beyond-accuracy.png",
+      "thumb_alt": "Cover image for the article: When Is a Model Good Enough to Ship? Beyond Accuracy"
+    },
+    {
       "slug": "synthetic-benchmarks-vs-real-data",
       "title": "Synthetic Benchmarks vs Real Data: Why Rank Slips",
       "excerpt": "Topping a leaderboard tells you about the leaderboard. It rarely tells you what happens when your model meets the messy world.",

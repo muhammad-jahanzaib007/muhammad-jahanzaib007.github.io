@@ -1,1 +1,1 @@
-2026-07-28T08:02:06Z slug=synthetic-benchmarks-vs-real-data words=926 title="Synthetic Benchmarks vs Real Data: Why Rank Slips"
+2026-07-28T20:01:44Z slug=thresholds-beyond-accuracy words=1120 title="When Is a Model Good Enough to Ship? Beyond Accuracy"
