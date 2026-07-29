@@ -1,1 +1,1 @@
-2026-07-29T08:01:44Z slug=shap-lime-honest-interpretability words=1111 title="SHAP, LIME, and When Neither Method Is Honest"
+2026-07-29T20:01:55Z slug=cost-matrix-nobody-writes-down words=1059 title="The Cost Matrix Nobody Writes Down"

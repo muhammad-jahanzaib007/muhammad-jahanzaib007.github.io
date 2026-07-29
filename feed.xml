@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Wed, 29 Jul 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>The Cost Matrix Nobody Writes Down</title>
+    <link>https://jahanzaibawan.com/blog/cost-matrix-nobody-writes-down.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/cost-matrix-nobody-writes-down.html</guid>
+    <pubDate>Wed, 29 Jul 2026 09:00:00 +0000</pubDate>
+    <description>Most models are trained to minimise a generic loss while the business quietly cares about wildly asymmetric costs. Here is how to fix that mismatch.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>SHAP, LIME, and When Neither Method Is Honest</title>
     <link>https://jahanzaibawan.com/blog/shap-lime-honest-interpretability.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/shap-lime-honest-interpretability.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/finetuning-vs-prompt-design.html</guid>
     <pubDate>Mon, 20 Jul 2026 09:00:00 +0000</pubDate>
     <description>A small worked example shows where fine-tuning earns its keep and where good prompt design gets you nearly as far, faster and cheaper.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Building Your Own Evaluation Harness Before a Framework</title>
-    <link>https://jahanzaibawan.com/blog/build-your-own-eval-harness.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/build-your-own-eval-harness.html</guid>
-    <pubDate>Sun, 19 Jul 2026 09:00:00 +0000</pubDate>
-    <description>Frameworks hide the plumbing of evaluation. Build your own harness first so you know precisely what a metric means before you trust one.</description>
     <category>Evaluation</category>
   </item>
 </channel>

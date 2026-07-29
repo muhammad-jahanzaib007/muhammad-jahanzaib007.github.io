@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Cost Matrix Nobody Writes Down | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to encoding asymmetric business costs into a loss function, with a worked cost matrix example and honest evaluation advice.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="cost matrix, loss function, class imbalance, decision threshold, evaluation metrics, machine learning risk, model calibration, business metrics, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-29">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="The Cost Matrix Nobody Writes Down">
+<meta property="og:description" content="A practical guide to encoding asymmetric business costs into a loss function, with a worked cost matrix example and honest evaluation advice.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/cost-matrix-nobody-writes-down.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/cost-matrix-nobody-writes-down.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Cost Matrix Nobody Writes Down">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/cost-matrix-nobody-writes-down.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/cost-matrix-nobody-writes-down.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The Cost Matrix Nobody Writes Down",
+  "description": "A practical guide to encoding asymmetric business costs into a loss function, with a worked cost matrix example and honest evaluation advice.",
+  "url": "https://jahanzaibawan.com/blog/cost-matrix-nobody-writes-down.html",
+  "image": "https://jahanzaibawan.com/assets/blog/cost-matrix-nobody-writes-down.png",
+  "datePublished": "2026-07-29",
+  "dateModified": "2026-07-29",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/cost-matrix-nobody-writes-down.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "The Cost Matrix Nobody Writes Down", "item": "https://jahanzaibawan.com/blog/cost-matrix-nobody-writes-down.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 29 Jul 2026</div>
+    <h1>The Cost Matrix Nobody Writes Down</h1>
+    <p class="lede">Accuracy is not a business objective. Here is how to turn asymmetric risk into a loss function your model actually optimises.</p>
+  </div>
+
+  <img src="../assets/blog/cost-matrix-nobody-writes-down.png" alt="Cover image for the article: The Cost Matrix Nobody Writes Down" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The metric that quietly betrays the business</h2><p>Every classification project I have worked through starts with someone asking for accuracy, or precision, or an F1 score, as if these numbers were neutral. They are not. Accuracy treats a missed fraud transaction the same as a false alarm on a harmless one. F1 balances precision and recall as though a bank's compliance team and its customer support team suffer equally from each type of mistake. In practice they never do, and the gap between what we optimise and what the business actually loses money or reputation on is where good models quietly fail in production.</p><p>The uncomfortable truth is that almost nobody writes the cost matrix down. It exists implicitly in someone's head, usually a product owner or a risk officer, and it gets translated badly into a proxy metric because that is easier to compute. I have seen teams spend weeks tuning hyperparameters to squeeze out a fraction of a percent of AUC while the actual deployed threshold was chosen by someone eyeballing a spreadsheet the night before launch. The model was fine. The decision layer on top of it was the actual product, and nobody had engineered it with the same care.</p><p>This matters because a loss function is not just a training detail, it is a statement of what you believe the world will punish you for. If you train on a symmetric loss and deploy into an asymmetric world, you are optimising for the wrong thing and then discovering the mismatch through complaints, chargebacks, or a regulator's letter. Writing the cost matrix down forces the conversation to happen before deployment rather than after.</p></section><section class='psec reveal'><h2>Building the matrix: a worked example</h2><p>Take a churn prediction problem for a subscription business. There are four outcomes: predicting churn when the customer stays (false positive), predicting stay when the customer churns (false negative), and the two correct predictions. Suppose a false positive means offering a retention discount to someone who was never leaving, costing the business roughly £15 in lost margin. A false negative means losing a customer worth, say, £240 in expected lifetime value, because no intervention was triggered in time. True positives and true negatives carry no direct cost beyond the baseline cost of running the model.</p><p>Written as a matrix, this is stark: a false negative is sixteen times more expensive than a false positive. Yet a model trained with plain cross-entropy and evaluated with accuracy will happily trade ten prevented false positives for one extra false negative if that is what minimises the aggregate error count, because cross-entropy has no idea that these errors are not equal. The model is doing exactly what it was told, which is the problem: it was told the wrong thing.</p><p>Once the matrix is explicit, you have real options. You can reweight the loss function directly, for instance scaling the positive class loss by the ratio of costs so that the sixteen-to-one asymmetry is baked into training rather than bolted on afterwards. You can leave the loss alone and instead move the decision threshold, choosing the point on the precision-recall curve that minimises expected cost rather than the default 0.5 cutoff. You can also use cost-sensitive resampling, though I am wary of this as a first move because it changes the data distribution the model sees rather than the decision rule, and it is easy to lose track of what you actually adjusted.</p><p>The calculation itself is simple arithmetic once the matrix exists: expected cost equals the false positive rate times its cost plus the false negative rate times its cost, weighted by class prevalence. If churn affects five per cent of customers, the expected cost per thousand customers under a naive threshold might be dominated almost entirely by the false negative term, even if the false positive rate looks worse on paper. Seeing this number laid out changes what people optimise for in review meetings, because suddenly the conversation is in pounds rather than percentage points.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/cost-matrix-nobody-writes-down-1.jpg' alt='spreadsheet with financial figures on screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Where this goes wrong and how to keep it honest</h2><p>The first failure mode is treating the cost matrix as fixed and universal when it is neither. Costs shift with context: a false positive in fraud detection during a high-volume sales period costs more in customer friction than the same false positive on a quiet Tuesday. If your matrix is a single set of numbers baked into training, you have frozen an assumption that the business itself does not hold constant. The more robust approach is to keep the cost weighting in the decision layer, applied at inference time to model scores, so it can be updated without retraining.</p><p>The second failure mode is leakage-adjacent but subtler: tuning the threshold or cost weights on the same validation set you use for model selection, repeatedly, until the numbers look good. This is a form of overfitting to your own cost assumptions. I always hold out a separate slice, temporally later than training and validation, purely for checking that the chosen threshold generalises. If the expected cost on that final slice looks meaningfully worse than on validation, the threshold was tuned to noise, not signal.</p><p>The third failure mode is assuming the people who gave you the cost numbers were right. Cost estimates from stakeholders are often guesses dressed up as facts, and it is worth stress-testing the final decision under a range of plausible costs rather than a single point estimate. If your chosen threshold is stable across a reasonable range, say the false negative cost is anywhere between fifteen and twenty times the false positive cost, you have a robust decision. If small changes to the assumed ratio flip your recommendation entirely, that is worth flagging honestly rather than quietly picking the number that supports the answer you already wanted.</p><p>The practical takeaway is not that every project needs a fully worked financial model before anyone touches a notebook. It is that somebody, ideally you, should ask out loud what a false positive costs and what a false negative costs, in whatever units the business actually cares about, before choosing a metric. Write the numbers down, even roughly. Use them to pick a threshold or reweight a loss, and revisit them when the business context shifts. The model was never the hard part; making its mistakes cost what they are supposed to cost is.</p></section>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
