@@ -9,7 +9,8 @@
       "tag": "Interpretability",
       "color": "a4",
       "thumb": "assets/blog/shap-lime-honest-interpretability.png",
-      "thumb_alt": "Cover image for the article: SHAP, LIME, and When Neither Method Is Honest"
+      "thumb_alt": "Cover image for the article: SHAP, LIME, and When Neither Method Is Honest",
+      "li_shared": true
     },
     {
       "slug": "thresholds-beyond-accuracy",
