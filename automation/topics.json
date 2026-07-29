@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Interpretability methods compared: SHAP, LIME, and when neither is honest",
     "The cost matrix nobody writes down: turning business risk into a loss function",
     "Parameter-efficient fine-tuning: adapters, LoRA, and what actually gets updated",
     "The transformer architecture, explained without the maths overload",
@@ -87,6 +86,7 @@
     "A worked example of Bayesian model comparison instead of a single p-value",
     "What a learning curve tells you that a single accuracy score cannot",
     "Synthetic benchmarks versus real-world data: why leaderboard rank does not transfer",
-    "Deciding when a model is good enough to ship: thresholds beyond accuracy"
+    "Deciding when a model is good enough to ship: thresholds beyond accuracy",
+    "Interpretability methods compared: SHAP, LIME, and when neither is honest"
   ]
 }

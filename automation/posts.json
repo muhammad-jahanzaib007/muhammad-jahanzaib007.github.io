@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "shap-lime-honest-interpretability",
+      "title": "SHAP, LIME, and When Neither Method Is Honest",
+      "excerpt": "SHAP and LIME answer different questions dressed up as the same question. Knowing the difference is the line between insight and false confidence.",
+      "date": "2026-07-29",
+      "read_min": 6,
+      "tag": "Interpretability",
+      "color": "a4",
+      "thumb": "assets/blog/shap-lime-honest-interpretability.png",
+      "thumb_alt": "Cover image for the article: SHAP, LIME, and When Neither Method Is Honest"
+    },
+    {
       "slug": "thresholds-beyond-accuracy",
       "title": "When Is a Model Good Enough to Ship? Beyond Accuracy",
       "excerpt": "Accuracy alone can't tell you if a model is safe to deploy. Here's how to set real thresholds around cost, calibration, and failure modes before you ship.",

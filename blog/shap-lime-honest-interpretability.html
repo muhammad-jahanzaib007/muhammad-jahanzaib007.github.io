@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHAP, LIME, and When Neither Method Is Honest | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A clear comparison of SHAP and LIME explainability methods, including a worked example showing where they diverge and why some explanations mislead.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="SHAP, LIME, interpretability, explainable AI, model explanations, feature attribution, machine learning evaluation, XAI, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-29">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="SHAP, LIME, and When Neither Method Is Honest">
+<meta property="og:description" content="A clear comparison of SHAP and LIME explainability methods, including a worked example showing where they diverge and why some explanations mislead.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/shap-lime-honest-interpretability.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/shap-lime-honest-interpretability.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SHAP, LIME, and When Neither Method Is Honest">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/shap-lime-honest-interpretability.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/shap-lime-honest-interpretability.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "SHAP, LIME, and When Neither Method Is Honest",
+  "description": "A clear comparison of SHAP and LIME explainability methods, including a worked example showing where they diverge and why some explanations mislead.",
+  "url": "https://jahanzaibawan.com/blog/shap-lime-honest-interpretability.html",
+  "image": "https://jahanzaibawan.com/assets/blog/shap-lime-honest-interpretability.png",
+  "datePublished": "2026-07-29",
+  "dateModified": "2026-07-29",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/shap-lime-honest-interpretability.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "SHAP, LIME, and When Neither Method Is Honest", "item": "https://jahanzaibawan.com/blog/shap-lime-honest-interpretability.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Interpretability · 6 min read · 29 Jul 2026</div>
+    <h1>SHAP, LIME, and When Neither Method Is Honest</h1>
+    <p class="lede">A practical look at what these two popular explanation methods actually compute, where they quietly disagree with each other, and why an explanation can be mathematically valid yet still mislead you about the model.</p>
+  </div>
+
+  <img src="../assets/blog/shap-lime-honest-interpretability.png" alt="Cover image for the article: SHAP, LIME, and When Neither Method Is Honest" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the question matters more than the method</h2><p>Every time I see a feature attribution plot presented as ground truth about how a model reasons, I get a little nervous. SHAP and LIME are both genuinely useful, but they are answers to specific mathematical questions, not windows into a model's mind. The trouble starts when people forget which question was asked. SHAP asks: if we imagine all possible subsets of features being present or absent, how much does each feature contribute to moving the prediction away from a baseline, on average, across those subsets? LIME asks a different question: if I perturb this one instance a bit and fit a simple, interpretable model locally around it, what does that local surrogate say matters?</p><p>These are not the same question, and they are not guaranteed to agree, because they are built on different assumptions about what counts as a faithful local description of a complicated, non-linear function. A model can have genuinely non-linear, interacting behaviour near a data point, and both methods will produce a tidy bar chart. Neither chart is a lie in the sense of being computed wrongly. But a tidy chart implies a simplicity that the underlying model may not have, and that gap is where honest interpretability quietly breaks down.</p></section><section class='psec reveal'><h2>What SHAP and LIME actually compute</h2><p>SHAP is grounded in cooperative game theory. Treat each feature as a player contributing to a payoff, the model's prediction, and Shapley values distribute that payoff fairly across players based on their average marginal contribution over all possible coalitions. This gives SHAP some appealing properties: attributions sum exactly to the difference between the prediction and a baseline, and features that contribute nothing get exactly zero. The cost is computational. Exact Shapley values require evaluating the model on an exponential number of feature subsets, so in practice we use approximations, sampling-based estimators for general models, or faster exact algorithms for tree ensembles. Those approximations introduce their own variance, which is rarely reported alongside the pretty summary plot.</p><p>LIME takes a more pragmatic route. It samples points around the instance you care about, weights them by proximity, gets the black-box model's predictions on those samples, and fits a simple linear model to that local neighbourhood. The coefficients of that linear model become your explanation. This is fast and flexible, and it can be applied to almost any model, including ones where SHAP approximations are awkward. But the explanation depends heavily on choices that are rarely surfaced: how you define the neighbourhood, how many samples you draw, which kernel width you use for weighting distance. Change the kernel width and you can change which features look important, sometimes substantially, without touching the model at all.</p><p>Here is a concrete illustration. Suppose a credit scoring model has learned a threshold effect: income above a certain level strongly reduces predicted default risk, but only once a second feature, existing debt, is below a certain level; otherwise income barely matters. For an applicant sitting near both thresholds, LIME's local linear fit might attribute most of the effect to income, because the sampled neighbourhood happened to vary income more usefully than debt. SHAP, averaging over many coalitions, is more likely to split credit between both features, since it explicitly accounts for their interaction across many combinations. Run LIME twice with different random seeds on the exact same instance and you may get noticeably different rankings. Run SHAP with a small sample size for approximation and you get the same instability, just less visibly.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/shap-lime-honest-interpretability-1.jpg' alt='glass whiteboard with data charts' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Where neither method is honest</h2><p>The deepest problem is not sampling noise, it is the baseline. SHAP's attributions are always relative to a reference point, often the average feature values across a background dataset, or an expected value under some assumed feature distribution. Change that baseline and the attributions change, sometimes dramatically, even though the model itself has not moved at all. If your background dataset does not resemble the population the model actually sees in production, your explanations describe a comparison that never occurs in the real world. This is a leakage-adjacent trap in disguise: an explanation built on an unrepresentative reference set can look rigorous while quietly encoding an assumption nobody checked.</p><p>Correlated features make this worse for both methods. If two features are highly correlated, perturbing one while holding the other fixed, which both SHAP's coalition sampling and LIME's neighbourhood sampling effectively do, creates synthetic data points that never occur naturally. Imagine a model using both age and years of work experience, which are tightly correlated in most populations. Perturbing age alone while pinning experience produces a twenty-year-old with thirty years of experience. The model was never trained to see that combination, so its prediction there is essentially extrapolation, and the resulting attribution reflects the model's behaviour in a region it has never sensibly learned. The explanation is computed correctly and still describes something that cannot happen.</p><p>There is also the issue of what counts as a satisfying explanation versus a true one. Both methods will happily produce a clean, confident-looking chart for a model that is badly miscalibrated, poorly validated, or trained on leaked features. A feature that looks important because it leaked target information during training will show up as important in SHAP and LIME alike, and the neat visualisation gives that leakage an unearned air of legitimacy. Interpretability tools explain the model you built, not whether you should trust it, and conflating the two is one of the most common mistakes I see.</p></section><section class='psec reveal'><h2>A practical way to use both honestly</h2><p>None of this means abandon SHAP or LIME. It means using them the way you would use any point estimate: with an explicit statement of assumptions and some sense of variance. Report the background dataset used for SHAP baselines and check it matches the deployment population. Run LIME multiple times with different seeds and kernel widths and check whether the top features are stable, not just present once. Where features are correlated, consider grouping them before attribution rather than pretending they vary independently.</p><p>Most usefully, treat agreement between SHAP and LIME as a signal worth investigating rather than a box to tick. When they broadly agree, you have modest evidence the explanation reflects something real about locally linear structure in the model. When they diverge, that divergence is informative: it usually means the model's behaviour near that instance is genuinely non-linear or interaction-heavy, which is worth knowing regardless of which chart you print in the report. An honest explanation admits its own baseline, its own sampling noise, and the specific question it was built to answer, rather than presenting a single confident bar chart as the model's mind laid bare.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/shap-lime-honest-interpretability-2.jpg' alt='financial documents and calculator on desk' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
