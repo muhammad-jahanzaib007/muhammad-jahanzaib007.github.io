@@ -9,7 +9,8 @@
       "tag": "Deep Learning",
       "color": "a2",
       "thumb": "assets/blog/transformers-without-the-maths.png",
-      "thumb_alt": "Cover image for the article: The Transformer Architecture, Explained Without the Maths"
+      "thumb_alt": "Cover image for the article: The Transformer Architecture, Explained Without the Maths",
+      "li_shared": true
     },
     {
       "slug": "parameter-efficient-fine-tuning-explained",
