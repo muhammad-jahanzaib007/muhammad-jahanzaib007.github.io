@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Wed, 29 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 30 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Parameter-Efficient Fine-Tuning: What Actually Gets Updated</title>
+    <link>https://jahanzaibawan.com/blog/parameter-efficient-fine-tuning-explained.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/parameter-efficient-fine-tuning-explained.html</guid>
+    <pubDate>Thu, 30 Jul 2026 09:00:00 +0000</pubDate>
+    <description>A worked look at how adapters and LoRA fine-tune large models by updating a small slice of parameters, and why that matters for real projects.</description>
+    <category>Deep Learning</category>
+  </item>
   <item>
     <title>The Cost Matrix Nobody Writes Down</title>
     <link>https://jahanzaibawan.com/blog/cost-matrix-nobody-writes-down.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Mon, 20 Jul 2026 09:00:00 +0000</pubDate>
     <description>Fine-tuning does not rewrite a model, it nudges it. Here is what actually shifts inside the weights and why that distinction matters for evaluation.</description>
     <category>Deep Learning</category>
-  </item>
-  <item>
-    <title>Fine-Tuning versus Prompt Design: A Worked Comparison</title>
-    <link>https://jahanzaibawan.com/blog/finetuning-vs-prompt-design.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/finetuning-vs-prompt-design.html</guid>
-    <pubDate>Mon, 20 Jul 2026 09:00:00 +0000</pubDate>
-    <description>A small worked example shows where fine-tuning earns its keep and where good prompt design gets you nearly as far, faster and cheaper.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>

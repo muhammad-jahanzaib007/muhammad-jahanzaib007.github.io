@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "parameter-efficient-fine-tuning-explained",
+      "title": "Parameter-Efficient Fine-Tuning: What Actually Gets Updated",
+      "excerpt": "A worked look at how adapters and LoRA fine-tune large models by updating a small slice of parameters, and why that matters for real projects.",
+      "date": "2026-07-30",
+      "read_min": 5,
+      "tag": "Deep Learning",
+      "color": "a6",
+      "thumb": "assets/blog/parameter-efficient-fine-tuning-explained.png",
+      "thumb_alt": "Cover image for the article: Parameter-Efficient Fine-Tuning: What Actually Gets Updated"
+    },
+    {
       "slug": "cost-matrix-nobody-writes-down",
       "title": "The Cost Matrix Nobody Writes Down",
       "excerpt": "Most models are trained to minimise a generic loss while the business quietly cares about wildly asymmetric costs. Here is how to fix that mismatch.",

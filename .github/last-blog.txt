@@ -1,1 +1,1 @@
-2026-07-29T20:01:55Z slug=cost-matrix-nobody-writes-down words=1059 title="The Cost Matrix Nobody Writes Down"
+2026-07-30T08:02:22Z slug=parameter-efficient-fine-tuning-explained words=1062 title="Parameter-Efficient Fine-Tuning: What Actually Gets Updated"

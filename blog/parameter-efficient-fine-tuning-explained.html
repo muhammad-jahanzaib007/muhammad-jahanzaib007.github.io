@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parameter-Efficient Fine-Tuning: What Actually Gets Updated | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="An accessible explainer on parameter-efficient fine-tuning, covering adapters and LoRA, with a concrete worked example of what gets updated and why it matters.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="parameter-efficient fine-tuning, LoRA, adapters, transfer learning, transformer fine-tuning, low-rank adaptation, deep learning, model efficiency, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-30">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Parameter-Efficient Fine-Tuning: What Actually Gets Updated">
+<meta property="og:description" content="An accessible explainer on parameter-efficient fine-tuning, covering adapters and LoRA, with a concrete worked example of what gets updated and why it matters.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/parameter-efficient-fine-tuning-explained.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/parameter-efficient-fine-tuning-explained.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Parameter-Efficient Fine-Tuning: What Actually Gets Updated">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/parameter-efficient-fine-tuning-explained.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/parameter-efficient-fine-tuning-explained.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Parameter-Efficient Fine-Tuning: What Actually Gets Updated",
+  "description": "An accessible explainer on parameter-efficient fine-tuning, covering adapters and LoRA, with a concrete worked example of what gets updated and why it matters.",
+  "url": "https://jahanzaibawan.com/blog/parameter-efficient-fine-tuning-explained.html",
+  "image": "https://jahanzaibawan.com/assets/blog/parameter-efficient-fine-tuning-explained.png",
+  "datePublished": "2026-07-30",
+  "dateModified": "2026-07-30",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/parameter-efficient-fine-tuning-explained.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Parameter-Efficient Fine-Tuning: What Actually Gets Updated", "item": "https://jahanzaibawan.com/blog/parameter-efficient-fine-tuning-explained.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Deep Learning · 5 min read · 30 Jul 2026</div>
+    <h1>Parameter-Efficient Fine-Tuning: What Actually Gets Updated</h1>
+    <p class="lede">Adapters and LoRA let you fine-tune huge models by touching a tiny fraction of their weights. Here is what that actually means in practice.</p>
+  </div>
+
+  <img src="../assets/blog/parameter-efficient-fine-tuning-explained.png" alt="Cover image for the article: Parameter-Efficient Fine-Tuning: What Actually Gets Updated" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why full fine-tuning is overkill</h2><p>Fine-tuning a large pretrained model traditionally means updating every single weight. For a model with a few hundred million parameters that is already expensive to store and optimise; for models with tens of billions it becomes impractical for most people outside a well-resourced lab. You need a full copy of the gradients, a full copy of the optimiser state, and enough memory to hold activations for backpropagation through every layer. If you want ten different task-specific versions of the same base model, you end up storing ten full copies of it.</p><p>Parameter-efficient fine-tuning, PEFT, starts from a simple observation: adapting a pretrained model to a new task usually does not require changing everything it knows. Most of the representational machinery built during pretraining is still useful. What you typically need is a small, targeted correction, a nudge that redirects existing capabilities towards the new task rather than rebuilding them from scratch. If that is true, you should be able to freeze almost all of the original weights and learn only a small number of new parameters that steer the model.</p><p>This is not just a memory-saving trick, though that matters enormously. It also tends to act as a form of regularisation. Freezing most of the network limits how far the model can drift from its pretrained behaviour, which reduces the risk of catastrophic forgetting and often reduces overfitting on small task-specific datasets. When your labelled data is limited, that constraint can be the difference between a model that generalises and one that memorises.</p></section><section class='psec reveal'><h2>Adapters: small bottleneck layers inserted into the network</h2><p>The adapter approach inserts small trainable modules between the existing layers of a pretrained network, while keeping the original weights frozen. A typical adapter is a bottleneck: it projects the layer's output down to a much smaller dimension, applies a non-linearity, then projects back up to the original size, with a residual connection so the adapter starts close to an identity function at initialisation. During fine-tuning, only these adapter parameters and perhaps the final task head are updated.</p><p>Consider a transformer layer with a hidden size of 1024. A standard feed-forward block inside it might have several million parameters. An adapter inserted after that block, with a bottleneck dimension of 64, needs only two small matrices: one of size 1024 by 64, and one of size 64 by 1024, roughly 131,000 parameters, plus a small bias term. Stack that across twelve or twenty-four layers and the total number of trainable parameters might come to one or two per cent of the full model, sometimes less.</p><p>The practical benefit is compounding: you store one frozen base model and a lightweight adapter file per task, often just a few megabytes, and you can swap adapters in and out without reloading the entire network. The cost is a small amount of added inference latency, because the adapters are extra layers that every forward pass must pass through, and there is some sensitivity to where in the network you place them and how large you make the bottleneck.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/parameter-efficient-fine-tuning-explained-1.jpg' alt='laptop with neural network diagram on screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>LoRA: reparameterising the weight update itself</h2><p>Low-Rank Adaptation takes a different route. Rather than inserting new layers, it changes how an existing weight matrix is updated. For a frozen weight matrix W, LoRA represents the fine-tuning update as the product of two much smaller matrices, A and B, so the effective weight during the forward pass becomes W plus B times A, scaled by a small factor. W itself never changes; only A and B are trained, and at inference you can either keep them separate or merge them into W with a single addition, which means no extra latency at all once merged.</p><p>The intuition rests on a specific claim: the update needed to adapt a large weight matrix to a new task tends to have low intrinsic rank. That means even though W might be 1024 by 1024, containing around a million parameters, the useful correction to it can often be captured by a much lower-dimensional interaction. If you choose a rank of 8, matrix A is 1024 by 8 and matrix B is 8 by 1024, giving roughly 16,000 trainable parameters to represent an update to a matrix that would otherwise need a million. Applied to the query and value projection matrices across every attention layer in a moderately sized transformer, LoRA can bring trainable parameters down to a fraction of one per cent of the total, while still recovering most of the performance of full fine-tuning on many tasks.</p><p>This is the detail that trips people up: LoRA does not add new computation paths the way adapters do, it reparameterises the gradient update on existing paths. That is why merged LoRA weights add zero inference overhead, and why LoRA composes cleanly with quantised base models, since you can keep the frozen backbone in low precision and train the small A and B matrices in higher precision on top.</p></section><section class='psec reveal'><h2>What this means for your own experiments</h2><p>The rank or bottleneck size is your main lever, and it behaves like any other capacity control: too small and the model cannot express the correction the task needs, too large and you lose the efficiency and regularisation benefits, sometimes overfitting on small datasets in ways full fine-tuning also would. Sensible practice is to try a small handful of settings, for example rank 4, 8, and 16 for LoRA, and compare on a held-out validation set rather than assuming a single value from a paper transfers to your data.</p><p>Where you apply the method matters as much as how much capacity you give it. Adapting only the attention projections is often sufficient and cheaper; adding adapters or LoRA matrices to the feed-forward blocks as well can help on tasks that need more substantial shifts in representation, at the cost of more trainable parameters. This is an empirical question for your specific dataset, not something to assume from general guidance.</p><p>The honest caveat is that parameter-efficient methods are not free wins on every task. When the new task is very distant from the pretraining distribution, or when you have abundant labelled data and compute, full fine-tuning can still edge ahead. Report what fraction of parameters you trained, which layers you touched, and how you tuned rank or bottleneck size, since that is what makes a PEFT result reproducible rather than a single lucky configuration.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/parameter-efficient-fine-tuning-explained-2.jpg' alt='stacked circuit boards close up' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
