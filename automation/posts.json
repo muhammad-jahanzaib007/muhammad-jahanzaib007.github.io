@@ -9,7 +9,8 @@
       "tag": "Deep Learning",
       "color": "a6",
       "thumb": "assets/blog/parameter-efficient-fine-tuning-explained.png",
-      "thumb_alt": "Cover image for the article: Parameter-Efficient Fine-Tuning: What Actually Gets Updated"
+      "thumb_alt": "Cover image for the article: Parameter-Efficient Fine-Tuning: What Actually Gets Updated",
+      "li_shared": true
     },
     {
       "slug": "cost-matrix-nobody-writes-down",
