@@ -1,6 +1,5 @@
 {
   "queue": [
-    "The transformer architecture, explained without the maths overload",
     "Model evaluation for extreme risks: what red-teaming actually tests",
     "How to design a model evaluation harness for a job you have not seen yet",
     "NLP techniques before deep learning: a practical refresher that still matters",
@@ -87,6 +86,7 @@
     "Deciding when a model is good enough to ship: thresholds beyond accuracy",
     "Interpretability methods compared: SHAP, LIME, and when neither is honest",
     "The cost matrix nobody writes down: turning business risk into a loss function",
-    "Parameter-efficient fine-tuning: adapters, LoRA, and what actually gets updated"
+    "Parameter-efficient fine-tuning: adapters, LoRA, and what actually gets updated",
+    "The transformer architecture, explained without the maths overload"
   ]
 }

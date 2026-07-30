@@ -1,1 +1,1 @@
-2026-07-30T08:02:22Z slug=parameter-efficient-fine-tuning-explained words=1062 title="Parameter-Efficient Fine-Tuning: What Actually Gets Updated"
+2026-07-30T20:02:01Z slug=transformers-without-the-maths words=1164 title="The Transformer Architecture, Explained Without the Maths"

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Transformer Architecture, Explained Without the Maths | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="An intuitive, maths-light explanation of the transformer architecture: attention, self-attention, positional encoding, and why it works so well in practice.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="transformer architecture, attention mechanism, self-attention, deep learning, NLP, neural networks, positional encoding, machine learning explained, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-30">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="The Transformer Architecture, Explained Without the Maths">
+<meta property="og:description" content="An intuitive, maths-light explanation of the transformer architecture: attention, self-attention, positional encoding, and why it works so well in practice.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/transformers-without-the-maths.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/transformers-without-the-maths.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Transformer Architecture, Explained Without the Maths">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/transformers-without-the-maths.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/transformers-without-the-maths.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The Transformer Architecture, Explained Without the Maths",
+  "description": "An intuitive, maths-light explanation of the transformer architecture: attention, self-attention, positional encoding, and why it works so well in practice.",
+  "url": "https://jahanzaibawan.com/blog/transformers-without-the-maths.html",
+  "image": "https://jahanzaibawan.com/assets/blog/transformers-without-the-maths.png",
+  "datePublished": "2026-07-30",
+  "dateModified": "2026-07-30",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/transformers-without-the-maths.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "The Transformer Architecture, Explained Without the Maths", "item": "https://jahanzaibawan.com/blog/transformers-without-the-maths.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Deep Learning · 6 min read · 30 Jul 2026</div>
+    <h1>The Transformer Architecture, Explained Without the Maths</h1>
+    <p class="lede">Attention, self-attention, and why transformers replaced recurrence, told through intuition rather than equations.</p>
+  </div>
+
+  <img src="../assets/blog/transformers-without-the-maths.png" alt="Cover image for the article: The Transformer Architecture, Explained Without the Maths" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this architecture ate the field</h2><p>Before transformers, the dominant approach to sequence data, sentences, time series, protein chains, was recurrence. A recurrent network read a sequence one token at a time, carrying a running summary forward. This is intuitive but slow: you cannot process token ten until you have processed token nine, and by the time you reach token fifty, the summary has often forgotten details from token two. Long-range dependencies leaked away.</p><p>The transformer, introduced in a 2017 paper on machine translation, threw out recurrence entirely. Instead of reading a sequence step by step, it looks at the whole sequence at once and asks a simple question for every token: which other tokens in this sequence matter for understanding me? That question, asked and answered in parallel for every position, is called attention, and it is the entire trick. Everything else in the architecture is scaffolding to make that trick work at scale.</p><p>I think the reason this matters for anyone building or evaluating models today is not nostalgia for how we got here. It is that almost every large language model, vision transformer, and speech model in production right now is some variant of this same core idea. If you understand attention properly, you understand the shared skeleton underneath a huge fraction of modern machine learning, and you stop treating these models as black boxes that just happen to work.</p></section><section class='psec reveal'><h2>Attention, without the equations</h2><p>Here is the intuition I find most useful. Imagine you are reading the sentence: 'The trophy did not fit in the suitcase because it was too small.' To understand what 'it' refers to, your brain does not process the sentence left to right and forget everything before the word 'it'. Instead, it glances back across the whole sentence and weighs each earlier word by how relevant it is to resolving 'it'. 'Suitcase' gets a lot of weight. 'Trophy' gets some. 'Because' gets almost none. That weighted glancing-back is attention.</p><p>Mechanically, each word is turned into three different representations, conventionally called a query, a key, and a value. Think of the query as the question the word is asking ('what resolves me?'), the key as the advertisement each other word puts out ('here is what I offer'), and the value as the actual content that gets passed along if there is a match. The word 'it' compares its query against every other word's key, gets a compatibility score for each, turns those scores into weights that sum to one, and then builds its new representation as a weighted blend of everyone's values, weighted by those scores. High compatibility with 'suitcase' means 'suitcase' dominates the blend.</p><p>Crucially, this happens for every word simultaneously, not sequentially. Every token asks its question against every other token in one parallel operation. That is the property that recurrent networks lacked and that made transformers so much faster to train on modern hardware: the whole computation is a handful of matrix multiplications that a GPU chews through in parallel, rather than a chain of steps that must happen in order.</p><p>The architecture does not do this once. It stacks many layers of attention on top of each other, and within each layer it runs several attention computations side by side, called heads, each free to specialise in a different kind of relationship. One head might learn to track grammatical subject-verb agreement, another might track coreference like our trophy and suitcase example, another might pick up on topical similarity. Nobody tells the heads what to specialise in; it emerges from training on the objective, usually predicting the next word or filling in masked words.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/transformers-without-the-maths-1.jpg' alt='computer chip circuit board close up' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>The parts people forget: position and depth</h2><p>There is a problem with the pure attention idea as described so far: it has no sense of order. If attention just computes weighted averages based on content similarity, the sentence 'the dog bit the man' and 'the man bit the dog' would look identical to it, because it is the same set of words being compared against each other regardless of sequence. Word order carries meaning, obviously, so the architecture needs to inject it artificially.</p><p>This is done through positional encoding: a fixed pattern of numbers added to each word's representation that varies smoothly with position, so that position one, two, three and so on each get a distinguishable signature. The original design used sine and cosine waves of different frequencies for this, chosen mainly because they let the model infer relative distances between positions cleanly, though many later variants use learned position embeddings or other schemes instead. The point is not the specific mathematical choice; it is that without some explicit positional signal, attention is a bag-of-words operation, and with it, order becomes recoverable.</p><p>The other underrated piece is depth combined with a plain feed-forward step after each attention block. Attention lets tokens gather information from each other, but the network also needs capacity to transform that gathered information into something more abstract, which is what the feed-forward layers do, applied independently to each token's representation. Stack this pattern, attention then feed-forward, a dozen or more times, and each layer builds a progressively more abstract representation: early layers might capture local syntax, later layers might capture something closer to meaning or discourse structure. This is analogous to how early layers in an image classifier detect edges while later layers detect whole objects.</p><p>Residual connections, where each layer adds its output to its input rather than replacing it, and normalisation steps that keep the numbers well-behaved, are the unglamorous plumbing that makes it possible to stack dozens of these layers without training collapsing. They rarely get discussed in popular explanations, but in practice, removing them makes deep transformers untrainable, which tells you they are doing real work rather than being decorative.</p></section><section class='psec reveal'><h2>What this means in practice</h2><p>If you take one idea away from this, take the query, key, value framing. It explains why transformers handle long-range dependencies so much better than recurrent networks: a word at position five hundred can attend directly to a word at position one, in a single step, with no information having to survive a long relay of intermediate summaries. It also explains the main practical cost of the architecture: comparing every token against every other token means the computation grows quickly as sequences get longer, which is precisely why so much recent engineering effort has gone into making attention cheaper for long documents.</p><p>For anyone evaluating a transformer-based system rather than just building one, this intuition is genuinely useful. When a model fails on a long document, ask whether the failure looks like an attention problem, information that should have been retrievable getting drowned out or truncated, versus a knowledge problem, the model simply never having seen the relevant fact. Those are different failure modes with different fixes, and conflating them leads to wasted effort. Understanding the mechanism, even at this non-mathematical level, turns debugging from guesswork into something closer to reasoning about a system you actually understand.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/transformers-without-the-maths-2.jpg' alt='server room data cables' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

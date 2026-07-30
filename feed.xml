@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Thu, 30 Jul 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>The Transformer Architecture, Explained Without the Maths</title>
+    <link>https://jahanzaibawan.com/blog/transformers-without-the-maths.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/transformers-without-the-maths.html</guid>
+    <pubDate>Thu, 30 Jul 2026 09:00:00 +0000</pubDate>
+    <description>A no-equations tour of transformers: what attention actually does, why position matters, and why the architecture scaled so well.</description>
+    <category>Deep Learning</category>
+  </item>
+  <item>
     <title>Parameter-Efficient Fine-Tuning: What Actually Gets Updated</title>
     <link>https://jahanzaibawan.com/blog/parameter-efficient-fine-tuning-explained.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/parameter-efficient-fine-tuning-explained.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Tue, 21 Jul 2026 09:00:00 +0000</pubDate>
     <description>A practical MLOps roadmap for researchers moving into engineering: version control, pipelines, monitoring, and the mindset shift that ties it together.</description>
     <category>MLOps</category>
-  </item>
-  <item>
-    <title>What Fine-Tuning Actually Changes Inside a Model</title>
-    <link>https://jahanzaibawan.com/blog/what-fine-tuning-changes.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/what-fine-tuning-changes.html</guid>
-    <pubDate>Mon, 20 Jul 2026 09:00:00 +0000</pubDate>
-    <description>Fine-tuning does not rewrite a model, it nudges it. Here is what actually shifts inside the weights and why that distinction matters for evaluation.</description>
-    <category>Deep Learning</category>
   </item>
 </channel>
 </rss>
