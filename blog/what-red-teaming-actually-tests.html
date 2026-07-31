@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Model Evaluation for Extreme Risks: What Red-Teaming Tests | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A clear-eyed look at what red-teaming for extreme AI risks actually measures, why it cannot bound risk, and how to combine it with structured evaluation.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="red-teaming, model evaluation, AI safety, extreme risk, adversarial testing, evaluation methodology, leakage, capability evaluation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-31">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Model Evaluation for Extreme Risks: What Red-Teaming Tests">
+<meta property="og:description" content="A clear-eyed look at what red-teaming for extreme AI risks actually measures, why it cannot bound risk, and how to combine it with structured evaluation.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/what-red-teaming-actually-tests.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/what-red-teaming-actually-tests.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Model Evaluation for Extreme Risks: What Red-Teaming Tests">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/what-red-teaming-actually-tests.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/what-red-teaming-actually-tests.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Model Evaluation for Extreme Risks: What Red-Teaming Tests",
+  "description": "A clear-eyed look at what red-teaming for extreme AI risks actually measures, why it cannot bound risk, and how to combine it with structured evaluation.",
+  "url": "https://jahanzaibawan.com/blog/what-red-teaming-actually-tests.html",
+  "image": "https://jahanzaibawan.com/assets/blog/what-red-teaming-actually-tests.png",
+  "datePublished": "2026-07-31",
+  "dateModified": "2026-07-31",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/what-red-teaming-actually-tests.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Model Evaluation for Extreme Risks: What Red-Teaming Tests", "item": "https://jahanzaibawan.com/blog/what-red-teaming-actually-tests.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 31 Jul 2026</div>
+    <h1>Model Evaluation for Extreme Risks: What Red-Teaming Tests</h1>
+    <p class="lede">Red-teaming is often treated as a headline safety guarantee. Looked at closely, it is a narrow, adversarial sampling exercise, and confusing it with a risk bound is where most evaluation claims go wrong.</p>
+  </div>
+
+  <img src="../assets/blog/what-red-teaming-actually-tests.png" alt="Cover image for the article: Model Evaluation for Extreme Risks: What Red-Teaming Tests" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the framing matters</h2><p>Whenever a lab announces that a model has been red-teamed for extreme risks, such as helping someone plan a biological, chemical or cyber attack, the phrase does a lot of quiet work. It sounds like a safety audit, something exhaustive and certifying. In practice, red-teaming is a search procedure. A group of people, sometimes domain experts, sometimes generalist testers, try to elicit harmful outputs from a model within a fixed time budget, using a fixed set of prompting strategies. What comes out is a list of successful and unsuccessful attempts. That list tells you something real, but it is much narrower than the word 'evaluation' usually implies.</p><p>The core confusion is between finding a failure and bounding the probability of failure. If ten red-teamers spend two weeks trying to jailbreak a model into providing dangerous synthesis instructions and none of them succeed, this is evidence the model is not trivially exploitable by that group, with those techniques, in that time. It is not evidence that a more persistent attacker, with more domain knowledge or more attempts, would also fail. Absence of evidence in an adversarial search is a much weaker signal than absence of evidence in a random sample, and treating the two as equivalent is the single most common overstatement I see in safety reporting.</p><p>This matters practically because extreme-risk evaluation is used to inform real decisions: whether to release a model, whether to restrict access, whether to add guardrails. If the underlying test only measures resistance to a specific, finite adversarial effort, then decisions built on top of it inherit that narrowness. A model can pass every red-team exercise it was given and still be exploitable by a technique nobody on the team thought to try, simply because red-teaming samples from the space of possible attacks rather than covering it.</p></section><section class='psec reveal'><h2>A worked example: what the numbers actually mean</h2><p>Suppose a red team of eight people spends eighty hours total probing a model for uplift in a specific harmful domain, and they manage to extract a genuinely useful piece of dangerous information in three of two hundred attempted conversations. Two ways of reporting this are common. One is 'the model resisted 98.5 percent of attempts', which sounds reassuring. The other is 'the model failed under adversarial pressure in a small but nonzero number of cases', which sounds like a red flag. Both descriptions are accurate; neither tells you the thing you actually want to know, which is how easy it would be for a motivated attacker outside the test, with unlimited time and creative prompting, to reliably reproduce that three-in-two-hundred success rate or better.</p><p>Here is the intuition that makes this concrete. Imagine the space of possible prompts as an enormous, mostly unmapped territory, and the model's harmful behaviour as scattered pockets within it. Two hundred attempts is a small number of flashlight beams sweeping across that territory. Finding three pockets tells you pockets exist and gives a rough sense of their density near where you looked. It does not tell you whether there is a much larger, easier-to-find pocket five metres to the left that nobody happened to shine a light on. A determined attacker who knows the terrain, perhaps because they have domain expertise the red team lacked, could find that pocket in minutes.</p><p>This is why serious extreme-risk evaluation increasingly separates two questions that red-teaming conflates. The first is elicitation difficulty: given a known harmful capability exists somewhere in the model, how much effort does it take to surface it. The second is capability presence: does the underlying capability exist at all, regardless of whether current prompting techniques can reach it. A model might resist every red-team attempt today and still possess the latent capability, waiting for a better jailbreak technique published six months later. Good evaluation tries to estimate capability presence directly, through techniques like fine-tuning the model on adjacent tasks to see what latent knowledge surfaces, rather than relying solely on whether today's attackers happened to find the door.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/what-red-teaming-actually-tests-1.jpg' alt='security researcher at laptop night' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What red-teaming is genuinely good at, and where it needs support</h2><p>None of this means red-teaming is worthless; it means it needs to be understood as one instrument with a specific job, not a general-purpose safety certificate. It is genuinely good at surfacing unknown failure modes that structured benchmarks miss entirely, because human red-teamers bring creativity, domain knowledge and adversarial intent that no fixed test set can anticipate. It is good at stress-testing specific guardrails that were added in response to previous incidents, checking whether a patch actually closed the gap or just moved it. It is also good at producing qualitative case studies that help engineering teams understand the shape of a vulnerability, which is often more actionable than a single aggregate score.</p><p>Where it needs support is anywhere a decision requires a quantitative bound rather than a qualitative signal. This is where structured capability evaluations earn their place: held-out benchmarks built specifically to probe dangerous capabilities under controlled conditions, with clearly defined success criteria, run at scale rather than by a small team over a limited window. These evaluations should be leakage-aware, meaning the test items were not present in training data and were not previously published in a form the model could have memorised, otherwise a high pass rate on a safety benchmark tells you about memorisation rather than genuine capability. They should also report uncertainty honestly: a sample of two hundred adversarial attempts carries meaningful statistical noise, and a single point estimate without a confidence interval invites false precision.</p><p>The practical takeaway is to treat red-teaming reports as a lower bound on risk, never an upper bound. If red-teamers found a serious failure, take it seriously; that is a real, verified problem. If they found nothing, resist the temptation to read that as proof of safety, and ask what fraction of the plausible attack space was actually searched, by whom, with what expertise, and for how long. Pair adversarial search with structured, leakage-controlled capability testing, and be explicit in any report about which question each method answers. Extreme-risk evaluation is too consequential to lean on a method whose main strength is finding problems, when the claim being made is that none exist.</p></section>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

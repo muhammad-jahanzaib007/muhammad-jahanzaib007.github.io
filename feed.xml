@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Thu, 30 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 31 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Model Evaluation for Extreme Risks: What Red-Teaming Tests</title>
+    <link>https://jahanzaibawan.com/blog/what-red-teaming-actually-tests.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/what-red-teaming-actually-tests.html</guid>
+    <pubDate>Fri, 31 Jul 2026 09:00:00 +0000</pubDate>
+    <description>Red-teaming finds failures; it does not bound risk. Here is what it actually measures, with a worked example showing why absence of evidence is not evidence of absence.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>The Transformer Architecture, Explained Without the Maths</title>
     <link>https://jahanzaibawan.com/blog/transformers-without-the-maths.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/mlops-engineer-day-to-day.html</guid>
     <pubDate>Tue, 21 Jul 2026 09:00:00 +0000</pubDate>
     <description>MLOps is less about fancy tooling and more about babysitting data, retraining models responsibly, and catching silent failures before customers do.</description>
-    <category>MLOps</category>
-  </item>
-  <item>
-    <title>An MLOps Roadmap for Engineers Coming From Research</title>
-    <link>https://jahanzaibawan.com/blog/mlops-roadmap-for-researchers.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/mlops-roadmap-for-researchers.html</guid>
-    <pubDate>Tue, 21 Jul 2026 09:00:00 +0000</pubDate>
-    <description>A practical MLOps roadmap for researchers moving into engineering: version control, pipelines, monitoring, and the mindset shift that ties it together.</description>
     <category>MLOps</category>
   </item>
 </channel>

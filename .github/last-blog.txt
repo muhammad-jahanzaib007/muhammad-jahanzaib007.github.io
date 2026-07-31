@@ -1,1 +1,1 @@
-2026-07-30T20:02:01Z slug=transformers-without-the-maths words=1164 title="The Transformer Architecture, Explained Without the Maths"
+2026-07-31T08:02:04Z slug=what-red-teaming-actually-tests words=1035 title="Model Evaluation for Extreme Risks: What Red-Teaming Tests"

@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "what-red-teaming-actually-tests",
+      "title": "Model Evaluation for Extreme Risks: What Red-Teaming Tests",
+      "excerpt": "Red-teaming finds failures; it does not bound risk. Here is what it actually measures, with a worked example showing why absence of evidence is not evidence of absence.",
+      "date": "2026-07-31",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a3",
+      "thumb": "assets/blog/what-red-teaming-actually-tests.png",
+      "thumb_alt": "Cover image for the article: Model Evaluation for Extreme Risks: What Red-Teaming Tests"
+    },
+    {
       "slug": "transformers-without-the-maths",
       "title": "The Transformer Architecture, Explained Without the Maths",
       "excerpt": "A no-equations tour of transformers: what attention actually does, why position matters, and why the architecture scaled so well.",
