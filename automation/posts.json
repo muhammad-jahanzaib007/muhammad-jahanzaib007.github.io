@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a3",
       "thumb": "assets/blog/what-red-teaming-actually-tests.png",
-      "thumb_alt": "Cover image for the article: Model Evaluation for Extreme Risks: What Red-Teaming Tests"
+      "thumb_alt": "Cover image for the article: Model Evaluation for Extreme Risks: What Red-Teaming Tests",
+      "li_shared": true
     },
     {
       "slug": "transformers-without-the-maths",
