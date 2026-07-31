@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a4",
       "thumb": "assets/blog/evaluation-harness-unseen-job.png",
-      "thumb_alt": "Cover image for the article: Designing an Evaluation Harness Before You Know the Job"
+      "thumb_alt": "Cover image for the article: Designing an Evaluation Harness Before You Know the Job",
+      "li_shared": true
     },
     {
       "slug": "what-red-teaming-actually-tests",
