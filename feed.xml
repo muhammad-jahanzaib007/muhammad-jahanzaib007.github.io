@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Fri, 31 Jul 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Designing an Evaluation Harness Before You Know the Job</title>
+    <link>https://jahanzaibawan.com/blog/evaluation-harness-unseen-job.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/evaluation-harness-unseen-job.html</guid>
+    <pubDate>Fri, 31 Jul 2026 09:00:00 +0000</pubDate>
+    <description>A practical guide to building leakage-aware, adaptable evaluation harnesses for models whose final job is not yet fully defined.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Model Evaluation for Extreme Risks: What Red-Teaming Tests</title>
     <link>https://jahanzaibawan.com/blog/what-red-teaming-actually-tests.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/what-red-teaming-actually-tests.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/modelling-is-the-smaller-half.html</guid>
     <pubDate>Wed, 22 Jul 2026 09:00:00 +0000</pubDate>
     <description>Training a model is the easy bit. The real work is data quality, leakage-aware evaluation, and keeping the system honest after deployment.</description>
-    <category>MLOps</category>
-  </item>
-  <item>
-    <title>What an MLOps Engineer Actually Does Day to Day</title>
-    <link>https://jahanzaibawan.com/blog/mlops-engineer-day-to-day.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/mlops-engineer-day-to-day.html</guid>
-    <pubDate>Tue, 21 Jul 2026 09:00:00 +0000</pubDate>
-    <description>MLOps is less about fancy tooling and more about babysitting data, retraining models responsibly, and catching silent failures before customers do.</description>
     <category>MLOps</category>
   </item>
 </channel>

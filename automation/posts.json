@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "evaluation-harness-unseen-job",
+      "title": "Designing an Evaluation Harness Before You Know the Job",
+      "excerpt": "A practical guide to building leakage-aware, adaptable evaluation harnesses for models whose final job is not yet fully defined.",
+      "date": "2026-07-31",
+      "read_min": 6,
+      "tag": "Evaluation",
+      "color": "a4",
+      "thumb": "assets/blog/evaluation-harness-unseen-job.png",
+      "thumb_alt": "Cover image for the article: Designing an Evaluation Harness Before You Know the Job"
+    },
+    {
       "slug": "what-red-teaming-actually-tests",
       "title": "Model Evaluation for Extreme Risks: What Red-Teaming Tests",
       "excerpt": "Red-teaming finds failures; it does not bound risk. Here is what it actually measures, with a worked example showing why absence of evidence is not evidence of absence.",

@@ -1,1 +1,1 @@
-2026-07-31T08:02:04Z slug=what-red-teaming-actually-tests words=1035 title="Model Evaluation for Extreme Risks: What Red-Teaming Tests"
+2026-07-31T20:02:10Z slug=evaluation-harness-unseen-job words=1122 title="Designing an Evaluation Harness Before You Know the Job"
