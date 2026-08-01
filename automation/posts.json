@@ -9,7 +9,8 @@
       "tag": "Careers",
       "color": "a6",
       "thumb": "assets/blog/ml-engineer-week-to-week.png",
-      "thumb_alt": "Cover image for the article: What a Machine Learning Engineer's Week Actually Looks Like"
+      "thumb_alt": "Cover image for the article: What a Machine Learning Engineer's Week Actually Looks Like",
+      "li_shared": true
     },
     {
       "slug": "nlp-before-deep-learning-refresher",
