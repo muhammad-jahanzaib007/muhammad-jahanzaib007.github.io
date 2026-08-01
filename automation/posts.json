@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "nlp-before-deep-learning-refresher",
+      "title": "NLP Techniques Before Deep Learning: A Practical Refresher",
+      "excerpt": "Classic NLP methods still catch leakage, expose weak baselines and explain model behaviour better than most deep nets ever will.",
+      "date": "2026-08-01",
+      "read_min": 5,
+      "tag": "NLP",
+      "color": "a5",
+      "thumb": "assets/blog/nlp-before-deep-learning-refresher.png",
+      "thumb_alt": "Cover image for the article: NLP Techniques Before Deep Learning: A Practical Refresher"
+    },
+    {
       "slug": "evaluation-harness-unseen-job",
       "title": "Designing an Evaluation Harness Before You Know the Job",
       "excerpt": "A practical guide to building leakage-aware, adaptable evaluation harnesses for models whose final job is not yet fully defined.",

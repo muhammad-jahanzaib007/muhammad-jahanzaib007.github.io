@@ -1,6 +1,5 @@
 {
   "queue": [
-    "NLP techniques before deep learning: a practical refresher that still matters",
     "What a machine learning engineer's job actually looks like week to week",
     "Cross-validation folds for grouped data: why random splits leak silently",
     "Choosing a pretrained transformer: size, licence, and context length tradeoffs",
@@ -87,6 +86,7 @@
     "Parameter-efficient fine-tuning: adapters, LoRA, and what actually gets updated",
     "The transformer architecture, explained without the maths overload",
     "Model evaluation for extreme risks: what red-teaming actually tests",
-    "How to design a model evaluation harness for a job you have not seen yet"
+    "How to design a model evaluation harness for a job you have not seen yet",
+    "NLP techniques before deep learning: a practical refresher that still matters"
   ]
 }

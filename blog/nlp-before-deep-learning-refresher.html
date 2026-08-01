@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NLP Techniques Before Deep Learning: A Practical Refresher | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical refresher on pre-deep-learning NLP techniques like TF-IDF, n-grams and Naive Bayes, and why they still belong in a rigorous modern pipeline.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="NLP, TF-IDF, n-grams, bag of words, Naive Bayes, baselines, feature engineering, text classification, machine learning evaluation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-01">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="NLP Techniques Before Deep Learning: A Practical Refresher">
+<meta property="og:description" content="A practical refresher on pre-deep-learning NLP techniques like TF-IDF, n-grams and Naive Bayes, and why they still belong in a rigorous modern pipeline.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/nlp-before-deep-learning-refresher.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/nlp-before-deep-learning-refresher.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NLP Techniques Before Deep Learning: A Practical Refresher">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/nlp-before-deep-learning-refresher.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/nlp-before-deep-learning-refresher.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "NLP Techniques Before Deep Learning: A Practical Refresher",
+  "description": "A practical refresher on pre-deep-learning NLP techniques like TF-IDF, n-grams and Naive Bayes, and why they still belong in a rigorous modern pipeline.",
+  "url": "https://jahanzaibawan.com/blog/nlp-before-deep-learning-refresher.html",
+  "image": "https://jahanzaibawan.com/assets/blog/nlp-before-deep-learning-refresher.png",
+  "datePublished": "2026-08-01",
+  "dateModified": "2026-08-01",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/nlp-before-deep-learning-refresher.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "NLP Techniques Before Deep Learning: A Practical Refresher", "item": "https://jahanzaibawan.com/blog/nlp-before-deep-learning-refresher.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">NLP · 5 min read · 1 Aug 2026</div>
+    <h1>NLP Techniques Before Deep Learning: A Practical Refresher</h1>
+    <p class="lede">Before you reach for a transformer, it is worth remembering what TF-IDF, n-grams and a well-tuned linear model can already tell you about your data and your problem.</p>
+  </div>
+
+  <img src="../assets/blog/nlp-before-deep-learning-refresher.png" alt="Cover image for the article: NLP Techniques Before Deep Learning: A Practical Refresher" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why bother with the old stuff</h2><p>It is tempting, when everyone around you is fine-tuning transformers, to treat pre-2015 NLP as a museum exhibit. I think that is a mistake, and not out of nostalgia. Classic techniques such as bag-of-words, TF-IDF, n-gram language models and simple linear classifiers are cheap, fast, interpretable and, crucially, excellent diagnostic tools. They tell you things about your data that a large neural model will happily hide from you until it fails in production.</p><p>Consider a sentiment classification task on product reviews. If a logistic regression trained on TF-IDF features gets 89 percent accuracy, and your fine-tuned transformer gets 91 percent, that two-point gap needs explaining. Is the transformer actually learning deeper semantics, or is the dataset simply easy, with obvious lexical cues like 'terrible' and 'excellent' doing most of the work? A strong classical baseline forces that question onto the table early, before you have spent a week on GPU time and written a paragraph in your report claiming a breakthrough that is really just noise.</p><p>There is also a leakage argument. Classical pipelines are simple enough that you can inspect every feature by hand. If your vocabulary suddenly contains a token that looks suspiciously like a document ID, or a rare word that appears in exactly one class because of how the data was scraped, a quick look at your TF-IDF matrix will often reveal it. Deep models with subword tokenisers and millions of parameters make the same leakage much harder to spot, because the signal gets absorbed into weights you cannot read.</p></section><section class='psec reveal'><h2>The core toolkit, briefly</h2><p>Bag-of-words represents a document as a vector of word counts, ignoring order entirely. It sounds crude, and it is, but for many classification tasks word order contributes far less than people assume. TF-IDF improves on raw counts by weighting terms that are frequent in a document but rare across the corpus more heavily, which downweights words like 'the' and 'good' that appear everywhere and upweights genuinely distinguishing terms.</p><p>Worked example: imagine a corpus of one thousand restaurant reviews. The word 'delicious' appears in forty reviews, mostly positive. The word 'the' appears in nearly all one thousand. Raw counts would treat a document containing 'the' three times as similarly weighted to one containing 'delicious' once, which is unhelpful. TF-IDF for 'delicious' in a document where it appears twice, out of two hundred total words, with document frequency forty out of one thousand, gives a term frequency of 0.01 multiplied by an inverse document frequency of roughly log(1000/40), around 3.2, yielding a meaningful score of about 0.032. The word 'the', appearing say ten times in the same document, has a much larger term frequency but an inverse document frequency close to zero, since it appears in almost every document, so its TF-IDF score collapses towards zero. The representation naturally foregrounds the informative word and suppresses the filler.</p><p>N-gram models extend this by capturing short sequences, bigrams and trigrams, which recover some local word order. 'Not good' and 'good' point in opposite sentiment directions, and a pure bag-of-words unigram model conflates them because it only sees 'good' once negation is stripped out during tokenisation choices. Adding bigrams as features lets a linear model learn that 'not good' pushes towards negative, without needing any notion of syntax or attention.</p><p>Naive Bayes, despite its almost comically strong independence assumption, remains a genuinely useful baseline, particularly on small or moderately sized text datasets. It estimates the probability of a class given a document by multiplying the probability of each word given that class, assuming words are conditionally independent given the label. That assumption is false in almost every real sentence, yet the classifier still performs respectably, because classification only needs the correct ranking of class probabilities, not an accurate joint distribution of language. Logistic regression over the same TF-IDF features usually edges it out slightly by learning weighted combinations rather than assuming independence, but Naive Bayes trains in seconds and gives you a sanity check almost for free.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/nlp-before-deep-learning-refresher-1.jpg' alt='open notebook with handwritten word list' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Where these methods still earn their place</h2><p>The most practical use case today is the baseline. Any serious evaluation of a new NLP model should report what a TF-IDF plus linear classifier achieves on the same train, validation and test split. If your split has any leakage, duplicate documents across train and test, or near-duplicate templated text, the classical baseline will often score suspiciously high, which is your signal to go back and audit the split before trusting anything built on top of it.</p><p>Classical methods are also valuable for feature-level interpretability. With a linear model over TF-IDF features you can read off the coefficients directly and say precisely which words push a prediction towards which class. This matters in domains such as clinical text or legal document triage, where a model that cannot explain itself in terms a domain expert recognises is difficult to deploy responsibly, regardless of its raw accuracy. A logistic regression coefficient table is not a substitute for proper explainability work, but it is a starting point that costs almost nothing to produce.</p><p>There is a resource argument too. On genuinely small datasets, say a few hundred labelled examples, a fine-tuned transformer can overfit badly or simply have too little signal to learn from, while a well-regularised linear model over n-gram features can still generalise reasonably. I have seen cases where the honest answer to 'should we use a transformer here' is no, not because transformers are bad, but because the dataset is too small and too narrow for their capacity to help rather than hurt.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>None of this is an argument against deep learning for NLP, which has earned its dominance on tasks involving long-range context, generation and genuine semantic reasoning. The argument is narrower and more useful day to day: before you trust a complex model's number, build the boring baseline first. A TF-IDF vectoriser and a logistic regression take minutes to train, cost almost nothing in compute, and give you a defensible floor to measure everything else against.</p><p>If your fancy model cannot clearly beat that floor by a margin that survives a proper significance check on a leakage-aware split, you have not learned that deep learning works on your problem. You have learned that your problem is easy, or that something in your evaluation is broken. Either way, the classical toolkit told you first, and told you cheaply.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/nlp-before-deep-learning-refresher-2.jpg' alt='stacks of paper documents on desk' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

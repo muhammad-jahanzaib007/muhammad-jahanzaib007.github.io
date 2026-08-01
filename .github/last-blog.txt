@@ -1,1 +1,1 @@
-2026-07-31T20:02:10Z slug=evaluation-harness-unseen-job words=1122 title="Designing an Evaluation Harness Before You Know the Job"
+2026-08-01T08:02:25Z slug=nlp-before-deep-learning-refresher words=1065 title="NLP Techniques Before Deep Learning: A Practical Refresher"

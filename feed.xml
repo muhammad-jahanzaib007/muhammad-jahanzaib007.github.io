@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Fri, 31 Jul 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 01 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>NLP Techniques Before Deep Learning: A Practical Refresher</title>
+    <link>https://jahanzaibawan.com/blog/nlp-before-deep-learning-refresher.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/nlp-before-deep-learning-refresher.html</guid>
+    <pubDate>Sat, 01 Aug 2026 09:00:00 +0000</pubDate>
+    <description>Classic NLP methods still catch leakage, expose weak baselines and explain model behaviour better than most deep nets ever will.</description>
+    <category>NLP</category>
+  </item>
   <item>
     <title>Designing an Evaluation Harness Before You Know the Job</title>
     <link>https://jahanzaibawan.com/blog/evaluation-harness-unseen-job.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Wed, 22 Jul 2026 09:00:00 +0000</pubDate>
     <description>High accuracy hides where a model breaks. Threat modelling forces you to ask how it fails, for whom, and at what cost.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>The ML Engineer Skill Set: Modelling Is the Smaller Half</title>
-    <link>https://jahanzaibawan.com/blog/modelling-is-the-smaller-half.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/modelling-is-the-smaller-half.html</guid>
-    <pubDate>Wed, 22 Jul 2026 09:00:00 +0000</pubDate>
-    <description>Training a model is the easy bit. The real work is data quality, leakage-aware evaluation, and keeping the system honest after deployment.</description>
-    <category>MLOps</category>
   </item>
 </channel>
 </rss>
