@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "ml-engineer-week-to-week",
+      "title": "What a Machine Learning Engineer's Week Actually Looks Like",
+      "excerpt": "The job is less 'train a model' and more data cleaning, evaluation design, and stopping silent failures before they reach production.",
+      "date": "2026-08-01",
+      "read_min": 5,
+      "tag": "Careers",
+      "color": "a6",
+      "thumb": "assets/blog/ml-engineer-week-to-week.png",
+      "thumb_alt": "Cover image for the article: What a Machine Learning Engineer's Week Actually Looks Like"
+    },
+    {
       "slug": "nlp-before-deep-learning-refresher",
       "title": "NLP Techniques Before Deep Learning: A Practical Refresher",
       "excerpt": "Classic NLP methods still catch leakage, expose weak baselines and explain model behaviour better than most deep nets ever will.",

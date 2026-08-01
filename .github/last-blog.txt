@@ -1,1 +1,1 @@
-2026-08-01T08:02:25Z slug=nlp-before-deep-learning-refresher words=1065 title="NLP Techniques Before Deep Learning: A Practical Refresher"
+2026-08-01T20:01:13Z slug=ml-engineer-week-to-week words=939 title="What a Machine Learning Engineer's Week Actually Looks Like"

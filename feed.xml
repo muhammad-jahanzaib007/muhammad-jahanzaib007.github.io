@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Sat, 01 Aug 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>What a Machine Learning Engineer&#x27;s Week Actually Looks Like</title>
+    <link>https://jahanzaibawan.com/blog/ml-engineer-week-to-week.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/ml-engineer-week-to-week.html</guid>
+    <pubDate>Sat, 01 Aug 2026 09:00:00 +0000</pubDate>
+    <description>The job is less &#x27;train a model&#x27; and more data cleaning, evaluation design, and stopping silent failures before they reach production.</description>
+    <category>Careers</category>
+  </item>
+  <item>
     <title>NLP Techniques Before Deep Learning: A Practical Refresher</title>
     <link>https://jahanzaibawan.com/blog/nlp-before-deep-learning-refresher.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/nlp-before-deep-learning-refresher.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/how-large-should-test-sets-be.html</guid>
     <pubDate>Thu, 23 Jul 2026 09:00:00 +0000</pubDate>
     <description>A test accuracy of 91% means little without knowing how many examples it was measured on. Here is the maths behind that intuition.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Threat Modelling for ML Systems, Not Just Accuracy</title>
-    <link>https://jahanzaibawan.com/blog/threat-modelling-for-ml-systems.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/threat-modelling-for-ml-systems.html</guid>
-    <pubDate>Wed, 22 Jul 2026 09:00:00 +0000</pubDate>
-    <description>High accuracy hides where a model breaks. Threat modelling forces you to ask how it fails, for whom, and at what cost.</description>
     <category>Evaluation</category>
   </item>
 </channel>
