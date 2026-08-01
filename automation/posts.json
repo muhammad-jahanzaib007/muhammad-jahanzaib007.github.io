@@ -9,7 +9,8 @@
       "tag": "NLP",
       "color": "a5",
       "thumb": "assets/blog/nlp-before-deep-learning-refresher.png",
-      "thumb_alt": "Cover image for the article: NLP Techniques Before Deep Learning: A Practical Refresher"
+      "thumb_alt": "Cover image for the article: NLP Techniques Before Deep Learning: A Practical Refresher",
+      "li_shared": true
     },
     {
       "slug": "evaluation-harness-unseen-job",
