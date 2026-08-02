@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a2",
       "thumb": "assets/blog/grouped-data-cross-validation-leakage.png",
-      "thumb_alt": "Cover image for the article: Cross-Validation Folds for Grouped Data: Silent Leakage"
+      "thumb_alt": "Cover image for the article: Cross-Validation Folds for Grouped Data: Silent Leakage",
+      "li_shared": true
     },
     {
       "slug": "ml-engineer-week-to-week",
