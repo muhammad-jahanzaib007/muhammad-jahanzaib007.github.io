@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "choosing-a-pretrained-transformer",
+      "title": "Choosing a Pretrained Transformer: Size, Licence, Context",
+      "excerpt": "Model choice is a systems decision, not a leaderboard lookup. Here is how size, licence, and context length interact in practice.",
+      "date": "2026-08-02",
+      "read_min": 6,
+      "tag": "NLP",
+      "color": "a3",
+      "thumb": "assets/blog/choosing-a-pretrained-transformer.png",
+      "thumb_alt": "Cover image for the article: Choosing a Pretrained Transformer: Size, Licence, Context"
+    },
+    {
       "slug": "grouped-data-cross-validation-leakage",
       "title": "Cross-Validation Folds for Grouped Data: Silent Leakage",
       "excerpt": "Random folds leak when data has groups: patients, users, sessions. Here's why the fix is grouped splitting, not more data.",

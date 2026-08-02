@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Sun, 02 Aug 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Choosing a Pretrained Transformer: Size, Licence, Context</title>
+    <link>https://jahanzaibawan.com/blog/choosing-a-pretrained-transformer.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/choosing-a-pretrained-transformer.html</guid>
+    <pubDate>Sun, 02 Aug 2026 09:00:00 +0000</pubDate>
+    <description>Model choice is a systems decision, not a leaderboard lookup. Here is how size, licence, and context length interact in practice.</description>
+    <category>NLP</category>
+  </item>
+  <item>
     <title>Cross-Validation Folds for Grouped Data: Silent Leakage</title>
     <link>https://jahanzaibawan.com/blog/grouped-data-cross-validation-leakage.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/grouped-data-cross-validation-leakage.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/data-drift-vs-concept-drift.html</guid>
     <pubDate>Fri, 24 Jul 2026 09:00:00 +0000</pubDate>
     <description>Your model&#x27;s accuracy dropped and the input distribution shifted too. That doesn&#x27;t mean the shift caused the drop. Here&#x27;s how to tell drift types apart.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Nested Cross-Validation: Why One Loop Isn&#x27;t Enough</title>
-    <link>https://jahanzaibawan.com/blog/nested-cross-validation-model-selection.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/nested-cross-validation-model-selection.html</guid>
-    <pubDate>Thu, 23 Jul 2026 09:00:00 +0000</pubDate>
-    <description>One CV loop for both tuning and evaluation leaks information. Nested CV separates the two jobs and gives you an honest estimate of generalisation.</description>
     <category>Evaluation</category>
   </item>
 </channel>

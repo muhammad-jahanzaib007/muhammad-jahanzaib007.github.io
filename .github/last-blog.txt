@@ -1,1 +1,1 @@
-2026-08-02T08:01:59Z slug=grouped-data-cross-validation-leakage words=969 title="Cross-Validation Folds for Grouped Data: Silent Leakage"
+2026-08-02T20:01:19Z slug=choosing-a-pretrained-transformer words=1115 title="Choosing a Pretrained Transformer: Size, Licence, Context"

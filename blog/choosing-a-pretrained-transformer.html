@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Choosing a Pretrained Transformer: Size, Licence, Context | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to weighing parameter count, licence restrictions, and context window when selecting a pretrained transformer for a real project.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="pretrained transformer, model selection, open source licence, context length, model size, inference cost, NLP engineering, reproducibility, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-02">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Choosing a Pretrained Transformer: Size, Licence, Context">
+<meta property="og:description" content="A practical guide to weighing parameter count, licence restrictions, and context window when selecting a pretrained transformer for a real project.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/choosing-a-pretrained-transformer.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/choosing-a-pretrained-transformer.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Choosing a Pretrained Transformer: Size, Licence, Context">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/choosing-a-pretrained-transformer.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/choosing-a-pretrained-transformer.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Choosing a Pretrained Transformer: Size, Licence, Context",
+  "description": "A practical guide to weighing parameter count, licence restrictions, and context window when selecting a pretrained transformer for a real project.",
+  "url": "https://jahanzaibawan.com/blog/choosing-a-pretrained-transformer.html",
+  "image": "https://jahanzaibawan.com/assets/blog/choosing-a-pretrained-transformer.png",
+  "datePublished": "2026-08-02",
+  "dateModified": "2026-08-02",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/choosing-a-pretrained-transformer.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Choosing a Pretrained Transformer: Size, Licence, Context", "item": "https://jahanzaibawan.com/blog/choosing-a-pretrained-transformer.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">NLP · 6 min read · 2 Aug 2026</div>
+    <h1>Choosing a Pretrained Transformer: Size, Licence, Context</h1>
+    <p class="lede">Picking a base model is rarely about leaderboard scores alone. Size, licence terms, and context length quietly decide whether your project ships or stalls.</p>
+  </div>
+
+  <img src="../assets/blog/choosing-a-pretrained-transformer.png" alt="Cover image for the article: Choosing a Pretrained Transformer: Size, Licence, Context" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this decision matters more than the benchmark table</h2><p>Every few months a new model tops a leaderboard, and it is tempting to treat that as the whole story. It is not. Choosing a pretrained transformer is a systems decision with consequences for cost, deployment, and even whether you are legally allowed to ship the thing. I have seen teams pick the highest-scoring model on a benchmark, then discover weeks later that its licence forbids commercial use, or that its context window is too short for the documents they actually need to process. The benchmark measured something real, but it did not measure the constraints that determine whether the project survives contact with production.</p><p>The three axes I keep coming back to are size, licence, and context length. They interact with each other in ways that are easy to underestimate. A larger model with a longer context window sounds strictly better until you compute the memory and latency cost of running it. A permissively licensed model sounds safer until you notice its context length forces you to chunk your data in a way that damages accuracy. None of these tradeoffs are exotic; they are just easy to skip past when a leaderboard number is sitting right there, inviting you to stop thinking.</p></section><section class='psec reveal'><h2>Size: the tradeoff you can actually put a number on</h2><p>Parameter count is the easiest axis to reason about quantitatively, which is exactly why it deserves careful arithmetic rather than vibes. A model with roughly seven billion parameters, held in 16-bit precision, needs on the order of fourteen gigabytes just to store the weights, before you add the memory for activations, the key-value cache, and any batching overhead. Move to a model with thirteen billion parameters and that baseline roughly doubles. This is not a subtle difference; it is the line between fitting on a single consumer GPU and needing multiple accelerators or an aggressive quantisation strategy.</p><p>The intuition worth internalising is that bigger models are not just slower, they change your entire deployment architecture. A smaller model that runs comfortably on one GPU lets you scale horizontally with simple replicas. A model that needs to be sharded across several GPUs introduces networking overhead, more complex serving code, and a much higher bar for anyone maintaining the system after you. When I evaluate size, I ask a blunt question: what is the smallest model that clears my accuracy bar on a task-representative validation set, evaluated with a leakage-aware split so the number is trustworthy? Chasing extra capacity beyond that point buys diminishing returns at a very real cost.</p><p>It is also worth remembering that size and quality are correlated but not identical. A well-trained smaller model can outperform a poorly matched larger one on a specific domain, particularly if the larger model's training data barely touched your niche. Size is a proxy for capability, not a guarantee of it, and treating it as a guarantee is how teams end up paying for compute they did not need.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/choosing-a-pretrained-transformer-1.jpg' alt='gpu server rack' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Licence and context length: the constraints that bite later</h2><p>Licensing is the axis most likely to be ignored during prototyping and then cause a genuine crisis before launch. Some pretrained models are released under licences that explicitly restrict commercial use, cap the number of monthly active users before a separate agreement kicks in, or forbid using the model's outputs to train a competing model. These are not academic footnotes; they determine whether your product can legally exist in the form you have built it. I make it a habit to read the licence text itself, not a summary, before writing a single line of code that depends on a given model, because the summary someone posted online is not what a lawyer will read later.</p><p>Context length interacts with licence and size in a way that is easy to miss. A model advertising a context window of thirty-two thousand tokens sounds generous until you notice that its effective performance degrades well before that limit, a phenomenon sometimes called the lost-in-the-middle effect, where information placed in the centre of a long prompt is recalled less reliably than information near the start or end. If your task genuinely needs to reason over a long document, a nominally shorter context window from a model with more reliable long-range attention can beat a longer window from a model that only handles the first and last few thousand tokens well.</p><p>Concretely: suppose you are summarising legal contracts averaging twenty thousand tokens. A model with an eight-thousand-token window forces you to chunk the document, summarise each chunk, then summarise the summaries, a pipeline that compounds errors at every stage. A model with a genuine thirty-two-thousand-token window that maintains attention across that span lets you process the whole document in one pass, which is usually worth a real premium in inference cost. But you only know it is a genuine capability, rather than a marketing number, if you test it on your own documents rather than trusting the specification sheet.</p></section><section class='psec reveal'><h2>Putting it together: a practical selection process</h2><p>My working approach is to treat size, licence, and context length as filters applied in a specific order, because licence constraints eliminate candidates fastest and cheapest. First, list the licences that are actually compatible with how you intend to deploy, including commercial terms and any restrictions on derivative training; this removes options in minutes, not days. Second, among the survivors, estimate the memory and latency budget you can realistically operate within, which narrows the field by size before you have run a single evaluation.</p><p>Only then should you test context length and task accuracy empirically, on data that resembles what you will see in production, using a held-out split that was never touched during any prompt engineering or fine-tuning decisions. This ordering matters because it is far cheaper to disqualify a model on licence grounds than to discover the same problem after you have built an evaluation harness around it. It also keeps you honest: it is easy to fall in love with a model's benchmark performance and rationalise away a licence problem, much harder to do that once you have already ruled it out on paper.</p><p>The takeaway I would give anyone starting this process: write down your actual constraints, deployment budget, licence requirements, and the realistic length and structure of your input data, before you look at a single leaderboard. Then let those constraints do the filtering. The model that wins on a public benchmark was optimised for that benchmark's distribution, not for your contracts, your GPUs, or your legal department, and the sooner you treat the choice as an engineering decision rather than a popularity contest, the fewer surprises you will get later.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/choosing-a-pretrained-transformer-2.jpg' alt='stack of legal documents on desk' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
