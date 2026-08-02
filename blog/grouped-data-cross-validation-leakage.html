@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cross-Validation Folds for Grouped Data: Silent Leakage | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why random cross-validation folds leak information on grouped data, with a worked example showing inflated accuracy and how group-aware splits fix it.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="cross-validation, group k-fold, data leakage, model evaluation, grouped data, machine learning evaluation, leakage-aware splits, generalisation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-02">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Cross-Validation Folds for Grouped Data: Silent Leakage">
+<meta property="og:description" content="Why random cross-validation folds leak information on grouped data, with a worked example showing inflated accuracy and how group-aware splits fix it.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/grouped-data-cross-validation-leakage.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/grouped-data-cross-validation-leakage.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cross-Validation Folds for Grouped Data: Silent Leakage">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/grouped-data-cross-validation-leakage.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/grouped-data-cross-validation-leakage.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Cross-Validation Folds for Grouped Data: Silent Leakage",
+  "description": "Why random cross-validation folds leak information on grouped data, with a worked example showing inflated accuracy and how group-aware splits fix it.",
+  "url": "https://jahanzaibawan.com/blog/grouped-data-cross-validation-leakage.html",
+  "image": "https://jahanzaibawan.com/assets/blog/grouped-data-cross-validation-leakage.png",
+  "datePublished": "2026-08-02",
+  "dateModified": "2026-08-02",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/grouped-data-cross-validation-leakage.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Cross-Validation Folds for Grouped Data: Silent Leakage", "item": "https://jahanzaibawan.com/blog/grouped-data-cross-validation-leakage.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 2 Aug 2026</div>
+    <h1>Cross-Validation Folds for Grouped Data: Silent Leakage</h1>
+    <p class="lede">Random k-fold splits assume rows are independent. When your data has groups, that assumption quietly inflates every score you report.</p>
+  </div>
+
+  <img src="../assets/blog/grouped-data-cross-validation-leakage.png" alt="Cover image for the article: Cross-Validation Folds for Grouped Data: Silent Leakage" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The assumption nobody checks</h2><p>Cross-validation works by pretending each fold is a fresh, unseen sample of the population you care about. That pretence relies on one quiet assumption: rows are independent. In practice, a huge amount of real data is not independent at all. It arrives in groups: multiple scans from the same patient, multiple posts from the same user, multiple sensor readings from the same machine, multiple sentences from the same document. Standard k-fold cross-validation shuffles rows randomly and does not care whether two nearly identical rows end up in different folds.</p><p>This matters because a model does not need to learn the general pattern you want if it can instead learn the specific identity of a group. If patient A appears in both the training fold and the test fold, the model can partly memorise patient A's quirks rather than learning what generalises to patient Z, who it has never seen. The test score still looks respectable, sometimes excellent, but it is measuring something closer to recall of familiar entities than genuine predictive skill.</p><p>The leak is silent because nothing in the pipeline throws an error. Your cross-validation loop runs, folds are stratified nicely, the code executes without warnings. The only symptom is a gap between validation performance and real-world performance on genuinely new groups, and that gap only shows up later, often after deployment, when it is expensive to discover.</p></section><section class='psec reveal'><h2>A worked example</h2><p>Suppose you are building a classifier to detect a medical condition from repeated scans, and you have 200 patients, each contributing five scans, so 1,000 rows total. You run standard five-fold cross-validation on the 1,000 rows, shuffled randomly. Because each patient's five scans are similar to one another, roughly four of each patient's five scans will land in the training folds whenever that patient's data is split, with only one or two held out in the test fold in any given split.</p><p>The model effectively gets to see most of each patient before being tested on the rest of that same patient. If patients have any idiosyncratic signal, a distinctive baseline noise pattern, a device artefact, subtle anatomical traits, the model can exploit that instead of the disease signal you actually want it to learn. Say this pushes reported accuracy to around 94%. It looks strong. But when the model is deployed on new patients it has never encountered, accuracy could plausibly fall to somewhere in the 70s, because the shortcut it learned, patient identity, no longer helps.</p><p>Now redo the split using group k-fold, where all five scans from a given patient are forced into the same fold, never split across train and test. With 200 patients, each fold contains roughly 40 entirely new patients. The model can no longer lean on patient-specific quirks, because every test patient is genuinely unseen. Accuracy drops, honestly, to something closer to what you would actually see in deployment, perhaps the 70s I mentioned above. That number is less flattering, but it is the number that matters, because it is the number you can trust when someone asks whether the model will work on the next patient who walks through the door.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/grouped-data-cross-validation-leakage-1.jpg' alt='hospital medical scan equipment' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Where this shows up beyond medicine</h2><p>The same pattern recurs anywhere data is naturally clustered. In text classification, if a corpus contains multiple paragraphs pulled from the same document, random splitting lets a model partially memorise document-specific vocabulary and style rather than learning the general category. In recommendation and behavioural modelling, multiple interactions from the same user leaking across train and test let a model learn that user's preferences rather than transferable patterns. In time series with repeated measurements from the same sensor or subject, the same risk appears, compounded further by temporal leakage if future rows sit in training folds and past rows sit in test folds.</p><p>It is worth being precise about what counts as a group. Sometimes the grouping variable is obvious, a patient ID or user ID sitting right there in the data. Sometimes it is not explicit and needs to be constructed, for example grouping by recording session, by geographic site, or by the annotator who labelled the data. If different annotators have systematically different labelling habits, and your split does not account for that, you can leak annotator identity instead of task signal. The general rule is to ask: what is the unit that will be genuinely new at deployment time? Then group by that unit, however it is defined, not by row.</p><p>The fix, in most tooling, is a small change: swap a standard k-fold splitter for a group-aware one that takes a group label and guarantees no group crosses the train and test boundary. It costs almost nothing to implement and should be treated as a default checklist item, not an optional refinement applied only when leakage is suspected.</p></section><section class='psec reveal'><h2>Practical takeaway</h2><p>Before running any cross-validation, ask a simple question: could the same underlying entity, patient, user, document, session, sensor, generate more than one row in this dataset? If the answer is yes, random k-fold is the wrong tool, because it will let the model partially identify entities rather than purely learn the relationship you actually care about, and your validation score will be optimistic in a way that is invisible until deployment.</p><p>The practical fix is grouped splitting: keep every row from a given entity entirely within one fold, whether that is achieved through group k-fold, leave-one-group-out, or a manually constructed split by patient, user, or session ID. Expect the resulting scores to be lower than what random splitting would have shown you. That drop is not a failure of the model; it is the removal of a false signal you were never entitled to trust. A lower, honest number that predicts real-world performance is worth far more than a higher number that quietly measures memorisation.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/grouped-data-cross-validation-leakage-2.jpg' alt='research team reviewing data on laptop' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
