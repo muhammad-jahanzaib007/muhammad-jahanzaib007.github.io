@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a4",
       "thumb": "assets/blog/macro-micro-weighted-averages.png",
-      "thumb_alt": "Cover image for the article: Macro, Micro, and Weighted Averages Explained Properly"
+      "thumb_alt": "Cover image for the article: Macro, Micro, and Weighted Averages Explained Properly",
+      "li_shared": true
     },
     {
       "slug": "choosing-a-pretrained-transformer",
