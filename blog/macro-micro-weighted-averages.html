@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Macro, Micro, and Weighted Averages Explained Properly | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A worked, honest explanation of macro, micro, and weighted averaging for multi-class NLP classifiers, with a concrete numeric example.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="macro average, micro average, weighted average, multi-class classification, F1 score, NLP evaluation, imbalanced classes, precision recall, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-03">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Macro, Micro, and Weighted Averages Explained Properly">
+<meta property="og:description" content="A worked, honest explanation of macro, micro, and weighted averaging for multi-class NLP classifiers, with a concrete numeric example.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/macro-micro-weighted-averages.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/macro-micro-weighted-averages.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Macro, Micro, and Weighted Averages Explained Properly">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/macro-micro-weighted-averages.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/macro-micro-weighted-averages.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Macro, Micro, and Weighted Averages Explained Properly",
+  "description": "A worked, honest explanation of macro, micro, and weighted averaging for multi-class NLP classifiers, with a concrete numeric example.",
+  "url": "https://jahanzaibawan.com/blog/macro-micro-weighted-averages.html",
+  "image": "https://jahanzaibawan.com/assets/blog/macro-micro-weighted-averages.png",
+  "datePublished": "2026-08-03",
+  "dateModified": "2026-08-03",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/macro-micro-weighted-averages.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Macro, Micro, and Weighted Averages Explained Properly", "item": "https://jahanzaibawan.com/blog/macro-micro-weighted-averages.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 3 Aug 2026</div>
+    <h1>Macro, Micro, and Weighted Averages Explained Properly</h1>
+    <p class="lede">A single accuracy number can hide a classifier that fails on every rare class. Here is how the three main averaging schemes actually work, with worked numbers.</p>
+  </div>
+
+  <img src="../assets/blog/macro-micro-weighted-averages.png" alt="Cover image for the article: Macro, Micro, and Weighted Averages Explained Properly" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why one accuracy number is not enough</h2><p>When I first started evaluating multi-class text classifiers, I leaned on accuracy because it was easy to explain to anyone in the room. The trouble is that accuracy treats every prediction as equally informative, and in most real NLP tasks, whether that is sentiment with a neutral majority class or intent detection with a long tail of rare intents, the classes are not equally sized. A model can score a respectable accuracy by nailing the dominant class and quietly failing on everything else, and accuracy alone will not tell you that.</p><p>This is exactly the situation macro, micro, and weighted averages were designed to disentangle. They are not competing metrics so much as three different questions you can ask of the same confusion matrix. Macro asks: how well does the model do on each class, treated as equally important? Micro asks: across every single prediction, regardless of class, what fraction is correct? Weighted asks: how well does the model do on each class, but scaled by how often that class actually appears? Choosing the wrong one for your problem, or worse, reporting one without saying which, is a common source of misleading results in papers and portfolios alike.</p><p>I care about this because I have seen leaderboard-style comparisons where a model looks state of the art under one averaging scheme and mediocre under another, with no code change at all, just a different summary statistic. If you cannot explain which average you used and why, you cannot really defend your evaluation.</p></section><section class='psec reveal'><h2>A worked example with three classes</h2><p>Suppose I am building a text classifier for support tickets with three labels: <strong>billing</strong>, <strong>technical</strong>, and <strong>account</strong>. My test set has 100 billing tickets, 80 technical tickets, and 20 account tickets, so it is already imbalanced before the model does anything. After running inference, I compute per-class precision and recall from the confusion matrix: billing gets precision 0.90 and recall 0.95, technical gets precision 0.80 and recall 0.70, and account, the rare class, gets precision 0.50 and recall 0.30.</p><p>From these I derive per-class F1 scores: billing is roughly 0.92, technical is roughly 0.75, and account is roughly 0.375. The <strong>macro F1</strong> is simply the unweighted mean of these three: (0.92 plus 0.75 plus 0.375) divided by 3, which comes out to about 0.68. Notice that account, despite having only 20 examples, pulls just as hard on this average as billing with 100 examples. Macro is punishing the model for its weak performance on the small class exactly as much as if that class were the largest one in the dataset.</p><p>The <strong>weighted F1</strong> instead multiplies each class's F1 by its share of the test set, so it becomes (0.92 times 100 plus 0.75 times 80 plus 0.375 times 20) divided by 200 examples in total, which works out to roughly 0.82. That is noticeably higher than the macro score, because the model's weakest performance sits on the class that barely features in the data, so weighted F1 largely absorbs that weakness.</p><p><strong>Micro F1</strong> works differently again: it pools every true positive, false positive, and false negative across all classes into one big precision and recall calculation, then computes F1 from those totals. In a multi-class single-label setup like this, micro precision, micro recall, and micro F1 all end up equal to overall accuracy. If I total the correct predictions, roughly 95 billing, 56 technical, and 6 account, that is 157 correct out of 200, giving a micro F1 of about 0.785. It sits between the macro and weighted numbers here, but that is not a general rule, it depends entirely on the confusion matrix.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/macro-micro-weighted-averages-1.jpg' alt='whiteboard with confusion matrix diagram' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Choosing the right one, and reporting it honestly</h2><p>The practical rule I follow is this: use macro averaging when every class matters regardless of its frequency, which is common in safety-relevant or fairness-sensitive tasks where failing silently on a rare category is exactly the failure mode you are trying to catch. A content moderation system that flags 99 percent of spam correctly but only 30 percent of a rare but serious abuse category has a real problem that macro F1 will expose and accuracy will hide.</p><p>Use micro averaging, or equivalently accuracy in the single-label case, when you genuinely care about overall correctness across all predictions and the class distribution in your test set reflects the distribution you expect in deployment. It answers a straightforward operational question: out of everything the model sees in production, how often is it right?</p><p>Use weighted averaging when you want a summary that reflects real-world class prevalence but still want the interpretability of per-class F1 rather than raw pooled counts. It is a reasonable default for a general-purpose leaderboard number, but be honest that it will understate problems on minority classes, sometimes the exact classes you care about most, such as rare disease mentions in clinical text or minority dialect detection.</p><p>Whichever you choose, the discipline that matters most is reporting the per-class breakdown alongside the summary statistic, and being explicit in any write-up about which averaging scheme produced the headline number. A single figure without that context, macro F1 of 0.68 quoted without the per-class table, tells a reader almost nothing they can trust. Pair the average with a confusion matrix or per-class table, use a leakage-aware, stratified test split so the class proportions you are averaging over are actually representative, and state your averaging choice in the same sentence as the number itself. That habit costs a paragraph and saves you from being quietly wrong.</p></section>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "macro-micro-weighted-averages",
+      "title": "Macro, Micro, and Weighted Averages Explained Properly",
+      "excerpt": "Accuracy lies when classes are imbalanced. I walk through macro, micro, and weighted F1 with real numbers so you know which one to trust.",
+      "date": "2026-08-03",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a4",
+      "thumb": "assets/blog/macro-micro-weighted-averages.png",
+      "thumb_alt": "Cover image for the article: Macro, Micro, and Weighted Averages Explained Properly"
+    },
+    {
       "slug": "choosing-a-pretrained-transformer",
       "title": "Choosing a Pretrained Transformer: Size, Licence, Context",
       "excerpt": "Model choice is a systems decision, not a leaderboard lookup. Here is how size, licence, and context length interact in practice.",
