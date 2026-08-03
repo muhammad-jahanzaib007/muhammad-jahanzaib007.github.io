@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "fine-tuning-vs-few-shot-prompting",
+      "title": "Fine-Tuning vs Few-Shot Prompting on Small Datasets",
+      "excerpt": "With small labelled datasets, fine-tuning and few-shot prompting fail differently. Here's how to choose, and how to evaluate the choice honestly.",
+      "date": "2026-08-03",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a5",
+      "thumb": "assets/blog/fine-tuning-vs-few-shot-prompting.png",
+      "thumb_alt": "Cover image for the article: Fine-Tuning vs Few-Shot Prompting on Small Datasets"
+    },
+    {
       "slug": "macro-micro-weighted-averages",
       "title": "Macro, Micro, and Weighted Averages Explained Properly",
       "excerpt": "Accuracy lies when classes are imbalanced. I walk through macro, micro, and weighted F1 with real numbers so you know which one to trust.",

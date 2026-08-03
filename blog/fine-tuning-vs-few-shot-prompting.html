@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fine-Tuning vs Few-Shot Prompting on Small Datasets | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical comparison of fine-tuning and few-shot prompting for small labelled datasets, with a worked example and leakage-aware evaluation advice.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="fine-tuning, few-shot prompting, small datasets, in-context learning, model evaluation, data leakage, NLP, machine learning, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-03">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Fine-Tuning vs Few-Shot Prompting on Small Datasets">
+<meta property="og:description" content="A practical comparison of fine-tuning and few-shot prompting for small labelled datasets, with a worked example and leakage-aware evaluation advice.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/fine-tuning-vs-few-shot-prompting.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/fine-tuning-vs-few-shot-prompting.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fine-Tuning vs Few-Shot Prompting on Small Datasets">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/fine-tuning-vs-few-shot-prompting.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/fine-tuning-vs-few-shot-prompting.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Fine-Tuning vs Few-Shot Prompting on Small Datasets",
+  "description": "A practical comparison of fine-tuning and few-shot prompting for small labelled datasets, with a worked example and leakage-aware evaluation advice.",
+  "url": "https://jahanzaibawan.com/blog/fine-tuning-vs-few-shot-prompting.html",
+  "image": "https://jahanzaibawan.com/assets/blog/fine-tuning-vs-few-shot-prompting.png",
+  "datePublished": "2026-08-03",
+  "dateModified": "2026-08-03",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/fine-tuning-vs-few-shot-prompting.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Fine-Tuning vs Few-Shot Prompting on Small Datasets", "item": "https://jahanzaibawan.com/blog/fine-tuning-vs-few-shot-prompting.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 3 Aug 2026</div>
+    <h1>Fine-Tuning vs Few-Shot Prompting on Small Datasets</h1>
+    <p class="lede">When you only have a few hundred labelled examples, the choice between updating model weights and simply showing examples in a prompt matters more than most people assume.</p>
+  </div>
+
+  <img src="../assets/blog/fine-tuning-vs-few-shot-prompting.png" alt="Cover image for the article: Fine-Tuning vs Few-Shot Prompting on Small Datasets" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this choice is harder than it looks</h2><p>When someone hands me a labelled dataset with three hundred examples and asks whether to fine-tune a model or just write a good prompt with a handful of demonstrations, my honest answer is that the dataset size alone does not settle it. What settles it is how the task's decision boundary behaves, how stable the label definitions are, and how you plan to evaluate the result. Too often the comparison gets reduced to a vague intuition that fine-tuning is for 'more data' and few-shot prompting is for 'less data', which is not wrong exactly, but it hides the mechanics that actually matter.</p><p>Fine-tuning adjusts the model's internal weights using your labelled examples as gradient signal. Few-shot prompting keeps the weights frozen and instead relies on a handful of examples placed in the context window to steer the model's behaviour at inference time. These are fundamentally different mechanisms for injecting task-specific knowledge, and they fail in different ways when the labelled set is small. Understanding those failure modes is more useful than any rule of thumb about sample counts.</p><p>I want to work through a concrete case: classifying customer support tickets into three categories, billing, technical, and account access, using two hundred labelled tickets. This is a realistic size for a small internal project, and it is exactly the regime where the fine-tuning versus few-shot question becomes genuinely contested rather than obvious.</p></section><section class='psec reveal'><h2>What fine-tuning actually buys you, and what it costs</h2><p>With two hundred examples split, say, one hundred and forty for training, thirty for validation, and thirty for a held-out test set, fine-tuning a smaller pretrained model can work well if the categories are cleanly separable by vocabulary and structure. The model learns weight adjustments specific to your label distribution, and at inference time it needs no examples at all, just the raw ticket text. This means lower latency and lower per-call cost in production, since you are not paying to process demonstration examples in every prompt.</p><p>The cost is that one hundred and forty training examples is a thin signal. If your three categories are imbalanced, say ninety billing tickets, thirty technical, and twenty account access, the model may become very good at billing and mediocre at account access simply because it saw fewer examples and fewer edge cases. Fine-tuning also risks overfitting to incidental patterns: if most of your technical tickets happen to mention a specific product name that rarely appears in billing tickets, the model may learn that shortcut rather than the underlying distinction you care about. This only becomes visible if your test set contains tickets where that shortcut fails, which is exactly why a careless train and test split, one drawn from the same time period or the same small pool of customers, can flatter a fine-tuned model with a leakage-inflated accuracy score.</p><p>There is also a practical overhead people underrate: fine-tuning requires infrastructure, checkpointing, and a decision about how many epochs to run before you overfit the small training set into memorising rather than generalising. With one hundred and forty examples, three or four epochs might already be enough to start memorising surface patterns, and you will only catch this if your validation set is genuinely held out and reasonably representative.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/fine-tuning-vs-few-shot-prompting-1.jpg' alt='customer support ticket dashboard' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What few-shot prompting actually buys you, and what it costs</h2><p>Few-shot prompting sidesteps the overfitting risk in a specific sense: you are not adjusting millions or billions of parameters based on one hundred and forty examples, so there is no weight-level memorisation of your particular training set. Instead, you select perhaps six to twelve representative examples, two or three per category, and place them directly in the prompt alongside the new ticket to be classified. The underlying pretrained model brings general language understanding, and the demonstrations narrow that general capability toward your specific category definitions.</p><p>This approach tends to be more robust when your labelled set is genuinely tiny, under a hundred examples, because there simply is not enough signal to responsibly update weights without a serious risk of collapsing onto noise. It is also faster to iterate on: changing your few-shot examples or your instructions takes seconds, whereas retraining a fine-tuned model takes a training run and a fresh evaluation cycle.</p><p>The cost is subtler and easy to miss. Few-shot performance is sensitive to which examples you choose and the order you present them in, so a comparison between 'fine-tuned model' and 'few-shot prompt' is not comparing two fixed things, it is comparing a fixed thing against a family of prompts whose performance can shift by several percentage points depending on demonstration selection. If you report the best few-shot configuration you found after trying a dozen variations, you have quietly introduced a form of leakage: you tuned your method on the same test set you are using to report results. The honest version of a few-shot evaluation selects demonstrations using only the training pool, then reports test performance once, exactly as you would with a fine-tuned model's held-out test accuracy.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>On my two hundred ticket example, I would expect few-shot prompting to be the more forgiving starting point precisely because the training pool is small and imbalanced; it lets a capable pretrained model do most of the work while your examples merely calibrate category boundaries. I would expect fine-tuning to overtake it only if you can grow the labelled set meaningfully, into the low thousands, where weight updates have enough signal to learn distinctions that demonstrations alone cannot convey, and where per-call latency or cost genuinely matters at scale.</p><p>The comparison only means anything if both approaches are evaluated on the same untouched test split, with demonstration selection and hyperparameter choices made strictly on training or validation data. Skipping that discipline is how teams end up with a headline number that quietly cannot be reproduced once the underlying data shifts even slightly. Choose based on data volume and deployment constraints, but trust the comparison only if the evaluation was leakage-aware from the start.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/fine-tuning-vs-few-shot-prompting-2.jpg' alt='laptop with code editor open' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

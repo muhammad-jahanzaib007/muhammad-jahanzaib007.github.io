@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Mon, 03 Aug 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Fine-Tuning vs Few-Shot Prompting on Small Datasets</title>
+    <link>https://jahanzaibawan.com/blog/fine-tuning-vs-few-shot-prompting.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/fine-tuning-vs-few-shot-prompting.html</guid>
+    <pubDate>Mon, 03 Aug 2026 09:00:00 +0000</pubDate>
+    <description>With small labelled datasets, fine-tuning and few-shot prompting fail differently. Here&#x27;s how to choose, and how to evaluate the choice honestly.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Macro, Micro, and Weighted Averages Explained Properly</title>
     <link>https://jahanzaibawan.com/blog/macro-micro-weighted-averages.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/macro-micro-weighted-averages.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/always-try-baseline-models-first.html</guid>
     <pubDate>Sat, 25 Jul 2026 09:00:00 +0000</pubDate>
     <description>A strong baseline is not a formality, it is the number every fancy model must beat to justify its cost.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>The Stationarity Assumption Hiding Inside Your Metrics</title>
-    <link>https://jahanzaibawan.com/blog/stationarity-assumption-evaluation-metrics.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/stationarity-assumption-evaluation-metrics.html</guid>
-    <pubDate>Fri, 24 Jul 2026 09:00:00 +0000</pubDate>
-    <description>Accuracy, AUC and their friends all assume tomorrow looks like today. I unpack that assumption and show, with numbers, how quietly it can fail.</description>
     <category>Evaluation</category>
   </item>
 </channel>
