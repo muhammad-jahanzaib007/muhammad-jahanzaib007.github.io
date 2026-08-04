@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a2",
       "thumb": "assets/blog/minimal-model-card-checklist.png",
-      "thumb_alt": "Cover image for the article: Building a Minimal Model Card Before Anyone Uses Your Model"
+      "thumb_alt": "Cover image for the article: Building a Minimal Model Card Before Anyone Uses Your Model",
+      "li_shared": true
     },
     {
       "slug": "skills-that-get-you-hired-mle",
