@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Tue, 04 Aug 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Building a Minimal Model Card Before Anyone Uses Your Model</title>
+    <link>https://jahanzaibawan.com/blog/minimal-model-card-checklist.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/minimal-model-card-checklist.html</guid>
+    <pubDate>Tue, 04 Aug 2026 09:00:00 +0000</pubDate>
+    <description>Before anyone downloads your model, tell them what it was trained on, how it was evaluated, and where it breaks. Here is the minimal version that actually gets written.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>The Actual Skills That Get You Hired as an ML Engineer</title>
     <link>https://jahanzaibawan.com/blog/skills-that-get-you-hired-mle.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/skills-that-get-you-hired-mle.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/multi-label-vs-multi-class-metrics.html</guid>
     <pubDate>Sun, 26 Jul 2026 09:00:00 +0000</pubDate>
     <description>Multi-class metrics silently misused on multi-label problems produce numbers that look fine and mean almost nothing.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Ablation Studies: Isolating What Actually Helped</title>
-    <link>https://jahanzaibawan.com/blog/ablation-studies-isolating-gains.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/ablation-studies-isolating-gains.html</guid>
-    <pubDate>Sat, 25 Jul 2026 09:00:00 +0000</pubDate>
-    <description>A new module, a new loss, a better score: but which change actually mattered? Ablations tell you, if you design them properly.</description>
     <category>Evaluation</category>
   </item>
 </channel>

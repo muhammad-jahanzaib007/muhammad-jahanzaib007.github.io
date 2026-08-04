@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Building a minimal model card: what to document before anyone else uses your model",
     "Domain adaptation versus fine-tuning: when retraining is not the same as adapting",
     "Sequence labelling metrics: why token-level accuracy hides your real error rate",
     "Positional encodings: why transformers need them at all",
@@ -101,6 +100,7 @@
     "Choosing a pretrained transformer: size, licence, and context length tradeoffs",
     "Evaluation metrics for multi-class NLP classifiers: macro, micro, and weighted averages explained",
     "The difference between fine-tuning and few-shot prompting on a small labelled dataset",
-    "Salary aside: the actual skills that get you hired as a machine learning engineer"
+    "Salary aside: the actual skills that get you hired as a machine learning engineer",
+    "Building a minimal model card: what to document before anyone else uses your model"
   ]
 }

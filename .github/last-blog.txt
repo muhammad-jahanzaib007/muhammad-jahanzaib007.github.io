@@ -1,1 +1,1 @@
-2026-08-04T08:01:50Z slug=skills-that-get-you-hired-mle words=1106 title="The Actual Skills That Get You Hired as an ML Engineer"
+2026-08-04T20:02:05Z slug=minimal-model-card-checklist words=1092 title="Building a Minimal Model Card Before Anyone Uses Your Model"

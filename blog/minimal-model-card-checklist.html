@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building a Minimal Model Card Before Anyone Uses Your Model | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to writing a minimal model card: what data, evaluation, and limitations to document before releasing any machine learning model.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="model cards, ml documentation, model evaluation, reproducibility, machine learning limitations, dataset documentation, responsible ai, model reporting, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-04">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Building a Minimal Model Card Before Anyone Uses Your Model">
+<meta property="og:description" content="A practical guide to writing a minimal model card: what data, evaluation, and limitations to document before releasing any machine learning model.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/minimal-model-card-checklist.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/minimal-model-card-checklist.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Building a Minimal Model Card Before Anyone Uses Your Model">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/minimal-model-card-checklist.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/minimal-model-card-checklist.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Building a Minimal Model Card Before Anyone Uses Your Model",
+  "description": "A practical guide to writing a minimal model card: what data, evaluation, and limitations to document before releasing any machine learning model.",
+  "url": "https://jahanzaibawan.com/blog/minimal-model-card-checklist.html",
+  "image": "https://jahanzaibawan.com/assets/blog/minimal-model-card-checklist.png",
+  "datePublished": "2026-08-04",
+  "dateModified": "2026-08-04",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/minimal-model-card-checklist.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Building a Minimal Model Card Before Anyone Uses Your Model", "item": "https://jahanzaibawan.com/blog/minimal-model-card-checklist.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 4 Aug 2026</div>
+    <h1>Building a Minimal Model Card Before Anyone Uses Your Model</h1>
+    <p class="lede">A model without documentation is a liability waiting to happen. Here is the smallest set of facts you owe every future user, including your own future self.</p>
+  </div>
+
+  <img src="../assets/blog/minimal-model-card-checklist.png" alt="Cover image for the article: Building a Minimal Model Card Before Anyone Uses Your Model" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the card matters more than the metric</h2><p>Most models die a quiet death not because they were badly trained, but because someone else picked them up, used them outside the conditions they were built for, and got a nasty surprise in production. A model card is the thing that prevents that surprise. It is not a marketing sheet and it is not a full research paper. It is a short, honest document that answers the questions a competent stranger would ask before trusting your model with anything real.</p><p>I say this as someone who has, more than once, gone back to my own work from a few months earlier and had no idea what preprocessing I had applied, or which split of a dataset I had actually evaluated on. If I cannot reconstruct my own decisions, a stranger has no chance. The model card is not charity towards other people; it is insurance for yourself.</p><p>The temptation is to skip this step because it feels like paperwork that delays the interesting part, which is building the next model. But the cost of skipping it is not paid immediately. It is paid three months later when someone deploys your sentiment classifier on customer support transcripts, not realising it was trained and tuned entirely on product reviews, and wonders why it is confidently wrong on every third ticket.</p></section><section class='psec reveal'><h2>The four things that actually matter</h2><p>A minimal card does not need twenty sections. It needs four, done properly: what the model is, what it was trained and evaluated on, how well it performs and under what conditions, and where it is known to fail. Everything else is optional polish.</p><p><strong>What the model is</strong> sounds trivial but is often missing. State the task precisely: is this a binary classifier, a multi-label tagger, a regression model predicting a continuous score? State the input and output format exactly, including any assumptions about text length, image resolution, or feature scaling. A one-line description like 'predicts customer churn from account activity' is not enough; say whether that means churn in the next thirty days, sixty days, or an unspecified horizon, because the answer changes what the model is actually useful for.</p><p><strong>What it was trained and evaluated on</strong> is the section people skip and regret skipping. Name the dataset, its size, its time range, and crucially, how the split was made. If you trained on data from January to June and tested on July, say so, because that tells a user the model has at least survived a temporal shift. If instead you did a random split across the whole period, say that too, because it means the reported accuracy may be optimistic if the real-world use case involves genuinely new time periods, new users, or new categories the model never saw isolated during training. This is the single most common source of leakage I see: a random split that lets near-duplicate rows or correlated records from the same entity sit on both sides of the train and test boundary, quietly inflating the score.</p><p><strong>How well it performs and under what conditions</strong> should include the metric, the number, and the baseline it beats. A model that reports ninety-two percent accuracy sounds good until you learn the majority class is eighty-nine percent of the data, in which case a model that always predicts the majority class would score eighty-nine percent for free. Reporting the naive baseline alongside your number turns a hollow statistic into an honest one. If you have the room, break performance down by relevant subgroup: a fraud detector that performs well overall but poorly on a particular transaction type is a very different product to sell than one that is uniformly reliable.</p><p><strong>Where it is known to fail</strong> is the section that takes the most self-honesty and provides the most value. This includes edge cases you noticed during testing, input types the model has never seen, and any known sensitivity to distribution shift. If your model was trained on English text and you have not tested it on anything else, write that down explicitly rather than leaving it to be assumed.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/minimal-model-card-checklist-1.jpg' alt='person writing notes at laptop desk' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>A worked example of what this looks like in practice</h2><p>Suppose you have built a model to predict whether a support ticket needs urgent escalation, trained on eighteen months of historical tickets. A minimal card entry might read: task is binary classification of urgent versus non-urgent, trained on twelve thousand tickets from months one to fifteen, tested on three thousand tickets from months sixteen to eighteen to simulate deployment on future data. Baseline rate of urgent tickets is eleven percent; a model predicting non-urgent for everything would score eighty-nine percent accuracy, so headline accuracy is reported alongside precision and recall for the urgent class specifically, which land at seventy-one percent precision and sixty-four percent recall.</p><p>That single paragraph tells a future user far more than a bare accuracy figure ever could. It tells them the evaluation respects time, which matters enormously for anything that will be deployed going forward rather than backfilled. It tells them the class imbalance means accuracy alone would have been misleading, and it gives them the actual operating numbers for the class they presumably care about most, which is the urgent one. It also implicitly tells them what it does not cover: tickets in categories introduced after month eighteen, or written in a language other than the training data's dominant language, are untested territory.</p><p>Notice what this example does not need: no elaborate formatting, no dashboard, no automated tooling. It is four or five sentences that took perhaps fifteen minutes to write, drawing on information the author already had sitting in a notebook somewhere. The barrier to writing a minimal card is almost never knowledge; it is the habit of writing it down before moving on to the next experiment.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>Write the card before you share the model, not after someone asks for it. The four questions to answer, every time, are: what exactly does this model do, what data was it trained and tested on and how was that split made, how well does it perform relative to a sensible baseline, and where does it break or remain untested. If you can answer those four honestly in under a page, you have done the essential work of a model card, and you have very likely caught at least one leakage or evaluation problem in the process of writing it down. The discipline of documenting forces the discipline of checking, and that is worth more than the document itself.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/minimal-model-card-checklist-2.jpg' alt='open notebook with charts and data tables' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

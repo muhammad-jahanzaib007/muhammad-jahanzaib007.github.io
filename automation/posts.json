@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "minimal-model-card-checklist",
+      "title": "Building a Minimal Model Card Before Anyone Uses Your Model",
+      "excerpt": "Before anyone downloads your model, tell them what it was trained on, how it was evaluated, and where it breaks. Here is the minimal version that actually gets written.",
+      "date": "2026-08-04",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a2",
+      "thumb": "assets/blog/minimal-model-card-checklist.png",
+      "thumb_alt": "Cover image for the article: Building a Minimal Model Card Before Anyone Uses Your Model"
+    },
+    {
       "slug": "skills-that-get-you-hired-mle",
       "title": "The Actual Skills That Get You Hired as an ML Engineer",
       "excerpt": "Hiring for ML engineering rewards rigorous evaluation and shipping discipline, not the fanciest model architecture on your CV.",
