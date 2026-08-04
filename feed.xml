@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Mon, 03 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 04 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>The Actual Skills That Get You Hired as an ML Engineer</title>
+    <link>https://jahanzaibawan.com/blog/skills-that-get-you-hired-mle.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/skills-that-get-you-hired-mle.html</guid>
+    <pubDate>Tue, 04 Aug 2026 09:00:00 +0000</pubDate>
+    <description>Hiring for ML engineering rewards rigorous evaluation and shipping discipline, not the fanciest model architecture on your CV.</description>
+    <category>Careers</category>
+  </item>
   <item>
     <title>Fine-Tuning vs Few-Shot Prompting on Small Datasets</title>
     <link>https://jahanzaibawan.com/blog/fine-tuning-vs-few-shot-prompting.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/ablation-studies-isolating-gains.html</guid>
     <pubDate>Sat, 25 Jul 2026 09:00:00 +0000</pubDate>
     <description>A new module, a new loss, a better score: but which change actually mattered? Ablations tell you, if you design them properly.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Baseline Models You Should Always Try First</title>
-    <link>https://jahanzaibawan.com/blog/always-try-baseline-models-first.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/always-try-baseline-models-first.html</guid>
-    <pubDate>Sat, 25 Jul 2026 09:00:00 +0000</pubDate>
-    <description>A strong baseline is not a formality, it is the number every fancy model must beat to justify its cost.</description>
     <category>Evaluation</category>
   </item>
 </channel>

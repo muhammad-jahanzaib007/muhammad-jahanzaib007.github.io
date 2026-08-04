@@ -1,1 +1,1 @@
-2026-08-03T20:02:46Z slug=fine-tuning-vs-few-shot-prompting words=1002 title="Fine-Tuning vs Few-Shot Prompting on Small Datasets"
+2026-08-04T08:01:50Z slug=skills-that-get-you-hired-mle words=1106 title="The Actual Skills That Get You Hired as an ML Engineer"
