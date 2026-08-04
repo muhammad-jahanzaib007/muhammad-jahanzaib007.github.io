@@ -9,7 +9,8 @@
       "tag": "Careers",
       "color": "a6",
       "thumb": "assets/blog/skills-that-get-you-hired-mle.png",
-      "thumb_alt": "Cover image for the article: The Actual Skills That Get You Hired as an ML Engineer"
+      "thumb_alt": "Cover image for the article: The Actual Skills That Get You Hired as an ML Engineer",
+      "li_shared": true
     },
     {
       "slug": "fine-tuning-vs-few-shot-prompting",
