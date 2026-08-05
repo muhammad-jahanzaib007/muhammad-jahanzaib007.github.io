@@ -1,1 +1,1 @@
-2026-08-04T20:02:50Z minimal-model-card-checklist=ok:urn:li:share:7490497495718973440
+2026-08-05T08:02:03Z domain-adaptation-vs-fine-tuning=ok:urn:li:share:7490678489571016704

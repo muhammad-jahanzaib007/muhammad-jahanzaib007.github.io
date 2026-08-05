@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a3",
       "thumb": "assets/blog/domain-adaptation-vs-fine-tuning.png",
-      "thumb_alt": "Cover image for the article: Domain Adaptation Versus Fine-Tuning: Adapting Is Not Retraining"
+      "thumb_alt": "Cover image for the article: Domain Adaptation Versus Fine-Tuning: Adapting Is Not Retraining",
+      "li_shared": true
     },
     {
       "slug": "minimal-model-card-checklist",
