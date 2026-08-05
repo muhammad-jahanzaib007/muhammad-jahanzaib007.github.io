@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a4",
       "thumb": "assets/blog/sequence-labelling-metrics-accuracy.png",
-      "thumb_alt": "Cover image for the article: Sequence Labelling Metrics: Why Token Accuracy Lies"
+      "thumb_alt": "Cover image for the article: Sequence Labelling Metrics: Why Token Accuracy Lies",
+      "li_shared": true
     },
     {
       "slug": "domain-adaptation-vs-fine-tuning",
