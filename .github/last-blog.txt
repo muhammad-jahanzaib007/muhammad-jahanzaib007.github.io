@@ -1,1 +1,1 @@
-2026-08-05T08:01:18Z slug=domain-adaptation-vs-fine-tuning words=1015 title="Domain Adaptation Versus Fine-Tuning: Adapting Is Not Retraining"
+2026-08-05T20:01:28Z slug=sequence-labelling-metrics-accuracy words=975 title="Sequence Labelling Metrics: Why Token Accuracy Lies"

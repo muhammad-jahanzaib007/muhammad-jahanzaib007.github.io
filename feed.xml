@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Wed, 05 Aug 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Sequence Labelling Metrics: Why Token Accuracy Lies</title>
+    <link>https://jahanzaibawan.com/blog/sequence-labelling-metrics-accuracy.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/sequence-labelling-metrics-accuracy.html</guid>
+    <pubDate>Wed, 05 Aug 2026 09:00:00 +0000</pubDate>
+    <description>High token accuracy on sequence labelling tasks can mask a much worse entity-level error rate. Here&#x27;s the arithmetic that proves it.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Domain Adaptation Versus Fine-Tuning: Adapting Is Not Retraining</title>
     <link>https://jahanzaibawan.com/blog/domain-adaptation-vs-fine-tuning.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/domain-adaptation-vs-fine-tuning.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/bayesian-model-comparison-example.html</guid>
     <pubDate>Mon, 27 Jul 2026 09:00:00 +0000</pubDate>
     <description>A concrete walkthrough of Bayesian model comparison, showing how Bayes factors give a richer answer than a single p-value ever can.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Time Series Cross-Validation: Why Shuffled Folds Ruin Everything</title>
-    <link>https://jahanzaibawan.com/blog/time-series-cross-validation-leakage.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/time-series-cross-validation-leakage.html</guid>
-    <pubDate>Sun, 26 Jul 2026 09:00:00 +0000</pubDate>
-    <description>Shuffling time series folds lets the future leak into training, inflating validation scores and hiding models that will fail in production.</description>
     <category>Evaluation</category>
   </item>
 </channel>

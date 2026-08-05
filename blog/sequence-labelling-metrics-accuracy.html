@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sequence Labelling Metrics: Why Token Accuracy Lies | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why token-level accuracy overstates performance on NER and tagging tasks, with a worked example showing the gap to entity-level F1.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="sequence labelling, named entity recognition, token accuracy, entity F1, evaluation metrics, class imbalance, NER evaluation, span level metrics, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-05">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Sequence Labelling Metrics: Why Token Accuracy Lies">
+<meta property="og:description" content="Why token-level accuracy overstates performance on NER and tagging tasks, with a worked example showing the gap to entity-level F1.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/sequence-labelling-metrics-accuracy.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/sequence-labelling-metrics-accuracy.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sequence Labelling Metrics: Why Token Accuracy Lies">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/sequence-labelling-metrics-accuracy.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/sequence-labelling-metrics-accuracy.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Sequence Labelling Metrics: Why Token Accuracy Lies",
+  "description": "Why token-level accuracy overstates performance on NER and tagging tasks, with a worked example showing the gap to entity-level F1.",
+  "url": "https://jahanzaibawan.com/blog/sequence-labelling-metrics-accuracy.html",
+  "image": "https://jahanzaibawan.com/assets/blog/sequence-labelling-metrics-accuracy.png",
+  "datePublished": "2026-08-05",
+  "dateModified": "2026-08-05",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/sequence-labelling-metrics-accuracy.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Sequence Labelling Metrics: Why Token Accuracy Lies", "item": "https://jahanzaibawan.com/blog/sequence-labelling-metrics-accuracy.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 5 Aug 2026</div>
+    <h1>Sequence Labelling Metrics: Why Token Accuracy Lies</h1>
+    <p class="lede">Token-level accuracy looks reassuring on named entity recognition and tagging tasks, but it systematically underweights the errors that actually matter. Here is why, with a worked example.</p>
+  </div>
+
+  <img src="../assets/blog/sequence-labelling-metrics-accuracy.png" alt="Cover image for the article: Sequence Labelling Metrics: Why Token Accuracy Lies" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The seduction of a high number</h2><p>Sequence labelling covers tasks like named entity recognition, part-of-speech tagging, and slot filling, where a model assigns a label to every token in a sentence. The obvious way to score such a model is token-level accuracy: count how many of the individual token predictions match the gold labels, divide by the total number of tokens. It is easy to compute, easy to explain, and almost always produces a flattering number.</p><p>That flattering number is the problem. In most tagging schemes, the overwhelming majority of tokens carry the label 'O', meaning no entity at all. A sentence like 'Book me a flight to Manchester next Tuesday' has eight tokens and perhaps two entities, so six tokens are trivially 'O' and easy to get right. A model that never predicts an entity at all, that simply outputs 'O' for everything, can already score well above ninety percent token accuracy on many corpora, purely because negatives dominate. Accuracy rewards you for agreeing on the easy majority class and barely penalises you for missing the rare, useful one.</p><p>This is not a niche statistical curiosity; it is the single most common way I see sequence labelling results misreported in coursework and in papers that should know better. A model gets described as achieving ninety-six percent accuracy, and the reader assumes it is nearly perfect, when in fact it might be missing or mangling a third of the actual entities. The gap between the reported number and the practical usefulness of the system is exactly the gap that accuracy is structurally blind to.</p></section><section class='psec reveal'><h2>A worked example with realistic numbers</h2><p>Suppose we have a test set of one hundred sentences, roughly twelve tokens each, so twelve hundred tokens in total. Say there are one hundred and fifty true entity mentions, most of them single tokens under a simple scheme, so fifteen hundred tokens are 'O' and one hundred and fifty carry a genuine entity label such as PERSON or LOCATION, giving one thousand and fifty non-entity tokens against one hundred and fifty entity tokens; adjust as needed, the ratio is the point, not the exact count.</p><p>Now imagine a mediocre model that correctly labels ninety-eight percent of the 'O' tokens as 'O', but only gets sixty of the one hundred and fifty entity tokens exactly right, either mislabelling the entity type or missing it entirely. Correct 'O' predictions: about 1029. Correct entity predictions: 60. Total correct: 1089 out of 1200, giving a token accuracy of just over ninety percent. That sounds like a solid, deployable model.</p><p>But look at what actually happened to the entities, which are the whole point of the task. The model got sixty out of one hundred and fifty entity mentions right, a recall of forty percent. If we also account for spans it partially got right, splitting a two-token entity into one correct and one wrong token, or predicting an entity where none exists, a proper entity-level evaluation using exact span and type matching, the kind used in standard conll-style scoring, would likely report an F1 somewhere in the fifties or sixties. That is the difference between a system a business would call 'basically working' and one it would call 'not ready'. Token accuracy told us ninety percent; the metric that reflects what the system is for told us barely half.</p><p>The mechanism behind this gap is simple once you see it: accuracy is computed per token, but usefulness is computed per entity, and an entity's tokens must all be correct, with the right boundaries and the right type, for it to count as a hit. A single misplaced boundary token turns a whole entity into an error, yet it barely dents an accuracy score built from thousands of easy 'O' tokens.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/sequence-labelling-metrics-accuracy-1.jpg' alt='whiteboard with equations' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What to measure instead, and why</h2><p>The standard fix is entity-level, or span-level, precision, recall, and F1, computed with exact match on both the boundaries and the type of each predicted span against the gold spans. This is harsher than token accuracy by design, because it insists that getting an entity 'mostly right' still counts as wrong if the boundary or type is off. That harshness is exactly what makes it informative: it mirrors how a downstream system, or a human reviewer, would judge the output. Nobody using an information extraction pipeline cares that seven of an entity's eight characters were tagged correctly; they care whether the entity was extracted, correctly typed, and usable.</p><p>It is also worth reporting a confusion breakdown by entity type rather than a single aggregate number. A model can have a perfectly respectable overall entity F1 while being nearly useless for one specific type, say dates, because that class is rare and structurally different from person or organisation names. Aggregating hides this the same way accuracy hides the entity-versus-O imbalance; the fix is the same instinct applied one level down, look at where the imbalance and the errors actually live rather than trusting a single summary statistic.</p><p>None of this means token accuracy is useless; it can be a fine sanity check during early debugging, or useful when comparing models on tasks where every token genuinely matters, such as certain part-of-speech tagging setups without a dominant 'O' class. The point is to know what a metric is structurally capable of hiding before you trust it as the headline number, and for anything with a majority negative class, that means treating token accuracy as, at best, a secondary diagnostic.</p><p>The practical takeaway: whenever you evaluate a sequence labelling model, report entity-level precision, recall, and F1 with exact span and type matching as your primary metric, break it down by entity type, and only quote token accuracy alongside it, clearly labelled, never in its place. If someone hands you a token accuracy figure with no entity-level breakdown, ask for one before believing the model works.</p></section>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

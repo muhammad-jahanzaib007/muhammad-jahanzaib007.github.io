@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "sequence-labelling-metrics-accuracy",
+      "title": "Sequence Labelling Metrics: Why Token Accuracy Lies",
+      "excerpt": "High token accuracy on sequence labelling tasks can mask a much worse entity-level error rate. Here's the arithmetic that proves it.",
+      "date": "2026-08-05",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a4",
+      "thumb": "assets/blog/sequence-labelling-metrics-accuracy.png",
+      "thumb_alt": "Cover image for the article: Sequence Labelling Metrics: Why Token Accuracy Lies"
+    },
+    {
       "slug": "domain-adaptation-vs-fine-tuning",
       "title": "Domain Adaptation Versus Fine-Tuning: Adapting Is Not Retraining",
       "excerpt": "Fine-tuning a model on new data is not the same as adapting it to a new domain. The difference decides whether your reported gains survive contact with reality.",
