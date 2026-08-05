@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Domain Adaptation Versus Fine-Tuning: Adapting Is Not Retraining | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A precise look at why domain adaptation and fine-tuning are distinct problems, with a worked example showing how conflating them produces misleading evaluation results.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="domain adaptation, fine-tuning, transfer learning, distribution shift, evaluation, leakage, machine learning, model generalisation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-05">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Domain Adaptation Versus Fine-Tuning: Adapting Is Not Retraining">
+<meta property="og:description" content="A precise look at why domain adaptation and fine-tuning are distinct problems, with a worked example showing how conflating them produces misleading evaluation results.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/domain-adaptation-vs-fine-tuning.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/domain-adaptation-vs-fine-tuning.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Domain Adaptation Versus Fine-Tuning: Adapting Is Not Retraining">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/domain-adaptation-vs-fine-tuning.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/domain-adaptation-vs-fine-tuning.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Domain Adaptation Versus Fine-Tuning: Adapting Is Not Retraining",
+  "description": "A precise look at why domain adaptation and fine-tuning are distinct problems, with a worked example showing how conflating them produces misleading evaluation results.",
+  "url": "https://jahanzaibawan.com/blog/domain-adaptation-vs-fine-tuning.html",
+  "image": "https://jahanzaibawan.com/assets/blog/domain-adaptation-vs-fine-tuning.png",
+  "datePublished": "2026-08-05",
+  "dateModified": "2026-08-05",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/domain-adaptation-vs-fine-tuning.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Domain Adaptation Versus Fine-Tuning: Adapting Is Not Retraining", "item": "https://jahanzaibawan.com/blog/domain-adaptation-vs-fine-tuning.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 5 Aug 2026</div>
+    <h1>Domain Adaptation Versus Fine-Tuning: Adapting Is Not Retraining</h1>
+    <p class="lede">Fine-tuning on new data and genuinely adapting a model to a new domain look similar but solve different problems, and confusing them quietly wrecks your evaluation.</p>
+  </div>
+
+  <img src="../assets/blog/domain-adaptation-vs-fine-tuning.png" alt="Cover image for the article: Domain Adaptation Versus Fine-Tuning: Adapting Is Not Retraining" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the distinction gets blurred</h2><p>In practice, teams often say 'we fine-tuned the model on the new domain' when what they actually did was retrain on a fresh dataset and call it a day. Fine-tuning is a training procedure: you take a pretrained model and continue updating its weights on new labelled examples. Domain adaptation is a problem statement: your model was trained on one distribution and must perform well on a related but different one, often with limited or no labels in the target domain. These are not the same thing, and treating them as interchangeable leads to evaluation setups that quietly answer the wrong question.</p><p>The confusion matters because fine-tuning implicitly assumes you have enough labelled target-domain data to make ordinary supervised learning work. If you have that, you barely need the vocabulary of domain adaptation at all: you just have a slightly awkward extra training stage. Domain adaptation earns its name precisely in the regime where labelled target data is scarce or absent, and the interesting question becomes how much you can transfer from the source domain without collecting fresh labels. Collapsing the two hides this assumption, and hidden assumptions are where reproducibility problems live.</p><p>I have seen this play out as follows: a model is trained on formal, edited text, then 'adapted' by fine-tuning on a modest sample of informal, user-generated text drawn from the same period and platform as the test set. The reported improvement looks like evidence that fine-tuning solved the domain shift. In reality, the fine-tuning set and the test set share vocabulary, topics, and even specific phrasings that never appear in the true deployment distribution. The model has not learned to generalise across domains; it has memorised a narrow slice of one.</p></section><section class='psec reveal'><h2>A worked example with numbers</h2><p>Suppose a sentiment classifier is trained on product reviews and achieves 91 percent accuracy on a held-out set of product reviews. We want it to work on restaurant reviews instead. Someone fine-tunes the pretrained product-review model on 2,000 labelled restaurant reviews, then reports 89 percent accuracy on a restaurant-review test set. This looks like a strong result: barely any drop moving domains, and only a small fine-tuning set was needed.</p><p>Now look at how the 2,000 restaurant reviews and the test set were collected. If both were scraped from the same handful of restaurant chains in the same six-month window, the model may have learned chain-specific phrasing, recurring menu items, and even repeated reviewer usernames rather than anything general about restaurant sentiment. Swap the test set for reviews from a different city, a different cuisine mix, or a later time period, and accuracy might fall to 76 percent. That 13-point gap is the real domain adaptation problem; the 89 percent figure only measured how well fine-tuning fits a narrow, correlated sample.</p><p>Contrast this with a genuine domain adaptation setup: no labelled restaurant reviews at all, only unlabelled restaurant text alongside the labelled product reviews. Techniques here try to align the two domains at the representation level, for instance by encouraging the model to produce features that a discriminator cannot use to tell product reviews from restaurant reviews, while still using the product-review labels to drive the classification task. If this approach reaches 81 percent on the genuinely held-out restaurant test set, that is arguably more impressive and more honest than the fine-tuned 89 percent, because it was achieved without peeking at labelled target data and without the risk of the target sample being unrepresentative.</p><p>The lesson is not that fine-tuning is bad; when labelled target data is plentiful and representative, it is usually the simplest and best option. The lesson is that a good fine-tuning number tells you almost nothing about domain robustness unless you have checked that the fine-tuning data and test data do not share the kind of narrow overlap that inflates performance.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/domain-adaptation-vs-fine-tuning-1.jpg' alt='laptop with data charts' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What this means for evaluation design</h2><p>If you are evaluating a claim of domain adaptation, the first question to ask is whether the target-domain data used anywhere in training, including fine-tuning, could share sources, time windows, authors, or templates with the test data. This is the same leakage concern that shows up in ordinary train-test splits, just dressed in domain-shift clothing. A split by domain label is not enough if the underlying collection process still ties training and test examples together.</p><p>Second, always report a source-only baseline: the model trained purely on the original domain, evaluated directly on the target-domain test set with no adaptation at all. This number anchors everything else. If fine-tuning only improves on it by a couple of points, the domain gap may not have been as large as assumed, or the fine-tuning set may be too similar to the test set to tell you much. If the improvement is large, you want to know whether it came from genuine transfer or from memorising overlap.</p><p>Third, when data allows it, test across multiple target sub-domains rather than one. A model adapted to restaurant reviews from one city should ideally be tested on restaurant reviews from several unrelated cities or time periods. Consistent performance across these slices is far more convincing than a single strong number, and it is cheap to arrange if you have planned your data collection with this in mind from the start rather than after the fact.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>Fine-tuning and domain adaptation solve different problems dressed in similar clothes: one assumes labelled target data and asks how best to use it, the other assumes you barely have any and asks how much can be salvaged from the source domain. Before trusting a reported improvement from 'adapting' a model, check what data made that improvement possible and whether it could plausibly leak into the test distribution. A smaller, honestly measured gain from a properly held-out target set is worth more than a large one that turns out to be an artefact of a narrow, correlated fine-tuning sample. Retraining on new data is easy to do and easy to misread; genuine adaptation is the harder, more interesting claim, and it deserves an evaluation design that actually tests it.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/domain-adaptation-vs-fine-tuning-2.jpg' alt='two different city street scenes side by side' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Tue, 04 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 05 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Domain Adaptation Versus Fine-Tuning: Adapting Is Not Retraining</title>
+    <link>https://jahanzaibawan.com/blog/domain-adaptation-vs-fine-tuning.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/domain-adaptation-vs-fine-tuning.html</guid>
+    <pubDate>Wed, 05 Aug 2026 09:00:00 +0000</pubDate>
+    <description>Fine-tuning a model on new data is not the same as adapting it to a new domain. The difference decides whether your reported gains survive contact with reality.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Building a Minimal Model Card Before Anyone Uses Your Model</title>
     <link>https://jahanzaibawan.com/blog/minimal-model-card-checklist.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/time-series-cross-validation-leakage.html</guid>
     <pubDate>Sun, 26 Jul 2026 09:00:00 +0000</pubDate>
     <description>Shuffling time series folds lets the future leak into training, inflating validation scores and hiding models that will fail in production.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Multi-Label vs Multi-Class: Metrics Quietly Misapplied</title>
-    <link>https://jahanzaibawan.com/blog/multi-label-vs-multi-class-metrics.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/multi-label-vs-multi-class-metrics.html</guid>
-    <pubDate>Sun, 26 Jul 2026 09:00:00 +0000</pubDate>
-    <description>Multi-class metrics silently misused on multi-label problems produce numbers that look fine and mean almost nothing.</description>
     <category>Evaluation</category>
   </item>
 </channel>
