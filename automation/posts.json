@@ -9,7 +9,8 @@
       "tag": "MLOps",
       "color": "a6",
       "thumb": "assets/blog/mlops-tools-ten-vs-ten-thousand.png",
-      "thumb_alt": "Cover image for the article: MLOps Tools Compared: Ten Users Versus Ten Thousand"
+      "thumb_alt": "Cover image for the article: MLOps Tools Compared: Ten Users Versus Ten Thousand",
+      "li_shared": true
     },
     {
       "slug": "why-transformers-need-positional-encodings",
