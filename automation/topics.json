@@ -1,6 +1,5 @@
 {
   "queue": [
-    "MLOps tools compared: what to adopt at ten users versus ten thousand",
     "The prompt engineering skill set: what transfers and what does not",
     "Computer vision syndrome versus model evaluation: two different problems with the same name",
     "How to read a computer vision model's confusion matrix by class, not just overall",
@@ -101,6 +100,7 @@
     "Building a minimal model card: what to document before anyone else uses your model",
     "Domain adaptation versus fine-tuning: when retraining is not the same as adapting",
     "Sequence labelling metrics: why token-level accuracy hides your real error rate",
-    "Positional encodings: why transformers need them at all"
+    "Positional encodings: why transformers need them at all",
+    "MLOps tools compared: what to adopt at ten users versus ten thousand"
   ]
 }

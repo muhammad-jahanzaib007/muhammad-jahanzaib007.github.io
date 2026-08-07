@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "mlops-tools-ten-vs-ten-thousand",
+      "title": "MLOps Tools Compared: Ten Users Versus Ten Thousand",
+      "excerpt": "Most MLOps advice is written for scale you don't have yet. Here's a leakage-aware, honest guide to what to adopt at ten users versus ten thousand.",
+      "date": "2026-08-07",
+      "read_min": 6,
+      "tag": "MLOps",
+      "color": "a6",
+      "thumb": "assets/blog/mlops-tools-ten-vs-ten-thousand.png",
+      "thumb_alt": "Cover image for the article: MLOps Tools Compared: Ten Users Versus Ten Thousand"
+    },
+    {
       "slug": "why-transformers-need-positional-encodings",
       "title": "Positional Encodings: Why Transformers Need Them at All",
       "excerpt": "Self-attention is permutation-invariant by default. Without positional encodings, a transformer literally cannot tell 'dog bites man' from 'man bites dog'.",

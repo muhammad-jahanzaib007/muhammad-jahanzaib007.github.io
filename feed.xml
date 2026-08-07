@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Fri, 07 Aug 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>MLOps Tools Compared: Ten Users Versus Ten Thousand</title>
+    <link>https://jahanzaibawan.com/blog/mlops-tools-ten-vs-ten-thousand.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/mlops-tools-ten-vs-ten-thousand.html</guid>
+    <pubDate>Fri, 07 Aug 2026 09:00:00 +0000</pubDate>
+    <description>Most MLOps advice is written for scale you don&#x27;t have yet. Here&#x27;s a leakage-aware, honest guide to what to adopt at ten users versus ten thousand.</description>
+    <category>MLOps</category>
+  </item>
+  <item>
     <title>Positional Encodings: Why Transformers Need Them at All</title>
     <link>https://jahanzaibawan.com/blog/why-transformers-need-positional-encodings.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/why-transformers-need-positional-encodings.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/synthetic-benchmarks-vs-real-data.html</guid>
     <pubDate>Tue, 28 Jul 2026 09:00:00 +0000</pubDate>
     <description>Topping a leaderboard tells you about the leaderboard. It rarely tells you what happens when your model meets the messy world.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>What a Learning Curve Tells You That Accuracy Cannot</title>
-    <link>https://jahanzaibawan.com/blog/what-learning-curves-reveal.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/what-learning-curves-reveal.html</guid>
-    <pubDate>Mon, 27 Jul 2026 09:00:00 +0000</pubDate>
-    <description>One accuracy score tells you where you are. A learning curve tells you why, and what to do about it.</description>
     <category>Evaluation</category>
   </item>
 </channel>
