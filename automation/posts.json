@@ -9,7 +9,8 @@
       "tag": "Deep Learning",
       "color": "a5",
       "thumb": "assets/blog/why-transformers-need-positional-encodings.png",
-      "thumb_alt": "Cover image for the article: Positional Encodings: Why Transformers Need Them at All"
+      "thumb_alt": "Cover image for the article: Positional Encodings: Why Transformers Need Them at All",
+      "li_shared": true
     },
     {
       "slug": "sequence-labelling-metrics-accuracy",
