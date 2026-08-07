@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Positional Encodings: Why Transformers Need Them at All | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A clear, worked explanation of why transformers need positional encodings, what self-attention loses without them, and how position gets injected in practice.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="positional encoding,transformers,self-attention,sinusoidal encoding,rotary embeddings,permutation invariance,sequence order,attention mechanism, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-07">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Positional Encodings: Why Transformers Need Them at All">
+<meta property="og:description" content="A clear, worked explanation of why transformers need positional encodings, what self-attention loses without them, and how position gets injected in practice.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/why-transformers-need-positional-encodings.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/why-transformers-need-positional-encodings.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Positional Encodings: Why Transformers Need Them at All">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/why-transformers-need-positional-encodings.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/why-transformers-need-positional-encodings.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Positional Encodings: Why Transformers Need Them at All",
+  "description": "A clear, worked explanation of why transformers need positional encodings, what self-attention loses without them, and how position gets injected in practice.",
+  "url": "https://jahanzaibawan.com/blog/why-transformers-need-positional-encodings.html",
+  "image": "https://jahanzaibawan.com/assets/blog/why-transformers-need-positional-encodings.png",
+  "datePublished": "2026-08-07",
+  "dateModified": "2026-08-07",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/why-transformers-need-positional-encodings.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Positional Encodings: Why Transformers Need Them at All", "item": "https://jahanzaibawan.com/blog/why-transformers-need-positional-encodings.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Deep Learning · 6 min read · 7 Aug 2026</div>
+    <h1>Positional Encodings: Why Transformers Need Them at All</h1>
+    <p class="lede">Self-attention treats a sequence like a bag of tokens unless you tell it otherwise. Here is the intuition for why position has to be injected, and how.</p>
+  </div>
+
+  <img src="../assets/blog/why-transformers-need-positional-encodings.png" alt="Cover image for the article: Positional Encodings: Why Transformers Need Them at All" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The problem hiding in plain sight</h2><p>When people meet self-attention for the first time, they usually focus on the query, key and value matrices and skim past a much stranger fact: attention, on its own, has no idea what order the tokens came in. Every token looks at every other token through dot products of learned projections. If you shuffled the input sequence and shuffled the output the same way, the attention weights would come out identical. The mechanism is <em>permutation-equivariant</em>: it treats the sentence as a set, not a sequence.</p><p>This is easy to prove to yourself with a small example. Take the sentence 'the cat chased the dog' and compare it with 'the dog chased the cat'. Both contain exactly the same multiset of tokens. A pure self-attention layer with no other information computes, for each token, a weighted sum of value vectors based on similarity between its query and every key. Swap the positions of 'cat' and 'dog' in the input and you get the same set of query-key pairs, just relabelled. The model cannot distinguish subject from object, because nothing in the maths refers to position at all, only to content.</p><p>Contrast this with a recurrent network, which processes tokens one at a time and carries a hidden state forward, so order is baked into the computation by construction. Convolutional networks also encode locality directly, because a filter only looks at neighbouring positions. Self-attention deliberately throws away that structural bias in exchange for the ability to connect any two tokens directly, regardless of distance. That is precisely what makes it powerful for long-range dependencies, but it also means order has to be reintroduced some other way, or the model is doing grammar and meaning with a bag of words.</p></section><section class='psec reveal'><h2>What goes wrong without position information</h2><p>It helps to be concrete about the failure. Consider a toy task: given a short sequence of numbers, output the one that appears third. Without positional information, a transformer can learn statistical shortcuts from training data (perhaps the third number is often larger, or has some spurious pattern), but it cannot reliably learn the actual rule 'pick whatever sits in slot three', because slot three is a positional concept and the model has no representation of slots at all. Give it the same multiset in a different order and, absent position, its prediction should not change, even though the correct answer does.</p><p>Natural language shows the same issue in a softer form. 'The bank approved the loan after the manager reviewed it' and a scrambled version of the same tokens are wildly different in meaning, and even in grammaticality. Word order carries tense, negation scope, subject-object roles, and much of the compositional structure that makes language mean anything. A model that cannot see order is stuck relying on co-occurrence statistics between words, which is closer to a bag-of-words classifier than to a language model. Early results after self-attention was introduced without positional signals showed exactly this: reasonable performance on tasks tolerant of scrambled order, and poor performance wherever order-sensitive structure mattered, such as syntax-heavy tasks or anything requiring counting or relative position.</p><p>The practical consequence for anyone building or evaluating sequence models is that positional information is not a minor implementation detail, it is load-bearing. If you ever ablate a transformer by removing its positional encodings and performance barely drops on your evaluation set, that is a strong signal your task does not actually require sequence order, which is often a sign the benchmark is weaker than it looks, or that shortcuts are available. I would treat that ablation as a basic sanity check before trusting any claimed result on an order-sensitive task.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/why-transformers-need-positional-encodings-1.jpg' alt='whiteboard with equations' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>How position gets put back in</h2><p>The original fix was refreshingly simple: add a vector to each token embedding that encodes its position, before the first attention layer sees it. The classic version uses sine and cosine waves of different frequencies, so position 5 and position 6 get distinct, smoothly varying vectors, and the relative offset between any two positions is recoverable from the geometry of these vectors. The elegant part is that this lets the model infer relative distance (token 12 is 3 steps after token 9) using linear combinations of the encodings, without ever being told distance explicitly.</p><p>Learned positional embeddings are the alternative: treat each position index as a lookup into a trainable table, exactly like a word embedding but keyed by slot number instead of vocabulary. This is simpler to implement and often works about as well in practice, but it struggles to generalise to sequence lengths longer than anything seen during training, because position 5000 has no learned vector if the model only ever saw sequences up to length 2000. Sinusoidal encodings, by contrast, are defined by a formula and can technically be evaluated at any position, though extrapolation quality still degrades in practice.</p><p>More recent approaches, such as rotary position embeddings, take a different route: rather than adding a positional vector to the input, they rotate the query and key vectors by an angle that depends on position, directly inside the attention computation. This bakes relative position into the dot product itself, so the attention score naturally depends on how far apart two tokens are, not just their content. It has become popular in large language models partly because it tends to generalise better to longer sequences and integrates cleanly with efficient attention implementations. Whatever the mechanism, the goal is the same: give the model a reliable signal for where each token sits, since attention itself will never supply that on its own.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>If you are building or reviewing a transformer-based system, it is worth asking two questions explicitly. First, does my task actually depend on order, and if so, have I checked that removing or corrupting positional encodings degrades performance the way it should? A model that is indifferent to shuffled input on an order-sensitive task is a red flag, not a feature. Second, does my choice of positional encoding match my deployment constraints, particularly around sequence length: learned embeddings are fine if you never exceed training length, but sinusoidal or rotary schemes are the safer default if you expect longer contexts at inference time than you trained on.</p><p>The deeper lesson generalises beyond transformers: whenever you adopt an architecture that is more permissive than the data actually is, structure has to be reintroduced somewhere, either in the architecture, the input representation, or the loss. Self-attention gained flexibility by discarding order, and positional encodings are the price of buying that flexibility back. Understanding that trade explicitly, rather than treating positional encodings as boilerplate, makes it much easier to diagnose why a model fails on order-sensitive tasks and to choose the right fix rather than a fashionable one.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/why-transformers-need-positional-encodings-2.jpg' alt='sine wave graph paper' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

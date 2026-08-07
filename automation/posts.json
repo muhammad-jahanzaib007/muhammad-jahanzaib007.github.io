@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "why-transformers-need-positional-encodings",
+      "title": "Positional Encodings: Why Transformers Need Them at All",
+      "excerpt": "Self-attention is permutation-invariant by default. Without positional encodings, a transformer literally cannot tell 'dog bites man' from 'man bites dog'.",
+      "date": "2026-08-07",
+      "read_min": 6,
+      "tag": "Deep Learning",
+      "color": "a5",
+      "thumb": "assets/blog/why-transformers-need-positional-encodings.png",
+      "thumb_alt": "Cover image for the article: Positional Encodings: Why Transformers Need Them at All"
+    },
+    {
       "slug": "sequence-labelling-metrics-accuracy",
       "title": "Sequence Labelling Metrics: Why Token Accuracy Lies",
       "excerpt": "High token accuracy on sequence labelling tasks can mask a much worse entity-level error rate. Here's the arithmetic that proves it.",

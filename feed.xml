@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Wed, 05 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 07 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Positional Encodings: Why Transformers Need Them at All</title>
+    <link>https://jahanzaibawan.com/blog/why-transformers-need-positional-encodings.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/why-transformers-need-positional-encodings.html</guid>
+    <pubDate>Fri, 07 Aug 2026 09:00:00 +0000</pubDate>
+    <description>Self-attention is permutation-invariant by default. Without positional encodings, a transformer literally cannot tell &#x27;dog bites man&#x27; from &#x27;man bites dog&#x27;.</description>
+    <category>Deep Learning</category>
+  </item>
   <item>
     <title>Sequence Labelling Metrics: Why Token Accuracy Lies</title>
     <link>https://jahanzaibawan.com/blog/sequence-labelling-metrics-accuracy.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/what-learning-curves-reveal.html</guid>
     <pubDate>Mon, 27 Jul 2026 09:00:00 +0000</pubDate>
     <description>One accuracy score tells you where you are. A learning curve tells you why, and what to do about it.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>A Worked Example of Bayesian Model Comparison</title>
-    <link>https://jahanzaibawan.com/blog/bayesian-model-comparison-example.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/bayesian-model-comparison-example.html</guid>
-    <pubDate>Mon, 27 Jul 2026 09:00:00 +0000</pubDate>
-    <description>A concrete walkthrough of Bayesian model comparison, showing how Bayes factors give a richer answer than a single p-value ever can.</description>
     <category>Evaluation</category>
   </item>
 </channel>

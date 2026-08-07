@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Positional encodings: why transformers need them at all",
     "MLOps tools compared: what to adopt at ten users versus ten thousand",
     "The prompt engineering skill set: what transfers and what does not",
     "Computer vision syndrome versus model evaluation: two different problems with the same name",
@@ -101,6 +100,7 @@
     "Salary aside: the actual skills that get you hired as a machine learning engineer",
     "Building a minimal model card: what to document before anyone else uses your model",
     "Domain adaptation versus fine-tuning: when retraining is not the same as adapting",
-    "Sequence labelling metrics: why token-level accuracy hides your real error rate"
+    "Sequence labelling metrics: why token-level accuracy hides your real error rate",
+    "Positional encodings: why transformers need them at all"
   ]
 }
