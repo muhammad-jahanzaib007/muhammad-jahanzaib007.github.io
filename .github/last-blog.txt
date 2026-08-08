@@ -1,1 +1,1 @@
-2026-08-07T20:01:12Z slug=mlops-tools-ten-vs-ten-thousand words=1136 title="MLOps Tools Compared: Ten Users Versus Ten Thousand"
+2026-08-08T08:01:16Z slug=prompt-engineering-what-transfers words=972 title="The Prompt Engineering Skill Set: What Transfers"

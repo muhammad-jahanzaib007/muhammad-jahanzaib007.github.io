@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "prompt-engineering-what-transfers",
+      "title": "The Prompt Engineering Skill Set: What Transfers",
+      "excerpt": "Prompt tricks age fast, but the underlying skills of decomposition, evaluation and constraint design do not. Here is how to tell the difference.",
+      "date": "2026-08-08",
+      "read_min": 5,
+      "tag": "NLP",
+      "color": "a2",
+      "thumb": "assets/blog/prompt-engineering-what-transfers.png",
+      "thumb_alt": "Cover image for the article: The Prompt Engineering Skill Set: What Transfers"
+    },
+    {
       "slug": "mlops-tools-ten-vs-ten-thousand",
       "title": "MLOps Tools Compared: Ten Users Versus Ten Thousand",
       "excerpt": "Most MLOps advice is written for scale you don't have yet. Here's a leakage-aware, honest guide to what to adopt at ten users versus ten thousand.",

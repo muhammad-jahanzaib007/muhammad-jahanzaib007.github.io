@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Fri, 07 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 08 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>The Prompt Engineering Skill Set: What Transfers</title>
+    <link>https://jahanzaibawan.com/blog/prompt-engineering-what-transfers.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/prompt-engineering-what-transfers.html</guid>
+    <pubDate>Sat, 08 Aug 2026 09:00:00 +0000</pubDate>
+    <description>Prompt tricks age fast, but the underlying skills of decomposition, evaluation and constraint design do not. Here is how to tell the difference.</description>
+    <category>NLP</category>
+  </item>
   <item>
     <title>MLOps Tools Compared: Ten Users Versus Ten Thousand</title>
     <link>https://jahanzaibawan.com/blog/mlops-tools-ten-vs-ten-thousand.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/thresholds-beyond-accuracy.html</guid>
     <pubDate>Tue, 28 Jul 2026 09:00:00 +0000</pubDate>
     <description>Accuracy alone can&#x27;t tell you if a model is safe to deploy. Here&#x27;s how to set real thresholds around cost, calibration, and failure modes before you ship.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Synthetic Benchmarks vs Real Data: Why Rank Slips</title>
-    <link>https://jahanzaibawan.com/blog/synthetic-benchmarks-vs-real-data.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/synthetic-benchmarks-vs-real-data.html</guid>
-    <pubDate>Tue, 28 Jul 2026 09:00:00 +0000</pubDate>
-    <description>Topping a leaderboard tells you about the leaderboard. It rarely tells you what happens when your model meets the messy world.</description>
     <category>Evaluation</category>
   </item>
 </channel>

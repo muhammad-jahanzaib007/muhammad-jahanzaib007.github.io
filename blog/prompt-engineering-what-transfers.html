@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Prompt Engineering Skill Set: What Transfers | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="An honest look at which prompt engineering skills are durable and which are brittle tricks tied to a specific model version.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="prompt engineering, LLM evaluation, prompt design, transferable skills, AI reproducibility, task decomposition, evaluation harness, model versioning, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-08">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="The Prompt Engineering Skill Set: What Transfers">
+<meta property="og:description" content="An honest look at which prompt engineering skills are durable and which are brittle tricks tied to a specific model version.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/prompt-engineering-what-transfers.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/prompt-engineering-what-transfers.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Prompt Engineering Skill Set: What Transfers">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/prompt-engineering-what-transfers.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/prompt-engineering-what-transfers.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The Prompt Engineering Skill Set: What Transfers",
+  "description": "An honest look at which prompt engineering skills are durable and which are brittle tricks tied to a specific model version.",
+  "url": "https://jahanzaibawan.com/blog/prompt-engineering-what-transfers.html",
+  "image": "https://jahanzaibawan.com/assets/blog/prompt-engineering-what-transfers.png",
+  "datePublished": "2026-08-08",
+  "dateModified": "2026-08-08",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/prompt-engineering-what-transfers.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "The Prompt Engineering Skill Set: What Transfers", "item": "https://jahanzaibawan.com/blog/prompt-engineering-what-transfers.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">NLP · 5 min read · 8 Aug 2026</div>
+    <h1>The Prompt Engineering Skill Set: What Transfers</h1>
+    <p class="lede">A lot of what people call prompt engineering is model-specific folklore that expires with the next release. Here is what actually survives.</p>
+  </div>
+
+  <img src="../assets/blog/prompt-engineering-what-transfers.png" alt="Cover image for the article: The Prompt Engineering Skill Set: What Transfers" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this distinction matters</h2><p>Every few months a new model ships and a chunk of the internet's prompt advice quietly stops working. Phrases that reliably nudged one model towards structured output do nothing on the next, or worse, make it verbose and evasive. If you have spent time collecting these incantations, it is worth asking honestly how much of that time built a durable skill and how much built trivia about a specific checkpoint.</p><p>I think this matters because teams often hire or train for prompt engineering as if it were one coherent competency, when in practice it is a bundle of at least three different things: knowledge of a particular model's quirks, general skill at specifying tasks precisely, and skill at evaluating whether an output is actually good. Only the last two travel well. The first is closer to knowing a specific piece of software than to a durable engineering skill, and it depreciates on a timescale of months.</p><p>Separating these matters practically because it changes what you invest in. If you train juniors purely on phrasing tricks for the model your company currently licenses, that investment evaporates the day procurement switches vendors. If you train them on decomposition, constraint specification and evaluation design, that knowledge survives the switch and often improves it, because those skills are exactly what let you diagnose why the new model behaves differently.</p></section><section class='psec reveal'><h2>What does not transfer</h2><p>The most obviously non-transferable layer is model-specific incantation: telling a model it is an expert, promising it a reward, or using a particular emoji as a delimiter because someone found it worked on a leaderboard once. These behaviours are artefacts of how a specific model was fine-tuned and aligned, not properties of language or reasoning. A trick that improved accuracy on one model by three percentage points can do nothing, or actively hurt, on the next version from the same vendor, because the fine-tuning data and reinforcement signal changed.</p><p>Token-level superstition is a related trap: exact phrasing of system messages, specific formatting of few-shot examples, or magic words that supposedly unlock a hidden mode. Some of this reflects real mechanics, such as models being sensitive to example ordering, but the specific sensitivity pattern is rarely stable across model families. I have seen a delimiter choice that mattered enormously for one provider's model make no measurable difference for another, tested on the same fifty held-out prompts with the same scoring rubric.</p><p>Version-specific workarounds for known weaknesses are the third category. If a model struggles with a particular arithmetic pattern or a particular date format, people build elaborate scaffolding around that specific failure mode. That scaffolding is dead weight the moment the weakness is patched, and worse, it can mask genuine improvements because your evaluation harness still routes around a problem that no longer exists.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/prompt-engineering-what-transfers-1.jpg' alt='person typing on laptop with notebook' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What does transfer</h2><p>Task decomposition is durable because it reflects something true about problem structure, not about any model. Breaking a vague request such as 'summarise this contract and flag risks' into explicit sub-steps, extract clauses, classify clause type, check against a risk checklist, produce a summary, is a skill that improves output quality on essentially any sufficiently capable model, because it reduces the chance that the model silently skips a step under time or attention pressure. This is closer to systems analysis than to conjuring, and it does not go stale.</p><p>Precise constraint specification is the second durable skill. Saying 'answer in under 100 words, cite only facts present in the source, and say insufficient information if the source does not cover the question' does real work regardless of which model receives it, because it narrows the output space and gives you something concrete to check. The exact wording that maximises compliance may shift slightly between models, but the discipline of writing explicit, checkable constraints instead of vague aspirations transfers completely.</p><p>The third and most undervalued transferable skill is building a small, honest evaluation set before you start tweaking prompts at all. Say you are building a support-ticket triage prompt: pulling together forty real tickets with agreed correct categories, holding out ten as a check set you do not look at while iterating, and scoring candidate prompts against the other thirty, is a habit that works identically whether you are prompting an open model on your own hardware or a closed API. It also protects you from the classic failure of tuning a prompt until it looks good on the five examples you happened to glance at, then watching it fail in production. That habit of building a leakage-aware, representative test set before optimising is arguably the single most transferable skill in the whole discipline, because it is really just applied measurement discipline borrowed from good experimental practice, and it works the same way whether you are testing a prompt, a model or a whole pipeline.</p></section><section class='psec reveal'><h2>A practical takeaway</h2><p>When you notice yourself getting good at prompting a particular model, pause and sort what you have learned into two piles. One pile is genuinely about specifying tasks and constraints more precisely, and about measuring output quality honestly against a held-out set you did not overfit to by eye. The other pile is folklore tied to a checkpoint that will be retired. Write the first pile down as reusable process documentation. Do not bother memorising the second; it will not survive the next model update anyway.</p><p>If you manage a team, the same split should shape how you evaluate people. Someone who can decompose a messy task, write checkable constraints and build a small held-out test set before tuning anything is bringing a skill that will still be valuable in two years, regardless of which vendor you use by then. Someone who only knows the current magic words is bringing something closer to a temporary cheat code, useful today, worthless soon. Invest your training budget accordingly.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/prompt-engineering-what-transfers-2.jpg' alt='whiteboard with flowchart diagram' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
