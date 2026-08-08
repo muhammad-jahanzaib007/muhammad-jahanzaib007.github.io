@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a3",
       "thumb": "assets/blog/computer-vision-syndrome-vs-cv-evaluation.png",
-      "thumb_alt": "Cover image for the article: Computer Vision Syndrome vs Evaluating Computer Vision Models"
+      "thumb_alt": "Cover image for the article: Computer Vision Syndrome vs Evaluating Computer Vision Models",
+      "li_shared": true
     },
     {
       "slug": "prompt-engineering-what-transfers",
