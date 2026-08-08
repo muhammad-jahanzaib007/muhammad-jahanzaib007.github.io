@@ -9,7 +9,8 @@
       "tag": "NLP",
       "color": "a2",
       "thumb": "assets/blog/prompt-engineering-what-transfers.png",
-      "thumb_alt": "Cover image for the article: The Prompt Engineering Skill Set: What Transfers"
+      "thumb_alt": "Cover image for the article: The Prompt Engineering Skill Set: What Transfers",
+      "li_shared": true
     },
     {
       "slug": "mlops-tools-ten-vs-ten-thousand",
