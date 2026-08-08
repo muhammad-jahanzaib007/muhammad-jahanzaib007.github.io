@@ -1,1 +1,1 @@
-2026-08-08T08:01:16Z slug=prompt-engineering-what-transfers words=972 title="The Prompt Engineering Skill Set: What Transfers"
+2026-08-08T20:01:30Z slug=computer-vision-syndrome-vs-cv-evaluation words=1034 title="Computer Vision Syndrome vs Evaluating Computer Vision Models"

@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Sat, 08 Aug 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Computer Vision Syndrome vs Evaluating Computer Vision Models</title>
+    <link>https://jahanzaibawan.com/blog/computer-vision-syndrome-vs-cv-evaluation.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/computer-vision-syndrome-vs-cv-evaluation.html</guid>
+    <pubDate>Sat, 08 Aug 2026 09:00:00 +0000</pubDate>
+    <description>Computer vision syndrome is eye strain from screens. Model evaluation is how we judge vision systems. Same name, nothing else in common, and the confusion teaches a lesson about precision.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>The Prompt Engineering Skill Set: What Transfers</title>
     <link>https://jahanzaibawan.com/blog/prompt-engineering-what-transfers.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/prompt-engineering-what-transfers.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Wed, 29 Jul 2026 09:00:00 +0000</pubDate>
     <description>SHAP and LIME answer different questions dressed up as the same question. Knowing the difference is the line between insight and false confidence.</description>
     <category>Interpretability</category>
-  </item>
-  <item>
-    <title>When Is a Model Good Enough to Ship? Beyond Accuracy</title>
-    <link>https://jahanzaibawan.com/blog/thresholds-beyond-accuracy.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/thresholds-beyond-accuracy.html</guid>
-    <pubDate>Tue, 28 Jul 2026 09:00:00 +0000</pubDate>
-    <description>Accuracy alone can&#x27;t tell you if a model is safe to deploy. Here&#x27;s how to set real thresholds around cost, calibration, and failure modes before you ship.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>

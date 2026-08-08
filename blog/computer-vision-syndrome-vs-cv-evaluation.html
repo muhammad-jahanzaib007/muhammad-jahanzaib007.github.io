@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Computer Vision Syndrome vs Evaluating Computer Vision Models | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A look at why &#x27;computer vision syndrome&#x27; and computer vision model evaluation share a name but nothing else, and what the confusion reveals about precise terminology.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="computer vision syndrome, model evaluation, computer vision, evaluation metrics, leakage, benchmark design, digital eye strain, machine learning terminology, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-08">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Computer Vision Syndrome vs Evaluating Computer Vision Models">
+<meta property="og:description" content="A look at why &#x27;computer vision syndrome&#x27; and computer vision model evaluation share a name but nothing else, and what the confusion reveals about precise terminology.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/computer-vision-syndrome-vs-cv-evaluation.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/computer-vision-syndrome-vs-cv-evaluation.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Computer Vision Syndrome vs Evaluating Computer Vision Models">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/computer-vision-syndrome-vs-cv-evaluation.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/computer-vision-syndrome-vs-cv-evaluation.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Computer Vision Syndrome vs Evaluating Computer Vision Models",
+  "description": "A look at why 'computer vision syndrome' and computer vision model evaluation share a name but nothing else, and what the confusion reveals about precise terminology.",
+  "url": "https://jahanzaibawan.com/blog/computer-vision-syndrome-vs-cv-evaluation.html",
+  "image": "https://jahanzaibawan.com/assets/blog/computer-vision-syndrome-vs-cv-evaluation.png",
+  "datePublished": "2026-08-08",
+  "dateModified": "2026-08-08",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/computer-vision-syndrome-vs-cv-evaluation.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Computer Vision Syndrome vs Evaluating Computer Vision Models", "item": "https://jahanzaibawan.com/blog/computer-vision-syndrome-vs-cv-evaluation.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 8 Aug 2026</div>
+    <h1>Computer Vision Syndrome vs Evaluating Computer Vision Models</h1>
+    <p class="lede">One is a medical condition caused by staring at screens. The other is a rigorous discipline for measuring whether a model actually works. The shared name is a coincidence worth unpacking.</p>
+  </div>
+
+  <img src="../assets/blog/computer-vision-syndrome-vs-cv-evaluation.png" alt="Cover image for the article: Computer Vision Syndrome vs Evaluating Computer Vision Models" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>An honest coincidence</h2><p>If you search for 'computer vision syndrome' you will land on optometry pages describing dry eyes, headaches, and blurred vision caused by prolonged screen use. If you search for 'computer vision evaluation' you will land on machine learning material about precision, recall, and dataset splits. These two things have nothing to do with each other beyond sharing the word 'vision'. One is a cluster of physical symptoms named by clinicians in the 1990s to describe a real occupational hazard. The other is a subfield of artificial intelligence concerned with teaching machines to interpret images.</p><p>I bring this up not because the overlap is profound, but because it is a useful, low-stakes example of something that trips people constantly in technical fields: names collide, and sloppy reading fills the gap with assumption. Someone skimming a search results page, half paying attention, might genuinely wonder for a second whether staring at a monitor somehow degrades a neural network's accuracy. It does not. But the fact that the question can even arise is a small case study in why precise terminology and careful reading matter more than we tend to admit.</p><p>The rest of this post is really about the second half of that pairing: how you actually evaluate a computer vision model properly. I will use the naming coincidence as a hook, then spend most of the space on the part that has genuine technical substance, because that is the part worth teaching well.</p></section><section class='psec reveal'><h2>What computer vision syndrome actually is</h2><p>Computer vision syndrome, sometimes called digital eye strain, is a recognised set of symptoms associated with extended near-work on screens: eye fatigue, dryness, blurred vision, headaches, and neck or shoulder discomfort. It is caused by things like reduced blink rate during screen focus, glare, poor posture, and uncorrected vision problems interacting with sustained close-range viewing. It is a physiological and ergonomic issue, addressed with breaks, screen positioning, lighting adjustments, and eye examinations.</p><p>None of that has any bearing on machine learning. I mention it briefly and then set it aside deliberately, because the temptation in a piece like this is to force a clever connection where none exists. There isn't one. The syndrome is about human eyes and screens. The evaluation problem is about how confidently you can trust a piece of software that classifies, detects, or segments images. Treating them as related would be exactly the kind of imprecise thinking that good evaluation practice is meant to guard against.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/computer-vision-syndrome-vs-cv-evaluation-1.jpg' alt='person rubbing eyes at computer screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Evaluating a vision model properly</h2><p>Here is where the real content lives. Suppose you have trained an image classifier to distinguish healthy from damaged industrial components on a production line, and it reports 97 percent accuracy on your test set. That number, on its own, tells you almost nothing trustworthy until you interrogate how it was produced.</p><p>The first question is class balance. If 95 percent of components in your dataset are healthy, a model that always predicts 'healthy' scores 95 percent accuracy while being completely useless. You need precision and recall on the minority class, or a confusion matrix, not a single headline number. If your damaged-component recall is 40 percent, the model is missing more than half the actual defects, which is the exact failure mode the system exists to prevent.</p><p>The second, more insidious question is leakage. Imagine your images come from ten production batches, and frames from the same physical component appear multiple times under slightly different lighting because they were captured on a rolling camera. If you split train and test randomly at the image level rather than at the component or batch level, near-duplicate images of the same physical object end up on both sides of the split. The model then partly memorises specific instances rather than learning general defect patterns, and your test accuracy becomes an optimistic fiction. A model that looks like it scores 96 percent under a naive random split might genuinely perform closer to 80 percent once you split by batch and force the test set to contain components the model has never seen in any form.</p><p>The third question is what your baseline actually is. A deep convolutional network that gets 89 percent accuracy sounds impressive until you learn that a simple threshold on average pixel brightness gets 85 percent, because damaged components happen to be visibly darker in this dataset. Suddenly the network's extra four points look far less like sophisticated visual understanding and far more like it learned a shortcut that correlates with the label for uninteresting reasons. Strong, boring baselines are not a formality; they are the thing that tells you whether your fancy model is earning its complexity.</p><p>The fourth question is distribution shift. A vision model evaluated on images captured under the same lighting rig and camera angle as training will look far stronger than it will in deployment, where lighting varies, cameras get replaced, and components arrive with wear patterns the training set never saw. Reporting performance on a held-out set drawn from the identical capture conditions as training data is common, and it is also one of the most reliable ways to be surprised, unpleasantly, six months after deployment.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>The joke buried in the shared name is that computer vision syndrome is at least honestly named: it describes exactly what it is, a syndrome caused by looking at screens. Computer vision evaluation deserves the same honesty. A single accuracy figure is not evaluation; it is a headline that might be hiding class imbalance, leakage, a weak baseline comparison, or a training distribution that has nothing to do with the deployment environment.</p><p>If you take one habit from this, make it a checklist you run before trusting any reported number: check class balance and use metrics that reflect it, check whether the split respects natural groupings in the data to avoid leakage, compare against a genuinely simple baseline, and ask whether the test conditions resemble where the model will actually be used. None of these require exotic tools. They require discipline and a willingness to be sceptical of your own good news, which is, appropriately enough, exactly the kind of care that keeps both your eyes and your models in reasonable working order.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/computer-vision-syndrome-vs-cv-evaluation-2.jpg' alt='factory camera inspecting components on conveyor belt' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
