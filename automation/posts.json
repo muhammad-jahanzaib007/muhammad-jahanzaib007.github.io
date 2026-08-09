@@ -9,7 +9,8 @@
       "tag": "Careers",
       "color": "a5",
       "thumb": "assets/blog/degrees-versus-portfolios-interviews.png",
-      "thumb_alt": "Cover image for the article: Data Science Degrees vs Portfolios: What Interviews Check"
+      "thumb_alt": "Cover image for the article: Data Science Degrees vs Portfolios: What Interviews Check",
+      "li_shared": true
     },
     {
       "slug": "reading-confusion-matrix-by-class",
