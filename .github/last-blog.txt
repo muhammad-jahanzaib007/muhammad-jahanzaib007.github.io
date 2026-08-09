@@ -1,1 +1,1 @@
-2026-08-08T20:01:30Z slug=computer-vision-syndrome-vs-cv-evaluation words=1034 title="Computer Vision Syndrome vs Evaluating Computer Vision Models"
+2026-08-09T08:01:29Z slug=reading-confusion-matrix-by-class words=1002 title="How to Read a Confusion Matrix Class by Class"

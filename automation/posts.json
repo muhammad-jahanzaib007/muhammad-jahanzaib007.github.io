@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "reading-confusion-matrix-by-class",
+      "title": "How to Read a Confusion Matrix Class by Class",
+      "excerpt": "A model with 94% accuracy can still be useless for the one class you care about. Learn to read confusion matrices row by row, not just the headline number.",
+      "date": "2026-08-09",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a4",
+      "thumb": "assets/blog/reading-confusion-matrix-by-class.png",
+      "thumb_alt": "Cover image for the article: How to Read a Confusion Matrix Class by Class"
+    },
+    {
       "slug": "computer-vision-syndrome-vs-cv-evaluation",
       "title": "Computer Vision Syndrome vs Evaluating Computer Vision Models",
       "excerpt": "Computer vision syndrome is eye strain from screens. Model evaluation is how we judge vision systems. Same name, nothing else in common, and the confusion teaches a lesson about precision.",

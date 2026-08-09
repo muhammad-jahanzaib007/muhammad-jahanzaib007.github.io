@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Sat, 08 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 09 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>How to Read a Confusion Matrix Class by Class</title>
+    <link>https://jahanzaibawan.com/blog/reading-confusion-matrix-by-class.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/reading-confusion-matrix-by-class.html</guid>
+    <pubDate>Sun, 09 Aug 2026 09:00:00 +0000</pubDate>
+    <description>A model with 94% accuracy can still be useless for the one class you care about. Learn to read confusion matrices row by row, not just the headline number.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Computer Vision Syndrome vs Evaluating Computer Vision Models</title>
     <link>https://jahanzaibawan.com/blog/computer-vision-syndrome-vs-cv-evaluation.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Wed, 29 Jul 2026 09:00:00 +0000</pubDate>
     <description>Most models are trained to minimise a generic loss while the business quietly cares about wildly asymmetric costs. Here is how to fix that mismatch.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>SHAP, LIME, and When Neither Method Is Honest</title>
-    <link>https://jahanzaibawan.com/blog/shap-lime-honest-interpretability.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/shap-lime-honest-interpretability.html</guid>
-    <pubDate>Wed, 29 Jul 2026 09:00:00 +0000</pubDate>
-    <description>SHAP and LIME answer different questions dressed up as the same question. Knowing the difference is the line between insight and false confidence.</description>
-    <category>Interpretability</category>
   </item>
 </channel>
 </rss>
