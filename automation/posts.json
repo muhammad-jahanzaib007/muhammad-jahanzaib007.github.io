@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a4",
       "thumb": "assets/blog/reading-confusion-matrix-by-class.png",
-      "thumb_alt": "Cover image for the article: How to Read a Confusion Matrix Class by Class"
+      "thumb_alt": "Cover image for the article: How to Read a Confusion Matrix Class by Class",
+      "li_shared": true
     },
     {
       "slug": "computer-vision-syndrome-vs-cv-evaluation",
