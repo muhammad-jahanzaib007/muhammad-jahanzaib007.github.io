@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Sun, 09 Aug 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Data Science Degrees vs Portfolios: What Interviews Check</title>
+    <link>https://jahanzaibawan.com/blog/degrees-versus-portfolios-interviews.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/degrees-versus-portfolios-interviews.html</guid>
+    <pubDate>Sun, 09 Aug 2026 09:00:00 +0000</pubDate>
+    <description>Degrees and portfolios both signal something, but interviews test neither directly. Here is what actually gets checked.</description>
+    <category>Careers</category>
+  </item>
+  <item>
     <title>How to Read a Confusion Matrix Class by Class</title>
     <link>https://jahanzaibawan.com/blog/reading-confusion-matrix-by-class.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/reading-confusion-matrix-by-class.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Thu, 30 Jul 2026 09:00:00 +0000</pubDate>
     <description>A worked look at how adapters and LoRA fine-tune large models by updating a small slice of parameters, and why that matters for real projects.</description>
     <category>Deep Learning</category>
-  </item>
-  <item>
-    <title>The Cost Matrix Nobody Writes Down</title>
-    <link>https://jahanzaibawan.com/blog/cost-matrix-nobody-writes-down.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/cost-matrix-nobody-writes-down.html</guid>
-    <pubDate>Wed, 29 Jul 2026 09:00:00 +0000</pubDate>
-    <description>Most models are trained to minimise a generic loss while the business quietly cares about wildly asymmetric costs. Here is how to fix that mismatch.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>

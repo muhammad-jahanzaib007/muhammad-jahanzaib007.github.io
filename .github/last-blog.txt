@@ -1,1 +1,1 @@
-2026-08-09T08:01:29Z slug=reading-confusion-matrix-by-class words=1002 title="How to Read a Confusion Matrix Class by Class"
+2026-08-09T20:01:45Z slug=degrees-versus-portfolios-interviews words=1123 title="Data Science Degrees vs Portfolios: What Interviews Check"

@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "degrees-versus-portfolios-interviews",
+      "title": "Data Science Degrees vs Portfolios: What Interviews Check",
+      "excerpt": "Degrees and portfolios both signal something, but interviews test neither directly. Here is what actually gets checked.",
+      "date": "2026-08-09",
+      "read_min": 6,
+      "tag": "Careers",
+      "color": "a5",
+      "thumb": "assets/blog/degrees-versus-portfolios-interviews.png",
+      "thumb_alt": "Cover image for the article: Data Science Degrees vs Portfolios: What Interviews Check"
+    },
+    {
       "slug": "reading-confusion-matrix-by-class",
       "title": "How to Read a Confusion Matrix Class by Class",
       "excerpt": "A model with 94% accuracy can still be useless for the one class you care about. Learn to read confusion matrices row by row, not just the headline number.",
