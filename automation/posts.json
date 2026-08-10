@@ -9,7 +9,8 @@
       "tag": "Careers",
       "color": "a6",
       "thumb": "assets/blog/salary-numbers-data-science-work.png",
-      "thumb_alt": "Cover image for the article: Salary Expectations in Data Science: The Untold Work"
+      "thumb_alt": "Cover image for the article: Salary Expectations in Data Science: The Untold Work",
+      "li_shared": true
     },
     {
       "slug": "degrees-versus-portfolios-interviews",
