@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "choosing-your-first-cv-project",
+      "title": "Choosing Your First Computer Vision Project Wisely",
+      "excerpt": "Skip the trendy demo. Pick a computer vision project small enough to finish and honest enough to teach you where things actually go wrong.",
+      "date": "2026-08-10",
+      "read_min": 6,
+      "tag": "Computer Vision",
+      "color": "a2",
+      "thumb": "assets/blog/choosing-your-first-cv-project.png",
+      "thumb_alt": "Cover image for the article: Choosing Your First Computer Vision Project Wisely"
+    },
+    {
       "slug": "salary-numbers-data-science-work",
       "title": "Salary Expectations in Data Science: The Untold Work",
       "excerpt": "Salary surveys flatten wildly different jobs into one number. Here is what the figure hides about the actual work.",

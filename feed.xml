@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Mon, 10 Aug 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Choosing Your First Computer Vision Project Wisely</title>
+    <link>https://jahanzaibawan.com/blog/choosing-your-first-cv-project.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/choosing-your-first-cv-project.html</guid>
+    <pubDate>Mon, 10 Aug 2026 09:00:00 +0000</pubDate>
+    <description>Skip the trendy demo. Pick a computer vision project small enough to finish and honest enough to teach you where things actually go wrong.</description>
+    <category>Computer Vision</category>
+  </item>
+  <item>
     <title>Salary Expectations in Data Science: The Untold Work</title>
     <link>https://jahanzaibawan.com/blog/salary-numbers-data-science-work.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/salary-numbers-data-science-work.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Fri, 31 Jul 2026 09:00:00 +0000</pubDate>
     <description>Red-teaming finds failures; it does not bound risk. Here is what it actually measures, with a worked example showing why absence of evidence is not evidence of absence.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>The Transformer Architecture, Explained Without the Maths</title>
-    <link>https://jahanzaibawan.com/blog/transformers-without-the-maths.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/transformers-without-the-maths.html</guid>
-    <pubDate>Thu, 30 Jul 2026 09:00:00 +0000</pubDate>
-    <description>A no-equations tour of transformers: what attention actually does, why position matters, and why the architecture scaled so well.</description>
-    <category>Deep Learning</category>
   </item>
 </channel>
 </rss>

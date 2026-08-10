@@ -1,1 +1,1 @@
-2026-08-10T08:02:13Z slug=salary-numbers-data-science-work words=1148 title="Salary Expectations in Data Science: The Untold Work"
+2026-08-10T20:01:27Z slug=choosing-your-first-cv-project words=1135 title="Choosing Your First Computer Vision Project Wisely"
