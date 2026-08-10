@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Salary expectations in data science: what the numbers do not tell you about the work",
     "Choosing your first computer vision project: what to build to learn the most",
     "A realistic MLOps course syllabus: what to learn before you call yourself one",
     "Writing prompts that survive a model upgrade: robustness over cleverness",
@@ -101,6 +100,7 @@
     "The prompt engineering skill set: what transfers and what does not",
     "Computer vision syndrome versus model evaluation: two different problems with the same name",
     "How to read a computer vision model's confusion matrix by class, not just overall",
-    "Data science degrees versus portfolios: what actually gets checked in interviews"
+    "Data science degrees versus portfolios: what actually gets checked in interviews",
+    "Salary expectations in data science: what the numbers do not tell you about the work"
   ]
 }

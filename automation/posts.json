@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "salary-numbers-data-science-work",
+      "title": "Salary Expectations in Data Science: The Untold Work",
+      "excerpt": "Salary surveys flatten wildly different jobs into one number. Here is what the figure hides about the actual work.",
+      "date": "2026-08-10",
+      "read_min": 6,
+      "tag": "Careers",
+      "color": "a6",
+      "thumb": "assets/blog/salary-numbers-data-science-work.png",
+      "thumb_alt": "Cover image for the article: Salary Expectations in Data Science: The Untold Work"
+    },
+    {
       "slug": "degrees-versus-portfolios-interviews",
       "title": "Data Science Degrees vs Portfolios: What Interviews Check",
       "excerpt": "Degrees and portfolios both signal something, but interviews test neither directly. Here is what actually gets checked.",

@@ -1,1 +1,1 @@
-2026-08-09T20:01:45Z slug=degrees-versus-portfolios-interviews words=1123 title="Data Science Degrees vs Portfolios: What Interviews Check"
+2026-08-10T08:02:13Z slug=salary-numbers-data-science-work words=1148 title="Salary Expectations in Data Science: The Untold Work"
