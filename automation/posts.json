@@ -9,7 +9,8 @@
       "tag": "Computer Vision",
       "color": "a2",
       "thumb": "assets/blog/choosing-your-first-cv-project.png",
-      "thumb_alt": "Cover image for the article: Choosing Your First Computer Vision Project Wisely"
+      "thumb_alt": "Cover image for the article: Choosing Your First Computer Vision Project Wisely",
+      "li_shared": true
     },
     {
       "slug": "salary-numbers-data-science-work",
