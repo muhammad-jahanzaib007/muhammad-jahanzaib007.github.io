@@ -1,1 +1,1 @@
-2026-08-10T20:01:27Z slug=choosing-your-first-cv-project words=1135 title="Choosing Your First Computer Vision Project Wisely"
+2026-08-11T08:01:35Z slug=realistic-mlops-course-syllabus words=1005 title="A Realistic MLOps Syllabus: What To Learn First"

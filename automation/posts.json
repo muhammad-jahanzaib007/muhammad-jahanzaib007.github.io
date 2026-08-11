@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "realistic-mlops-course-syllabus",
+      "title": "A Realistic MLOps Syllabus: What To Learn First",
+      "excerpt": "Before you call yourself an MLOps engineer, learn what actually breaks in production: data drift, silent leakage, and pipelines nobody can reproduce.",
+      "date": "2026-08-11",
+      "read_min": 5,
+      "tag": "MLOps",
+      "color": "a3",
+      "thumb": "assets/blog/realistic-mlops-course-syllabus.png",
+      "thumb_alt": "Cover image for the article: A Realistic MLOps Syllabus: What To Learn First"
+    },
+    {
       "slug": "choosing-your-first-cv-project",
       "title": "Choosing Your First Computer Vision Project Wisely",
       "excerpt": "Skip the trendy demo. Pick a computer vision project small enough to finish and honest enough to teach you where things actually go wrong.",

@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Mon, 10 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 11 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>A Realistic MLOps Syllabus: What To Learn First</title>
+    <link>https://jahanzaibawan.com/blog/realistic-mlops-course-syllabus.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/realistic-mlops-course-syllabus.html</guid>
+    <pubDate>Tue, 11 Aug 2026 09:00:00 +0000</pubDate>
+    <description>Before you call yourself an MLOps engineer, learn what actually breaks in production: data drift, silent leakage, and pipelines nobody can reproduce.</description>
+    <category>MLOps</category>
+  </item>
   <item>
     <title>Choosing Your First Computer Vision Project Wisely</title>
     <link>https://jahanzaibawan.com/blog/choosing-your-first-cv-project.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/evaluation-harness-unseen-job.html</guid>
     <pubDate>Fri, 31 Jul 2026 09:00:00 +0000</pubDate>
     <description>A practical guide to building leakage-aware, adaptable evaluation harnesses for models whose final job is not yet fully defined.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Model Evaluation for Extreme Risks: What Red-Teaming Tests</title>
-    <link>https://jahanzaibawan.com/blog/what-red-teaming-actually-tests.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/what-red-teaming-actually-tests.html</guid>
-    <pubDate>Fri, 31 Jul 2026 09:00:00 +0000</pubDate>
-    <description>Red-teaming finds failures; it does not bound risk. Here is what it actually measures, with a worked example showing why absence of evidence is not evidence of absence.</description>
     <category>Evaluation</category>
   </item>
 </channel>
