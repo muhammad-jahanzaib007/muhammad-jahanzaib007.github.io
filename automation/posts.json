@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a4",
       "thumb": "assets/blog/prompts-that-survive-upgrades.png",
-      "thumb_alt": "Cover image for the article: Writing Prompts That Survive a Model Upgrade"
+      "thumb_alt": "Cover image for the article: Writing Prompts That Survive a Model Upgrade",
+      "li_shared": true
     },
     {
       "slug": "realistic-mlops-course-syllabus",
