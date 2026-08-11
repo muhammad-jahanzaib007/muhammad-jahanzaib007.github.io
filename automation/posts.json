@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "prompts-that-survive-upgrades",
+      "title": "Writing Prompts That Survive a Model Upgrade",
+      "excerpt": "Clever prompt tricks decay fast. Here is how to write prompts that keep working when the underlying model changes.",
+      "date": "2026-08-11",
+      "read_min": 6,
+      "tag": "Evaluation",
+      "color": "a4",
+      "thumb": "assets/blog/prompts-that-survive-upgrades.png",
+      "thumb_alt": "Cover image for the article: Writing Prompts That Survive a Model Upgrade"
+    },
+    {
       "slug": "realistic-mlops-course-syllabus",
       "title": "A Realistic MLOps Syllabus: What To Learn First",
       "excerpt": "Before you call yourself an MLOps engineer, learn what actually breaks in production: data drift, silent leakage, and pipelines nobody can reproduce.",

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing Prompts That Survive a Model Upgrade | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical look at why robust, boring prompts outlast clever ones across model upgrades, with a worked example and a checklist for durable prompt design.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="prompt engineering, LLM evaluation, model upgrades, robustness, prompt design, reproducibility, NLP, generalisation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-11">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Writing Prompts That Survive a Model Upgrade">
+<meta property="og:description" content="A practical look at why robust, boring prompts outlast clever ones across model upgrades, with a worked example and a checklist for durable prompt design.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/prompts-that-survive-upgrades.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/prompts-that-survive-upgrades.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Writing Prompts That Survive a Model Upgrade">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/prompts-that-survive-upgrades.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/prompts-that-survive-upgrades.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Writing Prompts That Survive a Model Upgrade",
+  "description": "A practical look at why robust, boring prompts outlast clever ones across model upgrades, with a worked example and a checklist for durable prompt design.",
+  "url": "https://jahanzaibawan.com/blog/prompts-that-survive-upgrades.html",
+  "image": "https://jahanzaibawan.com/assets/blog/prompts-that-survive-upgrades.png",
+  "datePublished": "2026-08-11",
+  "dateModified": "2026-08-11",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/prompts-that-survive-upgrades.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Writing Prompts That Survive a Model Upgrade", "item": "https://jahanzaibawan.com/blog/prompts-that-survive-upgrades.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 6 min read · 11 Aug 2026</div>
+    <h1>Writing Prompts That Survive a Model Upgrade</h1>
+    <p class="lede">Clever prompts that lean on a specific model&#x27;s quirks tend to break the moment you swap versions. Robust prompts are built differently, and the difference is worth understanding.</p>
+  </div>
+
+  <img src="../assets/blog/prompts-that-survive-upgrades.png" alt="Cover image for the article: Writing Prompts That Survive a Model Upgrade" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The upgrade you didn't ask for</h2><p>At some point every prompt gets run against a model it wasn't written for. The provider ships a new version, the API defaults change, or someone swaps in a cheaper model to save cost. The prompt that used to work reliably now produces subtly wrong output, or worse, confidently wrong output that passes casual inspection. This is not a rare event. It is the normal lifecycle of any prompt that lives in production for more than a few months.</p><p>The instinct when a prompt breaks is to patch it: add another example, tighten the wording, insert a magic phrase that happened to nudge the old model into good behaviour. This works in the short term and creates a fragile artefact in the long term. The prompt accumulates model-specific superstition, the kind of thing that reads like folklore rather than instruction. I have seen prompts with lines that exist purely because someone once observed a particular model behaving oddly without that phrase, and nobody remembers why it is there or whether it still matters.</p><p>The alternative is to treat prompt writing the way I would treat feature engineering or evaluation design: assume the underlying system will change, and build for that assumption rather than against it. A prompt that survives an upgrade is not the most clever one, it is the one that depends least on the specific quirks of the model it was written on. Robustness over cleverness is not a slogan, it is a design constraint that changes how you write instructions.</p></section><section class='psec reveal'><h2>Why clever prompts are fragile by construction</h2><p>Clever prompts often work by exploiting something incidental about a model's training or tuning rather than something general about the task. A common example is over-specifying format through trick delimiters, unusual token sequences, or role-play framings that happen to trigger a particular behaviour in one model's instruction-following layer. These tricks work because the model has learned specific associations during fine-tuning, not because the instruction is genuinely clearer to a general-purpose language understander.</p><p>Consider a prompt that asks a model to output strict JSON by threatening consequences if it fails, or by wrapping the instruction in an elaborate persona ('you are a meticulous JSON compiler that never makes mistakes'). On an older, weaker model this framing might reliably improve compliance because the model was tuned on data where such framings correlated with careful output. On a newer model that already has strong native structured-output support, the same framing can do nothing useful and occasionally backfires, because the persona instruction competes with the model's own default formatting behaviour, producing extra commentary or malformed nesting that the older model never produced.</p><p>The deeper issue is that clever prompts are usually optimised against a small, informal sample of outputs you happened to look at. You tried three phrasings, one looked best on five test cases, and you shipped it. That is not evaluation, that is anecdote. The phrasing that won might have won by chance, or it might have won because it exploited a specific failure mode of that model version that a new version has already fixed or introduced differently. Without a proper held-out test set and without tracking which model version produced which result, you cannot tell the difference between a genuinely better instruction and a lucky one.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/prompts-that-survive-upgrades-1.jpg' alt='person typing on laptop with code editor open' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>A worked example: extracting structured data</h2><p>Suppose the task is extracting a customer's requested refund amount from a support email, returning it as a plain number. A clever prompt might read: 'You are an expert financial auditor. Extract the exact refund amount. Think step by step, then output ONLY the number, nothing else, or you will fail this task.' This works well on the model it was tuned against, scoring perhaps ninety-four correct extractions out of one hundred test emails.</p><p>A robust version of the same prompt separates three concerns that the clever version tangles together: the task definition, the output contract, and the edge case handling. It might read: 'Extract the refund amount mentioned in the email below. Respond with only the numeric value, using a full stop as the decimal separator and no currency symbol. If no refund amount is mentioned, respond with the word none.' No persona, no threats, no chain-of-thought instruction bundled in with the format constraint.</p><p>When you swap models, the clever prompt's score can drop sharply, say from ninety-four to seventy-eight out of one hundred, because the new model does not respond to the same social pressure and instead adds explanatory text before the number, breaking any downstream parser expecting a bare value. The robust prompt tends to hold closer to its original score, say ninety-one, because its instructions describe the task and the contract in terms that do not depend on a specific model's tuned response to persona framing or urgency. The gap between ninety-four and seventy-eight is the hidden cost of cleverness; the gap between ninety-four and ninety-one is the acceptable cost of change.</p><p>The practical lesson is not that personas or emphatic phrasing never help. It is that any technique whose benefit you cannot explain in terms of the task itself, only in terms of 'this seemed to make the model behave', should be treated as a liability that needs re-testing on every model swap, not as a permanent fixture.</p></section><section class='psec reveal'><h2>Building prompts that are meant to be re-tested</h2><p>The practical habit that follows from all this is to keep a small, fixed evaluation set for every prompt that matters, separate from the examples used to write the prompt in the first place. This is the same leakage discipline that applies to any model evaluation: if the same handful of cases both shaped your prompt and measured its success, your score tells you almost nothing about how the prompt will behave on new inputs, let alone a new model. Ten to twenty realistic, varied cases with known correct answers is enough to catch most regressions, and it costs little to maintain.</p><p>When an upgrade happens, rerun that fixed set before touching the prompt. If the score holds, you are done. If it drops, look at the specific failures rather than reflexively adding more instructions; often the fix is removing a brittle clause rather than adding a new one. Keep a short log of which prompt version and which model version produced which score, because without that record you will eventually be debugging a regression with no memory of what changed.</p><p>Finally, prefer instructions that describe the task in plain terms over instructions that describe a persona or an emotional stake. State the format contract explicitly and separately from the task description, and test edge cases like empty input, ambiguous input, and multiple valid answers, since these are exactly where model-specific behaviour diverges most after an upgrade. A prompt that reads like a clear specification rather than a spell will not be the most impressive thing in the room, but it will still be working next quarter, which is the only property that actually matters.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/prompts-that-survive-upgrades-2.jpg' alt='hands writing notes at desk with monitor' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
