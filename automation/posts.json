@@ -9,7 +9,8 @@
       "tag": "Careers",
       "color": "a5",
       "thumb": "assets/blog/data-scientist-vs-ml-engineer.png",
-      "thumb_alt": "Cover image for the article: Data Scientist vs Machine Learning Engineer, in Practice"
+      "thumb_alt": "Cover image for the article: Data Scientist vs Machine Learning Engineer, in Practice",
+      "li_shared": true
     },
     {
       "slug": "prompts-that-survive-upgrades",
