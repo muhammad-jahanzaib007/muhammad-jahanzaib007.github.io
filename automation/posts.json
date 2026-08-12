@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "segmentation-vs-object-detection",
+      "title": "Semantic Segmentation vs Object Detection: Pick Wisely",
+      "excerpt": "Segmentation and detection both find objects, but they cost and deliver very different things. Here is how to choose without guessing.",
+      "date": "2026-08-12",
+      "read_min": 6,
+      "tag": "Computer Vision",
+      "color": "a6",
+      "thumb": "assets/blog/segmentation-vs-object-detection.png",
+      "thumb_alt": "Cover image for the article: Semantic Segmentation vs Object Detection: Pick Wisely"
+    },
+    {
       "slug": "data-scientist-vs-ml-engineer",
       "title": "Data Scientist vs Machine Learning Engineer, in Practice",
       "excerpt": "Same buzzwords, different jobs. Here's what actually separates data science from ML engineering once you look past the job title.",

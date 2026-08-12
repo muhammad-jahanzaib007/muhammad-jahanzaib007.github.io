@@ -1,1 +1,1 @@
-2026-08-12T08:01:22Z slug=data-scientist-vs-ml-engineer words=1084 title="Data Scientist vs Machine Learning Engineer, in Practice"
+2026-08-12T20:01:17Z slug=segmentation-vs-object-detection words=1112 title="Semantic Segmentation vs Object Detection: Pick Wisely"

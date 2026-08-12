@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semantic Segmentation vs Object Detection: Pick Wisely | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to choosing between semantic segmentation and object detection, with a worked example on labelling cost, evaluation metrics, and failure modes.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="semantic segmentation, object detection, computer vision, IoU, bounding boxes, pixel masks, labelling cost, evaluation metrics, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-12">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Semantic Segmentation vs Object Detection: Pick Wisely">
+<meta property="og:description" content="A practical guide to choosing between semantic segmentation and object detection, with a worked example on labelling cost, evaluation metrics, and failure modes.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/segmentation-vs-object-detection.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/segmentation-vs-object-detection.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Semantic Segmentation vs Object Detection: Pick Wisely">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/segmentation-vs-object-detection.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/segmentation-vs-object-detection.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Semantic Segmentation vs Object Detection: Pick Wisely",
+  "description": "A practical guide to choosing between semantic segmentation and object detection, with a worked example on labelling cost, evaluation metrics, and failure modes.",
+  "url": "https://jahanzaibawan.com/blog/segmentation-vs-object-detection.html",
+  "image": "https://jahanzaibawan.com/assets/blog/segmentation-vs-object-detection.png",
+  "datePublished": "2026-08-12",
+  "dateModified": "2026-08-12",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/segmentation-vs-object-detection.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Semantic Segmentation vs Object Detection: Pick Wisely", "item": "https://jahanzaibawan.com/blog/segmentation-vs-object-detection.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Computer Vision · 6 min read · 12 Aug 2026</div>
+    <h1>Semantic Segmentation vs Object Detection: Pick Wisely</h1>
+    <p class="lede">Both tasks answer &#x27;what is in this image&#x27;, but they answer it at different resolutions and for different downstream costs. Choosing the wrong one wastes labelling budget and model capacity.</p>
+  </div>
+
+  <img src="../assets/blog/segmentation-vs-object-detection.png" alt="Cover image for the article: Semantic Segmentation vs Object Detection: Pick Wisely" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Two questions that sound like one</h2><p>Object detection answers: where are the objects, and what are they, expressed as boxes. Semantic segmentation answers: which pixel belongs to which class, with no notion of individual instances unless you move to instance or panoptic segmentation. These sound like the same task wearing different clothes, but the difference in output structure changes everything downstream: the loss function, the metric you report, the annotation cost, and the failure modes you should worry about.</p><p>I think a lot of task-choice mistakes in computer vision come from picking the task that is fashionable or well-supported by tutorials, rather than the one that matches what the product actually needs. If you need to count cars in a car park, you want boxes. If you need to know exactly which pixels are drivable road surface for a path-planning module, you want a mask. Confusing the two rarely fails loudly; it fails as a model that technically works but never quite does what the stakeholder wanted.</p><p>The core intuition worth internalising is this: detection gives you a sparse, discrete answer, a handful of boxes with class labels and confidence scores. Segmentation gives you a dense, per-pixel answer. Sparse outputs are cheap to produce and cheap to label, but they throw away shape information. Dense outputs preserve shape and boundary, but cost far more to annotate and to compute.</p></section><section class='psec reveal'><h2>A worked example: labelling budget and what it buys you</h2><p>Suppose you are building a system to detect and outline litter on a beach for an environmental monitoring project, and you have a fixed annotation budget of, say, 200 hours. Bounding box annotation for a moderately cluttered scene typically runs a few seconds per object once an annotator is warmed up; polygon or mask annotation for the same object, especially something irregular like a torn plastic bag, can take five to ten times longer because the annotator has to trace an outline rather than drag a rectangle.</p><p>With boxes, your 200 hours might buy you a dataset of several thousand annotated images, each with multiple objects, giving a detector a reasonable shot at learning object appearance and rough location. With masks, the same 200 hours might only buy you a fraction of that image count, but each image carries far richer signal per pixel. If your actual downstream need is 'estimate the area of litter coverage per square metre of beach', boxes are the wrong currency entirely, since a box around an irregular object systematically overestimates area, sometimes by a large margin depending on how elongated the object is. Segmentation gives you area directly and honestly.</p><p>Conversely, if the actual need is 'count distinct litter items and flag their rough location for a cleanup crew', segmentation is overkill. You are paying five to ten times the annotation cost for pixel precision that nobody downstream will use, and you are also inheriting the harder evaluation and training dynamics of dense prediction for no product benefit. I have seen the reverse mistake too: teams train a fast detector and then try to bolt on heuristics to estimate area or extent from the box, when a proper segmentation model, even a smaller one, would have given a cleaner and more defensible number from the start.</p><p>There is a middle path worth mentioning: instance segmentation and panoptic segmentation combine both ideas, giving you per-object masks rather than boxes or a flat class map. This is genuinely more expensive again, both to annotate and to train, so it should be reserved for cases where you need both 'how many distinct things' and 'exact shape of each thing' simultaneously, such as separating overlapping cells in a microscopy image.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/segmentation-vs-object-detection-1.jpg' alt='aerial view beach litter' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Metrics, evaluation traps, and leakage</h2><p>The metrics for these two tasks look similar on the surface, mean average precision for detection, mean intersection-over-union for segmentation, but they punish different mistakes. A detector evaluated with mAP at an IoU threshold of 0.5 will happily accept a box that is a bit loose around the object; a segmentation model evaluated with mean IoU has nowhere to hide a sloppy boundary, since every pixel counts. If your product genuinely cares about precise boundaries, for example measuring wound size in a clinical photograph, reporting box-based mAP would be actively misleading about how well the system serves the actual use case, even if the number looks respectable.</p><p>Leakage-aware splitting matters just as much here as in any other supervised setting, and arguably more, because both tasks are usually built on top of images with strong spatial and temporal correlation. If your beach litter dataset comes from a handful of filming sessions, splitting by image rather than by session will let near-duplicate frames leak between train and test, inflating both mAP and mean IoU in ways that will not survive contact with a genuinely new beach. I would always split by capture session, by camera, or by geographic tile before splitting by image, and I would check the split for duplicate or near-duplicate frames explicitly rather than trusting a random shuffle.</p><p>It is also worth being honest about class imbalance, which affects the two tasks differently. In detection, a rare class simply has few boxes, and average precision per class will be noisy but interpretable in isolation. In segmentation, a rare class might occupy a tiny fraction of total pixels across the dataset, which can make mean IoU for that class swing wildly on a handful of images, and a model can achieve a deceptively high overall pixel accuracy just by getting the dominant background class right. Reporting per-class IoU alongside the mean, rather than the mean alone, is the minimum honesty bar here.</p></section><section class='psec reveal'><h2>A practical way to decide</h2><p>My rule of thumb: start from the downstream decision the model output will feed into, not from the task that seems more impressive. If the decision only needs presence, count, or rough location, detection is cheaper to build, cheaper to label, and easier to evaluate honestly. If the decision needs area, boundary precision, or a full scene classification down to the pixel, segmentation earns its cost. And if you need both object-level counting and precise shape at once, be honest with your stakeholders about the annotation and compute budget that instance or panoptic segmentation actually requires, before you commit to it.</p><p>Whichever you choose, evaluate on splits that respect real-world independence, report per-class metrics rather than a single flattering average, and compare against a boring baseline, a simple thresholding or heuristic method, before crediting your deep model with the improvement. The task choice is a product decision dressed up as a modelling decision, and treating it that way tends to save a great deal of wasted annotation budget.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/segmentation-vs-object-detection-2.jpg' alt='road scene semantic segmentation overlay' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
