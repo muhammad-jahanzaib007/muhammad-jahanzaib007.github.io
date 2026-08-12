@@ -9,7 +9,8 @@
       "tag": "Computer Vision",
       "color": "a6",
       "thumb": "assets/blog/segmentation-vs-object-detection.png",
-      "thumb_alt": "Cover image for the article: Semantic Segmentation vs Object Detection: Pick Wisely"
+      "thumb_alt": "Cover image for the article: Semantic Segmentation vs Object Detection: Pick Wisely",
+      "li_shared": true
     },
     {
       "slug": "data-scientist-vs-ml-engineer",
