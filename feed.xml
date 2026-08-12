@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Tue, 11 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 12 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Data Scientist vs Machine Learning Engineer, in Practice</title>
+    <link>https://jahanzaibawan.com/blog/data-scientist-vs-ml-engineer.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/data-scientist-vs-ml-engineer.html</guid>
+    <pubDate>Wed, 12 Aug 2026 09:00:00 +0000</pubDate>
+    <description>Same buzzwords, different jobs. Here&#x27;s what actually separates data science from ML engineering once you look past the job title.</description>
+    <category>Careers</category>
+  </item>
   <item>
     <title>Writing Prompts That Survive a Model Upgrade</title>
     <link>https://jahanzaibawan.com/blog/prompts-that-survive-upgrades.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Sat, 01 Aug 2026 09:00:00 +0000</pubDate>
     <description>The job is less &#x27;train a model&#x27; and more data cleaning, evaluation design, and stopping silent failures before they reach production.</description>
     <category>Careers</category>
-  </item>
-  <item>
-    <title>NLP Techniques Before Deep Learning: A Practical Refresher</title>
-    <link>https://jahanzaibawan.com/blog/nlp-before-deep-learning-refresher.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/nlp-before-deep-learning-refresher.html</guid>
-    <pubDate>Sat, 01 Aug 2026 09:00:00 +0000</pubDate>
-    <description>Classic NLP methods still catch leakage, expose weak baselines and explain model behaviour better than most deep nets ever will.</description>
-    <category>NLP</category>
   </item>
 </channel>
 </rss>

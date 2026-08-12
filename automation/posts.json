@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "data-scientist-vs-ml-engineer",
+      "title": "Data Scientist vs Machine Learning Engineer, in Practice",
+      "excerpt": "Same buzzwords, different jobs. Here's what actually separates data science from ML engineering once you look past the job title.",
+      "date": "2026-08-12",
+      "read_min": 5,
+      "tag": "Careers",
+      "color": "a5",
+      "thumb": "assets/blog/data-scientist-vs-ml-engineer.png",
+      "thumb_alt": "Cover image for the article: Data Scientist vs Machine Learning Engineer, in Practice"
+    },
+    {
       "slug": "prompts-that-survive-upgrades",
       "title": "Writing Prompts That Survive a Model Upgrade",
       "excerpt": "Clever prompt tricks decay fast. Here is how to write prompts that keep working when the underlying model changes.",

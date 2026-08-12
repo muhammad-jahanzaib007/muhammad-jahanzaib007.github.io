@@ -1,1 +1,1 @@
-2026-08-11T20:01:15Z slug=prompts-that-survive-upgrades words=1164 title="Writing Prompts That Survive a Model Upgrade"
+2026-08-12T08:01:22Z slug=data-scientist-vs-ml-engineer words=1084 title="Data Scientist vs Machine Learning Engineer, in Practice"
