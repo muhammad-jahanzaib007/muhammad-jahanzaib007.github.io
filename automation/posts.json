@@ -9,7 +9,8 @@
       "tag": "Deep Learning",
       "color": "a2",
       "thumb": "assets/blog/pretraining-data-shapes-transformers.png",
-      "thumb_alt": "Cover image for the article: How Pretraining Data Shapes What a Transformer Can Do"
+      "thumb_alt": "Cover image for the article: How Pretraining Data Shapes What a Transformer Can Do",
+      "li_shared": true
     },
     {
       "slug": "segmentation-vs-object-detection",
