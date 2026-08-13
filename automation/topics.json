@@ -1,6 +1,5 @@
 {
   "queue": [
-    "How pretraining data shapes what a transformer can and cannot do",
     "Building a case study for your portfolio that a hiring manager will actually read",
     "Structured prompt templates: a repeatable format instead of trial and error",
     "Few-shot examples in prompts: how many is too many",
@@ -119,6 +118,7 @@
     "A realistic MLOps course syllabus: what to learn before you call yourself one",
     "Writing prompts that survive a model upgrade: robustness over cleverness",
     "The difference between a data scientist and a machine learning engineer, in practice",
-    "Semantic segmentation versus object detection: choosing the right computer vision task"
+    "Semantic segmentation versus object detection: choosing the right computer vision task",
+    "How pretraining data shapes what a transformer can and cannot do"
   ]
 }

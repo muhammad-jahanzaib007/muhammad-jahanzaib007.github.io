@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Pretraining Data Shapes What a Transformer Can Do | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="An evergreen look at how pretraining data composition, not just architecture, determines a transformer&#x27;s capabilities and blind spots.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="pretraining data,transformers,language models,data distribution,fine-tuning,generalisation,evaluation,machine learning,leakage,dataset bias, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-13">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="How Pretraining Data Shapes What a Transformer Can Do">
+<meta property="og:description" content="An evergreen look at how pretraining data composition, not just architecture, determines a transformer&#x27;s capabilities and blind spots.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/pretraining-data-shapes-transformers.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/pretraining-data-shapes-transformers.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How Pretraining Data Shapes What a Transformer Can Do">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/pretraining-data-shapes-transformers.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/pretraining-data-shapes-transformers.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How Pretraining Data Shapes What a Transformer Can Do",
+  "description": "An evergreen look at how pretraining data composition, not just architecture, determines a transformer's capabilities and blind spots.",
+  "url": "https://jahanzaibawan.com/blog/pretraining-data-shapes-transformers.html",
+  "image": "https://jahanzaibawan.com/assets/blog/pretraining-data-shapes-transformers.png",
+  "datePublished": "2026-08-13",
+  "dateModified": "2026-08-13",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/pretraining-data-shapes-transformers.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "How Pretraining Data Shapes What a Transformer Can Do", "item": "https://jahanzaibawan.com/blog/pretraining-data-shapes-transformers.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Deep Learning · 5 min read · 13 Aug 2026</div>
+    <h1>How Pretraining Data Shapes What a Transformer Can Do</h1>
+    <p class="lede">A model&#x27;s capabilities are not decided by its architecture alone. What it saw during pretraining sets a ceiling that no amount of clever fine-tuning can fully raise.</p>
+  </div>
+
+  <img src="../assets/blog/pretraining-data-shapes-transformers.png" alt="Cover image for the article: How Pretraining Data Shapes What a Transformer Can Do" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The architecture is not the interesting part</h2><p>When people discuss what a transformer can or cannot do, the conversation usually drifts towards attention heads, layer counts, or positional encodings. I understand the appeal; architecture is concrete, diagrammable, and satisfying to reason about. But in my experience, the more decisive factor is duller and less discussed: what the model actually saw during pretraining. Two models with identical architecture and parameter counts can behave completely differently depending on the corpus they were trained on, and that difference is often larger than anything a change in layer depth would produce.</p><p>This matters because it reframes how we should evaluate and trust a model. If a transformer struggles with a task, the first question should not be 'is the architecture wrong', it should be 'did the pretraining distribution contain enough signal for this task to be learnable in the first place'. A model cannot represent a pattern it has never been exposed to in any form, no matter how many parameters it has to play with.</p><p>Think of pretraining as building a map of the world from whatever routes happen to be walked most often. Densely travelled roads become wide and well marked; rarely used paths barely register. The model's internal representations end up shaped the same way, richly detailed where the data was rich, thin and unreliable where it was sparse, regardless of how important that thin region might be to a downstream user.</p></section><section class='psec reveal'><h2>A worked example: arithmetic versus prose</h2><p>Consider a plain text corpus scraped broadly from the internet. Suppose, for illustration, that fluent English prose makes up the overwhelming majority of tokens, while multi-digit arithmetic expressions appear only occasionally, embedded in forum posts or textbooks. A transformer trained on this mixture will become excellent at predicting the next word in a sentence about, say, gardening or history, because it has seen millions of structurally similar examples. Its internal representations for grammar, common phrasing, and topic coherence become dense and well calibrated.</p><p>Now ask the same model to add two five-digit numbers. Even though addition is a simple, well-defined operation, the model has seen relatively few worked examples of long-form arithmetic during pretraining, and even fewer that show the intermediate carrying steps explicitly. The result is a model that can often get small sums right through pattern memorisation, but starts failing as digit count grows, not because addition is conceptually hard, but because the training distribution never forced it to learn a general, position-independent procedure. The failure looks like a reasoning gap, but the root cause is a data gap.</p><p>This distinction matters enormously for evaluation. If I test a model on five-digit addition and it fails, I should not conclude that transformers 'cannot do maths'. I should ask whether the pretraining mixture contained enough structured numerical reasoning, with intermediate steps, for the relevant circuitry to form. Later models that deliberately upweight code, step-by-step maths solutions, or synthetic arithmetic in their pretraining mixture tend to show markedly better arithmetic behaviour, and that improvement tracks the data change far more tightly than it tracks any single architectural tweak.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/pretraining-data-shapes-transformers-1.jpg' alt='stacks of books on shelf' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Why this creates blind spots that fine-tuning cannot fix</h2><p>A common assumption is that fine-tuning can patch whatever pretraining missed. In practice this is only partly true, and the limits matter. Fine-tuning is very effective at reshaping how a model expresses knowledge it already has, adjusting tone, format, or task framing. It is far less effective at installing a capability that has no representational foothold at all. If a concept was essentially absent from pretraining, a modest fine-tuning set is unlikely to build the necessary internal structure from scratch; there simply were not enough exposures during the phase where the bulk of the model's representations were formed.</p><p>Here is a concrete framing. Suppose a model is fine-tuned on a few thousand examples of a specialised task, such as parsing a niche legal document format, and the pretraining corpus contained almost nothing resembling that format or its vocabulary. The fine-tuned model may learn surface patterns, such as expected section headers, but it will generalise poorly to documents phrased slightly differently, because it never built a deep representation of the domain, only a thin overlay on top of unrelated pretraining knowledge. Contrast this with fine-tuning a model on a task that is well represented in pretraining, such as summarising news articles, where even a small fine-tuning set can unlock strong performance because the underlying competence was already there, waiting to be steered.</p><p>This has a direct, practical consequence for anyone evaluating or deploying these models: before blaming an architecture or a fine-tuning recipe for poor performance, it is worth asking what evidence exists that the target skill was ever present in the pretraining mixture at meaningful scale. This also explains why benchmark performance can be misleading if the benchmark's style overlaps with common pretraining text; a model can look competent by pattern-matching surface form rather than by possessing the underlying skill, which is exactly the kind of gap that a leakage-aware, out-of-distribution evaluation set is designed to expose.</p></section><section class='psec reveal'><h2>What this means in practice</h2><p>If you are choosing or building a model for a specific task, treat the pretraining data composition as a first-class design variable, not an afterthought hidden behind a benchmark score. Where possible, look for documentation of what domains, languages, and formats were represented, and in what proportions. A model that scores well on a general benchmark can still be nearly blind to your specific domain if that domain was a rounding error in the training mixture.</p><p>When evaluating a model's failures, resist the instinct to reach for architectural explanations first. Ask instead whether the failure pattern looks like a genuine reasoning limit or a data coverage gap, since the two require completely different fixes: one needs a different model design, the other needs different data, whether through targeted fine-tuning, retrieval augmentation, or simply choosing a base model trained on a more relevant mixture. Getting this diagnosis right saves a great deal of wasted effort chasing architectural tweaks for a problem that data was always going to solve more directly.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/pretraining-data-shapes-transformers-2.jpg' alt='road map with highlighted routes' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

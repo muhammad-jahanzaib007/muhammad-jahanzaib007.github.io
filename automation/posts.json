@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "pretraining-data-shapes-transformers",
+      "title": "How Pretraining Data Shapes What a Transformer Can Do",
+      "excerpt": "Architecture gets the credit, but pretraining data quietly decides what a transformer can ever learn to do well.",
+      "date": "2026-08-13",
+      "read_min": 5,
+      "tag": "Deep Learning",
+      "color": "a2",
+      "thumb": "assets/blog/pretraining-data-shapes-transformers.png",
+      "thumb_alt": "Cover image for the article: How Pretraining Data Shapes What a Transformer Can Do"
+    },
+    {
       "slug": "segmentation-vs-object-detection",
       "title": "Semantic Segmentation vs Object Detection: Pick Wisely",
       "excerpt": "Segmentation and detection both find objects, but they cost and deliver very different things. Here is how to choose without guessing.",

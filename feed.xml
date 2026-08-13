@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Wed, 12 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 13 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>How Pretraining Data Shapes What a Transformer Can Do</title>
+    <link>https://jahanzaibawan.com/blog/pretraining-data-shapes-transformers.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/pretraining-data-shapes-transformers.html</guid>
+    <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
+    <description>Architecture gets the credit, but pretraining data quietly decides what a transformer can ever learn to do well.</description>
+    <category>Deep Learning</category>
+  </item>
   <item>
     <title>Semantic Segmentation vs Object Detection: Pick Wisely</title>
     <link>https://jahanzaibawan.com/blog/segmentation-vs-object-detection.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Sun, 02 Aug 2026 09:00:00 +0000</pubDate>
     <description>Model choice is a systems decision, not a leaderboard lookup. Here is how size, licence, and context length interact in practice.</description>
     <category>NLP</category>
-  </item>
-  <item>
-    <title>Cross-Validation Folds for Grouped Data: Silent Leakage</title>
-    <link>https://jahanzaibawan.com/blog/grouped-data-cross-validation-leakage.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/grouped-data-cross-validation-leakage.html</guid>
-    <pubDate>Sun, 02 Aug 2026 09:00:00 +0000</pubDate>
-    <description>Random folds leak when data has groups: patients, users, sessions. Here&#x27;s why the fix is grouped splitting, not more data.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>
