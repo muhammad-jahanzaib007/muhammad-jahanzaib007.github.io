@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "case-study-hiring-managers-read",
+      "title": "Building a Case Study a Hiring Manager Will Actually Read",
+      "excerpt": "A hiring manager gives your portfolio ten seconds. Structure your case study so it earns the next ninety.",
+      "date": "2026-08-13",
+      "read_min": 5,
+      "tag": "Careers",
+      "color": "a3",
+      "thumb": "assets/blog/case-study-hiring-managers-read.png",
+      "thumb_alt": "Cover image for the article: Building a Case Study a Hiring Manager Will Actually Read"
+    },
+    {
       "slug": "pretraining-data-shapes-transformers",
       "title": "How Pretraining Data Shapes What a Transformer Can Do",
       "excerpt": "Architecture gets the credit, but pretraining data quietly decides what a transformer can ever learn to do well.",

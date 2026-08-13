@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Thu, 13 Aug 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Building a Case Study a Hiring Manager Will Actually Read</title>
+    <link>https://jahanzaibawan.com/blog/case-study-hiring-managers-read.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/case-study-hiring-managers-read.html</guid>
+    <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
+    <description>A hiring manager gives your portfolio ten seconds. Structure your case study so it earns the next ninety.</description>
+    <category>Careers</category>
+  </item>
+  <item>
     <title>How Pretraining Data Shapes What a Transformer Can Do</title>
     <link>https://jahanzaibawan.com/blog/pretraining-data-shapes-transformers.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/pretraining-data-shapes-transformers.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Mon, 03 Aug 2026 09:00:00 +0000</pubDate>
     <description>Accuracy lies when classes are imbalanced. I walk through macro, micro, and weighted F1 with real numbers so you know which one to trust.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Choosing a Pretrained Transformer: Size, Licence, Context</title>
-    <link>https://jahanzaibawan.com/blog/choosing-a-pretrained-transformer.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/choosing-a-pretrained-transformer.html</guid>
-    <pubDate>Sun, 02 Aug 2026 09:00:00 +0000</pubDate>
-    <description>Model choice is a systems decision, not a leaderboard lookup. Here is how size, licence, and context length interact in practice.</description>
-    <category>NLP</category>
   </item>
 </channel>
 </rss>
