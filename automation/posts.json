@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a5",
       "thumb": "assets/blog/how-many-few-shot-examples.png",
-      "thumb_alt": "Cover image for the article: Few-Shot Prompts: How Many Examples Is Too Many"
+      "thumb_alt": "Cover image for the article: Few-Shot Prompts: How Many Examples Is Too Many",
+      "li_shared": true
     },
     {
       "slug": "structured-prompt-templates",
