@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "how-many-few-shot-examples",
+      "title": "Few-Shot Prompts: How Many Examples Is Too Many",
+      "excerpt": "Adding more few-shot examples feels safe, but past a point it wastes tokens, biases outputs, and can quietly hurt accuracy.",
+      "date": "2026-08-14",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a5",
+      "thumb": "assets/blog/how-many-few-shot-examples.png",
+      "thumb_alt": "Cover image for the article: Few-Shot Prompts: How Many Examples Is Too Many"
+    },
+    {
       "slug": "structured-prompt-templates",
       "title": "Structured Prompt Templates: Stop Guessing, Start Repeating",
       "excerpt": "Ad hoc prompting doesn't scale. A structured template with fixed slots makes prompting testable, versionable, and far easier to debug.",

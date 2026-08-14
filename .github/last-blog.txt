@@ -1,1 +1,1 @@
-2026-08-14T08:01:18Z slug=structured-prompt-templates words=1080 title="Structured Prompt Templates: Stop Guessing, Start Repeating"
+2026-08-14T20:01:08Z slug=how-many-few-shot-examples words=1082 title="Few-Shot Prompts: How Many Examples Is Too Many"

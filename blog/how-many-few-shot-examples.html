@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Few-Shot Prompts: How Many Examples Is Too Many | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical look at how many few-shot examples belong in a prompt, with a worked example showing when adding demonstrations stops helping.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="few-shot prompting, in-context learning, prompt engineering, LLM evaluation, prompt design, context window, large language models, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-14">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Few-Shot Prompts: How Many Examples Is Too Many">
+<meta property="og:description" content="A practical look at how many few-shot examples belong in a prompt, with a worked example showing when adding demonstrations stops helping.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/how-many-few-shot-examples.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/how-many-few-shot-examples.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Few-Shot Prompts: How Many Examples Is Too Many">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/how-many-few-shot-examples.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/how-many-few-shot-examples.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Few-Shot Prompts: How Many Examples Is Too Many",
+  "description": "A practical look at how many few-shot examples belong in a prompt, with a worked example showing when adding demonstrations stops helping.",
+  "url": "https://jahanzaibawan.com/blog/how-many-few-shot-examples.html",
+  "image": "https://jahanzaibawan.com/assets/blog/how-many-few-shot-examples.png",
+  "datePublished": "2026-08-14",
+  "dateModified": "2026-08-14",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/how-many-few-shot-examples.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Few-Shot Prompts: How Many Examples Is Too Many", "item": "https://jahanzaibawan.com/blog/how-many-few-shot-examples.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 14 Aug 2026</div>
+    <h1>Few-Shot Prompts: How Many Examples Is Too Many</h1>
+    <p class="lede">More demonstrations are not always better. Here is how to think about the trade-off between context, cost, and generalisation.</p>
+  </div>
+
+  <img src="../assets/blog/how-many-few-shot-examples.png" alt="Cover image for the article: Few-Shot Prompts: How Many Examples Is Too Many" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the count of examples is a real design decision</h2><p>Few-shot prompting works because a language model conditions its next output on everything in the context window, including the examples you show it before the actual query. Give it three worked examples of turning a messy sentence into a structured record, and it tends to follow that pattern for the fourth. This feels like free performance: no fine-tuning, no labelled training run, just a handful of demonstrations pasted above the real input. The natural instinct is that if two examples help, six should help more, and twelve should help more still.</p><p>That instinct is wrong often enough that it deserves scrutiny. The number of few-shot examples is not a knob you turn up for safety. It interacts with the length of the context, the diversity of the examples, the model's own tendency to imitate surface patterns rather than underlying logic, and the cost of every single call you make. Treating it as a free lunch is exactly the kind of assumption that, if you actually evaluate it properly on held-out data, tends to fall apart.</p><p>I want to work through a concrete case to show where the returns diminish and where they can reverse, and then give a practical way to decide the count instead of guessing.</p></section><section class='psec reveal'><h2>A worked example: classifying customer complaints</h2><p>Imagine a task: classify short customer messages into one of five categories, such as billing, delivery, product fault, account access, and other. You have a pool of labelled examples and you want to build a few-shot prompt for a model that has not been fine-tuned on this task.</p><p>With zero examples, the model relies purely on the category names and whatever it has absorbed about what those words typically mean. Accuracy on a held-out test set might sit around 62 percent, reasonable but shaky on ambiguous cases like a message that mentions both a late delivery and a wrong charge.</p><p>Add two well-chosen examples, one per contrasting category, and accuracy might jump to 74 percent. The model now has a template for the expected format and a sense of the boundary between neighbouring categories. Add two more, covering categories it previously confused, and it might climb to 80 percent. This is the phase where every extra example is doing real work: filling a gap in coverage, disambiguating a genuinely confusing pair of labels.</p><p>Push on to ten examples and the picture usually flattens. Accuracy might sit at 81 percent, barely above the four-example version, because the marginal examples are increasingly similar to ones already shown. Push to twenty and something more troubling can happen: accuracy drops to 78 percent. Why would more correct, relevant examples make things worse? A few mechanisms are usually at play. The model may start pattern-matching on surface features of the examples, such as message length or a particular phrase that happened to repeat, rather than the actual decision rule. Order effects creep in, where labels appearing later in a long list get less attention than the first and last few, a well-documented property of how these models weight context. And if your twenty examples are not perfectly balanced across categories, the model can pick up an implicit frequency bias that skews predictions towards whichever label appeared most.</p><p>The practical lesson from this shape is that there is usually a small window, often somewhere between two and eight examples for a moderately complex classification task, where each addition earns its keep, followed by a plateau, followed by a real risk of degradation if you keep stacking examples without curating them.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/how-many-few-shot-examples-1.jpg' alt='stack of printed customer service emails on desk' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What actually drives the optimal count</h2><p>Task complexity is the first lever. A binary sentiment task with a clear boundary might only need one example per class to establish format, because the underlying rule is simple. A five-way classification with overlapping categories, or a structured extraction task with several optional fields, needs enough examples to demonstrate every edge case at least once, which naturally pushes the useful count higher.</p><p>Example diversity matters more than raw count. Five examples that each cover a distinct failure mode will usually beat fifteen examples that are minor variations on the same two patterns. If you are selecting examples by hand, prioritise coverage of the decision boundaries over volume. If you are selecting them automatically by similarity to the query, watch for the trap where near-duplicate examples get retrieved together and add redundancy rather than signal.</p><p>Context length interacts with this too, and not just through the token budget. Very long prompts push the actual query further from the start of the context, and some models show measurably worse attention to instructions or labels that appear early once the prompt grows past a few thousand tokens. So a twenty-example prompt is not just more expensive, it can genuinely dilute the model's grip on the task definition itself.</p><p>Cost is the boring but decisive factor in production. If each example costs roughly 60 tokens and you are running the prompt against a high-volume endpoint, the difference between four examples and sixteen examples is a meaningful multiple of your token bill, for a gain that, per the worked example above, might be under two accuracy points and could even be negative.</p></section><section class='psec reveal'><h2>A practical way to choose, instead of guessing</h2><p>Treat the example count as a hyperparameter and sweep it on a held-out validation set, the same way you would tune any other setting. Try zero, two, four, eight, and sixteen examples, holding the selection method fixed, and plot accuracy or whatever metric matters against count. The curve will usually show you the plateau directly, and it removes the guesswork entirely.</p><p>Keep the validation set separate from wherever your example pool is drawn, otherwise you risk leakage where the same instances that inform your prompt also inform your evaluation of it, inflating the apparent benefit of more examples. This is the same discipline that applies to any model selection process, just applied to prompt design rather than model weights.</p><p>Finally, once you have a count that works, revisit it whenever the underlying model changes. Larger or differently trained models can have different sensitivities to context length and example count, so a setting tuned on one model version is not guaranteed to transfer. The honest answer to how many examples is too many is: more than the point where your own held-out evaluation stops improving, and that point is specific to your task, your examples, and your model, not a fixed number worth memorising.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/how-many-few-shot-examples-2.jpg' alt='hand highlighting text on paper document' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
