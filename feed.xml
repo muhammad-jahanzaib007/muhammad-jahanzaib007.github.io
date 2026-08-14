@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Thu, 13 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 14 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Structured Prompt Templates: Stop Guessing, Start Repeating</title>
+    <link>https://jahanzaibawan.com/blog/structured-prompt-templates.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/structured-prompt-templates.html</guid>
+    <pubDate>Fri, 14 Aug 2026 09:00:00 +0000</pubDate>
+    <description>Ad hoc prompting doesn&#x27;t scale. A structured template with fixed slots makes prompting testable, versionable, and far easier to debug.</description>
+    <category>Prompt Engineering</category>
+  </item>
   <item>
     <title>Building a Case Study a Hiring Manager Will Actually Read</title>
     <link>https://jahanzaibawan.com/blog/case-study-hiring-managers-read.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/fine-tuning-vs-few-shot-prompting.html</guid>
     <pubDate>Mon, 03 Aug 2026 09:00:00 +0000</pubDate>
     <description>With small labelled datasets, fine-tuning and few-shot prompting fail differently. Here&#x27;s how to choose, and how to evaluate the choice honestly.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Macro, Micro, and Weighted Averages Explained Properly</title>
-    <link>https://jahanzaibawan.com/blog/macro-micro-weighted-averages.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/macro-micro-weighted-averages.html</guid>
-    <pubDate>Mon, 03 Aug 2026 09:00:00 +0000</pubDate>
-    <description>Accuracy lies when classes are imbalanced. I walk through macro, micro, and weighted F1 with real numbers so you know which one to trust.</description>
     <category>Evaluation</category>
   </item>
 </channel>

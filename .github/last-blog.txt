@@ -1,1 +1,1 @@
-2026-08-13T20:01:08Z slug=case-study-hiring-managers-read words=952 title="Building a Case Study a Hiring Manager Will Actually Read"
+2026-08-14T08:01:18Z slug=structured-prompt-templates words=1080 title="Structured Prompt Templates: Stop Guessing, Start Repeating"

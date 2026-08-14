@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "structured-prompt-templates",
+      "title": "Structured Prompt Templates: Stop Guessing, Start Repeating",
+      "excerpt": "Ad hoc prompting doesn't scale. A structured template with fixed slots makes prompting testable, versionable, and far easier to debug.",
+      "date": "2026-08-14",
+      "read_min": 5,
+      "tag": "Prompt Engineering",
+      "color": "a4",
+      "thumb": "assets/blog/structured-prompt-templates.png",
+      "thumb_alt": "Cover image for the article: Structured Prompt Templates: Stop Guessing, Start Repeating"
+    },
+    {
       "slug": "case-study-hiring-managers-read",
       "title": "Building a Case Study a Hiring Manager Will Actually Read",
       "excerpt": "A hiring manager gives your portfolio ten seconds. Structure your case study so it earns the next ninety.",
