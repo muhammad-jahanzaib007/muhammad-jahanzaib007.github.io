@@ -9,7 +9,8 @@
       "tag": "Prompt Engineering",
       "color": "a4",
       "thumb": "assets/blog/structured-prompt-templates.png",
-      "thumb_alt": "Cover image for the article: Structured Prompt Templates: Stop Guessing, Start Repeating"
+      "thumb_alt": "Cover image for the article: Structured Prompt Templates: Stop Guessing, Start Repeating",
+      "li_shared": true
     },
     {
       "slug": "case-study-hiring-managers-read",
