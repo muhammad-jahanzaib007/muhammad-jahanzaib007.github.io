@@ -9,7 +9,8 @@
       "tag": "NLP",
       "color": "a2",
       "thumb": "assets/blog/chain-of-thought-prompting-tradeoffs.png",
-      "thumb_alt": "Cover image for the article: Chain-of-Thought Prompting: When It Helps, When It Hurts"
+      "thumb_alt": "Cover image for the article: Chain-of-Thought Prompting: When It Helps, When It Hurts",
+      "li_shared": true
     },
     {
       "slug": "system-prompts-versus-user-prompts",
