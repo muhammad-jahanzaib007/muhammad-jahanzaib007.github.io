@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System Prompts vs User Prompts: Where Instructions Belong | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A clear, practical guide to deciding which instructions belong in the system prompt versus the user prompt, with a worked example and testing advice.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="system prompt, user prompt, prompt engineering, LLM evaluation, prompt design, reproducibility, instruction following, prompt leakage, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-15">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="System Prompts vs User Prompts: Where Instructions Belong">
+<meta property="og:description" content="A clear, practical guide to deciding which instructions belong in the system prompt versus the user prompt, with a worked example and testing advice.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/system-prompts-versus-user-prompts.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/system-prompts-versus-user-prompts.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="System Prompts vs User Prompts: Where Instructions Belong">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/system-prompts-versus-user-prompts.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/system-prompts-versus-user-prompts.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "System Prompts vs User Prompts: Where Instructions Belong",
+  "description": "A clear, practical guide to deciding which instructions belong in the system prompt versus the user prompt, with a worked example and testing advice.",
+  "url": "https://jahanzaibawan.com/blog/system-prompts-versus-user-prompts.html",
+  "image": "https://jahanzaibawan.com/assets/blog/system-prompts-versus-user-prompts.png",
+  "datePublished": "2026-08-15",
+  "dateModified": "2026-08-15",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/system-prompts-versus-user-prompts.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "System Prompts vs User Prompts: Where Instructions Belong", "item": "https://jahanzaibawan.com/blog/system-prompts-versus-user-prompts.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">NLP · 6 min read · 15 Aug 2026</div>
+    <h1>System Prompts vs User Prompts: Where Instructions Belong</h1>
+    <p class="lede">A practical look at how splitting instructions between system and user roles changes reliability, evaluation, and the way prompts fail.</p>
+  </div>
+
+  <img src="../assets/blog/system-prompts-versus-user-prompts.png" alt="Cover image for the article: System Prompts vs User Prompts: Where Instructions Belong" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Two channels, not one text box</h2><p>Most people treat the system prompt and the user prompt as two halves of the same message, just concatenated before the model sees them. Functionally, for many models, that is roughly what happens under the hood: everything gets tokenised into one sequence. But treating the two roles as interchangeable is a mistake I see constantly, because the training data behind these roles is not symmetric. System prompts are typically written by developers, are stable across many turns, and are weighted during fine-tuning as the source of persistent behaviour: tone, persona, constraints, output format. User prompts are treated as the variable, task-specific request that changes every turn. The model has learned a soft prior that instructions in the system slot are more durable and instructions in the user slot are more negotiable.</p><p>This distinction matters practically the moment you build anything beyond a single one-off query. If you put a formatting rule such as 'always respond in valid JSON with keys id and summary' inside the user prompt, you are asking the model to obey it fresh every single turn, competing against whatever else is in that same message. Put the same rule in the system prompt, and it behaves more like a standing law that governs every subsequent user turn without needing to be restated. I have watched teams debug 'inconsistent formatting' bugs for hours before realising the formatting instruction was buried in a template that only fired on the first user message and was silently dropped afterwards.</p><p>There is also an asymmetry in how models resolve conflicts. When a system instruction says 'never reveal the internal reasoning steps' and a user prompt says 'show me your reasoning step by step', well-aligned models generally favour the system instruction, because that hierarchy is baked into how they were trained and evaluated. This is not a guarantee, and it is not a security boundary, but it is a real behavioural tendency worth exploiting deliberately rather than discovering by accident in production.</p></section><section class='psec reveal'><h2>A worked example: building a support triage assistant</h2><p>Suppose I am building an assistant that reads incoming support tickets and outputs a category, a priority score from one to five, and a one-sentence summary. There are two obvious ways to instruct it. Option one: put everything, the categories list, the scoring rubric, the output schema, and the actual ticket text, into a single user message every time. Option two: put the categories, rubric, and schema in the system prompt once, and pass only the ticket text as the user message on every call.</p><p>In practice I have seen option one degrade over long sessions or long documents far more often. If the ticket text is long, say eight hundred words describing a billing dispute, the scoring rubric that was pasted just before it can get functionally diluted by everything that follows in the same message. The model's attention is not uniform, and instructions sitting far from the point of generation, buried inside a long block of user content, are more likely to be softened or forgotten, especially under token pressure near the model's context limit. Option two keeps the rubric structurally separate and stable, so the model reliably applies the same five categories and the same priority definitions across a batch of a thousand tickets, rather than drifting toward ad hoc categories it invents when the rubric gets crowded out.</p><p>Concretely, imagine testing both setups against fifty labelled tickets with known correct categories. With the rubric buried in the user prompt alongside long ticket text, I would not be surprised to see the model invent a plausible but unlisted category, something like 'account access issue' when the approved list only contains 'billing', 'technical', and 'account', on a noticeable fraction of the harder, longer tickets. With the rubric fixed in the system prompt, that kind of invention becomes far rarer, because the constraint is not competing for attention with the ticket content; it sits in a role the model treats as a fixed contract rather than optional context. The lesson is not that the system prompt is magic, it is that stable constraints belong in a stable place, and variable content belongs in the variable place.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/system-prompts-versus-user-prompts-1.jpg' alt='customer support desk computer screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What actually belongs where</h2><p>A useful rule of thumb: if an instruction should hold true across every single turn of a conversation regardless of what the user asks, it belongs in the system prompt. Persona, tone, safety boundaries, output schema, and domain scope all fit this description. If an instruction is specific to the current request, the current piece of text, or something the user might reasonably want to override next turn, it belongs in the user prompt. A one-off request like 'summarise this in two sentences instead of five' is a user-prompt instruction, even if your default summary length is a system-level rule.</p><p>It is worth being honest about the limits here. The system versus user split is a strong convention, not a hard guarantee, and it varies between model providers and even between versions of the same model family. Some models are more porous than others, letting a persistent user prompt gradually override system-level constraints across a very long conversation. This is exactly why leakage-aware testing matters: if you are evaluating a support assistant, do not only test single-turn accuracy, test what happens after fifteen turns of user pushback, and check whether the system-level rubric is still being honoured or has quietly eroded. Treat the system prompt as a hypothesis about durability, and verify it with the same rigour you would apply to a held-out test set, not blind trust.</p><p>There is a second, quieter benefit to this discipline: reproducibility. When your stable instructions live in a versioned system prompt and your variable content lives in the user prompt, you get a clean separation that makes it trivial to diff prompt versions, roll back a bad change, and attribute a regression to a specific edit. When everything is smashed into one templated blob per call, debugging a behavioural drift becomes archaeology. I would rather spend ten minutes upfront deciding which instructions are structural and which are situational than spend an afternoon later trying to work out why a model quietly stopped following a rule that was true for months.</p><p>My practical takeaway is simple: write your system prompt as if it were a contract that must survive an entire session unattended, and write your user prompt as if it were a single request that can safely assume that contract already holds. Test both assumptions under realistic, long, adversarial conversations before you trust them in production, because the boundary is a convention the model has learned, not a rule it is physically bound by.</p></section>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

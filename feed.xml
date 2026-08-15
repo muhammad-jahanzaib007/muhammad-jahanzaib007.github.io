@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Fri, 14 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 15 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>System Prompts vs User Prompts: Where Instructions Belong</title>
+    <link>https://jahanzaibawan.com/blog/system-prompts-versus-user-prompts.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/system-prompts-versus-user-prompts.html</guid>
+    <pubDate>Sat, 15 Aug 2026 09:00:00 +0000</pubDate>
+    <description>System prompts and user prompts are not interchangeable containers. Where you put an instruction changes how reliably a model follows it.</description>
+    <category>NLP</category>
+  </item>
   <item>
     <title>Few-Shot Prompts: How Many Examples Is Too Many</title>
     <link>https://jahanzaibawan.com/blog/how-many-few-shot-examples.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Tue, 04 Aug 2026 09:00:00 +0000</pubDate>
     <description>Before anyone downloads your model, tell them what it was trained on, how it was evaluated, and where it breaks. Here is the minimal version that actually gets written.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>The Actual Skills That Get You Hired as an ML Engineer</title>
-    <link>https://jahanzaibawan.com/blog/skills-that-get-you-hired-mle.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/skills-that-get-you-hired-mle.html</guid>
-    <pubDate>Tue, 04 Aug 2026 09:00:00 +0000</pubDate>
-    <description>Hiring for ML engineering rewards rigorous evaluation and shipping discipline, not the fanciest model architecture on your CV.</description>
-    <category>Careers</category>
   </item>
 </channel>
 </rss>

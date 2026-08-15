@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "system-prompts-versus-user-prompts",
+      "title": "System Prompts vs User Prompts: Where Instructions Belong",
+      "excerpt": "System prompts and user prompts are not interchangeable containers. Where you put an instruction changes how reliably a model follows it.",
+      "date": "2026-08-15",
+      "read_min": 6,
+      "tag": "NLP",
+      "color": "a6",
+      "thumb": "assets/blog/system-prompts-versus-user-prompts.png",
+      "thumb_alt": "Cover image for the article: System Prompts vs User Prompts: Where Instructions Belong"
+    },
+    {
       "slug": "how-many-few-shot-examples",
       "title": "Few-Shot Prompts: How Many Examples Is Too Many",
       "excerpt": "Adding more few-shot examples feels safe, but past a point it wastes tokens, biases outputs, and can quietly hurt accuracy.",

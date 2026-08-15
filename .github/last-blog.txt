@@ -1,1 +1,1 @@
-2026-08-14T20:01:08Z slug=how-many-few-shot-examples words=1082 title="Few-Shot Prompts: How Many Examples Is Too Many"
+2026-08-15T08:01:35Z slug=system-prompts-versus-user-prompts words=1115 title="System Prompts vs User Prompts: Where Instructions Belong"
