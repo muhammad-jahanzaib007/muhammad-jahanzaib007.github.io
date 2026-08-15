@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Sat, 15 Aug 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Chain-of-Thought Prompting: When It Helps, When It Hurts</title>
+    <link>https://jahanzaibawan.com/blog/chain-of-thought-prompting-tradeoffs.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/chain-of-thought-prompting-tradeoffs.html</guid>
+    <pubDate>Sat, 15 Aug 2026 09:00:00 +0000</pubDate>
+    <description>Chain-of-thought prompting boosts performance on some tasks and quietly degrades it on others. I unpack the mechanism, a worked example, and when to skip it.</description>
+    <category>NLP</category>
+  </item>
+  <item>
     <title>System Prompts vs User Prompts: Where Instructions Belong</title>
     <link>https://jahanzaibawan.com/blog/system-prompts-versus-user-prompts.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/system-prompts-versus-user-prompts.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/domain-adaptation-vs-fine-tuning.html</guid>
     <pubDate>Wed, 05 Aug 2026 09:00:00 +0000</pubDate>
     <description>Fine-tuning a model on new data is not the same as adapting it to a new domain. The difference decides whether your reported gains survive contact with reality.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Building a Minimal Model Card Before Anyone Uses Your Model</title>
-    <link>https://jahanzaibawan.com/blog/minimal-model-card-checklist.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/minimal-model-card-checklist.html</guid>
-    <pubDate>Tue, 04 Aug 2026 09:00:00 +0000</pubDate>
-    <description>Before anyone downloads your model, tell them what it was trained on, how it was evaluated, and where it breaks. Here is the minimal version that actually gets written.</description>
     <category>Evaluation</category>
   </item>
 </channel>

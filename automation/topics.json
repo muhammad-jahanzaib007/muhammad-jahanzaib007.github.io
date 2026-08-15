@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Chain-of-thought prompting: when reasoning steps help and when they hurt",
     "Evaluation harnesses for prompts: treating prompt changes like model changes",
     "Interview questions for MLOps roles: what they are really testing",
     "Setting up your first MLOps project on a laptop before touching the cloud",
@@ -119,6 +118,7 @@
     "Building a case study for your portfolio that a hiring manager will actually read",
     "Structured prompt templates: a repeatable format instead of trial and error",
     "Few-shot examples in prompts: how many is too many",
-    "System prompts versus user prompts: where instructions actually belong"
+    "System prompts versus user prompts: where instructions actually belong",
+    "Chain-of-thought prompting: when reasoning steps help and when they hurt"
   ]
 }

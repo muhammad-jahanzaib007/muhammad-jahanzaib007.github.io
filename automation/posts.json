@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "chain-of-thought-prompting-tradeoffs",
+      "title": "Chain-of-Thought Prompting: When It Helps, When It Hurts",
+      "excerpt": "Chain-of-thought prompting boosts performance on some tasks and quietly degrades it on others. I unpack the mechanism, a worked example, and when to skip it.",
+      "date": "2026-08-15",
+      "read_min": 5,
+      "tag": "NLP",
+      "color": "a2",
+      "thumb": "assets/blog/chain-of-thought-prompting-tradeoffs.png",
+      "thumb_alt": "Cover image for the article: Chain-of-Thought Prompting: When It Helps, When It Hurts"
+    },
+    {
       "slug": "system-prompts-versus-user-prompts",
       "title": "System Prompts vs User Prompts: Where Instructions Belong",
       "excerpt": "System prompts and user prompts are not interchangeable containers. Where you put an instruction changes how reliably a model follows it.",

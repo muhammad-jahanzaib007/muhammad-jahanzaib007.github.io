@@ -1,1 +1,1 @@
-2026-08-15T08:01:35Z slug=system-prompts-versus-user-prompts words=1115 title="System Prompts vs User Prompts: Where Instructions Belong"
+2026-08-15T20:01:35Z slug=chain-of-thought-prompting-tradeoffs words=1043 title="Chain-of-Thought Prompting: When It Helps, When It Hurts"

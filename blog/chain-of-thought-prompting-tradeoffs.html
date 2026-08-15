@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chain-of-Thought Prompting: When It Helps, When It Hurts | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical look at chain-of-thought prompting: the mechanism behind its gains, a worked arithmetic example, and when reasoning steps actually hurt accuracy.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="chain-of-thought prompting, large language models, prompt engineering, LLM evaluation, reasoning, NLP, few-shot prompting, model evaluation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-15">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Chain-of-Thought Prompting: When It Helps, When It Hurts">
+<meta property="og:description" content="A practical look at chain-of-thought prompting: the mechanism behind its gains, a worked arithmetic example, and when reasoning steps actually hurt accuracy.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/chain-of-thought-prompting-tradeoffs.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/chain-of-thought-prompting-tradeoffs.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Chain-of-Thought Prompting: When It Helps, When It Hurts">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/chain-of-thought-prompting-tradeoffs.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/chain-of-thought-prompting-tradeoffs.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Chain-of-Thought Prompting: When It Helps, When It Hurts",
+  "description": "A practical look at chain-of-thought prompting: the mechanism behind its gains, a worked arithmetic example, and when reasoning steps actually hurt accuracy.",
+  "url": "https://jahanzaibawan.com/blog/chain-of-thought-prompting-tradeoffs.html",
+  "image": "https://jahanzaibawan.com/assets/blog/chain-of-thought-prompting-tradeoffs.png",
+  "datePublished": "2026-08-15",
+  "dateModified": "2026-08-15",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/chain-of-thought-prompting-tradeoffs.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Chain-of-Thought Prompting: When It Helps, When It Hurts", "item": "https://jahanzaibawan.com/blog/chain-of-thought-prompting-tradeoffs.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">NLP · 5 min read · 15 Aug 2026</div>
+    <h1>Chain-of-Thought Prompting: When It Helps, When It Hurts</h1>
+    <p class="lede">Asking a model to show its working can unlock genuine reasoning gains, but it can just as easily add noise, cost, and false confidence. Here is how to tell the difference.</p>
+  </div>
+
+  <img src="../assets/blog/chain-of-thought-prompting-tradeoffs.png" alt="Cover image for the article: Chain-of-Thought Prompting: When It Helps, When It Hurts" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the idea matters</h2><p>Chain-of-thought prompting asks a language model to write out intermediate reasoning steps before giving a final answer, rather than jumping straight to a conclusion. The appeal is obvious: if a model shows its working, we assume it is more likely to catch its own mistakes, and we get a trace we can inspect. Early demonstrations on multi-step arithmetic and logic puzzles showed striking accuracy gains simply from adding a phrase like 'let us think step by step' or a few worked examples with explicit reasoning.</p><p>But treating chain-of-thought as a universal upgrade is a mistake I see repeated often, including in my own early experiments. The technique changes the distribution of tokens the model generates before it commits to an answer, and that shift is only helpful when the task actually benefits from decomposition. For tasks that are essentially pattern lookups, or where the reasoning trace itself introduces errors that then get propagated, forcing a chain of thought can make performance worse, slower, and harder to audit.</p><p>This matters practically because prompting decisions are rarely benchmarked properly before they ship. A team sees a promising anecdote, chain-of-thought fixes a tricky example, and the pattern becomes house style across an entire product. Without a leakage-aware, task-matched evaluation, you cannot tell whether you have found a genuine improvement or just a placebo that happens to look articulate.</p></section><section class='psec reveal'><h2>A worked example: arithmetic versus retrieval</h2><p>Consider a simple multi-step arithmetic problem: a shop sells 3 boxes of 12 pens each at 2 pounds per pen, then applies a 15 percent discount on the total. Compute the final price. Asked directly for a single number, a model has to hold four operations in its head implicitly and often slips on the order of operations or the discount arithmetic, producing something like 39.10 pounds when the correct answer is 30.60 pounds. Asked to reason step by step, the model can write: 3 boxes times 12 pens is 36 pens; 36 pens times 2 pounds is 72 pounds; 15 percent of 72 is 10.80; 72 minus 10.80 is 61.20. Even if a step is wrong along the way, the explicit structure makes it far easier to write correct arithmetic than to produce it in one leap, and this is where chain-of-thought earns its reputation: compositional tasks with a small number of clearly separable steps.</p><p>Now take a different kind of question: 'what is the capital of the country where the Amazon rainforest is mostly located?' This is a two-hop factual lookup, not a computation. A model that already has the fact 'Brazil contains most of the Amazon' and 'Brasilia is the capital of Brazil' stored can answer directly and correctly. Forcing a chain of thought here sometimes helps by making the intermediate fact explicit, but just as often it invites the model to hedge, second-guess a correct initial instinct, or drift into a plausible-sounding but wrong chain, for instance conflating population centres with capitals. I have seen direct-answer prompting outperform chain-of-thought on exactly this style of factual question, because the reasoning trace gives the model more surface area to talk itself out of a correct answer it already had.</p><p>The pattern that emerges is that chain-of-thought helps most when the task decomposes cleanly into steps the model can execute more reliably in isolation than jointly, and helps least, or actively hurts, when the task is a single retrieval, a classification with a short label space, or a judgement call where elaboration mainly adds opportunities for the model to rationalise an initial mistake.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/chain-of-thought-prompting-tradeoffs-1.jpg' alt='hand solving math problem on paper' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Where reasoning traces backfire</h2><p>There are three recurring failure modes worth naming explicitly. The first is snowballing: an early error in the trace becomes a premise for later steps, and the model, having committed to it in text, rarely backtracks. If the first line of arithmetic in my pens example were wrong, say 3 times 12 written as 32, everything downstream inherits that error while looking perfectly coherent. A single wrong number early in a long chain is more damaging than a wrong number produced in isolation, because the explanation lends it false authority.</p><p>The second is post-hoc rationalisation. On tasks involving sentiment, tone, or subjective judgement, models sometimes produce a chain of thought that reads as reasoning but is actually generated after the answer has effectively already been decided by the model's internal representations, then dressed up to justify it. This is hard to detect from the transcript alone, since the text looks like genuine deliberation. It matters for evaluation because a convincing-looking rationale is not evidence that the underlying decision process was sound, and it should not be mistaken for interpretability.</p><p>The third is cost and latency without benefit. Every additional token of reasoning costs compute and time, and in a production system serving many requests, an unnecessary reasoning trace on a task that did not need one is pure overhead. If a classifier task shows no measurable accuracy gain from chain-of-thought on a held-out, non-leaking test set, the extra tokens are a tax with no return, and that tax compounds at scale.</p></section><section class='psec reveal'><h2>A practical way to decide</h2><p>My rule of thumb is to test both prompting styles on a proper held-out split before choosing one, rather than trusting intuition or a handful of anecdotes. Split your evaluation set the same way you would for a supervised model, keep it separate from anything used to write or tune the prompt, and measure accuracy, latency, and token cost for direct-answer and chain-of-thought variants side by side. If the gain is within noise, or only appears on a handful of examples you already knew were hard, prefer the cheaper direct prompt and reserve reasoning traces for genuinely multi-step tasks.</p><p>It is also worth checking whether the reasoning trace is doing real work or just narrating a decision the model would have made anyway. One quick diagnostic is to compare the final answer distribution with and without the chain of thought on the same inputs; if they rarely disagree, the elaboration is not changing outcomes and mainly adds cost and a false sense of transparency. The broader lesson is that chain-of-thought is a tool for compositional problems, not a general-purpose accuracy switch, and treating it that way protects both your evaluation and your compute budget.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/chain-of-thought-prompting-tradeoffs-2.jpg' alt='person typing on laptop with notebook' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
