@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "prompt-evaluation-harnesses",
+      "title": "Evaluation Harnesses for Prompts: Treat Them Like Models",
+      "excerpt": "Prompt edits change behaviour just like model swaps do. Here is why they deserve the same evaluation discipline.",
+      "date": "2026-08-16",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a3",
+      "thumb": "assets/blog/prompt-evaluation-harnesses.png",
+      "thumb_alt": "Cover image for the article: Evaluation Harnesses for Prompts: Treat Them Like Models"
+    },
+    {
       "slug": "chain-of-thought-prompting-tradeoffs",
       "title": "Chain-of-Thought Prompting: When It Helps, When It Hurts",
       "excerpt": "Chain-of-thought prompting boosts performance on some tasks and quietly degrades it on others. I unpack the mechanism, a worked example, and when to skip it.",

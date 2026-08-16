@@ -1,1 +1,1 @@
-2026-08-15T20:01:35Z slug=chain-of-thought-prompting-tradeoffs words=1043 title="Chain-of-Thought Prompting: When It Helps, When It Hurts"
+2026-08-16T08:01:13Z slug=prompt-evaluation-harnesses words=1072 title="Evaluation Harnesses for Prompts: Treat Them Like Models"

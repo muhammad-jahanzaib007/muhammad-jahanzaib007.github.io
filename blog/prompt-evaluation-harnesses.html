@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evaluation Harnesses for Prompts: Treat Them Like Models | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why prompt changes need the same rigorous, leakage-aware evaluation harnesses as model changes, with a worked example of what can go wrong without one.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="prompt engineering, evaluation harness, LLM evaluation, regression testing, leakage, reproducibility, prompt versioning, machine learning evaluation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-16">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Evaluation Harnesses for Prompts: Treat Them Like Models">
+<meta property="og:description" content="Why prompt changes need the same rigorous, leakage-aware evaluation harnesses as model changes, with a worked example of what can go wrong without one.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/prompt-evaluation-harnesses.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/prompt-evaluation-harnesses.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Evaluation Harnesses for Prompts: Treat Them Like Models">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/prompt-evaluation-harnesses.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/prompt-evaluation-harnesses.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Evaluation Harnesses for Prompts: Treat Them Like Models",
+  "description": "Why prompt changes need the same rigorous, leakage-aware evaluation harnesses as model changes, with a worked example of what can go wrong without one.",
+  "url": "https://jahanzaibawan.com/blog/prompt-evaluation-harnesses.html",
+  "image": "https://jahanzaibawan.com/assets/blog/prompt-evaluation-harnesses.png",
+  "datePublished": "2026-08-16",
+  "dateModified": "2026-08-16",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/prompt-evaluation-harnesses.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Evaluation Harnesses for Prompts: Treat Them Like Models", "item": "https://jahanzaibawan.com/blog/prompt-evaluation-harnesses.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 16 Aug 2026</div>
+    <h1>Evaluation Harnesses for Prompts: Treat Them Like Models</h1>
+    <p class="lede">A change in wording is still a change in behaviour. If you would not ship a new model without evaluation, you should not ship a new prompt without it either.</p>
+  </div>
+
+  <img src="../assets/blog/prompt-evaluation-harnesses.png" alt="Cover image for the article: Evaluation Harnesses for Prompts: Treat Them Like Models" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this matters</h2><p>Somewhere along the way, prompts came to be treated as second-class artefacts. Teams that would never dream of swapping a model checkpoint without running a full evaluation suite will happily rewrite a system prompt, tweak a few instructions, or add a new example, and ship it the same afternoon based on a handful of manual checks. This asymmetry does not make sense, because a prompt is part of the system that produces the output. Change the prompt and you have changed the function being computed, in the same way that changing weights does.</p><p>The reason this gets overlooked is psychological rather than technical. A new model feels like a new object, something with a version number and a training run behind it, so it earns scrutiny. A prompt edit feels like editing a sentence, something closer to copywriting than engineering. But from the point of view of the system's behaviour, there is no meaningful difference. Both are interventions that change inputs to a fixed inference process and both can move accuracy, safety, latency, and cost in ways that are not obvious from reading the diff.</p><p>Once you accept that framing, the natural next step is to ask what discipline we already apply to model changes and whether it transfers. It mostly does, with a few prompt-specific wrinkles worth calling out.</p></section><section class='psec reveal'><h2>What a harness actually needs</h2><p>A proper evaluation harness for model changes usually has three ingredients: a held-out test set that the change has never seen, a fixed set of metrics that reflect what actually matters for the task, and a comparison protocol that reports not just the new score but the delta against a documented baseline. Prompts need exactly the same three things, and skipping any one of them is where teams get burned.</p><p>Take a customer support classifier built on an instruction-following model, where the prompt describes categories and gives a few worked examples. Suppose someone rewrites the instructions to be clearer, reordering the category list and tightening the wording. On a manual spot check of ten tickets, the new prompt looks better: the outputs read more naturally and two previously mislabelled tickets are now correct. It gets merged. Two weeks later, aggregate accuracy on the full weekly batch has dropped from around ninety two per cent to eighty six per cent, because the reordering pushed a rare but high-volume category further down the list, and the model started defaulting to the first plausible category more often under time pressure in longer tickets. Ten examples were never going to reveal that; a held-out set of a few hundred tickets, stratified by category frequency, would have caught it before deployment.</p><p>This is the same lesson leakage-aware evaluation teaches for models: small, convenient samples systematically flatter changes that happen to fit them, and the gap between a spot check and a proper test set widens exactly when it matters most, at the tail of the distribution rather than the head. A prompt evaluation set should be built once, frozen, and reused across every candidate prompt, with enough examples per category or scenario that a regression cannot hide in the noise.</p><p>The comparison protocol matters just as much as the data. Reporting a single accuracy number for a new prompt tells you almost nothing; reporting it alongside the baseline prompt's score on the identical set, computed in the identical run, tells you whether the change actually helped. Because generation is stochastic, that also means running each prompt multiple times per example, or fixing the sampling temperature to zero where the task allows it, so that a single lucky draw is not mistaken for a genuine improvement.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/prompt-evaluation-harnesses-1.jpg' alt='whiteboard with equations' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Treating prompts as versioned artefacts</h2><p>If a prompt is a component with measurable behaviour, it deserves the same version control that code and model weights get. That means storing prompts as files rather than embedding them inline in application code where they are easy to edit casually and hard to diff. It means giving each prompt a version identifier and recording, alongside it, the evaluation scores it achieved, the date it was tested, and which model it was tested against, because a prompt tuned for one model can behave quite differently on another.</p><p>That last point deserves emphasis. A prompt is not a universal artefact; it is tuned, whether deliberately or by accident, to the quirks of a specific model. Swap the underlying model and the same wording can produce a noticeably different accuracy profile, because instruction-following style, context window handling, and even sensitivity to formatting differ across models. This means a prompt evaluation harness cannot be a one-off exercise done at launch. It needs to run again whenever the underlying model is updated, exactly as you would re-run a downstream evaluation after a dependency upgrade, because a silent provider-side model update can shift your metrics without you having changed a single character of your own prompt.</p><p>It is also worth separating two kinds of prompt evaluation that get conflated in practice. One is offline evaluation against a fixed labelled set, which tells you whether a candidate prompt is likely to be an improvement before it reaches anyone. The other is online monitoring after deployment, which catches drift in the input distribution that the offline set never anticipated, such as a new category of customer query appearing after a product launch. Both are necessary and neither substitutes for the other; a prompt that scores well offline can still degrade quietly online if the world it operates in has shifted since the test set was built.</p></section><section class='psec reveal'><h2>Practical takeaway</h2><p>The concrete habit worth adopting is small: before merging any prompt change, run it against the same frozen evaluation set used for the current production prompt, report the delta rather than the absolute number, and require that delta to be positive, or at least not negative on any subgroup that matters, before it ships. Store the prompt as a versioned file with its evaluation history attached, and re-run that evaluation whenever the underlying model changes, not just when the prompt text does.</p><p>None of this requires exotic tooling. A spreadsheet of examples with expected outputs and a script that runs both prompts and diffs the scores is enough to start. What matters is the discipline, not the sophistication: prompts change behaviour the same way model swaps do, so they earn the same scepticism, the same held-out data, and the same insistence on evidence before anything reaches production.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/prompt-evaluation-harnesses-2.jpg' alt='laptop showing spreadsheet data' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
