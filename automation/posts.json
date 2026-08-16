@@ -9,7 +9,8 @@
       "tag": "MLOps",
       "color": "a4",
       "thumb": "assets/blog/mlops-interview-questions-explained.png",
-      "thumb_alt": "Cover image for the article: Interview Questions for MLOps Roles: What They Really Test"
+      "thumb_alt": "Cover image for the article: Interview Questions for MLOps Roles: What They Really Test",
+      "li_shared": true
     },
     {
       "slug": "prompt-evaluation-harnesses",
