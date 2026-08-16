@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a3",
       "thumb": "assets/blog/prompt-evaluation-harnesses.png",
-      "thumb_alt": "Cover image for the article: Evaluation Harnesses for Prompts: Treat Them Like Models"
+      "thumb_alt": "Cover image for the article: Evaluation Harnesses for Prompts: Treat Them Like Models",
+      "li_shared": true
     },
     {
       "slug": "chain-of-thought-prompting-tradeoffs",
