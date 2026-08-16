@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Sun, 16 Aug 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Interview Questions for MLOps Roles: What They Really Test</title>
+    <link>https://jahanzaibawan.com/blog/mlops-interview-questions-explained.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/mlops-interview-questions-explained.html</guid>
+    <pubDate>Sun, 16 Aug 2026 09:00:00 +0000</pubDate>
+    <description>MLOps interviews rarely test frameworks. They test whether you understand failure, reproducibility, and who gets paged at 3am.</description>
+    <category>MLOps</category>
+  </item>
+  <item>
     <title>Evaluation Harnesses for Prompts: Treat Them Like Models</title>
     <link>https://jahanzaibawan.com/blog/prompt-evaluation-harnesses.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/prompt-evaluation-harnesses.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Fri, 07 Aug 2026 09:00:00 +0000</pubDate>
     <description>Self-attention is permutation-invariant by default. Without positional encodings, a transformer literally cannot tell &#x27;dog bites man&#x27; from &#x27;man bites dog&#x27;.</description>
     <category>Deep Learning</category>
-  </item>
-  <item>
-    <title>Sequence Labelling Metrics: Why Token Accuracy Lies</title>
-    <link>https://jahanzaibawan.com/blog/sequence-labelling-metrics-accuracy.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/sequence-labelling-metrics-accuracy.html</guid>
-    <pubDate>Wed, 05 Aug 2026 09:00:00 +0000</pubDate>
-    <description>High token accuracy on sequence labelling tasks can mask a much worse entity-level error rate. Here&#x27;s the arithmetic that proves it.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>

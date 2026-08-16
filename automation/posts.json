@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "mlops-interview-questions-explained",
+      "title": "Interview Questions for MLOps Roles: What They Really Test",
+      "excerpt": "MLOps interviews rarely test frameworks. They test whether you understand failure, reproducibility, and who gets paged at 3am.",
+      "date": "2026-08-16",
+      "read_min": 5,
+      "tag": "MLOps",
+      "color": "a4",
+      "thumb": "assets/blog/mlops-interview-questions-explained.png",
+      "thumb_alt": "Cover image for the article: Interview Questions for MLOps Roles: What They Really Test"
+    },
+    {
       "slug": "prompt-evaluation-harnesses",
       "title": "Evaluation Harnesses for Prompts: Treat Them Like Models",
       "excerpt": "Prompt edits change behaviour just like model swaps do. Here is why they deserve the same evaluation discipline.",
