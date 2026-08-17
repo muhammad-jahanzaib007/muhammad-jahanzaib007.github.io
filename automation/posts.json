@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "mlops-for-a-team-of-one",
+      "title": "MLOps for a Team of One: What to Automate First",
+      "excerpt": "You cannot automate everything as a solo practitioner. Here is the order that actually saves time: data checks, then retraining, then serving, then monitoring.",
+      "date": "2026-08-17",
+      "read_min": 5,
+      "tag": "MLOps",
+      "color": "a6",
+      "thumb": "assets/blog/mlops-for-a-team-of-one.png",
+      "thumb_alt": "Cover image for the article: MLOps for a Team of One: What to Automate First"
+    },
+    {
       "slug": "mlops-on-your-laptop-first",
       "title": "Setting Up Your First MLOps Project on a Laptop",
       "excerpt": "Cloud infrastructure will not fix a badly designed pipeline. Build the habits first, on your laptop, then scale.",

@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Mon, 17 Aug 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>MLOps for a Team of One: What to Automate First</title>
+    <link>https://jahanzaibawan.com/blog/mlops-for-a-team-of-one.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/mlops-for-a-team-of-one.html</guid>
+    <pubDate>Mon, 17 Aug 2026 09:00:00 +0000</pubDate>
+    <description>You cannot automate everything as a solo practitioner. Here is the order that actually saves time: data checks, then retraining, then serving, then monitoring.</description>
+    <category>MLOps</category>
+  </item>
+  <item>
     <title>Setting Up Your First MLOps Project on a Laptop</title>
     <link>https://jahanzaibawan.com/blog/mlops-on-your-laptop-first.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/mlops-on-your-laptop-first.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Sat, 08 Aug 2026 09:00:00 +0000</pubDate>
     <description>Prompt tricks age fast, but the underlying skills of decomposition, evaluation and constraint design do not. Here is how to tell the difference.</description>
     <category>NLP</category>
-  </item>
-  <item>
-    <title>MLOps Tools Compared: Ten Users Versus Ten Thousand</title>
-    <link>https://jahanzaibawan.com/blog/mlops-tools-ten-vs-ten-thousand.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/mlops-tools-ten-vs-ten-thousand.html</guid>
-    <pubDate>Fri, 07 Aug 2026 09:00:00 +0000</pubDate>
-    <description>Most MLOps advice is written for scale you don&#x27;t have yet. Here&#x27;s a leakage-aware, honest guide to what to adopt at ten users versus ten thousand.</description>
-    <category>MLOps</category>
   </item>
 </channel>
 </rss>

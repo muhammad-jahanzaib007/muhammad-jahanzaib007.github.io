@@ -1,1 +1,1 @@
-2026-08-17T08:02:07Z slug=mlops-on-your-laptop-first words=1048 title="Setting Up Your First MLOps Project on a Laptop"
+2026-08-17T20:01:37Z slug=mlops-for-a-team-of-one words=1096 title="MLOps for a Team of One: What to Automate First"
