@@ -9,7 +9,8 @@
       "tag": "MLOps",
       "color": "a5",
       "thumb": "assets/blog/mlops-on-your-laptop-first.png",
-      "thumb_alt": "Cover image for the article: Setting Up Your First MLOps Project on a Laptop"
+      "thumb_alt": "Cover image for the article: Setting Up Your First MLOps Project on a Laptop",
+      "li_shared": true
     },
     {
       "slug": "mlops-interview-questions-explained",
