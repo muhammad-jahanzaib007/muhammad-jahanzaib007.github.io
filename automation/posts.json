@@ -9,7 +9,8 @@
       "tag": "MLOps",
       "color": "a6",
       "thumb": "assets/blog/mlops-for-a-team-of-one.png",
-      "thumb_alt": "Cover image for the article: MLOps for a Team of One: What to Automate First"
+      "thumb_alt": "Cover image for the article: MLOps for a Team of One: What to Automate First",
+      "li_shared": true
     },
     {
       "slug": "mlops-on-your-laptop-first",
