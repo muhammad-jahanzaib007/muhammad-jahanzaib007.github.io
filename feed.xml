@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Sun, 16 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Mon, 17 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Setting Up Your First MLOps Project on a Laptop</title>
+    <link>https://jahanzaibawan.com/blog/mlops-on-your-laptop-first.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/mlops-on-your-laptop-first.html</guid>
+    <pubDate>Mon, 17 Aug 2026 09:00:00 +0000</pubDate>
+    <description>Cloud infrastructure will not fix a badly designed pipeline. Build the habits first, on your laptop, then scale.</description>
+    <category>MLOps</category>
+  </item>
   <item>
     <title>Interview Questions for MLOps Roles: What They Really Test</title>
     <link>https://jahanzaibawan.com/blog/mlops-interview-questions-explained.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Fri, 07 Aug 2026 09:00:00 +0000</pubDate>
     <description>Most MLOps advice is written for scale you don&#x27;t have yet. Here&#x27;s a leakage-aware, honest guide to what to adopt at ten users versus ten thousand.</description>
     <category>MLOps</category>
-  </item>
-  <item>
-    <title>Positional Encodings: Why Transformers Need Them at All</title>
-    <link>https://jahanzaibawan.com/blog/why-transformers-need-positional-encodings.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/why-transformers-need-positional-encodings.html</guid>
-    <pubDate>Fri, 07 Aug 2026 09:00:00 +0000</pubDate>
-    <description>Self-attention is permutation-invariant by default. Without positional encodings, a transformer literally cannot tell &#x27;dog bites man&#x27; from &#x27;man bites dog&#x27;.</description>
-    <category>Deep Learning</category>
   </item>
 </channel>
 </rss>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Setting Up Your First MLOps Project on a Laptop | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to building your first MLOps workflow locally, covering versioning, pipelines, and evaluation before moving to the cloud.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="MLOps, machine learning pipelines, reproducibility, data versioning, model evaluation, local development, DVC, experiment tracking, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-17">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Setting Up Your First MLOps Project on a Laptop">
+<meta property="og:description" content="A practical guide to building your first MLOps workflow locally, covering versioning, pipelines, and evaluation before moving to the cloud.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/mlops-on-your-laptop-first.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/mlops-on-your-laptop-first.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Setting Up Your First MLOps Project on a Laptop">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/mlops-on-your-laptop-first.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/mlops-on-your-laptop-first.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Setting Up Your First MLOps Project on a Laptop",
+  "description": "A practical guide to building your first MLOps workflow locally, covering versioning, pipelines, and evaluation before moving to the cloud.",
+  "url": "https://jahanzaibawan.com/blog/mlops-on-your-laptop-first.html",
+  "image": "https://jahanzaibawan.com/assets/blog/mlops-on-your-laptop-first.png",
+  "datePublished": "2026-08-17",
+  "dateModified": "2026-08-17",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/mlops-on-your-laptop-first.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Setting Up Your First MLOps Project on a Laptop", "item": "https://jahanzaibawan.com/blog/mlops-on-your-laptop-first.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">MLOps · 5 min read · 17 Aug 2026</div>
+    <h1>Setting Up Your First MLOps Project on a Laptop</h1>
+    <p class="lede">Before you rent a single GPU or spin up a cloud pipeline, you can learn almost everything that matters about MLOps using nothing but your own machine and some discipline.</p>
+  </div>
+
+  <img src="../assets/blog/mlops-on-your-laptop-first.png" alt="Cover image for the article: Setting Up Your First MLOps Project on a Laptop" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the cloud is not the first problem</h2><p>Most introductions to MLOps start with Kubernetes, managed feature stores, or a cloud vendor's pipeline service. I think this is the wrong order of operations for anyone building their first project. The hard part of MLOps is not provisioning compute; it is designing a workflow where data, code, and models stay in sync, where every result can be traced back to the exact inputs that produced it, and where you can tell the difference between a genuine improvement and noise. None of that requires a single cloud credential.</p><p>A laptop forces useful constraints. You cannot throw more machines at a messy pipeline, so you are pushed to keep things small, modular, and inspectable. If your training script cannot run cleanly end to end on a modest dataset locally, moving it to the cloud will only add latency to your debugging loop and cost to your mistakes. I would rather spend a week getting the local version right than spend a week fighting cloud logs to understand why a job silently failed.</p><p>There is also a leakage argument. Many of the worst evaluation mistakes I have seen, splits that accidentally share information between train and test, features computed using future data, come from pipelines that grew organically without anyone stepping back to check the flow of information. Building the pipeline locally, where you can step through every stage with a debugger and print statements, makes these errors far easier to catch than in a distributed job running somewhere you cannot easily inspect.</p></section><section class='psec reveal'><h2>The minimum viable pipeline</h2><p>A first MLOps project needs four things: version control for code, version control for data, a way to track experiments, and a way to reproduce a result exactly. You do not need elaborate tooling for any of these on a laptop. Git handles code. A lightweight data versioning tool, or even a disciplined convention of hashing your dataset files and recording the hash alongside results, handles data. A simple experiment log, whether that is a proper tracking tool or a structured CSV file you append to after every run, handles tracking. And a fixed random seed plus a pinned environment file handles reproducibility.</p><p>Concretely, imagine you are training a classifier on a tabular dataset of five thousand rows. Your project structure might separate raw data, processed data, and model artefacts into distinct folders, none of which get committed directly to git but all of which are referenced by name and hash in your experiment log. Each training run writes a row: the git commit hash, the data hash, the hyperparameters, the validation metric, and the path to the saved model. When you come back three weeks later and see that run 14 scored an F1 of 0.81 while run 22 scored 0.76, you can trace both back to the exact code and data that produced them, rather than trusting your memory.</p><p>This sounds like overhead for a small project, and it is, slightly. But the discipline compounds. The first time you catch a silent regression because your data hash changed without you meaning it to, or the first time you reproduce a six-month-old result in ten minutes because your environment file was pinned, the overhead pays for itself many times over. These are exactly the habits that make cloud MLOps tractable later, because the cloud version of this problem is the same problem with more moving parts and less visibility.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/mlops-on-your-laptop-first-1.jpg' alt='laptop with code editor open on desk' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Evaluation before automation</h2><p>It is tempting to jump straight to automating retraining and deployment once the basic pipeline runs. I would resist that until the evaluation strategy is solid, because automation only accelerates whatever process you have built, good or bad. If your validation split leaks information from training, automating the pipeline just means you now generate misleadingly good numbers faster and more often.</p><p>Concretely, suppose your dataset has a time dimension, customer transactions over eighteen months, say. A random train-test split will scatter future transactions into training and past ones into testing, letting the model implicitly learn patterns it should not have access to. On a laptop, with a small dataset, it is straightforward to build a proper time-based split by hand: train on the first fourteen months, validate on the next two, test on the final two, and check that no customer ID appears in both training and test if your task requires generalising to unseen customers. Getting this right on a toy problem, where you can eyeball every row if needed, is far easier than diagnosing it after the fact on a cloud dataset with millions of rows.</p><p>Alongside the split, build one honest baseline before touching anything sophisticated. A logistic regression, a simple moving average, a majority-class predictor: something you fully understand and can compute in seconds. If your fancier model only edges out the baseline by a fraction of a percentage point on your validation metric, that tells you something important before you invest more engineering effort. This step is cheap on a laptop and expensive to skip on the cloud, where a marginal model can look impressive purely because it consumed more compute and time.</p></section><section class='psec reveal'><h2>What to carry forward</h2><p>When you do eventually move to the cloud, the goal is not to rebuild your workflow but to lift it unchanged. If your local pipeline expects a versioned dataset path, a config file of hyperparameters, and writes results to a structured log, a cloud job should be able to run the identical code with the identical inputs and produce the identical output, modulo hardware-specific floating point differences. If moving to the cloud requires you to rewrite large parts of your pipeline, that is a sign the local version was not actually a pipeline, just a script.</p><p>Practically, I would suggest treating your laptop project as a contract: any stage of the pipeline, from raw data to final metric, should be re-runnable from a single command, with all the configuration explicit rather than hardcoded. Test that contract by deleting your processed data and model artefacts and rebuilding everything from scratch. If that fails, or requires manual steps you have forgotten to script, fix it before you touch a cloud console. The cloud will amplify whatever habits you bring to it; it is worth making sure those habits are good ones first.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/mlops-on-your-laptop-first-2.jpg' alt='notebook with handwritten data pipeline diagram' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

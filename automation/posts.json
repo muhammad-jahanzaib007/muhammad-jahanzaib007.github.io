@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "mlops-on-your-laptop-first",
+      "title": "Setting Up Your First MLOps Project on a Laptop",
+      "excerpt": "Cloud infrastructure will not fix a badly designed pipeline. Build the habits first, on your laptop, then scale.",
+      "date": "2026-08-17",
+      "read_min": 5,
+      "tag": "MLOps",
+      "color": "a5",
+      "thumb": "assets/blog/mlops-on-your-laptop-first.png",
+      "thumb_alt": "Cover image for the article: Setting Up Your First MLOps Project on a Laptop"
+    },
+    {
       "slug": "mlops-interview-questions-explained",
       "title": "Interview Questions for MLOps Roles: What They Really Test",
       "excerpt": "MLOps interviews rarely test frameworks. They test whether you understand failure, reproducibility, and who gets paged at 3am.",

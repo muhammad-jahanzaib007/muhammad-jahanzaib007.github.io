@@ -1,1 +1,1 @@
-2026-08-16T20:01:33Z slug=mlops-interview-questions-explained words=1077 title="Interview Questions for MLOps Roles: What They Really Test"
+2026-08-17T08:02:07Z slug=mlops-on-your-laptop-first words=1048 title="Setting Up Your First MLOps Project on a Laptop"
