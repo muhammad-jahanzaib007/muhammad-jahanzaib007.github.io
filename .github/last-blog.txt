@@ -1,1 +1,1 @@
-2026-08-18T08:01:37Z slug=scheduled-retraining-wrong-idea words=1000 title="Continuous Retraining on a Schedule Can Be a Trap"
+2026-08-18T20:01:38Z slug=instruction-tuning-vs-fine-tuning words=1011 title="Instruction Tuning versus Fine-Tuning: The Real Difference"

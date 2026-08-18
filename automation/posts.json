@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "instruction-tuning-vs-fine-tuning",
+      "title": "Instruction Tuning versus Fine-Tuning: The Real Difference",
+      "excerpt": "Fine-tuning specialises a model for one task. Instruction tuning teaches it to follow tasks it has never seen. Confusing the two skews evaluation.",
+      "date": "2026-08-18",
+      "read_min": 5,
+      "tag": "NLP",
+      "color": "a3",
+      "thumb": "assets/blog/instruction-tuning-vs-fine-tuning.png",
+      "thumb_alt": "Cover image for the article: Instruction Tuning versus Fine-Tuning: The Real Difference"
+    },
+    {
       "slug": "scheduled-retraining-wrong-idea",
       "title": "Continuous Retraining on a Schedule Can Be a Trap",
       "excerpt": "A retraining cadence is not a monitoring strategy. Here is why scheduled retraining can mask drift, hide bugs, and quietly erode trust in your pipeline.",

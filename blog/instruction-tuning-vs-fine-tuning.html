@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instruction Tuning versus Fine-Tuning: The Real Difference | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A clear explanation of instruction tuning versus fine-tuning, with a worked example showing why the distinction changes how you should evaluate a model.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="instruction tuning, fine-tuning, large language models, model evaluation, transfer learning, NLP, generalisation, dataset design, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-18">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Instruction Tuning versus Fine-Tuning: The Real Difference">
+<meta property="og:description" content="A clear explanation of instruction tuning versus fine-tuning, with a worked example showing why the distinction changes how you should evaluate a model.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/instruction-tuning-vs-fine-tuning.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/instruction-tuning-vs-fine-tuning.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Instruction Tuning versus Fine-Tuning: The Real Difference">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/instruction-tuning-vs-fine-tuning.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/instruction-tuning-vs-fine-tuning.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Instruction Tuning versus Fine-Tuning: The Real Difference",
+  "description": "A clear explanation of instruction tuning versus fine-tuning, with a worked example showing why the distinction changes how you should evaluate a model.",
+  "url": "https://jahanzaibawan.com/blog/instruction-tuning-vs-fine-tuning.html",
+  "image": "https://jahanzaibawan.com/assets/blog/instruction-tuning-vs-fine-tuning.png",
+  "datePublished": "2026-08-18",
+  "dateModified": "2026-08-18",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/instruction-tuning-vs-fine-tuning.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Instruction Tuning versus Fine-Tuning: The Real Difference", "item": "https://jahanzaibawan.com/blog/instruction-tuning-vs-fine-tuning.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">NLP · 5 min read · 18 Aug 2026</div>
+    <h1>Instruction Tuning versus Fine-Tuning: The Real Difference</h1>
+    <p class="lede">Both terms describe adapting a pretrained model with more data, but they answer different questions and mixing them up leads to sloppy evaluation.</p>
+  </div>
+
+  <img src="../assets/blog/instruction-tuning-vs-fine-tuning.png" alt="Cover image for the article: Instruction Tuning versus Fine-Tuning: The Real Difference" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the vocabulary keeps causing confusion</h2><p>I have lost count of how many times I have seen 'fine-tuning' and 'instruction tuning' used as if they were synonyms. They are related, both involve taking a pretrained model and updating its weights on additional data, but they are aimed at different goals and that difference matters enormously once you start evaluating what you have actually built. If you conflate them, you end up measuring the wrong thing and drawing conclusions that do not hold up outside your test set.</p><p>The short version is this: fine-tuning narrows a model, instruction tuning broadens it. Fine-tuning takes a general model and specialises it for a specific task, a specific domain, or a specific output format. Instruction tuning takes a general model and teaches it a general skill, namely how to interpret and follow a natural language instruction, across many different tasks at once, with the explicit goal of generalising to instructions it has never seen during training.</p></section><section class='psec reveal'><h2>Fine-tuning: sharpening a model for one job</h2><p>Classic fine-tuning is what most people picture when they think of adapting a pretrained model. You take a base model, say one pretrained on a large general corpus, and you continue training it on a labelled dataset for a single downstream task: sentiment classification, named entity recognition, a specific style of summarisation, or a particular customer support domain. The dataset is usually structured around one input format and one output format. The evaluation is usually a held-out test set drawn from the same distribution as the training data.</p><p>Suppose I fine-tune a model on ten thousand labelled product reviews to classify sentiment as positive, negative, or neutral. After training, I test it on a held-out set of two thousand reviews from the same retailer and the same review style, and it scores well, say ninety two percent accuracy. That is a legitimate result, but it tells me almost nothing about how the model behaves on reviews from a different retailer, in a different register, or on a task that looks even slightly different, such as rating reviews on a five point scale instead of three categories. The model has learned the task, not the general skill of following an instruction about sentiment.</p><p>This narrowness is not a flaw, it is the point. Fine-tuning is the right tool when you have a fixed task, a stable data distribution, and you care about squeezing out maximum performance on exactly that task. The risk only appears when people extrapolate fine-tuning results to claims about general capability. A model fine-tuned to summarise legal contracts well is not thereby a good general summariser, and testing it only on more legal contracts will never reveal that gap.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/instruction-tuning-vs-fine-tuning-1.jpg' alt='open notebook with handwritten notes' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Instruction tuning: teaching the skill of following instructions</h2><p>Instruction tuning takes a different shape entirely. Instead of one task with one format, the training data is a large collection of many different tasks, each phrased as a natural language instruction paired with an appropriate response: summarise this passage, translate this sentence, answer this question, write a poem in this style, extract the dates from this text. The point is not to master any single one of these tasks. The point is to learn the general pattern of reading an instruction and producing a response that satisfies it, in a way that transfers to instructions never seen during training.</p><p>Here is where leakage-aware evaluation becomes essential. If my instruction tuning set contains examples of summarisation, translation, and question answering, and I then evaluate the resulting model on summarisation, translation, and question answering drawn from the same source datasets, I have not tested generalisation at all. I have just tested whether the model memorised patterns from tasks it was explicitly shown. A meaningful evaluation of instruction tuning holds out entire task categories, not just held-out examples within a task, so the model is scored on instructions structurally different from anything in training: perhaps it saw summarisation and translation during tuning, but is tested on table-to-text generation, a task family it never encountered.</p><p>Consider a concrete comparison. Say I instruction-tune a model on fifty task types with two hundred examples each, ten thousand examples in total, deliberately holding out five task types entirely. If the model scores well on the forty five seen task types but collapses on the five held-out ones, that tells me the tuning produced task-specific pattern matching dressed up as instruction following, not the general skill I wanted. If performance on the held-out five stays reasonably close to the seen ones, that is genuine evidence of transfer, and it is a far stronger result than any single-task accuracy number could ever be.</p></section><section class='psec reveal'><h2>Why the distinction should shape how you evaluate</h2><p>The practical upshot is that the right evaluation protocol depends entirely on which kind of tuning you are doing, and pretending otherwise produces misleading numbers. For fine-tuning, a clean held-out set from the same distribution, checked carefully for duplicates or near-duplicates leaking from training, is exactly what you want, because the claim being tested is narrow and the evaluation should match that scope.</p><p>For instruction tuning, the evaluation has to test generalisation across task boundaries, not just across examples. That means holding out whole categories of instruction, being honest about which task families were represented during tuning even indirectly through similar phrasing, and resisting the temptation to report only the tasks where the model happens to shine. It also means being suspicious of instruction-tuned models evaluated exclusively on benchmarks that resemble their training mixture; strong scores there are consistent with genuine generalisation but equally consistent with the benchmark simply overlapping the training distribution.</p><p>My practical rule is to ask, before looking at any result, what specific claim the tuning approach is supposed to support. If the claim is 'this model is good at task X', fine-tuning on X with a clean same-distribution test set is the right evidence. If the claim is 'this model generalises to instructions it has not seen', only a held-out-task-family evaluation counts as evidence, and anything less is a weaker claim wearing a stronger one's clothes.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/instruction-tuning-vs-fine-tuning-2.jpg' alt='laptop showing text on screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Tue, 18 Aug 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Instruction Tuning versus Fine-Tuning: The Real Difference</title>
+    <link>https://jahanzaibawan.com/blog/instruction-tuning-vs-fine-tuning.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/instruction-tuning-vs-fine-tuning.html</guid>
+    <pubDate>Tue, 18 Aug 2026 09:00:00 +0000</pubDate>
+    <description>Fine-tuning specialises a model for one task. Instruction tuning teaches it to follow tasks it has never seen. Confusing the two skews evaluation.</description>
+    <category>NLP</category>
+  </item>
+  <item>
     <title>Continuous Retraining on a Schedule Can Be a Trap</title>
     <link>https://jahanzaibawan.com/blog/scheduled-retraining-wrong-idea.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/scheduled-retraining-wrong-idea.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/reading-confusion-matrix-by-class.html</guid>
     <pubDate>Sun, 09 Aug 2026 09:00:00 +0000</pubDate>
     <description>A model with 94% accuracy can still be useless for the one class you care about. Learn to read confusion matrices row by row, not just the headline number.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Computer Vision Syndrome vs Evaluating Computer Vision Models</title>
-    <link>https://jahanzaibawan.com/blog/computer-vision-syndrome-vs-cv-evaluation.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/computer-vision-syndrome-vs-cv-evaluation.html</guid>
-    <pubDate>Sat, 08 Aug 2026 09:00:00 +0000</pubDate>
-    <description>Computer vision syndrome is eye strain from screens. Model evaluation is how we judge vision systems. Same name, nothing else in common, and the confusion teaches a lesson about precision.</description>
     <category>Evaluation</category>
   </item>
 </channel>
