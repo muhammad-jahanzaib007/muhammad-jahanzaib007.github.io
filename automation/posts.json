@@ -9,7 +9,8 @@
       "tag": "MLOps",
       "color": "a2",
       "thumb": "assets/blog/scheduled-retraining-wrong-idea.png",
-      "thumb_alt": "Cover image for the article: Continuous Retraining on a Schedule Can Be a Trap"
+      "thumb_alt": "Cover image for the article: Continuous Retraining on a Schedule Can Be a Trap",
+      "li_shared": true
     },
     {
       "slug": "mlops-for-a-team-of-one",
