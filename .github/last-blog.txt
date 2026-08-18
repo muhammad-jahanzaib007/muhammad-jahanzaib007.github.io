@@ -1,1 +1,1 @@
-2026-08-17T20:01:37Z slug=mlops-for-a-team-of-one words=1096 title="MLOps for a Team of One: What to Automate First"
+2026-08-18T08:01:37Z slug=scheduled-retraining-wrong-idea words=1000 title="Continuous Retraining on a Schedule Can Be a Trap"

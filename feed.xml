@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Mon, 17 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 18 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Continuous Retraining on a Schedule Can Be a Trap</title>
+    <link>https://jahanzaibawan.com/blog/scheduled-retraining-wrong-idea.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/scheduled-retraining-wrong-idea.html</guid>
+    <pubDate>Tue, 18 Aug 2026 09:00:00 +0000</pubDate>
+    <description>A retraining cadence is not a monitoring strategy. Here is why scheduled retraining can mask drift, hide bugs, and quietly erode trust in your pipeline.</description>
+    <category>MLOps</category>
+  </item>
   <item>
     <title>MLOps for a Team of One: What to Automate First</title>
     <link>https://jahanzaibawan.com/blog/mlops-for-a-team-of-one.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Sat, 08 Aug 2026 09:00:00 +0000</pubDate>
     <description>Computer vision syndrome is eye strain from screens. Model evaluation is how we judge vision systems. Same name, nothing else in common, and the confusion teaches a lesson about precision.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>The Prompt Engineering Skill Set: What Transfers</title>
-    <link>https://jahanzaibawan.com/blog/prompt-engineering-what-transfers.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/prompt-engineering-what-transfers.html</guid>
-    <pubDate>Sat, 08 Aug 2026 09:00:00 +0000</pubDate>
-    <description>Prompt tricks age fast, but the underlying skills of decomposition, evaluation and constraint design do not. Here is how to tell the difference.</description>
-    <category>NLP</category>
   </item>
 </channel>
 </rss>

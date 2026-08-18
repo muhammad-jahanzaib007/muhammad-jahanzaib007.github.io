@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Continuous Retraining on a Schedule Can Be a Trap | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why blindly retraining ML models on a fixed schedule can hide drift and bugs, and what to monitor instead for genuinely reliable pipelines.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="continuous training,model retraining,data drift,MLOps,model monitoring,concept drift,machine learning pipelines,leakage,evaluation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-18">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Continuous Retraining on a Schedule Can Be a Trap">
+<meta property="og:description" content="Why blindly retraining ML models on a fixed schedule can hide drift and bugs, and what to monitor instead for genuinely reliable pipelines.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/scheduled-retraining-wrong-idea.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/scheduled-retraining-wrong-idea.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Continuous Retraining on a Schedule Can Be a Trap">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/scheduled-retraining-wrong-idea.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/scheduled-retraining-wrong-idea.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Continuous Retraining on a Schedule Can Be a Trap",
+  "description": "Why blindly retraining ML models on a fixed schedule can hide drift and bugs, and what to monitor instead for genuinely reliable pipelines.",
+  "url": "https://jahanzaibawan.com/blog/scheduled-retraining-wrong-idea.html",
+  "image": "https://jahanzaibawan.com/assets/blog/scheduled-retraining-wrong-idea.png",
+  "datePublished": "2026-08-18",
+  "dateModified": "2026-08-18",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/scheduled-retraining-wrong-idea.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Continuous Retraining on a Schedule Can Be a Trap", "item": "https://jahanzaibawan.com/blog/scheduled-retraining-wrong-idea.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">MLOps · 5 min read · 18 Aug 2026</div>
+    <h1>Continuous Retraining on a Schedule Can Be a Trap</h1>
+    <p class="lede">Retraining every week feels responsible, but a fixed schedule can hide real problems and waste compute on a model that did not need fixing.</p>
+  </div>
+
+  <img src="../assets/blog/scheduled-retraining-wrong-idea.png" alt="Cover image for the article: Continuous Retraining on a Schedule Can Be a Trap" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The comfort of a schedule</h2><p>There is something reassuring about a retraining job that fires every Sunday night. It feels like maintenance, like changing the oil in a car. You do not have to think about whether the model needs it; the calendar decides for you. I understand the appeal, because uncertainty is uncomfortable and a schedule removes a decision you would otherwise have to justify to a manager or a reviewer.</p><p>The trouble is that a fixed cadence answers a question nobody asked. The real question is never <em>has a week passed</em>, it is <em>has the world changed enough that the model's assumptions no longer hold</em>. Those two things are only loosely related. A model serving a stable, mature product might not need retraining for months. A model exposed to a sudden shift, a new fraud pattern, a change in how a form is filled in, a seasonal spike, might be stale within days. Treating both cases the same way is not caution, it is guesswork dressed up as process.</p><p>Scheduled retraining also creates a false sense that the pipeline is being looked after. Once the job is green and the dashboard shows a fresh model timestamp, it is tempting to stop asking harder questions: is the new model actually better, is the training data still representative, has a labelling process quietly changed upstream. The schedule becomes a substitute for vigilance rather than a complement to it.</p></section><section class='psec reveal'><h2>A worked example of the trap</h2><p>Imagine a churn prediction model retrained automatically every month on the trailing twelve months of customer data. In month one, the model gets an AUC of 0.81 on a held-out set and is deployed. In month two, a new customer segment is onboarded, but the labelling logic for churn has a subtle bug: cancellations processed through a new support channel are not being tagged correctly for the first three weeks. The retraining job runs anyway, ingests this partially mislabelled data, and produces a new model with an AUC of 0.79 on its own held-out split, which still looks acceptable in isolation.</p><p>Nobody notices, because the schedule did its job: a model was produced, it passed a basic threshold, and it shipped. Three months later, someone finally compares live performance against the original model and finds that precision at the operating threshold has quietly dropped from 68 percent to 54 percent. The retraining schedule did not cause the labelling bug, but it laundered it, taking a data quality problem and turning it into a succession of confidently deployed models, each one trained on slightly worse ground truth than the last.</p><p>Contrast that with a trigger-based approach. If the pipeline tracked the distribution of the churn label itself, a sudden and unexplained drop in positive labels from the new support channel would show up as an anomaly worth investigating before any retraining happened. The problem would be caught at the data layer, not discovered months later as a performance regression that everyone assumed was just market conditions.</p><p>This is the core issue with time-based retraining: it treats the passage of time as the trigger, when the actual triggers you care about, distribution shift, labelling changes, upstream schema changes, feedback loops, are events, not durations. A schedule cannot distinguish a healthy quiet month from a month where something quietly broke.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/scheduled-retraining-wrong-idea-1.jpg' alt='server room at night' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What should trigger retraining instead</h2><p>The more defensible approach is to monitor the things that actually justify a new model and let those drive the decision, with the schedule acting only as a backstop rather than the primary mechanism. Input feature distributions are a reasonable starting point: tracking summary statistics or a simple divergence measure between recent data and the training distribution can flag when the population being scored no longer resembles what the model learned from.</p><p>Label behaviour matters just as much, when labels are available in a reasonable time frame. A model whose predicted probabilities are drifting away from observed outcomes, measured through calibration or a rolling error metric, is telling you something a calendar cannot. Business metric shifts are another honest signal: if a recommendation model's click-through rate falls outside its normal range for reasons unrelated to a known external event, that is worth investigating regardless of when the last retrain happened.</p><p>None of this means schedules are useless. A quarterly retrain as a floor, combined with drift and quality triggers as the real decision-makers, is a sensible middle ground. The schedule guarantees the model does not go stale indefinitely if monitoring is imperfect, while the triggers do the actual work of deciding when action is warranted. What matters is that the schedule is a safety net, not the primary control mechanism.</p><p>It is also worth being honest that trigger-based retraining is harder to build well. It requires deciding what counts as meaningful drift, setting thresholds that do not fire on noise, and having a leakage-aware evaluation process ready to validate any candidate model before it replaces the incumbent. That extra rigour is exactly the point: it forces a genuine evaluation each time, rather than a rubber stamp on whatever the scheduled job happened to produce.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>If your pipeline retrains on a timer, ask what would happen if that timer were disabled for a month. If the honest answer is nothing bad, the schedule is not protecting you, it is just producing motion. If the honest answer is that something might quietly degrade and nobody would know until a stakeholder complained, then the real gap is not retraining frequency, it is monitoring.</p><p>The fix is rarely to retrain more often. It is to instrument the signals that tell you when retraining is actually warranted, keep a slower schedule as a fallback, and insist that every new model, however it was triggered, earns its deployment through a proper comparison against the model it replaces. A model that ships on a timer without that scrutiny is not being maintained, it is simply being refreshed, and refreshing is not the same thing as improving.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/scheduled-retraining-wrong-idea-2.jpg' alt='calendar with red circled date' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "scheduled-retraining-wrong-idea",
+      "title": "Continuous Retraining on a Schedule Can Be a Trap",
+      "excerpt": "A retraining cadence is not a monitoring strategy. Here is why scheduled retraining can mask drift, hide bugs, and quietly erode trust in your pipeline.",
+      "date": "2026-08-18",
+      "read_min": 5,
+      "tag": "MLOps",
+      "color": "a2",
+      "thumb": "assets/blog/scheduled-retraining-wrong-idea.png",
+      "thumb_alt": "Cover image for the article: Continuous Retraining on a Schedule Can Be a Trap"
+    },
+    {
       "slug": "mlops-for-a-team-of-one",
       "title": "MLOps for a Team of One: What to Automate First",
       "excerpt": "You cannot automate everything as a solo practitioner. Here is the order that actually saves time: data checks, then retraining, then serving, then monitoring.",
