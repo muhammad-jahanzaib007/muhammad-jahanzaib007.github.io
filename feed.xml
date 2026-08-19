@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Tue, 18 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 19 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Fine-Tuning on Small Data: When Does It Actually Help</title>
+    <link>https://jahanzaibawan.com/blog/fine-tuning-small-dataset-size.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/fine-tuning-small-dataset-size.html</guid>
+    <pubDate>Wed, 19 Aug 2026 09:00:00 +0000</pubDate>
+    <description>How to tell whether fine-tuning on a small dataset is actually working, or whether you are just chasing noise in your validation split.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Instruction Tuning versus Fine-Tuning: The Real Difference</title>
     <link>https://jahanzaibawan.com/blog/instruction-tuning-vs-fine-tuning.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Sun, 09 Aug 2026 09:00:00 +0000</pubDate>
     <description>Degrees and portfolios both signal something, but interviews test neither directly. Here is what actually gets checked.</description>
     <category>Careers</category>
-  </item>
-  <item>
-    <title>How to Read a Confusion Matrix Class by Class</title>
-    <link>https://jahanzaibawan.com/blog/reading-confusion-matrix-by-class.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/reading-confusion-matrix-by-class.html</guid>
-    <pubDate>Sun, 09 Aug 2026 09:00:00 +0000</pubDate>
-    <description>A model with 94% accuracy can still be useless for the one class you care about. Learn to read confusion matrices row by row, not just the headline number.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>

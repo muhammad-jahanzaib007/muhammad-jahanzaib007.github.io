@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Fine-tuning on a small dataset: how much data is enough to see a difference",
     "Catastrophic forgetting: what fine-tuning quietly overwrites",
     "Convolutional networks versus vision transformers: a practical comparison",
     "Anomaly detection in computer vision: one-class methods explained simply",
@@ -119,6 +118,7 @@
     "Setting up your first MLOps project on a laptop before touching the cloud",
     "MLOps for a team of one: what to automate first",
     "Continuous training pipelines: when retraining on a schedule is the wrong idea",
-    "Instruction tuning versus fine-tuning: what the terms actually mean"
+    "Instruction tuning versus fine-tuning: what the terms actually mean",
+    "Fine-tuning on a small dataset: how much data is enough to see a difference"
   ]
 }

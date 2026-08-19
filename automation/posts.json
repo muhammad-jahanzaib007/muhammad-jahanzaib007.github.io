@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "fine-tuning-small-dataset-size",
+      "title": "Fine-Tuning on Small Data: When Does It Actually Help",
+      "excerpt": "How to tell whether fine-tuning on a small dataset is actually working, or whether you are just chasing noise in your validation split.",
+      "date": "2026-08-19",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a4",
+      "thumb": "assets/blog/fine-tuning-small-dataset-size.png",
+      "thumb_alt": "Cover image for the article: Fine-Tuning on Small Data: When Does It Actually Help"
+    },
+    {
       "slug": "instruction-tuning-vs-fine-tuning",
       "title": "Instruction Tuning versus Fine-Tuning: The Real Difference",
       "excerpt": "Fine-tuning specialises a model for one task. Instruction tuning teaches it to follow tasks it has never seen. Confusing the two skews evaluation.",

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fine-Tuning on Small Data: When Does It Actually Help | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to judging how much fine-tuning data is needed to see a real, statistically credible improvement over a strong baseline.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="fine-tuning, small datasets, model evaluation, transfer learning, sample size, machine learning, validation splits, statistical significance, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-19">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Fine-Tuning on Small Data: When Does It Actually Help">
+<meta property="og:description" content="A practical guide to judging how much fine-tuning data is needed to see a real, statistically credible improvement over a strong baseline.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/fine-tuning-small-dataset-size.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/fine-tuning-small-dataset-size.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fine-Tuning on Small Data: When Does It Actually Help">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/fine-tuning-small-dataset-size.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/fine-tuning-small-dataset-size.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Fine-Tuning on Small Data: When Does It Actually Help",
+  "description": "A practical guide to judging how much fine-tuning data is needed to see a real, statistically credible improvement over a strong baseline.",
+  "url": "https://jahanzaibawan.com/blog/fine-tuning-small-dataset-size.html",
+  "image": "https://jahanzaibawan.com/assets/blog/fine-tuning-small-dataset-size.png",
+  "datePublished": "2026-08-19",
+  "dateModified": "2026-08-19",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/fine-tuning-small-dataset-size.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Fine-Tuning on Small Data: When Does It Actually Help", "item": "https://jahanzaibawan.com/blog/fine-tuning-small-dataset-size.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 19 Aug 2026</div>
+    <h1>Fine-Tuning on Small Data: When Does It Actually Help</h1>
+    <p class="lede">Before you collect another thousand labels, it helps to know what a genuine improvement looks like and how much data it typically takes to trust one.</p>
+  </div>
+
+  <img src="../assets/blog/fine-tuning-small-dataset-size.png" alt="Cover image for the article: Fine-Tuning on Small Data: When Does It Actually Help" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The question nobody asks before collecting labels</h2><p>Whenever someone asks me whether fine-tuning is worth it on a small dataset, my honest answer is that it depends less on the model and more on how confidently you can measure the outcome. Fine-tuning almost always moves the numbers a little. The real question is whether that movement is a genuine effect or just the noise you get from evaluating on a small, particular slice of data. With a hundred examples in your test set, a swing of two or three percentage points can easily be explained by which examples happened to land where.</p><p>This matters practically because teams routinely spend weeks labelling a few hundred examples, fine-tune a model, see accuracy go from 81% to 84%, and declare victory. Sometimes that is a real improvement. Sometimes it is one flipped prediction on a forty-example test set. Before asking how much data is enough for fine-tuning to work, it is worth asking how much data is enough for you to trust the evaluation that tells you it worked.</p><p>I think of this as two separate sample size questions that get conflated. One is: how many training examples does the model need to learn something useful. The other is: how many test examples do you need to detect that learning reliably. Both scale with the size of the effect you are hoping to see, and both are usually underestimated.</p></section><section class='psec reveal'><h2>A worked intuition with concrete numbers</h2><p>Suppose you have a pretrained classifier that already gets 80% accuracy on your task out of the box, and you are fine-tuning on domain-specific examples to push that higher. Imagine the true effect of fine-tuning with 200 examples is a genuine 3 point lift, taking you to 83%. If your test set has only 100 examples, the standard error on a proportion around 80 to 83% is roughly 4 points. A 3 point lift sits comfortably inside the noise band. You could run the same experiment with a different random seed and see the ordering reverse.</p><p>Now scale the test set to 1,000 examples. The standard error shrinks to roughly 1.2 to 1.3 points, and a genuine 3 point lift becomes visible above the noise most of the time. This is the unglamorous part of fine-tuning work: the improvement you are chasing might be real from the first hundred training examples, but you will not be able to see it clearly until your evaluation set is large enough to resolve differences of that size.</p><p>On the training side, the picture is similar but shaped by the difficulty of the task and how far the pretrained model already is from good performance. If a base model is already close to ceiling, say 92%, on a task with reasonably clean labels, fine-tuning on 50 to 100 well-chosen examples per class can sometimes close most of the remaining gap, because you are really just tuning a decision boundary that is nearly right already. If the base model is weak, sitting at 55% on a task that needs new vocabulary or a different structure entirely, a few hundred examples per class is often the point where you start seeing consistent gains, and a few thousand is where the curve visibly bends rather than just wobbles.</p><p>The honest number I give people who ask for a rule of thumb is this: expect diminishing but real returns from a few dozen examples per class if the task is close to something the base model already knows, and expect to need low thousands of examples if you are teaching it something structurally new. Anything below that, treat your result as a hypothesis, not a finding.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/fine-tuning-small-dataset-size-1.jpg' alt='scientist reviewing data charts on laptop' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Leakage and the illusion of a working small dataset</h2><p>Small datasets have a particular way of lying to you, and it is not just noise, it is leakage. When you only have three hundred examples and you split them randomly into train and test, near-duplicate examples, shared templates, or examples from the same underlying source document often end up on both sides of the split. The model then appears to generalise beautifully, because it has effectively seen the test set in disguise. This is the single most common reason a small fine-tuning experiment looks like a clear success and then falls apart on genuinely new data.</p><p>The fix is not a bigger model or more clever fine-tuning, it is a split that respects the structure of your data. If your examples come from documents, split by document, not by example. If they come from users, split by user. This usually shrinks your apparent gains, sometimes dramatically, and that is the point: it is showing you the gain you can actually rely on rather than the gain your split was accidentally flattering.</p><p>I would also flag that with small datasets, a single train and test split is a fragile basis for any conclusion. Cross-validation, done properly with the same leakage-aware grouping, gives you a distribution of scores rather than one number, and that distribution tells you far more about whether fine-tuning helped than any single accuracy figure. If your fine-tuned model beats the baseline in four out of five folds by a small margin, that is a more trustworthy signal than beating it once by a large one.</p></section><section class='psec reveal'><h2>A practical checklist before you trust the result</h2><p>Before concluding that fine-tuning on a small dataset made a difference, I check four things. First, is the test set large enough that the observed gain is bigger than the expected noise for a set that size. Second, is the split free of leakage at the level that actually matters for the data, whether that is document, user, or time. Third, does the gain hold up across several folds or seeds rather than appearing in one lucky run. Fourth, does the gain hold on a slightly different slice of data than the one it was tuned against, since small datasets invite overfitting to their own quirks.</p><p>If all four hold, then even a modest dataset, a few hundred well-chosen and correctly split examples, can produce a fine-tuning result worth acting on. If any of them fail, the honest move is to say the evidence is inconclusive rather than to round a shaky number up to a success. That is a less satisfying sentence to put in a report, but it is the one that will not embarrass you three months later when the model meets real data.</p></section>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
