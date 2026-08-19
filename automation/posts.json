@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a4",
       "thumb": "assets/blog/fine-tuning-small-dataset-size.png",
-      "thumb_alt": "Cover image for the article: Fine-Tuning on Small Data: When Does It Actually Help"
+      "thumb_alt": "Cover image for the article: Fine-Tuning on Small Data: When Does It Actually Help",
+      "li_shared": true
     },
     {
       "slug": "instruction-tuning-vs-fine-tuning",
