@@ -9,7 +9,8 @@
       "tag": "Deep Learning",
       "color": "a5",
       "thumb": "assets/blog/catastrophic-forgetting-fine-tuning.png",
-      "thumb_alt": "Cover image for the article: Catastrophic Forgetting: What Fine-Tuning Quietly Overwrites"
+      "thumb_alt": "Cover image for the article: Catastrophic Forgetting: What Fine-Tuning Quietly Overwrites",
+      "li_shared": true
     },
     {
       "slug": "fine-tuning-small-dataset-size",
