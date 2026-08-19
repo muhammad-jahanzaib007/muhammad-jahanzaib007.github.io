@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Wed, 19 Aug 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Catastrophic Forgetting: What Fine-Tuning Quietly Overwrites</title>
+    <link>https://jahanzaibawan.com/blog/catastrophic-forgetting-fine-tuning.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/catastrophic-forgetting-fine-tuning.html</guid>
+    <pubDate>Wed, 19 Aug 2026 09:00:00 +0000</pubDate>
+    <description>Fine-tuning can boost your target metric while quietly erasing older capabilities. Here is how to notice and measure the damage.</description>
+    <category>Deep Learning</category>
+  </item>
+  <item>
     <title>Fine-Tuning on Small Data: When Does It Actually Help</title>
     <link>https://jahanzaibawan.com/blog/fine-tuning-small-dataset-size.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/fine-tuning-small-dataset-size.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/salary-numbers-data-science-work.html</guid>
     <pubDate>Mon, 10 Aug 2026 09:00:00 +0000</pubDate>
     <description>Salary surveys flatten wildly different jobs into one number. Here is what the figure hides about the actual work.</description>
-    <category>Careers</category>
-  </item>
-  <item>
-    <title>Data Science Degrees vs Portfolios: What Interviews Check</title>
-    <link>https://jahanzaibawan.com/blog/degrees-versus-portfolios-interviews.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/degrees-versus-portfolios-interviews.html</guid>
-    <pubDate>Sun, 09 Aug 2026 09:00:00 +0000</pubDate>
-    <description>Degrees and portfolios both signal something, but interviews test neither directly. Here is what actually gets checked.</description>
     <category>Careers</category>
   </item>
 </channel>

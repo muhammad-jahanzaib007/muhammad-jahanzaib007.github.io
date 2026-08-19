@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "catastrophic-forgetting-fine-tuning",
+      "title": "Catastrophic Forgetting: What Fine-Tuning Quietly Overwrites",
+      "excerpt": "Fine-tuning can boost your target metric while quietly erasing older capabilities. Here is how to notice and measure the damage.",
+      "date": "2026-08-19",
+      "read_min": 5,
+      "tag": "Deep Learning",
+      "color": "a5",
+      "thumb": "assets/blog/catastrophic-forgetting-fine-tuning.png",
+      "thumb_alt": "Cover image for the article: Catastrophic Forgetting: What Fine-Tuning Quietly Overwrites"
+    },
+    {
       "slug": "fine-tuning-small-dataset-size",
       "title": "Fine-Tuning on Small Data: When Does It Actually Help",
       "excerpt": "How to tell whether fine-tuning on a small dataset is actually working, or whether you are just chasing noise in your validation split.",

@@ -12,6 +12,7 @@
   <url><loc>https://jahanzaibawan.com/about.html</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://jahanzaibawan.com/blog.html</loc><lastmod>2026-08-19</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <!--BLOGPOSTS:START-->
+  <url><loc>https://jahanzaibawan.com/blog/catastrophic-forgetting-fine-tuning.html</loc><lastmod>2026-08-19</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://jahanzaibawan.com/blog/fine-tuning-small-dataset-size.html</loc><lastmod>2026-08-19</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://jahanzaibawan.com/blog/instruction-tuning-vs-fine-tuning.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://jahanzaibawan.com/blog/scheduled-retraining-wrong-idea.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
