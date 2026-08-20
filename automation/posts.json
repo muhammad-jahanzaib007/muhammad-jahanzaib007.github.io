@@ -9,7 +9,8 @@
       "tag": "Computer Vision",
       "color": "a2",
       "thumb": "assets/blog/one-class-anomaly-detection-vision.png",
-      "thumb_alt": "Cover image for the article: Anomaly Detection in Vision: One-Class Methods Made Simple"
+      "thumb_alt": "Cover image for the article: Anomaly Detection in Vision: One-Class Methods Made Simple",
+      "li_shared": true
     },
     {
       "slug": "cnns-versus-vision-transformers",
