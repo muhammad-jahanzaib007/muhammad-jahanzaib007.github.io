@@ -1,1 +1,1 @@
-2026-08-19T20:01:33Z slug=catastrophic-forgetting-fine-tuning words=1031 title="Catastrophic Forgetting: What Fine-Tuning Quietly Overwrites"
+2026-08-20T08:02:58Z slug=cnns-versus-vision-transformers words=1094 title="Convolutional Networks Versus Vision Transformers, Honestly"

@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Wed, 19 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 20 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Convolutional Networks Versus Vision Transformers, Honestly</title>
+    <link>https://jahanzaibawan.com/blog/cnns-versus-vision-transformers.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/cnns-versus-vision-transformers.html</guid>
+    <pubDate>Thu, 20 Aug 2026 09:00:00 +0000</pubDate>
+    <description>CNNs and ViTs both work well on images, but they fail differently under small data and distribution shift. I compare them with a concrete worked example.</description>
+    <category>Deep Learning</category>
+  </item>
   <item>
     <title>Catastrophic Forgetting: What Fine-Tuning Quietly Overwrites</title>
     <link>https://jahanzaibawan.com/blog/catastrophic-forgetting-fine-tuning.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Mon, 10 Aug 2026 09:00:00 +0000</pubDate>
     <description>Skip the trendy demo. Pick a computer vision project small enough to finish and honest enough to teach you where things actually go wrong.</description>
     <category>Computer Vision</category>
-  </item>
-  <item>
-    <title>Salary Expectations in Data Science: The Untold Work</title>
-    <link>https://jahanzaibawan.com/blog/salary-numbers-data-science-work.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/salary-numbers-data-science-work.html</guid>
-    <pubDate>Mon, 10 Aug 2026 09:00:00 +0000</pubDate>
-    <description>Salary surveys flatten wildly different jobs into one number. Here is what the figure hides about the actual work.</description>
-    <category>Careers</category>
   </item>
 </channel>
 </rss>

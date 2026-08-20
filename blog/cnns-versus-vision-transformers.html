@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Convolutional Networks Versus Vision Transformers, Honestly | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical, honest comparison of CNNs and vision transformers, covering inductive bias, data requirements, and how to choose between them for real projects.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="convolutional neural networks, vision transformers, CNN vs ViT, inductive bias, image classification, deep learning, computer vision, model selection, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-20">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Convolutional Networks Versus Vision Transformers, Honestly">
+<meta property="og:description" content="A practical, honest comparison of CNNs and vision transformers, covering inductive bias, data requirements, and how to choose between them for real projects.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/cnns-versus-vision-transformers.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/cnns-versus-vision-transformers.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Convolutional Networks Versus Vision Transformers, Honestly">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/cnns-versus-vision-transformers.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/cnns-versus-vision-transformers.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Convolutional Networks Versus Vision Transformers, Honestly",
+  "description": "A practical, honest comparison of CNNs and vision transformers, covering inductive bias, data requirements, and how to choose between them for real projects.",
+  "url": "https://jahanzaibawan.com/blog/cnns-versus-vision-transformers.html",
+  "image": "https://jahanzaibawan.com/assets/blog/cnns-versus-vision-transformers.png",
+  "datePublished": "2026-08-20",
+  "dateModified": "2026-08-20",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/cnns-versus-vision-transformers.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Convolutional Networks Versus Vision Transformers, Honestly", "item": "https://jahanzaibawan.com/blog/cnns-versus-vision-transformers.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Deep Learning · 5 min read · 20 Aug 2026</div>
+    <h1>Convolutional Networks Versus Vision Transformers, Honestly</h1>
+    <p class="lede">Both architectures can solve the same image problems, but they get there differently. Here is how I think about choosing between them without falling for hype.</p>
+  </div>
+
+  <img src="../assets/blog/cnns-versus-vision-transformers.png" alt="Cover image for the article: Convolutional Networks Versus Vision Transformers, Honestly" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this comparison keeps coming up</h2><p>Every few months someone asks me whether they should just use a vision transformer instead of a convolutional network for their image project, as if the answer were a settled fact rather than a design decision. The honest answer is that both architectures are excellent, they simply encode different assumptions about what images look like, and those assumptions matter more when your dataset is small, your compute is limited, or your test distribution differs from training. Treating this as a fashion choice rather than an engineering one is how projects quietly underperform.</p><p>A convolutional network is built around a strong prior: nearby pixels are related, and the same local pattern, an edge, a corner, a texture, can appear anywhere in the image. Convolution enforces this by sliding small filters across the whole image, sharing weights, and stacking layers so that receptive fields grow gradually from small patches to large regions. This is called an inductive bias, and it is not a limitation, it is a shortcut. The network does not need to learn from scratch that a cat's ear looks the same in the top left corner as in the bottom right, the architecture already assumes it.</p><p>A vision transformer, by contrast, starts with almost no assumptions about spatial structure. It slices an image into fixed-size patches, treats each patch as a token, and lets self-attention learn which patches relate to which. There is no built-in notion that neighbouring patches are more relevant than distant ones; the model must discover that from data, aided only by a positional encoding that tells it where each patch sits. This flexibility is powerful once the model has seen enough examples to learn useful patterns, but it means the model starts from a much weaker prior.</p></section><section class='psec reveal'><h2>A worked intuition with realistic numbers</h2><p>Imagine two teams training an image classifier on ten thousand labelled photographs, a modest but not tiny dataset, split with proper care so that no photograph or near-duplicate leaks between train and test. Team A trains a well-tuned convolutional network of a common architecture family. Team B trains a vision transformer of comparable parameter count from scratch, with no pretraining.</p><p>In my experience the convolutional network reaches usable accuracy, say somewhere in the high eighties percent on a moderately difficult multi-class task, within a reasonable training budget, because its built-in assumptions about locality and translation invariance mean it needs fewer examples to find sensible filters. The transformer trained from scratch on the same ten thousand images typically lags behind, sometimes by a wide margin, because it has to learn spatial relationships that the convolutional network gets for free. Self-attention over patches can, in principle, discover something equivalent to locality, but doing so from limited data is inefficient; the model spends capacity relearning what convolution assumes structurally.</p><p>The picture changes completely if either model is pretrained on a much larger dataset first and then fine-tuned on the ten thousand images. A vision transformer pretrained at scale often matches or exceeds a comparable convolutional network after fine-tuning, because pretraining is exactly what supplies the spatial understanding that the architecture lacks by default. This is the crucial, often glossed-over detail in papers reporting transformer superiority: the comparison is rarely fair unless both models see similar amounts of pretraining data, and the transformer's advantage frequently traces back to scale rather than architecture alone.</p><p>So the practical lesson from this worked example is not that one architecture is better, it is that the two architectures have different appetites for data, and matching the architecture to the data budget you actually have is more important than following a leaderboard.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/cnns-versus-vision-transformers-1.jpg' alt='computer chip circuit board close up' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Robustness, compute, and other things that matter in practice</h2><p>Accuracy on a clean held-out test set is only part of the story. Convolutional networks tend to be more robust to small spatial shifts and local corruptions, because their weight sharing and pooling operations build in a degree of tolerance to exactly those perturbations. Vision transformers, especially smaller ones trained without heavy pretraining, can be more sensitive to patch-level noise or occlusion, since a corrupted patch is just another token competing for attention rather than something a local filter can smooth over. If your deployment environment involves camera shake, partial occlusion, or inconsistent framing, this is worth testing explicitly rather than assuming it away.</p><p>Compute behaviour also differs in ways that affect real deployment decisions. Convolutional networks scale reasonably with image resolution because computation grows with the number of pixels processed by local filters. Self-attention, in its plain form, scales quadratically with the number of patches, so doubling image resolution can be considerably more expensive for a transformer than for a convolutional network of similar depth. Efficient attention variants and hierarchical transformer designs narrow this gap, but if you are working with high-resolution medical scans or satellite imagery on constrained hardware, this is not a minor footnote, it can decide whether a model fits in memory at all.</p><p>There is also the question of interpretability and debugging. Convolutional feature maps have a clear spatial correspondence to the input image, which makes techniques like saliency maps and layer visualisation relatively intuitive. Attention maps from a transformer can be visualised too, and are often genuinely informative, but they do not always align with human intuitions about which regions matter, and averaging attention across many heads and layers can be misleading if done carelessly. Neither approach gives a free pass on interpretability; both require care to avoid overinterpreting a pretty picture as a causal explanation.</p></section><section class='psec reveal'><h2>What I actually do when choosing</h2><p>My working rule is simple: if the dataset is small or moderate and training from scratch, I default to a convolutional architecture because its inductive bias does real work for me. If I have access to a strong pretrained model, whether convolutional or transformer, and can fine-tune, the architecture matters less than the quality and relevance of that pretraining, so I benchmark both rather than assuming. I always evaluate on a held-out set that reflects realistic deployment conditions, including mild corruptions and shifts, not just a clean test split drawn from the same distribution as training.</p><p>The broader lesson generalises beyond this one comparison: architectural choices encode assumptions, and the right choice depends on how much data you have to overwrite a wrong assumption or confirm a right one. Chasing whichever architecture tops a recent benchmark, without checking whether that benchmark's data regime resembles your own, is how good engineering gets replaced by fashion. Test both when you can afford to, and let your own evaluation, not the paper's, decide.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/cnns-versus-vision-transformers-2.jpg' alt='security camera lens closeup' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
