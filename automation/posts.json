@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "one-class-anomaly-detection-vision",
+      "title": "Anomaly Detection in Vision: One-Class Methods Made Simple",
+      "excerpt": "Most defects are rare and unlabelled. One-class methods learn what normal looks like, then flag anything that does not fit, no anomaly examples required.",
+      "date": "2026-08-20",
+      "read_min": 5,
+      "tag": "Computer Vision",
+      "color": "a2",
+      "thumb": "assets/blog/one-class-anomaly-detection-vision.png",
+      "thumb_alt": "Cover image for the article: Anomaly Detection in Vision: One-Class Methods Made Simple"
+    },
+    {
       "slug": "cnns-versus-vision-transformers",
       "title": "Convolutional Networks Versus Vision Transformers, Honestly",
       "excerpt": "CNNs and ViTs both work well on images, but they fail differently under small data and distribution shift. I compare them with a concrete worked example.",

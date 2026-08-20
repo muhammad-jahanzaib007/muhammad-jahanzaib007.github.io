@@ -1,1 +1,1 @@
-2026-08-20T08:02:58Z slug=cnns-versus-vision-transformers words=1094 title="Convolutional Networks Versus Vision Transformers, Honestly"
+2026-08-20T20:01:38Z slug=one-class-anomaly-detection-vision words=962 title="Anomaly Detection in Vision: One-Class Methods Made Simple"

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anomaly Detection in Vision: One-Class Methods Made Simple | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A clear, practical explanation of one-class anomaly detection in computer vision, with a worked example and guidance on evaluation without leakage.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="anomaly detection, one-class classification, computer vision, autoencoders, outlier detection, industrial inspection, unsupervised learning, model evaluation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-20">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Anomaly Detection in Vision: One-Class Methods Made Simple">
+<meta property="og:description" content="A clear, practical explanation of one-class anomaly detection in computer vision, with a worked example and guidance on evaluation without leakage.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/one-class-anomaly-detection-vision.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/one-class-anomaly-detection-vision.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Anomaly Detection in Vision: One-Class Methods Made Simple">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/one-class-anomaly-detection-vision.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/one-class-anomaly-detection-vision.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Anomaly Detection in Vision: One-Class Methods Made Simple",
+  "description": "A clear, practical explanation of one-class anomaly detection in computer vision, with a worked example and guidance on evaluation without leakage.",
+  "url": "https://jahanzaibawan.com/blog/one-class-anomaly-detection-vision.html",
+  "image": "https://jahanzaibawan.com/assets/blog/one-class-anomaly-detection-vision.png",
+  "datePublished": "2026-08-20",
+  "dateModified": "2026-08-20",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/one-class-anomaly-detection-vision.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Anomaly Detection in Vision: One-Class Methods Made Simple", "item": "https://jahanzaibawan.com/blog/one-class-anomaly-detection-vision.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Computer Vision · 5 min read · 20 Aug 2026</div>
+    <h1>Anomaly Detection in Vision: One-Class Methods Made Simple</h1>
+    <p class="lede">When you only have examples of normal, not defective, you need a different way of thinking about classification. Here is the intuition behind one-class anomaly detection.</p>
+  </div>
+
+  <img src="../assets/blog/one-class-anomaly-detection-vision.png" alt="Cover image for the article: Anomaly Detection in Vision: One-Class Methods Made Simple" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why normal supervised learning fails here</h2><p>Imagine you are building a system to spot scratches on manufactured metal parts. You have thousands of photos of good parts and perhaps a dozen photos of defective ones, because defects are rare by design: the factory is good at its job. A standard supervised classifier wants roughly balanced classes and plenty of examples of every category it must recognise. With twelve scratched parts against ten thousand clean ones, you cannot train a reliable two-class model, and even if you could, it would only recognise the specific defect types it happened to see.</p><p>This is the situation one-class methods are built for. Instead of asking a model to separate class A from class B, you ask it to learn a single thing: what does normal look like? Anything that deviates enough from that learned notion of normal gets flagged as anomalous, whether it is a scratch, a dent, a missing component, or a defect type nobody has ever seen before. The model never needs labelled anomalies during training, which matches how most real inspection problems actually arise.</p><p>This reframing matters beyond factories. Medical imaging, network security, quality control on production lines, even satellite imagery monitoring: in each case, the interesting cases are rare, expensive to label, and often unknown in advance. One-class thinking turns a hopeless few-shot classification problem into a tractable density estimation or reconstruction problem.</p></section><section class='psec reveal'><h2>The core idea: learn a compact model of normal</h2><p>Most one-class approaches share the same skeleton. Train a model exclusively on normal images so it becomes very good at representing or reconstructing that data. Then measure how well a new image fits the model. A good fit means normal; a poor fit means anomalous. The differences between methods come down to how they define fit.</p><p>Autoencoders are the most intuitive entry point. You train a neural network to compress an image into a small latent code and then reconstruct it back to the original, using only normal images. Because the network has only ever seen clean parts, it becomes efficient at reconstructing clean parts and comparatively poor at reconstructing anything structurally different. Feed it a scratched part, and the reconstruction error, the pixel-wise difference between input and output, spikes in the region of the scratch. Set a threshold on that error and you have a working detector.</p><p>Concretely, suppose your autoencoder achieves an average per-pixel reconstruction error of around 0.02 on held-out normal images, with a standard deviation of 0.01. A defective image producing an error of 0.08 sits many standard deviations above the normal distribution, which gives you a principled threshold rather than an arbitrary cutoff. This is the essence of one-class scoring: turn deviation into a number, then decide how much deviation is tolerable.</p><p>Other families follow the same logic with different mechanics. A one-class support vector machine learns a boundary in feature space that encloses the bulk of normal examples as tightly as possible; anything falling outside is anomalous. Deep feature-based methods extract embeddings from a pretrained network, model the distribution of normal embeddings, perhaps with a Gaussian or a nearest-neighbour distance, and flag embeddings that sit far from that distribution. The unifying thread is always: model normal tightly, then measure distance from that model.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/one-class-anomaly-detection-vision-1.jpg' alt='metal part factory inspection line' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Where it quietly goes wrong</h2><p>The biggest practical trap is leakage during evaluation, and it is easy to introduce without noticing. If your normal training images and your normal test images come from the same production batch, lighting setup, or even the same physical parts photographed twice, your model may learn to recognise that specific batch rather than genuine normality. It will then perform brilliantly in evaluation and disappoint in deployment, because the next batch looks subtly different and the model was never actually tested on that kind of shift.</p><p>A related issue is threshold selection. It is tempting to pick the threshold that gives the best score on your test set, but that test set almost certainly contains your only known anomalies, so tuning against it silently turns your test set into a validation set. A more honest approach sets the threshold using only a held-out slice of normal data, perhaps the 99th percentile of reconstruction error on normal validation images, and then reports how that fixed threshold performs on a separate, untouched anomaly set.</p><p>It is also worth being honest about what one-class scores actually measure. Reconstruction error and distance-based scores are proxies for anomaly, not anomaly itself. A perfectly normal image taken under unusual lighting can produce a high score for reasons that have nothing to do with defects. This is why one-class systems in practice benefit from careful control over acquisition conditions: consistent lighting, consistent camera position, consistent part orientation. The model is only as reliable as the assumption that normal training data represents the full range of normal variation the system will meet in deployment.</p></section><section class='psec reveal'><h2>A practical takeaway</h2><p>If you are approaching a defect detection problem with very few or no labelled anomalies, resist the urge to force a supervised classifier onto badly imbalanced data. Start with a simple one-class baseline: an autoencoder or a distance-based method over pretrained features, trained purely on normal examples, with a threshold set from held-out normal data rather than from the anomalies you happen to have collected. Evaluate on a test set that reflects genuinely new conditions, not just new photographs of the same familiar batch.</p><p>Treat any anomaly labels you do have as evaluation gold, not training fuel. Their real value is in telling you honestly how well your one-class model generalises, and in catching the moment when reconstruction error starts confusing lighting changes with genuine defects. Get that evaluation discipline right first, and the choice of specific one-class architecture becomes a much smaller decision than it first appears.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/one-class-anomaly-detection-vision-2.jpg' alt='security camera monitoring screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

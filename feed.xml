@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Thu, 20 Aug 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Anomaly Detection in Vision: One-Class Methods Made Simple</title>
+    <link>https://jahanzaibawan.com/blog/one-class-anomaly-detection-vision.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/one-class-anomaly-detection-vision.html</guid>
+    <pubDate>Thu, 20 Aug 2026 09:00:00 +0000</pubDate>
+    <description>Most defects are rare and unlabelled. One-class methods learn what normal looks like, then flag anything that does not fit, no anomaly examples required.</description>
+    <category>Computer Vision</category>
+  </item>
+  <item>
     <title>Convolutional Networks Versus Vision Transformers, Honestly</title>
     <link>https://jahanzaibawan.com/blog/cnns-versus-vision-transformers.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/cnns-versus-vision-transformers.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Tue, 11 Aug 2026 09:00:00 +0000</pubDate>
     <description>Before you call yourself an MLOps engineer, learn what actually breaks in production: data drift, silent leakage, and pipelines nobody can reproduce.</description>
     <category>MLOps</category>
-  </item>
-  <item>
-    <title>Choosing Your First Computer Vision Project Wisely</title>
-    <link>https://jahanzaibawan.com/blog/choosing-your-first-cv-project.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/choosing-your-first-cv-project.html</guid>
-    <pubDate>Mon, 10 Aug 2026 09:00:00 +0000</pubDate>
-    <description>Skip the trendy demo. Pick a computer vision project small enough to finish and honest enough to teach you where things actually go wrong.</description>
-    <category>Computer Vision</category>
   </item>
 </channel>
 </rss>
