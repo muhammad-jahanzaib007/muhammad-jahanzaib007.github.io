@@ -9,7 +9,8 @@
       "tag": "Deep Learning",
       "color": "a6",
       "thumb": "assets/blog/cnns-versus-vision-transformers.png",
-      "thumb_alt": "Cover image for the article: Convolutional Networks Versus Vision Transformers, Honestly"
+      "thumb_alt": "Cover image for the article: Convolutional Networks Versus Vision Transformers, Honestly",
+      "li_shared": true
     },
     {
       "slug": "catastrophic-forgetting-fine-tuning",
