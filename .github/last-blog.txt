@@ -1,1 +1,1 @@
-2026-08-20T20:01:38Z slug=one-class-anomaly-detection-vision words=962 title="Anomaly Detection in Vision: One-Class Methods Made Simple"
+2026-08-21T08:01:54Z slug=ocr-classical-to-deep-learning words=1044 title="Optical Character Recognition: From Pipelines to Deep Nets"

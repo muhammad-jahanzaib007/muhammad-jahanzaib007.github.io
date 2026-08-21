@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Optical character recognition: classical pipelines and where deep learning changed things",
     "Video understanding versus image classification: why extra dimension breaks assumptions",
     "Data labelling for computer vision: where annotation quality decides your ceiling",
     "Choosing an evaluation metric for a segmentation task, not just accuracy",
@@ -133,6 +132,7 @@
     "Fine-tuning on a small dataset: how much data is enough to see a difference",
     "Catastrophic forgetting: what fine-tuning quietly overwrites",
     "Convolutional networks versus vision transformers: a practical comparison",
-    "Anomaly detection in computer vision: one-class methods explained simply"
+    "Anomaly detection in computer vision: one-class methods explained simply",
+    "Optical character recognition: classical pipelines and where deep learning changed things"
   ]
 }

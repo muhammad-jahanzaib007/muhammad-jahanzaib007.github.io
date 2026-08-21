@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "ocr-classical-to-deep-learning",
+      "title": "Optical Character Recognition: From Pipelines to Deep Nets",
+      "excerpt": "A tour through classical OCR pipelines and the specific failure modes that end-to-end deep learning actually solved, not just automated.",
+      "date": "2026-08-21",
+      "read_min": 5,
+      "tag": "Computer Vision",
+      "color": "a3",
+      "thumb": "assets/blog/ocr-classical-to-deep-learning.png",
+      "thumb_alt": "Cover image for the article: Optical Character Recognition: From Pipelines to Deep Nets"
+    },
+    {
       "slug": "one-class-anomaly-detection-vision",
       "title": "Anomaly Detection in Vision: One-Class Methods Made Simple",
       "excerpt": "Most defects are rare and unlabelled. One-class methods learn what normal looks like, then flag anything that does not fit, no anomaly examples required.",

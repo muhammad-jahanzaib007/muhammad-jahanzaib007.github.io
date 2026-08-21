@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Optical Character Recognition: From Pipelines to Deep Nets | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="An evergreen technical explainer on classical OCR pipelines versus deep learning approaches, with a worked example showing where each stage failed.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="OCR, optical character recognition, deep learning, computer vision, sequence models, CTC loss, image preprocessing, text recognition, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-21">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Optical Character Recognition: From Pipelines to Deep Nets">
+<meta property="og:description" content="An evergreen technical explainer on classical OCR pipelines versus deep learning approaches, with a worked example showing where each stage failed.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/ocr-classical-to-deep-learning.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/ocr-classical-to-deep-learning.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Optical Character Recognition: From Pipelines to Deep Nets">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/ocr-classical-to-deep-learning.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/ocr-classical-to-deep-learning.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Optical Character Recognition: From Pipelines to Deep Nets",
+  "description": "An evergreen technical explainer on classical OCR pipelines versus deep learning approaches, with a worked example showing where each stage failed.",
+  "url": "https://jahanzaibawan.com/blog/ocr-classical-to-deep-learning.html",
+  "image": "https://jahanzaibawan.com/assets/blog/ocr-classical-to-deep-learning.png",
+  "datePublished": "2026-08-21",
+  "dateModified": "2026-08-21",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/ocr-classical-to-deep-learning.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Optical Character Recognition: From Pipelines to Deep Nets", "item": "https://jahanzaibawan.com/blog/ocr-classical-to-deep-learning.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Computer Vision · 5 min read · 21 Aug 2026</div>
+    <h1>Optical Character Recognition: From Pipelines to Deep Nets</h1>
+    <p class="lede">OCR looks solved because it works on receipts and scanned books, but understanding why the classical pipeline struggled explains exactly what deep learning fixed and what it did not.</p>
+  </div>
+
+  <img src="../assets/blog/ocr-classical-to-deep-learning.png" alt="Cover image for the article: Optical Character Recognition: From Pipelines to Deep Nets" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why OCR is a good lens on the whole field</h2><p>Optical character recognition is one of those problems that feels finished the moment you see it work on a clean scanned page, and feels completely unsolved the moment you point a phone camera at a crumpled receipt in bad light. That gap between the demo and the deployment is instructive, because it maps almost exactly onto the difference between the classical pipeline approach and the end-to-end deep learning approach that replaced most of it. If you understand why the classical pipeline broke, you understand a lot about why deep learning became the default tool for structured perception problems generally, not just text.</p><p>The classical OCR pipeline was, in essence, an assembly line. You took an image, cleaned it up, found the text regions, cut them into individual characters, and classified each character in isolation before stitching the results back into words with a language model. Every stage was a separate module built and tuned by a different set of heuristics, and every stage could fail independently. That modularity was actually the whole point at the time: it let engineers reason about each component, debug it in isolation, and swap in improvements without retraining everything. It is also precisely what deep learning eventually dismantled, and worth walking through in detail before saying why.</p></section><section class='psec reveal'><h2>Inside the classical pipeline, stage by stage</h2><p>Preprocessing came first: binarisation to turn a greyscale image into black and white, deskewing to straighten rotated text, and noise removal to strip out scanner artefacts or paper texture. A common technique was Otsu's method for picking a threshold that separates foreground ink from background paper, which works nicely on a clean scan with even lighting and fails badly the moment lighting is uneven, because a single global threshold cannot cope with a page that is brighter on one side than the other.</p><p>Next came segmentation: finding lines, then words, then individual characters, usually by looking for gaps in the vertical projection of dark pixels. This is where the classical approach really showed its age. Segmentation assumes characters are separable by whitespace, which is a reasonable assumption for typewritten Latin script with consistent spacing, and a terrible assumption for cursive handwriting, touching characters, or scripts like Arabic where letterforms change shape depending on their neighbours. A single misplaced cut here would doom every later stage, because you cannot classify a character you have already sliced in half.</p><p>Feature extraction and classification followed: each segmented glyph was reduced to a fixed set of handcrafted features, things like stroke density in different regions of the box, aspect ratio, or the count of loops and endpoints, and these features fed a classifier such as a support vector machine or a simple neural network. Consider a worked example: the letters 'rn' sitting close together can be misread as 'm' by a segmentation step that merges them into one box, and no amount of clever feature engineering downstream fixes that, because the damage happened before classification ever saw the input. Finally, a language model or dictionary lookup corrected obvious errors, turning 'the caf' followed by a garbled fragment into 'the cafe', but this was a patch applied after the fact rather than a genuine fix.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/ocr-classical-to-deep-learning-1.jpg' alt='scanned document text close up' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What deep learning actually changed</h2><p>The key shift was not that neural networks classify characters more accurately than support vector machines, though they generally do. The key shift was that deep learning made it possible to stop segmenting characters at all. Architectures combining convolutional feature extraction with recurrent layers, trained with a connectionist temporal classification loss, take a whole line of text as input and output a sequence of characters directly, without ever committing to a hard boundary between one glyph and the next. The model learns to align its output sequence to the input image implicitly during training, which means the 'rn' versus 'm' ambiguity becomes a soft decision the network can weigh using context from the whole line, rather than an irreversible cut made in isolation at preprocessing time.</p><p>This matters enormously in practice because it removes an entire class of unrecoverable errors. In the classical pipeline, a segmentation mistake was final; in a CTC-based or attention-based recogniser, the same visual ambiguity is just one hypothesis among several that the model can revise using surrounding characters and, in more recent transformer-based approaches, using broader context still. The preprocessing stage did not disappear either, images are still normalised and resized, but the brittle, hand-tuned binarisation and cutting logic was absorbed into learned convolutional filters that adapt to lighting and script variation because they were trained on thousands of examples of exactly that variation, rather than assuming a single global threshold will always work.</p><p>It is worth being honest about what did not change. Deep learning models still need representative training data, and an OCR system trained mostly on clean printed Latin text will still degrade on handwriting, low-resolution photographs, or scripts it rarely saw during training, just as the classical pipeline did, only the failure now shows up as a confidently wrong prediction rather than an obviously broken segmentation. This is an important evaluation point: because the end-to-end model hides its internal stages, it is harder to diagnose exactly where a failure originated, and practitioners lose some of the debuggability that the modular classical pipeline offered almost for free.</p></section><section class='psec reveal'><h2>A practical takeaway</h2><p>If you are building or evaluating an OCR system today, the lesson from this history is not simply that deep learning wins, it is that the biggest gains came from removing an early, irreversible commitment point in the pipeline rather than from a better classifier at the end. That principle generalises well beyond text recognition: whenever a pipeline forces a hard decision early that later stages cannot revisit, that decision point is worth scrutinising as a likely source of unrecoverable error, and worth replacing with something that can be learned or kept soft. When you evaluate a modern OCR system, test it on the messy inputs it will actually see, skewed photos, mixed fonts, low light, not just clean scans, because that gap between clean and real conditions is exactly where the old pipeline's assumptions used to break, and where a poorly trained model will quietly break in a new way today.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/ocr-classical-to-deep-learning-2.jpg' alt='old book pages with printed text' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
