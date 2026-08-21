@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a4",
       "thumb": "assets/blog/video-versus-image-classification.png",
-      "thumb_alt": "Cover image for the article: Video Understanding vs Image Classification: The Extra Axis"
+      "thumb_alt": "Cover image for the article: Video Understanding vs Image Classification: The Extra Axis",
+      "li_shared": true
     },
     {
       "slug": "ocr-classical-to-deep-learning",
