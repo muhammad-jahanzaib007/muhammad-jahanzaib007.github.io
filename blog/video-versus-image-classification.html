@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Understanding vs Image Classification: The Extra Axis | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why moving from image classification to video understanding breaks core assumptions around independence, evaluation splits, and what a model is actually learning.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="video understanding, image classification, temporal modelling, data leakage, evaluation, computer vision, train test split, deep learning, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-21">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Video Understanding vs Image Classification: The Extra Axis">
+<meta property="og:description" content="Why moving from image classification to video understanding breaks core assumptions around independence, evaluation splits, and what a model is actually learning.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/video-versus-image-classification.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/video-versus-image-classification.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Video Understanding vs Image Classification: The Extra Axis">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/video-versus-image-classification.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/video-versus-image-classification.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Video Understanding vs Image Classification: The Extra Axis",
+  "description": "Why moving from image classification to video understanding breaks core assumptions around independence, evaluation splits, and what a model is actually learning.",
+  "url": "https://jahanzaibawan.com/blog/video-versus-image-classification.html",
+  "image": "https://jahanzaibawan.com/assets/blog/video-versus-image-classification.png",
+  "datePublished": "2026-08-21",
+  "dateModified": "2026-08-21",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/video-versus-image-classification.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Video Understanding vs Image Classification: The Extra Axis", "item": "https://jahanzaibawan.com/blog/video-versus-image-classification.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 21 Aug 2026</div>
+    <h1>Video Understanding vs Image Classification: The Extra Axis</h1>
+    <p class="lede">Adding time to vision problems does not just add a dimension to your tensor. It quietly invalidates several assumptions that make image classification tractable and safe to evaluate.</p>
+  </div>
+
+  <img src="../assets/blog/video-versus-image-classification.png" alt="Cover image for the article: Video Understanding vs Image Classification: The Extra Axis" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this matters more than it looks</h2><p>When people move from image classification to video, the instinct is to treat it as the same problem with an extra dimension bolted on. Stack frames, add a temporal pooling layer or a 3D convolution, and carry on as before. I understand the appeal: the label sets often look similar, the loss functions are the same cross-entropy you already know, and the architectures are recognisable cousins of the image networks you have used for years. But this framing hides a set of assumptions that image classification quietly relies on, assumptions that video breaks almost immediately.</p><p>Image classification, at its core, assumes that each example is an independent draw from some distribution. A photograph of a dog and a photograph of a cat are, for practical purposes, unrelated events. This independence is what makes random train/test splitting sound: shuffle the dataset, hold out twenty percent, and you get a fair estimate of generalisation. Video breaks this in a way that is easy to miss and expensive to ignore, because a video is not a bag of independent images. It is a sequence of highly correlated frames drawn from a small number of underlying events.</p><p>This matters practically because the entire evaluation culture of computer vision, the train/test protocols, the reported accuracy figures, the intuitions we carry from ImageNet-era benchmarking, were built for the independent case. Applying them unchanged to video does not just introduce noise. It systematically inflates reported performance and can lead teams to ship models that look excellent on paper and disappoint in deployment.</p></section><section class='psec reveal'><h2>The leakage problem, made concrete</h2><p>Consider a simple worked example. Suppose you have footage from fifty different sporting matches, each match contributing around two thousand frames after sampling. Your task is to classify the type of action occurring in short clips: a pass, a tackle, a shot. If you take all one hundred thousand frames, shuffle them randomly, and split ninety-ten into train and test, you will almost certainly end up with frames from the same match, sometimes the same rally, on both sides of the split.</p><p>Two consecutive frames half a second apart are nearly identical: same players, same kit, same lighting, same camera angle, same crowd in the background. If frame 4,001 from match seventeen is in your training set and frame 4,003 from the same match is in your test set, your model does not need to understand the action at all. It can memorise incidental details, the colour of a specific advertising board, the exact stadium lighting, the particular jersey number visible in the corner, and use those as shortcuts. Your reported test accuracy might read ninety-four percent, but that number describes how well the model recognises which match a clip came from, not whether it understands tackles versus passes.</p><p>The honest fix is to split by match, not by frame. All frames from a given match go entirely into train or entirely into test, never both. When teams make this change, it is common to see accuracy drop by ten, fifteen, sometimes twenty percentage points, not because the model got worse, but because the earlier number was never measuring generalisation in the first place. This is the single most common mistake I see in video pipelines, and it is entirely invisible unless you specifically think about how the split was constructed.</p><p>The same issue appears in other guises: overlapping clips sampled with a sliding window from the same source video, multiple camera angles of the same event treated as separate examples, or augmented copies of a clip ending up on both sides of a split. In every case the underlying cause is identical: the temporal axis introduces strong correlation structure that a naive shuffle does not respect.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/video-versus-image-classification-1.jpg' alt='security camera footage screens' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Beyond leakage: what the model actually has to learn</h2><p>Even once splitting is done correctly, the extra dimension changes what generalisation means. In image classification, a model has to be invariant to things like lighting, pose, and background clutter within a single frame. In video, it additionally has to reason about order and duration. Reversing the frames of a clip of someone opening a door produces a physically implausible sequence, but a model that only pools frame-level features without attending to order cannot tell the difference. It may achieve a respectable accuracy on an action recognition benchmark using nothing but static appearance cues, such as recognising a swimming pool implies swimming, without ever encoding motion.</p><p>This is worth testing directly rather than assuming. A useful diagnostic is to shuffle the frame order within each clip at evaluation time and see how much accuracy degrades. If performance barely drops, the model is likely relying on scene and object recognition rather than genuine temporal reasoning, and it is effectively behaving like an image classifier wearing a video-shaped costume. I would treat a small drop as a warning sign worth investigating rather than a badge of robustness, because it usually means the temporal signal was never load-bearing.</p><p>There is also a practical cost dimension. A single 3D convolutional pass over a sixteen-frame clip at moderate resolution can require an order of magnitude more compute than classifying one still image, purely because you are processing sixteen times the pixels through a network with additional temporal parameters. Teams often underestimate this when scoping projects, budgeting for image-classification-level compute and then being surprised when training runs take days instead of hours. Sampling strategy, frame rate, and clip length are not just tuning knobs; they are decisions with direct cost implications that image classification never forced you to confront.</p></section><section class='psec reveal'><h2>A practical takeaway</h2><p>If you are moving a project from images to video, treat the temporal axis as a genuine change in problem structure, not a cosmetic addition. Split your data by source event, session, or subject, never by individual frame, and check for near-duplicate leakage across sliding windows. Run a frame-shuffle ablation before trusting any headline accuracy figure, and budget compute and storage as if you are training on a much larger dataset, because in an important sense you are. None of this requires exotic tooling; it requires being honest about what independence assumptions your evaluation protocol is quietly making, and checking whether video actually satisfies them.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/video-versus-image-classification-2.jpg' alt='film reel frames sequence' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Video understanding versus image classification: why extra dimension breaks assumptions",
     "Data labelling for computer vision: where annotation quality decides your ceiling",
     "Choosing an evaluation metric for a segmentation task, not just accuracy",
     "Regression metrics compared: RMSE, MAE, and when each one lies to you",
@@ -133,6 +132,7 @@
     "Catastrophic forgetting: what fine-tuning quietly overwrites",
     "Convolutional networks versus vision transformers: a practical comparison",
     "Anomaly detection in computer vision: one-class methods explained simply",
-    "Optical character recognition: classical pipelines and where deep learning changed things"
+    "Optical character recognition: classical pipelines and where deep learning changed things",
+    "Video understanding versus image classification: why extra dimension breaks assumptions"
   ]
 }

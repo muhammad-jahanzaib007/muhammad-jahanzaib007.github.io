@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "video-versus-image-classification",
+      "title": "Video Understanding vs Image Classification: The Extra Axis",
+      "excerpt": "Time is not just another axis. It breaks independence assumptions, inflates apparent accuracy, and demands leakage-aware splits that most video pipelines quietly skip.",
+      "date": "2026-08-21",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a4",
+      "thumb": "assets/blog/video-versus-image-classification.png",
+      "thumb_alt": "Cover image for the article: Video Understanding vs Image Classification: The Extra Axis"
+    },
+    {
       "slug": "ocr-classical-to-deep-learning",
       "title": "Optical Character Recognition: From Pipelines to Deep Nets",
       "excerpt": "A tour through classical OCR pipelines and the specific failure modes that end-to-end deep learning actually solved, not just automated.",

@@ -1,1 +1,1 @@
-2026-08-21T08:01:54Z slug=ocr-classical-to-deep-learning words=1044 title="Optical Character Recognition: From Pipelines to Deep Nets"
+2026-08-21T20:01:36Z slug=video-versus-image-classification words=1034 title="Video Understanding vs Image Classification: The Extra Axis"
