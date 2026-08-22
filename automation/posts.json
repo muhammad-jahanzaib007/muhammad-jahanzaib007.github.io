@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a6",
       "thumb": "assets/blog/segmentation-metrics-beyond-accuracy.png",
-      "thumb_alt": "Cover image for the article: Choosing a Segmentation Metric: Why Accuracy Lies"
+      "thumb_alt": "Cover image for the article: Choosing a Segmentation Metric: Why Accuracy Lies",
+      "li_shared": true
     },
     {
       "slug": "annotation-quality-computer-vision-ceiling",
