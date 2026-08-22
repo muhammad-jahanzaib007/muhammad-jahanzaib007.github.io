@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Labelling for Vision: Annotation Quality Sets Your Ceiling | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why annotation quality, not model architecture, sets the performance ceiling in computer vision, with a worked example on bounding box ambiguity and inter-annotator agreement.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="data labelling, computer vision, annotation quality, inter-annotator agreement, dataset curation, label noise, bounding box annotation, machine learning evaluation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-22">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Data Labelling for Vision: Annotation Quality Sets Your Ceiling">
+<meta property="og:description" content="Why annotation quality, not model architecture, sets the performance ceiling in computer vision, with a worked example on bounding box ambiguity and inter-annotator agreement.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/annotation-quality-computer-vision-ceiling.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/annotation-quality-computer-vision-ceiling.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Data Labelling for Vision: Annotation Quality Sets Your Ceiling">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/annotation-quality-computer-vision-ceiling.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/annotation-quality-computer-vision-ceiling.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Data Labelling for Vision: Annotation Quality Sets Your Ceiling",
+  "description": "Why annotation quality, not model architecture, sets the performance ceiling in computer vision, with a worked example on bounding box ambiguity and inter-annotator agreement.",
+  "url": "https://jahanzaibawan.com/blog/annotation-quality-computer-vision-ceiling.html",
+  "image": "https://jahanzaibawan.com/assets/blog/annotation-quality-computer-vision-ceiling.png",
+  "datePublished": "2026-08-22",
+  "dateModified": "2026-08-22",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/annotation-quality-computer-vision-ceiling.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Data Labelling for Vision: Annotation Quality Sets Your Ceiling", "item": "https://jahanzaibawan.com/blog/annotation-quality-computer-vision-ceiling.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Computer Vision · 5 min read · 22 Aug 2026</div>
+    <h1>Data Labelling for Vision: Annotation Quality Sets Your Ceiling</h1>
+    <p class="lede">No architecture change fixes a model that was trained on ambiguous labels. In computer vision, the annotation guidelines and the auditing process quietly decide how good your best possible model can ever be.</p>
+  </div>
+
+  <img src="../assets/blog/annotation-quality-computer-vision-ceiling.png" alt="Cover image for the article: Data Labelling for Vision: Annotation Quality Sets Your Ceiling" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The ceiling nobody budgets for</h2><p>When a computer vision model plateaus, the instinct is to reach for a bigger backbone, more augmentation, or a longer training schedule. I understand the instinct because architecture changes are legible: you can point to a paper, cite a parameter count, and justify the decision in a meeting. Auditing your labels is none of those things. It is slow, unglamorous, and often reveals that the problem was never the model at all.</p><p>Here is the uncomfortable version of the idea. A model trained on a dataset with genuinely ambiguous or inconsistently applied labels cannot exceed the accuracy of those labels, no matter how it is trained. If two competent annotators disagree on where a box should go around an object fifteen percent of the time, then fifteen percent of your evaluation set is effectively unresolved ground truth. Your model is being scored against a moving target, and no amount of tuning closes that gap because the gap is not in the model.</p><p>This matters more in vision than people expect, because visual tasks feel objective. A cat is a cat, a pedestrian is a pedestrian, surely the labels write themselves. In practice, edge cases dominate: partially occluded objects, motion blur, objects that straddle a class boundary, or crowded scenes where it is unclear whether two overlapping instances should be one box or two. These edge cases are exactly where annotation guidelines either hold up or fall apart, and they are disproportionately represented in the hard examples your model needs to learn from.</p></section><section class='psec reveal'><h2>A worked example: bounding boxes on a busy street scene</h2><p>Take a detection task: identifying vehicles in dashcam footage. Suppose the guideline says draw a tight box around each visible vehicle. Sounds unambiguous. Now put three annotators in front of the same frame showing a van partially hidden behind a bus, with only the wing mirror and a sliver of the body visible.</p><p>Annotator one draws a box around the visible sliver only, following the guideline literally. Annotator two estimates where the full van would be and draws a box around the inferred extent, reasoning that downstream tracking needs the true object size. Annotator three decides the visible fragment is too small to count as a detectable instance and skips it entirely. All three are behaving reasonably. None of them is wrong given a loosely written guideline. But now you have three different ground truths for the same pixel region, and whichever one lands in your training set becomes what the model is taught to reproduce.</p><p>Scale this across a dataset of fifty thousand frames and the effect compounds. If occluded objects appear in roughly one frame in eight, and the three-way disagreement pattern above holds for even half of those cases, you have introduced systematic noise into a meaningful fraction of your hardest and most valuable training examples. Your model will learn an inconsistent policy for occlusion because it was shown an inconsistent policy for occlusion. Evaluation metrics will look noisy in exactly the same way, and a validation set built from the same guideline will not reveal the problem because it inherits the same ambiguity.</p><p>The fix is not more data. It is a sharper guideline: for instance, specify a minimum visible fraction threshold for a box to count, define explicitly whether boxes should reflect visible extent or estimated full extent, and give annotators worked examples of borderline cases with the correct answer marked. Then measure inter-annotator agreement on a held-out sample before scaling up labelling, using a metric like intersection-over-union agreement or Cohen's kappa for classification-style labels. If agreement is weak, no downstream modelling choice will rescue the dataset.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/annotation-quality-computer-vision-ceiling-1.jpg' alt='annotator labelling bounding boxes on screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Why this is easy to miss and expensive to fix late</h2><p>Annotation quality problems hide well because they masquerade as model problems. A confusion matrix showing the model mixing up two visually similar classes looks like a representation learning issue. Sometimes it is. But it is worth checking, before reaching for a new loss function, whether the two classes were themselves inconsistently labelled by different annotators or annotation batches. I have found it useful to treat unexpected confusion patterns as a prompt to re-examine the labels first, not last.</p><p>There is also a leakage-adjacent trap here that deserves attention: guideline drift over time. Large labelling efforts happen in batches, often across weeks or months, sometimes with turnover in the annotation team. If the guideline is clarified partway through, perhaps because someone finally asks how to handle occluded vehicles, then early-batch labels and late-batch labels are not drawn from the same labelling policy even though they sit in the same dataset. If your train and test splits are not stratified by labelling batch, you can end up training on one policy and testing on a blend that includes a different one, which quietly inflates or deflates your reported numbers depending on which split absorbed which batch. This is a leakage problem in disguise: information about labelling era correlates with the target, and an unaware split lets that correlation bleed across train and test.</p><p>The practical remedy is process, not cleverness. Write the guideline with edge cases spelled out before labelling begins, not after disputes arise. Sample a subset for double annotation early and compute agreement before committing budget to the full dataset. Keep a record of guideline versions and, where feasible, tag examples with which version produced them so you can audit for drift later. Treat annotator disagreement not as noise to be averaged away but as a signal pointing directly at where your guideline is underspecified.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>Before tuning a model further, ask a blunter question: if you handed the same images to a second annotation team following the same instructions, how often would they draw the same boxes and assign the same classes? If you cannot answer that with a number, you do not yet know your ceiling. Spend the first slice of any vision project's budget on a small, deliberately adversarial batch of double-annotated edge cases, measure agreement honestly, and only then decide whether the bottleneck is the model or the label. In my experience it is the label far more often than the literature likes to admit.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/annotation-quality-computer-vision-ceiling-2.jpg' alt='dashcam footage of busy street with vehicles' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

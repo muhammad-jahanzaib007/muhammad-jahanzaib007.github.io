@@ -1,1 +1,1 @@
-2026-08-21T20:01:36Z slug=video-versus-image-classification words=1034 title="Video Understanding vs Image Classification: The Extra Axis"
+2026-08-22T08:01:32Z slug=annotation-quality-computer-vision-ceiling words=1031 title="Data Labelling for Vision: Annotation Quality Sets Your Ceiling"

@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "annotation-quality-computer-vision-ceiling",
+      "title": "Data Labelling for Vision: Annotation Quality Sets Your Ceiling",
+      "excerpt": "Better models cannot outrun bad labels. A close look at how annotation ambiguity, guideline drift, and inter-annotator disagreement cap what any vision model can learn.",
+      "date": "2026-08-22",
+      "read_min": 5,
+      "tag": "Computer Vision",
+      "color": "a5",
+      "thumb": "assets/blog/annotation-quality-computer-vision-ceiling.png",
+      "thumb_alt": "Cover image for the article: Data Labelling for Vision: Annotation Quality Sets Your Ceiling"
+    },
+    {
       "slug": "video-versus-image-classification",
       "title": "Video Understanding vs Image Classification: The Extra Axis",
       "excerpt": "Time is not just another axis. It breaks independence assumptions, inflates apparent accuracy, and demands leakage-aware splits that most video pipelines quietly skip.",

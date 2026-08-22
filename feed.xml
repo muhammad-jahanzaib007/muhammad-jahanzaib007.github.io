@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Fri, 21 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 22 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Data Labelling for Vision: Annotation Quality Sets Your Ceiling</title>
+    <link>https://jahanzaibawan.com/blog/annotation-quality-computer-vision-ceiling.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/annotation-quality-computer-vision-ceiling.html</guid>
+    <pubDate>Sat, 22 Aug 2026 09:00:00 +0000</pubDate>
+    <description>Better models cannot outrun bad labels. A close look at how annotation ambiguity, guideline drift, and inter-annotator disagreement cap what any vision model can learn.</description>
+    <category>Computer Vision</category>
+  </item>
   <item>
     <title>Video Understanding vs Image Classification: The Extra Axis</title>
     <link>https://jahanzaibawan.com/blog/video-versus-image-classification.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Wed, 12 Aug 2026 09:00:00 +0000</pubDate>
     <description>Segmentation and detection both find objects, but they cost and deliver very different things. Here is how to choose without guessing.</description>
     <category>Computer Vision</category>
-  </item>
-  <item>
-    <title>Data Scientist vs Machine Learning Engineer, in Practice</title>
-    <link>https://jahanzaibawan.com/blog/data-scientist-vs-ml-engineer.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/data-scientist-vs-ml-engineer.html</guid>
-    <pubDate>Wed, 12 Aug 2026 09:00:00 +0000</pubDate>
-    <description>Same buzzwords, different jobs. Here&#x27;s what actually separates data science from ML engineering once you look past the job title.</description>
-    <category>Careers</category>
   </item>
 </channel>
 </rss>
