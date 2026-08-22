@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "segmentation-metrics-beyond-accuracy",
+      "title": "Choosing a Segmentation Metric: Why Accuracy Lies",
+      "excerpt": "Pixel accuracy flatters lazy segmentation models. Dice, IoU and boundary metrics tell you what accuracy hides.",
+      "date": "2026-08-22",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a6",
+      "thumb": "assets/blog/segmentation-metrics-beyond-accuracy.png",
+      "thumb_alt": "Cover image for the article: Choosing a Segmentation Metric: Why Accuracy Lies"
+    },
+    {
       "slug": "annotation-quality-computer-vision-ceiling",
       "title": "Data Labelling for Vision: Annotation Quality Sets Your Ceiling",
       "excerpt": "Better models cannot outrun bad labels. A close look at how annotation ambiguity, guideline drift, and inter-annotator disagreement cap what any vision model can learn.",

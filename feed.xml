@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Sat, 22 Aug 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Choosing a Segmentation Metric: Why Accuracy Lies</title>
+    <link>https://jahanzaibawan.com/blog/segmentation-metrics-beyond-accuracy.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/segmentation-metrics-beyond-accuracy.html</guid>
+    <pubDate>Sat, 22 Aug 2026 09:00:00 +0000</pubDate>
+    <description>Pixel accuracy flatters lazy segmentation models. Dice, IoU and boundary metrics tell you what accuracy hides.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Data Labelling for Vision: Annotation Quality Sets Your Ceiling</title>
     <link>https://jahanzaibawan.com/blog/annotation-quality-computer-vision-ceiling.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/annotation-quality-computer-vision-ceiling.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
     <description>Architecture gets the credit, but pretraining data quietly decides what a transformer can ever learn to do well.</description>
     <category>Deep Learning</category>
-  </item>
-  <item>
-    <title>Semantic Segmentation vs Object Detection: Pick Wisely</title>
-    <link>https://jahanzaibawan.com/blog/segmentation-vs-object-detection.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/segmentation-vs-object-detection.html</guid>
-    <pubDate>Wed, 12 Aug 2026 09:00:00 +0000</pubDate>
-    <description>Segmentation and detection both find objects, but they cost and deliver very different things. Here is how to choose without guessing.</description>
-    <category>Computer Vision</category>
   </item>
 </channel>
 </rss>

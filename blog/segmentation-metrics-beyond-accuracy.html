@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Choosing a Segmentation Metric: Why Accuracy Lies | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to choosing segmentation metrics beyond pixel accuracy, covering Dice, IoU, class imbalance and boundary-sensitive evaluation.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="segmentation metrics, IoU, Dice coefficient, pixel accuracy, class imbalance, medical image segmentation, evaluation, machine learning, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-22">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Choosing a Segmentation Metric: Why Accuracy Lies">
+<meta property="og:description" content="A practical guide to choosing segmentation metrics beyond pixel accuracy, covering Dice, IoU, class imbalance and boundary-sensitive evaluation.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/segmentation-metrics-beyond-accuracy.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/segmentation-metrics-beyond-accuracy.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Choosing a Segmentation Metric: Why Accuracy Lies">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/segmentation-metrics-beyond-accuracy.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/segmentation-metrics-beyond-accuracy.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Choosing a Segmentation Metric: Why Accuracy Lies",
+  "description": "A practical guide to choosing segmentation metrics beyond pixel accuracy, covering Dice, IoU, class imbalance and boundary-sensitive evaluation.",
+  "url": "https://jahanzaibawan.com/blog/segmentation-metrics-beyond-accuracy.html",
+  "image": "https://jahanzaibawan.com/assets/blog/segmentation-metrics-beyond-accuracy.png",
+  "datePublished": "2026-08-22",
+  "dateModified": "2026-08-22",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/segmentation-metrics-beyond-accuracy.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Choosing a Segmentation Metric: Why Accuracy Lies", "item": "https://jahanzaibawan.com/blog/segmentation-metrics-beyond-accuracy.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 22 Aug 2026</div>
+    <h1>Choosing a Segmentation Metric: Why Accuracy Lies</h1>
+    <p class="lede">Pixel accuracy can look flattering even when a model completely misses the object you care about. Here is how to pick a metric that actually reflects what matters.</p>
+  </div>
+
+  <img src="../assets/blog/segmentation-metrics-beyond-accuracy.png" alt="Cover image for the article: Choosing a Segmentation Metric: Why Accuracy Lies" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The trap of pixel accuracy</h2><p>Segmentation asks a model to label every pixel in an image, and the obvious way to score it is to count how many pixels got the right label. That is pixel accuracy, and it is almost always the wrong headline metric. The problem is class imbalance, which in segmentation is not an edge case but the default condition of the task.</p><p>Take a concrete example. Suppose you are segmenting a small tumour in a medical scan, and the tumour occupies roughly two percent of the image. A model that predicts 'background' for every single pixel, without looking at the image at all, scores ninety eight percent pixel accuracy. It has learned nothing, yet the number looks superb on a slide. Anyone skimming results tables without checking class balance will walk away thinking the model works.</p><p>This is not a hypothetical worry, it is the normal shape of segmentation data. Roads occupy a small fraction of aerial imagery, defects occupy a tiny fraction of an inspection photo, organs occupy a modest fraction of a whole scan. Whenever the foreground class is a minority, pixel accuracy rewards models for correctly ignoring it, which is exactly the failure mode you are trying to catch.</p></section><section class='psec reveal'><h2>Intersection over Union and Dice: measuring overlap properly</h2><p>The standard fix is to measure overlap between the predicted region and the ground truth region directly, rather than scoring every pixel independently. Intersection over Union, often called IoU or the Jaccard index, divides the area where prediction and ground truth agree by the area covered by either. If the predicted mask and the true mask overlap perfectly, IoU is one. If they do not overlap at all, IoU is zero, regardless of how much correct background surrounds them.</p><p>Go back to the tumour example. Suppose the true tumour region has one thousand pixels, and the model predicts a region of eight hundred pixels, of which six hundred fall inside the true tumour. The intersection is six hundred pixels. The union is one thousand plus eight hundred minus the six hundred counted twice, which is one thousand two hundred. IoU works out to six hundred divided by one thousand two hundred, exactly zero point five. That number tells you the prediction is a fairly rough approximation of the tumour, which matches what you would see if you looked at the image. Pixel accuracy on the same case would still be dragged up near ninety nine percent by all the correctly labelled background, telling you almost nothing useful.</p><p>The Dice coefficient, also called the F1 score in this context, is closely related and slightly more forgiving of size mismatches because it weights the intersection twice: two times intersection divided by the sum of the two areas. Using the same numbers, Dice is two times six hundred divided by one thousand eight hundred, which comes to zero point six seven. Dice and IoU always agree on ranking but differ slightly in magnitude, and Dice tends to be the convention in medical imaging while IoU is more common in general computer vision. Neither is objectively correct, but both are vastly more informative than pixel accuracy whenever the foreground is small.</p><p>It is worth reporting IoU or Dice per class and then averaging, known as mean IoU, rather than computing one global overlap score across all classes pooled together. Pooling lets large, easy classes such as background or sky swamp the contribution of small, hard classes such as pedestrians or lesions, quietly reintroducing the same imbalance problem you were trying to escape.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/segmentation-metrics-beyond-accuracy-1.jpg' alt='medical scan tumor outline' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>When overlap still is not enough</h2><p>Even IoU and Dice have blind spots, and a rigorous evaluation should know what they miss. Both metrics treat the mask as a bag of pixels and are insensitive to where the errors occur. A model that gets the overall area roughly right but consistently blurs the boundary by a few pixels can score similarly to one that gets the interior right but misses a whole lobe of an irregularly shaped object. If the downstream task cares about precise boundaries, for instance estimating a tumour's margin for surgical planning, or measuring a crack's width for structural inspection, you need a boundary-aware metric.</p><p>The Hausdorff distance, or its more robust ninety fifth percentile variant, measures the worst-case distance between the predicted boundary and the true boundary rather than area overlap. It answers a different question: not 'how much do the regions overlap' but 'how far off is the boundary at its worst point'. A segmentation with excellent Dice can still have a poor Hausdorff distance if it misses a thin protrusion entirely, which is precisely the kind of error that area-based metrics under-penalise because a thin sliver contributes little to total area.</p><p>Another consideration is that small structures are punished harshly by IoU in a way that can be misleading. If the true object is only twenty pixels across, being off by two pixels along the boundary can drop IoU substantially, even though the same absolute error on a two hundred pixel object barely moves the score. This means comparing IoU across objects of very different sizes, or across datasets with different typical object sizes, needs care, and reporting a size-stratified breakdown is often more honest than a single aggregate number.</p></section><section class='psec reveal'><h2>Choosing the metric to fit the decision</h2><p>The practical lesson is to work backwards from the decision the segmentation output will feed into, rather than defaulting to whatever metric appears most often in a benchmark leaderboard. If the output feeds an area-based measurement, such as estimating burn wound surface area, overlap metrics like Dice are the right primary measure. If the output feeds a boundary-critical decision, such as clearance for autonomous navigation, boundary distance metrics deserve equal billing.</p><p>I would also always report class-wise breakdowns alongside the aggregate, and always check the class balance of the evaluation set before trusting a single summary number. A mean IoU of eighty percent can hide a model that scores ninety five on the easy majority class and thirty on the rare class that actually mattered for the application. Segmentation, more than most tasks, punishes anyone who reports one convenient number and calls it a day.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/segmentation-metrics-beyond-accuracy-2.jpg' alt='aerial image road segmentation mask' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

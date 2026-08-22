@@ -1,1 +1,1 @@
-2026-08-22T08:01:32Z slug=annotation-quality-computer-vision-ceiling words=1031 title="Data Labelling for Vision: Annotation Quality Sets Your Ceiling"
+2026-08-22T20:01:23Z slug=segmentation-metrics-beyond-accuracy words=1030 title="Choosing a Segmentation Metric: Why Accuracy Lies"
