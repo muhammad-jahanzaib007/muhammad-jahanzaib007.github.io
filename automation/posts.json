@@ -9,7 +9,8 @@
       "tag": "Computer Vision",
       "color": "a5",
       "thumb": "assets/blog/annotation-quality-computer-vision-ceiling.png",
-      "thumb_alt": "Cover image for the article: Data Labelling for Vision: Annotation Quality Sets Your Ceiling"
+      "thumb_alt": "Cover image for the article: Data Labelling for Vision: Annotation Quality Sets Your Ceiling",
+      "li_shared": true
     },
     {
       "slug": "video-versus-image-classification",
