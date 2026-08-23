@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Sun, 23 Aug 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>What Deep Learning Adds That Classical ML Cannot</title>
+    <link>https://jahanzaibawan.com/blog/what-deep-learning-adds.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/what-deep-learning-adds.html</guid>
+    <pubDate>Sun, 23 Aug 2026 09:00:00 +0000</pubDate>
+    <description>Deep learning&#x27;s real edge is automatic representation learning, not magic accuracy. Here is when that matters and when it does not.</description>
+    <category>Deep Learning</category>
+  </item>
+  <item>
     <title>RMSE, MAE, and When Each One Lies to You</title>
     <link>https://jahanzaibawan.com/blog/rmse-mae-when-they-lie.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/rmse-mae-when-they-lie.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Fri, 14 Aug 2026 09:00:00 +0000</pubDate>
     <description>Ad hoc prompting doesn&#x27;t scale. A structured template with fixed slots makes prompting testable, versionable, and far easier to debug.</description>
     <category>Prompt Engineering</category>
-  </item>
-  <item>
-    <title>Building a Case Study a Hiring Manager Will Actually Read</title>
-    <link>https://jahanzaibawan.com/blog/case-study-hiring-managers-read.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/case-study-hiring-managers-read.html</guid>
-    <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
-    <description>A hiring manager gives your portfolio ten seconds. Structure your case study so it earns the next ninety.</description>
-    <category>Careers</category>
   </item>
 </channel>
 </rss>

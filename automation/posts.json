@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "what-deep-learning-adds",
+      "title": "What Deep Learning Adds That Classical ML Cannot",
+      "excerpt": "Deep learning's real edge is automatic representation learning, not magic accuracy. Here is when that matters and when it does not.",
+      "date": "2026-08-23",
+      "read_min": 5,
+      "tag": "Deep Learning",
+      "color": "a3",
+      "thumb": "assets/blog/what-deep-learning-adds.png",
+      "thumb_alt": "Cover image for the article: What Deep Learning Adds That Classical ML Cannot"
+    },
+    {
       "slug": "rmse-mae-when-they-lie",
       "title": "RMSE, MAE, and When Each One Lies to You",
       "excerpt": "RMSE and MAE often disagree about which model is best. Here is the intuition behind why, with a worked example you can check by hand.",
