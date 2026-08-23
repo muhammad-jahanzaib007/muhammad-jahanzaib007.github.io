@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "rmse-mae-when-they-lie",
+      "title": "RMSE, MAE, and When Each One Lies to You",
+      "excerpt": "RMSE and MAE often disagree about which model is best. Here is the intuition behind why, with a worked example you can check by hand.",
+      "date": "2026-08-23",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a2",
+      "thumb": "assets/blog/rmse-mae-when-they-lie.png",
+      "thumb_alt": "Cover image for the article: RMSE, MAE, and When Each One Lies to You"
+    },
+    {
       "slug": "segmentation-metrics-beyond-accuracy",
       "title": "Choosing a Segmentation Metric: Why Accuracy Lies",
       "excerpt": "Pixel accuracy flatters lazy segmentation models. Dice, IoU and boundary metrics tell you what accuracy hides.",

@@ -1,1 +1,1 @@
-2026-08-22T20:01:23Z slug=segmentation-metrics-beyond-accuracy words=1030 title="Choosing a Segmentation Metric: Why Accuracy Lies"
+2026-08-23T08:01:27Z slug=rmse-mae-when-they-lie words=1041 title="RMSE, MAE, and When Each One Lies to You"

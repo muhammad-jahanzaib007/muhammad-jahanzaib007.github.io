@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RMSE, MAE, and When Each One Lies to You | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical, worked comparison of RMSE and MAE for regression evaluation, showing when each metric misleads you and how to choose between them.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="RMSE, MAE, regression metrics, model evaluation, error metrics, outliers, machine learning evaluation, loss functions, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-23">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="RMSE, MAE, and When Each One Lies to You">
+<meta property="og:description" content="A practical, worked comparison of RMSE and MAE for regression evaluation, showing when each metric misleads you and how to choose between them.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/rmse-mae-when-they-lie.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/rmse-mae-when-they-lie.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="RMSE, MAE, and When Each One Lies to You">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/rmse-mae-when-they-lie.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/rmse-mae-when-they-lie.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "RMSE, MAE, and When Each One Lies to You",
+  "description": "A practical, worked comparison of RMSE and MAE for regression evaluation, showing when each metric misleads you and how to choose between them.",
+  "url": "https://jahanzaibawan.com/blog/rmse-mae-when-they-lie.html",
+  "image": "https://jahanzaibawan.com/assets/blog/rmse-mae-when-they-lie.png",
+  "datePublished": "2026-08-23",
+  "dateModified": "2026-08-23",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/rmse-mae-when-they-lie.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "RMSE, MAE, and When Each One Lies to You", "item": "https://jahanzaibawan.com/blog/rmse-mae-when-they-lie.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 23 Aug 2026</div>
+    <h1>RMSE, MAE, and When Each One Lies to You</h1>
+    <p class="lede">Two of the most common regression metrics can rank the same models differently. Understanding why comes down to how each one treats large errors.</p>
+  </div>
+
+  <img src="../assets/blog/rmse-mae-when-they-lie.png" alt="Cover image for the article: RMSE, MAE, and When Each One Lies to You" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this choice quietly shapes your model</h2><p>When I first started comparing regression models, I treated RMSE and MAE as interchangeable, two ways of saying roughly the same thing about error. That is a mistake I no longer make. They can disagree about which model is better, and when they do, it is not noise, it is information about the shape of your errors. Choosing the wrong metric for the problem you actually have can lead you to pick a model that performs worse where it matters most.</p><p>Root Mean Squared Error and Mean Absolute Error both summarise prediction error into a single number, but they get there differently. MAE takes the absolute difference between prediction and truth for each point and averages it. RMSE squares each difference, averages the squares, then takes the square root. That squaring step is the whole story. It means RMSE punishes large errors disproportionately more than small ones, while MAE treats every unit of error the same regardless of size.</p></section><section class='psec reveal'><h2>A worked example that shows the split</h2><p>Suppose you are predicting house prices in thousands of pounds, and you have five test points with these absolute errors: 2, 3, 3, 4, and 40. That last one is a property your model badly misjudged, perhaps an unusual listing with features outside the normal range.</p><p>MAE here is the simple average: (2 + 3 + 3 + 4 + 40) divided by 5, which gives 10.4. RMSE requires squaring first: 4, 9, 9, 16, and 1600, summed to 1638, divided by 5 gives 327.6, and the square root of that is roughly 18.1. Notice the gap. MAE says your typical error is about 10.4, which feels close to the four small errors you actually have. RMSE says 18.1, a number no single point resembles, because it has been dragged upward by that one outlier of 40.</p><p>Now imagine a second model with errors of 5, 6, 6, 7, and 8, no huge misses but consistently a bit worse on ordinary cases. MAE for this model is 6.4, clearly better than the first model's 10.4. But RMSE for this model is about 6.6, comfortably better than the first model's 18.1 as well. In this case both metrics agree the second model wins, and that agreement is itself useful information: it tells you the first model's problem is not general mediocrity but one damaging outlier. If you only looked at RMSE, you would already know that. If you only looked at MAE, you would still find it, just less dramatically, and you would have no direct signal that a single point was responsible.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/rmse-mae-when-they-lie-1.jpg' alt='whiteboard with equations' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>When each metric actively misleads you</h2><p>RMSE lies to you when a handful of extreme errors are not actually representative of how your model behaves for the audience you serve. Suppose a model predicting delivery times is usually accurate to within a few minutes, but for a tiny number of long-haul edge cases it is off by hours. If those edge cases are rare and clearly flagged as a separate service tier, RMSE will still report a large number that suggests the model is unreliable, when in fact ninety-nine percent of predictions are tight. Someone skimming a dashboard and seeing a high RMSE might reject a genuinely strong model because the metric amplified a small, explainable minority of cases.</p><p>MAE lies to you in the opposite direction. It quietly tolerates a model that gets everything roughly right but occasionally produces a catastrophic error, because that single bad prediction is diluted evenly across the average rather than surfaced. If you are forecasting demand for a warehouse and an occasional wild underprediction leads to stockouts, MAE might tell you the model looks fine on average while the business keeps getting hurt by rare but severe misses. In domains where large errors carry disproportionate cost, such as medical dosing or financial risk, MAE's forgiveness of tail events is a genuine liability, not a neutral simplification.</p><p>There is also a subtler failure mode: comparing RMSE and MAE across different datasets or different train-test splits without checking that the underlying error distributions are comparable. A model evaluated on a test set with one unlucky extreme case can show a wildly different RMSE than the same model on a slightly different split, even though its typical performance has not changed. This is one more reason leakage-aware, carefully constructed splits matter, because an unrepresentative test set does not just bias your headline number, it can flip which metric agrees with which and lead you to draw the wrong conclusion about model quality.</p></section><section class='psec reveal'><h2>A practical way to decide</h2><p>My rule of thumb is to report both, always, and to look at the ratio between them rather than either number alone. If RMSE is close to MAE, your errors are fairly uniform and either metric tells a similar story. If RMSE is substantially larger than MAE, that gap is itself diagnostic, it tells you there are a small number of large errors dragging the squared metric upward, and it is worth plotting the residuals directly rather than trusting a single summary statistic.</p><p>Beyond that, let the cost structure of the actual decision drive the choice. If large errors genuinely cost more than proportionally, for instance because a big miss triggers a costly downstream failure, RMSE's sensitivity to outliers is a feature, not a flaw, and you should treat it as the primary metric. If all errors of a given size matter equally regardless of scale, or if you know your data contains a few unrepresentative extreme cases you do not want dominating your evaluation, MAE gives you a fairer picture of typical performance. Median absolute error is worth keeping in your back pocket too, since it is even more robust to outliers than MAE and can be a useful third opinion when the other two disagree sharply.</p><p>The honest takeaway is that neither metric is more correct than the other in the abstract. Each answers a different question: MAE asks how wrong you typically are, RMSE asks how wrong you are when you account for the pain of being very wrong. Knowing which question your problem actually needs answered, before you look at either number, is what stops a metric from quietly lying to you.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/rmse-mae-when-they-lie-2.jpg' alt='scatter plot residuals on screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

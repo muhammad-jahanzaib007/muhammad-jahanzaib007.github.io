@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Regression metrics compared: RMSE, MAE, and when each one lies to you",
     "What deep learning adds that classical machine learning cannot do",
     "How to choose a machine learning course: what actually matters before you enrol",
     "Reading a machine learning job advert: what the requirements actually mean",
@@ -133,6 +132,7 @@
     "Optical character recognition: classical pipelines and where deep learning changed things",
     "Video understanding versus image classification: why extra dimension breaks assumptions",
     "Data labelling for computer vision: where annotation quality decides your ceiling",
-    "Choosing an evaluation metric for a segmentation task, not just accuracy"
+    "Choosing an evaluation metric for a segmentation task, not just accuracy",
+    "Regression metrics compared: RMSE, MAE, and when each one lies to you"
   ]
 }

@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Sat, 22 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 23 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>RMSE, MAE, and When Each One Lies to You</title>
+    <link>https://jahanzaibawan.com/blog/rmse-mae-when-they-lie.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/rmse-mae-when-they-lie.html</guid>
+    <pubDate>Sun, 23 Aug 2026 09:00:00 +0000</pubDate>
+    <description>RMSE and MAE often disagree about which model is best. Here is the intuition behind why, with a worked example you can check by hand.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Choosing a Segmentation Metric: Why Accuracy Lies</title>
     <link>https://jahanzaibawan.com/blog/segmentation-metrics-beyond-accuracy.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
     <description>A hiring manager gives your portfolio ten seconds. Structure your case study so it earns the next ninety.</description>
     <category>Careers</category>
-  </item>
-  <item>
-    <title>How Pretraining Data Shapes What a Transformer Can Do</title>
-    <link>https://jahanzaibawan.com/blog/pretraining-data-shapes-transformers.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/pretraining-data-shapes-transformers.html</guid>
-    <pubDate>Thu, 13 Aug 2026 09:00:00 +0000</pubDate>
-    <description>Architecture gets the credit, but pretraining data quietly decides what a transformer can ever learn to do well.</description>
-    <category>Deep Learning</category>
   </item>
 </channel>
 </rss>
