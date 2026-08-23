@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a2",
       "thumb": "assets/blog/rmse-mae-when-they-lie.png",
-      "thumb_alt": "Cover image for the article: RMSE, MAE, and When Each One Lies to You"
+      "thumb_alt": "Cover image for the article: RMSE, MAE, and When Each One Lies to You",
+      "li_shared": true
     },
     {
       "slug": "segmentation-metrics-beyond-accuracy",
