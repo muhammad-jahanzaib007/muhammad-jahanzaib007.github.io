@@ -9,7 +9,8 @@
       "tag": "Learning",
       "color": "a4",
       "thumb": "assets/blog/choosing-a-machine-learning-course.png",
-      "thumb_alt": "Cover image for the article: How to Choose a Machine Learning Course That Is Worth It"
+      "thumb_alt": "Cover image for the article: How to Choose a Machine Learning Course That Is Worth It",
+      "li_shared": true
     },
     {
       "slug": "what-deep-learning-adds",
