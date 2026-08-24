@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "reading-ml-job-adverts",
+      "title": "Reading a Machine Learning Job Advert Properly",
+      "excerpt": "Machine learning job ads are full of vague phrases like 'strong background in deep learning'. Here is what they usually mean in practice.",
+      "date": "2026-08-24",
+      "read_min": 5,
+      "tag": "Careers",
+      "color": "a5",
+      "thumb": "assets/blog/reading-ml-job-adverts.png",
+      "thumb_alt": "Cover image for the article: Reading a Machine Learning Job Advert Properly"
+    },
+    {
       "slug": "choosing-a-machine-learning-course",
       "title": "How to Choose a Machine Learning Course That Is Worth It",
       "excerpt": "Most ML courses look similar on paper. The ones worth your money teach evaluation rigour, not just model zoos.",

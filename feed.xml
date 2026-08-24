@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Mon, 24 Aug 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Reading a Machine Learning Job Advert Properly</title>
+    <link>https://jahanzaibawan.com/blog/reading-ml-job-adverts.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/reading-ml-job-adverts.html</guid>
+    <pubDate>Mon, 24 Aug 2026 09:00:00 +0000</pubDate>
+    <description>Machine learning job ads are full of vague phrases like &#x27;strong background in deep learning&#x27;. Here is what they usually mean in practice.</description>
+    <category>Careers</category>
+  </item>
+  <item>
     <title>How to Choose a Machine Learning Course That Is Worth It</title>
     <link>https://jahanzaibawan.com/blog/choosing-a-machine-learning-course.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/choosing-a-machine-learning-course.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Sat, 15 Aug 2026 09:00:00 +0000</pubDate>
     <description>System prompts and user prompts are not interchangeable containers. Where you put an instruction changes how reliably a model follows it.</description>
     <category>NLP</category>
-  </item>
-  <item>
-    <title>Few-Shot Prompts: How Many Examples Is Too Many</title>
-    <link>https://jahanzaibawan.com/blog/how-many-few-shot-examples.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/how-many-few-shot-examples.html</guid>
-    <pubDate>Fri, 14 Aug 2026 09:00:00 +0000</pubDate>
-    <description>Adding more few-shot examples feels safe, but past a point it wastes tokens, biases outputs, and can quietly hurt accuracy.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>
