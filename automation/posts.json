@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "choosing-a-machine-learning-course",
+      "title": "How to Choose a Machine Learning Course That Is Worth It",
+      "excerpt": "Most ML courses look similar on paper. The ones worth your money teach evaluation rigour, not just model zoos.",
+      "date": "2026-08-24",
+      "read_min": 5,
+      "tag": "Learning",
+      "color": "a4",
+      "thumb": "assets/blog/choosing-a-machine-learning-course.png",
+      "thumb_alt": "Cover image for the article: How to Choose a Machine Learning Course That Is Worth It"
+    },
+    {
       "slug": "what-deep-learning-adds",
       "title": "What Deep Learning Adds That Classical ML Cannot",
       "excerpt": "Deep learning's real edge is automatic representation learning, not magic accuracy. Here is when that matters and when it does not.",

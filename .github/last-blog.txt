@@ -1,1 +1,1 @@
-2026-08-23T20:01:22Z slug=what-deep-learning-adds words=1010 title="What Deep Learning Adds That Classical ML Cannot"
+2026-08-24T08:01:49Z slug=choosing-a-machine-learning-course words=1016 title="How to Choose a Machine Learning Course That Is Worth It"

@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Sun, 23 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Mon, 24 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>How to Choose a Machine Learning Course That Is Worth It</title>
+    <link>https://jahanzaibawan.com/blog/choosing-a-machine-learning-course.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/choosing-a-machine-learning-course.html</guid>
+    <pubDate>Mon, 24 Aug 2026 09:00:00 +0000</pubDate>
+    <description>Most ML courses look similar on paper. The ones worth your money teach evaluation rigour, not just model zoos.</description>
+    <category>Learning</category>
+  </item>
   <item>
     <title>What Deep Learning Adds That Classical ML Cannot</title>
     <link>https://jahanzaibawan.com/blog/what-deep-learning-adds.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Fri, 14 Aug 2026 09:00:00 +0000</pubDate>
     <description>Adding more few-shot examples feels safe, but past a point it wastes tokens, biases outputs, and can quietly hurt accuracy.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Structured Prompt Templates: Stop Guessing, Start Repeating</title>
-    <link>https://jahanzaibawan.com/blog/structured-prompt-templates.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/structured-prompt-templates.html</guid>
-    <pubDate>Fri, 14 Aug 2026 09:00:00 +0000</pubDate>
-    <description>Ad hoc prompting doesn&#x27;t scale. A structured template with fixed slots makes prompting testable, versionable, and far easier to debug.</description>
-    <category>Prompt Engineering</category>
   </item>
 </channel>
 </rss>
