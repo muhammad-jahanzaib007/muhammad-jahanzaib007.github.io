@@ -9,7 +9,8 @@
       "tag": "Careers",
       "color": "a5",
       "thumb": "assets/blog/reading-ml-job-adverts.png",
-      "thumb_alt": "Cover image for the article: Reading a Machine Learning Job Advert Properly"
+      "thumb_alt": "Cover image for the article: Reading a Machine Learning Job Advert Properly",
+      "li_shared": true
     },
     {
       "slug": "choosing-a-machine-learning-course",
