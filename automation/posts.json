@@ -9,7 +9,8 @@
       "tag": "MLOps",
       "color": "a2",
       "thumb": "assets/blog/first-end-to-end-ml-project.png",
-      "thumb_alt": "Cover image for the article: Building Your First End to End ML Project That Actually Ships"
+      "thumb_alt": "Cover image for the article: Building Your First End to End ML Project That Actually Ships",
+      "li_shared": true
     },
     {
       "slug": "maths-before-deep-learning-book",
