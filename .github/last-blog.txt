@@ -1,1 +1,1 @@
-2026-08-24T20:01:28Z slug=reading-ml-job-adverts words=1069 title="Reading a Machine Learning Job Advert Properly"
+2026-08-25T08:03:04Z slug=maths-before-deep-learning-book words=1020 title="The Maths You Actually Need Before a Deep Learning Book"

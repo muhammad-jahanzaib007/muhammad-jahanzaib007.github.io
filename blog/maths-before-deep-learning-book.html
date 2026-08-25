@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Maths You Actually Need Before a Deep Learning Book | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to the linear algebra, calculus, and probability you genuinely need before opening a deep learning textbook, illustrated with a worked example.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="deep learning maths, linear algebra for machine learning, calculus for neural networks, probability for machine learning, gradient descent intuition, backpropagation maths, learning deep learning, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-25">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="The Maths You Actually Need Before a Deep Learning Book">
+<meta property="og:description" content="A practical guide to the linear algebra, calculus, and probability you genuinely need before opening a deep learning textbook, illustrated with a worked example.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/maths-before-deep-learning-book.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/maths-before-deep-learning-book.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Maths You Actually Need Before a Deep Learning Book">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/maths-before-deep-learning-book.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/maths-before-deep-learning-book.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The Maths You Actually Need Before a Deep Learning Book",
+  "description": "A practical guide to the linear algebra, calculus, and probability you genuinely need before opening a deep learning textbook, illustrated with a worked example.",
+  "url": "https://jahanzaibawan.com/blog/maths-before-deep-learning-book.html",
+  "image": "https://jahanzaibawan.com/assets/blog/maths-before-deep-learning-book.png",
+  "datePublished": "2026-08-25",
+  "dateModified": "2026-08-25",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/maths-before-deep-learning-book.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "The Maths You Actually Need Before a Deep Learning Book", "item": "https://jahanzaibawan.com/blog/maths-before-deep-learning-book.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Deep Learning · 5 min read · 25 Aug 2026</div>
+    <h1>The Maths You Actually Need Before a Deep Learning Book</h1>
+    <p class="lede">Most deep learning books assume a working fluency in a small set of ideas. Here is what actually matters and why, with a worked example rather than a syllabus.</p>
+  </div>
+
+  <img src="../assets/blog/maths-before-deep-learning-book.png" alt="Cover image for the article: The Maths You Actually Need Before a Deep Learning Book" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The problem with maths prerequisites lists</h2><p>Open any deep learning book and the preface will tell you to brush up on linear algebra, calculus, and probability. This is technically true and practically useless. It is the equivalent of telling someone learning to drive that they need to understand internal combustion, fluid dynamics, and traffic law. All relevant, wildly disproportionate to what gets you moving on day one.</p><p>I have watched people, and been one myself, stall out before chapter two of a deep learning book because they tried to master an entire linear algebra textbook first. The irony is that you need a genuinely small slice of mathematics to follow the reasoning in most modern deep learning material. The slice is narrow but it must be solid, because the book will use it constantly and rarely re-explain it.</p><p>What follows is not a syllabus. It is the handful of ideas that, in my experience, unlock almost everything else, plus a worked example that ties them together the way they actually appear on the page.</p></section><section class='psec reveal'><h2>Vectors, matrices, and what multiplication is doing</h2><p>You need to be comfortable thinking of a data point as a vector, a list of numbers representing features. An image patch, a word embedding, a row of sensor readings: all vectors. You need to know that a matrix can transform a vector into another vector, and that a neural network layer is essentially a matrix multiplication followed by a small nonlinear twist.</p><p>Here is the part that matters more than the mechanics: matrix multiplication is a weighted combination of inputs, repeated many times in parallel. Suppose a layer takes a 3-dimensional input vector <strong>x</strong> = [2, 1, 3] and a weight matrix with two output rows: [0.5, -1, 2] and [1, 0, -0.5]. The first output is 0.5(2) + (-1)(1) + 2(3) = 1 - 1 + 6 = 6. The second is 1(2) + 0(1) + (-0.5)(3) = 2 - 1.5 = 0.5. That is it. Every dense layer in every book you read is doing exactly this, just at a scale of thousands of inputs and outputs instead of three.</p><p>What you do not need, at least not initially, is eigenvalues, singular value decomposition, or matrix rank, unless the book specifically covers dimensionality reduction or certain optimisation proofs. Know what a dot product measures, roughly the similarity in direction between two vectors, and you will understand attention mechanisms, embeddings, and similarity search well before you need anything heavier.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/maths-before-deep-learning-book-1.jpg' alt='notebook with handwritten equations' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Derivatives, gradients, and the chain rule as a bookkeeping trick</h2><p>Calculus in deep learning is not about clever integration tricks. It is almost entirely about one question: if I nudge this number slightly, how does the output change? That question, answered systematically, is backpropagation.</p><p>Take a tiny worked example. Suppose a model computes y = (wx + b), then a loss L = (y - target)^2, with w = 2, x = 3, b = 1, and target = 5. Forward pass: y = 2(3) + 1 = 7, and L = (7 - 5)^2 = 4. Now the useful bit. The derivative of L with respect to y is 2(y - target) = 2(2) = 4. The derivative of y with respect to w is x, which is 3. By the chain rule, the derivative of L with respect to w is 4 times 3 equals 12. That number, 12, tells the optimiser exactly how much and in which direction to adjust w to reduce the loss. Nudge w down slightly, because the gradient is positive and we want to descend.</p><p>This is the entire idea behind gradient descent, repeated across millions of parameters. The chain rule is what lets you compute the effect of a distant parameter on a distant loss by multiplying local derivatives together, layer by layer, backwards through the network. You do not need to derive gradients by hand for anything beyond toy examples; frameworks do this automatically. But if the phrase vanishing gradient or exploding gradient is going to mean anything to you, you need to have internalised that gradients are products of many small numbers, and products of many small numbers can shrink or blow up fast.</p></section><section class='psec reveal'><h2>Probability, and why loss functions are not arbitrary</h2><p>The last piece is probability, specifically the idea that a model's output is often best understood as a probability distribution, and that a loss function measures how wrong that distribution is compared to reality. Cross-entropy loss, which appears in almost every classification chapter, is not a magic formula; it is a direct measure of how surprised the model would be if it had to bet on the true label using its own predicted probabilities.</p><p>Concretely: if a model predicts a 90 percent chance of the correct class, the cross-entropy contribution is -log(0.9), roughly 0.105, a small penalty. If it predicts only 10 percent chance for the correct class, the penalty is -log(0.1), roughly 2.303, over twenty times larger. This is why training pushes confident wrong predictions down hard and barely touches confident correct ones. Understanding this single relationship explains a large fraction of the behaviour you will see described in a deep learning book's chapters on classification, calibration, and even some failure modes.</p><p>You also need a working sense of expectation, the average outcome weighted by probability, because loss functions during training are typically expectations over a batch of examples, not single data points. Beyond that, you can defer topics like Bayesian inference or information theory proper until a book actually asks for them by name.</p><p>My honest advice is this: do not pre-study maths in isolation for weeks before opening the book. Learn the vector and matrix operations, the chain rule as a nudge-and-track mechanism, and the probability-as-surprise intuition behind common losses, then start reading and let the book's examples cement them. Mathematics learned right before it is used sticks; mathematics learned in the abstract, months in advance, evaporates. Keep a notebook next to you and re-derive every small numeric example the author gives, by hand, with a calculator if needed. That single habit will do more for your comprehension than any preparatory maths course.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/maths-before-deep-learning-book-2.jpg' alt='whiteboard with matrix diagram' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

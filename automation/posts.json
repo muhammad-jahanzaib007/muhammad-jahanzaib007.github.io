@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "maths-before-deep-learning-book",
+      "title": "The Maths You Actually Need Before a Deep Learning Book",
+      "excerpt": "Skip the full maths degree. Here is the small, specific set of ideas that makes deep learning books click, with a worked example.",
+      "date": "2026-08-25",
+      "read_min": 5,
+      "tag": "Deep Learning",
+      "color": "a6",
+      "thumb": "assets/blog/maths-before-deep-learning-book.png",
+      "thumb_alt": "Cover image for the article: The Maths You Actually Need Before a Deep Learning Book"
+    },
+    {
       "slug": "reading-ml-job-adverts",
       "title": "Reading a Machine Learning Job Advert Properly",
       "excerpt": "Machine learning job ads are full of vague phrases like 'strong background in deep learning'. Here is what they usually mean in practice.",

@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Mon, 24 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 25 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>The Maths You Actually Need Before a Deep Learning Book</title>
+    <link>https://jahanzaibawan.com/blog/maths-before-deep-learning-book.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/maths-before-deep-learning-book.html</guid>
+    <pubDate>Tue, 25 Aug 2026 09:00:00 +0000</pubDate>
+    <description>Skip the full maths degree. Here is the small, specific set of ideas that makes deep learning books click, with a worked example.</description>
+    <category>Deep Learning</category>
+  </item>
   <item>
     <title>Reading a Machine Learning Job Advert Properly</title>
     <link>https://jahanzaibawan.com/blog/reading-ml-job-adverts.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/chain-of-thought-prompting-tradeoffs.html</guid>
     <pubDate>Sat, 15 Aug 2026 09:00:00 +0000</pubDate>
     <description>Chain-of-thought prompting boosts performance on some tasks and quietly degrades it on others. I unpack the mechanism, a worked example, and when to skip it.</description>
-    <category>NLP</category>
-  </item>
-  <item>
-    <title>System Prompts vs User Prompts: Where Instructions Belong</title>
-    <link>https://jahanzaibawan.com/blog/system-prompts-versus-user-prompts.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/system-prompts-versus-user-prompts.html</guid>
-    <pubDate>Sat, 15 Aug 2026 09:00:00 +0000</pubDate>
-    <description>System prompts and user prompts are not interchangeable containers. Where you put an instruction changes how reliably a model follows it.</description>
     <category>NLP</category>
   </item>
 </channel>
