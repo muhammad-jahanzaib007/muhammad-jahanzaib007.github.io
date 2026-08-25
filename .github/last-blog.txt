@@ -1,1 +1,1 @@
-2026-08-25T08:03:04Z slug=maths-before-deep-learning-book words=1020 title="The Maths You Actually Need Before a Deep Learning Book"
+2026-08-25T20:03:07Z slug=first-end-to-end-ml-project words=964 title="Building Your First End to End ML Project That Actually Ships"

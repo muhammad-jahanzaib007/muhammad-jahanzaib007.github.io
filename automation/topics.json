@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Building your first end to end machine learning project: a realistic scope",
     "Ensemble methods explained: bagging, boosting, and stacking without the jargon",
     "Feature importance methods: what they tell you and what they cannot",
     "Data versioning for machine learning: why git alone is not enough",
@@ -133,6 +132,7 @@
     "What deep learning adds that classical machine learning cannot do",
     "How to choose a machine learning course: what actually matters before you enrol",
     "Reading a machine learning job advert: what the requirements actually mean",
-    "The maths you actually need before starting a deep learning book"
+    "The maths you actually need before starting a deep learning book",
+    "Building your first end to end machine learning project: a realistic scope"
   ]
 }

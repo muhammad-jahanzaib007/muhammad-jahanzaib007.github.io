@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building Your First End to End ML Project That Actually Ships | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to scoping a first end to end machine learning project, with realistic advice on data, evaluation, and avoiding leakage.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="machine learning project, end to end ml, project scoping, data leakage, train test split, baseline model, reproducibility, model evaluation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-25">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Building Your First End to End ML Project That Actually Ships">
+<meta property="og:description" content="A practical guide to scoping a first end to end machine learning project, with realistic advice on data, evaluation, and avoiding leakage.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/first-end-to-end-ml-project.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/first-end-to-end-ml-project.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Building Your First End to End ML Project That Actually Ships">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/first-end-to-end-ml-project.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/first-end-to-end-ml-project.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Building Your First End to End ML Project That Actually Ships",
+  "description": "A practical guide to scoping a first end to end machine learning project, with realistic advice on data, evaluation, and avoiding leakage.",
+  "url": "https://jahanzaibawan.com/blog/first-end-to-end-ml-project.html",
+  "image": "https://jahanzaibawan.com/assets/blog/first-end-to-end-ml-project.png",
+  "datePublished": "2026-08-25",
+  "dateModified": "2026-08-25",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/first-end-to-end-ml-project.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Building Your First End to End ML Project That Actually Ships", "item": "https://jahanzaibawan.com/blog/first-end-to-end-ml-project.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">MLOps · 5 min read · 25 Aug 2026</div>
+    <h1>Building Your First End to End ML Project That Actually Ships</h1>
+    <p class="lede">A realistic scope beats an ambitious one. Here is how to plan a first machine learning project so it gets finished, evaluated honestly, and understood by someone other than you.</p>
+  </div>
+
+  <img src="../assets/blog/first-end-to-end-ml-project.png" alt="Cover image for the article: Building Your First End to End ML Project That Actually Ships" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why scope kills more projects than skill</h2><p>When I talk to people starting their first machine learning project, the failure mode is almost never technical. It is scope. They pick a dataset with twelve columns, a target variable, and vague ambitions of building something that predicts well, deploys nicely, and looks impressive on a CV. Three weeks later they have forty open browser tabs, a notebook with cells run out of order, and no working model. The idea was fine. The scope was not.</p><p>A realistic first project has a narrow, boring goal: get a single number from raw data to a trustworthy evaluation, end to end, with every step reproducible. Not the best number. A correct one. If you can take a dataset of, say, five thousand rows and produce a model whose reported accuracy or error you would actually trust if your career depended on it, you have learned more than someone who trained fourteen architectures on a leaking pipeline and got a suspiciously excellent score.</p><p>The reason this matters practically is that every later skill sits on top of this foundation. Hyperparameter tuning is worthless if your validation set is contaminated. Fancy feature engineering is worthless if you engineered features using information from the future relative to your test rows. Get the plumbing right first, on something small and dull, before you touch anything exciting.</p></section><section class='psec reveal'><h2>A worked example of realistic scope</h2><p>Suppose you pick a tabular dataset of house sales: square footage, number of bedrooms, postcode, sale date, and sale price as the target. A realistic first scope looks like this: split the data by time, not randomly, so that everything before a cutoff date trains the model and everything after tests it. This single decision is the difference between a project and a leak. If you split randomly, a house sold in March could sit in training while a nearly identical house sold in February, in the same postcode, sits in test. Your model will look brilliant and be useless, because in production you will never have future sales to peek at.</p><p>With, say, four thousand training rows and one thousand held out by date, fit a plain linear regression first. Not because it will win, but because it gives you a number to beat. Imagine it produces a mean absolute error of eighteen thousand pounds on the held out set. That number is your baseline. Now fit a gradient boosted tree model with default-ish settings. If it comes back at fifteen thousand pounds, you have a real, modest, defensible improvement of about seventeen percent. That is a good first project result. It is not glamorous, but it is true, and you can explain exactly why it is true to someone else.</p><p>Compare that to what often happens instead: someone tunes forty hyperparameters against the test set repeatedly, watches the error creep down to nine thousand pounds, and reports that number without a separate holdout that was never touched during tuning. That figure is fiction. It reflects how well the model fits the noise of that particular test set after being optimised against it, not how it will perform on new houses. The realistic scope is not about doing less work; it is about spending your limited time on the part that makes the number honest rather than the part that makes it small.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/first-end-to-end-ml-project-1.jpg' alt='laptop with spreadsheet data on screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What a realistic first project should and should not include</h2><p>Keep the data small enough that you can look at it. A dataset you can open, scroll, and sanity check by eye teaches you more about missing values, weird encodings, and outliers than a dataset so large you can only summarise it statistically. Tens of thousands of rows is plenty for a first project. You are not trying to beat a benchmark; you are trying to build the habit of checking your own work.</p><p>Include a written note, even a short one, describing your evaluation protocol before you look at results: how the split was made, what metric you are using and why, and what would count as a meaningful improvement over the baseline. Writing this down before you see numbers stops you from quietly moving the goalposts once you know what result would look good. It also forces you to decide, in advance, whether a two percent improvement matters or is just noise given the size of your test set.</p><p>Leave out anything that requires you to learn a new deployment platform, a new cloud service, and a new modelling technique simultaneously. Pick one axis to stretch on. If this is your first project, stretch on getting the evaluation right and treat the model itself as almost incidental; a well-tuned linear model with an honest split beats a neural network with a leaking one, every time, because only one of those numbers means anything.</p><p>Finally, resist the pull towards ensembles and stacking before you have a single trustworthy baseline. Ensembling five models each evaluated with the same leak just multiplies the fiction. Complexity should be earned by demonstrating, on clean holdout data, that the simpler thing genuinely falls short.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>Size your first machine learning project so that the interesting part is the evaluation, not the algorithm. Choose a small dataset you can inspect by hand, split it in a way that respects time or grouping structure so nothing leaks, fit the dullest reasonable baseline first, and write down your evaluation plan before you see any results. A modest, honest seventeen percent improvement over a simple baseline, fully reproducible from raw data to final number, is worth more on your CV and in your own understanding than an impressive-looking score you cannot actually defend under questioning. Finish the small, correct thing first; the ambitious project can wait until you trust your own pipeline.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/first-end-to-end-ml-project-2.jpg' alt='whiteboard with simple chart and notes' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

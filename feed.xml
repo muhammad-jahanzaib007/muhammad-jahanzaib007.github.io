@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Tue, 25 Aug 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Building Your First End to End ML Project That Actually Ships</title>
+    <link>https://jahanzaibawan.com/blog/first-end-to-end-ml-project.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/first-end-to-end-ml-project.html</guid>
+    <pubDate>Tue, 25 Aug 2026 09:00:00 +0000</pubDate>
+    <description>Most first ML projects die from scope, not skill. Here is how to size one so it actually finishes and teaches you something true.</description>
+    <category>MLOps</category>
+  </item>
+  <item>
     <title>The Maths You Actually Need Before a Deep Learning Book</title>
     <link>https://jahanzaibawan.com/blog/maths-before-deep-learning-book.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/maths-before-deep-learning-book.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Sun, 16 Aug 2026 09:00:00 +0000</pubDate>
     <description>Prompt edits change behaviour just like model swaps do. Here is why they deserve the same evaluation discipline.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Chain-of-Thought Prompting: When It Helps, When It Hurts</title>
-    <link>https://jahanzaibawan.com/blog/chain-of-thought-prompting-tradeoffs.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/chain-of-thought-prompting-tradeoffs.html</guid>
-    <pubDate>Sat, 15 Aug 2026 09:00:00 +0000</pubDate>
-    <description>Chain-of-thought prompting boosts performance on some tasks and quietly degrades it on others. I unpack the mechanism, a worked example, and when to skip it.</description>
-    <category>NLP</category>
   </item>
 </channel>
 </rss>

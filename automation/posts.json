@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "first-end-to-end-ml-project",
+      "title": "Building Your First End to End ML Project That Actually Ships",
+      "excerpt": "Most first ML projects die from scope, not skill. Here is how to size one so it actually finishes and teaches you something true.",
+      "date": "2026-08-25",
+      "read_min": 5,
+      "tag": "MLOps",
+      "color": "a2",
+      "thumb": "assets/blog/first-end-to-end-ml-project.png",
+      "thumb_alt": "Cover image for the article: Building Your First End to End ML Project That Actually Ships"
+    },
+    {
       "slug": "maths-before-deep-learning-book",
       "title": "The Maths You Actually Need Before a Deep Learning Book",
       "excerpt": "Skip the full maths degree. Here is the small, specific set of ideas that makes deep learning books click, with a worked example.",
