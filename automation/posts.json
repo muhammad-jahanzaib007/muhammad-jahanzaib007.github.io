@@ -9,7 +9,8 @@
       "tag": "Deep Learning",
       "color": "a6",
       "thumb": "assets/blog/maths-before-deep-learning-book.png",
-      "thumb_alt": "Cover image for the article: The Maths You Actually Need Before a Deep Learning Book"
+      "thumb_alt": "Cover image for the article: The Maths You Actually Need Before a Deep Learning Book",
+      "li_shared": true
     },
     {
       "slug": "reading-ml-job-adverts",
