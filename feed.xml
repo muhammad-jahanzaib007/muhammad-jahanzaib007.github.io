@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Wed, 26 Aug 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Feature Importance Methods: What They Tell You</title>
+    <link>https://jahanzaibawan.com/blog/feature-importance-limits.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/feature-importance-limits.html</guid>
+    <pubDate>Wed, 26 Aug 2026 09:00:00 +0000</pubDate>
+    <description>Feature importance scores describe a model&#x27;s behaviour, not the world. Knowing the difference stops you from overtrusting a bar chart.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Ensemble Methods Explained Without the Jargon</title>
     <link>https://jahanzaibawan.com/blog/bagging-boosting-stacking-explained.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/bagging-boosting-stacking-explained.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/mlops-on-your-laptop-first.html</guid>
     <pubDate>Mon, 17 Aug 2026 09:00:00 +0000</pubDate>
     <description>Cloud infrastructure will not fix a badly designed pipeline. Build the habits first, on your laptop, then scale.</description>
-    <category>MLOps</category>
-  </item>
-  <item>
-    <title>Interview Questions for MLOps Roles: What They Really Test</title>
-    <link>https://jahanzaibawan.com/blog/mlops-interview-questions-explained.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/mlops-interview-questions-explained.html</guid>
-    <pubDate>Sun, 16 Aug 2026 09:00:00 +0000</pubDate>
-    <description>MLOps interviews rarely test frameworks. They test whether you understand failure, reproducibility, and who gets paged at 3am.</description>
     <category>MLOps</category>
   </item>
 </channel>

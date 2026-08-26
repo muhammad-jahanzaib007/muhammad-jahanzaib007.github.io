@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feature Importance Methods: What They Tell You | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical look at feature importance methods, what permutation, gain, and SHAP scores actually measure, and why they are not evidence of causation.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="feature importance, SHAP, permutation importance, model interpretability, correlated features, causal inference, machine learning evaluation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-26">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Feature Importance Methods: What They Tell You">
+<meta property="og:description" content="A practical look at feature importance methods, what permutation, gain, and SHAP scores actually measure, and why they are not evidence of causation.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/feature-importance-limits.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/feature-importance-limits.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Feature Importance Methods: What They Tell You">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/feature-importance-limits.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/feature-importance-limits.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Feature Importance Methods: What They Tell You",
+  "description": "A practical look at feature importance methods, what permutation, gain, and SHAP scores actually measure, and why they are not evidence of causation.",
+  "url": "https://jahanzaibawan.com/blog/feature-importance-limits.html",
+  "image": "https://jahanzaibawan.com/assets/blog/feature-importance-limits.png",
+  "datePublished": "2026-08-26",
+  "dateModified": "2026-08-26",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/feature-importance-limits.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Feature Importance Methods: What They Tell You", "item": "https://jahanzaibawan.com/blog/feature-importance-limits.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 26 Aug 2026</div>
+    <h1>Feature Importance Methods: What They Tell You</h1>
+    <p class="lede">Importance scores are useful diagnostics, not proof of causal relevance. Here is what they can and cannot support.</p>
+  </div>
+
+  <img src="../assets/blog/feature-importance-limits.png" alt="Cover image for the article: Feature Importance Methods: What They Tell You" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why we reach for importance scores</h2><p>Whenever I hand over a model, someone asks which features matter most. It is a reasonable question and importance scores give a fast, visual answer: a bar chart ranking variables by how much they seem to drive predictions. The trouble is that this chart answers a narrower question than most people assume. It tells you how much a feature influenced this particular model's output on this particular data, not how important that feature is in the real process generating the data.</p><p>That gap matters because importance scores get used for decisions well beyond model debugging: justifying which sensors to keep, which survey questions to drop, which risk factors to flag to a regulator. If the score is quietly answering a different question than the one being asked, those decisions rest on a misunderstanding rather than evidence.</p><p>I want to walk through what the common methods actually compute, using a concrete example, and then be specific about where the inference breaks down.</p></section><section class='psec reveal'><h2>A worked example with correlated features</h2><p>Suppose I am predicting whether a loan defaults, using two features: <em>years employed</em> and <em>years at current address</em>. In my data these are correlated at around 0.8, since people who stay in a job tend to stay in one place too. I train a random forest and look at built-in gain-based importance. Years employed gets a score of 0.31 and years at current address gets 0.05, even though a simple univariate check shows both features have almost identical individual relationships with default risk.</p><p>What happened is not that years employed is five times more informative. It is that the tree-building algorithm picked years employed first at most splits, purely because of how ties were broken and how the greedy search proceeded, and once that feature captured the shared signal there was little unique variance left for the second one to explain. Swap the order the features are presented in, or bootstrap a different sample, and the split could easily go the other way. The importance score is reporting an artefact of correlation and algorithmic tie-breaking, not a stable fact about the world.</p><p>Permutation importance, which shuffles a feature and measures the drop in accuracy, has the same vulnerability. If I permute years employed while years at current address is still intact and highly correlated with it, the model can partly reconstruct the missing signal from the correlated feature. The measured importance drop understates the feature's true relevance. Permute both together and the picture changes again. None of these numbers is wrong exactly, they are all faithfully measuring something, but that something depends heavily on which other features happen to be sitting in the dataset.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/feature-importance-limits-1.jpg' alt='bar chart on laptop screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What SHAP adds and what it still cannot do</h2><p>SHAP values improve on this by distributing credit more fairly across correlated features using a game-theoretic allocation, and they let you inspect importance at the level of a single prediction rather than only in aggregate. That is a genuine advance for auditing individual decisions: if a loan is denied, I can say that years employed contributed negatively by 0.12 towards the predicted probability of default, holding the rest of the model fixed.</p><p>But SHAP values are still conditional on the model you trained and the reference distribution you chose for the baseline. They tell you how the model's output moves when a feature moves, given everything else the model has already learned, including any spurious correlations that survived training. If your training data has a historical bias where postcode correlated with default risk for reasons that had nothing to do with creditworthiness, SHAP will faithfully report postcode as important, because it is important to the model. It cannot tell you that this importance reflects bias rather than a genuine causal driver.</p><p>This is the core limitation across every method in this family, whether it is gain, permutation, or SHAP: they describe association within a fitted function, not causal structure in the world. A feature can score highly because it genuinely drives the outcome, because it is a proxy for a hidden cause, because it is correlated with a feature that does drive the outcome, or because of quirks in how the optimiser settled during training. The importance score by itself does not distinguish between these explanations, and no amount of averaging over more permutations will manufacture that distinction from data the method was never designed to use.</p></section><section class='psec reveal'><h2>Using importance scores without overclaiming</h2><p>None of this means importance scores are useless, they are genuinely useful for a narrower set of tasks: spotting features the model is leaning on that should raise an ethical or legal flag, sanity-checking that a model has not learned to rely entirely on a leaked feature, and comparing relative reliance across model versions during development. Used for those diagnostic purposes, the caveats above are manageable because you are asking exactly the question the method answers.</p><p>Problems start when importance scores get used to argue causal or scientific claims, such as telling a policymaker that a variable is a key driver of an outcome in the real world. For that, you need a study designed for causal inference: randomised experiments where feasible, or techniques like instrumental variables and careful confounding control when they are not. A high SHAP value is not evidence of causal effect, and a low one is not evidence of causal irrelevance, particularly under correlated features.</p><p>My practical rule is to always report importance scores alongside a note on correlation structure among the top features, and to be explicit in any write-up about whether the claim is <em>this model relies on this feature</em> or <em>this feature drives the outcome</em>. Those are different sentences and conflating them is where most of the damage happens. Keep the boundary clear and the method remains a genuinely useful diagnostic rather than a source of quietly false confidence.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/feature-importance-limits-2.jpg' alt='office whiteboard with data diagrams' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

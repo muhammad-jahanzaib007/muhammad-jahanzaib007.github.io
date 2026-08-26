@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "feature-importance-limits",
+      "title": "Feature Importance Methods: What They Tell You",
+      "excerpt": "Feature importance scores describe a model's behaviour, not the world. Knowing the difference stops you from overtrusting a bar chart.",
+      "date": "2026-08-26",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a4",
+      "thumb": "assets/blog/feature-importance-limits.png",
+      "thumb_alt": "Cover image for the article: Feature Importance Methods: What They Tell You"
+    },
+    {
       "slug": "bagging-boosting-stacking-explained",
       "title": "Ensemble Methods Explained Without the Jargon",
       "excerpt": "A plain-English guide to bagging, boosting, and stacking, with a concrete example showing why each one actually works.",
