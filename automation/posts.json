@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a4",
       "thumb": "assets/blog/feature-importance-limits.png",
-      "thumb_alt": "Cover image for the article: Feature Importance Methods: What They Tell You"
+      "thumb_alt": "Cover image for the article: Feature Importance Methods: What They Tell You",
+      "li_shared": true
     },
     {
       "slug": "bagging-boosting-stacking-explained",
