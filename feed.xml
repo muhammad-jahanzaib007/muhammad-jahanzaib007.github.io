@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Tue, 25 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 26 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Ensemble Methods Explained Without the Jargon</title>
+    <link>https://jahanzaibawan.com/blog/bagging-boosting-stacking-explained.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/bagging-boosting-stacking-explained.html</guid>
+    <pubDate>Wed, 26 Aug 2026 09:00:00 +0000</pubDate>
+    <description>A plain-English guide to bagging, boosting, and stacking, with a concrete example showing why each one actually works.</description>
+    <category>Machine Learning</category>
+  </item>
   <item>
     <title>Building Your First End to End ML Project That Actually Ships</title>
     <link>https://jahanzaibawan.com/blog/first-end-to-end-ml-project.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Sun, 16 Aug 2026 09:00:00 +0000</pubDate>
     <description>MLOps interviews rarely test frameworks. They test whether you understand failure, reproducibility, and who gets paged at 3am.</description>
     <category>MLOps</category>
-  </item>
-  <item>
-    <title>Evaluation Harnesses for Prompts: Treat Them Like Models</title>
-    <link>https://jahanzaibawan.com/blog/prompt-evaluation-harnesses.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/prompt-evaluation-harnesses.html</guid>
-    <pubDate>Sun, 16 Aug 2026 09:00:00 +0000</pubDate>
-    <description>Prompt edits change behaviour just like model swaps do. Here is why they deserve the same evaluation discipline.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>
