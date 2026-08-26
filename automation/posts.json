@@ -9,7 +9,8 @@
       "tag": "Machine Learning",
       "color": "a3",
       "thumb": "assets/blog/bagging-boosting-stacking-explained.png",
-      "thumb_alt": "Cover image for the article: Ensemble Methods Explained Without the Jargon"
+      "thumb_alt": "Cover image for the article: Ensemble Methods Explained Without the Jargon",
+      "li_shared": true
     },
     {
       "slug": "first-end-to-end-ml-project",
