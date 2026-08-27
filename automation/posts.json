@@ -9,7 +9,8 @@
       "tag": "MLOps",
       "color": "a5",
       "thumb": "assets/blog/data-versioning-beyond-git.png",
-      "thumb_alt": "Cover image for the article: Data Versioning for ML: Why Git Alone Falls Short"
+      "thumb_alt": "Cover image for the article: Data Versioning for ML: Why Git Alone Falls Short",
+      "li_shared": true
     },
     {
       "slug": "feature-importance-limits",
