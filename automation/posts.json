@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a6",
       "thumb": "assets/blog/honest-computer-vision-benchmarking.png",
-      "thumb_alt": "Cover image for the article: How to Benchmark a Computer Vision Model Honestly"
+      "thumb_alt": "Cover image for the article: How to Benchmark a Computer Vision Model Honestly",
+      "li_shared": true
     },
     {
       "slug": "data-versioning-beyond-git",
