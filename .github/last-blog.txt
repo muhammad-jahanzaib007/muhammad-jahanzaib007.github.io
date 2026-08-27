@@ -1,1 +1,1 @@
-2026-08-27T08:02:07Z slug=data-versioning-beyond-git words=1008 title="Data Versioning for ML: Why Git Alone Falls Short"
+2026-08-27T20:03:25Z slug=honest-computer-vision-benchmarking words=1028 title="How to Benchmark a Computer Vision Model Honestly"

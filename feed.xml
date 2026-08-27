@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Thu, 27 Aug 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>How to Benchmark a Computer Vision Model Honestly</title>
+    <link>https://jahanzaibawan.com/blog/honest-computer-vision-benchmarking.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/honest-computer-vision-benchmarking.html</guid>
+    <pubDate>Thu, 27 Aug 2026 09:00:00 +0000</pubDate>
+    <description>A practical guide to leakage-aware splits, strong baselines, and realistic test conditions before shipping a vision model.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Data Versioning for ML: Why Git Alone Falls Short</title>
     <link>https://jahanzaibawan.com/blog/data-versioning-beyond-git.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/data-versioning-beyond-git.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/scheduled-retraining-wrong-idea.html</guid>
     <pubDate>Tue, 18 Aug 2026 09:00:00 +0000</pubDate>
     <description>A retraining cadence is not a monitoring strategy. Here is why scheduled retraining can mask drift, hide bugs, and quietly erode trust in your pipeline.</description>
-    <category>MLOps</category>
-  </item>
-  <item>
-    <title>MLOps for a Team of One: What to Automate First</title>
-    <link>https://jahanzaibawan.com/blog/mlops-for-a-team-of-one.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/mlops-for-a-team-of-one.html</guid>
-    <pubDate>Mon, 17 Aug 2026 09:00:00 +0000</pubDate>
-    <description>You cannot automate everything as a solo practitioner. Here is the order that actually saves time: data checks, then retraining, then serving, then monitoring.</description>
     <category>MLOps</category>
   </item>
 </channel>

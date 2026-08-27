@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "honest-computer-vision-benchmarking",
+      "title": "How to Benchmark a Computer Vision Model Honestly",
+      "excerpt": "A practical guide to leakage-aware splits, strong baselines, and realistic test conditions before shipping a vision model.",
+      "date": "2026-08-27",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a6",
+      "thumb": "assets/blog/honest-computer-vision-benchmarking.png",
+      "thumb_alt": "Cover image for the article: How to Benchmark a Computer Vision Model Honestly"
+    },
+    {
       "slug": "data-versioning-beyond-git",
       "title": "Data Versioning for ML: Why Git Alone Falls Short",
       "excerpt": "Git tracks your code perfectly and your data terribly. Here is why that mismatch causes silent, hard-to-debug failures in ML pipelines.",
