@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "data-versioning-beyond-git",
+      "title": "Data Versioning for ML: Why Git Alone Falls Short",
+      "excerpt": "Git tracks your code perfectly and your data terribly. Here is why that mismatch causes silent, hard-to-debug failures in ML pipelines.",
+      "date": "2026-08-27",
+      "read_min": 5,
+      "tag": "MLOps",
+      "color": "a5",
+      "thumb": "assets/blog/data-versioning-beyond-git.png",
+      "thumb_alt": "Cover image for the article: Data Versioning for ML: Why Git Alone Falls Short"
+    },
+    {
       "slug": "feature-importance-limits",
       "title": "Feature Importance Methods: What They Tell You",
       "excerpt": "Feature importance scores describe a model's behaviour, not the world. Knowing the difference stops you from overtrusting a bar chart.",

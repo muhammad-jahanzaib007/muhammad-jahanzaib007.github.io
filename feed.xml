@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Wed, 26 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 27 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Data Versioning for ML: Why Git Alone Falls Short</title>
+    <link>https://jahanzaibawan.com/blog/data-versioning-beyond-git.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/data-versioning-beyond-git.html</guid>
+    <pubDate>Thu, 27 Aug 2026 09:00:00 +0000</pubDate>
+    <description>Git tracks your code perfectly and your data terribly. Here is why that mismatch causes silent, hard-to-debug failures in ML pipelines.</description>
+    <category>MLOps</category>
+  </item>
   <item>
     <title>Feature Importance Methods: What They Tell You</title>
     <link>https://jahanzaibawan.com/blog/feature-importance-limits.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/mlops-for-a-team-of-one.html</guid>
     <pubDate>Mon, 17 Aug 2026 09:00:00 +0000</pubDate>
     <description>You cannot automate everything as a solo practitioner. Here is the order that actually saves time: data checks, then retraining, then serving, then monitoring.</description>
-    <category>MLOps</category>
-  </item>
-  <item>
-    <title>Setting Up Your First MLOps Project on a Laptop</title>
-    <link>https://jahanzaibawan.com/blog/mlops-on-your-laptop-first.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/mlops-on-your-laptop-first.html</guid>
-    <pubDate>Mon, 17 Aug 2026 09:00:00 +0000</pubDate>
-    <description>Cloud infrastructure will not fix a badly designed pipeline. Build the habits first, on your laptop, then scale.</description>
     <category>MLOps</category>
   </item>
 </channel>

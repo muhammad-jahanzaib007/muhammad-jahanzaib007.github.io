@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Versioning for ML: Why Git Alone Falls Short | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Git is built for text diffs, not gigabyte-scale, mutable datasets. Learn why ML teams need dedicated data versioning to keep experiments reproducible.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="data versioning, machine learning, reproducibility, git, DVC, MLOps, dataset management, leakage, experiment tracking, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-27">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Data Versioning for ML: Why Git Alone Falls Short">
+<meta property="og:description" content="Git is built for text diffs, not gigabyte-scale, mutable datasets. Learn why ML teams need dedicated data versioning to keep experiments reproducible.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/data-versioning-beyond-git.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/data-versioning-beyond-git.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Data Versioning for ML: Why Git Alone Falls Short">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/data-versioning-beyond-git.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/data-versioning-beyond-git.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Data Versioning for ML: Why Git Alone Falls Short",
+  "description": "Git is built for text diffs, not gigabyte-scale, mutable datasets. Learn why ML teams need dedicated data versioning to keep experiments reproducible.",
+  "url": "https://jahanzaibawan.com/blog/data-versioning-beyond-git.html",
+  "image": "https://jahanzaibawan.com/assets/blog/data-versioning-beyond-git.png",
+  "datePublished": "2026-08-27",
+  "dateModified": "2026-08-27",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/data-versioning-beyond-git.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Data Versioning for ML: Why Git Alone Falls Short", "item": "https://jahanzaibawan.com/blog/data-versioning-beyond-git.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">MLOps · 5 min read · 27 Aug 2026</div>
+    <h1>Data Versioning for ML: Why Git Alone Falls Short</h1>
+    <p class="lede">Code review answers &#x27;what changed in the model&#x27;. It rarely answers &#x27;what changed in the data that trained it&#x27;, and that gap quietly breaks reproducibility.</p>
+  </div>
+
+  <img src="../assets/blog/data-versioning-beyond-git.png" alt="Cover image for the article: Data Versioning for ML: Why Git Alone Falls Short" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The problem git was never built to solve</h2><p>Git is one of the best tools ever written for tracking small text files that change in predictable ways. It stores diffs efficiently, it merges branches sensibly, and it gives you a clean audit trail of who changed what and why. The trouble starts when you point it at machine learning data. A training set is rarely a small text file. It might be a directory of two hundred thousand images, a ten gigabyte parquet file, or a database snapshot that gets refreshed nightly. Git was not designed to diff binary blobs meaningfully, and committing large files to a repository bloats it until cloning becomes painful and every operation slows down.</p><p>The deeper issue is not just size, it is mutability with no visible history. Teams often treat the dataset as a single mutable object sitting on a shared drive or an S3 bucket. Someone fixes a labelling error, someone else appends new rows, a preprocessing script silently changes how missing values are imputed. None of this is captured by git unless you are disciplined enough to version every intermediate artefact, and in practice almost nobody is. The result is that six months later you cannot answer a simple question: which exact rows, with which exact labels, trained the model that is now in production.</p><p>This matters because in ML the data is not an input to the code, it is effectively part of the code. Two identical scripts trained on two slightly different snapshots of the same dataset can produce meaningfully different models. If you cannot pin down which snapshot produced which result, you cannot reproduce your own experiments, you cannot debug a regression in production, and you cannot honestly defend a reported accuracy number to a reviewer or a client.</p></section><section class='psec reveal'><h2>A concrete failure mode</h2><p>Imagine a team building a churn prediction model. In January they train on a snapshot of customer records and report eighty three percent accuracy on a held out test set. The code is committed to git, the model file is saved, everyone moves on. In March, someone retrains the model because a new feature was added to the pipeline. Accuracy drops to seventy six percent. The obvious suspect is the new feature, so the team spends two days debugging feature engineering code that turns out to be fine.</p><p>The actual cause was a change nobody tracked deliberately. Between January and March, a batch job that deduplicates customer records was updated to fix a bug, and it happened to remove several thousand rows that were subtly easier to classify because they were near-duplicates of training examples, effectively a mild form of leakage that had been inflating the original number. Git shows no trace of this because the data lived outside the repository entirely. Without a versioned, hashed reference to the exact dataset used in January, the team cannot even confirm this theory, they can only guess.</p><p>Now scale this up. In a typical applied project, data passes through ingestion, cleaning, feature computation, and splitting before it ever reaches a model. Each of those stages can introduce a change that is invisible to git but decisive for the result. A cleaning script that changes its outlier threshold, a feature store that recomputes a rolling average with a different window, a random seed for the train-test split that is not fixed and logged. Any one of these can move your reported metric by several points, and without data versioning you have no way to distinguish a genuine modelling improvement from an artefact of a shifting dataset underneath you.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/data-versioning-beyond-git-1.jpg' alt='server hard drives data storage' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What proper data versioning actually looks like</h2><p>The fix is not to abandon git, it is to pair it with a system designed for large, evolving data. Tools built for this purpose, such as DVC or lakeFS, work by storing lightweight pointer files in git, typically a hash and a path, while the actual data lives in object storage. When the data changes, the hash changes, and that hash gets committed alongside the code that consumes it. This means a single git commit now captures both the exact code and the exact data snapshot, so checking out a commit from three months ago reconstructs the whole experiment, not just half of it.</p><p>This buys you three concrete things. First, reproducibility: you can retrain a model from any historical commit and get the same numbers, which is the baseline requirement for any result you plan to publish, ship, or defend. Second, traceability: when a metric changes, you can diff the data hash between two commits before you diff anything else, which immediately tells you whether the cause is data drift, a pipeline bug, or an actual modelling change. Third, safe collaboration: two people can work on different branches with different data transformations without silently overwriting the version the other person depends on.</p><p>There is a related discipline worth mentioning here, which is versioning your splits, not just your raw data. It is common to regenerate train, validation, and test splits every time a preprocessing script runs, using a fixed random seed and assuming that is enough. But if the underlying dataset has grown or been deduplicated between runs, the same seed no longer produces the same split, and rows that were in your test set last month might now be in your training set, quietly leaking information. Storing the split indices themselves as a versioned artefact, alongside the data hash they were computed from, closes this gap.</p><p>None of this requires heavy infrastructure to start. A minimal version of it is simply hashing your dataset file and recording that hash in the same commit message or metadata file as your training run, alongside the git commit of the code. It is not elegant, but it means you can always answer the question that matters most in applied ML: given this reported number, exactly which data and exactly which code produced it. Everything more sophisticated, dedicated tools, automated lineage tracking, is just making that same guarantee easier to maintain at scale.</p></section>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
