@@ -9,7 +9,8 @@
       "tag": "Machine Learning",
       "color": "a2",
       "thumb": "assets/blog/choosing-the-right-loss-function.png",
-      "thumb_alt": "Cover image for the article: Choosing a Loss Function: Matching Maths to the Problem"
+      "thumb_alt": "Cover image for the article: Choosing a Loss Function: Matching Maths to the Problem",
+      "li_shared": true
     },
     {
       "slug": "honest-computer-vision-benchmarking",
