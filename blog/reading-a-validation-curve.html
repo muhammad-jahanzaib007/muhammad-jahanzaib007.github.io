@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What a Validation Curve Tells You Before the Test Set | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to reading validation curves: what the gap between training and validation error reveals about bias, variance, and when to stop tuning.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="validation curve, bias variance tradeoff, model evaluation, overfitting, underfitting, cross validation, hyperparameter tuning, learning curves, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-28">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="What a Validation Curve Tells You Before the Test Set">
+<meta property="og:description" content="A practical guide to reading validation curves: what the gap between training and validation error reveals about bias, variance, and when to stop tuning.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/reading-a-validation-curve.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/reading-a-validation-curve.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What a Validation Curve Tells You Before the Test Set">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/reading-a-validation-curve.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/reading-a-validation-curve.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "What a Validation Curve Tells You Before the Test Set",
+  "description": "A practical guide to reading validation curves: what the gap between training and validation error reveals about bias, variance, and when to stop tuning.",
+  "url": "https://jahanzaibawan.com/blog/reading-a-validation-curve.html",
+  "image": "https://jahanzaibawan.com/assets/blog/reading-a-validation-curve.png",
+  "datePublished": "2026-08-28",
+  "dateModified": "2026-08-28",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/reading-a-validation-curve.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "What a Validation Curve Tells You Before the Test Set", "item": "https://jahanzaibawan.com/blog/reading-a-validation-curve.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 28 Aug 2026</div>
+    <h1>What a Validation Curve Tells You Before the Test Set</h1>
+    <p class="lede">Long before you touch the test set, the gap between training and validation scores is already telling you whether your model is underfitting, overfitting, or roughly right.</p>
+  </div>
+
+  <img src="../assets/blog/reading-a-validation-curve.png" alt="Cover image for the article: What a Validation Curve Tells You Before the Test Set" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the curve matters more than the score</h2><p>When people talk about validation, they usually mean a single number: the accuracy or F1 score on a held-out fold. That number is useful, but it hides the thing I actually want to know before I go anywhere near the test set, which is whether my model's error is coming from too little capacity, too much capacity, or from noise in the data itself. A single validation score cannot answer that. A validation curve can, because it shows how training and validation performance move together as you change one thing, usually a hyperparameter that controls model complexity, such as tree depth, the regularisation strength, or the number of training epochs.</p><p>Concretely, a validation curve plots two lines against that hyperparameter: training score and validation score. Suppose I am tuning the maximum depth of a decision tree from 1 to 20, and I plot mean accuracy across five cross-validation folds for each depth, along with the training accuracy at that same depth. At depth 1, both lines sit low, say training accuracy at 0.68 and validation accuracy at 0.66. As depth increases to around 6, training accuracy climbs to 0.89 and validation accuracy climbs to 0.85, tracking each other reasonably closely. Beyond depth 12, training accuracy keeps rising towards 0.99 while validation accuracy flattens and then drifts down to 0.80. That shape, not any single point on it, is the diagnosis.</p><p>The reason this matters before the test set is simple: the test set is meant to be touched once, at the end, to estimate how the final chosen model will generalise. If I use it to decide between depth 6 and depth 12, I have quietly turned it into another validation set, and its estimate is no longer honest. The validation curve lets me make that decision using cross-validation folds instead, which I am allowed to inspect and re-inspect as much as I like, precisely because they were never promised to be a clean, one-shot estimate.</p></section><section class='psec reveal'><h2>Reading the three regimes</h2><p>The low-depth region in my example, where both training and validation accuracy are low and close together, is underfitting. The model is too simple to capture the structure in the data, so it does badly everywhere, train and validation alike. The fix is not more data, since a simple model will not use extra rows any better; the fix is more capacity, more relevant features, or a less constrained algorithm. I have seen people respond to a low validation score by collecting thousands more labelled examples, only to find the score barely moves, because the bottleneck was never data volume.</p><p>The middle region, where training and validation accuracy rise together and stay close, is the sweet spot: the model has enough capacity to fit real patterns without yet memorising noise. This is also where the gap between the two lines is small and roughly stable as complexity increases slightly. In my depth example, depth 6 sits here, with a gap of about four percentage points between training and validation accuracy, which is a reasonable amount of optimism to expect from any model that has seen its training data.</p><p>The high-depth region is overfitting: training accuracy keeps improving because the tree is carving out rules that describe individual training rows, while validation accuracy stalls or falls because those rules do not describe new rows. The tell-tale sign is a widening gap, not a low validation number by itself. A validation score of 0.80 could be the ceiling of a hard problem, or it could be a symptom of a model that memorised its way to 0.99 on training data while validation quietly slid backwards. You only see the difference by plotting the curve, not by reading the final score in isolation.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/reading-a-validation-curve-1.jpg' alt='line graph on laptop screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What to actually do with the shape</h2><p>Once I can see which regime I am in, the next action follows quite mechanically. Underfitting calls for more expressive models, richer features, or removing overly aggressive regularisation. Overfitting calls for the opposite: stronger regularisation, fewer parameters, early stopping, or more training data if the gap is due to variance rather than an inherently noisy target. A validation curve tells you which lever to pull before you waste a cycle guessing.</p><p>It is worth being honest about what the curve does not tell you. It does not tell you whether your cross-validation folds themselves are leaking information, for instance through shared groups, time order, or preprocessing fitted on the whole dataset before splitting. A beautifully behaved validation curve built on leaky folds will still mislead you, just more smoothly. So the curve is a diagnostic on top of a trustworthy split, not a replacement for building one.</p><p>It also will not tell you how the model behaves on genuinely new data collected after some distribution shift, which is a separate question from bias and variance. I treat the validation curve as the tool for choosing complexity and catching gross overfitting during development, and I treat the test set as the tool for a final, honest estimate, used exactly once, after the curve has already told me roughly where to sit on the complexity axis.</p><p>The practical habit I would recommend is this: before tuning anything seriously, plot the validation curve across a sensible range of the complexity parameter you care about, look at the shape of the gap rather than the height of either line, and pick a setting from the flat, well-behaved region rather than the point that maximises validation score exactly. That point is often slightly into the overfitting side, chasing noise in the validation folds themselves. Choosing a slightly simpler model from the stable region tends to generalise better, and it leaves the test set free to do the one job it was set aside for.</p></section>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

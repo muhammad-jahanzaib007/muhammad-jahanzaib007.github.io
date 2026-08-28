@@ -1,1 +1,1 @@
-2026-08-28T08:01:34Z slug=choosing-the-right-loss-function words=1053 title="Choosing a Loss Function: Matching Maths to the Problem"
+2026-08-28T20:01:27Z slug=reading-a-validation-curve words=964 title="What a Validation Curve Tells You Before the Test Set"

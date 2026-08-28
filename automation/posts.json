@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "reading-a-validation-curve",
+      "title": "What a Validation Curve Tells You Before the Test Set",
+      "excerpt": "The shape of a validation curve, not just its final number, tells you whether to add capacity, add data, or stop tuning entirely.",
+      "date": "2026-08-28",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a3",
+      "thumb": "assets/blog/reading-a-validation-curve.png",
+      "thumb_alt": "Cover image for the article: What a Validation Curve Tells You Before the Test Set"
+    },
+    {
       "slug": "choosing-the-right-loss-function",
       "title": "Choosing a Loss Function: Matching Maths to the Problem",
       "excerpt": "Your loss function encodes what counts as a mistake. Pick one that doesn't match the real cost of errors, and your model will optimise for the wrong thing quietly.",
