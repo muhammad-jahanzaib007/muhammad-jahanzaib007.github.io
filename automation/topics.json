@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Choosing a loss function: matching the maths to the actual problem",
     "What a validation curve tells you before you touch the test set",
     "A/B testing for machine learning models in production, done properly",
     "Cold start problems in machine learning: what to do with no data yet",
@@ -147,6 +146,7 @@
     "Ensemble methods explained: bagging, boosting, and stacking without the jargon",
     "Feature importance methods: what they tell you and what they cannot",
     "Data versioning for machine learning: why git alone is not enough",
-    "How to benchmark a computer vision model honestly before deployment"
+    "How to benchmark a computer vision model honestly before deployment",
+    "Choosing a loss function: matching the maths to the actual problem"
   ]
 }

@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Thu, 27 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 28 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Choosing a Loss Function: Matching Maths to the Problem</title>
+    <link>https://jahanzaibawan.com/blog/choosing-the-right-loss-function.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/choosing-the-right-loss-function.html</guid>
+    <pubDate>Fri, 28 Aug 2026 09:00:00 +0000</pubDate>
+    <description>Your loss function encodes what counts as a mistake. Pick one that doesn&#x27;t match the real cost of errors, and your model will optimise for the wrong thing quietly.</description>
+    <category>Machine Learning</category>
+  </item>
   <item>
     <title>How to Benchmark a Computer Vision Model Honestly</title>
     <link>https://jahanzaibawan.com/blog/honest-computer-vision-benchmarking.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Tue, 18 Aug 2026 09:00:00 +0000</pubDate>
     <description>Fine-tuning specialises a model for one task. Instruction tuning teaches it to follow tasks it has never seen. Confusing the two skews evaluation.</description>
     <category>NLP</category>
-  </item>
-  <item>
-    <title>Continuous Retraining on a Schedule Can Be a Trap</title>
-    <link>https://jahanzaibawan.com/blog/scheduled-retraining-wrong-idea.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/scheduled-retraining-wrong-idea.html</guid>
-    <pubDate>Tue, 18 Aug 2026 09:00:00 +0000</pubDate>
-    <description>A retraining cadence is not a monitoring strategy. Here is why scheduled retraining can mask drift, hide bugs, and quietly erode trust in your pipeline.</description>
-    <category>MLOps</category>
   </item>
 </channel>
 </rss>

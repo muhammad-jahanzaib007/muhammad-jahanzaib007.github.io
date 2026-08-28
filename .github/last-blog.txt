@@ -1,1 +1,1 @@
-2026-08-27T20:03:25Z slug=honest-computer-vision-benchmarking words=1028 title="How to Benchmark a Computer Vision Model Honestly"
+2026-08-28T08:01:34Z slug=choosing-the-right-loss-function words=1053 title="Choosing a Loss Function: Matching Maths to the Problem"

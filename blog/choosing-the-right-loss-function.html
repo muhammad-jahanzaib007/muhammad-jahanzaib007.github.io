@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Choosing a Loss Function: Matching Maths to the Problem | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why choosing a loss function means matching its mathematical assumptions to the real cost of errors in your problem, with a worked regression and classification example.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="loss function, machine learning evaluation, MSE vs MAE, cross entropy, class imbalance, model training, cost sensitive learning, regression metrics, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-28">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Choosing a Loss Function: Matching Maths to the Problem">
+<meta property="og:description" content="Why choosing a loss function means matching its mathematical assumptions to the real cost of errors in your problem, with a worked regression and classification example.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/choosing-the-right-loss-function.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/choosing-the-right-loss-function.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Choosing a Loss Function: Matching Maths to the Problem">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/choosing-the-right-loss-function.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/choosing-the-right-loss-function.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Choosing a Loss Function: Matching Maths to the Problem",
+  "description": "Why choosing a loss function means matching its mathematical assumptions to the real cost of errors in your problem, with a worked regression and classification example.",
+  "url": "https://jahanzaibawan.com/blog/choosing-the-right-loss-function.html",
+  "image": "https://jahanzaibawan.com/assets/blog/choosing-the-right-loss-function.png",
+  "datePublished": "2026-08-28",
+  "dateModified": "2026-08-28",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/choosing-the-right-loss-function.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Choosing a Loss Function: Matching Maths to the Problem", "item": "https://jahanzaibawan.com/blog/choosing-the-right-loss-function.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Machine Learning · 5 min read · 28 Aug 2026</div>
+    <h1>Choosing a Loss Function: Matching Maths to the Problem</h1>
+    <p class="lede">A loss function is not a formality bolted onto a model; it is a statement of what kind of mistake you actually care about. Get that statement wrong and everything downstream suffers.</p>
+  </div>
+
+  <img src="../assets/blog/choosing-the-right-loss-function.png" alt="Cover image for the article: Choosing a Loss Function: Matching Maths to the Problem" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The loss function is a promise, not a default</h2><p>When I set up a training run, the loss function is the one place where I am forced to write down, in maths, what I actually think a mistake costs. It is easy to treat it as boilerplate: regression gets mean squared error, classification gets cross entropy, and you move on to the interesting part. But the loss is not a formality. It is the objective the optimiser will chase relentlessly, and it will find every shortcut the maths allows. If the loss does not reflect the real-world cost of being wrong, the model will happily be wrong in the cheap way rather than the useful way.</p><p>This matters because different losses encode different beliefs about errors. Mean squared error believes that a error twice as large is four times as bad. Mean absolute error believes it is only twice as bad. Cross entropy believes that being confidently wrong is catastrophic, while being vaguely wrong is merely disappointing. None of these beliefs are universally correct. They are modelling choices, and the right one depends entirely on what happens downstream when the prediction misses.</p><p>I think the most common failure I see, in my own early work and in others', is choosing the loss that the library defaults to rather than the one that matches the domain. It runs, the numbers go down, and that feels like progress. But a falling loss curve only tells you the model is getting better at the thing you told it to minimise, not the thing you actually wanted.</p></section><section class='psec reveal'><h2>A worked example: predicting delivery times</h2><p>Suppose you are predicting delivery times in minutes, and the business consequence of being late is a refund, while being early just means the customer waits a bit. Say the true delivery time is 30 minutes. Consider two predictions: one at 20 minutes, an error of minus 10, and one at 45 minutes, an error of plus 15.</p><p>Under mean squared error, the first error contributes 100 and the second contributes 225. The optimiser will work harder to shrink the 45-minute prediction because squaring punishes large errors disproportionately. That sounds reasonable until you realise MSE treats an error of plus 15 and minus 15 identically, yet in this business, being 15 minutes early costs nothing while being 15 minutes late costs a refund. MSE is symmetric; the business is not.</p><p>A more honest loss here is an asymmetric one: penalise late predictions more heavily than early ones, perhaps by weighting positive errors, actual minus predicted, three times more than negative ones. With that weighting, the plus 15 error now contributes far more to the loss than it would under plain MSE, and the model is pushed to predict times that err on the side of lateness protection rather than raw statistical accuracy. The mean absolute error would have been closer to this intuition than MSE, since it does not amplify large errors quadratically, but it still would not capture the asymmetry. The lesson is not that MSE or MAE are wrong in general; it is that neither was designed with your refund policy in mind, and only you know that policy.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/choosing-the-right-loss-function-1.jpg' alt='delivery truck driving city street' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Classification: cross entropy is not neutral either</h2><p>The same logic applies to classification, where cross entropy is the default almost everywhere, and for good statistical reasons: it is the maximum likelihood loss under a Bernoulli or categorical assumption, it produces well calibrated probabilities when the model has enough capacity, and its gradients behave sensibly. But it silently assumes that every class matters equally and that false positives and false negatives cost the same. In fraud detection, medical screening, or rare-event forecasting, that assumption is almost never true.</p><p>Take a screening task where the positive class occurs in 2 in 100 cases. A model that predicts negative for everything achieves 98 percent accuracy and a deceptively low average cross entropy loss, because the loss is dominated by the 98 easy negatives it gets right. The 2 positives it misses barely move the average. If missing a positive case is far more costly than a false alarm, the raw cross entropy loss is actively hiding the failure that matters most.</p><p>Weighted cross entropy, where the minority class's errors are multiplied by a larger factor, say 20 instead of 1, forces the optimiser to pay attention to those 2 cases in every 100. Alternatively, focal loss down-weights the easy, already-confident negatives and concentrates gradient signal on the hard, ambiguous examples, which tends to help when the imbalance is severe and the easy majority class would otherwise dominate training. Neither fix changes the underlying maths of cross entropy; both change what the loss considers worth learning from, which is exactly the point.</p><p>It is worth being honest that these fixes come with trade-offs. Aggressive reweighting can push a model towards over-predicting the rare class, trading missed positives for a flood of false alarms, so the weighting factor itself becomes a decision that should be justified by the actual cost ratio in the deployment setting, not chosen because it made a validation metric look better.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>Before picking a loss, I try to answer one question honestly: if the model is wrong, what actually happens next, and does that consequence scale linearly, quadratically, or asymmetrically with the size or type of the error? A quadratic loss like MSE is right when large errors genuinely cause disproportionate harm, such as in control systems where overshoot compounds. An absolute loss is right when consistency matters more than occasional big misses. A weighted or asymmetric loss is right whenever the cost of one type of error clearly outweighs another, which in my experience is most of the time in real deployed systems, not the rare exception.</p><p>The other habit worth building is separating the training loss from the metric you report and trust for decisions. It is entirely reasonable to train with a smooth, differentiable proxy like cross entropy while evaluating and reporting with something closer to the true business cost, such as a weighted F-score or an expected cost calculation over a confusion matrix. The loss drives learning; the evaluation metric tells you the truth. Confusing the two, or assuming the default loss is also the right yardstick, is where a lot of quietly broken models come from.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/choosing-the-right-loss-function-2.jpg' alt='whiteboard with equations' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

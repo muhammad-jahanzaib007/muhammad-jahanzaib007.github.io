@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "choosing-the-right-loss-function",
+      "title": "Choosing a Loss Function: Matching Maths to the Problem",
+      "excerpt": "Your loss function encodes what counts as a mistake. Pick one that doesn't match the real cost of errors, and your model will optimise for the wrong thing quietly.",
+      "date": "2026-08-28",
+      "read_min": 5,
+      "tag": "Machine Learning",
+      "color": "a2",
+      "thumb": "assets/blog/choosing-the-right-loss-function.png",
+      "thumb_alt": "Cover image for the article: Choosing a Loss Function: Matching Maths to the Problem"
+    },
+    {
       "slug": "honest-computer-vision-benchmarking",
       "title": "How to Benchmark a Computer Vision Model Honestly",
       "excerpt": "A practical guide to leakage-aware splits, strong baselines, and realistic test conditions before shipping a vision model.",
