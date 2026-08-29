@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Fri, 28 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 29 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>A/B Testing ML Models in Production, Done Properly</title>
+    <link>https://jahanzaibawan.com/blog/ab-testing-ml-models-production.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/ab-testing-ml-models-production.html</guid>
+    <pubDate>Sat, 29 Aug 2026 09:00:00 +0000</pubDate>
+    <description>Offline AUC improvements often vanish or backfire online. Here is how to run an A/B test for a production ML model that you can actually trust.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>What a Validation Curve Tells You Before the Test Set</title>
     <link>https://jahanzaibawan.com/blog/reading-a-validation-curve.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Wed, 19 Aug 2026 09:00:00 +0000</pubDate>
     <description>Fine-tuning can boost your target metric while quietly erasing older capabilities. Here is how to notice and measure the damage.</description>
     <category>Deep Learning</category>
-  </item>
-  <item>
-    <title>Fine-Tuning on Small Data: When Does It Actually Help</title>
-    <link>https://jahanzaibawan.com/blog/fine-tuning-small-dataset-size.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/fine-tuning-small-dataset-size.html</guid>
-    <pubDate>Wed, 19 Aug 2026 09:00:00 +0000</pubDate>
-    <description>How to tell whether fine-tuning on a small dataset is actually working, or whether you are just chasing noise in your validation split.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>

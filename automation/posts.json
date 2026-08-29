@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "ab-testing-ml-models-production",
+      "title": "A/B Testing ML Models in Production, Done Properly",
+      "excerpt": "Offline AUC improvements often vanish or backfire online. Here is how to run an A/B test for a production ML model that you can actually trust.",
+      "date": "2026-08-29",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a4",
+      "thumb": "assets/blog/ab-testing-ml-models-production.png",
+      "thumb_alt": "Cover image for the article: A/B Testing ML Models in Production, Done Properly"
+    },
+    {
       "slug": "reading-a-validation-curve",
       "title": "What a Validation Curve Tells You Before the Test Set",
       "excerpt": "The shape of a validation curve, not just its final number, tells you whether to add capacity, add data, or stop tuning entirely.",

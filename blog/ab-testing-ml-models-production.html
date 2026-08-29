@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A/B Testing ML Models in Production, Done Properly | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical, leakage-aware guide to A/B testing machine learning models in production, covering randomisation, sample size, and common pitfalls.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="A/B testing, machine learning, model evaluation, online experimentation, statistical significance, production ML, sample size, guardrail metrics, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-29">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="A/B Testing ML Models in Production, Done Properly">
+<meta property="og:description" content="A practical, leakage-aware guide to A/B testing machine learning models in production, covering randomisation, sample size, and common pitfalls.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/ab-testing-ml-models-production.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/ab-testing-ml-models-production.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A/B Testing ML Models in Production, Done Properly">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/ab-testing-ml-models-production.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/ab-testing-ml-models-production.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "A/B Testing ML Models in Production, Done Properly",
+  "description": "A practical, leakage-aware guide to A/B testing machine learning models in production, covering randomisation, sample size, and common pitfalls.",
+  "url": "https://jahanzaibawan.com/blog/ab-testing-ml-models-production.html",
+  "image": "https://jahanzaibawan.com/assets/blog/ab-testing-ml-models-production.png",
+  "datePublished": "2026-08-29",
+  "dateModified": "2026-08-29",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/ab-testing-ml-models-production.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "A/B Testing ML Models in Production, Done Properly", "item": "https://jahanzaibawan.com/blog/ab-testing-ml-models-production.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 29 Aug 2026</div>
+    <h1>A/B Testing ML Models in Production, Done Properly</h1>
+    <p class="lede">Offline metrics tell you a model is better in theory. A well-run A/B test tells you whether it actually matters to users, and by how much.</p>
+  </div>
+
+  <img src="../assets/blog/ab-testing-ml-models-production.png" alt="Cover image for the article: A/B Testing ML Models in Production, Done Properly" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why offline wins so often disappear online</h2><p>Every practitioner has seen it: a new model beats the old one on a held-out test set, sometimes by a comfortable margin, and then it does nothing or slightly worse once it touches real traffic. This is not a paradox. Offline evaluation measures a proxy: how well predictions match historical labels under historical conditions. Production performance measures something else entirely: how users behave when the model's outputs change what they see, click, buy, or ignore. A model that predicts click probability marginally better can still produce a worse user experience if its improved calibration comes with higher latency, or if it systematically favours a narrower slice of content that looks good in aggregate metrics but bores people over a session.</p><p>A/B testing exists to close that gap. Instead of asking 'is this model more accurate on a fixed dataset', it asks 'does routing real users to this model change the outcomes we actually care about, in the direction we want, by an amount worth the engineering cost of shipping it'. That is a much harder and much more honest question, and it is the one that should gate any production rollout. The trouble is that A/B testing for ML models has more failure modes than a typical marketing experiment, because the treatment is not a button colour, it is a statistical system with its own biases, drift, and interaction effects with the rest of the pipeline.</p></section><section class='psec reveal'><h2>Randomise correctly, or the test is worthless before it starts</h2><p>The first and most common mistake is randomising at the wrong unit. Say you are testing a new recommendation model on an e-commerce site. If you randomise at the request level, the same user might see the old model on one page load and the new model on the next. Any behavioural metric that depends on consistency across a session, like whether someone eventually completes a purchase, becomes contaminated: the user's decision was influenced by a mixture of both models, and neither arm gets clean credit. The fix is almost always to randomise at the user level, assigning each user to a single arm for the duration of the experiment, using a stable hash of a user or account identifier so assignment is deterministic and sticky across sessions and devices where possible.</p><p>Second, watch for interference between arms. If your model affects a shared, limited resource, inventory being an obvious example, then giving one arm an advantage necessarily starves the other, and the comparison stops being fair. A recommendation model that surfaces a popular item more aggressively can deplete stock that the control arm's users would otherwise have seen. In marketplaces and ad systems this is a well-known problem, and the usual mitigations are geographic splitting, time-based splitting, or more sophisticated switchback designs where the same population alternates between arms over fixed windows, at the cost of more complex analysis.</p><p>Third, be honest about the novelty effect. A new ranking algorithm can look better for the first few days simply because returning users notice something different and click more out of curiosity, not genuine preference. Running the test for too short a window will systematically overstate the effect. A reasonable rule of thumb is to run long enough to cover at least one full natural cycle of user behaviour, commonly a week for consumer products with weekday and weekend patterns, and to check whether the effect size is stable or decaying across that window before trusting it.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/ab-testing-ml-models-production-1.jpg' alt='laptop showing analytics dashboard graphs' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Sample size, guardrails, and a worked example</h2><p>Before launching, decide the minimum effect size worth detecting and compute the sample size needed to detect it with reasonable power, rather than watching the dashboard and stopping whenever the line looks favourable. That practice, often called peeking, inflates the false positive rate substantially, because checking a noisy metric daily and stopping at the first crossing of significance is statistically closer to running many small tests than one large one.</p><p>Here is a concrete illustration. Suppose your current click-through rate is 4.0 percent and you want to detect an absolute lift of 0.3 percentage points, moving to 4.3 percent, with a two-sided test at 5 percent significance and 80 percent power. Using the standard formula for comparing two proportions, this works out to roughly 40,000 to 45,000 users per arm, depending on the exact variance assumptions. If your product only sees 5,000 daily active users split across two arms, you are looking at roughly two to three weeks minimum just to reach that sample, and that is before accounting for any weekly seasonality you want to average over. Teams frequently underestimate this and end up running underpowered tests that report 'no significant difference' when the true effect was real but the sample was too small to detect it reliably; absence of significance is not evidence of absence.</p><p>Equally important is choosing guardrail metrics alongside the primary metric. If your new model improves click-through rate but you never check latency, revenue per user, or complaint rate, you can ship a model that technically wins on the metric you optimised for while quietly degrading something you forgot to measure. A practical setup defines one primary metric that decides the ship or no-ship call, two or three guardrails that must not move in the wrong direction beyond a tolerance you set in advance, and a small set of diagnostic metrics purely for understanding, not for decision-making. Deciding these thresholds before the test starts, not after seeing the results, is what keeps the analysis honest.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>Treat an A/B test as an experiment with the same rigour you would demand of the model's evaluation split: define the unit of randomisation, the minimum detectable effect, the required sample size, and the guardrails before a single user is exposed to the new model. Run it long enough to see past novelty effects, resist the urge to peek and stop early, and remember that a statistically significant result on a metric nobody cares about is not a win. The whole point of the exercise is to replace confident-sounding offline numbers with evidence about what actually happens when real people interact with your system, and that evidence is only trustworthy if the test was designed properly from the start.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/ab-testing-ml-models-production-2.jpg' alt='server room data center' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
