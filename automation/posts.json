@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a4",
       "thumb": "assets/blog/ab-testing-ml-models-production.png",
-      "thumb_alt": "Cover image for the article: A/B Testing ML Models in Production, Done Properly"
+      "thumb_alt": "Cover image for the article: A/B Testing ML Models in Production, Done Properly",
+      "li_shared": true
     },
     {
       "slug": "reading-a-validation-curve",
