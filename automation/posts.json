@@ -9,7 +9,8 @@
       "tag": "Machine Learning",
       "color": "a5",
       "thumb": "assets/blog/cold-start-problems-machine-learning.png",
-      "thumb_alt": "Cover image for the article: Cold Start Problems: What to Do With No Data Yet"
+      "thumb_alt": "Cover image for the article: Cold Start Problems: What to Do With No Data Yet",
+      "li_shared": true
     },
     {
       "slug": "ab-testing-ml-models-production",
