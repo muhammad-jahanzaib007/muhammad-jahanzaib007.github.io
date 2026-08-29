@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "cold-start-problems-machine-learning",
+      "title": "Cold Start Problems: What to Do With No Data Yet",
+      "excerpt": "No historical data, no labels, no user behaviour yet. Here is a practical way to reason about cold starts without pretending you have data you don't.",
+      "date": "2026-08-29",
+      "read_min": 5,
+      "tag": "Machine Learning",
+      "color": "a5",
+      "thumb": "assets/blog/cold-start-problems-machine-learning.png",
+      "thumb_alt": "Cover image for the article: Cold Start Problems: What to Do With No Data Yet"
+    },
+    {
       "slug": "ab-testing-ml-models-production",
       "title": "A/B Testing ML Models in Production, Done Properly",
       "excerpt": "Offline AUC improvements often vanish or backfire online. Here is how to run an A/B test for a production ML model that you can actually trust.",

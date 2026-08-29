@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Sat, 29 Aug 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Cold Start Problems: What to Do With No Data Yet</title>
+    <link>https://jahanzaibawan.com/blog/cold-start-problems-machine-learning.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/cold-start-problems-machine-learning.html</guid>
+    <pubDate>Sat, 29 Aug 2026 09:00:00 +0000</pubDate>
+    <description>No historical data, no labels, no user behaviour yet. Here is a practical way to reason about cold starts without pretending you have data you don&#x27;t.</description>
+    <category>Machine Learning</category>
+  </item>
+  <item>
     <title>A/B Testing ML Models in Production, Done Properly</title>
     <link>https://jahanzaibawan.com/blog/ab-testing-ml-models-production.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/ab-testing-ml-models-production.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/cnns-versus-vision-transformers.html</guid>
     <pubDate>Thu, 20 Aug 2026 09:00:00 +0000</pubDate>
     <description>CNNs and ViTs both work well on images, but they fail differently under small data and distribution shift. I compare them with a concrete worked example.</description>
-    <category>Deep Learning</category>
-  </item>
-  <item>
-    <title>Catastrophic Forgetting: What Fine-Tuning Quietly Overwrites</title>
-    <link>https://jahanzaibawan.com/blog/catastrophic-forgetting-fine-tuning.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/catastrophic-forgetting-fine-tuning.html</guid>
-    <pubDate>Wed, 19 Aug 2026 09:00:00 +0000</pubDate>
-    <description>Fine-tuning can boost your target metric while quietly erasing older capabilities. Here is how to notice and measure the damage.</description>
     <category>Deep Learning</category>
   </item>
 </channel>

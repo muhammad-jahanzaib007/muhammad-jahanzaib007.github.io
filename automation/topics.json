@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Cold start problems in machine learning: what to do with no data yet",
     "Fine-tuning quantisation: how low can you go before accuracy breaks",
     "What counts as a data science internship worth taking",
     "Reading a data science certification honestly: signal versus padding",
@@ -147,6 +146,7 @@
     "How to benchmark a computer vision model honestly before deployment",
     "Choosing a loss function: matching the maths to the actual problem",
     "What a validation curve tells you before you touch the test set",
-    "A/B testing for machine learning models in production, done properly"
+    "A/B testing for machine learning models in production, done properly",
+    "Cold start problems in machine learning: what to do with no data yet"
   ]
 }
