@@ -39,3 +39,20 @@ def test_strip_em_dash():
 
 def test_rfc822_date():
     assert gp._rfc822("2026-07-06") == "Mon, 06 Jul 2026 09:00:00 +0000"
+
+
+def test_gemini_schema_strips_unsupported_keys():
+    """Gemini's responseSchema rejects additionalProperties, which POST_SCHEMA sets."""
+    out = gp._gemini_schema(gp.POST_SCHEMA)
+    assert "additionalProperties" not in out
+    assert out["type"] == "object"
+    assert set(out["required"]) == set(gp.POST_SCHEMA["required"])
+    assert out["properties"]["read_min"] == {"type": "integer"}
+    assert out["properties"]["image_queries"]["items"] == {"type": "string"}
+
+
+def test_gemini_leads_the_provider_chain():
+    """Free provider must be tried before the paid one (no-paid-services rule)."""
+    import inspect
+    body = inspect.getsource(gp._raw_completion)
+    assert body.index("GEMINI_KEY") < body.index("ANTHROPIC_KEY")

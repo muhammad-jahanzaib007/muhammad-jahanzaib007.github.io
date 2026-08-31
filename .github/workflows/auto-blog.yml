@@ -9,7 +9,7 @@ name: Auto blog
 # Cloudflare heartbeat Worker (ai-tools-yt repo, heartbeat/) is the ONLY
 # scheduled trigger; it dispatches at 08:00/20:00 UTC exactly and retries
 # via :20/:40 sweeps. Do NOT re-add crons here.
-# Uses Claude (Anthropic API) when ANTHROPIC_API_KEY is set; else free GitHub Models.
+# Provider chain: Gemini free tier, then Claude, then GitHub Models.
 # Also runnable on demand from the Actions tab (Run workflow).
 on:
   workflow_dispatch:
@@ -85,7 +85,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BLOG_MODEL: ${{ vars.BLOG_MODEL || 'openai/gpt-4o-mini' }}
-          # Optional: add an ANTHROPIC_API_KEY secret to use Claude instead of free GitHub Models.
+          # Provider chain: Gemini (free) -> Claude -> GitHub Models. Gemini leads
+          # because the project runs on free services only; Claude is a spare that
+          # only works while the Anthropic account has credit.
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-2.5-flash' }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           CLAUDE_MODEL: ${{ vars.CLAUDE_MODEL || 'claude-sonnet-5' }}
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}

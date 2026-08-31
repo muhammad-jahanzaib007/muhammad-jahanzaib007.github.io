@@ -2,7 +2,7 @@
 """
 Generate one blog post for jahanzaibawan.com and wire it into the site.
 
-Uses GitHub Models (free, no API key) via the Actions GITHUB_TOKEN.
+Provider chain: Gemini free tier, then Claude, then GitHub Models.
 - Picks the next topic from automation/topics.json
 - Asks the model for a structured post (title, dek, body HTML in the site's classes)
 - Writes blog/<slug>.html from a template
@@ -41,7 +41,14 @@ FEED = ROOT / "feed.xml"
 MODEL = os.environ.get("BLOG_MODEL", "openai/gpt-4o-mini")
 ENDPOINT = os.environ.get("MODELS_ENDPOINT", "https://models.github.ai/inference/chat/completions")
 TOKEN = os.environ.get("GITHUB_TOKEN") or os.environ.get("MODELS_TOKEN")
-# If ANTHROPIC_API_KEY is set, use Claude; otherwise fall back to free GitHub Models.
+# Provider chain: Gemini free tier first, then Claude (paid, only if credits exist),
+# then GitHub Models. Gemini leads since 2026-08-31: the Anthropic credit balance ran
+# out and the project runs on a strict no-paid-services rule, so the blog cannot depend
+# on a paid API. Same chain and same free tier as the video pipeline's generate_brief.py.
+GEMINI_KEYS = [k for k in (os.environ.get("GEMINI_API_KEY"),
+                           os.environ.get("GEMINI_API_KEY_2")) if k]
+GEMINI_KEY = GEMINI_KEYS[0] if GEMINI_KEYS else None
+GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
 ANTHROPIC_KEY = os.environ.get("ANTHROPIC_API_KEY")
 CLAUDE_MODEL = os.environ.get("CLAUDE_MODEL", "claude-sonnet-5")
 PEXELS_KEY = os.environ.get("PEXELS_API_KEY")   # optional: in-article stock photos
@@ -131,7 +138,60 @@ def save(p, obj):
     p.write_text(json.dumps(obj, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
+def _gemini_schema(schema):
+    """Gemini's responseSchema accepts an OpenAPI subset, so drop the keys it rejects.
+
+    additionalProperties in particular is a 400 on generateContent, and the Claude
+    structured-outputs schema here sets it.
+    """
+    if not isinstance(schema, dict):
+        return schema
+    out = {k: v for k, v in schema.items() if k not in ("additionalProperties", "$schema")}
+    if isinstance(out.get("properties"), dict):
+        out["properties"] = {k: _gemini_schema(v) for k, v in out["properties"].items()}
+    if "items" in out:
+        out["items"] = _gemini_schema(out["items"])
+    return out
+
+
+def _gemini_completion(user, max_tokens, schema=None):
+    cfg = {"temperature": 0.85, "maxOutputTokens": max_tokens,
+           "responseMimeType": "application/json",
+           # thinkingBudget 0: 2.5-flash otherwise spends thinking tokens out of
+           # maxOutputTokens and can truncate the JSON mid-object.
+           "thinkingConfig": {"thinkingBudget": 0}}
+    if schema:
+        cfg["responseSchema"] = _gemini_schema(schema)
+    last = ""
+    for attempt in range(3 * max(1, len(GEMINI_KEYS))):
+        try:
+            r = requests.post(
+                f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent",
+                params={"key": GEMINI_KEYS[attempt % len(GEMINI_KEYS)]},
+                json={
+                    "systemInstruction": {"parts": [{"text": SYSTEM}]},
+                    "contents": [{"role": "user", "parts": [{"text": user}]}],
+                    "generationConfig": cfg,
+                },
+                timeout=120,
+            )
+        except requests.RequestException as e:
+            last = str(e); time.sleep(2 * (attempt + 1)); continue
+        if r.status_code < 400:
+            return r.json()["candidates"][0]["content"]["parts"][0]["text"]
+        last = f"{r.status_code}: {r.text[:200]}"
+        if r.status_code in (429, 500, 502, 503):
+            time.sleep(4 * (attempt + 1)); continue
+        break
+    raise RuntimeError(f"gemini failed ({last})")
+
+
 def _raw_completion(user, max_tokens, schema=None):
+    if GEMINI_KEY:
+        try:
+            return _gemini_completion(user, max_tokens, schema)
+        except Exception as e:
+            print(f"gemini unavailable ({e}); trying next provider", file=sys.stderr)
     if ANTHROPIC_KEY:
         import anthropic
         client = anthropic.Anthropic()
@@ -142,10 +202,17 @@ def _raw_completion(user, max_tokens, schema=None):
         )
         if schema:  # structured outputs -> API guarantees valid JSON
             kwargs["output_config"] = {"format": {"type": "json_schema", "schema": schema}}
-        msg = client.messages.create(**kwargs)
-        return "".join(b.text for b in msg.content if b.type == "text")
+        try:
+            msg = client.messages.create(**kwargs)
+            return "".join(b.text for b in msg.content if b.type == "text")
+        except Exception as e:
+            # A dead Claude key (no credits, revoked) must not kill the run when a
+            # free provider is still available. This exact case broke every blog run
+            # from 2026-08-30 to 2026-08-31: "credit balance is too low", raised
+            # straight out of the only provider.
+            print(f"claude unavailable ({e}); trying next provider", file=sys.stderr)
     if not TOKEN:
-        sys.exit("Set ANTHROPIC_API_KEY (Claude), or run in GitHub Actions (free GitHub Models).")
+        sys.exit("No provider available: set GEMINI_API_KEY (free) or ANTHROPIC_API_KEY.")
     resp = requests.post(
         ENDPOINT,
         headers={"Authorization": f"Bearer {TOKEN}", "Content-Type": "application/json",
