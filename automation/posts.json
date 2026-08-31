@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "quantisation-how-low-can-you-go",
+      "title": "Quantisation: How Low Can You Go Before Accuracy Breaks",
+      "excerpt": "A practical look at where quantisation stops being a free lunch, with a worked example showing exactly when accuracy starts to crack.",
+      "date": "2026-08-31",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a6",
+      "thumb": "assets/blog/quantisation-how-low-can-you-go.png",
+      "thumb_alt": "Cover image for the article: Quantisation: How Low Can You Go Before Accuracy Breaks"
+    },
+    {
       "slug": "cold-start-problems-machine-learning",
       "title": "Cold Start Problems: What to Do With No Data Yet",
       "excerpt": "No historical data, no labels, no user behaviour yet. Here is a practical way to reason about cold starts without pretending you have data you don't.",

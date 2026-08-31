@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quantisation: How Low Can You Go Before Accuracy Breaks | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="An evaluation-focused guide to fine-tuning quantisation, exploring precision levels, calibration, and where accuracy actually breaks down.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="quantisation, model compression, int8, int4, fine-tuning, LoRA, machine learning evaluation, inference efficiency, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-31">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Quantisation: How Low Can You Go Before Accuracy Breaks">
+<meta property="og:description" content="An evaluation-focused guide to fine-tuning quantisation, exploring precision levels, calibration, and where accuracy actually breaks down.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/quantisation-how-low-can-you-go.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/quantisation-how-low-can-you-go.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Quantisation: How Low Can You Go Before Accuracy Breaks">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/quantisation-how-low-can-you-go.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/quantisation-how-low-can-you-go.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Quantisation: How Low Can You Go Before Accuracy Breaks",
+  "description": "An evaluation-focused guide to fine-tuning quantisation, exploring precision levels, calibration, and where accuracy actually breaks down.",
+  "url": "https://jahanzaibawan.com/blog/quantisation-how-low-can-you-go.html",
+  "image": "https://jahanzaibawan.com/assets/blog/quantisation-how-low-can-you-go.png",
+  "datePublished": "2026-08-31",
+  "dateModified": "2026-08-31",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/quantisation-how-low-can-you-go.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Quantisation: How Low Can You Go Before Accuracy Breaks", "item": "https://jahanzaibawan.com/blog/quantisation-how-low-can-you-go.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 31 Aug 2026</div>
+    <h1>Quantisation: How Low Can You Go Before Accuracy Breaks</h1>
+    <p class="lede">Shrinking model weights saves memory and money, but the point where compression turns into corruption is not always where you expect.</p>
+  </div>
+
+  <img src="../assets/blog/quantisation-how-low-can-you-go.png" alt="Cover image for the article: Quantisation: How Low Can You Go Before Accuracy Breaks" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this question keeps coming up</h2><p>Every few months someone asks whether a model can be squeezed down to 4-bit weights without losing anything meaningful. The honest answer is: it depends, and the people who give a flat yes or no are usually skipping the evaluation step that actually matters. Quantisation reduces the number of bits used to store weights and sometimes activations, moving from 32-bit or 16-bit floating point down to 8-bit integers, 4-bit integers, or even lower. The appeal is obvious: smaller memory footprint, faster inference, cheaper hardware. The risk is equally obvious once you think about it: you are throwing away information, and at some point the model cannot reconstruct what it needs to make a correct prediction.</p><p>What makes this topic worth writing about carefully is that the failure is rarely a clean cliff edge. Accuracy does not sit flat until 4-bit and then collapse. It degrades unevenly across tasks, layers, and even individual examples, and the degradation interacts with how the model was fine-tuned in the first place. If you only look at a single aggregate accuracy number, you can convince yourself that 4-bit quantisation is fine when in fact it has quietly broken performance on a subset of inputs that matter more than the average case suggests.</p></section><section class='psec reveal'><h2>A worked intuition: where the bits actually go</h2><p>Imagine a weight matrix where values are fine-tuned to sit in a fairly narrow range, say between minus two and two, with most values clustered near zero and a small number of outliers further out. In 16-bit floating point you have enormous dynamic range and precision, so every one of those values is represented almost exactly. Drop to 8-bit integer quantisation and you typically map that range onto 256 discrete levels. The spacing between levels near zero is small enough that most weights still land close to their original value, so the rounding error per weight is tiny and tends to average out across a layer with thousands of parameters.</p><p>Now drop to 4-bit, and you only have 16 discrete levels to cover the same range. Suddenly the gap between adjacent representable values is sixteen times coarser than in 8-bit. A weight that was 0.31 might get rounded to the nearest available level, perhaps 0.4 or 0.27, and that error no longer averages out harmlessly because there are so few levels that many weights get pushed to the same value. This is where outliers become the real problem: a handful of large-magnitude weights can force the quantisation range to stretch wider, which pushes all the small, common weights into even coarser buckets. In practice this is why naive 4-bit quantisation of a model that has not been designed for it often shows a sharp accuracy drop on tasks that depend on subtle distinctions, such as fine-grained classification or generation tasks needing precise calibration, while cruder tasks like simple sentiment polarity barely notice.</p><p>The reason fine-tuning changes this picture is that a model adapted heavily to a narrow task often develops weights with a different distribution than the pretrained base, sometimes with sharper peaks or more extreme outliers in specific layers. Quantising a fine-tuned model can therefore behave differently from quantising the base model, which is exactly why you cannot assume results from one setting transfer to another without checking.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/quantisation-how-low-can-you-go-1.jpg' alt='computer chip close up circuit board' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Techniques that push the floor lower</h2><p>Modern quantisation methods do not just chop bits naively; they try to preserve the information that matters most. Calibration-based approaches run a small sample of representative data through the model first, observing the actual range and distribution of activations and weights, then choose quantisation ranges that minimise error for the values that occur in practice rather than the theoretical extremes. Techniques that separate outlier weights and keep them at higher precision while quantising the bulk of the matrix aggressively can hold accuracy much closer to the full-precision baseline, because the coarse buckets are no longer being stretched by a handful of rogue values.</p><p>Quantisation-aware fine-tuning goes a step further by simulating the rounding during training itself, so the model's weights adjust to be more forgiving of the precision loss they will face at inference time. This tends to preserve accuracy at bit-widths where post-training quantisation alone would struggle, essentially because the model has been nudged towards a solution that is robust to coarse rounding rather than one that happens to be optimal only under full precision. Low-rank adaptation methods add another wrinkle: when you fine-tune with a small set of additional trainable parameters kept at higher precision on top of a quantised frozen base, you can get much of the benefit of full fine-tuning while keeping the bulk of the model's memory footprint tiny, because most of the weights never need to be touched at high precision at all.</p><p>None of these techniques move the theoretical floor to zero. There is always a bit-width below which the representable precision simply cannot capture the distinctions a task requires, and that floor is task-dependent rather than a fixed number you can quote for all models.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>If you are deciding how aggressively to quantise a fine-tuned model, do not trust a single overall accuracy figure, and do not trust results reported on a different task or a different fine-tuning regime. Build an evaluation set that reflects the actual downstream use, including the harder and rarer cases, not just the easy majority class. Compare full precision against your target bit-width on that same set, using a leakage-aware split so you are not accidentally reusing data the model has already seen in some form during fine-tuning or calibration.</p><p>Pay particular attention to per-class or per-slice accuracy rather than the aggregate, because the aggregate can hide a collapse on a minority but important subset of inputs. In my experience the sensible order of operations is: try 8-bit first as a near-free baseline, check whether calibration-based 4-bit holds up on your specific evaluation set, and only push lower with quantisation-aware fine-tuning if the memory or latency constraint genuinely demands it. Treat every claim about a bit-width being safe as a claim about a specific model, task, and dataset, not a universal law, and you will avoid the quiet failures that a single accuracy number so easily conceals.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/quantisation-how-low-can-you-go-2.jpg' alt='server rack data centre' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
