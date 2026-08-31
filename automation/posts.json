@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a6",
       "thumb": "assets/blog/quantisation-how-low-can-you-go.png",
-      "thumb_alt": "Cover image for the article: Quantisation: How Low Can You Go Before Accuracy Breaks"
+      "thumb_alt": "Cover image for the article: Quantisation: How Low Can You Go Before Accuracy Breaks",
+      "li_shared": true
     },
     {
       "slug": "cold-start-problems-machine-learning",
