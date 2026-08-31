@@ -78,6 +78,19 @@ mobile). ANY session that changes code or makes a notable finding must
 append an entry here (date, surface, branch, one-line summary) in the same
 commit, so the other sessions know who did what.
 
+- 2026-08-31 - laptop Claude Code session (direct commit to main, d695aac):
+  Auto blog had failed every run since 2026-08-30 08:00 with an Anthropic
+  400, "credit balance is too low". Claude was the only live provider
+  (GitHub Models retired since July) and the error raised straight out of
+  _raw_completion, killing the run. Owner rule is free services only, so
+  Gemini 2.5 Flash free tier now leads the chain (same provider and
+  key-rotation as ai-tools-yt generate_brief.py), _gemini_schema() strips
+  additionalProperties for Gemini's responseSchema, and the Claude call is
+  wrapped so a dead key falls through instead of failing the run. 9/9
+  tests. BLOCKED until the GEMINI_API_KEY secret is added to this repo.
+  Also open: LinkedIn token minted 2026-07-01 expires ~2026-08-30
+  (watchdog issue #10), last successful share 2026-08-29.
+
 - 2026-07-05/06 — laptop Claude Code session (direct commits to main):
   pinned requirements.txt + auto-blog installs from it, tests/ +
   tests.yml, self-heal.yml (retry-once + 08:50/20:50 backstops +
