@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Reading a data science certification honestly: signal versus padding",
     "Computer vision engineer versus ML engineer: overlapping job titles explained",
     "Data science success stories: what the write-ups leave out about failed attempts first",
     "Model evaluation on managed platforms: what the dashboard hides from you",
@@ -147,6 +146,7 @@
     "A/B testing for machine learning models in production, done properly",
     "Cold start problems in machine learning: what to do with no data yet",
     "Fine-tuning quantisation: how low can you go before accuracy breaks",
-    "What counts as a data science internship worth taking"
+    "What counts as a data science internship worth taking",
+    "Reading a data science certification honestly: signal versus padding"
   ]
 }

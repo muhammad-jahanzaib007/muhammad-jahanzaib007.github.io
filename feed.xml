@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Tue, 01 Sep 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Reading a Data Science Certification Honestly</title>
+    <link>https://jahanzaibawan.com/blog/reading-certifications-honestly.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/reading-certifications-honestly.html</guid>
+    <pubDate>Tue, 01 Sep 2026 09:00:00 +0000</pubDate>
+    <description>Certificates compress months of work into a single line. Here&#x27;s how to tell which parts of that line are signal and which are padding.</description>
+    <category>Careers</category>
+  </item>
+  <item>
     <title>What Counts as a Data Science Internship Worth Taking</title>
     <link>https://jahanzaibawan.com/blog/data-science-internships-worth-taking.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/data-science-internships-worth-taking.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Fri, 21 Aug 2026 09:00:00 +0000</pubDate>
     <description>Time is not just another axis. It breaks independence assumptions, inflates apparent accuracy, and demands leakage-aware splits that most video pipelines quietly skip.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Optical Character Recognition: From Pipelines to Deep Nets</title>
-    <link>https://jahanzaibawan.com/blog/ocr-classical-to-deep-learning.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/ocr-classical-to-deep-learning.html</guid>
-    <pubDate>Fri, 21 Aug 2026 09:00:00 +0000</pubDate>
-    <description>A tour through classical OCR pipelines and the specific failure modes that end-to-end deep learning actually solved, not just automated.</description>
-    <category>Computer Vision</category>
   </item>
 </channel>
 </rss>

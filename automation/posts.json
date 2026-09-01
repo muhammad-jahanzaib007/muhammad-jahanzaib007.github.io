@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "reading-certifications-honestly",
+      "title": "Reading a Data Science Certification Honestly",
+      "excerpt": "Certificates compress months of work into a single line. Here's how to tell which parts of that line are signal and which are padding.",
+      "date": "2026-09-01",
+      "read_min": 5,
+      "tag": "Careers",
+      "color": "a3",
+      "thumb": "assets/blog/reading-certifications-honestly.png",
+      "thumb_alt": "Cover image for the article: Reading a Data Science Certification Honestly"
+    },
+    {
       "slug": "data-science-internships-worth-taking",
       "title": "What Counts as a Data Science Internship Worth Taking",
       "excerpt": "A good data science internship teaches evaluation, deployment friction, and how to say no to a bad model. Most listings promise this and deliver spreadsheet cleanup instead.",
