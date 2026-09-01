@@ -9,7 +9,8 @@
       "tag": "Careers",
       "color": "a2",
       "thumb": "assets/blog/data-science-internships-worth-taking.png",
-      "thumb_alt": "Cover image for the article: What Counts as a Data Science Internship Worth Taking"
+      "thumb_alt": "Cover image for the article: What Counts as a Data Science Internship Worth Taking",
+      "li_shared": true
     },
     {
       "slug": "quantisation-how-low-can-you-go",
