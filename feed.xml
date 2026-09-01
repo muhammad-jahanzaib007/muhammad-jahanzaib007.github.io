@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Mon, 31 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 01 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>What Counts as a Data Science Internship Worth Taking</title>
+    <link>https://jahanzaibawan.com/blog/data-science-internships-worth-taking.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/data-science-internships-worth-taking.html</guid>
+    <pubDate>Tue, 01 Sep 2026 09:00:00 +0000</pubDate>
+    <description>A good data science internship teaches evaluation, deployment friction, and how to say no to a bad model. Most listings promise this and deliver spreadsheet cleanup instead.</description>
+    <category>Careers</category>
+  </item>
   <item>
     <title>Quantisation: How Low Can You Go Before Accuracy Breaks</title>
     <link>https://jahanzaibawan.com/blog/quantisation-how-low-can-you-go.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/ocr-classical-to-deep-learning.html</guid>
     <pubDate>Fri, 21 Aug 2026 09:00:00 +0000</pubDate>
     <description>A tour through classical OCR pipelines and the specific failure modes that end-to-end deep learning actually solved, not just automated.</description>
-    <category>Computer Vision</category>
-  </item>
-  <item>
-    <title>Anomaly Detection in Vision: One-Class Methods Made Simple</title>
-    <link>https://jahanzaibawan.com/blog/one-class-anomaly-detection-vision.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/one-class-anomaly-detection-vision.html</guid>
-    <pubDate>Thu, 20 Aug 2026 09:00:00 +0000</pubDate>
-    <description>Most defects are rare and unlabelled. One-class methods learn what normal looks like, then flag anything that does not fit, no anomaly examples required.</description>
     <category>Computer Vision</category>
   </item>
 </channel>

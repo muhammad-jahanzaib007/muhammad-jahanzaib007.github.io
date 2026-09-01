@@ -1,1 +1,1 @@
-2026-08-31T20:41:09Z slug=quantisation-how-low-can-you-go words=1039 title="Quantisation: How Low Can You Go Before Accuracy Breaks"
+2026-09-01T08:01:41Z slug=data-science-internships-worth-taking words=1189 title="What Counts as a Data Science Internship Worth Taking"

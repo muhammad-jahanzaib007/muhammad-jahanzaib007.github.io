@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "data-science-internships-worth-taking",
+      "title": "What Counts as a Data Science Internship Worth Taking",
+      "excerpt": "A good data science internship teaches evaluation, deployment friction, and how to say no to a bad model. Most listings promise this and deliver spreadsheet cleanup instead.",
+      "date": "2026-09-01",
+      "read_min": 6,
+      "tag": "Careers",
+      "color": "a2",
+      "thumb": "assets/blog/data-science-internships-worth-taking.png",
+      "thumb_alt": "Cover image for the article: What Counts as a Data Science Internship Worth Taking"
+    },
+    {
       "slug": "quantisation-how-low-can-you-go",
       "title": "Quantisation: How Low Can You Go Before Accuracy Breaks",
       "excerpt": "A practical look at where quantisation stops being a free lunch, with a worked example showing exactly when accuracy starts to crack.",
