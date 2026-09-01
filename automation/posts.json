@@ -9,7 +9,8 @@
       "tag": "Careers",
       "color": "a3",
       "thumb": "assets/blog/reading-certifications-honestly.png",
-      "thumb_alt": "Cover image for the article: Reading a Data Science Certification Honestly"
+      "thumb_alt": "Cover image for the article: Reading a Data Science Certification Honestly",
+      "li_shared": true
     },
     {
       "slug": "data-science-internships-worth-taking",
