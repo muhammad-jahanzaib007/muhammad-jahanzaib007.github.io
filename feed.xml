@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Tue, 01 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 02 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Computer Vision Engineer vs ML Engineer: What Differs</title>
+    <link>https://jahanzaibawan.com/blog/cv-engineer-vs-ml-engineer.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/cv-engineer-vs-ml-engineer.html</guid>
+    <pubDate>Wed, 02 Sep 2026 09:00:00 +0000</pubDate>
+    <description>CV engineer and ML engineer titles blur together in job ads. I break down what genuinely differs in skills, tools, and daily work.</description>
+    <category>Careers</category>
+  </item>
   <item>
     <title>Reading a Data Science Certification Honestly</title>
     <link>https://jahanzaibawan.com/blog/reading-certifications-honestly.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Sat, 22 Aug 2026 09:00:00 +0000</pubDate>
     <description>Better models cannot outrun bad labels. A close look at how annotation ambiguity, guideline drift, and inter-annotator disagreement cap what any vision model can learn.</description>
     <category>Computer Vision</category>
-  </item>
-  <item>
-    <title>Video Understanding vs Image Classification: The Extra Axis</title>
-    <link>https://jahanzaibawan.com/blog/video-versus-image-classification.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/video-versus-image-classification.html</guid>
-    <pubDate>Fri, 21 Aug 2026 09:00:00 +0000</pubDate>
-    <description>Time is not just another axis. It breaks independence assumptions, inflates apparent accuracy, and demands leakage-aware splits that most video pipelines quietly skip.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>

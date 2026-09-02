@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "cv-engineer-vs-ml-engineer",
+      "title": "Computer Vision Engineer vs ML Engineer: What Differs",
+      "excerpt": "CV engineer and ML engineer titles blur together in job ads. I break down what genuinely differs in skills, tools, and daily work.",
+      "date": "2026-09-02",
+      "read_min": 6,
+      "tag": "Careers",
+      "color": "a4",
+      "thumb": "assets/blog/cv-engineer-vs-ml-engineer.png",
+      "thumb_alt": "Cover image for the article: Computer Vision Engineer vs ML Engineer: What Differs"
+    },
+    {
       "slug": "reading-certifications-honestly",
       "title": "Reading a Data Science Certification Honestly",
       "excerpt": "Certificates compress months of work into a single line. Here's how to tell which parts of that line are signal and which are padding.",

@@ -1,1 +1,1 @@
-2026-09-01T20:01:50Z slug=reading-certifications-honestly words=1032 title="Reading a Data Science Certification Honestly"
+2026-09-02T08:01:39Z slug=cv-engineer-vs-ml-engineer words=1122 title="Computer Vision Engineer vs ML Engineer: What Differs"
