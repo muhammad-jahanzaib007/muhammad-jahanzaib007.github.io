@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Wed, 02 Sep 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>What Data Science Success Stories Leave Out</title>
+    <link>https://jahanzaibawan.com/blog/failed-attempts-behind-success-stories.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/failed-attempts-behind-success-stories.html</guid>
+    <pubDate>Wed, 02 Sep 2026 09:00:00 +0000</pubDate>
+    <description>Success stories in data science skip the failed baselines and dead ends that actually taught the lessons worth repeating.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Computer Vision Engineer vs ML Engineer: What Differs</title>
     <link>https://jahanzaibawan.com/blog/cv-engineer-vs-ml-engineer.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/cv-engineer-vs-ml-engineer.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Sat, 22 Aug 2026 09:00:00 +0000</pubDate>
     <description>Pixel accuracy flatters lazy segmentation models. Dice, IoU and boundary metrics tell you what accuracy hides.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Data Labelling for Vision: Annotation Quality Sets Your Ceiling</title>
-    <link>https://jahanzaibawan.com/blog/annotation-quality-computer-vision-ceiling.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/annotation-quality-computer-vision-ceiling.html</guid>
-    <pubDate>Sat, 22 Aug 2026 09:00:00 +0000</pubDate>
-    <description>Better models cannot outrun bad labels. A close look at how annotation ambiguity, guideline drift, and inter-annotator disagreement cap what any vision model can learn.</description>
-    <category>Computer Vision</category>
   </item>
 </channel>
 </rss>

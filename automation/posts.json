@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "failed-attempts-behind-success-stories",
+      "title": "What Data Science Success Stories Leave Out",
+      "excerpt": "Success stories in data science skip the failed baselines and dead ends that actually taught the lessons worth repeating.",
+      "date": "2026-09-02",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a5",
+      "thumb": "assets/blog/failed-attempts-behind-success-stories.png",
+      "thumb_alt": "Cover image for the article: What Data Science Success Stories Leave Out"
+    },
+    {
       "slug": "cv-engineer-vs-ml-engineer",
       "title": "Computer Vision Engineer vs ML Engineer: What Differs",
       "excerpt": "CV engineer and ML engineer titles blur together in job ads. I break down what genuinely differs in skills, tools, and daily work.",
