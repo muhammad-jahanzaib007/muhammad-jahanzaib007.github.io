@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a5",
       "thumb": "assets/blog/failed-attempts-behind-success-stories.png",
-      "thumb_alt": "Cover image for the article: What Data Science Success Stories Leave Out"
+      "thumb_alt": "Cover image for the article: What Data Science Success Stories Leave Out",
+      "li_shared": true
     },
     {
       "slug": "cv-engineer-vs-ml-engineer",
