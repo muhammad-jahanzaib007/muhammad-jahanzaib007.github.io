@@ -9,7 +9,8 @@
       "tag": "Careers",
       "color": "a4",
       "thumb": "assets/blog/cv-engineer-vs-ml-engineer.png",
-      "thumb_alt": "Cover image for the article: Computer Vision Engineer vs ML Engineer: What Differs"
+      "thumb_alt": "Cover image for the article: Computer Vision Engineer vs ML Engineer: What Differs",
+      "li_shared": true
     },
     {
       "slug": "reading-certifications-honestly",
