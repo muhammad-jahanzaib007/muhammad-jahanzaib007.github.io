@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a2",
       "thumb": "assets/blog/fair-comparison-checklist-finetuning.png",
-      "thumb_alt": "Cover image for the article: Evaluating Fine-Tuned Models Against Their Base Model Fairly"
+      "thumb_alt": "Cover image for the article: Evaluating Fine-Tuned Models Against Their Base Model Fairly",
+      "li_shared": true
     },
     {
       "slug": "managed-platform-dashboard-metrics",
