@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Model evaluation on managed platforms: what the dashboard hides from you",
     "Evaluating fine-tuned models against their base model: a fair comparison checklist",
     "Computer vision conferences: what actually gets published versus what gets deployed",
     "The fine-tuning versus retrieval decision for a knowledge-heavy small project",
@@ -147,6 +146,7 @@
     "What counts as a data science internship worth taking",
     "Reading a data science certification honestly: signal versus padding",
     "Computer vision engineer versus ML engineer: overlapping job titles explained",
-    "Data science success stories: what the write-ups leave out about failed attempts first"
+    "Data science success stories: what the write-ups leave out about failed attempts first",
+    "Model evaluation on managed platforms: what the dashboard hides from you"
   ]
 }

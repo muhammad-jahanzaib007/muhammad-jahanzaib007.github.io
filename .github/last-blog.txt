@@ -1,1 +1,1 @@
-2026-09-02T20:01:54Z slug=failed-attempts-behind-success-stories words=1033 title="What Data Science Success Stories Leave Out"
+2026-09-03T08:01:55Z slug=managed-platform-dashboard-metrics words=1075 title="Model Evaluation on Managed Platforms: The Hidden Gaps"

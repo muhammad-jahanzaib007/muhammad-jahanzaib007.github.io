@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Model Evaluation on Managed Platforms: The Hidden Gaps | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A look at what managed ML platform dashboards omit from their evaluation metrics, and why practitioners still need to interrogate splits, leakage, and thresholds themselves.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="model evaluation, managed ML platforms, AutoML, data leakage, train test split, MLOps, evaluation metrics, reproducibility, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-03">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Model Evaluation on Managed Platforms: The Hidden Gaps">
+<meta property="og:description" content="A look at what managed ML platform dashboards omit from their evaluation metrics, and why practitioners still need to interrogate splits, leakage, and thresholds themselves.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/managed-platform-dashboard-metrics.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/managed-platform-dashboard-metrics.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Model Evaluation on Managed Platforms: The Hidden Gaps">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/managed-platform-dashboard-metrics.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/managed-platform-dashboard-metrics.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Model Evaluation on Managed Platforms: The Hidden Gaps",
+  "description": "A look at what managed ML platform dashboards omit from their evaluation metrics, and why practitioners still need to interrogate splits, leakage, and thresholds themselves.",
+  "url": "https://jahanzaibawan.com/blog/managed-platform-dashboard-metrics.html",
+  "image": "https://jahanzaibawan.com/assets/blog/managed-platform-dashboard-metrics.png",
+  "datePublished": "2026-09-03",
+  "dateModified": "2026-09-03",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/managed-platform-dashboard-metrics.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Model Evaluation on Managed Platforms: The Hidden Gaps", "item": "https://jahanzaibawan.com/blog/managed-platform-dashboard-metrics.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 3 Sep 2026</div>
+    <h1>Model Evaluation on Managed Platforms: The Hidden Gaps</h1>
+    <p class="lede">Cloud AutoML dashboards make evaluation look solved. They are not lying to you, but they are not telling you everything either.</p>
+  </div>
+
+  <img src="../assets/blog/managed-platform-dashboard-metrics.png" alt="Cover image for the article: Model Evaluation on Managed Platforms: The Hidden Gaps" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The dashboard tells a clean story</h2><p>Open a managed machine learning platform after training a classifier and you get a tidy summary: accuracy, precision, recall, an AUC curve, maybe a confusion matrix rendered in soft colours. It looks authoritative. Someone spent real effort making it legible. The trouble is that legibility and correctness are different things, and a dashboard can be perfectly legible while quietly answering a question you never asked.</p><p>The core issue is that the metric on screen is only meaningful in the context of how the data was split, how the labels were defined, and what population the model will actually see in production. Managed platforms handle the split for you, often with a single dropdown offering something like an eighty-twenty random split. That convenience is precisely where the risk lives, because a random split is only appropriate when your data points are genuinely independent and identically distributed over time and over groups. Much real world data is neither.</p><p>Consider a fraud detection dataset where transactions from the same customer appear repeatedly across months. A random split will happily scatter that customer's transactions across both training and test sets. The model then partly memorises customer-specific quirks rather than learning general fraud patterns, and the test accuracy on the dashboard, say ninety-four percent, looks excellent. Deploy it on next month's genuinely unseen customers and performance can drop by ten or fifteen points, sometimes more, because the evaluation never tested generalisation to new entities in the first place.</p></section><section class='psec reveal'><h2>Leakage rarely announces itself</h2><p>Leakage is the term for information from outside the legitimate training window sneaking into the features or the split, and it is the single most common reason a model looks brilliant in a dashboard and mediocre in production. Managed platforms are particularly prone to hiding it because feature engineering, splitting, and evaluation often happen inside the same opaque pipeline, with no easy way to inspect what fed into what.</p><p>A concrete example: predicting whether a customer will churn within thirty days, using a feature called days_since_last_support_ticket. If that feature is computed using the entire historical record rather than only information available at the prediction date, a customer who churned and then, naturally, stopped generating support tickets will show a suspiciously large gap just before the label was set. The model latches onto that pattern. Reported AUC might sit at 0.91, which sounds like a strong result worth shipping. In reality the feature encodes the outcome, and once you correct the timestamp logic so features only use information available before the prediction point, the honest AUC can fall to something like 0.68, a far more sober number that better reflects what the model can actually do at inference time.</p><p>The dashboard cannot warn you about this because it has no concept of your business logic or your feature provenance; it only sees numeric columns and a label. Managed platforms that offer automatic feature generation from joined tables make this worse, since convenience features are often built without regard to temporal ordering. The fix is not to distrust the platform wholesale, but to insist on reconstructing, by hand if necessary, exactly which rows and which timestamps contributed to each feature before you trust any reported metric.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/managed-platform-dashboard-metrics-1.jpg' alt='laptop showing analytics dashboard' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Aggregate metrics smooth over the failures that matter</h2><p>Even when the split is sound and leakage is controlled, a single headline number such as overall accuracy or macro F1 tends to flatten exactly the detail a practitioner needs. Suppose a model for medical triage reports ninety-two percent accuracy on a held-out set. That number could be entirely driven by the majority class if, say, ninety percent of cases are low-risk. A trivial baseline that always predicts low-risk would score ninety percent, meaning the sophisticated model has bought you only two points of genuine lift, and quite possibly at the cost of missing the minority of urgent cases that actually matter clinically.</p><p>Dashboards increasingly offer per-class breakdowns and confusion matrices, which is progress, but they rarely surface performance across subgroups that were not defined as explicit labels during training: different age bands, different device types submitting the data, different time periods with seasonal drift. A model can hit eighty-eight percent recall overall while sitting at sixty percent recall for one demographic slice that was underrepresented in training. Unless someone deliberately slices the evaluation set and checks, that gap stays invisible, sitting quietly behind a respectable-looking headline figure.</p><p>Threshold choice is another quiet omission. Precision and recall curves are informative, but the platform typically picks a default threshold of 0.5 to compute the summary statistics you see first. That threshold is arbitrary with respect to your actual costs. If a false negative in a churn model costs far more than a false positive, because losing a customer is expensive while a discount offer to a loyal customer is cheap, the operating point should be chosen deliberately based on that cost ratio, not inherited silently from a default setting embedded in the reporting layer.</p></section><section class='psec reveal'><h2>What to actually do about it</h2><p>None of this means managed platforms are untrustworthy, only that their dashboards summarise rather than audit. The practical response is a short discipline you apply every time, regardless of which platform you use. First, define your split manually around real world entities and time, grouping by customer or account and holding out a genuinely future time window rather than accepting a random shuffle by default. Second, trace every feature back to its timestamp logic and ask, honestly, whether that value would have existed at prediction time in production.</p><p>Third, always compute a naive baseline, majority class or simple rule of thumb, alongside the model's headline metric, so that a ninety-two percent accuracy is immediately contextualised against the ninety percent you would get for free. Fourth, slice the evaluation by any subgroup you consider operationally relevant, even if the platform's default report does not offer that slice automatically; most platforms let you export predictions and do this analysis yourself in a few lines of code. Finally, choose your decision threshold deliberately based on the relative cost of false positives and false negatives, rather than accepting whatever the dashboard highlights by default.</p><p>The dashboard is a starting point for a conversation with your data, not the end of one. Treat the numbers it shows as hypotheses to interrogate rather than conclusions to report upward, and the gap between what looks good in the tool and what actually works in production will shrink considerably.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/managed-platform-dashboard-metrics-2.jpg' alt='confusion matrix on computer screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

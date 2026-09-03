@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "managed-platform-dashboard-metrics",
+      "title": "Model Evaluation on Managed Platforms: The Hidden Gaps",
+      "excerpt": "Managed ML dashboards report clean accuracy and AUC numbers, but they hide the split logic, leakage risks, and label assumptions that decide whether those numbers mean anything.",
+      "date": "2026-09-03",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a6",
+      "thumb": "assets/blog/managed-platform-dashboard-metrics.png",
+      "thumb_alt": "Cover image for the article: Model Evaluation on Managed Platforms: The Hidden Gaps"
+    },
+    {
       "slug": "failed-attempts-behind-success-stories",
       "title": "What Data Science Success Stories Leave Out",
       "excerpt": "Success stories in data science skip the failed baselines and dead ends that actually taught the lessons worth repeating.",
