@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evaluating Fine-Tuned Models Against Their Base Model Fairly | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical checklist for comparing fine-tuned models to their base model without leakage, mismatched prompts, or cherry-picked metrics.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="model evaluation, fine-tuning, base model comparison, data leakage, evaluation checklist, machine learning benchmarking, reproducibility, NLP evaluation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-03">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Evaluating Fine-Tuned Models Against Their Base Model Fairly">
+<meta property="og:description" content="A practical checklist for comparing fine-tuned models to their base model without leakage, mismatched prompts, or cherry-picked metrics.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/fair-comparison-checklist-finetuning.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/fair-comparison-checklist-finetuning.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Evaluating Fine-Tuned Models Against Their Base Model Fairly">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/fair-comparison-checklist-finetuning.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/fair-comparison-checklist-finetuning.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Evaluating Fine-Tuned Models Against Their Base Model Fairly",
+  "description": "A practical checklist for comparing fine-tuned models to their base model without leakage, mismatched prompts, or cherry-picked metrics.",
+  "url": "https://jahanzaibawan.com/blog/fair-comparison-checklist-finetuning.html",
+  "image": "https://jahanzaibawan.com/assets/blog/fair-comparison-checklist-finetuning.png",
+  "datePublished": "2026-09-03",
+  "dateModified": "2026-09-03",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/fair-comparison-checklist-finetuning.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Evaluating Fine-Tuned Models Against Their Base Model Fairly", "item": "https://jahanzaibawan.com/blog/fair-comparison-checklist-finetuning.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 3 Sep 2026</div>
+    <h1>Evaluating Fine-Tuned Models Against Their Base Model Fairly</h1>
+    <p class="lede">A fine-tuned model that looks better on your validation set is not automatically better. Here is a checklist for making the comparison honest.</p>
+  </div>
+
+  <img src="../assets/blog/fair-comparison-checklist-finetuning.png" alt="Cover image for the article: Evaluating Fine-Tuned Models Against Their Base Model Fairly" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the comparison is harder than it looks</h2><p>Every time I fine-tune a model, the first question I get asked is simple: is it better than the base model? The honest answer usually takes longer to produce than the fine-tuning run itself, because a fair comparison requires controlling for a dozen small decisions that quietly favour whichever model you are rooting for. Most of the inflated improvements I see in write-ups are not lies, they are the result of an unfair setup that nobody noticed.</p><p>The core problem is that fine-tuning changes more than the weights. It often changes the prompt format, the tokenisation of certain inputs, the expected output style, and sometimes the exact examples the model has already seen. If you then evaluate the fine-tuned model on its native prompt format and the base model on a generic one, you are not measuring the effect of fine-tuning, you are measuring the effect of prompt mismatch. The base model was never given a fair chance to show what it can do.</p><p>This matters practically because decisions get made on these comparisons. Someone decides to ship the fine-tuned model, or to spend another week collecting data, or to write a report claiming a specific percentage improvement. If the comparison was not fair, all of that downstream decision-making is built on a number that would not replicate under different but equally reasonable conditions.</p></section><section class='psec reveal'><h2>The leakage problem, worked through</h2><p>The single most damaging issue is data leakage between the fine-tuning set and the evaluation set. Say you fine-tune on ten thousand examples scraped from a public source, then evaluate on a thousand held-out examples from the same source. If that source has near-duplicate entries, templated question structures, or overlapping passages, your held-out set is not really held out. The fine-tuned model may score eighty-eight percent accuracy while the base model scores seventy-one percent, and it looks like a seventeen-point win. Deduplicate properly, using something stronger than exact string matching, near-duplicate detection on normalised text, and the fine-tuned model's score might drop to seventy-nine percent. Still a real improvement, but half the size you originally reported.</p><p>A second, subtler version of this is temporal leakage. If your fine-tuning data was collected up to a certain date and your evaluation set contains events, facts, or terminology from after that date, the base model, if it was pretrained more recently, might actually know things the fine-tuned model does not. I have seen fine-tuned models look artificially strong simply because both the fine-tuning data and the evaluation data shared an outdated snapshot of the world, while the base model was penalised for having more current but differently phrased knowledge.</p><p>The fix is unglamorous but non-negotiable: build the evaluation set before you start fine-tuning, lock it, and never let it touch the training pipeline. Track the provenance of every example. If you cannot say with confidence that no fine-tuning example is a near-duplicate of an evaluation example, you cannot trust the comparison, no matter how good the numbers look.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/fair-comparison-checklist-finetuning-1.jpg' alt='laptop with data charts on screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Matching everything except the weights</h2><p>Once leakage is under control, the next step is making sure the only variable that changes between the two runs is the model itself. This means the same prompt template applied to both models, unless the base model genuinely cannot parse that template, in which case you should test both a matched prompt and each model's best native prompt and report both numbers rather than picking one. It means the same decoding settings: same temperature, same maximum tokens, same sampling seed where relevant. A fine-tuned model evaluated at temperature zero against a base model evaluated at temperature seven tenths is not a fair fight, and the difference in variance alone can swing an accuracy comparison by several points on a small evaluation set.</p><p>It also means the same scoring method. If you switch from exact match to a fuzzy or model-graded metric between the two evaluations, you introduce a second confound on top of the model change. I like to run both models through the identical scoring script in one pass, so there is no chance of the grading criteria drifting between runs, which happens more often than people admit when evaluations are done days apart.</p><p>Sample size deserves attention too. A base model at seventy-two percent accuracy and a fine-tuned model at seventy-five percent on a hundred-example evaluation set is well within the noise you would expect from resampling alone. Before claiming a win, compute a confidence interval or run a paired significance test, since the comparison is paired at the example level, which gives more statistical power than treating the two models as independent samples. On a hundred examples, a three-point gap is often not distinguishable from chance; on a thousand, it usually is.</p></section><section class='psec reveal'><h2>A practical checklist and the takeaway</h2><p>Before reporting a fine-tuned versus base model comparison, I now run through a short list: evaluation set built and frozen before fine-tuning began; near-duplicate check against the training data with a real similarity method, not exact match; identical prompt template and decoding parameters across both models, or both native and matched versions reported side by side; identical scoring script applied in a single pass; and a significance test appropriate to paired samples rather than a bare percentage difference.</p><p>None of this is difficult individually, but skipping even one item tends to produce the kind of result that looks impressive in a slide and falls apart under a repeat run with a different random seed. The base model is not the enemy you are trying to beat by any means necessary, it is the baseline that tells you whether your fine-tuning actually did anything, so it deserves the same care in evaluation as the model you are proud of.</p><p>The practical takeaway is to treat the base model as a first-class citizen in your evaluation pipeline, not an afterthought you glance at once. Run it through the exact same harness, on the exact same frozen data, with the same prompt and decoding choices, and only then trust the gap between the two numbers. If the improvement survives that scrutiny, it is real, and you can say so with confidence rather than hope.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/fair-comparison-checklist-finetuning-2.jpg' alt='two monitors side by side comparing graphs' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

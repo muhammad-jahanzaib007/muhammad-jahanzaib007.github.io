@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "fair-comparison-checklist-finetuning",
+      "title": "Evaluating Fine-Tuned Models Against Their Base Model Fairly",
+      "excerpt": "Beating the base model on your own eval set is easy. Beating it fairly, with matched data, prompts, and decoding, is the part people skip.",
+      "date": "2026-09-03",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a2",
+      "thumb": "assets/blog/fair-comparison-checklist-finetuning.png",
+      "thumb_alt": "Cover image for the article: Evaluating Fine-Tuned Models Against Their Base Model Fairly"
+    },
+    {
       "slug": "managed-platform-dashboard-metrics",
       "title": "Model Evaluation on Managed Platforms: The Hidden Gaps",
       "excerpt": "Managed ML dashboards report clean accuracy and AUC numbers, but they hide the split logic, leakage risks, and label assumptions that decide whether those numbers mean anything.",

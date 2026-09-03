@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Thu, 03 Sep 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Evaluating Fine-Tuned Models Against Their Base Model Fairly</title>
+    <link>https://jahanzaibawan.com/blog/fair-comparison-checklist-finetuning.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/fair-comparison-checklist-finetuning.html</guid>
+    <pubDate>Thu, 03 Sep 2026 09:00:00 +0000</pubDate>
+    <description>Beating the base model on your own eval set is easy. Beating it fairly, with matched data, prompts, and decoding, is the part people skip.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Model Evaluation on Managed Platforms: The Hidden Gaps</title>
     <link>https://jahanzaibawan.com/blog/managed-platform-dashboard-metrics.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/managed-platform-dashboard-metrics.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Sun, 23 Aug 2026 09:00:00 +0000</pubDate>
     <description>Deep learning&#x27;s real edge is automatic representation learning, not magic accuracy. Here is when that matters and when it does not.</description>
     <category>Deep Learning</category>
-  </item>
-  <item>
-    <title>RMSE, MAE, and When Each One Lies to You</title>
-    <link>https://jahanzaibawan.com/blog/rmse-mae-when-they-lie.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/rmse-mae-when-they-lie.html</guid>
-    <pubDate>Sun, 23 Aug 2026 09:00:00 +0000</pubDate>
-    <description>RMSE and MAE often disagree about which model is best. Here is the intuition behind why, with a worked example you can check by hand.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>
