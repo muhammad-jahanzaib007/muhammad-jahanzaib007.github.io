@@ -9,7 +9,8 @@
       "tag": "Machine Learning",
       "color": "a4",
       "thumb": "assets/blog/finetune-vs-retrieval-small-projects.png",
-      "thumb_alt": "Cover image for the article: Fine-Tuning vs Retrieval for Knowledge-Heavy Small Projects"
+      "thumb_alt": "Cover image for the article: Fine-Tuning vs Retrieval for Knowledge-Heavy Small Projects",
+      "li_shared": true
     },
     {
       "slug": "cv-papers-versus-deployment",
