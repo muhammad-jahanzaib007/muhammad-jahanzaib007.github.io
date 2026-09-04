@@ -1,1 +1,1 @@
-2026-09-04T08:01:35Z slug=cv-papers-versus-deployment words=1081 title="Computer Vision Papers: What Gets Published vs Deployed"
+2026-09-04T20:02:06Z slug=finetune-vs-retrieval-small-projects words=1077 title="Fine-Tuning vs Retrieval for Knowledge-Heavy Small Projects"

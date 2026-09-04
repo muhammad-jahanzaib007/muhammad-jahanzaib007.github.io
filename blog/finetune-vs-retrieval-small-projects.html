@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fine-Tuning vs Retrieval for Knowledge-Heavy Small Projects | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A clear, practical comparison of fine-tuning and retrieval for small knowledge-heavy AI projects, with a worked example and evaluation advice.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="fine-tuning, retrieval augmented generation, RAG, small AI projects, model evaluation, knowledge base, machine learning practice, information retrieval, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-04">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Fine-Tuning vs Retrieval for Knowledge-Heavy Small Projects">
+<meta property="og:description" content="A clear, practical comparison of fine-tuning and retrieval for small knowledge-heavy AI projects, with a worked example and evaluation advice.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/finetune-vs-retrieval-small-projects.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/finetune-vs-retrieval-small-projects.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fine-Tuning vs Retrieval for Knowledge-Heavy Small Projects">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/finetune-vs-retrieval-small-projects.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/finetune-vs-retrieval-small-projects.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Fine-Tuning vs Retrieval for Knowledge-Heavy Small Projects",
+  "description": "A clear, practical comparison of fine-tuning and retrieval for small knowledge-heavy AI projects, with a worked example and evaluation advice.",
+  "url": "https://jahanzaibawan.com/blog/finetune-vs-retrieval-small-projects.html",
+  "image": "https://jahanzaibawan.com/assets/blog/finetune-vs-retrieval-small-projects.png",
+  "datePublished": "2026-09-04",
+  "dateModified": "2026-09-04",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/finetune-vs-retrieval-small-projects.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Fine-Tuning vs Retrieval for Knowledge-Heavy Small Projects", "item": "https://jahanzaibawan.com/blog/finetune-vs-retrieval-small-projects.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Machine Learning · 5 min read · 4 Sep 2026</div>
+    <h1>Fine-Tuning vs Retrieval for Knowledge-Heavy Small Projects</h1>
+    <p class="lede">When your project needs facts more than fluency, the choice between baking knowledge into weights and fetching it at query time changes everything about cost, maintenance and trust.</p>
+  </div>
+
+  <img src="../assets/blog/finetune-vs-retrieval-small-projects.png" alt="Cover image for the article: Fine-Tuning vs Retrieval for Knowledge-Heavy Small Projects" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this decision matters more than it looks</h2><p>Every time I start a small project that needs a model to answer questions about a specific domain, a policy document, a product catalogue, a research niche, I face the same fork in the road. Do I fine-tune a model on my domain data, or do I leave the model alone and give it a retrieval system that fetches relevant passages at query time. It sounds like a minor implementation detail, but it actually determines how the whole project behaves: how often it is wrong, how expensive it is to fix mistakes, and how much you can trust its answers six months from now when your source documents have changed.</p><p>The temptation with a small project is to reach for fine-tuning because it feels like the more serious, more machine-learning-flavoured option. You imagine training a model until it has internalised your domain, the way a student memorises a textbook. But for knowledge-heavy tasks, that intuition is often wrong, and getting it wrong on a small project is expensive precisely because you have limited data and limited capacity to catch the failure modes it introduces.</p><p>The core distinction is this: fine-tuning changes how a model behaves, retrieval changes what a model knows at the moment of answering. Knowledge-heavy tasks, where correctness depends on specific facts, figures, or clauses, are usually retrieval problems wearing a fine-tuning costume. Style-heavy tasks, where you want a particular tone, format, or reasoning pattern, are usually fine-tuning problems. Mixing up which one you have is the single most common mistake I see in small projects.</p></section><section class='psec reveal'><h2>A worked example: a project with three hundred internal documents</h2><p>Suppose you are building a system to answer questions from three hundred internal policy documents, each a few pages long, updated a handful of times a year. That is a realistic small-project scale: not enough text to meaningfully shift a large model's internal knowledge through fine-tuning, but plenty of text to overwhelm a context window if you tried to paste it all in.</p><p>If you fine-tune a model on question-answer pairs generated from these documents, you face an immediate data problem. Three hundred documents might yield a few thousand synthetic question-answer pairs if you are generous, and many of those pairs will be near-duplicates or will encode facts that only appear once in the whole corpus. A model fine-tuned on this will often learn the phrasing and structure of your answers without reliably learning the facts, because facts that appear once in a few thousand training examples are exactly the kind of thing gradient descent struggles to memorise faithfully. You end up with a model that sounds confident and answers in the right style, but occasionally states an outdated policy number or the wrong department name, because it partially memorised and partially guessed.</p><p>Now suppose instead you build a retrieval system: split the three hundred documents into passages, embed them, and at query time fetch the five or ten most relevant passages to place in the model's context before it answers. When a policy changes, you update one document and re-embed it, a job that takes minutes. The model itself never needs retraining. Crucially, when the system gets something wrong, you can usually trace it to a retrieval failure, the wrong passage was fetched, which is diagnosable and fixable, rather than a fine-tuning failure, the fact was learned incorrectly, which is opaque and requires retraining to even attempt a fix.</p><p>The retrieval approach also gives you something fine-tuning cannot: provenance. You can show the user which passage the answer came from. For a knowledge-heavy small project, especially one where users need to trust or verify answers, that traceability is often worth more than any gain in fluency that fine-tuning might offer.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/finetune-vs-retrieval-small-projects-1.jpg' alt='server room documents shelf' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Where fine-tuning genuinely earns its place</h2><p>None of this means fine-tuning is the wrong tool for small projects in general, only that it is the wrong tool for injecting facts. Fine-tuning is well suited to teaching a model a consistent output format, a particular tone for customer replies, a domain-specific way of reasoning through a classification task, or how to use tools and follow instructions reliably within your workflow. These are behavioural patterns that recur across many examples, which is exactly what gradient descent is good at capturing.</p><p>A useful test I apply is to ask whether the thing I want the model to learn would still be true if I changed the specific facts but kept the structure. If I want a model to always respond in a three-part format regardless of subject matter, that is a behavioural pattern, fine-tuning is appropriate. If I want the model to know that a particular clause was amended last March, that is a fact, and facts belong in a retrieval index, not in weights.</p><p>The two approaches are not mutually exclusive, and combining them is often the strongest option for a knowledge-heavy small project that also needs consistent behaviour. You might fine-tune lightly on a small set of examples to teach the model your preferred answer format and citation style, while relying entirely on retrieval to supply the actual facts at query time. This gives you the maintainability of retrieval with the consistency of fine-tuning, and it keeps the fine-tuning dataset small and behavioural rather than trying to force it to encode a knowledge base it was never designed to hold.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>Before committing engineering time to a small, knowledge-heavy project, separate the question of what the model must know from the question of how it must behave. If the answer changes when your source documents change, that is knowledge, and it belongs in a retrieval system you can update independently of the model. If the answer would stay structurally the same regardless of which facts are plugged in, that is behaviour, and a small, carefully curated fine-tuning set can help.</p><p>Evaluate accordingly too. For a retrieval-based system, spend your limited evaluation budget testing whether the right passages are being fetched, since that is usually where errors originate, rather than only checking the fluency of final answers. For a fine-tuned system, watch specifically for confident-sounding factual errors, since a model that has partially memorised a small dataset will produce exactly that failure mode, and it is the hardest one to catch by casual inspection. Getting this split right early saves you from the classic small-project trap: a model that answers beautifully and is wrong just often enough to erode trust.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/finetune-vs-retrieval-small-projects-2.jpg' alt='person reading policy binder at desk' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

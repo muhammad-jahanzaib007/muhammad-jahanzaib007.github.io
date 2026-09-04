@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "finetune-vs-retrieval-small-projects",
+      "title": "Fine-Tuning vs Retrieval for Knowledge-Heavy Small Projects",
+      "excerpt": "A practical guide to deciding whether a small, knowledge-heavy project needs fine-tuning, retrieval, or both, with a worked example and honest trade-offs.",
+      "date": "2026-09-04",
+      "read_min": 5,
+      "tag": "Machine Learning",
+      "color": "a4",
+      "thumb": "assets/blog/finetune-vs-retrieval-small-projects.png",
+      "thumb_alt": "Cover image for the article: Fine-Tuning vs Retrieval for Knowledge-Heavy Small Projects"
+    },
+    {
       "slug": "cv-papers-versus-deployment",
       "title": "Computer Vision Papers: What Gets Published vs Deployed",
       "excerpt": "Why the models that dominate computer vision conferences rarely match the ones that survive contact with real deployment constraints.",

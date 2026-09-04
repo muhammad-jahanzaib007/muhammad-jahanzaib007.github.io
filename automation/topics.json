@@ -1,11 +1,24 @@
 {
   "queue": [
-    "The fine-tuning versus retrieval decision for a knowledge-heavy small project",
     "Why a strong evaluation harness matters more than the model you started with",
     "Model evaluation for safety-critical systems: what threat research actually checks",
     "Data science job adverts decoded: what years of experience really signals",
     "Picking a first computer vision job: research lab, startup, or industry team",
-    "Quantifying uncertainty in model evaluation: confidence intervals nobody reports"
+    "Quantifying uncertainty in model evaluation: confidence intervals nobody reports",
+    "Fine-tuning: what the word actually means across contexts, and what it means in ML",
+    "LLM benchmarks decoded: what a leaderboard score actually tests",
+    "Choosing between an LLM degree, a course, and a portfolio: what actually teaches you fine-tuning",
+    "LLM arena style comparisons: why pairwise human preference is a different metric to accuracy",
+    "What NLP techniques survive contact with a small labelled dataset",
+    "How to explain a transformer's attention mechanism to a non-technical interviewer",
+    "Vision transformers explained from the patch embedding upward",
+    "Data-centric NLP: cleaning your corpus before you touch the model",
+    "Regression versus classification: choosing the right framing for a messy business problem",
+    "Weight decay versus dropout: two regularisers that do different jobs",
+    "Warm restarts and learning rate schedules: why a constant rate rarely wins",
+    "Multi-task learning: when sharing a backbone helps and when it hurts",
+    "Knowledge distillation: shrinking a model without quietly breaking it",
+    "How to read a research paper's evaluation section like a reviewer, not a reader"
   ],
   "published": [
     "UAV object classification data-leakage case study",
@@ -147,6 +160,7 @@
     "Data science success stories: what the write-ups leave out about failed attempts first",
     "Model evaluation on managed platforms: what the dashboard hides from you",
     "Evaluating fine-tuned models against their base model: a fair comparison checklist",
-    "Computer vision conferences: what actually gets published versus what gets deployed"
+    "Computer vision conferences: what actually gets published versus what gets deployed",
+    "The fine-tuning versus retrieval decision for a knowledge-heavy small project"
   ]
 }
