@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "cv-papers-versus-deployment",
+      "title": "Computer Vision Papers: What Gets Published vs Deployed",
+      "excerpt": "Why the models that dominate computer vision conferences rarely match the ones that survive contact with real deployment constraints.",
+      "date": "2026-09-04",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a3",
+      "thumb": "assets/blog/cv-papers-versus-deployment.png",
+      "thumb_alt": "Cover image for the article: Computer Vision Papers: What Gets Published vs Deployed"
+    },
+    {
       "slug": "fair-comparison-checklist-finetuning",
       "title": "Evaluating Fine-Tuned Models Against Their Base Model Fairly",
       "excerpt": "Beating the base model on your own eval set is easy. Beating it fairly, with matched data, prompts, and decoding, is the part people skip.",

@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Thu, 03 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 04 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Computer Vision Papers: What Gets Published vs Deployed</title>
+    <link>https://jahanzaibawan.com/blog/cv-papers-versus-deployment.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/cv-papers-versus-deployment.html</guid>
+    <pubDate>Fri, 04 Sep 2026 09:00:00 +0000</pubDate>
+    <description>Why the models that dominate computer vision conferences rarely match the ones that survive contact with real deployment constraints.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Evaluating Fine-Tuned Models Against Their Base Model Fairly</title>
     <link>https://jahanzaibawan.com/blog/fair-comparison-checklist-finetuning.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Mon, 24 Aug 2026 09:00:00 +0000</pubDate>
     <description>Most ML courses look similar on paper. The ones worth your money teach evaluation rigour, not just model zoos.</description>
     <category>Learning</category>
-  </item>
-  <item>
-    <title>What Deep Learning Adds That Classical ML Cannot</title>
-    <link>https://jahanzaibawan.com/blog/what-deep-learning-adds.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/what-deep-learning-adds.html</guid>
-    <pubDate>Sun, 23 Aug 2026 09:00:00 +0000</pubDate>
-    <description>Deep learning&#x27;s real edge is automatic representation learning, not magic accuracy. Here is when that matters and when it does not.</description>
-    <category>Deep Learning</category>
   </item>
 </channel>
 </rss>

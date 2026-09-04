@@ -1,1 +1,1 @@
-2026-09-03T20:01:36Z slug=fair-comparison-checklist-finetuning words=1030 title="Evaluating Fine-Tuned Models Against Their Base Model Fairly"
+2026-09-04T08:01:35Z slug=cv-papers-versus-deployment words=1081 title="Computer Vision Papers: What Gets Published vs Deployed"

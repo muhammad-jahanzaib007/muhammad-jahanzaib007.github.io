@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Computer Vision Papers: What Gets Published vs Deployed | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="An honest look at the gap between benchmark-topping computer vision research and what actually ships in production systems.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="computer vision, benchmark evaluation, model deployment, leakage, reproducibility, edge inference, dataset bias, MLOps, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-04">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Computer Vision Papers: What Gets Published vs Deployed">
+<meta property="og:description" content="An honest look at the gap between benchmark-topping computer vision research and what actually ships in production systems.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/cv-papers-versus-deployment.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/cv-papers-versus-deployment.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Computer Vision Papers: What Gets Published vs Deployed">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/cv-papers-versus-deployment.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/cv-papers-versus-deployment.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Computer Vision Papers: What Gets Published vs Deployed",
+  "description": "An honest look at the gap between benchmark-topping computer vision research and what actually ships in production systems.",
+  "url": "https://jahanzaibawan.com/blog/cv-papers-versus-deployment.html",
+  "image": "https://jahanzaibawan.com/assets/blog/cv-papers-versus-deployment.png",
+  "datePublished": "2026-09-04",
+  "dateModified": "2026-09-04",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/cv-papers-versus-deployment.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Computer Vision Papers: What Gets Published vs Deployed", "item": "https://jahanzaibawan.com/blog/cv-papers-versus-deployment.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 4 Sep 2026</div>
+    <h1>Computer Vision Papers: What Gets Published vs Deployed</h1>
+    <p class="lede">A leaderboard win and a production-ready model are not the same achievement, and confusing the two costs teams real time and money.</p>
+  </div>
+
+  <img src="../assets/blog/cv-papers-versus-deployment.png" alt="Cover image for the article: Computer Vision Papers: What Gets Published vs Deployed" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Two different games</h2><p>Every year a fresh crop of computer vision papers reports a fraction of a percentage point improvement on a standard benchmark, and every year almost none of those specific architectures end up running inside a phone camera, a warehouse robot, or a medical imaging pipeline. This is not a scandal, it is a structural fact about how the two activities are optimised. A conference paper is optimised to be accepted: it needs a clear novelty claim, a favourable comparison table, and a result that beats or matches prior work on a fixed test set. A deployed system is optimised to keep working: it needs to handle unseen lighting, unusual camera angles, adversarial users, latency budgets, and a maintenance team that did not write the original code.</p><p>I think the confusion arises because both activities use the same vocabulary, the same datasets, and often the same authors. A paper and a production system can both claim to do object detection, but the paper is answering the question <em>can this idea improve accuracy under controlled conditions</em>, while the deployed system is answering <em>does this keep working when the conditions I controlled for stop holding</em>. Those are different questions, and a method can score well on the first while failing badly on the second.</p><p>Consider a concrete case. Suppose a new detector reports 52.3 mean average precision on a well-known benchmark, half a point above the previous state of the art, achieved with a heavier backbone and a more complex training recipe. That half point is genuinely earned under the benchmark's rules. But if the backbone triples inference latency and the training recipe requires a specific augmentation pipeline that only works because the benchmark's images share a narrow distribution of resolutions and object scales, none of that half point tells you anything about behaviour on, say, CCTV footage at night with motion blur. The benchmark improvement and the deployment improvement are simply not the same currency.</p></section><section class='psec reveal'><h2>Where the incentives diverge</h2><p>Conference reviewing rewards a specific shape of contribution: a clean ablation table, a plausible architectural story, and beating the field on one or two headline metrics. This pushes researchers towards changes that move a metric on a fixed, well-studied test set, because that is verifiable and citable. It does not particularly reward robustness to distribution shift, calibration of confidence scores, graceful degradation under occlusion, or the kind of boring engineering that makes a model survive six months of real traffic. Those properties are hard to reduce to a single number in a comparison table, so they get mentioned in a limitations paragraph, if at all.</p><p>Deployment incentives point the other way. A team shipping a defect-detection model on a factory line cares far less about squeezing out an extra half point of average precision than about the false negative rate on the specific defect types that cost the most money, the ninety-fifth percentile latency on the actual edge hardware, and how the model behaves when a camera lens gets slightly dusty. None of that shows up on a benchmark leaderboard, because leaderboards are built to be stable and comparable across years, which means they deliberately exclude the messy, site-specific variation that dominates real deployment.</p><p>There is also a data leakage problem that quietly inflates published numbers relative to what deployment will show. Many benchmark test sets have been public for years, meaning some published methods, even unintentionally, benefit from hyperparameters tuned across many submissions that effectively peek at the test distribution. A model tuned this way might report a genuine 91 percent accuracy on the benchmark's test split, yet drop to something like 78 percent on a freshly collected dataset drawn from the same task but a different camera and location. That thirteen-point gap is not a research failure so much as a reminder that a static test set eventually stops measuring generalisation and starts measuring familiarity with itself.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/cv-papers-versus-deployment-1.jpg' alt='security camera footage night' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What actually survives the transition</h2><p>The methods that do make it into production tend to share a few unglamorous traits. They are usually a generation or two behind the current state of the art in raw benchmark score, because production teams favour architectures with mature tooling, predictable failure modes, and enough deployment history that their quirks are documented somewhere other than a single paper's appendix. A well-understood convolutional backbone with known quantisation behaviour often beats a newer, more accurate architecture whose behaviour under eight-bit inference on embedded hardware has never been characterised.</p><p>Data quality and evaluation design also matter more in practice than architecture choice. A team that builds a genuinely representative validation set, one that mirrors the lighting, camera hardware, and edge cases of the deployment environment, will often catch a 15 percent relative error increase that a benchmark-style split would never reveal, simply because the benchmark split shares the same collection biases as its own training data. This is the leakage-aware thinking that matters far more once a model leaves the lab: your validation set should look like tomorrow's production traffic, not like yesterday's training distribution reshuffled.</p><p>Reproducibility is the other quiet differentiator. A paper's result is reproducible if another lab can rerun the code and get a similar number on the same test set. A deployment is reproducible if the same model, retrained next quarter on refreshed data with a slightly different label distribution, still meets its service-level target. These are different bars, and the second one is considerably harder, because it has to survive changes in the world, not just changes in random seed.</p></section><section class='psec reveal'><h2>A practical takeaway</h2><p>None of this means published research is useless for practitioners, far from it. It means the right habit is to treat a leaderboard result as a hypothesis about an idea's usefulness, not as a verdict on production readiness. Before adopting a new architecture, I would want to see its behaviour on a held-out set that was collected after the method was designed, ideally from a source the authors never touched, and I would want latency and calibration numbers alongside accuracy, not accuracy alone.</p><p>The single most useful discipline is building your own small, honest, out-of-distribution test set early, even a few hundred images gathered from the actual deployment context, and refusing to trust any benchmark number until it has been checked against that set. A method that only shines on data it was implicitly tuned against was never really solving your problem, it was solving the benchmark's problem, and those two problems only look the same from a distance.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/cv-papers-versus-deployment-2.jpg' alt='factory conveyor belt inspection camera' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
