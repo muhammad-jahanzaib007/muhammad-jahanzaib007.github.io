@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Your Evaluation Harness Matters More Than the Model | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why building a rigorous, leakage-aware evaluation harness matters more than choosing a fancier starting model, with a worked example.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="evaluation harness, machine learning evaluation, data leakage, model selection, cross validation, reproducibility, baselines, test set design, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-05">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Why Your Evaluation Harness Matters More Than the Model">
+<meta property="og:description" content="Why building a rigorous, leakage-aware evaluation harness matters more than choosing a fancier starting model, with a worked example.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/strong-evaluation-harness-matters.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/strong-evaluation-harness-matters.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why Your Evaluation Harness Matters More Than the Model">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/strong-evaluation-harness-matters.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/strong-evaluation-harness-matters.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Why Your Evaluation Harness Matters More Than the Model",
+  "description": "Why building a rigorous, leakage-aware evaluation harness matters more than choosing a fancier starting model, with a worked example.",
+  "url": "https://jahanzaibawan.com/blog/strong-evaluation-harness-matters.html",
+  "image": "https://jahanzaibawan.com/assets/blog/strong-evaluation-harness-matters.png",
+  "datePublished": "2026-09-05",
+  "dateModified": "2026-09-05",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/strong-evaluation-harness-matters.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Why Your Evaluation Harness Matters More Than the Model", "item": "https://jahanzaibawan.com/blog/strong-evaluation-harness-matters.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 6 min read · 5 Sep 2026</div>
+    <h1>Why Your Evaluation Harness Matters More Than the Model</h1>
+    <p class="lede">Picking a fancier model is the easy part. Building a measurement setup you can trust is the part that actually decides whether your project works.</p>
+  </div>
+
+  <img src="../assets/blog/strong-evaluation-harness-matters.png" alt="Cover image for the article: Why Your Evaluation Harness Matters More Than the Model" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The wrong question people ask first</h2><p>When a new project starts, the first question is almost always which model to use. Should it be a gradient boosted tree, a transformer, a linear baseline with good features. This feels like the important decision because it is the one that shows up in the architecture diagram. But in practice, the model choice is rarely what determines whether a project succeeds. What determines it is whether you can trust the number that tells you how well the model is doing.</p><p>Consider two teams working on the same problem, say predicting whether a customer will cancel a subscription in the next month. Team A spends two weeks trying five different model families and picks the one with the best score on a held-out set. Team B spends the same two weeks building a careful evaluation harness: a leakage-checked split, a held-out period that mimics genuine future deployment, and a clearly defined baseline. Team B then trains a single logistic regression on top of it. In my experience, Team B ships something that works in production far more often than Team A does, because Team A's best score is frequently an artefact of how the split was built rather than a real signal about the model.</p><p>This is not a hypothetical concern. Evaluation mistakes are quiet. A leaking feature, a shuffled time series, or a test set that overlaps with training examples through some shared entity does not throw an error. It just makes your numbers look better than they should, and it makes every subsequent model comparison meaningless, because you are comparing models against a corrupted yardstick rather than against reality.</p></section><section class='psec reveal'><h2>A worked example of the trap</h2><p>Say you are predicting churn using twelve months of customer history, and you build a random split: eighty per cent of rows for training, twenty per cent for testing, drawn uniformly at random from the full dataset. Your best model reaches an AUC of 0.91. That is an excellent number by most standards in this domain, and it is tempting to conclude the model is strong and ready to deploy.</p><p>The problem is that many customers appear multiple times in your dataset, once per month, and a random split will often place some months for a given customer in training and other months for the same customer in testing. The model does not need to learn general churn signals; it can partly memorise customer-specific quirks from training rows and then recognise the same customer in the test set. Once you switch to a split by customer, so that no customer appears in both sets, and additionally split by time, so that the test period is strictly after the training period, the same model's AUC often drops, sometimes to something like 0.74.</p><p>That gap between 0.91 and 0.74 is not noise. It is the size of the lie the original evaluation was telling you. And the uncomfortable part is that the gap is entirely invisible if you never build the stricter harness. You would deploy the model expecting excellent performance, watch it underperform in production, and likely blame the model architecture, when the actual defect was in how you measured success from the very first week.</p><p>This is why I treat the harness as the first deliverable of any project, not the last. Before comparing a single model, I want a split that respects grouping and time, a clearly stated metric with justification for why it fits the business problem, and at least one honest baseline, something as simple as predicting the historical base rate or a rule derived from one strong feature. If the fancy model cannot beat that baseline by a meaningful margin on the strict split, that is real information, and it is far more useful than a high score on a leaky split.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/strong-evaluation-harness-matters-1.jpg' alt='laptop showing data charts on desk' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What a strong harness actually contains</h2><p>A strong evaluation harness is not just a train and test split; it is a small set of habits applied consistently. The first is leakage awareness: checking whether any information available at test time would not actually be available at prediction time in deployment, and checking whether entities repeat across splits in a way that lets the model cheat by memorisation rather than generalisation.</p><p>The second is stability under resampling. A single split gives you one number, and that number has variance you rarely see unless you check it. Running the same evaluation across several different splits, or using proper cross-validation that respects grouping and time, tells you whether your headline metric is a stable estimate or whether it swings by several points depending on which rows happened to land in the test set. If a model's reported score moves from 0.80 to 0.71 across five reasonable splits, you have learned something important: the model is fragile, or the dataset is small relative to its complexity, or both.</p><p>The third is a baseline that is genuinely hard to beat, not a token comparison. Weak baselines flatter every new model, because almost anything beats a coin flip. A baseline built from the single most predictive feature, or a simple rule an experienced practitioner in the field would already use, sets a much more honest bar. When a sophisticated model only edges out that baseline by a small, statistically uncertain margin, it tells you the added complexity may not be worth the maintenance cost.</p><p>The fourth is reproducibility: fixed random seeds where relevant, a recorded version of the data snapshot used, and a script that regenerates the split and the metric from scratch without manual steps. This matters not for its own sake but because it is the only way to know, months later, whether a reported improvement was a genuine gain or a change in how the evaluation itself was computed.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>None of this means model choice is irrelevant. Architecture, features, and tuning all matter, and a well-evaluated poor model will still lose to a well-evaluated good one. The point is about ordering and where your effort pays off fastest. A better model measured on a broken harness can look worse than a worse model measured on a sound one, and you will not know which situation you are in until you have built the harness properly.</p><p>The practical habit worth adopting is to treat the evaluation setup as a first-class artefact of the project, reviewed and tested with the same scepticism you would apply to a model's predictions. Ask whether the split matches how the model will actually see new data in deployment, ask what the score would be under a boring baseline, and ask whether the headline number survives being recomputed on a different, equally valid split. If it does not survive that, you do not yet have a result. You have a coincidence, and no amount of model sophistication will fix that.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/strong-evaluation-harness-matters-2.jpg' alt='whiteboard with data split diagram' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

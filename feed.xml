@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Fri, 04 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 05 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Why Your Evaluation Harness Matters More Than the Model</title>
+    <link>https://jahanzaibawan.com/blog/strong-evaluation-harness-matters.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/strong-evaluation-harness-matters.html</guid>
+    <pubDate>Sat, 05 Sep 2026 09:00:00 +0000</pubDate>
+    <description>A better model trained on a leaky, noisy evaluation setup is worse than a mediocre model measured properly. Here is why the harness comes first.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Fine-Tuning vs Retrieval for Knowledge-Heavy Small Projects</title>
     <link>https://jahanzaibawan.com/blog/finetune-vs-retrieval-small-projects.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Tue, 25 Aug 2026 09:00:00 +0000</pubDate>
     <description>Skip the full maths degree. Here is the small, specific set of ideas that makes deep learning books click, with a worked example.</description>
     <category>Deep Learning</category>
-  </item>
-  <item>
-    <title>Reading a Machine Learning Job Advert Properly</title>
-    <link>https://jahanzaibawan.com/blog/reading-ml-job-adverts.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/reading-ml-job-adverts.html</guid>
-    <pubDate>Mon, 24 Aug 2026 09:00:00 +0000</pubDate>
-    <description>Machine learning job ads are full of vague phrases like &#x27;strong background in deep learning&#x27;. Here is what they usually mean in practice.</description>
-    <category>Careers</category>
   </item>
 </channel>
 </rss>

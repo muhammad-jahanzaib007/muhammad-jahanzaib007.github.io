@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Why a strong evaluation harness matters more than the model you started with",
     "Model evaluation for safety-critical systems: what threat research actually checks",
     "Data science job adverts decoded: what years of experience really signals",
     "Picking a first computer vision job: research lab, startup, or industry team",
@@ -161,6 +160,7 @@
     "Model evaluation on managed platforms: what the dashboard hides from you",
     "Evaluating fine-tuned models against their base model: a fair comparison checklist",
     "Computer vision conferences: what actually gets published versus what gets deployed",
-    "The fine-tuning versus retrieval decision for a knowledge-heavy small project"
+    "The fine-tuning versus retrieval decision for a knowledge-heavy small project",
+    "Why a strong evaluation harness matters more than the model you started with"
   ]
 }

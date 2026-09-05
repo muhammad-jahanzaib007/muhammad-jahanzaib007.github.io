@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "strong-evaluation-harness-matters",
+      "title": "Why Your Evaluation Harness Matters More Than the Model",
+      "excerpt": "A better model trained on a leaky, noisy evaluation setup is worse than a mediocre model measured properly. Here is why the harness comes first.",
+      "date": "2026-09-05",
+      "read_min": 6,
+      "tag": "Evaluation",
+      "color": "a5",
+      "thumb": "assets/blog/strong-evaluation-harness-matters.png",
+      "thumb_alt": "Cover image for the article: Why Your Evaluation Harness Matters More Than the Model"
+    },
+    {
       "slug": "finetune-vs-retrieval-small-projects",
       "title": "Fine-Tuning vs Retrieval for Knowledge-Heavy Small Projects",
       "excerpt": "A practical guide to deciding whether a small, knowledge-heavy project needs fine-tuning, retrieval, or both, with a worked example and honest trade-offs.",
