@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "evaluating-safety-critical-models",
+      "title": "Model Evaluation for Safety-Critical Systems, Properly Done",
+      "excerpt": "Accuracy is not safety. Here is what disciplined, leakage-aware evaluation for safety-critical models actually checks, with a worked example.",
+      "date": "2026-09-05",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a6",
+      "thumb": "assets/blog/evaluating-safety-critical-models.png",
+      "thumb_alt": "Cover image for the article: Model Evaluation for Safety-Critical Systems, Properly Done"
+    },
+    {
       "slug": "strong-evaluation-harness-matters",
       "title": "Why Your Evaluation Harness Matters More Than the Model",
       "excerpt": "A better model trained on a leaky, noisy evaluation setup is worse than a mediocre model measured properly. Here is why the harness comes first.",

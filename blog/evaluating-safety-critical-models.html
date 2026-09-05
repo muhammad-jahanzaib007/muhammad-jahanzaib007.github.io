@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Model Evaluation for Safety-Critical Systems, Properly Done | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical look at how threat-aware model evaluation works for safety-critical systems, covering leakage, subgroup performance, and failure severity.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="model evaluation, safety-critical AI, threat modelling, leakage-aware validation, subgroup analysis, ML robustness, evaluation metrics, machine learning testing, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-05">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Model Evaluation for Safety-Critical Systems, Properly Done">
+<meta property="og:description" content="A practical look at how threat-aware model evaluation works for safety-critical systems, covering leakage, subgroup performance, and failure severity.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/evaluating-safety-critical-models.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/evaluating-safety-critical-models.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Model Evaluation for Safety-Critical Systems, Properly Done">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/evaluating-safety-critical-models.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/evaluating-safety-critical-models.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Model Evaluation for Safety-Critical Systems, Properly Done",
+  "description": "A practical look at how threat-aware model evaluation works for safety-critical systems, covering leakage, subgroup performance, and failure severity.",
+  "url": "https://jahanzaibawan.com/blog/evaluating-safety-critical-models.html",
+  "image": "https://jahanzaibawan.com/assets/blog/evaluating-safety-critical-models.png",
+  "datePublished": "2026-09-05",
+  "dateModified": "2026-09-05",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/evaluating-safety-critical-models.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Model Evaluation for Safety-Critical Systems, Properly Done", "item": "https://jahanzaibawan.com/blog/evaluating-safety-critical-models.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 5 Sep 2026</div>
+    <h1>Model Evaluation for Safety-Critical Systems, Properly Done</h1>
+    <p class="lede">A single accuracy figure tells you almost nothing about whether a model is safe to deploy. Here is what rigorous threat-aware evaluation actually looks at.</p>
+  </div>
+
+  <img src="../assets/blog/evaluating-safety-critical-models.png" alt="Cover image for the article: Model Evaluation for Safety-Critical Systems, Properly Done" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why a Good Accuracy Score Can Still Mean a Dangerous Model</h2><p>Suppose a model for detecting a rare equipment fault reports 98% accuracy on a held-out test set. That sounds excellent until you notice the fault occurs in roughly 2% of cases. A model that predicts 'no fault' every single time also scores 98%. It is technically accurate and completely useless, and in a safety-critical setting, actively dangerous, because it will miss every real failure while looking impressive on a dashboard.</p><p>This is the core problem with evaluating models destined for safety-critical use: the metrics that are easiest to compute are rarely the ones that matter. Overall accuracy, a single AUC number, or an average error rate can all look reassuring while hiding a model that fails catastrophically in exactly the situations it was built to catch. Threat-aware evaluation exists to close that gap. It asks not 'how often is the model right', but 'under what conditions does it fail, how badly, and could an attacker or an unlucky distribution shift push it there deliberately or accidentally'.</p><p>I think of this as the difference between a report card and a stress test. A report card summarises average performance. A stress test tries to find the worst plausible outcome and asks whether the system can tolerate it. Safety-critical deployment needs the stress test, and most of what serious evaluation work checks falls into a small number of recurring categories.</p></section><section class='psec reveal'><h2>Leakage: The Silent Inflator of Every Metric</h2><p>The single most common way an evaluation lies to you is data leakage: information from the test set, directly or indirectly, having influenced the training process. This sounds like an obvious mistake to avoid, but it creeps in through subtle channels. If measurements from the same patient, sensor, or vehicle appear in both training and test splits, the model can learn to recognise the specific entity rather than the general pattern, and performance will look far better than it will on a genuinely new entity.</p><p>Consider a model that predicts mechanical failure from sensor readings taken every few seconds. If you split rows randomly into train and test sets, adjacent readings from the same failure event will end up on both sides of the split. The model effectively gets to see the answer key smeared across nearly identical rows. A model evaluated this way might report 96% detection accuracy, while a correctly grouped split, where entire failure events are kept wholly in either train or test, might reveal the true figure closer to 78%. That eighteen-point gap is not noise, it is the exact amount by which the naive evaluation was lying.</p><p>Threat-aware review checks for this by asking pointed questions: was the split done by group, by time, or by entity, and does that grouping match how the model will actually see new data in production. Time-based splits matter enormously for systems that will be deployed forward in time; if a model trained on 2021 to 2023 data is tested on a random shuffle of the same years rather than validated strictly on 2024 data, you have no real evidence it will handle drift, seasonal change, or new operating conditions.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/evaluating-safety-critical-models-1.jpg' alt='engineer reviewing sensor data on monitor' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Subgroup Performance and the Cost of Different Errors</h2><p>Averages hide variance, and variance is where safety-critical systems get hurt. A diagnostic model with 90% sensitivity overall might have 97% sensitivity on the majority subgroup in the training data and 72% on an underrepresented one. Nobody deploying the model from the top-line number would know that, yet that gap is precisely where harm concentrates, because the people or cases in the weaker subgroup receive systematically worse protection.</p><p>Rigorous evaluation therefore disaggregates results: by demographic group where relevant, by equipment type, by geographic region, by rare-but-plausible operating conditions, by anything that plausibly correlates with how the training data was collected. It is not enough to know the model works well on average; you need to know the worst subgroup performance, because that is the performance the least lucky user actually experiences.</p><p>Equally important is recognising that not all errors cost the same. In a fault-detection system, a false negative, missing a real fault, might lead to equipment damage or injury, while a false positive merely triggers an unnecessary inspection. These are not symmetric costs, so a single accuracy number that treats both error types equally is the wrong lens entirely. A model tuned to maximise accuracy might sit at a threshold with 85% sensitivity and 99% specificity, while a model deliberately tuned for the actual cost structure of the deployment, accepting more false alarms to catch more true faults, might run at 95% sensitivity and 92% specificity. The second model looks 'worse' by raw accuracy and is almost certainly the one you want to ship. Threat research checks the confusion matrix broken down by error type and cost, not the single scalar that averages them away.</p></section><section class='psec reveal'><h2>Adversarial and Distributional Stress, and What to Actually Do</h2><p>Beyond leakage and subgroup gaps, mature evaluation asks what happens when the input is deliberately or accidentally unusual: sensor noise, adversarial perturbations, missing fields, or inputs drawn from a slightly different population than training data. A model can pass every standard test and still degrade sharply under a small, realistic shift, such as a sensor recalibration or a change in upstream data format, that was never represented in the original test set.</p><p>The practical takeaway is straightforward, even if it takes discipline to apply. Before trusting any evaluation number for a safety-critical system, ask three questions. First, was the split leakage-free with respect to how the model will actually be deployed, meaning grouped or time-based where appropriate. Second, has performance been broken down by the subgroups and rare conditions that matter, rather than reported only as an average. Third, does the chosen metric reflect the actual cost of each error type, rather than treating a missed fault and a false alarm as equally bad. A model that survives all three checks is not guaranteed to be safe, but a model that has not been put through them has not really been evaluated at all, it has simply been measured.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/evaluating-safety-critical-models-2.jpg' alt='industrial control room dashboard' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

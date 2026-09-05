@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Model evaluation for safety-critical systems: what threat research actually checks",
     "Data science job adverts decoded: what years of experience really signals",
     "Picking a first computer vision job: research lab, startup, or industry team",
     "Quantifying uncertainty in model evaluation: confidence intervals nobody reports",
@@ -161,6 +160,7 @@
     "Evaluating fine-tuned models against their base model: a fair comparison checklist",
     "Computer vision conferences: what actually gets published versus what gets deployed",
     "The fine-tuning versus retrieval decision for a knowledge-heavy small project",
-    "Why a strong evaluation harness matters more than the model you started with"
+    "Why a strong evaluation harness matters more than the model you started with",
+    "Model evaluation for safety-critical systems: what threat research actually checks"
   ]
 }

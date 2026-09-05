@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Sat, 05 Sep 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Model Evaluation for Safety-Critical Systems, Properly Done</title>
+    <link>https://jahanzaibawan.com/blog/evaluating-safety-critical-models.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/evaluating-safety-critical-models.html</guid>
+    <pubDate>Sat, 05 Sep 2026 09:00:00 +0000</pubDate>
+    <description>Accuracy is not safety. Here is what disciplined, leakage-aware evaluation for safety-critical models actually checks, with a worked example.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Why Your Evaluation Harness Matters More Than the Model</title>
     <link>https://jahanzaibawan.com/blog/strong-evaluation-harness-matters.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/strong-evaluation-harness-matters.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Tue, 25 Aug 2026 09:00:00 +0000</pubDate>
     <description>Most first ML projects die from scope, not skill. Here is how to size one so it actually finishes and teaches you something true.</description>
     <category>MLOps</category>
-  </item>
-  <item>
-    <title>The Maths You Actually Need Before a Deep Learning Book</title>
-    <link>https://jahanzaibawan.com/blog/maths-before-deep-learning-book.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/maths-before-deep-learning-book.html</guid>
-    <pubDate>Tue, 25 Aug 2026 09:00:00 +0000</pubDate>
-    <description>Skip the full maths degree. Here is the small, specific set of ideas that makes deep learning books click, with a worked example.</description>
-    <category>Deep Learning</category>
   </item>
 </channel>
 </rss>
