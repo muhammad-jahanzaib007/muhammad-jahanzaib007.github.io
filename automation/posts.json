@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "first-computer-vision-job",
+      "title": "Picking a First Computer Vision Job: Lab vs Startup vs Team",
+      "excerpt": "Research lab, startup, or industry team: the right first CV job depends on what skill you want to compound, not on prestige.",
+      "date": "2026-09-06",
+      "read_min": 5,
+      "tag": "Careers",
+      "color": "a3",
+      "thumb": "assets/blog/first-computer-vision-job.png",
+      "thumb_alt": "Cover image for the article: Picking a First Computer Vision Job: Lab vs Startup vs Team"
+    },
+    {
       "slug": "years-of-experience-decoded",
       "title": "Data Science Job Adverts Decoded: What Years Signals",
       "excerpt": "Job adverts treat years of experience as a precise filter, but it is a noisy proxy for skill. Here is how to read it properly.",

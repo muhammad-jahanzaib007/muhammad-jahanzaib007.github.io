@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Sun, 06 Sep 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Picking a First Computer Vision Job: Lab vs Startup vs Team</title>
+    <link>https://jahanzaibawan.com/blog/first-computer-vision-job.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/first-computer-vision-job.html</guid>
+    <pubDate>Sun, 06 Sep 2026 09:00:00 +0000</pubDate>
+    <description>Research lab, startup, or industry team: the right first CV job depends on what skill you want to compound, not on prestige.</description>
+    <category>Careers</category>
+  </item>
+  <item>
     <title>Data Science Job Adverts Decoded: What Years Signals</title>
     <link>https://jahanzaibawan.com/blog/years-of-experience-decoded.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/years-of-experience-decoded.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Wed, 26 Aug 2026 09:00:00 +0000</pubDate>
     <description>Feature importance scores describe a model&#x27;s behaviour, not the world. Knowing the difference stops you from overtrusting a bar chart.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Ensemble Methods Explained Without the Jargon</title>
-    <link>https://jahanzaibawan.com/blog/bagging-boosting-stacking-explained.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/bagging-boosting-stacking-explained.html</guid>
-    <pubDate>Wed, 26 Aug 2026 09:00:00 +0000</pubDate>
-    <description>A plain-English guide to bagging, boosting, and stacking, with a concrete example showing why each one actually works.</description>
-    <category>Machine Learning</category>
   </item>
 </channel>
 </rss>
