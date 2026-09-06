@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Data science job adverts decoded: what years of experience really signals",
     "Picking a first computer vision job: research lab, startup, or industry team",
     "Quantifying uncertainty in model evaluation: confidence intervals nobody reports",
     "Fine-tuning: what the word actually means across contexts, and what it means in ML",
@@ -161,6 +160,7 @@
     "Computer vision conferences: what actually gets published versus what gets deployed",
     "The fine-tuning versus retrieval decision for a knowledge-heavy small project",
     "Why a strong evaluation harness matters more than the model you started with",
-    "Model evaluation for safety-critical systems: what threat research actually checks"
+    "Model evaluation for safety-critical systems: what threat research actually checks",
+    "Data science job adverts decoded: what years of experience really signals"
   ]
 }

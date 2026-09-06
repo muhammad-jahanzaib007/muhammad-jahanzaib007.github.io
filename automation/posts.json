@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "years-of-experience-decoded",
+      "title": "Data Science Job Adverts Decoded: What Years Signals",
+      "excerpt": "Job adverts treat years of experience as a precise filter, but it is a noisy proxy for skill. Here is how to read it properly.",
+      "date": "2026-09-06",
+      "read_min": 5,
+      "tag": "Careers",
+      "color": "a2",
+      "thumb": "assets/blog/years-of-experience-decoded.png",
+      "thumb_alt": "Cover image for the article: Data Science Job Adverts Decoded: What Years Signals"
+    },
+    {
       "slug": "evaluating-safety-critical-models",
       "title": "Model Evaluation for Safety-Critical Systems, Properly Done",
       "excerpt": "Accuracy is not safety. Here is what disciplined, leakage-aware evaluation for safety-critical models actually checks, with a worked example.",

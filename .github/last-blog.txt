@@ -1,1 +1,1 @@
-2026-09-05T20:01:15Z slug=evaluating-safety-critical-models words=1018 title="Model Evaluation for Safety-Critical Systems, Properly Done"
+2026-09-06T08:01:46Z slug=years-of-experience-decoded words=961 title="Data Science Job Adverts Decoded: What Years Signals"
