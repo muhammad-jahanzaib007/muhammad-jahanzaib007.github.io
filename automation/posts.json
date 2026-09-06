@@ -9,7 +9,8 @@
       "tag": "Careers",
       "color": "a3",
       "thumb": "assets/blog/first-computer-vision-job.png",
-      "thumb_alt": "Cover image for the article: Picking a First Computer Vision Job: Lab vs Startup vs Team"
+      "thumb_alt": "Cover image for the article: Picking a First Computer Vision Job: Lab vs Startup vs Team",
+      "li_shared": true
     },
     {
       "slug": "years-of-experience-decoded",
