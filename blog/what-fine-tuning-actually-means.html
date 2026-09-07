@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fine-Tuning: One Word, Several Very Different Ideas | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A precise look at what fine-tuning means in everyday language versus machine learning, with a worked example showing why the details change your results.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="fine-tuning, transfer learning, machine learning, pretrained models, model evaluation, deep learning, LoRA, catastrophic forgetting, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-07">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Fine-Tuning: One Word, Several Very Different Ideas">
+<meta property="og:description" content="A precise look at what fine-tuning means in everyday language versus machine learning, with a worked example showing why the details change your results.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/what-fine-tuning-actually-means.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/what-fine-tuning-actually-means.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fine-Tuning: One Word, Several Very Different Ideas">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/what-fine-tuning-actually-means.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/what-fine-tuning-actually-means.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Fine-Tuning: One Word, Several Very Different Ideas",
+  "description": "A precise look at what fine-tuning means in everyday language versus machine learning, with a worked example showing why the details change your results.",
+  "url": "https://jahanzaibawan.com/blog/what-fine-tuning-actually-means.html",
+  "image": "https://jahanzaibawan.com/assets/blog/what-fine-tuning-actually-means.png",
+  "datePublished": "2026-09-07",
+  "dateModified": "2026-09-07",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/what-fine-tuning-actually-means.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Fine-Tuning: One Word, Several Very Different Ideas", "item": "https://jahanzaibawan.com/blog/what-fine-tuning-actually-means.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Deep Learning · 5 min read · 7 Sep 2026</div>
+    <h1>Fine-Tuning: One Word, Several Very Different Ideas</h1>
+    <p class="lede">From tuning a violin to updating billions of parameters, fine-tuning means adjusting something that already works. In machine learning it has a precise and consequential meaning that&#x27;s worth getting right.</p>
+  </div>
+
+  <img src="../assets/blog/what-fine-tuning-actually-means.png" alt="Cover image for the article: Fine-Tuning: One Word, Several Very Different Ideas" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>A word borrowed from everywhere</h2><p>Fine-tuning is one of those terms that sounds self-explanatory precisely because it already means something outside machine learning. You fine-tune a carburettor by making small mechanical adjustments to an engine that already runs. You fine-tune a musical instrument by nudging strings that are already roughly in the right key. You fine-tune a policy by adjusting parameters within a system that already broadly works. In every ordinary sense, fine-tuning implies a small, careful correction applied to something functional, not a rebuild from scratch.</p><p>That everyday meaning quietly shapes how people think about the term when it turns up in machine learning, and this is where I think a lot of confusion creeps in. In ML, fine-tuning is sometimes a small correction and sometimes something much closer to a rebuild, and the word alone does not tell you which. Two papers can both say 'we fine-tuned the model' and mean things that differ by several orders of magnitude in how many parameters actually moved.</p></section><section class='psec reveal'><h2>What fine-tuning means in ML, precisely</h2><p>In machine learning, fine-tuning refers to taking a model that has already been trained on one task or dataset, and continuing training on a new, usually smaller, dataset for a related task. The pretrained model arrives with weights that already encode useful structure: for a language model, that might be grammar, world knowledge, and general reasoning patterns; for a vision model, it might be edges, textures, and object parts. Fine-tuning adjusts those weights so the model performs well on your specific problem, without starting from random initialisation.</p><p>The key word is <em>continuing</em>. This is what distinguishes fine-tuning from training from scratch. If I have a model pretrained on a huge general corpus and I then train it further on, say, five thousand labelled customer support tickets, I am fine-tuning. If I trained a fresh model on just those five thousand tickets with no pretraining at all, I would almost certainly get worse results, because five thousand examples is nowhere near enough to learn language structure from nothing.</p><p>But 'continuing training' hides a huge range of practical choices, and this is where the word stops being precise. You could fine-tune every single parameter in the model, which is called full fine-tuning. You could freeze most of the network and only update the final classification layer, sometimes called a linear probe, which barely deserves the name fine-tuning at all in spirit, even though it is technically continued training. You could use parameter-efficient methods that insert small trainable modules into an otherwise frozen model, updating a tiny fraction of the total weights while leaving the rest untouched. All three get called fine-tuning in casual conversation, and all three behave very differently.</p><p>The differences are not cosmetic. Full fine-tuning on a small dataset risks catastrophic forgetting, where the model overwrites the general knowledge it learned during pretraining in order to fit the new, narrow data. Imagine a model pretrained on broad text and then fully fine-tuned on ten thousand medical abstracts: if the learning rate is too high or training runs too long, the model can become excellent at medical phrasing while quietly losing its ability to write coherently about anything else. Parameter-efficient approaches are often more resistant to this because most of the original weights simply cannot move.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/what-fine-tuning-actually-means-1.jpg' alt='laptop with training loss graph' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>A worked example: why the details change the outcome</h2><p>Suppose I have a pretrained image classifier with around twenty five million parameters, originally trained on a broad set of natural images, and I want to adapt it to classify a hundred species of local birds from a dataset of only two thousand photographs. Two thousand images is a small dataset for training a model of that size from scratch: you would expect severe overfitting, with the model memorising training photos rather than learning general bird features.</p><p>If I freeze the entire network except the final layer, I am relying entirely on the features the model already learned from natural images: edges, textures, rough shapes. This trains fast and resists overfitting, because only a few thousand parameters are being adjusted, but it caps my accuracy at whatever the frozen features can support. If bird species distinctions rely on subtle beak shapes the original features never had to represent well, a linear probe may plateau at a mediocre accuracy.</p><p>If instead I fully fine-tune all twenty five million parameters on those same two thousand images, using a low learning rate and few epochs, I let the whole network adapt, including the earlier layers that detect textures and shapes. This can push accuracy higher because the features themselves become more bird-specific. But push the learning rate too high, or train for too many epochs, and the same two thousand images that were an asset become a liability: the model overfits hard, validation accuracy climbs then falls, and the gap between training and validation performance widens exactly the way it does with any small-data overfitting problem.</p><p>A middle path, inserting small trainable adapters into a handful of layers while freezing the rest, often gets close to full fine-tuning's accuracy while touching a fraction of the parameters and training in a fraction of the time. Which option is best depends on data size, how different the new task is from the original training distribution, and how much compute and time you have. There is no universally correct answer, which is exactly why the single word 'fine-tuning' is doing too much work if you leave it unqualified.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>When you read or write the word fine-tuning, it is worth pausing to ask which of these things is actually meant: full parameter updates, a frozen backbone with a new head, or a parameter-efficient method touching a small subset of weights. The everyday sense of the word, a small careful adjustment, only really matches the last two. Full fine-tuning is often closer to a substantial retraining, with all the overfitting and forgetting risks that implies.</p><p>My own rule of thumb is to always report exactly what was frozen, what was trained, the learning rate, and the number of epochs, whenever I describe a fine-tuning setup. It costs a sentence or two and it removes an entire category of ambiguity for anyone trying to reproduce or trust the result. Given how much the outcome depends on these choices, that specificity is not pedantry, it is the difference between a claim that means something and one that sounds like it does.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/what-fine-tuning-actually-means-2.jpg' alt='hands adjusting camera lens settings' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

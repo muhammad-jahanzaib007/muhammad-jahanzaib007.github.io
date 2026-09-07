@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "what-fine-tuning-actually-means",
+      "title": "Fine-Tuning: One Word, Several Very Different Ideas",
+      "excerpt": "Fine-tuning sounds like a small tweak everywhere it's used, but in ML it can mean anything from adjusting a few layers to retraining a whole model. The distinction matters.",
+      "date": "2026-09-07",
+      "read_min": 5,
+      "tag": "Deep Learning",
+      "color": "a5",
+      "thumb": "assets/blog/what-fine-tuning-actually-means.png",
+      "thumb_alt": "Cover image for the article: Fine-Tuning: One Word, Several Very Different Ideas"
+    },
+    {
       "slug": "confidence-intervals-model-evaluation",
       "title": "Quantifying Uncertainty: The Confidence Intervals You Skip",
       "excerpt": "A model's reported accuracy is a guess with error bars nobody drew. Here is how to draw them and why it changes conclusions.",

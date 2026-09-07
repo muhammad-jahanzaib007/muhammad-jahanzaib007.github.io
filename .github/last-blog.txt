@@ -1,1 +1,1 @@
-2026-09-07T08:01:22Z slug=confidence-intervals-model-evaluation words=1071 title="Quantifying Uncertainty: The Confidence Intervals You Skip"
+2026-09-07T20:02:12Z slug=what-fine-tuning-actually-means words=1072 title="Fine-Tuning: One Word, Several Very Different Ideas"

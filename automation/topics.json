@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Fine-tuning: what the word actually means across contexts, and what it means in ML",
     "LLM benchmarks decoded: what a leaderboard score actually tests",
     "Choosing between an LLM degree, a course, and a portfolio: what actually teaches you fine-tuning",
     "LLM arena style comparisons: why pairwise human preference is a different metric to accuracy",
@@ -161,6 +160,7 @@
     "Model evaluation for safety-critical systems: what threat research actually checks",
     "Data science job adverts decoded: what years of experience really signals",
     "Picking a first computer vision job: research lab, startup, or industry team",
-    "Quantifying uncertainty in model evaluation: confidence intervals nobody reports"
+    "Quantifying uncertainty in model evaluation: confidence intervals nobody reports",
+    "Fine-tuning: what the word actually means across contexts, and what it means in ML"
   ]
 }

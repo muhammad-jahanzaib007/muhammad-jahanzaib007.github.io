@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Mon, 07 Sep 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Fine-Tuning: One Word, Several Very Different Ideas</title>
+    <link>https://jahanzaibawan.com/blog/what-fine-tuning-actually-means.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/what-fine-tuning-actually-means.html</guid>
+    <pubDate>Mon, 07 Sep 2026 09:00:00 +0000</pubDate>
+    <description>Fine-tuning sounds like a small tweak everywhere it&#x27;s used, but in ML it can mean anything from adjusting a few layers to retraining a whole model. The distinction matters.</description>
+    <category>Deep Learning</category>
+  </item>
+  <item>
     <title>Quantifying Uncertainty: The Confidence Intervals You Skip</title>
     <link>https://jahanzaibawan.com/blog/confidence-intervals-model-evaluation.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/confidence-intervals-model-evaluation.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Thu, 27 Aug 2026 09:00:00 +0000</pubDate>
     <description>A practical guide to leakage-aware splits, strong baselines, and realistic test conditions before shipping a vision model.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Data Versioning for ML: Why Git Alone Falls Short</title>
-    <link>https://jahanzaibawan.com/blog/data-versioning-beyond-git.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/data-versioning-beyond-git.html</guid>
-    <pubDate>Thu, 27 Aug 2026 09:00:00 +0000</pubDate>
-    <description>Git tracks your code perfectly and your data terribly. Here is why that mismatch causes silent, hard-to-debug failures in ML pipelines.</description>
-    <category>MLOps</category>
   </item>
 </channel>
 </rss>
