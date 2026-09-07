@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a4",
       "thumb": "assets/blog/confidence-intervals-model-evaluation.png",
-      "thumb_alt": "Cover image for the article: Quantifying Uncertainty: The Confidence Intervals You Skip"
+      "thumb_alt": "Cover image for the article: Quantifying Uncertainty: The Confidence Intervals You Skip",
+      "li_shared": true
     },
     {
       "slug": "first-computer-vision-job",
