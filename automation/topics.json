@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Quantifying uncertainty in model evaluation: confidence intervals nobody reports",
     "Fine-tuning: what the word actually means across contexts, and what it means in ML",
     "LLM benchmarks decoded: what a leaderboard score actually tests",
     "Choosing between an LLM degree, a course, and a portfolio: what actually teaches you fine-tuning",
@@ -161,6 +160,7 @@
     "Why a strong evaluation harness matters more than the model you started with",
     "Model evaluation for safety-critical systems: what threat research actually checks",
     "Data science job adverts decoded: what years of experience really signals",
-    "Picking a first computer vision job: research lab, startup, or industry team"
+    "Picking a first computer vision job: research lab, startup, or industry team",
+    "Quantifying uncertainty in model evaluation: confidence intervals nobody reports"
   ]
 }

@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "confidence-intervals-model-evaluation",
+      "title": "Quantifying Uncertainty: The Confidence Intervals You Skip",
+      "excerpt": "A model's reported accuracy is a guess with error bars nobody drew. Here is how to draw them and why it changes conclusions.",
+      "date": "2026-09-07",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a4",
+      "thumb": "assets/blog/confidence-intervals-model-evaluation.png",
+      "thumb_alt": "Cover image for the article: Quantifying Uncertainty: The Confidence Intervals You Skip"
+    },
+    {
       "slug": "first-computer-vision-job",
       "title": "Picking a First Computer Vision Job: Lab vs Startup vs Team",
       "excerpt": "Research lab, startup, or industry team: the right first CV job depends on what skill you want to compound, not on prestige.",

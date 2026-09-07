@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quantifying Uncertainty: The Confidence Intervals You Skip | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="An argument for reporting confidence intervals in model evaluation, with a worked example showing how test set size changes what a result actually means.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="confidence intervals, model evaluation, statistical significance, machine learning metrics, test set size, evaluation rigour, bootstrap methods, reproducibility, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-07">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Quantifying Uncertainty: The Confidence Intervals You Skip">
+<meta property="og:description" content="An argument for reporting confidence intervals in model evaluation, with a worked example showing how test set size changes what a result actually means.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/confidence-intervals-model-evaluation.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/confidence-intervals-model-evaluation.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Quantifying Uncertainty: The Confidence Intervals You Skip">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/confidence-intervals-model-evaluation.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/confidence-intervals-model-evaluation.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Quantifying Uncertainty: The Confidence Intervals You Skip",
+  "description": "An argument for reporting confidence intervals in model evaluation, with a worked example showing how test set size changes what a result actually means.",
+  "url": "https://jahanzaibawan.com/blog/confidence-intervals-model-evaluation.html",
+  "image": "https://jahanzaibawan.com/assets/blog/confidence-intervals-model-evaluation.png",
+  "datePublished": "2026-09-07",
+  "dateModified": "2026-09-07",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/confidence-intervals-model-evaluation.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Quantifying Uncertainty: The Confidence Intervals You Skip", "item": "https://jahanzaibawan.com/blog/confidence-intervals-model-evaluation.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 7 Sep 2026</div>
+    <h1>Quantifying Uncertainty: The Confidence Intervals You Skip</h1>
+    <p class="lede">A single accuracy number on a test set is a point estimate, not a fact. Here is why the interval around it matters more than the number itself.</p>
+  </div>
+
+  <img src="../assets/blog/confidence-intervals-model-evaluation.png" alt="Cover image for the article: Quantifying Uncertainty: The Confidence Intervals You Skip" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The number that hides its own doubt</h2><p>Every paper and every dashboard I have seen states a metric as though it were carved in stone: accuracy 0.87, F1 0.72, AUC 0.91. What almost none of them state is the range of values that would be equally plausible given the same test set. A single accuracy figure is a point estimate computed from a finite sample, and finite samples carry sampling error. Report the point without the error and you have told the reader a story that sounds far more certain than the evidence supports.</p><p>This matters most when models are compared. If model A scores 0.87 and model B scores 0.85 on the same test set, the natural instinct is to declare A the winner. But if the test set has a few hundred examples, that two point gap can sit comfortably inside the noise. Without an interval, we cannot tell whether we are looking at a genuine improvement or a coin flip that happened to land the right way this time.</p><p>I think this gets skipped for mundane reasons rather than malicious ones. Computing a confidence interval for accuracy takes an extra step that most tutorials never mention, and leaderboards reward a single clean number more than a range. But the omission has real consequences: teams ship models on the strength of differences that are not statistically distinguishable from noise, and research claims get built on top of comparisons that would not survive a second draw of test data.</p></section><section class='psec reveal'><h2>A worked example with a small test set</h2><p>Suppose you evaluate a binary classifier on 300 held-out examples and it gets 261 correct, an accuracy of 0.87. Treat each prediction as a Bernoulli trial, correct or incorrect, and the standard error of that proportion is the square root of p times (1 minus p) divided by n. Plugging in 0.87 and 300 gives a standard error of roughly 0.019. A 95 percent confidence interval, using the normal approximation, is then about 0.87 plus or minus 1.96 times 0.019, which lands somewhere near 0.83 to 0.91.</p><p>Now bring in model B, which scores 0.85 on the same 300 examples. Its interval, computed the same way, comes out to roughly 0.81 to 0.89. The two intervals overlap substantially. This does not prove the models are equivalent, but it does mean the data in front of you cannot confidently separate them. Declaring A the better model on this evidence alone is overreach.</p><p>Scale the test set up to 3,000 examples with the same accuracy figures and the picture changes. The standard error shrinks by roughly a factor of the square root of ten, so it drops to around 0.006. Model A's interval tightens to about 0.86 to 0.88, and model B's to about 0.84 to 0.86. Now the intervals barely touch, and a two point difference starts to look like a real, reproducible effect rather than noise. The lesson is not that intervals are complicated, it is that the same numeric gap means completely different things depending on how much data produced it.</p><p>For metrics that are not simple proportions, such as F1 score, mean average precision, or correlation coefficients, the normal approximation for a proportion no longer applies cleanly. This is where bootstrap resampling earns its keep: resample the test set with replacement many times, recompute the metric on each resample, and take the 2.5th and 97.5th percentiles of the resulting distribution as your interval. It is computationally cheap, makes no strong distributional assumptions, and works for almost any metric you can compute on a sample.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/confidence-intervals-model-evaluation-1.jpg' alt='whiteboard with equations' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Where the uncertainty actually comes from</h2><p>It is worth being precise about what a confidence interval computed this way does and does not capture. It quantifies sampling variability, the fact that your test set is one particular draw from a larger population of possible examples. It does not capture uncertainty from label noise, from distribution shift between training and deployment, or from the randomness in training itself, such as different weight initialisations or data shuffling producing different final models. Those are separate sources of variance and they can dwarf the sampling error from the test set.</p><p>A model trained five times with different random seeds can easily show a spread of two or three accuracy points purely from training stochasticity, independent of test set size. If you only ever train once and report one number, you have silently assumed that seed variance is zero, which it is not. A more complete evaluation reports both: the confidence interval from the test set size, and the spread across repeated training runs. Together they give an honest picture of how much a headline number should be trusted.</p><p>There is also a subtler failure mode worth naming: repeated testing on the same held-out set across many model iterations. Each time you peek at the test set to decide whether a change helped, you are implicitly running a small hypothesis test, and running many such tests inflates the chance of a false positive. A single confidence interval computed once is honest; a confidence interval computed after twenty rounds of tweaking and re-checking against the same test set is quietly optimistic, because you have used the test set to search rather than to confirm.</p></section><section class='psec reveal'><h2>What to actually do about it</h2><p>The practical fix does not require a statistics degree. For simple accuracy-like metrics, compute the standard error from the proportion and report a 95 percent interval alongside the point estimate. For anything more complex, bootstrap resampling with a few thousand resamples is enough to get stable percentile intervals, and it is a handful of lines regardless of what library you use. When comparing two models, do not just compare point estimates; check whether their intervals overlap, and where possible run a paired test on the same examples, since a paired comparison controls for the fact that both models were scored on identical data.</p><p>The habit worth building is simple: whenever you report a metric, ask what test set size and what sampling process produced it, and whether the difference you are excited about would survive a slightly different draw of the same data. If a two point improvement disappears once you account for interval width, that is not a failure of the model, it is information you needed before making a decision. Reporting the interval is not extra caution for its own sake, it is the difference between a claim and a coincidence.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/confidence-intervals-model-evaluation-2.jpg' alt='laboratory data charts on screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
