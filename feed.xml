@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Mon, 07 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 08 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>LLM Benchmarks Decoded: What a Leaderboard Score Tests</title>
+    <link>https://jahanzaibawan.com/blog/llm-benchmark-scores-decoded.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/llm-benchmark-scores-decoded.html</guid>
+    <pubDate>Tue, 08 Sep 2026 09:00:00 +0000</pubDate>
+    <description>A leaderboard score measures performance on one fixed test set under one prompting scheme. It is not a certificate of general intelligence.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Fine-Tuning: One Word, Several Very Different Ideas</title>
     <link>https://jahanzaibawan.com/blog/what-fine-tuning-actually-means.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Fri, 28 Aug 2026 09:00:00 +0000</pubDate>
     <description>Your loss function encodes what counts as a mistake. Pick one that doesn&#x27;t match the real cost of errors, and your model will optimise for the wrong thing quietly.</description>
     <category>Machine Learning</category>
-  </item>
-  <item>
-    <title>How to Benchmark a Computer Vision Model Honestly</title>
-    <link>https://jahanzaibawan.com/blog/honest-computer-vision-benchmarking.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/honest-computer-vision-benchmarking.html</guid>
-    <pubDate>Thu, 27 Aug 2026 09:00:00 +0000</pubDate>
-    <description>A practical guide to leakage-aware splits, strong baselines, and realistic test conditions before shipping a vision model.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>

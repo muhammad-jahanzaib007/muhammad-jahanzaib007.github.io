@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LLM Benchmarks Decoded: What a Leaderboard Score Tests | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="An honest look at what LLM benchmark scores really measure, including contamination, prompt sensitivity, and why leaderboard rankings can mislead.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="LLM benchmarks, model evaluation, leaderboard, data contamination, prompt sensitivity, MMLU, evaluation methodology, machine learning, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-08">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="LLM Benchmarks Decoded: What a Leaderboard Score Tests">
+<meta property="og:description" content="An honest look at what LLM benchmark scores really measure, including contamination, prompt sensitivity, and why leaderboard rankings can mislead.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/llm-benchmark-scores-decoded.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/llm-benchmark-scores-decoded.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LLM Benchmarks Decoded: What a Leaderboard Score Tests">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/llm-benchmark-scores-decoded.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/llm-benchmark-scores-decoded.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "LLM Benchmarks Decoded: What a Leaderboard Score Tests",
+  "description": "An honest look at what LLM benchmark scores really measure, including contamination, prompt sensitivity, and why leaderboard rankings can mislead.",
+  "url": "https://jahanzaibawan.com/blog/llm-benchmark-scores-decoded.html",
+  "image": "https://jahanzaibawan.com/assets/blog/llm-benchmark-scores-decoded.png",
+  "datePublished": "2026-09-08",
+  "dateModified": "2026-09-08",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/llm-benchmark-scores-decoded.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "LLM Benchmarks Decoded: What a Leaderboard Score Tests", "item": "https://jahanzaibawan.com/blog/llm-benchmark-scores-decoded.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 6 min read · 8 Sep 2026</div>
+    <h1>LLM Benchmarks Decoded: What a Leaderboard Score Tests</h1>
+    <p class="lede">A high score on a popular benchmark tells you something specific and narrow, not that a model is generally smarter. Here is how to read the number correctly.</p>
+  </div>
+
+  <img src="../assets/blog/llm-benchmark-scores-decoded.png" alt="Cover image for the article: LLM Benchmarks Decoded: What a Leaderboard Score Tests" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the number seduces us</h2><p>A leaderboard is irresistible because it collapses something messy into one clean digit. Model A scores 78.4, model B scores 74.1, and it feels like we have just measured intelligence the way we measure height. I think that framing is the whole problem. A benchmark score is the result of a specific test set, a specific prompt format, a specific scoring function, and a specific decision about what counts as a correct answer. Change any one of those and the number moves, sometimes by more than the gap between the models you were comparing.</p><p>Consider a multiple-choice knowledge benchmark with four options per question. A model that answers completely at random should score around 25 percent. If a smaller model scores 30 percent and a larger model scores 34 percent, the four-point gap looks meaningful in a table, but a large share of both scores is just the random floor plus whatever surface pattern-matching the model picked up from option phrasing. The interesting signal is the distance above that floor, not the raw percentage, and very few leaderboards report it that way.</p><p>None of this means benchmarks are useless. It means a score is a measurement under specific conditions, and the value of any measurement depends on whether you understand those conditions well enough to know what it generalises to. That is the habit I want to build in this post: read a benchmark the way you would read a lab result, by asking what was actually tested before you ask what the number was.</p></section><section class='psec reveal'><h2>The three quiet failure modes</h2><p>The first failure mode is contamination. Many benchmarks are built from text that circulates publicly, and large models are trained on enormous scrapes of the internet. If a benchmark question, or something close enough to it, appeared in training data, the model is not reasoning, it is recalling. Suppose a maths benchmark has 500 problems, and 40 of them have near-duplicates floating around on forums or solution repositories that were plausibly swept into training corpora. If a model gets 90 percent of those 40 right but only 55 percent of the remaining 460, the blended score of roughly 58 percent overstates genuine problem-solving ability by several points, and you would never see that gap without a contamination audit that most leaderboards do not publish.</p><p>The second failure mode is prompt sensitivity. The same model evaluated on the same questions can swing by ten percentage points or more depending on whether the instructions are phrased as a question, a completion, or a chat turn, and depending on how few-shot examples are formatted. I have seen this described as a nuisance detail, but I think it is closer to the whole story: if reordering the answer choices from A, B, C, D to a different arrangement changes a model's accuracy by five points, then five points of the leaderboard gap between two models might just be a difference in how sensitive each one is to formatting, not a difference in capability.</p><p>The third failure mode is narrow task coverage disguised as generality. A benchmark named after a broad concept like reasoning or comprehension is still, underneath, a fixed collection of a few thousand items written by a particular group of people with a particular style. A model tuned or lucky on that style can outperform a genuinely stronger model that simply expresses answers differently. This is why a model can top one leaderboard and slip several places on another that is nominally testing the same skill: they are not testing the same skill, they are testing the same skill filtered through different question writers.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/llm-benchmark-scores-decoded-1.jpg' alt='leaderboard ranking table screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>A worked comparison</h2><p>Imagine two models evaluated on a 1,000-question benchmark. Model X scores 720 correct, model Y scores 705. The leaderboard ranks X above Y by 1.5 points and that is the entire story most readers absorb. Now suppose we do the extra work: we identify that 60 of the 1,000 questions are near-duplicates of publicly available content, and we check each model's accuracy on that subset versus the rest. Model X gets 55 of those 60 right, 92 percent, but only 665 of the remaining 940, about 70.7 percent. Model Y gets 40 of the 60 right, 66.7 percent, but 665 of the remaining 940 as well, also 70.7 percent.</p><p>On the contaminated subset the models look wildly different, 92 percent versus 66.7 percent, but on the clean subset they are statistically indistinguishable. The 1.5-point leaderboard gap turns out to be almost entirely explained by differential exposure to leaked content, not by superior reasoning. This is a constructed example with round numbers to make the arithmetic obvious, but the shape of the effect, a small aggregate gap driven by a small contaminated subset, is exactly the kind of thing that real contamination audits have flagged in practice across various benchmarks.</p><p>The practical lesson is that a single aggregate score is a compressed summary of a much richer distribution of per-item outcomes, and compression always loses information. Two models can have identical aggregate scores while failing on completely different subsets of questions, which matters enormously if your downstream use case overlaps with one of those subsets and not the other. A model that is excellent at competition-style algebra but weak at word problems involving units and conversions will look fine on a blended maths score while being unsuitable for a product that is entirely about unit conversions.</p></section><section class='psec reveal'><h2>What to actually do with a leaderboard</h2><p>Treat a headline score as a starting filter, not a conclusion. If you are choosing a model for a real task, the leaderboard tells you which handful of candidates are worth spending your own evaluation budget on; it should not tell you the final answer. Build a small, held-out test set that resembles your actual use case, keep it private so it cannot leak into anyone's training run, and re-run it whenever you are seriously comparing models.</p><p>Ask what floor the benchmark has, what format sensitivity has been reported for it, and whether anyone has published a contamination check. If a benchmark provider does not discuss these things, treat the score with proportionally more caution rather than less. A leaderboard that shows only one number per model is telling you it has not done, or has not shared, the harder analysis.</p><p>Finally, remember that variance across seeds, prompt templates, and even minor software version differences can rival the gap between adjacent leaderboard entries. A ranking with a one-point spread between five models is not five distinct tiers of ability, it is likely one tier with noise. Read the score, respect it as one data point among several you need, and never let a single column in a table make a decision that your own evaluation on your own data should be making instead.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/llm-benchmark-scores-decoded-2.jpg' alt='researcher analyzing data charts on laptop' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

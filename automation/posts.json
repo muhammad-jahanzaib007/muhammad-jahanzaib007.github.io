@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "llm-benchmark-scores-decoded",
+      "title": "LLM Benchmarks Decoded: What a Leaderboard Score Tests",
+      "excerpt": "A leaderboard score measures performance on one fixed test set under one prompting scheme. It is not a certificate of general intelligence.",
+      "date": "2026-09-08",
+      "read_min": 6,
+      "tag": "Evaluation",
+      "color": "a6",
+      "thumb": "assets/blog/llm-benchmark-scores-decoded.png",
+      "thumb_alt": "Cover image for the article: LLM Benchmarks Decoded: What a Leaderboard Score Tests"
+    },
+    {
       "slug": "what-fine-tuning-actually-means",
       "title": "Fine-Tuning: One Word, Several Very Different Ideas",
       "excerpt": "Fine-tuning sounds like a small tweak everywhere it's used, but in ML it can mean anything from adjusting a few layers to retraining a whole model. The distinction matters.",
