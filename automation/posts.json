@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "degree-course-portfolio-fine-tuning",
+      "title": "Degree, Course, or Portfolio: What Really Teaches Fine-Tuning",
+      "excerpt": "Degrees, courses, and portfolios each promise fine-tuning skills. Only one forces you to fail, debug, and rerun until the numbers hold up.",
+      "date": "2026-09-08",
+      "read_min": 5,
+      "tag": "Education",
+      "color": "a2",
+      "thumb": "assets/blog/degree-course-portfolio-fine-tuning.png",
+      "thumb_alt": "Cover image for the article: Degree, Course, or Portfolio: What Really Teaches Fine-Tuning"
+    },
+    {
       "slug": "llm-benchmark-scores-decoded",
       "title": "LLM Benchmarks Decoded: What a Leaderboard Score Tests",
       "excerpt": "A leaderboard score measures performance on one fixed test set under one prompting scheme. It is not a certificate of general intelligence.",

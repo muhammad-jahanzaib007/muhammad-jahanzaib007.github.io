@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Tue, 08 Sep 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Degree, Course, or Portfolio: What Really Teaches Fine-Tuning</title>
+    <link>https://jahanzaibawan.com/blog/degree-course-portfolio-fine-tuning.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/degree-course-portfolio-fine-tuning.html</guid>
+    <pubDate>Tue, 08 Sep 2026 09:00:00 +0000</pubDate>
+    <description>Degrees, courses, and portfolios each promise fine-tuning skills. Only one forces you to fail, debug, and rerun until the numbers hold up.</description>
+    <category>Education</category>
+  </item>
+  <item>
     <title>LLM Benchmarks Decoded: What a Leaderboard Score Tests</title>
     <link>https://jahanzaibawan.com/blog/llm-benchmark-scores-decoded.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/llm-benchmark-scores-decoded.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Fri, 28 Aug 2026 09:00:00 +0000</pubDate>
     <description>The shape of a validation curve, not just its final number, tells you whether to add capacity, add data, or stop tuning entirely.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Choosing a Loss Function: Matching Maths to the Problem</title>
-    <link>https://jahanzaibawan.com/blog/choosing-the-right-loss-function.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/choosing-the-right-loss-function.html</guid>
-    <pubDate>Fri, 28 Aug 2026 09:00:00 +0000</pubDate>
-    <description>Your loss function encodes what counts as a mistake. Pick one that doesn&#x27;t match the real cost of errors, and your model will optimise for the wrong thing quietly.</description>
-    <category>Machine Learning</category>
   </item>
 </channel>
 </rss>
