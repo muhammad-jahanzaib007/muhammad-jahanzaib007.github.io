@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a6",
       "thumb": "assets/blog/llm-benchmark-scores-decoded.png",
-      "thumb_alt": "Cover image for the article: LLM Benchmarks Decoded: What a Leaderboard Score Tests"
+      "thumb_alt": "Cover image for the article: LLM Benchmarks Decoded: What a Leaderboard Score Tests",
+      "li_shared": true
     },
     {
       "slug": "what-fine-tuning-actually-means",
