@@ -9,7 +9,8 @@
       "tag": "Education",
       "color": "a2",
       "thumb": "assets/blog/degree-course-portfolio-fine-tuning.png",
-      "thumb_alt": "Cover image for the article: Degree, Course, or Portfolio: What Really Teaches Fine-Tuning"
+      "thumb_alt": "Cover image for the article: Degree, Course, or Portfolio: What Really Teaches Fine-Tuning",
+      "li_shared": true
     },
     {
       "slug": "llm-benchmark-scores-decoded",
