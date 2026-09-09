@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LLM Arenas: Pairwise Preference Is Not Accuracy | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why pairwise human preference in LLM arenas measures something distinct from accuracy, with a worked example showing how the two metrics can diverge.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="LLM evaluation, arena benchmarks, pairwise comparison, human preference, accuracy metrics, model evaluation, chatbot arena, Bradley-Terry, evaluation leakage, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-09">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="LLM Arenas: Pairwise Preference Is Not Accuracy">
+<meta property="og:description" content="Why pairwise human preference in LLM arenas measures something distinct from accuracy, with a worked example showing how the two metrics can diverge.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/pairwise-preference-vs-accuracy.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/pairwise-preference-vs-accuracy.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LLM Arenas: Pairwise Preference Is Not Accuracy">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/pairwise-preference-vs-accuracy.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/pairwise-preference-vs-accuracy.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "LLM Arenas: Pairwise Preference Is Not Accuracy",
+  "description": "Why pairwise human preference in LLM arenas measures something distinct from accuracy, with a worked example showing how the two metrics can diverge.",
+  "url": "https://jahanzaibawan.com/blog/pairwise-preference-vs-accuracy.html",
+  "image": "https://jahanzaibawan.com/assets/blog/pairwise-preference-vs-accuracy.png",
+  "datePublished": "2026-09-09",
+  "dateModified": "2026-09-09",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/pairwise-preference-vs-accuracy.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "LLM Arenas: Pairwise Preference Is Not Accuracy", "item": "https://jahanzaibawan.com/blog/pairwise-preference-vs-accuracy.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 9 Sep 2026</div>
+    <h1>LLM Arenas: Pairwise Preference Is Not Accuracy</h1>
+    <p class="lede">Arena style leaderboards rank models by who wins head to head comparisons, but that win rate is answering a different question to the one accuracy answers.</p>
+  </div>
+
+  <img src="../assets/blog/pairwise-preference-vs-accuracy.png" alt="Cover image for the article: LLM Arenas: Pairwise Preference Is Not Accuracy" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Two questions that sound alike but are not</h2><p>When a model 'wins' an arena style comparison, a human or a judge model was shown two responses to the same prompt and asked which one they preferred. That preference is then aggregated, often with a Bradley-Terry or Elo style model, into a single score per system. It looks like accuracy because it produces a leaderboard with numbers next to names, and higher is better. But the underlying question being answered is 'which response would I rather read', not 'which response is correct'. Those two questions overlap a great deal in practice, which is exactly why it is easy to conflate them, but they are not the same measurement and they do not always move together.</p><p>Accuracy, in the classic sense, requires a ground truth. You need a reference answer, a test case that passes or fails, or a labelled class, and you compare the model's output against it. Preference requires no ground truth at all. A judge can express a preference between two fluent, well-formatted, confidently wrong answers just as easily as between two correct ones. This is not a flaw in the judges; it is simply what the instrument was built to measure. An arena is a taste test, and taste tests are legitimate, but they are measuring palatability, not nutritional content.</p><p>I think the confusion persists because both metrics produce a ranking, and rankings feel like they must be measuring the same underlying quality. They are not. A ranking by preference and a ranking by correctness can differ substantially whenever style, tone, formatting, or confidence correlate with what humans like but not with what is true.</p></section><section class='psec reveal'><h2>A worked example of the divergence</h2><p>Suppose we run a small arena with two models, A and B, on a set of 200 factual questions where we happen to also have ground truth answers, so we can compute accuracy independently of the preference votes. Model A answers correctly on 150 of the 200 questions, an accuracy of seventy five per cent. It writes tersely, sometimes hedging with phrases like 'I am not fully certain, but'. Model B answers correctly on 120 of the 200, an accuracy of sixty per cent, but it writes with confident, structured, friendly prose and never hedges, even on the questions it gets wrong.</p><p>Now put the two models head to head on the same 200 prompts and ask human judges to pick a preferred response, without giving them the ground truth. In my experience with this kind of setup, confident and well formatted wrong answers are frequently preferred over hedged correct ones, because judges are pattern matching on fluency and certainty as proxies for quality when they cannot check the facts themselves. Say Model B wins the pairwise vote 58 per cent of the time. On the arena leaderboard, B sits above A. On an accuracy leaderboard, using the same 200 questions, A sits comfortably above B by fifteen points.</p><p>Neither leaderboard is wrong. They are answering different questions, and both answers are numerically honest given their own definitions. The danger is entirely in how the numbers get used downstream. If a team picks a model for a task where factual correctness is the whole point, such as summarising clinical guidance or extracting numbers from contracts, and they pick based on arena rank alone, they may be selecting the more likeable model rather than the more correct one. The gap between 58 per cent preference and a fifteen point accuracy deficit is not a rounding error; it is the entire signal being missed.</p><p>This effect compounds when the judge is itself an LLM rather than a human, since automated judges tend to inherit similar biases toward length, structure, and confident phrasing. Using an LLM judge does not remove the style-versus-substance gap; it just moves the bias into a different, less visible layer of the pipeline.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/pairwise-preference-vs-accuracy-1.jpg' alt='two people comparing documents side by side' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Why this matters beyond the toy numbers</h2><p>Preference and accuracy diverge most sharply in exactly the domains where getting it right matters most: anything with a checkable answer, such as arithmetic, code correctness, factual recall, or following a strict format. In open-ended creative or conversational tasks, where there often is no single correct answer, preference is arguably the more appropriate metric, because 'accuracy' has no clean definition there anyway. The mistake is treating a single arena score as a universal quality signal that transfers across both kinds of task.</p><p>There is also a subtler leakage-style risk worth naming. If a model has been tuned, even indirectly, against human preference data collected from a similar population of judges to the one running the arena, its win rate will reflect how well it has learned that population's taste, not how well it generalises to correctness on unseen, checkable problems. This is a form of distribution matching rather than capability measurement, and it can inflate arena rank in a way that a held-out accuracy benchmark, built from independent ground truth, will not reproduce.</p><p>None of this is an argument against arenas. Pairwise human preference is a legitimate, useful signal for the things it actually measures, such as tone, helpfulness, formatting, and general likeability of responses, and these matter enormously for user-facing products. The argument is against reading a single arena score as a proxy for correctness on tasks it was never designed to test.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>If you are choosing a model, decide first which question you actually need answered. If the task has a checkable ground truth, correctness, code that runs, numbers that match, facts that are verifiable, then build or use an accuracy benchmark with a clean, leakage-aware split and trust that over any preference leaderboard. If the task is genuinely open-ended and subjective, an arena style comparison is the more honest instrument, and you should not go looking for an accuracy number that does not meaningfully exist for that task.</p><p>Best practice, when resources allow, is to report both: a preference score for likeability and an accuracy score against ground truth, computed on the same set of prompts so the two can be compared directly, as in the worked example above. The moment those two numbers disagree, as they often will, is the moment you learn something real about your model that a single leaderboard rank would have hidden.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/pairwise-preference-vs-accuracy-2.jpg' alt='scoreboard leaderboard display' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "pairwise-preference-vs-accuracy",
+      "title": "LLM Arenas: Pairwise Preference Is Not Accuracy",
+      "excerpt": "Arena win rates measure relative preference, not correctness. Confusing the two can make a fluent, wrong model look like the best model.",
+      "date": "2026-09-09",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a3",
+      "thumb": "assets/blog/pairwise-preference-vs-accuracy.png",
+      "thumb_alt": "Cover image for the article: LLM Arenas: Pairwise Preference Is Not Accuracy"
+    },
+    {
       "slug": "degree-course-portfolio-fine-tuning",
       "title": "Degree, Course, or Portfolio: What Really Teaches Fine-Tuning",
       "excerpt": "Degrees, courses, and portfolios each promise fine-tuning skills. Only one forces you to fail, debug, and rerun until the numbers hold up.",

@@ -1,6 +1,5 @@
 {
   "queue": [
-    "LLM arena style comparisons: why pairwise human preference is a different metric to accuracy",
     "What NLP techniques survive contact with a small labelled dataset",
     "How to explain a transformer's attention mechanism to a non-technical interviewer",
     "Vision transformers explained from the patch embedding upward",
@@ -161,6 +160,7 @@
     "Quantifying uncertainty in model evaluation: confidence intervals nobody reports",
     "Fine-tuning: what the word actually means across contexts, and what it means in ML",
     "LLM benchmarks decoded: what a leaderboard score actually tests",
-    "Choosing between an LLM degree, a course, and a portfolio: what actually teaches you fine-tuning"
+    "Choosing between an LLM degree, a course, and a portfolio: what actually teaches you fine-tuning",
+    "LLM arena style comparisons: why pairwise human preference is a different metric to accuracy"
   ]
 }

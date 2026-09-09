@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Tue, 08 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 09 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>LLM Arenas: Pairwise Preference Is Not Accuracy</title>
+    <link>https://jahanzaibawan.com/blog/pairwise-preference-vs-accuracy.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/pairwise-preference-vs-accuracy.html</guid>
+    <pubDate>Wed, 09 Sep 2026 09:00:00 +0000</pubDate>
+    <description>Arena win rates measure relative preference, not correctness. Confusing the two can make a fluent, wrong model look like the best model.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Degree, Course, or Portfolio: What Really Teaches Fine-Tuning</title>
     <link>https://jahanzaibawan.com/blog/degree-course-portfolio-fine-tuning.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/ab-testing-ml-models-production.html</guid>
     <pubDate>Sat, 29 Aug 2026 09:00:00 +0000</pubDate>
     <description>Offline AUC improvements often vanish or backfire online. Here is how to run an A/B test for a production ML model that you can actually trust.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>What a Validation Curve Tells You Before the Test Set</title>
-    <link>https://jahanzaibawan.com/blog/reading-a-validation-curve.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/reading-a-validation-curve.html</guid>
-    <pubDate>Fri, 28 Aug 2026 09:00:00 +0000</pubDate>
-    <description>The shape of a validation curve, not just its final number, tells you whether to add capacity, add data, or stop tuning entirely.</description>
     <category>Evaluation</category>
   </item>
 </channel>
