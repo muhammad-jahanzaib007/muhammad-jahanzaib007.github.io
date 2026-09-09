@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "nlp-techniques-small-datasets",
+      "title": "What NLP Techniques Survive Contact With Small Data",
+      "excerpt": "Most NLP advice assumes thousands of labelled examples. Here is what genuinely works when you have a few hundred, and how to prove it honestly.",
+      "date": "2026-09-09",
+      "read_min": 6,
+      "tag": "NLP",
+      "color": "a4",
+      "thumb": "assets/blog/nlp-techniques-small-datasets.png",
+      "thumb_alt": "Cover image for the article: What NLP Techniques Survive Contact With Small Data"
+    },
+    {
       "slug": "pairwise-preference-vs-accuracy",
       "title": "LLM Arenas: Pairwise Preference Is Not Accuracy",
       "excerpt": "Arena win rates measure relative preference, not correctness. Confusing the two can make a fluent, wrong model look like the best model.",

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What NLP Techniques Survive Contact With Small Data | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical look at which NLP techniques remain reliable on small labelled datasets, with a worked example and leakage-aware evaluation advice.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="small dataset NLP, few-shot learning, transfer learning, text classification, evaluation, overfitting, data leakage, baselines, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-09">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="What NLP Techniques Survive Contact With Small Data">
+<meta property="og:description" content="A practical look at which NLP techniques remain reliable on small labelled datasets, with a worked example and leakage-aware evaluation advice.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/nlp-techniques-small-datasets.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/nlp-techniques-small-datasets.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What NLP Techniques Survive Contact With Small Data">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/nlp-techniques-small-datasets.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/nlp-techniques-small-datasets.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "What NLP Techniques Survive Contact With Small Data",
+  "description": "A practical look at which NLP techniques remain reliable on small labelled datasets, with a worked example and leakage-aware evaluation advice.",
+  "url": "https://jahanzaibawan.com/blog/nlp-techniques-small-datasets.html",
+  "image": "https://jahanzaibawan.com/assets/blog/nlp-techniques-small-datasets.png",
+  "datePublished": "2026-09-09",
+  "dateModified": "2026-09-09",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/nlp-techniques-small-datasets.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "What NLP Techniques Survive Contact With Small Data", "item": "https://jahanzaibawan.com/blog/nlp-techniques-small-datasets.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">NLP · 6 min read · 9 Sep 2026</div>
+    <h1>What NLP Techniques Survive Contact With Small Data</h1>
+    <p class="lede">When you only have a few hundred labelled examples, most fashionable methods quietly fail. Here is what actually holds up, and why.</p>
+  </div>
+
+  <img src="../assets/blog/nlp-techniques-small-datasets.png" alt="Cover image for the article: What NLP Techniques Survive Contact With Small Data" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why small data breaks the usual playbook</h2><p>Most NLP tutorials assume you have tens of thousands of labelled examples, a GPU cluster, and the patience to fine-tune a large model until validation loss stops improving. In practice, a huge share of real projects arrive with something closer to three hundred labelled emails, four hundred support tickets, or a few hundred annotated clinical notes. That is not a rounding error away from the textbook case; it is a different regime with different failure modes, and pretending otherwise is how people end up with a model that reports ninety percent accuracy and then falls apart the moment it sees a slightly different phrasing.</p><p>The core problem is variance, not bias. With a small labelled set, your validation score itself is a noisy estimate. If you have eighty examples in your test fold and the model gets six more right than a baseline, that could easily be sampling noise rather than a genuine improvement. I have seen people chase a two point accuracy gain across five architectures on a hundred and fifty test examples, when the honest confidence interval around that gap was wider than the gap itself. Before asking which technique survives, it is worth accepting that with small data your first job is to make measurement trustworthy, because a fragile technique measured well is more useful than a good technique measured badly.</p><p>Given that constraint, some techniques cope well and some do not. Anything that needs to learn a large number of parameters from scratch, or that relies on the model discovering subtle statistical regularities across thousands of examples, tends to collapse into memorisation. Anything that lets you borrow structure or knowledge from elsewhere, and only asks the small labelled set to do a narrow, well-constrained job, tends to hold up. That distinction is the thread running through everything below.</p></section><section class='psec reveal'><h2>What actually holds up</h2><p>Transfer learning from a pretrained language model is the single most reliable technique in this regime, but only if you use it correctly. Fine-tuning the entire model on three hundred examples is asking for trouble, because you have far more parameters than data points and the model will happily memorise the training set while learning nothing generalisable. What works better in practice is freezing most of the network and only training a small classification head, or using parameter-efficient adaptation methods that update a tiny fraction of the weights. The pretrained representations already encode a great deal of general language structure; your small dataset only needs to teach the model where the decision boundary sits for your specific task, not how language works from first principles.</p><p>Linear models on top of strong pretrained embeddings are underrated. Take sentence embeddings from a pretrained encoder, freeze them completely, and train a logistic regression or a support vector machine on top. This sounds almost too simple next to fine-tuning, but with two or three hundred labelled examples it is often the more stable choice, because a linear model with a handful of parameters cannot overfit as aggressively as a full transformer can. I have watched a frozen-embedding logistic regression outperform a fully fine-tuned model on a genuinely small dataset, purely because the fine-tuned model had enough capacity to fit noise in the training split.</p><p>Careful feature engineering has not disappeared either, particularly for narrow, well-defined tasks. If you are classifying invoices by type, the presence of specific keywords, document length, and simple regex-based flags can do a surprising amount of work, and they generalise cleanly because they encode a rule rather than a learned statistical pattern that might be an artefact of your particular sample. These features are unglamorous, but unglamorous and robust beats sophisticated and brittle when your labelled set is small.</p><p>Data augmentation and weak supervision can extend a small set usefully, but only when applied with restraint. Back-translation, synonym substitution, and simple paraphrasing can multiply your effective training signal without introducing much noise, provided you check that the augmented examples still carry the correct label. Weak supervision, where you use heuristic rules or a larger unlabelled corpus to generate noisy labels that supplement your clean labelled set, can also help, but it needs to be validated against your genuine hand-labelled examples rather than trusted blindly, since noisy labels compound whatever biases the heuristics already had.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/nlp-techniques-small-datasets-1.jpg' alt='stack of paper documents on desk' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>A worked example</h2><p>Suppose you are building a classifier to flag customer complaints as urgent or not, and you have four hundred labelled examples. Split honestly: three hundred for training, fifty for validation, fifty for a held-out test set you touch exactly once. With numbers this small, stratify the split so the urgent and non-urgent classes appear in roughly the same proportion in each fold, otherwise you risk a validation set that happens to contain almost no urgent examples, which would make every model look artificially good.</p><p>Start with a frozen-embedding logistic regression as your baseline. Say it achieves seventy-eight percent accuracy on the validation fold. Then try fine-tuning a pretrained model with a low learning rate and early stopping based on validation loss; suppose that reaches eighty-one percent. A three point gain sounds meaningful, but with only fifty validation examples, that difference corresponds to roughly one and a half additional correct predictions. Run the comparison with five different random seeds for the train and validation split, and you might find the fine-tuned model wins in three out of five runs and loses in two, with the gap ranging from minus two points to plus five points. That tells you the improvement is real but small and uncertain, not the confident win a single run would suggest.</p><p>This is also where leakage sneaks in unnoticed. If any of your four hundred examples are near-duplicates, the same complaint submitted twice with minor wording changes, and one copy ends up in training while the other ends up in test, your test score will be inflated in a way that has nothing to do with genuine generalisation. With large datasets this kind of duplication barely moves the needle; with four hundred examples, a handful of duplicate pairs can shift your reported accuracy by several points. Checking for near-duplicates before splitting is not optional at this scale.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>When labelled data is scarce, favour techniques that borrow structure rather than ones that learn it from scratch: frozen pretrained embeddings with a simple classifier on top, lightweight fine-tuning rather than full fine-tuning, and transparent rule-based features for narrow tasks. Treat data augmentation and weak supervision as useful extensions rather than substitutes for clean evaluation. Above all, spend at least as much effort on your evaluation protocol as on your modelling choices: stratified splits, checks for near-duplicate leakage, and multiple random seeds to see whether an apparent improvement survives resampling. A modest technique measured honestly will serve you far better than an impressive one measured on a fluke.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/nlp-techniques-small-datasets-2.jpg' alt='laptop showing spreadsheet of data' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
