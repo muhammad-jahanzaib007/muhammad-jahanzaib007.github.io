@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Vision transformers explained from the patch embedding upward",
     "Data-centric NLP: cleaning your corpus before you touch the model",
     "Regression versus classification: choosing the right framing for a messy business problem",
     "Weight decay versus dropout: two regularisers that do different jobs",
@@ -161,6 +160,7 @@
     "Choosing between an LLM degree, a course, and a portfolio: what actually teaches you fine-tuning",
     "LLM arena style comparisons: why pairwise human preference is a different metric to accuracy",
     "What NLP techniques survive contact with a small labelled dataset",
-    "How to explain a transformer's attention mechanism to a non-technical interviewer"
+    "How to explain a transformer's attention mechanism to a non-technical interviewer",
+    "Vision transformers explained from the patch embedding upward"
   ]
 }

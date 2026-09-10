@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "vision-transformers-from-patches",
+      "title": "Vision Transformers Explained from the Patch Embedding Upward",
+      "excerpt": "How a grid of pixels becomes a sequence a transformer can read, and why that single design choice explains almost everything else about ViTs.",
+      "date": "2026-09-10",
+      "read_min": 5,
+      "tag": "Deep Learning",
+      "color": "a6",
+      "thumb": "assets/blog/vision-transformers-from-patches.png",
+      "thumb_alt": "Cover image for the article: Vision Transformers Explained from the Patch Embedding Upward"
+    },
+    {
       "slug": "explaining-attention-to-non-technical",
       "title": "Explaining a Transformer's Attention Mechanism Simply",
       "excerpt": "How I explain transformer attention to non-technical interviewers using a room full of conversations, not maths.",

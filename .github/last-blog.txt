@@ -1,1 +1,1 @@
-2026-09-10T08:01:56Z slug=explaining-attention-to-non-technical words=1041 title="Explaining a Transformer's Attention Mechanism Simply"
+2026-09-10T20:01:55Z slug=vision-transformers-from-patches words=1096 title="Vision Transformers Explained from the Patch Embedding Upward"

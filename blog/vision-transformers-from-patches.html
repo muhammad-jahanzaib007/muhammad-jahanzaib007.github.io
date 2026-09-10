@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vision Transformers Explained from the Patch Embedding Upward | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A clear, worked explanation of vision transformers starting from patch embedding, covering positional encoding, the CLS token, and attention over patches.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="vision transformer, ViT, patch embedding, self-attention, positional encoding, CLS token, deep learning, computer vision, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-10">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Vision Transformers Explained from the Patch Embedding Upward">
+<meta property="og:description" content="A clear, worked explanation of vision transformers starting from patch embedding, covering positional encoding, the CLS token, and attention over patches.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/vision-transformers-from-patches.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/vision-transformers-from-patches.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Vision Transformers Explained from the Patch Embedding Upward">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/vision-transformers-from-patches.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/vision-transformers-from-patches.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Vision Transformers Explained from the Patch Embedding Upward",
+  "description": "A clear, worked explanation of vision transformers starting from patch embedding, covering positional encoding, the CLS token, and attention over patches.",
+  "url": "https://jahanzaibawan.com/blog/vision-transformers-from-patches.html",
+  "image": "https://jahanzaibawan.com/assets/blog/vision-transformers-from-patches.png",
+  "datePublished": "2026-09-10",
+  "dateModified": "2026-09-10",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/vision-transformers-from-patches.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Vision Transformers Explained from the Patch Embedding Upward", "item": "https://jahanzaibawan.com/blog/vision-transformers-from-patches.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Deep Learning · 5 min read · 10 Sep 2026</div>
+    <h1>Vision Transformers Explained from the Patch Embedding Upward</h1>
+    <p class="lede">Before you can appreciate attention maps and CLS tokens, you need to see how an image becomes a sequence. Here is that journey, built up piece by piece.</p>
+  </div>
+
+  <img src="../assets/blog/vision-transformers-from-patches.png" alt="Cover image for the article: Vision Transformers Explained from the Patch Embedding Upward" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the patch is the whole idea</h2><p>Most explanations of vision transformers start with attention, because attention is the flashy part. I think that is the wrong place to start. The genuinely clever move happens before any attention is computed: turning an image into a sequence of tokens that a transformer, which was built for text, can consume at all. Once you understand patch embedding properly, the rest of the architecture stops feeling exotic and starts feeling like a fairly direct application of ideas from natural language processing to a grid of numbers.</p><p>A convolutional network never has to solve this problem. It slides small filters over the image and lets locality and translation invariance fall out of the architecture for free. A transformer has no such built-in bias. It operates on a set of tokens plus a positional signal, full stop. So if you want to hand it an image, you first have to decide what a token is. The answer that made vision transformers work in practice is deceptively simple: chop the image into a grid of fixed-size squares, and treat each square as one token.</p><p>Take a concrete case. Suppose you have a 224 by 224 pixel RGB image and you choose a patch size of 16 by 16. That gives you a 14 by 14 grid of patches, which is 196 patches in total. Each patch contains 16 times 16 times 3 values, so 768 raw pixel numbers. Nothing clever has happened yet; you have just reshaped the image into 196 vectors of length 768. The transformer does not see pixels arranged spatially any more. It sees a sequence of 196 items, each described by 768 numbers, in exactly the same shape as 196 word embeddings would appear to a language model.</p></section><section class='psec reveal'><h2>From raw pixels to a token a transformer can use</h2><p>Those raw 768-length vectors are not yet embeddings in the useful sense; they are just flattened pixel intensities, and pixel intensities are a poor representation for a model to reason over directly. So the next step is a single linear projection: a learned matrix that maps each 768-dimensional patch vector into a chosen embedding dimension, commonly something like 768 again in the original design, or smaller in lightweight variants. This projection is often implemented as a convolution with a kernel size and stride equal to the patch size, which is mathematically identical to slicing the image into patches and applying a shared linear layer to each one. It is one of the few places where the implementation looks convolutional even though the intent is purely to produce a token embedding.</p><p>At this point you have 196 vectors that live in a shared embedding space, but the transformer still has no idea where each patch sat in the original image. Attention is permutation-invariant: shuffle the 196 tokens and, absent any other signal, the output would just be shuffled in the same way. Language models solve this with positional encodings, and vision transformers borrow the trick directly. A learned positional embedding, one per patch position, is added elementwise to each patch embedding. Position 37 in the sequence, corresponding to some specific row and column in the 14 by 14 grid, gets a fixed vector added to it that the model learns during training to encode roughly where that patch lives relative to the others.</p><p>There is one more addition worth naming: a special learnable token, often called the class token, is prepended to the sequence, taking the count from 196 to 197. This token does not correspond to any patch of the image. Its job is to accumulate information from every other token through attention across the network's depth, and by the final layer its output vector is used as the summary representation of the whole image, typically fed into a classification head. It is the same trick used in some language models, adapted from sequence classification to image classification.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/vision-transformers-from-patches-1.jpg' alt='grid overlay on photograph' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What attention actually does once tokens exist</h2><p>With 197 embedded, position-aware tokens in hand, the rest of a vision transformer is standard transformer encoder machinery: multi-head self-attention followed by a feedforward block, repeated across many layers, with residual connections and layer normalisation throughout. What is worth dwelling on is what attention buys you specifically for images. Every patch token can attend to every other patch token directly, regardless of spatial distance, in a single layer. A patch in the top-left corner can weigh information from a patch in the bottom-right corner just as easily as from its immediate neighbour, something a convolutional network only achieves after enough layers to expand its receptive field that far.</p><p>This is genuinely useful for certain kinds of visual reasoning, such as recognising an object whose defining parts are spread far apart in the frame, or understanding relationships between distant regions of a scene. It comes at a real cost, though. Self-attention across 197 tokens requires computing a 197 by 197 attention matrix per head, and that cost grows quadratically with the number of patches. Halve the patch size to 8 by 8 and you quadruple the number of patches to roughly 784, which multiplies the attention computation by roughly sixteen. This is precisely why patch size is not a minor hyperparameter; it is a direct trade-off between spatial resolution and compute budget, and it is why smaller patch sizes tend to help accuracy on fine-grained tasks while noticeably slowing training and inference.</p><p>It is also why vision transformers are known to need more data or stronger regularisation than convolutional networks of comparable size to reach the same accuracy from scratch. A convolutional network's locality and weight-sharing assumptions are a form of built-in prior knowledge about images; a plain vision transformer has to learn spatial structure entirely from data through its positional embeddings and attention patterns, which is a harder learning problem when training examples are scarce.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>If you remember one thing from this, remember that patch embedding is the translation layer that lets a text-shaped architecture see images at all, and every downstream property of a vision transformer traces back to the choices made there. Patch size sets the sequence length, sequence length sets the attention cost, and the class token plus positional embeddings are what give an otherwise order-blind attention mechanism any sense of layout at all. When you are choosing between a vision transformer and a convolutional baseline for a new problem, do not just compare parameter counts or headline accuracy figures; ask how much data you actually have, because that patch-level design is exactly where the data hunger comes from.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/vision-transformers-from-patches-2.jpg' alt='close up computer chip circuit pattern' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

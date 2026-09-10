@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Thu, 10 Sep 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Vision Transformers Explained from the Patch Embedding Upward</title>
+    <link>https://jahanzaibawan.com/blog/vision-transformers-from-patches.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/vision-transformers-from-patches.html</guid>
+    <pubDate>Thu, 10 Sep 2026 09:00:00 +0000</pubDate>
+    <description>How a grid of pixels becomes a sequence a transformer can read, and why that single design choice explains almost everything else about ViTs.</description>
+    <category>Deep Learning</category>
+  </item>
+  <item>
     <title>Explaining a Transformer&#x27;s Attention Mechanism Simply</title>
     <link>https://jahanzaibawan.com/blog/explaining-attention-to-non-technical.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/explaining-attention-to-non-technical.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Tue, 01 Sep 2026 09:00:00 +0000</pubDate>
     <description>A good data science internship teaches evaluation, deployment friction, and how to say no to a bad model. Most listings promise this and deliver spreadsheet cleanup instead.</description>
     <category>Careers</category>
-  </item>
-  <item>
-    <title>Quantisation: How Low Can You Go Before Accuracy Breaks</title>
-    <link>https://jahanzaibawan.com/blog/quantisation-how-low-can-you-go.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/quantisation-how-low-can-you-go.html</guid>
-    <pubDate>Mon, 31 Aug 2026 09:00:00 +0000</pubDate>
-    <description>A practical look at where quantisation stops being a free lunch, with a worked example showing exactly when accuracy starts to crack.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>
