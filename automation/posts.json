@@ -9,7 +9,8 @@
       "tag": "Deep Learning",
       "color": "a6",
       "thumb": "assets/blog/vision-transformers-from-patches.png",
-      "thumb_alt": "Cover image for the article: Vision Transformers Explained from the Patch Embedding Upward"
+      "thumb_alt": "Cover image for the article: Vision Transformers Explained from the Patch Embedding Upward",
+      "li_shared": true
     },
     {
       "slug": "explaining-attention-to-non-technical",
