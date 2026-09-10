@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "explaining-attention-to-non-technical",
+      "title": "Explaining a Transformer's Attention Mechanism Simply",
+      "excerpt": "How I explain transformer attention to non-technical interviewers using a room full of conversations, not maths.",
+      "date": "2026-09-10",
+      "read_min": 5,
+      "tag": "NLP",
+      "color": "a5",
+      "thumb": "assets/blog/explaining-attention-to-non-technical.png",
+      "thumb_alt": "Cover image for the article: Explaining a Transformer's Attention Mechanism Simply"
+    },
+    {
       "slug": "nlp-techniques-small-datasets",
       "title": "What NLP Techniques Survive Contact With Small Data",
       "excerpt": "Most NLP advice assumes thousands of labelled examples. Here is what genuinely works when you have a few hundred, and how to prove it honestly.",

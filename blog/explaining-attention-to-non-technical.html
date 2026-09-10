@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explaining a Transformer&#x27;s Attention Mechanism Simply | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A clear, jargon-free method for explaining transformer attention to non-technical interviewers, using a concrete conversational analogy.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="transformer attention, explain AI to non-technical, attention mechanism, interview communication, NLP explained simply, machine learning interviews, AI communication skills, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-10">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Explaining a Transformer&#x27;s Attention Mechanism Simply">
+<meta property="og:description" content="A clear, jargon-free method for explaining transformer attention to non-technical interviewers, using a concrete conversational analogy.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/explaining-attention-to-non-technical.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/explaining-attention-to-non-technical.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Explaining a Transformer&#x27;s Attention Mechanism Simply">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/explaining-attention-to-non-technical.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/explaining-attention-to-non-technical.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Explaining a Transformer's Attention Mechanism Simply",
+  "description": "A clear, jargon-free method for explaining transformer attention to non-technical interviewers, using a concrete conversational analogy.",
+  "url": "https://jahanzaibawan.com/blog/explaining-attention-to-non-technical.html",
+  "image": "https://jahanzaibawan.com/assets/blog/explaining-attention-to-non-technical.png",
+  "datePublished": "2026-09-10",
+  "dateModified": "2026-09-10",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/explaining-attention-to-non-technical.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Explaining a Transformer's Attention Mechanism Simply", "item": "https://jahanzaibawan.com/blog/explaining-attention-to-non-technical.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">NLP · 5 min read · 10 Sep 2026</div>
+    <h1>Explaining a Transformer&#x27;s Attention Mechanism Simply</h1>
+    <p class="lede">A practical way to describe attention without equations, built around a story an interviewer can picture and remember.</p>
+  </div>
+
+  <img src="../assets/blog/explaining-attention-to-non-technical.png" alt="Cover image for the article: Explaining a Transformer&#x27;s Attention Mechanism Simply" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this question comes up so often</h2><p>Interviewers who are not technical still want to know that you can reason about how a model actually works, not just that you can call a library function. Attention is usually the thing they have heard the word for, because it appears in almost every popular explanation of large language models, so they ask about it as a proxy for whether you truly understand your own field. The trap is answering with matrices, dot products, and softmax straight away. That is correct, but it teaches nothing to someone without the maths, and it often reads as evasive rather than expert.</p><p>The better goal is to give an explanation that is honest about the mechanism while using no notation at all. I have found that the cleanest way to do this is with a small story about attention in the everyday sense of the word, because the technical trick genuinely is a formalisation of that everyday idea. If the analogy is chosen carefully, you are not simplifying to the point of being wrong, you are just removing the arithmetic and keeping the logic intact.</p></section><section class='psec reveal'><h2>The room-full-of-conversations analogy</h2><p>Picture a translator standing in a room full of people, trying to understand the sentence someone just said. To understand any single word properly, the translator does not look at that word in isolation. They glance around the room at every other word in the sentence and ask, silently, how relevant is this other word to making sense of the one I am focused on right now. Some words get a long, careful glance, others barely register.</p><p>Take the sentence: 'The trophy did not fit in the suitcase because it was too big.' To understand what 'it' refers to, a reader has to weigh up both 'trophy' and 'suitcase'. Attention is the part of the model that does exactly this weighing. For the word 'it', the model ends up paying something like seventy per cent of its attention to 'trophy', twenty per cent to 'suitcase', and the rest spread thinly across everything else, because the sentence structure and the word 'big' make trophy the more sensible referent. Change 'big' to 'small' and that balance flips, with most of the attention shifting to 'suitcase' instead.</p><p>What I stress to a non-technical interviewer is that this weighing happens for every single word against every other word in the sentence, all at once, and the weights are not fixed rules someone programmed. They are learned from seeing enormous numbers of sentences during training, so the model gradually discovers on its own that pronouns tend to depend on nearby nouns, that verbs depend on their subjects, and thousands of subtler patterns nobody explicitly wrote down.</p><p>This is also the moment to mention, briefly, why this replaced older approaches. Before attention became standard, models read sentences roughly in order, word by word, carrying a kind of running memory forward. That memory tended to get overloaded on long sentences, rather like trying to summarise a long paragraph after only being allowed to remember one short sentence's worth of notes as you go. Attention lets the model look back at the original words directly, however far away they are, instead of relying on a compressed memory.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/explaining-attention-to-non-technical-1.jpg' alt='person explaining whiteboard diagram to interviewer' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Handling the follow-up questions</h2><p>A good interviewer will push a bit further, and it helps to have simple, honest answers ready rather than retreating into jargon. If they ask why the model needs to look at every word rather than just nearby ones, I explain that meaning in language often depends on words that are far apart, as with the trophy and suitcase example, so a method that only looks at neighbours would miss exactly the cases that matter most.</p><p>If they ask how the model learns which words matter, I say plainly that it is trial and error at enormous scale. During training, the model guesses, checks its guess against real text, and adjusts its internal weighing very slightly each time it is wrong, repeated across billions of examples. Nobody hand-writes the rule that 'it' should attend to 'trophy'. The pattern emerges because getting that kind of thing right consistently helps the model predict text more accurately, which is the only thing it is actually being trained to do.</p><p>If they ask why it is called 'attention' at all, I point out that the name is meant loosely in the human sense, the same way we say a reader pays more attention to the subject of a sentence than to a stray comma. It is a reasonable name for the behaviour, even if the underlying mechanics are numerical rather than psychological. I am careful not to claim the model 'understands' or 'thinks about' the sentence the way a person does, since overclaiming here is a common way technical people accidentally mislead non-technical audiences.</p></section><section class='psec reveal'><h2>What actually matters in the answer</h2><p>The measure of a good explanation here is not how simple it sounds but whether it survives a follow-up question without contradicting itself. The room-full-of-conversations story works because it maps onto the real mechanism precisely enough: relevance weighing between every pair of words, learned from data, used to build a better representation of each word in context. Nothing in that story needs to be walked back once someone learns the equations later.</p><p>What I try to avoid is the opposite failure, where the analogy is so loose that it falls apart under a second question, for instance describing attention as the model 'reading the whole sentence at once' without explaining that different words get different weights. That version sounds fine until someone asks why word order or distance would ever matter, and there is no honest way to answer using that looser framing.</p><p>My practical takeaway is this: prepare one concrete sentence like the trophy and suitcase example in advance, know exactly why the attention weights would shift if a single word changed, and be ready to say plainly that the weights are learned rather than programmed. That combination, a vivid example, a clear mechanism, and honesty about how it is learned, tends to satisfy technical and non-technical interviewers alike, because it is not a simplification that hides the truth, it is the truth with the arithmetic left out.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/explaining-attention-to-non-technical-2.jpg' alt='open book highlighted text pronoun reference' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
