@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "regression-versus-classification-framing",
+      "title": "Regression Versus Classification: Framing Messy Problems",
+      "excerpt": "The real modelling decision often happens before training starts: is this a number to predict or a category to assign? Choose badly and you fight the problem forever.",
+      "date": "2026-09-11",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a3",
+      "thumb": "assets/blog/regression-versus-classification-framing.png",
+      "thumb_alt": "Cover image for the article: Regression Versus Classification: Framing Messy Problems"
+    },
+    {
       "slug": "cleaning-corpus-before-model",
       "title": "Data-Centric NLP: Clean Your Corpus Before the Model",
       "excerpt": "A messy corpus quietly caps your model's ceiling. Here is a practical, leakage-aware approach to cleaning text data before you touch a single hyperparameter.",

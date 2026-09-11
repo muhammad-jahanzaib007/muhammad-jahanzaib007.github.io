@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regression Versus Classification: Framing Messy Problems | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to choosing between regression and classification framing for ambiguous business problems, with a worked example and clear decision criteria.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="regression vs classification, problem framing, machine learning, model evaluation, binning targets, ordinal regression, business metrics, data science practice, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-11">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Regression Versus Classification: Framing Messy Problems">
+<meta property="og:description" content="A practical guide to choosing between regression and classification framing for ambiguous business problems, with a worked example and clear decision criteria.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/regression-versus-classification-framing.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/regression-versus-classification-framing.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Regression Versus Classification: Framing Messy Problems">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/regression-versus-classification-framing.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/regression-versus-classification-framing.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Regression Versus Classification: Framing Messy Problems",
+  "description": "A practical guide to choosing between regression and classification framing for ambiguous business problems, with a worked example and clear decision criteria.",
+  "url": "https://jahanzaibawan.com/blog/regression-versus-classification-framing.html",
+  "image": "https://jahanzaibawan.com/assets/blog/regression-versus-classification-framing.png",
+  "datePublished": "2026-09-11",
+  "dateModified": "2026-09-11",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/regression-versus-classification-framing.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Regression Versus Classification: Framing Messy Problems", "item": "https://jahanzaibawan.com/blog/regression-versus-classification-framing.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 11 Sep 2026</div>
+    <h1>Regression Versus Classification: Framing Messy Problems</h1>
+    <p class="lede">Before you tune a single hyperparameter, decide what kind of question you are actually asking the data. Get the framing wrong and no model will save you.</p>
+  </div>
+
+  <img src="../assets/blog/regression-versus-classification-framing.png" alt="Cover image for the article: Regression Versus Classification: Framing Messy Problems" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The choice you make before you choose a model</h2><p>Most modelling mistakes I have seen do not come from a badly tuned learning rate or a missing regularisation term. They come earlier, at the point where someone decides whether the target variable is a number or a category, and does not revisit that decision. It feels like a small technical detail. It is actually the decision that shapes every metric, every error analysis, and every conversation with a stakeholder afterwards.</p><p>Take a genuinely messy example: predicting how long a customer support ticket will take to resolve. You could frame this as regression, predicting resolution time in hours. You could also frame it as classification, predicting whether a ticket will be resolved within a service level agreement, say four hours, yes or no. Both are defensible. Both use the same raw data. They will lead you to different models, different failure modes, and different business conversations, and it is worth being honest that the choice is rarely dictated purely by the data.</p><p>The temptation is to default to regression because the underlying quantity is genuinely continuous, time is not naturally a category. But continuity in the world does not obligate continuity in the model. What matters is what decision the prediction feeds into, and how errors of different kinds actually cost the business.</p></section><section class='psec reveal'><h2>A worked example: resolution time in hours</h2><p>Suppose your historical data shows resolution times ranging from fifteen minutes to three days, with a median around two hours and a long right tail from a small number of complex tickets. If you frame this as regression and train a gradient boosted model, you might get a mean absolute error of forty minutes. That sounds respectable. But look closer: most of that error is concentrated in the tail. Simple tickets are predicted to within ten minutes; the complex ones might be off by several hours in either direction, and it is those tickets that actually matter for staffing decisions.</p><p>Now frame the same problem as classification: will this ticket breach the four hour SLA, yes or no. Suddenly the messy tail becomes irrelevant to the label, because a ticket that takes six hours and one that takes twenty hours are both simply breaches. You lose information, deliberately, in exchange for a metric that maps directly onto what the operations team cares about: precision and recall on breach prediction, which feeds into staffing and escalation decisions.</p><p>Here is the part that is easy to miss: if you only ever evaluated the regression model using mean absolute error, you would never notice that it was systematically underestimating the tickets closest to the four hour boundary, which are precisely the ones where a wrong prediction is most costly. A single aggregate error metric can hide the exact failure that determines whether the model is useful. This is why I think the framing decision and the metric decision have to be made together, not sequentially. Choosing regression and then bolting on a threshold at evaluation time is not the same as choosing classification from the start, because the training objective itself shapes where the model spends its effort.</p><p>There is a middle path too, and it is underused: ordinal regression, or simply binning the continuous target into a small number of meaningful buckets, say under one hour, one to four hours, four to twenty four hours, and over twenty four hours. This keeps some of the ordering information that pure classification throws away, while giving you class-level metrics that map onto real operational tiers. It is not the sophisticated choice, it is the pragmatic one, and pragmatic often wins in production.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/regression-versus-classification-framing-1.jpg' alt='customer support call centre office' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Questions that actually settle the decision</h2><p>I have found it useful to interrogate three things before writing any training code. First, what decision downstream consumes this prediction, and does that decision itself have discrete thresholds? If a human or a system acts differently above and below some cutoff, classification around that cutoff is often more honest than regression followed by thresholding, because it optimises directly for the boundary that matters rather than for overall numeric accuracy that may not care about the boundary at all.</p><p>Second, what does the error distribution of the target actually look like, and is it symmetric enough that a single point estimate is meaningful? Heavily skewed targets, like resolution time, revenue per customer, or time to churn, often punish naive regression because a few extreme values dominate the loss. You can transform the target, use a log scale, or switch to quantile regression, but each of these is itself an implicit framing decision, and it is worth naming it explicitly rather than discovering it by accident when the residual plots look strange.</p><p>Third, and this is the one people skip most often, how will the model be evaluated by the people who did not build it? A support operations lead does not think in mean absolute error. They think in how many breaches we will have this week and how many extra staff we need on Tuesday. If your framing does not produce a metric that translates cleanly into their language, you will spend more time explaining the model than improving it, and stakeholders will quietly stop trusting outputs they cannot interpret.</p><p>None of this means classification is always the safer choice. Sometimes the continuous quantity is exactly what is needed, for instance when the output feeds into a downstream optimisation that genuinely needs a number, like scheduling algorithms that allocate staff hours. Collapsing that into categories would throw away information the optimiser actually needs. The point is not that one framing is superior in general. It is that the framing has to be chosen deliberately, against the actual downstream use, rather than defaulted to based on what the raw column type happens to look like in your dataframe.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>Before building anything, write down, in one sentence, what decision the prediction will change, and whether that decision has a natural threshold. If it does, lean towards classification or ordinal binning around that threshold, and design your evaluation metric to reflect the cost of crossing it wrongly. If the downstream use genuinely needs a precise magnitude, keep regression, but check the error distribution honestly, particularly in the tails, before trusting an aggregate metric. The model architecture is rarely the hard part of this problem. The hard part is being honest, early, about what question you are actually answering, and who has to act on the answer.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/regression-versus-classification-framing-2.jpg' alt='whiteboard with graphs and charts' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
