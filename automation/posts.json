@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a3",
       "thumb": "assets/blog/regression-versus-classification-framing.png",
-      "thumb_alt": "Cover image for the article: Regression Versus Classification: Framing Messy Problems"
+      "thumb_alt": "Cover image for the article: Regression Versus Classification: Framing Messy Problems",
+      "li_shared": true
     },
     {
       "slug": "cleaning-corpus-before-model",
