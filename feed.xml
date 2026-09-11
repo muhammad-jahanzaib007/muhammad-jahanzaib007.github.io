@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Thu, 10 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 11 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Data-Centric NLP: Clean Your Corpus Before the Model</title>
+    <link>https://jahanzaibawan.com/blog/cleaning-corpus-before-model.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/cleaning-corpus-before-model.html</guid>
+    <pubDate>Fri, 11 Sep 2026 09:00:00 +0000</pubDate>
+    <description>A messy corpus quietly caps your model&#x27;s ceiling. Here is a practical, leakage-aware approach to cleaning text data before you touch a single hyperparameter.</description>
+    <category>NLP</category>
+  </item>
   <item>
     <title>Vision Transformers Explained from the Patch Embedding Upward</title>
     <link>https://jahanzaibawan.com/blog/vision-transformers-from-patches.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/reading-certifications-honestly.html</guid>
     <pubDate>Tue, 01 Sep 2026 09:00:00 +0000</pubDate>
     <description>Certificates compress months of work into a single line. Here&#x27;s how to tell which parts of that line are signal and which are padding.</description>
-    <category>Careers</category>
-  </item>
-  <item>
-    <title>What Counts as a Data Science Internship Worth Taking</title>
-    <link>https://jahanzaibawan.com/blog/data-science-internships-worth-taking.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/data-science-internships-worth-taking.html</guid>
-    <pubDate>Tue, 01 Sep 2026 09:00:00 +0000</pubDate>
-    <description>A good data science internship teaches evaluation, deployment friction, and how to say no to a bad model. Most listings promise this and deliver spreadsheet cleanup instead.</description>
     <category>Careers</category>
   </item>
 </channel>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data-Centric NLP: Clean Your Corpus Before the Model | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to data-centric NLP: finding duplicates, leakage, label noise, and encoding issues before model tuning even starts.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="data-centric NLP, corpus cleaning, data leakage, deduplication, label noise, text preprocessing, dataset quality, NLP evaluation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-11">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Data-Centric NLP: Clean Your Corpus Before the Model">
+<meta property="og:description" content="A practical guide to data-centric NLP: finding duplicates, leakage, label noise, and encoding issues before model tuning even starts.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/cleaning-corpus-before-model.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/cleaning-corpus-before-model.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Data-Centric NLP: Clean Your Corpus Before the Model">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/cleaning-corpus-before-model.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/cleaning-corpus-before-model.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Data-Centric NLP: Clean Your Corpus Before the Model",
+  "description": "A practical guide to data-centric NLP: finding duplicates, leakage, label noise, and encoding issues before model tuning even starts.",
+  "url": "https://jahanzaibawan.com/blog/cleaning-corpus-before-model.html",
+  "image": "https://jahanzaibawan.com/assets/blog/cleaning-corpus-before-model.png",
+  "datePublished": "2026-09-11",
+  "dateModified": "2026-09-11",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/cleaning-corpus-before-model.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Data-Centric NLP: Clean Your Corpus Before the Model", "item": "https://jahanzaibawan.com/blog/cleaning-corpus-before-model.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">NLP · 6 min read · 11 Sep 2026</div>
+    <h1>Data-Centric NLP: Clean Your Corpus Before the Model</h1>
+    <p class="lede">Before you tune another hyperparameter, look hard at your data. Most of the gains I have seen in practice come from fixing the corpus, not the architecture.</p>
+  </div>
+
+  <img src="../assets/blog/cleaning-corpus-before-model.png" alt="Cover image for the article: Data-Centric NLP: Clean Your Corpus Before the Model" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The model is rarely the bottleneck</h2><p>When a text classifier underperforms, the instinct is to reach for a bigger model, a different learning rate, or another layer of attention. In my experience this is usually the wrong first move. Most of the ceiling on performance is set by the corpus, not the architecture. Duplicated examples, mislabelled rows, boilerplate text, and inconsistent encoding all shape what the model can possibly learn, and no amount of tuning fixes a dataset that is quietly lying to you.</p><p>Consider a sentiment classifier trained on twenty thousand product reviews. Suppose three thousand of those reviews are near-duplicates: the same complaint copied across variants of a product listing, or scraped twice under different URLs. If some of those duplicates land in both the training and test split, your test accuracy will look better than it should. You are not measuring generalisation, you are measuring memorisation of text the model has already seen in a slightly different guise. I have watched reported accuracy drop by several points the moment near-duplicates are properly separated across splits, purely because the leakage was inflating the number.</p><p>This is the core claim of data-centric NLP: treat the dataset as the primary object of engineering effort, and treat the model as comparatively fixed. It is not a rejection of modelling work, it is a reordering of priorities. Fix the data first, establish an honest baseline, and only then start spending compute on architecture search.</p></section><section class='psec reveal'><h2>Where corpora actually go wrong</h2><p>Duplication is the most common issue and the easiest to underestimate. Web-scraped corpora routinely contain the same paragraph appearing under multiple documents, whether from syndicated news articles, template boilerplate on e-commerce sites, or forum threads that get reposted. A hash-based check on normalised text will catch exact duplicates quickly, but near-duplicates need something like shingling or minhash similarity, since a single changed sentence will defeat exact matching. In one hypothetical case, a corpus of fifty thousand support tickets might contain four thousand tickets that are copy-paste templates with only the customer name changed. If those get split naively, the model learns to recognise the template rather than the underlying issue, and your test set rewards it for doing so.</p><p>Label noise is the second major source of trouble. In multi-class text classification, annotation guidelines are often ambiguous at the boundaries, and a fraction of labels end up wrong simply through human inconsistency. If five percent of your labels are noisy and randomly distributed, a strong model can often absorb that noise and still generalise reasonably well. But if the noise is systematic, for instance one annotator consistently confusing two adjacent categories, the model will learn that annotator's bias rather than the true distinction, and no amount of regularisation removes a systematic error. Spot-checking a random sample of a few hundred labelled examples by hand, and comparing agreement against the stated guidelines, is unglamorous but it tells you more than another epoch of training.</p><p>Encoding and normalisation issues are less dramatic but still costly. Mixed encodings, stray HTML entities, inconsistent Unicode normalisation forms, and leftover markup tags can silently fragment your vocabulary. A word appearing as both a plain token and an HTML-escaped variant is treated as two entirely different tokens by most tokenisers, which quietly halves the effective training signal for that word. This matters more for smaller corpora and rarer words, where every additional occurrence counts.</p><p>Finally, there is distributional skew: class imbalance that is not representative of the deployment setting, or topic imbalance where the corpus over-represents one domain and under-represents another the model will actually see in production. This is not something a clever loss function reliably fixes on its own; it is something you diagnose by actually reading a sample of the data and comparing it against what you expect the deployed system to encounter.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/cleaning-corpus-before-model-1.jpg' alt='messy stack of paper documents on desk' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>A worked intuition: leakage-aware splitting</h2><p>Suppose you are building a classifier to detect whether a customer support message needs escalation, trained on eighty thousand historical tickets. A naive approach shuffles all tickets randomly and splits seventy percent train, fifteen percent validation, fifteen percent test. This looks correct, but if the same customer submitted multiple similar tickets across the dataset, some of those near-identical tickets from the same customer will end up split across train and test. The model then partly memorises that customer's phrasing rather than learning the general signal of escalation.</p><p>A leakage-aware split instead groups by customer, or by ticket thread, and ensures that all tickets from a given group fall entirely within one split. It sounds like a small change, but in practice the reported test accuracy under group-aware splitting is often meaningfully lower than under naive random splitting, precisely because naive splitting was letting the model cheat. The uncomfortable truth is that the lower number under proper splitting is the honest one, and it is the number that should guide decisions about whether the model is ready to deploy.</p><p>The same logic extends to time. If your corpus spans two years of tickets and your deployment will always be forecasting the future from the past, a random split lets the model see vocabulary and events from next month while training on this month, which will never happen in production. A temporal split, training on the first eighteen months and testing on the last six, is a more honest simulation of the deployment condition, even though it usually produces a harder and less flattering evaluation.</p></section><section class='psec reveal'><h2>A practical checklist and why it matters</h2><p>None of this needs exotic tooling. Before touching a model, it is worth running through a short checklist: deduplicate exactly and approximately, and check whether any duplicates cross the train and test boundary; audit a random sample of labels against the annotation guideline and estimate a rough error rate; normalise encoding and strip markup consistently, and check tokeniser vocabulary for near-identical variants of common words; and compare the class and topic distribution in your corpus against your best understanding of the deployment distribution.</p><p>The payoff for this work is not glamorous, but it is real. A cleaned corpus gives you an evaluation number you can trust, which means every subsequent modelling decision is being made against a stable, honest baseline rather than a number partly manufactured by leakage or noise. It also tends to be far cheaper than model iteration: an afternoon spent deduplicating and auditing labels is usually far less expensive than a week of hyperparameter search chasing a phantom gain.</p><p>The practical takeaway is simple to state and easy to neglect: before you change a single model setting, look at your data as carefully as you would look at your results. Clean the corpus first, establish a leakage-aware split, and only then start comparing architectures. The model you build afterwards will be simpler to trust, and the numbers you report will actually mean what they claim to mean.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/cleaning-corpus-before-model-2.jpg' alt='person reviewing text data on laptop screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "cleaning-corpus-before-model",
+      "title": "Data-Centric NLP: Clean Your Corpus Before the Model",
+      "excerpt": "A messy corpus quietly caps your model's ceiling. Here is a practical, leakage-aware approach to cleaning text data before you touch a single hyperparameter.",
+      "date": "2026-09-11",
+      "read_min": 6,
+      "tag": "NLP",
+      "color": "a2",
+      "thumb": "assets/blog/cleaning-corpus-before-model.png",
+      "thumb_alt": "Cover image for the article: Data-Centric NLP: Clean Your Corpus Before the Model"
+    },
+    {
       "slug": "vision-transformers-from-patches",
       "title": "Vision Transformers Explained from the Patch Embedding Upward",
       "excerpt": "How a grid of pixels becomes a sequence a transformer can read, and why that single design choice explains almost everything else about ViTs.",
