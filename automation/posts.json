@@ -9,7 +9,8 @@
       "tag": "Deep Learning",
       "color": "a4",
       "thumb": "assets/blog/weight-decay-vs-dropout.png",
-      "thumb_alt": "Cover image for the article: Weight Decay Versus Dropout: Different Jobs Entirely"
+      "thumb_alt": "Cover image for the article: Weight Decay Versus Dropout: Different Jobs Entirely",
+      "li_shared": true
     },
     {
       "slug": "regression-versus-classification-framing",
