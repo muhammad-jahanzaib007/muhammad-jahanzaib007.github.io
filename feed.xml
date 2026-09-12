@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Fri, 11 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 12 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Weight Decay Versus Dropout: Different Jobs Entirely</title>
+    <link>https://jahanzaibawan.com/blog/weight-decay-vs-dropout.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/weight-decay-vs-dropout.html</guid>
+    <pubDate>Sat, 12 Sep 2026 09:00:00 +0000</pubDate>
+    <description>Weight decay shrinks parameters towards zero; dropout forces redundancy across units. Treating them as interchangeable is a common and costly mistake.</description>
+    <category>Deep Learning</category>
+  </item>
   <item>
     <title>Regression Versus Classification: Framing Messy Problems</title>
     <link>https://jahanzaibawan.com/blog/regression-versus-classification-framing.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Wed, 02 Sep 2026 09:00:00 +0000</pubDate>
     <description>Success stories in data science skip the failed baselines and dead ends that actually taught the lessons worth repeating.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Computer Vision Engineer vs ML Engineer: What Differs</title>
-    <link>https://jahanzaibawan.com/blog/cv-engineer-vs-ml-engineer.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/cv-engineer-vs-ml-engineer.html</guid>
-    <pubDate>Wed, 02 Sep 2026 09:00:00 +0000</pubDate>
-    <description>CV engineer and ML engineer titles blur together in job ads. I break down what genuinely differs in skills, tools, and daily work.</description>
-    <category>Careers</category>
   </item>
 </channel>
 </rss>

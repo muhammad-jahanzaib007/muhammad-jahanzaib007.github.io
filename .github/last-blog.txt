@@ -1,1 +1,1 @@
-2026-09-11T20:02:26Z slug=regression-versus-classification-framing words=1080 title="Regression Versus Classification: Framing Messy Problems"
+2026-09-12T08:01:45Z slug=weight-decay-vs-dropout words=1180 title="Weight Decay Versus Dropout: Different Jobs Entirely"

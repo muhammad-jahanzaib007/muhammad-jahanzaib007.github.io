@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Weight decay versus dropout: two regularisers that do different jobs",
     "Warm restarts and learning rate schedules: why a constant rate rarely wins",
     "Multi-task learning: when sharing a backbone helps and when it hurts",
     "Knowledge distillation: shrinking a model without quietly breaking it",
@@ -175,6 +174,7 @@
     "How to explain a transformer's attention mechanism to a non-technical interviewer",
     "Vision transformers explained from the patch embedding upward",
     "Data-centric NLP: cleaning your corpus before you touch the model",
-    "Regression versus classification: choosing the right framing for a messy business problem"
+    "Regression versus classification: choosing the right framing for a messy business problem",
+    "Weight decay versus dropout: two regularisers that do different jobs"
   ]
 }

@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "weight-decay-vs-dropout",
+      "title": "Weight Decay Versus Dropout: Different Jobs Entirely",
+      "excerpt": "Weight decay shrinks parameters towards zero; dropout forces redundancy across units. Treating them as interchangeable is a common and costly mistake.",
+      "date": "2026-09-12",
+      "read_min": 6,
+      "tag": "Deep Learning",
+      "color": "a4",
+      "thumb": "assets/blog/weight-decay-vs-dropout.png",
+      "thumb_alt": "Cover image for the article: Weight Decay Versus Dropout: Different Jobs Entirely"
+    },
+    {
       "slug": "regression-versus-classification-framing",
       "title": "Regression Versus Classification: Framing Messy Problems",
       "excerpt": "The real modelling decision often happens before training starts: is this a number to predict or a category to assign? Choose badly and you fight the problem forever.",

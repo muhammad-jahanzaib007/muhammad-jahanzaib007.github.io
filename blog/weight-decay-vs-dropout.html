@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weight Decay Versus Dropout: Different Jobs Entirely | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical comparison of weight decay and dropout, with worked intuition on why they solve different overfitting problems and how to combine them sensibly.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="weight decay, dropout, regularisation, overfitting, L2 regularisation, neural networks, deep learning, model generalisation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-12">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Weight Decay Versus Dropout: Different Jobs Entirely">
+<meta property="og:description" content="A practical comparison of weight decay and dropout, with worked intuition on why they solve different overfitting problems and how to combine them sensibly.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/weight-decay-vs-dropout.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/weight-decay-vs-dropout.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Weight Decay Versus Dropout: Different Jobs Entirely">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/weight-decay-vs-dropout.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/weight-decay-vs-dropout.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Weight Decay Versus Dropout: Different Jobs Entirely",
+  "description": "A practical comparison of weight decay and dropout, with worked intuition on why they solve different overfitting problems and how to combine them sensibly.",
+  "url": "https://jahanzaibawan.com/blog/weight-decay-vs-dropout.html",
+  "image": "https://jahanzaibawan.com/assets/blog/weight-decay-vs-dropout.png",
+  "datePublished": "2026-09-12",
+  "dateModified": "2026-09-12",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/weight-decay-vs-dropout.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Weight Decay Versus Dropout: Different Jobs Entirely", "item": "https://jahanzaibawan.com/blog/weight-decay-vs-dropout.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Deep Learning · 6 min read · 12 Sep 2026</div>
+    <h1>Weight Decay Versus Dropout: Different Jobs Entirely</h1>
+    <p class="lede">Both are called regularisers, both shrink overfitting, but they act on completely different parts of a network. Confusing them leads to wasted tuning time and models that fail in avoidable ways.</p>
+  </div>
+
+  <img src="../assets/blog/weight-decay-vs-dropout.png" alt="Cover image for the article: Weight Decay Versus Dropout: Different Jobs Entirely" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the label 'regulariser' hides the real difference</h2><p>I have lost count of how many times I have seen weight decay and dropout described in the same breath as if they were two flavours of the same fix. They both appear in the regularisation section of every course, they both reduce the gap between training and validation loss, and both have a single scalar knob to tune. That surface similarity is misleading. Weight decay changes what the optimiser is allowed to do with the parameters. Dropout changes what the network is allowed to rely on at each forward pass. One constrains magnitude, the other constrains co-dependence.</p><p>This distinction matters because the two failure modes they address are not the same failure mode. A network can have small, well-behaved weights and still overfit by having a handful of units that memorise idiosyncratic patterns in the training set while the rest of the network does almost nothing useful. Equally, a network can have units that are beautifully redundant and robust to dropout, yet still carry weights so large that the loss surface around them is razor sharp and generalises poorly to slightly shifted inputs. Neither problem is solved by the other's fix as a matter of course, only as a side effect that varies by architecture and dataset.</p><p>Because both terms happen to show up as an extra number in the loss or an extra line in a layer definition, it is tempting to treat them as substitutes when tuning a budget of regularisation strength. I want to walk through what each is actually doing mechanically, with a concrete numeric picture, and then say something practical about combining them.</p></section><section class='psec reveal'><h2>Weight decay: a tax on magnitude</h2><p>Weight decay, in its classic form, adds a term proportional to the squared norm of the weights to the loss function, so the gradient update includes a small pull towards zero on every step. If a weight sits at 2.0 and the decay coefficient is 0.01, the update subtracts roughly 0.01 times 2.0, so 0.02, from that weight before the task gradient is even applied. Over thousands of steps this steadily discourages any single weight from growing large unless the task gradient consistently pushes back hard enough to justify it. The practical effect is a smoother function: large weights create sharp, high-curvature responses to small input changes, and decay suppresses exactly that.</p><p>Consider a small regression network fitting a noisy sine curve. Without decay, the optimiser can find a set of weights that produces a wiggly function threading through every noisy training point, some of those weights growing to values in the hundreds to carve out very local bumps. Add a modest decay coefficient, say 0.001, and those extreme weights become expensive to maintain because the penalty scales with the square. The network settles for a flatter fit that misses a few noisy points but tracks the underlying signal far better on held-out data. This is a direct, algebraic constraint on the hypothesis space, independent of how the network is evaluated at test time.</p><p>What weight decay does not do is force the network to distribute its representation. It is entirely possible to have a decayed set of weights where one unit still carries almost all the useful signal for a given input pattern, provided none of the individual weights are large enough to trigger the penalty. Decay controls scale, not redundancy.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/weight-decay-vs-dropout-1.jpg' alt='neural network diagram whiteboard' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Dropout: forcing the network to not rely on anyone</h2><p>Dropout works by randomly zeroing a fraction of unit activations during training, commonly somewhere between ten and fifty per cent depending on the layer, and then using the full network at test time with an appropriate rescaling. The mechanism this creates is different in kind from weight decay. Because any given unit might be silenced on any given forward pass, the network cannot afford to build a solution where one unit is solely responsible for detecting an important pattern. If it does, that pattern is simply invisible on roughly half the training batches, and the loss on those batches punishes the network for depending on a unit that is not there.</p><p>Take a network trained to detect a particular texture in an image patch. Without dropout, it might discover a single convolutional filter that responds strongly to that texture and route the rest of the computation around that one signal, because that is the most efficient path the optimiser can find. With a dropout rate of thirty per cent on that layer, roughly three in ten times that filter's output is masked out entirely, so the loss forces the network to also develop a second, partially overlapping filter that can catch the same pattern when the first is missing. The result is an ensemble-like redundancy: at test time, when all units are present, the network has several partially correlated ways of detecting the same feature, which tends to make its predictions more stable to noise and to unseen variation in the input.</p><p>Note what this does not touch directly. Dropout says nothing about how large any individual weight is allowed to become. A network can have units with enormous weights and still be heavily regularised by dropout in the sense of redundancy, though in practice the two interact because large weights combined with random masking can create high-variance gradient estimates during training, which is one reason dropout and weight decay are often used together rather than as alternatives.</p></section><section class='psec reveal'><h2>What this means for how you actually tune a model</h2><p>The practical upshot is that if your model overfits by memorising specific training examples with a small number of dominant units, dropout is usually the more targeted intervention, because it directly attacks that dependency structure. If your model overfits by finding an unnecessarily sharp, high-magnitude solution that a slightly different training set would have produced very differently, weight decay is the more targeted intervention, because it constrains the magnitude directly rather than hoping redundancy solves the problem as a side effect.</p><p>In practice I treat them as answering different diagnostic questions rather than as two settings on the same dial. If validation performance degrades sharply under small input perturbations or under a slightly different train and test split, that points towards a magnitude problem worth addressing with decay. If validation performance is fine on clean data but the model shows brittle behaviour when specific units are ablated or when architecture size is reduced, that points towards a redundancy problem worth addressing with dropout. Tuning both together, starting from small values and increasing cautiously while watching the validation curve rather than the training curve, avoids the common mistake of cranking one up to compensate for a problem the other was actually designed to solve.</p><p>The single habit worth keeping is to never change both at once during a tuning sweep. Vary one, hold the other fixed, and read the validation curve honestly. Confusing the two by tuning them jointly as if they were one lever is how people end up with regularisation settings that are strong on paper but do not actually fix the failure mode they are chasing.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/weight-decay-vs-dropout-2.jpg' alt='laptop showing loss curve graph' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
