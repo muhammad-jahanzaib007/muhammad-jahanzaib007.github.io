@@ -9,7 +9,8 @@
       "tag": "Deep Learning",
       "color": "a5",
       "thumb": "assets/blog/warm-restarts-learning-rate-schedules.png",
-      "thumb_alt": "Cover image for the article: Warm Restarts and Why a Constant Learning Rate Rarely Wins"
+      "thumb_alt": "Cover image for the article: Warm Restarts and Why a Constant Learning Rate Rarely Wins",
+      "li_shared": true
     },
     {
       "slug": "weight-decay-vs-dropout",
