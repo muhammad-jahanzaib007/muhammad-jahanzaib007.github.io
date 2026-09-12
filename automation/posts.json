@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "warm-restarts-learning-rate-schedules",
+      "title": "Warm Restarts and Why a Constant Learning Rate Rarely Wins",
+      "excerpt": "A constant learning rate forces a single compromise between speed and stability. Schedules, especially warm restarts, let you have both at different points in training.",
+      "date": "2026-09-12",
+      "read_min": 5,
+      "tag": "Deep Learning",
+      "color": "a5",
+      "thumb": "assets/blog/warm-restarts-learning-rate-schedules.png",
+      "thumb_alt": "Cover image for the article: Warm Restarts and Why a Constant Learning Rate Rarely Wins"
+    },
+    {
       "slug": "weight-decay-vs-dropout",
       "title": "Weight Decay Versus Dropout: Different Jobs Entirely",
       "excerpt": "Weight decay shrinks parameters towards zero; dropout forces redundancy across units. Treating them as interchangeable is a common and costly mistake.",

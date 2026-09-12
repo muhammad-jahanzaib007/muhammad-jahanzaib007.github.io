@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Sat, 12 Sep 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Warm Restarts and Why a Constant Learning Rate Rarely Wins</title>
+    <link>https://jahanzaibawan.com/blog/warm-restarts-learning-rate-schedules.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/warm-restarts-learning-rate-schedules.html</guid>
+    <pubDate>Sat, 12 Sep 2026 09:00:00 +0000</pubDate>
+    <description>A constant learning rate forces a single compromise between speed and stability. Schedules, especially warm restarts, let you have both at different points in training.</description>
+    <category>Deep Learning</category>
+  </item>
+  <item>
     <title>Weight Decay Versus Dropout: Different Jobs Entirely</title>
     <link>https://jahanzaibawan.com/blog/weight-decay-vs-dropout.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/weight-decay-vs-dropout.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/managed-platform-dashboard-metrics.html</guid>
     <pubDate>Thu, 03 Sep 2026 09:00:00 +0000</pubDate>
     <description>Managed ML dashboards report clean accuracy and AUC numbers, but they hide the split logic, leakage risks, and label assumptions that decide whether those numbers mean anything.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>What Data Science Success Stories Leave Out</title>
-    <link>https://jahanzaibawan.com/blog/failed-attempts-behind-success-stories.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/failed-attempts-behind-success-stories.html</guid>
-    <pubDate>Wed, 02 Sep 2026 09:00:00 +0000</pubDate>
-    <description>Success stories in data science skip the failed baselines and dead ends that actually taught the lessons worth repeating.</description>
     <category>Evaluation</category>
   </item>
 </channel>

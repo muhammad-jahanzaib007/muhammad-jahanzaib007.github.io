@@ -1,1 +1,1 @@
-2026-09-12T08:01:45Z slug=weight-decay-vs-dropout words=1180 title="Weight Decay Versus Dropout: Different Jobs Entirely"
+2026-09-12T20:01:22Z slug=warm-restarts-learning-rate-schedules words=1028 title="Warm Restarts and Why a Constant Learning Rate Rarely Wins"

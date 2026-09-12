@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Warm Restarts and Why a Constant Learning Rate Rarely Wins | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why constant learning rates underperform, and how cosine annealing with warm restarts improves convergence and generalisation in deep learning.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="learning rate schedule, warm restarts, cosine annealing, deep learning training, optimisation, SGD, hyperparameter tuning, generalisation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-12">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Warm Restarts and Why a Constant Learning Rate Rarely Wins">
+<meta property="og:description" content="Why constant learning rates underperform, and how cosine annealing with warm restarts improves convergence and generalisation in deep learning.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/warm-restarts-learning-rate-schedules.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/warm-restarts-learning-rate-schedules.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Warm Restarts and Why a Constant Learning Rate Rarely Wins">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/warm-restarts-learning-rate-schedules.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/warm-restarts-learning-rate-schedules.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Warm Restarts and Why a Constant Learning Rate Rarely Wins",
+  "description": "Why constant learning rates underperform, and how cosine annealing with warm restarts improves convergence and generalisation in deep learning.",
+  "url": "https://jahanzaibawan.com/blog/warm-restarts-learning-rate-schedules.html",
+  "image": "https://jahanzaibawan.com/assets/blog/warm-restarts-learning-rate-schedules.png",
+  "datePublished": "2026-09-12",
+  "dateModified": "2026-09-12",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/warm-restarts-learning-rate-schedules.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Warm Restarts and Why a Constant Learning Rate Rarely Wins", "item": "https://jahanzaibawan.com/blog/warm-restarts-learning-rate-schedules.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Deep Learning · 5 min read · 12 Sep 2026</div>
+    <h1>Warm Restarts and Why a Constant Learning Rate Rarely Wins</h1>
+    <p class="lede">A look at why scheduling the learning rate, including cosine annealing with warm restarts, tends to beat a fixed rate for training deep networks reliably.</p>
+  </div>
+
+  <img src="../assets/blog/warm-restarts-learning-rate-schedules.png" alt="Cover image for the article: Warm Restarts and Why a Constant Learning Rate Rarely Wins" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The problem with picking one number</h2><p>When I first trained neural networks properly, I treated the learning rate as a single scalar to tune once and leave alone. It felt tidy: pick a value, run the training loop, watch the loss curve. The trouble is that a constant learning rate asks one number to do two contradictory jobs. Early in training, you want large steps so the model can move quickly across the loss surface and escape a poor initialisation. Late in training, you want small steps so the model can settle into a narrow minimum without overshooting it. A single fixed value is a compromise between these needs, and compromises rarely win outright.</p><p>Consider a concrete case: training a convolutional network for image classification with a constant learning rate of 0.1. Early on, that rate is often exactly right, loss drops fast over the first few epochs. But by epoch 30 or 40, the same rate that was helpful is now too aggressive. The parameters oscillate around a good region instead of converging into it, and validation accuracy plateaus or wobbles rather than improving smoothly. Drop the rate to 0.001 instead and you get the opposite problem: stable but painfully slow progress in the early epochs, wasting compute before the model has even found a sensible region of parameter space.</p><p>This tension is why almost every serious training recipe uses some form of schedule rather than a fixed value. The schedule is not a cosmetic detail, it is doing real optimisation work: exploring aggressively when exploration is cheap, then refining carefully when refinement is what matters.</p></section><section class='psec reveal'><h2>Decay is the obvious fix, warm restarts go further</h2><p>The simplest schedules just decay the rate over time: step decay, where you multiply the rate by 0.1 every few epochs, or cosine annealing, where the rate follows a smooth cosine curve down to near zero by the end of training. Both address the core problem directly, large steps early, small steps late, without you having to guess a single fixed number that works everywhere. In my own experiments, replacing a constant rate with cosine annealing over the same total number of epochs has reliably produced lower final validation loss for no extra compute cost, simply because the schedule matches the rate to what the optimisation actually needs at each stage.</p><p>Warm restarts push this idea further. Instead of decaying the rate once and leaving it near zero, you decay it over a shorter cycle, then jump it back up to a high value and decay again, repeating this several times across training. A typical setup might use cycles of 10 epochs each, cosine-annealing the rate from 0.1 down to near zero within each cycle, then restarting at 0.1 for the next cycle. It sounds counterintuitive: why deliberately reintroduce large, disruptive steps after the model has just settled into a good region?</p><p>The intuition is that loss surfaces in deep learning are not single smooth bowls, they have many local minima of varying quality, connected by ridges and flat regions. A model that has settled into a mediocre minimum after one decay cycle can, with a sudden jump back to a high learning rate, be kicked out of that minimum and given the chance to explore further and land somewhere better. Each restart is a fresh opportunity to search, while the decay within each cycle still gives the model a chance to converge and consolidate whatever it finds. Over several cycles, this tends to produce solutions that generalise slightly better than a single long decay, because the model has effectively sampled several candidate minima rather than committing early to the first reasonable one it found.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/warm-restarts-learning-rate-schedules-1.jpg' alt='laptop showing training loss graph' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Why this matters beyond the loss curve</h2><p>The practical benefit is not just a marginally lower training loss, it is about model generalisation and about using compute sensibly. Sharp, narrow minima in the loss landscape are associated with worse generalisation than wide, flat ones, because small shifts between training and test distributions can move you badly off a sharp minimum but leave you fine on a wide one. Warm restarts, by periodically jolting the parameters with a large step, tend to bias the search away from narrow minima that a plain monotonic decay might settle into and never leave. You are not just optimising the training loss faster, you are shaping which kind of solution you end up with.</p><p>There is also a compute argument. Suppose you have a fixed budget of 40 epochs. With a single decay schedule, you get one attempt at finding a good minimum, and if the model gets stuck in a mediocre region halfway through, you have no mechanism to escape it within that budget. With four restart cycles of 10 epochs each, you effectively get four attempts within the same budget, and you can simply keep the parameters from whichever cycle produced the best validation performance. This is a meaningful reframing: the schedule is not just tuning speed, it is turning a single optimisation run into several cheap, related attempts.</p><p>None of this removes the need for careful evaluation. If you are comparing a constant rate against a warm-restart schedule, use the same data splits, the same number of total epochs or an honestly matched compute budget, and report validation performance at the point you would actually have stopped training, not a cherry-picked epoch. Schedules can look better simply because they were given more effective tuning attention, so the comparison has to be fair to be worth trusting.</p></section><section class='psec reveal'><h2>Practical takeaway</h2><p>If you are still defaulting to a constant learning rate, the fix is cheap and almost always worth it. Start with cosine annealing over your full training budget as a baseline improvement, then experiment with warm restarts using a handful of cycles if you have the epochs to spare and want a chance at escaping mediocre minima. Track validation performance per cycle rather than just final training loss, and keep whichever checkpoint actually generalises best. The point is not that any one schedule is universally optimal, it is that treating the learning rate as fixed throughout training gives up an easy and reliable source of improvement for almost no extra cost.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/warm-restarts-learning-rate-schedules-2.jpg' alt='whiteboard with equations' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
