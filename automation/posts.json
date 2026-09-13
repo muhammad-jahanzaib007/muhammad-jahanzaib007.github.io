@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "multi-task-learning-shared-backbones",
+      "title": "Multi-Task Learning: When a Shared Backbone Helps or Hurts",
+      "excerpt": "A shared backbone sounds efficient, but it only pays off when tasks actually agree on what a good representation looks like.",
+      "date": "2026-09-13",
+      "read_min": 5,
+      "tag": "Deep Learning",
+      "color": "a6",
+      "thumb": "assets/blog/multi-task-learning-shared-backbones.png",
+      "thumb_alt": "Cover image for the article: Multi-Task Learning: When a Shared Backbone Helps or Hurts"
+    },
+    {
       "slug": "warm-restarts-learning-rate-schedules",
       "title": "Warm Restarts and Why a Constant Learning Rate Rarely Wins",
       "excerpt": "A constant learning rate forces a single compromise between speed and stability. Schedules, especially warm restarts, let you have both at different points in training.",

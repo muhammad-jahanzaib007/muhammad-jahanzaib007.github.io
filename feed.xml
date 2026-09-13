@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Sat, 12 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 13 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Multi-Task Learning: When a Shared Backbone Helps or Hurts</title>
+    <link>https://jahanzaibawan.com/blog/multi-task-learning-shared-backbones.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/multi-task-learning-shared-backbones.html</guid>
+    <pubDate>Sun, 13 Sep 2026 09:00:00 +0000</pubDate>
+    <description>A shared backbone sounds efficient, but it only pays off when tasks actually agree on what a good representation looks like.</description>
+    <category>Deep Learning</category>
+  </item>
   <item>
     <title>Warm Restarts and Why a Constant Learning Rate Rarely Wins</title>
     <link>https://jahanzaibawan.com/blog/warm-restarts-learning-rate-schedules.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/fair-comparison-checklist-finetuning.html</guid>
     <pubDate>Thu, 03 Sep 2026 09:00:00 +0000</pubDate>
     <description>Beating the base model on your own eval set is easy. Beating it fairly, with matched data, prompts, and decoding, is the part people skip.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Model Evaluation on Managed Platforms: The Hidden Gaps</title>
-    <link>https://jahanzaibawan.com/blog/managed-platform-dashboard-metrics.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/managed-platform-dashboard-metrics.html</guid>
-    <pubDate>Thu, 03 Sep 2026 09:00:00 +0000</pubDate>
-    <description>Managed ML dashboards report clean accuracy and AUC numbers, but they hide the split logic, leakage risks, and label assumptions that decide whether those numbers mean anything.</description>
     <category>Evaluation</category>
   </item>
 </channel>

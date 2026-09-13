@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multi-Task Learning: When a Shared Backbone Helps or Hurts | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="An honest look at when multi-task learning with a shared backbone improves performance, and when it silently hurts individual tasks.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="multi-task learning, shared backbone, negative transfer, task interference, model evaluation, representation learning, deep learning architecture, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-13">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Multi-Task Learning: When a Shared Backbone Helps or Hurts">
+<meta property="og:description" content="An honest look at when multi-task learning with a shared backbone improves performance, and when it silently hurts individual tasks.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/multi-task-learning-shared-backbones.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/multi-task-learning-shared-backbones.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Multi-Task Learning: When a Shared Backbone Helps or Hurts">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/multi-task-learning-shared-backbones.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/multi-task-learning-shared-backbones.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Multi-Task Learning: When a Shared Backbone Helps or Hurts",
+  "description": "An honest look at when multi-task learning with a shared backbone improves performance, and when it silently hurts individual tasks.",
+  "url": "https://jahanzaibawan.com/blog/multi-task-learning-shared-backbones.html",
+  "image": "https://jahanzaibawan.com/assets/blog/multi-task-learning-shared-backbones.png",
+  "datePublished": "2026-09-13",
+  "dateModified": "2026-09-13",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/multi-task-learning-shared-backbones.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Multi-Task Learning: When a Shared Backbone Helps or Hurts", "item": "https://jahanzaibawan.com/blog/multi-task-learning-shared-backbones.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Deep Learning · 5 min read · 13 Sep 2026</div>
+    <h1>Multi-Task Learning: When a Shared Backbone Helps or Hurts</h1>
+    <p class="lede">Sharing representations across tasks can be a free lunch or a quiet source of degradation. The difference usually comes down to task relatedness, data balance, and how carefully you evaluate.</p>
+  </div>
+
+  <img src="../assets/blog/multi-task-learning-shared-backbones.png" alt="Cover image for the article: Multi-Task Learning: When a Shared Backbone Helps or Hurts" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the idea matters</h2><p>Multi-task learning promises something that sounds almost too good: train one backbone, attach a few task-specific heads, and get several models for the price of one. Fewer parameters to store, faster inference, and in the best case, tasks that help each other by sharing statistical structure. It is a genuinely attractive idea, and it does work in plenty of settings. The trouble is that the same architecture can also quietly make every task worse than a set of separate models would have been, and the failure is easy to miss because the aggregate loss curve can still look fine.</p><p>I think the honest way to frame multi-task learning is not as a technique that helps or hurts in general, but as a bet on task relatedness. When you share a backbone, you are asserting that the features useful for task A are also useful, or at least not actively harmful, for task B. That assertion is sometimes true and sometimes false, and the only way to know is to measure each task against its own single-task baseline, not against some averaged multi-task score that can hide one task quietly propping up another.</p></section><section class='psec reveal'><h2>A worked intuition</h2><p>Imagine a shared convolutional backbone feeding two heads: one predicting whether an image contains a cat or a dog, the other predicting the breed. These tasks are closely related. The low-level and mid-level features that help distinguish a cat from a dog, edges, fur texture, ear shape, are largely the same features that help distinguish a beagle from a labrador. If the species classifier alone reaches 96 percent accuracy trained solo, and the breed classifier alone reaches 78 percent, a shared backbone trained on both jointly might push species to 96.5 percent and breed to 80 percent. The shared representation acts as a regulariser: the breed task, which has less data per class, borrows statistical strength from the species task's more abundant labels. This is the case where multi-task learning genuinely earns its keep.</p><p>Now change one task. Keep the species head, but replace the breed head with a task predicting the time of day the photo was taken, inferred from lighting and shadows. These tasks want different things from the backbone. Species classification wants invariance to lighting, since a cat is a cat whether it is noon or dusk. Time-of-day estimation wants the backbone to preserve exactly the lighting cues that species classification is trying to discard. Trained jointly, you might see species accuracy drop from 96 to 93 percent and time-of-day accuracy come in worse than a dedicated model trained alone, because the shared layers are being pulled toward a compromise representation that serves neither task well. This is negative transfer, and it is not a bug in the implementation, it is the architecture faithfully reflecting a genuine conflict in what the tasks need.</p><p>The practical lesson from this pair of examples is that task similarity is not something you can eyeball from task names. Species and breed sound related and are related at the feature level. Species and time-of-day sound unrelated in a way that turns out to matter mechanically, not just semantically, because the features that help one actively hurt the other.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/multi-task-learning-shared-backbones-1.jpg' alt='neural network architecture diagram whiteboard' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Where the sharing quietly breaks</h2><p>Beyond outright conflicting objectives, there are subtler failure modes worth naming. Data imbalance across tasks is one of the most common. If one task has ten times more labelled examples than another, gradients from the larger task will dominate backbone updates unless you carefully weight losses or balance sampling. I have seen setups where a supposedly shared backbone was, in practice, being shaped almost entirely by the dominant task, with the smaller task's head bolted onto features it had little say in forming. The smaller task's reported gain over its own single-task baseline was real but modest, while its ceiling was clearly being capped by features it did not get to influence.</p><p>Another quiet failure is task difficulty mismatch combined with shared learning rates. A task that is easy to overfit will drive the backbone toward representations that memorise its idiosyncrasies early in training, while a harder task is still trying to extract general structure. Without per-task loss weighting or gradient balancing schemes, the easy task can effectively hijack early training dynamics. This is not the same as negative transfer from feature conflict, but it produces a similar symptom: one task does fine, the other underperforms its solo baseline, and it is tempting to blame the whole multi-task premise when the real issue is optimisation imbalance.</p><p>Evaluation discipline matters enormously here, and it is where I think a lot of practitioners cut corners. You need single-task baselines trained with the same data splits, same amount of tuning effort, and same compute budget as the multi-task model, otherwise you are not measuring transfer, you are measuring whether you tuned one setup more carefully than the other. You also need per-task metrics reported separately, never just an averaged score, because averaging can mask one task losing three points while another gains three, which nets to zero but is a genuine regression for whoever depends on the losing task. And you need to check this at multiple points in training, since negative transfer sometimes only appears after enough epochs for the backbone to specialise unhelpfully toward the dominant task.</p></section><section class='psec reveal'><h2>Practical takeaway</h2><p>Before committing to a shared backbone, ask whether the tasks would plausibly benefit from the same invariances and the same feature granularity, not just whether they sound like they belong together. Run single-task baselines with genuinely equal care, report per-task metrics rather than averages, and watch for the imbalance and difficulty-mismatch failure modes separately from true feature conflict, since they call for different fixes: loss weighting and sampling balance for the former, task selection or partial sharing for the latter. If, after all that, every task still beats or matches its solo baseline, the shared backbone has earned its efficiency. If even one task quietly loses, that is not a rounding error, it is the model telling you the tasks disagree about what a good representation looks like.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/multi-task-learning-shared-backbones-2.jpg' alt='two dogs different breeds photograph' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

@@ -1,1 +1,1 @@
-2026-09-12T20:01:22Z slug=warm-restarts-learning-rate-schedules words=1028 title="Warm Restarts and Why a Constant Learning Rate Rarely Wins"
+2026-09-13T08:01:21Z slug=multi-task-learning-shared-backbones words=1016 title="Multi-Task Learning: When a Shared Backbone Helps or Hurts"
