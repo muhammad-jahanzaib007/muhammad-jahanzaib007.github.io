@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a2",
       "thumb": "assets/blog/knowledge-distillation-without-breaking-it.png",
-      "thumb_alt": "Cover image for the article: Knowledge Distillation: Shrinking a Model Without Breaking It"
+      "thumb_alt": "Cover image for the article: Knowledge Distillation: Shrinking a Model Without Breaking It",
+      "li_shared": true
     },
     {
       "slug": "multi-task-learning-shared-backbones",
