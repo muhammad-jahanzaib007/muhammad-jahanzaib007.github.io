@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "knowledge-distillation-without-breaking-it",
+      "title": "Knowledge Distillation: Shrinking a Model Without Breaking It",
+      "excerpt": "Distillation can quietly shrink a model's failure modes into a smaller package. Here's how to check whether you've actually preserved behaviour, not just accuracy.",
+      "date": "2026-09-13",
+      "read_min": 6,
+      "tag": "Evaluation",
+      "color": "a2",
+      "thumb": "assets/blog/knowledge-distillation-without-breaking-it.png",
+      "thumb_alt": "Cover image for the article: Knowledge Distillation: Shrinking a Model Without Breaking It"
+    },
+    {
       "slug": "multi-task-learning-shared-backbones",
       "title": "Multi-Task Learning: When a Shared Backbone Helps or Hurts",
       "excerpt": "A shared backbone sounds efficient, but it only pays off when tasks actually agree on what a good representation looks like.",
