@@ -9,7 +9,8 @@
       "tag": "Deep Learning",
       "color": "a6",
       "thumb": "assets/blog/multi-task-learning-shared-backbones.png",
-      "thumb_alt": "Cover image for the article: Multi-Task Learning: When a Shared Backbone Helps or Hurts"
+      "thumb_alt": "Cover image for the article: Multi-Task Learning: When a Shared Backbone Helps or Hurts",
+      "li_shared": true
     },
     {
       "slug": "warm-restarts-learning-rate-schedules",
