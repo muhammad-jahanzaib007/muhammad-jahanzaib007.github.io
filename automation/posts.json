@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "bootcamp-vs-self-taught-portfolios",
+      "title": "Bootcamps vs Self-Taught Paths: What Portfolios Reveal",
+      "excerpt": "Bootcamp or self-taught, the credential says little. The portfolio, read carefully, says almost everything about how someone actually thinks.",
+      "date": "2026-09-14",
+      "read_min": 5,
+      "tag": "Careers",
+      "color": "a4",
+      "thumb": "assets/blog/bootcamp-vs-self-taught-portfolios.png",
+      "thumb_alt": "Cover image for the article: Bootcamps vs Self-Taught Paths: What Portfolios Reveal"
+    },
+    {
       "slug": "read-evaluation-section-like-reviewer",
       "title": "How to Read an Evaluation Section Like a Reviewer",
       "excerpt": "Skip the leaderboard instinct. Learn to interrogate splits, baselines, and variance the way a careful reviewer does, not the way a skimmer does.",
