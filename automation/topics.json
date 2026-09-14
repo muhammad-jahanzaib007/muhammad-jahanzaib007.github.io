@@ -1,6 +1,5 @@
 {
   "queue": [
-    "How to read a research paper's evaluation section like a reviewer, not a reader",
     "Data science bootcamps versus self-taught paths: what portfolios actually reveal",
     "Reading an MLOps certification syllabus: what it teaches and what it skips",
     "How model evaluation dashboards on managed platforms can hide silent failures",
@@ -175,6 +174,7 @@
     "Weight decay versus dropout: two regularisers that do different jobs",
     "Warm restarts and learning rate schedules: why a constant rate rarely wins",
     "Multi-task learning: when sharing a backbone helps and when it hurts",
-    "Knowledge distillation: shrinking a model without quietly breaking it"
+    "Knowledge distillation: shrinking a model without quietly breaking it",
+    "How to read a research paper's evaluation section like a reviewer, not a reader"
   ]
 }

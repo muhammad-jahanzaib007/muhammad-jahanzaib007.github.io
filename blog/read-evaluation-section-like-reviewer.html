@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Read an Evaluation Section Like a Reviewer | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to reading a paper&#x27;s evaluation section critically: checking splits, baselines, variance, and statistical claims like a reviewer.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="paper reviewing, evaluation section, machine learning evaluation, data leakage, baselines, statistical significance, reproducibility, research methodology, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-14">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="How to Read an Evaluation Section Like a Reviewer">
+<meta property="og:description" content="A practical guide to reading a paper&#x27;s evaluation section critically: checking splits, baselines, variance, and statistical claims like a reviewer.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/read-evaluation-section-like-reviewer.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/read-evaluation-section-like-reviewer.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Read an Evaluation Section Like a Reviewer">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/read-evaluation-section-like-reviewer.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/read-evaluation-section-like-reviewer.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to Read an Evaluation Section Like a Reviewer",
+  "description": "A practical guide to reading a paper's evaluation section critically: checking splits, baselines, variance, and statistical claims like a reviewer.",
+  "url": "https://jahanzaibawan.com/blog/read-evaluation-section-like-reviewer.html",
+  "image": "https://jahanzaibawan.com/assets/blog/read-evaluation-section-like-reviewer.png",
+  "datePublished": "2026-09-14",
+  "dateModified": "2026-09-14",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/read-evaluation-section-like-reviewer.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "How to Read an Evaluation Section Like a Reviewer", "item": "https://jahanzaibawan.com/blog/read-evaluation-section-like-reviewer.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 6 min read · 14 Sep 2026</div>
+    <h1>How to Read an Evaluation Section Like a Reviewer</h1>
+    <p class="lede">Most readers skim the numbers and the bar charts. Reviewers ask where the numbers came from, and whether they would survive a slightly different split.</p>
+  </div>
+
+  <img src="../assets/blog/read-evaluation-section-like-reviewer.png" alt="Cover image for the article: How to Read an Evaluation Section Like a Reviewer" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the results table is the least trustworthy part of the paper</h2><p>Most people read a results table the way they read a football score. Someone won, someone lost, the winning number is in bold, move on. That habit is fine for entertainment and terrible for research. A results table is a claim, not a fact, and claims need to be interrogated before they are believed. Reviewers are not smarter than other readers, they have simply trained themselves to ask a fixed set of questions before accepting a number at face value.</p><p>The core problem is that a single accuracy or F1 figure hides an enormous amount of decision-making: how the data was split, what counted as a fair baseline, how many times the experiment was run, and what was quietly excluded because it did not fit the story. None of this is usually malicious. It is just that authors, like all of us, are more confident in their own pipeline than a stranger should be. The evaluation section is where that confidence gets tested, and reading it like a reviewer means refusing to take the summary sentence as the whole truth.</p><p>Consider a paper claiming a new model reaches 91.2 percent accuracy on a benchmark, beating a prior method at 88.7 percent. A casual reader sees a 2.5 point improvement and files it as progress. A reviewer's first question is duller but more important: is that 2.5 point gap bigger than the noise you would expect from re-running the same model with a different random seed? If a model's accuracy already swings between 89 and 91 percent across five seeds with no changes at all, then a single 91.2 percent run proves almost nothing.</p></section><section class='psec reveal'><h2>Check the split before you check the score</h2><p>The single most common failure mode in evaluation sections is a split that leaks information from training into testing without anyone intending it. This is worth dwelling on with a concrete example. Imagine a dataset of patient records collected over three years, split randomly into 80 percent training and 20 percent testing. If a single patient contributes multiple records over time, some of that patient's records will land in training and some in testing purely by chance. A model can then partially memorise patient-specific patterns rather than learn anything generalisable, and the test score will look better than the model deserves.</p><p>A reviewer's habit is to ask: what is the unit of independence here, and does the split respect it? In the patient example, the correct unit is the patient, not the record, so the split should group all of one patient's records on one side of the boundary. The same logic applies to time series, where a random shuffle can let the model see the future before predicting the past, and to text corpora, where near-duplicate documents can appear on both sides of a supposedly clean split.</p><p>Here is where the numbers become concrete. Suppose the leaky, record-level split gives 91.2 percent accuracy, and the same model, re-evaluated with a proper patient-level split, gives 84.6 percent. That 6.6 point drop is not the model getting worse, it is the original number being wrong. This is exactly the kind of gap a reviewer looks for, because it usually will not be visible in the abstract, it will be buried, if mentioned at all, in a data preparation paragraph three pages in. Reading like a reviewer means going looking for that paragraph instead of waiting for it to announce itself.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/read-evaluation-section-like-reviewer-1.jpg' alt='research papers on desk with charts' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Interrogate the baselines and the variance, not just the winner</h2><p>A strong result against a weak baseline is not a strong result. This sounds obvious stated plainly, yet it is one of the easiest things to miss when a paper is well written and confident in tone. The question to ask is whether the comparison methods were given a fair amount of tuning effort, or whether they were run with default settings while the new method received careful hyperparameter search. If a baseline was never given a chance to use the same preprocessing, the same amount of training time, or the same validation-based tuning, then beating it tells you very little about the actual contribution.</p><p>Take a worked example. A paper proposes a new architecture and reports it beating a well-known baseline by 4 points on a benchmark. Buried in an appendix, the baseline was trained for 10 epochs with no learning rate schedule, while the new method was trained for 50 epochs with a cosine schedule and early stopping on a validation set. A reviewer re-reads the experimental setup section specifically looking for this asymmetry, because an unfair fight dressed up as a fair one is far more common than outright fabrication.</p><p>Variance is the second thing that deserves real scrutiny. A single run reported to one decimal place invites false precision. If a paper reports results across, say, five random seeds with a mean of 87.3 percent and a standard deviation of 1.8 points, and the baseline sits at 85.9 percent with a standard deviation of 2.1 points, those two ranges overlap substantially. Calling that a clear win is optimistic at best. A reviewer wants to see either multiple seeds with reported spread, or a paired statistical test that accounts for the fact that both methods were evaluated on the same test examples, since paired tests are far more sensitive than comparing two unpaired means.</p><p>It is also worth checking whether the improvement holds across subgroups or only on the aggregate. A method that gains 3 points overall but does so entirely by improving one easy subclass while quietly losing ground on a harder one is a different story than a method improving broadly. Reviewers look for a breakdown by class, by domain, or by difficulty stratum, because the headline number is an average, and averages are exactly the kind of thing that hides uneven progress.</p></section><section class='psec reveal'><h2>The practical habit worth keeping</h2><p>None of this requires special expertise, it requires a short checklist applied consistently. Before accepting a reported number, ask what unit the split was made on and whether it matches the unit of independence in the data. Ask whether the baselines received comparable tuning effort and training budget. Ask how many runs produced the reported figure and whether the spread across runs is smaller than the claimed improvement. Ask whether the win holds up when the results are broken down rather than averaged.</p><p>This habit is slower than reading for the headline, and that is precisely the point. A reviewer's job is to be the friction that keeps a field honest, and adopting that friction as a personal reading habit makes you a better judge of what to build on and what to treat cautiously. The evaluation section is not a formality after the interesting part of the paper, it is where the interesting part gets tested, and it deserves to be read with exactly that level of seriousness.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/read-evaluation-section-like-reviewer-2.jpg' alt='whiteboard with data split diagram' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

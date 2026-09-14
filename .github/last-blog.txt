@@ -1,1 +1,1 @@
-2026-09-13T20:01:10Z slug=knowledge-distillation-without-breaking-it words=1102 title="Knowledge Distillation: Shrinking a Model Without Breaking It"
+2026-09-14T08:01:43Z slug=read-evaluation-section-like-reviewer words=1154 title="How to Read an Evaluation Section Like a Reviewer"
