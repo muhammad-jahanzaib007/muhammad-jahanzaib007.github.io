@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a3",
       "thumb": "assets/blog/read-evaluation-section-like-reviewer.png",
-      "thumb_alt": "Cover image for the article: How to Read an Evaluation Section Like a Reviewer"
+      "thumb_alt": "Cover image for the article: How to Read an Evaluation Section Like a Reviewer",
+      "li_shared": true
     },
     {
       "slug": "knowledge-distillation-without-breaking-it",
