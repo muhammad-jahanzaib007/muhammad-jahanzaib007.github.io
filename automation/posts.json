@@ -9,7 +9,8 @@
       "tag": "Careers",
       "color": "a4",
       "thumb": "assets/blog/bootcamp-vs-self-taught-portfolios.png",
-      "thumb_alt": "Cover image for the article: Bootcamps vs Self-Taught Paths: What Portfolios Reveal"
+      "thumb_alt": "Cover image for the article: Bootcamps vs Self-Taught Paths: What Portfolios Reveal",
+      "li_shared": true
     },
     {
       "slug": "read-evaluation-section-like-reviewer",
