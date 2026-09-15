@@ -9,7 +9,8 @@
       "tag": "MLOps",
       "color": "a5",
       "thumb": "assets/blog/reading-mlops-certification-syllabus.png",
-      "thumb_alt": "Cover image for the article: Reading an MLOps Certification Syllabus: Gaps and Gains"
+      "thumb_alt": "Cover image for the article: Reading an MLOps Certification Syllabus: Gaps and Gains",
+      "li_shared": true
     },
     {
       "slug": "bootcamp-vs-self-taught-portfolios",
