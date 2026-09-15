@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "dashboards-hide-silent-failures",
+      "title": "When Evaluation Dashboards Hide Silent Model Failures",
+      "excerpt": "A clean accuracy chart on a managed ML dashboard can hide leakage, drift, and slice-level failures that only careful, manual evaluation will reveal.",
+      "date": "2026-09-15",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a6",
+      "thumb": "assets/blog/dashboards-hide-silent-failures.png",
+      "thumb_alt": "Cover image for the article: When Evaluation Dashboards Hide Silent Model Failures"
+    },
+    {
       "slug": "reading-mlops-certification-syllabus",
       "title": "Reading an MLOps Certification Syllabus: Gaps and Gains",
       "excerpt": "MLOps syllabuses teach you the pipeline plumbing well, but often skip the harder judgement calls around evaluation, drift, and leakage.",

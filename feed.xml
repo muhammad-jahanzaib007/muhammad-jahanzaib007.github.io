@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Tue, 15 Sep 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>When Evaluation Dashboards Hide Silent Model Failures</title>
+    <link>https://jahanzaibawan.com/blog/dashboards-hide-silent-failures.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/dashboards-hide-silent-failures.html</guid>
+    <pubDate>Tue, 15 Sep 2026 09:00:00 +0000</pubDate>
+    <description>A clean accuracy chart on a managed ML dashboard can hide leakage, drift, and slice-level failures that only careful, manual evaluation will reveal.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Reading an MLOps Certification Syllabus: Gaps and Gains</title>
     <link>https://jahanzaibawan.com/blog/reading-mlops-certification-syllabus.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/reading-mlops-certification-syllabus.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Sun, 06 Sep 2026 09:00:00 +0000</pubDate>
     <description>Job adverts treat years of experience as a precise filter, but it is a noisy proxy for skill. Here is how to read it properly.</description>
     <category>Careers</category>
-  </item>
-  <item>
-    <title>Model Evaluation for Safety-Critical Systems, Properly Done</title>
-    <link>https://jahanzaibawan.com/blog/evaluating-safety-critical-models.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/evaluating-safety-critical-models.html</guid>
-    <pubDate>Sat, 05 Sep 2026 09:00:00 +0000</pubDate>
-    <description>Accuracy is not safety. Here is what disciplined, leakage-aware evaluation for safety-critical models actually checks, with a worked example.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>When Evaluation Dashboards Hide Silent Model Failures | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why managed platform dashboards can obscure model failures like leakage and slice degradation, and how to evaluate more rigorously.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="model evaluation, ML dashboards, data leakage, model monitoring, MLOps, managed platforms, evaluation metrics, model drift, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-15">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="When Evaluation Dashboards Hide Silent Model Failures">
+<meta property="og:description" content="Why managed platform dashboards can obscure model failures like leakage and slice degradation, and how to evaluate more rigorously.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/dashboards-hide-silent-failures.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/dashboards-hide-silent-failures.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="When Evaluation Dashboards Hide Silent Model Failures">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/dashboards-hide-silent-failures.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/dashboards-hide-silent-failures.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "When Evaluation Dashboards Hide Silent Model Failures",
+  "description": "Why managed platform dashboards can obscure model failures like leakage and slice degradation, and how to evaluate more rigorously.",
+  "url": "https://jahanzaibawan.com/blog/dashboards-hide-silent-failures.html",
+  "image": "https://jahanzaibawan.com/assets/blog/dashboards-hide-silent-failures.png",
+  "datePublished": "2026-09-15",
+  "dateModified": "2026-09-15",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/dashboards-hide-silent-failures.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "When Evaluation Dashboards Hide Silent Model Failures", "item": "https://jahanzaibawan.com/blog/dashboards-hide-silent-failures.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 15 Sep 2026</div>
+    <h1>When Evaluation Dashboards Hide Silent Model Failures</h1>
+    <p class="lede">Managed platforms make model metrics look tidy and trustworthy, but the summary numbers on a dashboard can quietly mask the exact failures you most need to catch.</p>
+  </div>
+
+  <img src="../assets/blog/dashboards-hide-silent-failures.png" alt="Cover image for the article: When Evaluation Dashboards Hide Silent Model Failures" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The comfort of a green dashboard</h2><p>Managed machine learning platforms have made it remarkably easy to train a model, click through to an evaluation tab, and see a tidy set of numbers: accuracy, precision, recall, maybe an AUC curve rendered in a pleasant colour scheme. It feels rigorous. There is a number, it is above some threshold, and the platform seems to be vouching for the model on your behalf. I think this is precisely where things start to go wrong, not because the numbers are false, but because they answer a narrower question than the one we actually care about.</p><p>A dashboard metric is usually computed on a held-out split that the platform created for you, often with a default random shuffle. That default is doing a lot of quiet work. If your data has any structure across time, users, or groups, a random split can leak information from the training set into the test set without anyone writing a single line of leaky code. The dashboard cannot tell you this happened. It will simply report a confident, plausible-looking number, because from its narrow point of view, nothing went wrong.</p><p>This matters because the whole point of an evaluation number is to act as a proxy for how the model will behave once it is making decisions that affect real people or real money. When the proxy is quietly broken, the gap between what the dashboard says and what actually happens in production does not show up until later, often after the model has already been shipped and trusted.</p></section><section class='psec reveal'><h2>A worked example of a leak nobody sees</h2><p>Suppose you are building a model to predict whether a customer will cancel a subscription within the next month, using a managed platform that automatically splits your historical data eighty-twenty into train and test sets. The platform reports ninety-two per cent accuracy and an AUC of 0.89. Those numbers look good, and the dashboard highlights them in green.</p><p>Now suppose that your dataset contains multiple rows per customer, one for each month of their subscription history, and several customers appear in both the training rows and the test rows because the split was done at the row level rather than the customer level. The model has effectively seen part of each test customer's behaviour during training. It has learned customer-specific quirks rather than generalisable patterns of churn. The reported 0.89 AUC reflects the model's ability to recognise customers it has partially already met, not its ability to predict churn for a genuinely new customer next month.</p><p>If you instead split by customer, ensuring every row for a given customer sits entirely in either the training set or the test set, the same model might score an AUC closer to 0.74. That thirteen or fourteen point drop is not noise; it is the difference between an inflated number produced by leakage and a realistic estimate of production performance. A managed dashboard that defaults to a random split will show you the 0.89 and never mention that a customer-level split exists as an option, let alone that it would tell a very different story.</p><p>The uncomfortable part is that both numbers are technically correct given the split each one used. The dashboard is not lying. It is simply answering the wrong question extremely confidently, and confidence is exactly what makes a wrong answer dangerous.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/dashboards-hide-silent-failures-1.jpg' alt='laptop showing analytics dashboard' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Aggregate metrics smooth over the failures that matter</h2><p>Even when the split is sound, a single aggregate number tends to average away the failures that matter most. Imagine a model for approving small loans that achieves eighty-eight per cent overall accuracy on a well-constructed test set. That headline figure might be hiding the fact that accuracy on applicants under twenty-five years old is only seventy-one per cent, because that group is underrepresented in the historical data and behaves somewhat differently. A dashboard built to show one clean top-line metric per model has no natural place to surface that gap unless someone deliberately asks for a breakdown by subgroup.</p><p>The same smoothing effect happens over time. A model deployed today might perform well on this week's incoming data, but as the underlying population shifts, whether due to seasonality, a marketing campaign, or a change in a competitor's pricing, performance on new slices of data can degrade well before the rolling average metric shown on a monitoring dashboard dips noticeably. Averages are slow to react by construction, which is useful for reducing noise but terrible for early detection of a genuine problem.</p><p>There is also a subtler issue with calibration. A model can maintain a stable AUC while its predicted probabilities drift away from being trustworthy estimates of real-world likelihood. A dashboard fixated on ranking metrics like AUC or ROC curves will not flag this, yet calibration matters enormously if downstream decisions, such as setting a lending threshold or an alert cut-off, depend on the actual probability value rather than just the relative ranking of predictions.</p></section><section class='psec reveal'><h2>What to actually do about it</h2><p>None of this means managed platforms are untrustworthy or should be avoided. It means the dashboard should be treated as a starting point for questions, not a final verdict. Before trusting a headline metric, I ask how the train and test split was constructed, whether it respects natural groupings like customer, time, or session, and whether a leakage-aware alternative split changes the result meaningfully. If it does, that gap is more informative than the original number.</p><p>Alongside the aggregate score, it is worth deliberately computing performance on the slices you actually care about: by demographic group, by time period, by data source, or by any dimension where uneven performance would cause real harm or real cost. This usually takes a modest amount of extra query work, and it is almost always worth doing before a model goes live rather than after a complaint arrives.</p><p>Finally, keep a simple, transparent baseline alongside the sophisticated model, something like a majority class predictor or a basic logistic regression, and track both on the same slices. If the managed platform's fancy model only narrowly beats the honest baseline on the segments that matter, that tells you far more than any single accuracy figure ever could. A dashboard can show you a number; it cannot tell you whether that number was ever the right question to ask.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/dashboards-hide-silent-failures-2.jpg' alt='person reviewing charts on screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
