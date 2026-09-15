@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Mon, 14 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 15 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Reading an MLOps Certification Syllabus: Gaps and Gains</title>
+    <link>https://jahanzaibawan.com/blog/reading-mlops-certification-syllabus.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/reading-mlops-certification-syllabus.html</guid>
+    <pubDate>Tue, 15 Sep 2026 09:00:00 +0000</pubDate>
+    <description>MLOps syllabuses teach you the pipeline plumbing well, but often skip the harder judgement calls around evaluation, drift, and leakage.</description>
+    <category>MLOps</category>
+  </item>
   <item>
     <title>Bootcamps vs Self-Taught Paths: What Portfolios Reveal</title>
     <link>https://jahanzaibawan.com/blog/bootcamp-vs-self-taught-portfolios.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/evaluating-safety-critical-models.html</guid>
     <pubDate>Sat, 05 Sep 2026 09:00:00 +0000</pubDate>
     <description>Accuracy is not safety. Here is what disciplined, leakage-aware evaluation for safety-critical models actually checks, with a worked example.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Why Your Evaluation Harness Matters More Than the Model</title>
-    <link>https://jahanzaibawan.com/blog/strong-evaluation-harness-matters.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/strong-evaluation-harness-matters.html</guid>
-    <pubDate>Sat, 05 Sep 2026 09:00:00 +0000</pubDate>
-    <description>A better model trained on a leaky, noisy evaluation setup is worse than a mediocre model measured properly. Here is why the harness comes first.</description>
     <category>Evaluation</category>
   </item>
 </channel>

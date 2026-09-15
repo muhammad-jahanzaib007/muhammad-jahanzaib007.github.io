@@ -1,1 +1,1 @@
-2026-09-14T20:01:51Z slug=bootcamp-vs-self-taught-portfolios words=1065 title="Bootcamps vs Self-Taught Paths: What Portfolios Reveal"
+2026-09-15T08:01:04Z slug=reading-mlops-certification-syllabus words=1036 title="Reading an MLOps Certification Syllabus: Gaps and Gains"

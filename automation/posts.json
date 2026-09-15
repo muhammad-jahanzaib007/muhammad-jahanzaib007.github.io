@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "reading-mlops-certification-syllabus",
+      "title": "Reading an MLOps Certification Syllabus: Gaps and Gains",
+      "excerpt": "MLOps syllabuses teach you the pipeline plumbing well, but often skip the harder judgement calls around evaluation, drift, and leakage.",
+      "date": "2026-09-15",
+      "read_min": 5,
+      "tag": "MLOps",
+      "color": "a5",
+      "thumb": "assets/blog/reading-mlops-certification-syllabus.png",
+      "thumb_alt": "Cover image for the article: Reading an MLOps Certification Syllabus: Gaps and Gains"
+    },
+    {
       "slug": "bootcamp-vs-self-taught-portfolios",
       "title": "Bootcamps vs Self-Taught Paths: What Portfolios Reveal",
       "excerpt": "Bootcamp or self-taught, the credential says little. The portfolio, read carefully, says almost everything about how someone actually thinks.",
