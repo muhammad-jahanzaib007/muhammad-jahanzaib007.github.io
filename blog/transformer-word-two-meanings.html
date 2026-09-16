@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why &#x27;Transformer&#x27; Means Something Different in ML Papers | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="An explainer on why &#x27;transformer&#x27; in machine learning papers refers to an attention-based architecture, unrelated to the electrical device of the same name.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="transformer architecture, attention mechanism, machine learning terminology, deep learning, NLP, self-attention, neural networks, jargon confusion, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-16">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Why &#x27;Transformer&#x27; Means Something Different in ML Papers">
+<meta property="og:description" content="An explainer on why &#x27;transformer&#x27; in machine learning papers refers to an attention-based architecture, unrelated to the electrical device of the same name.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/transformer-word-two-meanings.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/transformer-word-two-meanings.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why &#x27;Transformer&#x27; Means Something Different in ML Papers">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/transformer-word-two-meanings.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/transformer-word-two-meanings.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Why 'Transformer' Means Something Different in ML Papers",
+  "description": "An explainer on why 'transformer' in machine learning papers refers to an attention-based architecture, unrelated to the electrical device of the same name.",
+  "url": "https://jahanzaibawan.com/blog/transformer-word-two-meanings.html",
+  "image": "https://jahanzaibawan.com/assets/blog/transformer-word-two-meanings.png",
+  "datePublished": "2026-09-16",
+  "dateModified": "2026-09-16",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/transformer-word-two-meanings.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Why 'Transformer' Means Something Different in ML Papers", "item": "https://jahanzaibawan.com/blog/transformer-word-two-meanings.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Deep Learning · 5 min read · 16 Sep 2026</div>
+    <h1>Why &#x27;Transformer&#x27; Means Something Different in ML Papers</h1>
+    <p class="lede">One word, two entirely separate technical worlds. Confusing them wastes conversations and, occasionally, job interviews.</p>
+  </div>
+
+  <img src="../assets/blog/transformer-word-two-meanings.png" alt="Cover image for the article: Why &#x27;Transformer&#x27; Means Something Different in ML Papers" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The confusion is understandable</h2><p>Say the word 'transformer' to someone outside machine learning and they will picture a grey box on a utility pole, or possibly a toy that turns into a robot. Say it to someone in a machine learning lab and they will picture a stack of attention layers processing a sequence of tokens. Both are correct uses of the word. Neither has anything to do with the other. This is not a metaphor stretched thin, it is a genuine coincidence of naming, and it causes more confusion than it should, especially when people move between technical fields or try to explain their work to a general audience.</p><p>I have had conversations where someone with an electrical engineering background asked, with real curiosity, how a neural network could possibly need to 'step down voltage'. The question is not silly, it is exactly what the word implies if you have never encountered the machine learning sense. The architecture was named in a 2017 paper for reasons that have nothing to do with electricity: the model transforms one sequence into another, and it does so by letting every element attend to every other element rather than processing them strictly in order. The name is a fair description of what the network does to data, but it borrows a word already owned by a completely different discipline.</p><p>This matters practically because jargon collisions like this create a false sense of shared understanding. Two people can use the same word, nod along, and be talking past each other. In a field that moves as fast as machine learning, where terminology gets reused, repurposed, and sometimes invented on the fly, it is worth being precise about which sense of a word you mean, particularly in writing that might be read by people outside your immediate specialism.</p></section><section class='psec reveal'><h2>What the ML sense actually refers to</h2><p>In the machine learning sense, a transformer is a neural network architecture built around a mechanism called self-attention. Instead of processing a sentence one word at a time in strict order, as older recurrent networks did, a transformer lets every position in a sequence look at every other position directly, and learns how much weight to give each of those relationships. If you feed it the sentence 'the trophy would not fit in the suitcase because it was too small', the model can learn that 'it' more plausibly refers to the suitcase than the trophy, by directly comparing the representation of 'it' against every other word and weighting the comparison accordingly.</p><p>Concretely, imagine a sequence of ten tokens, each represented as a vector of, say, 512 numbers. Self-attention computes, for every one of those ten tokens, a weighted combination of all ten tokens' representations, where the weights are learned rather than fixed. That is ten by ten comparisons, a small matrix in this toy case but one that grows quickly with sequence length. The architecture stacks several layers of this attention mechanism along with simple feed-forward transformations, and trains the whole thing to predict, reconstruct, or classify something about the input.</p><p>The reason this design displaced recurrent networks so thoroughly is mostly about parallelism and long-range dependency handling. A recurrent network processes a sequence step by step, so training is inherently sequential and struggles to remember information from many steps earlier. A transformer processes the whole sequence at once, so training parallelises well on modern hardware, and any token can directly reference any other token regardless of distance, without the information having to pass through dozens of intermediate steps and degrade along the way. That combination of speed and reach is the actual technical reason the architecture became dominant, not the name.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/transformer-word-two-meanings-1.jpg' alt='electrical power transformer on utility pole' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Why the naming happened and why it sticks</h2><p>Researchers often reach for everyday words when naming new ideas, partly because a memorable word travels further than an acronym, and partly because the everyday meaning offers a loose intuitive hook. 'Attention' itself is a borrowed word, taken from the everyday sense of focusing on something important while filtering out the rest, and it works reasonably well as an intuition even though the mechanism is really just weighted averaging guided by learned similarity scores. 'Transformer' works the same way: the network transforms input representations into output representations, and the word sounds active and mechanical in a way that suits an engineering paper.</p><p>The trouble is that popular words rarely arrive at a field with no prior baggage. 'Transformer' already meant something specific and well established in electrical engineering, a device that transfers electrical energy between circuits by electromagnetic induction, typically to step voltage up or down. Nobody in the 2017 paper was trying to invoke that meaning, and there is no clever pun intended, it is simply that a common English word was picked for a new technical purpose, the way 'kernel', 'tensor', and 'pipeline' have all been repurposed across different technical communities over the decades.</p><p>Once a name catches on in a fast-growing field, it becomes essentially permanent regardless of how confusing it is to outsiders. By the time enough papers, libraries, and job titles use 'transformer' to mean the attention-based architecture, renaming it would cause more confusion than living with the ambiguity. The practical lesson is not that the naming was a mistake, it is that context does almost all the disambiguating work, and a careful writer should notice when that context is missing for their reader.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>If you write or talk about transformers professionally, it costs almost nothing to disambiguate the first time the word appears, especially for readers outside machine learning, students new to the field, or anyone reading a summary out of context. A single clarifying phrase, something like 'transformer, the attention-based neural network architecture', removes the ambiguity permanently for that piece of writing.</p><p>More broadly, this is a useful habit whenever you introduce field-specific jargon that happens to reuse a common word. Precision is not about being pedantic, it is about respecting the reader's time and avoiding the kind of silent misunderstanding that only surfaces several sentences later, when the explanation you have built no longer makes sense to them. A short clarifying phrase at the point of first use is cheap insurance against exactly that.</p></section>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

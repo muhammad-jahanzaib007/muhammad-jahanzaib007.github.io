@@ -1,1 +1,1 @@
-2026-09-16T08:03:19Z slug=weekly-life-of-mlops-engineer words=1109 title="A Realistic Weekly Breakdown of MLOps Work"
+2026-09-16T20:02:12Z slug=transformer-word-two-meanings words=1035 title="Why 'Transformer' Means Something Different in ML Papers"

@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "transformer-word-two-meanings",
+      "title": "Why 'Transformer' Means Something Different in ML Papers",
+      "excerpt": "In electrical engineering a transformer changes voltage. In machine learning it changes how a model attends to context. Same word, unrelated ideas.",
+      "date": "2026-09-16",
+      "read_min": 5,
+      "tag": "Deep Learning",
+      "color": "a3",
+      "thumb": "assets/blog/transformer-word-two-meanings.png",
+      "thumb_alt": "Cover image for the article: Why 'Transformer' Means Something Different in ML Papers"
+    },
+    {
       "slug": "weekly-life-of-mlops-engineer",
       "title": "A Realistic Weekly Breakdown of MLOps Work",
       "excerpt": "Model training is the smallest part of the job. Here is the honest weekly rhythm of maintaining ML systems in production.",
