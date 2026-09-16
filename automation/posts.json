@@ -9,7 +9,8 @@
       "tag": "MLOps",
       "color": "a2",
       "thumb": "assets/blog/weekly-life-of-mlops-engineer.png",
-      "thumb_alt": "Cover image for the article: A Realistic Weekly Breakdown of MLOps Work"
+      "thumb_alt": "Cover image for the article: A Realistic Weekly Breakdown of MLOps Work",
+      "li_shared": true
     },
     {
       "slug": "dashboards-hide-silent-failures",
