@@ -9,7 +9,8 @@
       "tag": "Deep Learning",
       "color": "a3",
       "thumb": "assets/blog/transformer-word-two-meanings.png",
-      "thumb_alt": "Cover image for the article: Why 'Transformer' Means Something Different in ML Papers"
+      "thumb_alt": "Cover image for the article: Why 'Transformer' Means Something Different in ML Papers",
+      "li_shared": true
     },
     {
       "slug": "weekly-life-of-mlops-engineer",
