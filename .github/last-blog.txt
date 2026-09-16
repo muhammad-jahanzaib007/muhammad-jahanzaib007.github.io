@@ -1,1 +1,1 @@
-2026-09-15T20:01:23Z slug=dashboards-hide-silent-failures words=1052 title="When Evaluation Dashboards Hide Silent Model Failures"
+2026-09-16T08:03:19Z slug=weekly-life-of-mlops-engineer words=1109 title="A Realistic Weekly Breakdown of MLOps Work"

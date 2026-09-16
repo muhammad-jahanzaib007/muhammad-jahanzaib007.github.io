@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "weekly-life-of-mlops-engineer",
+      "title": "A Realistic Weekly Breakdown of MLOps Work",
+      "excerpt": "Model training is the smallest part of the job. Here is the honest weekly rhythm of maintaining ML systems in production.",
+      "date": "2026-09-16",
+      "read_min": 6,
+      "tag": "MLOps",
+      "color": "a2",
+      "thumb": "assets/blog/weekly-life-of-mlops-engineer.png",
+      "thumb_alt": "Cover image for the article: A Realistic Weekly Breakdown of MLOps Work"
+    },
+    {
       "slug": "dashboards-hide-silent-failures",
       "title": "When Evaluation Dashboards Hide Silent Model Failures",
       "excerpt": "A clean accuracy chart on a managed ML dashboard can hide leakage, drift, and slice-level failures that only careful, manual evaluation will reveal.",
