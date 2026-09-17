@@ -9,7 +9,8 @@
       "tag": "Careers",
       "color": "a5",
       "thumb": "assets/blog/internship-advert-vs-reality.png",
-      "thumb_alt": "Cover image for the article: The Gap Between a Data Science Internship Advert and the Job"
+      "thumb_alt": "Cover image for the article: The Gap Between a Data Science Internship Advert and the Job",
+      "li_shared": true
     },
     {
       "slug": "data-science-modules-real-jobs",
