@@ -9,7 +9,8 @@
       "tag": "Careers",
       "color": "a4",
       "thumb": "assets/blog/data-science-modules-real-jobs.png",
-      "thumb_alt": "Cover image for the article: Choosing a Data Science Degree: What Maps to Real Work"
+      "thumb_alt": "Cover image for the article: Choosing a Data Science Degree: What Maps to Real Work",
+      "li_shared": true
     },
     {
       "slug": "transformer-word-two-meanings",
