@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "internship-advert-vs-reality",
+      "title": "The Gap Between a Data Science Internship Advert and the Job",
+      "excerpt": "The advert promises neural networks and predictive models. The job mostly delivers spreadsheets, missing values, and meetings about definitions.",
+      "date": "2026-09-17",
+      "read_min": 5,
+      "tag": "Careers",
+      "color": "a5",
+      "thumb": "assets/blog/internship-advert-vs-reality.png",
+      "thumb_alt": "Cover image for the article: The Gap Between a Data Science Internship Advert and the Job"
+    },
+    {
       "slug": "data-science-modules-real-jobs",
       "title": "Choosing a Data Science Degree: What Maps to Real Work",
       "excerpt": "Module lists promise a lot. Here is how to tell which ones actually build the skills data science jobs use every day.",

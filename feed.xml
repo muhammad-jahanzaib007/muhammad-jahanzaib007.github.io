@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Thu, 17 Sep 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>The Gap Between a Data Science Internship Advert and the Job</title>
+    <link>https://jahanzaibawan.com/blog/internship-advert-vs-reality.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/internship-advert-vs-reality.html</guid>
+    <pubDate>Thu, 17 Sep 2026 09:00:00 +0000</pubDate>
+    <description>The advert promises neural networks and predictive models. The job mostly delivers spreadsheets, missing values, and meetings about definitions.</description>
+    <category>Careers</category>
+  </item>
+  <item>
     <title>Choosing a Data Science Degree: What Maps to Real Work</title>
     <link>https://jahanzaibawan.com/blog/data-science-modules-real-jobs.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/data-science-modules-real-jobs.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Tue, 08 Sep 2026 09:00:00 +0000</pubDate>
     <description>A leaderboard score measures performance on one fixed test set under one prompting scheme. It is not a certificate of general intelligence.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Fine-Tuning: One Word, Several Very Different Ideas</title>
-    <link>https://jahanzaibawan.com/blog/what-fine-tuning-actually-means.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/what-fine-tuning-actually-means.html</guid>
-    <pubDate>Mon, 07 Sep 2026 09:00:00 +0000</pubDate>
-    <description>Fine-tuning sounds like a small tweak everywhere it&#x27;s used, but in ML it can mean anything from adjusting a few layers to retraining a whole model. The distinction matters.</description>
-    <category>Deep Learning</category>
   </item>
 </channel>
 </rss>
