@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Choosing a data science degree module list: what maps to real job tasks",
     "The gap between a data science internship advert and the actual daily work",
     "Evaluation metrics glossary: what to say in an interview versus what to compute",
     "Why model evaluation for extreme risks needs more than a held-out test set",
@@ -175,6 +174,7 @@
     "Reading an MLOps certification syllabus: what it teaches and what it skips",
     "How model evaluation dashboards on managed platforms can hide silent failures",
     "A realistic weekly breakdown of what an MLOps engineer actually maintains",
-    "Why 'transformer' means something different in ML papers than in general use"
+    "Why 'transformer' means something different in ML papers than in general use",
+    "Choosing a data science degree module list: what maps to real job tasks"
   ]
 }

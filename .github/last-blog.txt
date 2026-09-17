@@ -1,1 +1,1 @@
-2026-09-16T20:02:12Z slug=transformer-word-two-meanings words=1035 title="Why 'Transformer' Means Something Different in ML Papers"
+2026-09-17T08:24:11Z slug=data-science-modules-real-jobs words=1155 title="Choosing a Data Science Degree: What Maps to Real Work"

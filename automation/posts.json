@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "data-science-modules-real-jobs",
+      "title": "Choosing a Data Science Degree: What Maps to Real Work",
+      "excerpt": "Module lists promise a lot. Here is how to tell which ones actually build the skills data science jobs use every day.",
+      "date": "2026-09-17",
+      "read_min": 6,
+      "tag": "Careers",
+      "color": "a4",
+      "thumb": "assets/blog/data-science-modules-real-jobs.png",
+      "thumb_alt": "Cover image for the article: Choosing a Data Science Degree: What Maps to Real Work"
+    },
+    {
       "slug": "transformer-word-two-meanings",
       "title": "Why 'Transformer' Means Something Different in ML Papers",
       "excerpt": "In electrical engineering a transformer changes voltage. In machine learning it changes how a model attends to context. Same word, unrelated ideas.",

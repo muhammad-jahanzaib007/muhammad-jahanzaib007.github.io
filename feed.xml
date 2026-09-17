@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Wed, 16 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 17 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Choosing a Data Science Degree: What Maps to Real Work</title>
+    <link>https://jahanzaibawan.com/blog/data-science-modules-real-jobs.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/data-science-modules-real-jobs.html</guid>
+    <pubDate>Thu, 17 Sep 2026 09:00:00 +0000</pubDate>
+    <description>Module lists promise a lot. Here is how to tell which ones actually build the skills data science jobs use every day.</description>
+    <category>Careers</category>
+  </item>
   <item>
     <title>Why &#x27;Transformer&#x27; Means Something Different in ML Papers</title>
     <link>https://jahanzaibawan.com/blog/transformer-word-two-meanings.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Mon, 07 Sep 2026 09:00:00 +0000</pubDate>
     <description>Fine-tuning sounds like a small tweak everywhere it&#x27;s used, but in ML it can mean anything from adjusting a few layers to retraining a whole model. The distinction matters.</description>
     <category>Deep Learning</category>
-  </item>
-  <item>
-    <title>Quantifying Uncertainty: The Confidence Intervals You Skip</title>
-    <link>https://jahanzaibawan.com/blog/confidence-intervals-model-evaluation.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/confidence-intervals-model-evaluation.html</guid>
-    <pubDate>Mon, 07 Sep 2026 09:00:00 +0000</pubDate>
-    <description>A model&#x27;s reported accuracy is a guess with error bars nobody drew. Here is how to draw them and why it changes conclusions.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>
