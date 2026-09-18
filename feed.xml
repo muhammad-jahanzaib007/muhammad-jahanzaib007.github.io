@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Fri, 18 Sep 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Why Extreme Risk Evaluation Needs More Than a Test Set</title>
+    <link>https://jahanzaibawan.com/blog/beyond-the-held-out-test-set.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/beyond-the-held-out-test-set.html</guid>
+    <pubDate>Fri, 18 Sep 2026 09:00:00 +0000</pubDate>
+    <description>Held-out accuracy answers a narrow question. For rare, high-consequence failures, you need adversarial probing, distribution shift tests, and honest uncertainty, not just a leaderboard score.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Evaluation Metrics: Interview Talk vs What You Actually Compute</title>
     <link>https://jahanzaibawan.com/blog/evaluation-metrics-interview-vs-practice.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/evaluation-metrics-interview-vs-practice.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Wed, 09 Sep 2026 09:00:00 +0000</pubDate>
     <description>Arena win rates measure relative preference, not correctness. Confusing the two can make a fluent, wrong model look like the best model.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Degree, Course, or Portfolio: What Really Teaches Fine-Tuning</title>
-    <link>https://jahanzaibawan.com/blog/degree-course-portfolio-fine-tuning.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/degree-course-portfolio-fine-tuning.html</guid>
-    <pubDate>Tue, 08 Sep 2026 09:00:00 +0000</pubDate>
-    <description>Degrees, courses, and portfolios each promise fine-tuning skills. Only one forces you to fail, debug, and rerun until the numbers hold up.</description>
-    <category>Education</category>
   </item>
 </channel>
 </rss>

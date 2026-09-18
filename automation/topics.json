@@ -1,11 +1,24 @@
 {
   "queue": [
-    "Why model evaluation for extreme risks needs more than a held-out test set",
     "Building a personal MLOps toolkit before paying for any platform",
     "Data science salary bands explained through the skills that actually justify them",
     "How to shortlist MLOps tools for a small team without chasing every new release",
     "What a model evaluation framework automates and what it quietly assumes",
-    "Explaining transformers to a non-technical audience without the film analogy trap"
+    "Explaining transformers to a non-technical audience without the film analogy trap",
+    "Hyperparameter search strategies: grid, random, and Bayesian compared honestly",
+    "Data leakage in time series: why lag features need extra care",
+    "Class imbalance beyond binary: handling skewed multi-class problems",
+    "Evaluating recommender systems: why accuracy is the wrong first metric",
+    "Active learning: choosing what to label next instead of labelling everything",
+    "Synthetic data generation for computer vision: when it closes the domain gap",
+    "The exploration versus exploitation tradeoff, explained without a slot machine analogy",
+    "Zero-shot classification: what it actually promises and where it falls short",
+    "Feature engineering for tabular data: what still beats a neural network",
+    "Choosing a batch size: the quiet hyperparameter everyone forgets to tune",
+    "Multi-modal models explained: fusing text and image without the hype",
+    "Data contracts for machine learning pipelines: catching schema drift early",
+    "Explaining a model's decision to a stakeholder who does not trust a p-value",
+    "Curriculum learning: ordering training data on purpose"
   ],
   "published": [
     "UAV object classification data-leakage case study",
@@ -175,6 +188,7 @@
     "Why 'transformer' means something different in ML papers than in general use",
     "Choosing a data science degree module list: what maps to real job tasks",
     "The gap between a data science internship advert and the actual daily work",
-    "Evaluation metrics glossary: what to say in an interview versus what to compute"
+    "Evaluation metrics glossary: what to say in an interview versus what to compute",
+    "Why model evaluation for extreme risks needs more than a held-out test set"
   ]
 }

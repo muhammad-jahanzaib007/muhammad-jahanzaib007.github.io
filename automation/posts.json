@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "beyond-the-held-out-test-set",
+      "title": "Why Extreme Risk Evaluation Needs More Than a Test Set",
+      "excerpt": "Held-out accuracy answers a narrow question. For rare, high-consequence failures, you need adversarial probing, distribution shift tests, and honest uncertainty, not just a leaderboard score.",
+      "date": "2026-09-18",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a2",
+      "thumb": "assets/blog/beyond-the-held-out-test-set.png",
+      "thumb_alt": "Cover image for the article: Why Extreme Risk Evaluation Needs More Than a Test Set"
+    },
+    {
       "slug": "evaluation-metrics-interview-vs-practice",
       "title": "Evaluation Metrics: Interview Talk vs What You Actually Compute",
       "excerpt": "Interviews want clean definitions of precision, recall and AUC. Real projects want you to know which one lies to you and when.",
