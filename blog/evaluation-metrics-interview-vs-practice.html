@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evaluation Metrics: Interview Talk vs What You Actually Compute | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical glossary contrasting how evaluation metrics like precision, recall, F1 and AUC are described in interviews versus how they should actually be computed and interpreted in practice.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="evaluation metrics, precision recall, F1 score, AUC ROC, machine learning interviews, class imbalance, model evaluation, data leakage, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-18">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Evaluation Metrics: Interview Talk vs What You Actually Compute">
+<meta property="og:description" content="A practical glossary contrasting how evaluation metrics like precision, recall, F1 and AUC are described in interviews versus how they should actually be computed and interpreted in practice.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/evaluation-metrics-interview-vs-practice.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/evaluation-metrics-interview-vs-practice.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Evaluation Metrics: Interview Talk vs What You Actually Compute">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/evaluation-metrics-interview-vs-practice.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/evaluation-metrics-interview-vs-practice.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Evaluation Metrics: Interview Talk vs What You Actually Compute",
+  "description": "A practical glossary contrasting how evaluation metrics like precision, recall, F1 and AUC are described in interviews versus how they should actually be computed and interpreted in practice.",
+  "url": "https://jahanzaibawan.com/blog/evaluation-metrics-interview-vs-practice.html",
+  "image": "https://jahanzaibawan.com/assets/blog/evaluation-metrics-interview-vs-practice.png",
+  "datePublished": "2026-09-18",
+  "dateModified": "2026-09-18",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/evaluation-metrics-interview-vs-practice.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Evaluation Metrics: Interview Talk vs What You Actually Compute", "item": "https://jahanzaibawan.com/blog/evaluation-metrics-interview-vs-practice.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 18 Sep 2026</div>
+    <h1>Evaluation Metrics: Interview Talk vs What You Actually Compute</h1>
+    <p class="lede">A short glossary of the gap between the tidy definitions we recite and the messy decisions we make when a metric meets real data.</p>
+  </div>
+
+  <img src="../assets/blog/evaluation-metrics-interview-vs-practice.png" alt="Cover image for the article: Evaluation Metrics: Interview Talk vs What You Actually Compute" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the glossary answer is never the whole answer</h2><p>Ask most candidates to define precision and recall and you get a clean, correct sentence. Precision is the fraction of predicted positives that are actually positive. Recall is the fraction of actual positives that the model caught. These definitions are true, memorable, and almost useless on their own, because the number you get out of them depends entirely on decisions nobody asks about in the thirty seconds you have to answer.</p><p>I think this gap matters because it is where junior and experienced practitioners diverge. The interview answer proves you read a textbook. The practical answer proves you have been burned by a metric that looked great on a slide and fell apart in production. I want to walk through a handful of common metrics the way I would explain them in an interview, then the way I would actually compute and sanity check them on a real dataset.</p><p>The running example throughout is a binary classifier deciding whether a transaction is fraudulent, with a dataset where fraud makes up two percent of cases. That imbalance is not a side note, it is the entire story for several of these metrics.</p></section><section class='psec reveal'><h2>Accuracy, precision, recall, F1</h2><p>Interview answer: accuracy is correct predictions over total predictions. It is intuitive and it is the first thing people learn, which is exactly the problem. On our fraud dataset, a model that predicts 'not fraud' for every single transaction scores ninety eight percent accuracy while catching zero fraud. If a hiring interview stops at 'accuracy measures how often the model is right', it has not tested whether you would catch this.</p><p>What I actually compute: I never report accuracy alone on an imbalanced problem, full stop. I look at the confusion matrix first, actual counts, not just rates, because rates hide how few positive examples you are testing against. If the test set has two hundred fraud cases out of ten thousand, a recall of ninety percent means one hundred and eighty caught and twenty missed. That is a very different feeling than a bare '0.90' on a dashboard.</p><p>Precision and recall trade against each other through the decision threshold, and quoting either one without stating the threshold is close to meaningless. In an interview I would say F1 is the harmonic mean of precision and recall, balancing the two. In practice I rarely use F1 alone because it silently assumes precision and recall matter equally, which is almost never true for a business problem. Missing fraud and annoying a genuine customer with a false alarm usually have very different costs, so I compute precision and recall separately at the threshold the business actually intends to deploy, and I plot the full precision-recall curve so the threshold choice is visible rather than buried.</p><p>A concrete worked check: suppose at threshold 0.5 the model flags three hundred transactions, of which one hundred and fifty are genuine fraud and one hundred and fifty are false alarms, while missing fifty real fraud cases. Precision is fifty percent, recall is seventy five percent. F1 comes out around 0.6. None of those three numbers alone tells a fraud team whether this is deployable; the actual conversation is about the cost of one hundred and fifty false alarms against a support team's capacity, which no single scalar metric captures.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/evaluation-metrics-interview-vs-practice-1.jpg' alt='confusion matrix whiteboard diagram' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>AUC, ROC, and the calibration trap</h2><p>Interview answer: the ROC curve plots true positive rate against false positive rate across all thresholds, and AUC is the area under it, interpreted as the probability the model ranks a random positive example above a random negative one. This is a fine and correct explanation, and it is also the point where I ask a follow up question if I am the one interviewing: does AUC care about class imbalance?</p><p>The honest answer is that AUC is fairly robust to imbalance compared with accuracy, because both axes are rates within their own class. But that robustness is also a trap: an AUC of 0.95 on our fraud data can coexist with a model that is practically useless at the threshold you would actually deploy, because AUC averages performance across every possible threshold, including ones nobody would ever use. I have seen AUC quoted as the headline metric in reports where the deployed threshold sits in a region of the curve with mediocre precision, and the reader never finds out.</p><p>What I actually compute alongside AUC is precision-recall AUC, which is far more informative under heavy imbalance because it does not have a large negative class quietly propping up the false positive rate. I also check calibration separately, because a model can rank examples perfectly, giving a great AUC, while its predicted probabilities are wildly overconfident or underconfident. If a fraud model outputs a 0.9 probability of fraud and, among all transactions it scores near 0.9, only sixty percent turn out to be fraud, that model is miscalibrated even though its ranking might be excellent. A reliability diagram, bucketing predictions into probability ranges and comparing to observed frequency, is a five minute check that catches this and rarely comes up in interviews at all.</p></section><section class='psec reveal'><h2>The metric that matters most: how you built the test set</h2><p>None of the above means anything if the evaluation split leaks information from training into testing. This is the part interviews test least and practice punishes most. If transactions from the same customer appear in both train and test sets, or if you split randomly on a dataset with a strong time component, your precision and recall numbers can look excellent while the model has effectively memorised patterns it will never see again once deployed on genuinely future data.</p><p>What I actually do is match the split to how the model will be used. For fraud detection, that almost always means a time based split, training on transactions up to a cutoff date and testing on transactions afterwards, because that mirrors deployment: you are always predicting on the future. I also check for group leakage, making sure no customer or account appears on both sides of the split, since customer level patterns can otherwise be trivially memorised.</p><p>My practical takeaway is this: treat the interview definition as the vocabulary, not the answer. When someone asks you about a metric, state the definition quickly, then immediately name the failure mode it hides, the threshold it depends on, and how you would build the split to test it honestly. That is the difference between reciting a glossary and actually knowing whether a model will work when it matters.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/evaluation-metrics-interview-vs-practice-2.jpg' alt='credit card fraud transaction screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

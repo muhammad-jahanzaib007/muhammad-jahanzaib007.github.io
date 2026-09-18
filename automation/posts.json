@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "evaluation-metrics-interview-vs-practice",
+      "title": "Evaluation Metrics: Interview Talk vs What You Actually Compute",
+      "excerpt": "Interviews want clean definitions of precision, recall and AUC. Real projects want you to know which one lies to you and when.",
+      "date": "2026-09-18",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a6",
+      "thumb": "assets/blog/evaluation-metrics-interview-vs-practice.png",
+      "thumb_alt": "Cover image for the article: Evaluation Metrics: Interview Talk vs What You Actually Compute"
+    },
+    {
       "slug": "internship-advert-vs-reality",
       "title": "The Gap Between a Data Science Internship Advert and the Job",
       "excerpt": "The advert promises neural networks and predictive models. The job mostly delivers spreadsheets, missing values, and meetings about definitions.",

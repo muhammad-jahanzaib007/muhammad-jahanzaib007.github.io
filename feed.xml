@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Thu, 17 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 18 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Evaluation Metrics: Interview Talk vs What You Actually Compute</title>
+    <link>https://jahanzaibawan.com/blog/evaluation-metrics-interview-vs-practice.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/evaluation-metrics-interview-vs-practice.html</guid>
+    <pubDate>Fri, 18 Sep 2026 09:00:00 +0000</pubDate>
+    <description>Interviews want clean definitions of precision, recall and AUC. Real projects want you to know which one lies to you and when.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>The Gap Between a Data Science Internship Advert and the Job</title>
     <link>https://jahanzaibawan.com/blog/internship-advert-vs-reality.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Tue, 08 Sep 2026 09:00:00 +0000</pubDate>
     <description>Degrees, courses, and portfolios each promise fine-tuning skills. Only one forces you to fail, debug, and rerun until the numbers hold up.</description>
     <category>Education</category>
-  </item>
-  <item>
-    <title>LLM Benchmarks Decoded: What a Leaderboard Score Tests</title>
-    <link>https://jahanzaibawan.com/blog/llm-benchmark-scores-decoded.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/llm-benchmark-scores-decoded.html</guid>
-    <pubDate>Tue, 08 Sep 2026 09:00:00 +0000</pubDate>
-    <description>A leaderboard score measures performance on one fixed test set under one prompting scheme. It is not a certificate of general intelligence.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>
