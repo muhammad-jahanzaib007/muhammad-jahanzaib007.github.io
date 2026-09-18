@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a6",
       "thumb": "assets/blog/evaluation-metrics-interview-vs-practice.png",
-      "thumb_alt": "Cover image for the article: Evaluation Metrics: Interview Talk vs What You Actually Compute"
+      "thumb_alt": "Cover image for the article: Evaluation Metrics: Interview Talk vs What You Actually Compute",
+      "li_shared": true
     },
     {
       "slug": "internship-advert-vs-reality",
