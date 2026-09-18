@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a2",
       "thumb": "assets/blog/beyond-the-held-out-test-set.png",
-      "thumb_alt": "Cover image for the article: Why Extreme Risk Evaluation Needs More Than a Test Set"
+      "thumb_alt": "Cover image for the article: Why Extreme Risk Evaluation Needs More Than a Test Set",
+      "li_shared": true
     },
     {
       "slug": "evaluation-metrics-interview-vs-practice",
