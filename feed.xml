@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Fri, 18 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 19 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Building a Personal MLOps Toolkit Before Paying for a Platform</title>
+    <link>https://jahanzaibawan.com/blog/personal-mlops-toolkit-before-platforms.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/personal-mlops-toolkit-before-platforms.html</guid>
+    <pubDate>Sat, 19 Sep 2026 09:00:00 +0000</pubDate>
+    <description>Managed MLOps platforms solve real problems, but most of those problems can be handled first with free tools, discipline, and a bit of scripting.</description>
+    <category>MLOps</category>
+  </item>
   <item>
     <title>Why Extreme Risk Evaluation Needs More Than a Test Set</title>
     <link>https://jahanzaibawan.com/blog/beyond-the-held-out-test-set.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Wed, 09 Sep 2026 09:00:00 +0000</pubDate>
     <description>Most NLP advice assumes thousands of labelled examples. Here is what genuinely works when you have a few hundred, and how to prove it honestly.</description>
     <category>NLP</category>
-  </item>
-  <item>
-    <title>LLM Arenas: Pairwise Preference Is Not Accuracy</title>
-    <link>https://jahanzaibawan.com/blog/pairwise-preference-vs-accuracy.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/pairwise-preference-vs-accuracy.html</guid>
-    <pubDate>Wed, 09 Sep 2026 09:00:00 +0000</pubDate>
-    <description>Arena win rates measure relative preference, not correctness. Confusing the two can make a fluent, wrong model look like the best model.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>

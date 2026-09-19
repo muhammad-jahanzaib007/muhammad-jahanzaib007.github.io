@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Building a personal MLOps toolkit before paying for any platform",
     "Data science salary bands explained through the skills that actually justify them",
     "How to shortlist MLOps tools for a small team without chasing every new release",
     "What a model evaluation framework automates and what it quietly assumes",
@@ -189,6 +188,7 @@
     "Choosing a data science degree module list: what maps to real job tasks",
     "The gap between a data science internship advert and the actual daily work",
     "Evaluation metrics glossary: what to say in an interview versus what to compute",
-    "Why model evaluation for extreme risks needs more than a held-out test set"
+    "Why model evaluation for extreme risks needs more than a held-out test set",
+    "Building a personal MLOps toolkit before paying for any platform"
   ]
 }

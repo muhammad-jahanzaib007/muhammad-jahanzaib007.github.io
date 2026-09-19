@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "personal-mlops-toolkit-before-platforms",
+      "title": "Building a Personal MLOps Toolkit Before Paying for a Platform",
+      "excerpt": "Managed MLOps platforms solve real problems, but most of those problems can be handled first with free tools, discipline, and a bit of scripting.",
+      "date": "2026-09-19",
+      "read_min": 6,
+      "tag": "MLOps",
+      "color": "a3",
+      "thumb": "assets/blog/personal-mlops-toolkit-before-platforms.png",
+      "thumb_alt": "Cover image for the article: Building a Personal MLOps Toolkit Before Paying for a Platform"
+    },
+    {
       "slug": "beyond-the-held-out-test-set",
       "title": "Why Extreme Risk Evaluation Needs More Than a Test Set",
       "excerpt": "Held-out accuracy answers a narrow question. For rare, high-consequence failures, you need adversarial probing, distribution shift tests, and honest uncertainty, not just a leaderboard score.",

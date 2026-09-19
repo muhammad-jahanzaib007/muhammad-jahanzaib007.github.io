@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building a Personal MLOps Toolkit Before Paying for a Platform | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical case for building your own lightweight MLOps setup with free tools before subscribing to a managed platform, with a worked example.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="MLOps, experiment tracking, reproducibility, model versioning, data pipelines, machine learning engineering, DVC, MLflow, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-19">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Building a Personal MLOps Toolkit Before Paying for a Platform">
+<meta property="og:description" content="A practical case for building your own lightweight MLOps setup with free tools before subscribing to a managed platform, with a worked example.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/personal-mlops-toolkit-before-platforms.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/personal-mlops-toolkit-before-platforms.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Building a Personal MLOps Toolkit Before Paying for a Platform">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/personal-mlops-toolkit-before-platforms.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/personal-mlops-toolkit-before-platforms.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Building a Personal MLOps Toolkit Before Paying for a Platform",
+  "description": "A practical case for building your own lightweight MLOps setup with free tools before subscribing to a managed platform, with a worked example.",
+  "url": "https://jahanzaibawan.com/blog/personal-mlops-toolkit-before-platforms.html",
+  "image": "https://jahanzaibawan.com/assets/blog/personal-mlops-toolkit-before-platforms.png",
+  "datePublished": "2026-09-19",
+  "dateModified": "2026-09-19",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/personal-mlops-toolkit-before-platforms.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Building a Personal MLOps Toolkit Before Paying for a Platform", "item": "https://jahanzaibawan.com/blog/personal-mlops-toolkit-before-platforms.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">MLOps · 6 min read · 19 Sep 2026</div>
+    <h1>Building a Personal MLOps Toolkit Before Paying for a Platform</h1>
+    <p class="lede">Before you subscribe to a managed MLOps platform, it is worth assembling the small set of habits and free tools that solve most of the same problems yourself.</p>
+  </div>
+
+  <img src="../assets/blog/personal-mlops-toolkit-before-platforms.png" alt="Cover image for the article: Building a Personal MLOps Toolkit Before Paying for a Platform" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this matters before you spend anything</h2><p>Every managed MLOps platform sells the same promise: track your experiments, version your data, deploy your models, monitor drift, and never lose reproducibility again. These are real problems. I have lost hours trying to work out which checkpoint produced which number in a report, and it is a miserable feeling. But the fix for most of that pain is not a subscription, it is discipline plus a handful of free, well-understood tools stitched together deliberately.</p><p>The danger of reaching for a platform too early is that it hides the underlying problem rather than teaching you to solve it. If you do not understand why your experiments become untraceable, buying a dashboard will just give you a prettier untraceable mess. Building a personal toolkit first forces you to name the actual failure modes: unlogged hyperparameters, silent data leakage, models that cannot be recreated, and metrics that quietly drift between runs. Once you have felt those failures and fixed them by hand, you know exactly what you are buying later, if you ever need to buy anything at all.</p><p>There is also a cost argument that is easy to underestimate. Many platforms charge per seat, per compute hour, or per logged run, and those costs scale awkwardly for a solo researcher or small team still working out their problem. A toolkit built from open tools costs time upfront and almost nothing to run, which matters enormously when you are iterating on ideas rather than serving production traffic.</p></section><section class='psec reveal'><h2>The four problems worth solving yourself first</h2><p>I think of a personal MLOps setup as answering four questions, in this order of priority: can I reproduce this exact result, can I find this exact result later, did my evaluation leak information it should not have, and will I notice if the model's behaviour changes after deployment. Each has a lightweight answer.</p><p>Reproducibility starts with pinning everything: library versions, random seeds, and the exact data snapshot used. A requirements file with pinned versions and a fixed seed passed explicitly into your training script costs almost nothing and prevents the classic problem where a model trained today cannot be recreated in three months because a dependency changed its default behaviour. Data versioning can be as simple as hashing your dataset file and recording that hash alongside the run, or using a lightweight tool that tracks data alongside code without needing a server.</p><p>Findability is where an experiment tracker earns its keep, but you do not need a paid one. A single structured log, even a spreadsheet or a local database, that records the run identifier, the git commit hash, the hyperparameters, the metrics, and a short note on what you changed, will answer ninety percent of the questions you will ask yourself in six months. The discipline matters more than the tool: I have seen expensive tracking platforms sit unused because nobody enforced logging every run, and I have seen a plain CSV file work perfectly because the habit was consistent.</p><p>Leakage checking is less about tooling and more about a checklist you run before trusting any number: was the test set touched during feature engineering, does the split respect time order if the data is temporal, are duplicate records split across train and test. A short script that checks for overlapping identifiers between splits catches a surprising number of real mistakes, and it costs an afternoon to write once and reuse forever.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/personal-mlops-toolkit-before-platforms-1.jpg' alt='laptop with spreadsheet of data on screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>A worked example: tracking runs without a platform</h2><p>Suppose I am tuning a gradient boosted model and I run forty experiments over two weeks, varying learning rate, tree depth, and the feature set. Without any structure, I would end up with forty notebook cells and a vague memory of which one scored best. Instead, each run writes a single row to a local file: run id, git commit hash, timestamp, learning rate, max depth, feature set name, validation AUC, and a one-line note.</p><p>After two weeks that file has forty rows. I sort by validation AUC and see the top score is 0.812 with a learning rate of 0.05, depth of six, and the extended feature set. But I also notice, because I logged the git commit, that this run used a version of the preprocessing code from before I fixed a bug that leaked a target-derived feature. I can immediately discard that run rather than presenting a number I cannot trust. Without the log, I would have had no way to connect that specific score to that specific bug, and I might have reported 0.812 as my best honest result.</p><p>This is the entire value proposition of experiment tracking in miniature: not fancy dashboards, but the ability to answer, with certainty, which code and data produced which number. A platform automates the logging and gives you a nicer interface to query it, but the core mechanism, a structured record tied to a code version, is something you can build in an afternoon with a text file and a bit of scripting discipline.</p><p>The same logic extends to model versioning and monitoring. Saving a model file alongside the exact commit hash and data hash that produced it means you can always regenerate it. A simple scheduled script that recomputes a handful of summary statistics on incoming data and flags large deviations from training-time statistics gives you a basic drift alarm without any monitoring subscription. None of this is glamorous, but all of it is the actual substance that platforms wrap in a user interface.</p></section><section class='psec reveal'><h2>When to actually pay for a platform</h2><p>None of this is an argument against managed platforms forever. They earn their cost when you have multiple people who need a shared view of experiments, when compute orchestration across many machines becomes genuinely painful to script yourself, or when regulatory requirements demand audit trails that are expensive to build and maintain correctly by hand. At that point, paying for infrastructure that has already solved concurrency, access control, and scale is usually cheaper than doing it yourself.</p><p>But even then, having built your own toolkit first means you evaluate platforms with real criteria rather than marketing claims. You know exactly what a good experiment log needs to contain, so you can check whether the platform actually captures it. You know what a leakage check looks like, so you can tell whether the platform's automated data validation is superficial or genuinely useful. The habits transfer even when the tools change.</p><p>My practical takeaway is this: before you subscribe to anything, spend a week building the smallest possible version of each piece, a pinned environment, a structured run log tied to git commits, a leakage checklist script, and a basic drift check. It will cost you a few evenings, and it will make every future tool, paid or free, something you understand rather than something you merely operate.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/personal-mlops-toolkit-before-platforms-2.jpg' alt='whiteboard with data pipeline diagram' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

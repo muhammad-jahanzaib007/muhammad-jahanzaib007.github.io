@@ -1,1 +1,1 @@
-2026-09-18T20:22:24Z slug=beyond-the-held-out-test-set words=1099 title="Why Extreme Risk Evaluation Needs More Than a Test Set"
+2026-09-19T08:22:05Z slug=personal-mlops-toolkit-before-platforms words=1140 title="Building a Personal MLOps Toolkit Before Paying for a Platform"
