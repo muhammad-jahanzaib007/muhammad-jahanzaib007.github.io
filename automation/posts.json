@@ -9,7 +9,8 @@
       "tag": "MLOps",
       "color": "a3",
       "thumb": "assets/blog/personal-mlops-toolkit-before-platforms.png",
-      "thumb_alt": "Cover image for the article: Building a Personal MLOps Toolkit Before Paying for a Platform"
+      "thumb_alt": "Cover image for the article: Building a Personal MLOps Toolkit Before Paying for a Platform",
+      "li_shared": true
     },
     {
       "slug": "beyond-the-held-out-test-set",
