@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Sat, 19 Sep 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Data Science Salary Bands Explained by Skill</title>
+    <link>https://jahanzaibawan.com/blog/data-science-salary-bands-skills.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/data-science-salary-bands-skills.html</guid>
+    <pubDate>Sat, 19 Sep 2026 09:00:00 +0000</pubDate>
+    <description>Salary bands in data science track judgement under uncertainty, not tool familiarity. Here is the skill ladder that actually explains the pay gap.</description>
+    <category>Careers</category>
+  </item>
+  <item>
     <title>Building a Personal MLOps Toolkit Before Paying for a Platform</title>
     <link>https://jahanzaibawan.com/blog/personal-mlops-toolkit-before-platforms.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/personal-mlops-toolkit-before-platforms.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/explaining-attention-to-non-technical.html</guid>
     <pubDate>Thu, 10 Sep 2026 09:00:00 +0000</pubDate>
     <description>How I explain transformer attention to non-technical interviewers using a room full of conversations, not maths.</description>
-    <category>NLP</category>
-  </item>
-  <item>
-    <title>What NLP Techniques Survive Contact With Small Data</title>
-    <link>https://jahanzaibawan.com/blog/nlp-techniques-small-datasets.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/nlp-techniques-small-datasets.html</guid>
-    <pubDate>Wed, 09 Sep 2026 09:00:00 +0000</pubDate>
-    <description>Most NLP advice assumes thousands of labelled examples. Here is what genuinely works when you have a few hundred, and how to prove it honestly.</description>
     <category>NLP</category>
   </item>
 </channel>

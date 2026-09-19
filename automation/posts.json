@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "data-science-salary-bands-skills",
+      "title": "Data Science Salary Bands Explained by Skill",
+      "excerpt": "Salary bands in data science track judgement under uncertainty, not tool familiarity. Here is the skill ladder that actually explains the pay gap.",
+      "date": "2026-09-19",
+      "read_min": 5,
+      "tag": "Careers",
+      "color": "a4",
+      "thumb": "assets/blog/data-science-salary-bands-skills.png",
+      "thumb_alt": "Cover image for the article: Data Science Salary Bands Explained by Skill"
+    },
+    {
       "slug": "personal-mlops-toolkit-before-platforms",
       "title": "Building a Personal MLOps Toolkit Before Paying for a Platform",
       "excerpt": "Managed MLOps platforms solve real problems, but most of those problems can be handled first with free tools, discipline, and a bit of scripting.",

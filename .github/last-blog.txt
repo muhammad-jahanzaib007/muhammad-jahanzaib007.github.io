@@ -1,1 +1,1 @@
-2026-09-19T08:22:05Z slug=personal-mlops-toolkit-before-platforms words=1140 title="Building a Personal MLOps Toolkit Before Paying for a Platform"
+2026-09-19T20:21:52Z slug=data-science-salary-bands-skills words=1067 title="Data Science Salary Bands Explained by Skill"
