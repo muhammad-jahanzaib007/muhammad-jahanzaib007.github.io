@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Shortlist MLOps Tools Without Chasing Every Release | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical, leakage-aware approach to shortlisting MLOps tools for small teams, focused on real constraints rather than novelty.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="mlops, tool selection, small team engineering, ml infrastructure, reproducibility, experiment tracking, model deployment, pragmatic engineering, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-20">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="How to Shortlist MLOps Tools Without Chasing Every Release">
+<meta property="og:description" content="A practical, leakage-aware approach to shortlisting MLOps tools for small teams, focused on real constraints rather than novelty.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/shortlisting-mlops-tools-small-team.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/shortlisting-mlops-tools-small-team.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Shortlist MLOps Tools Without Chasing Every Release">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/shortlisting-mlops-tools-small-team.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/shortlisting-mlops-tools-small-team.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to Shortlist MLOps Tools Without Chasing Every Release",
+  "description": "A practical, leakage-aware approach to shortlisting MLOps tools for small teams, focused on real constraints rather than novelty.",
+  "url": "https://jahanzaibawan.com/blog/shortlisting-mlops-tools-small-team.html",
+  "image": "https://jahanzaibawan.com/assets/blog/shortlisting-mlops-tools-small-team.png",
+  "datePublished": "2026-09-20",
+  "dateModified": "2026-09-20",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/shortlisting-mlops-tools-small-team.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "How to Shortlist MLOps Tools Without Chasing Every Release", "item": "https://jahanzaibawan.com/blog/shortlisting-mlops-tools-small-team.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">MLOps · 5 min read · 20 Sep 2026</div>
+    <h1>How to Shortlist MLOps Tools Without Chasing Every Release</h1>
+    <p class="lede">A small team cannot evaluate every new framework that trends on a given week. Here is a way to pick tools that actually earn their place in your stack.</p>
+  </div>
+
+  <img src="../assets/blog/shortlisting-mlops-tools-small-team.png" alt="Cover image for the article: How to Shortlist MLOps Tools Without Chasing Every Release" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The real cost of tool churn</h2><p>Every few weeks a new experiment tracker, feature store, or orchestration framework appears with a polished landing page and a handful of glowing testimonials. For a small team, the temptation to investigate each one is strong, partly because nobody wants to be the person who missed the tool that would have saved three weeks of pain. But investigation is not free. Reading docs, spinning up a demo, migrating a pipeline, and then discovering an edge case that breaks your workflow can easily eat two or three days per tool. Multiply that across a year and a two or three person ML team can lose a meaningful fraction of its capacity to evaluation rather than delivery.</p><p>The deeper problem is that tool evaluation without a clear rubric tends to reward whatever is currently loud, not whatever actually fits your constraints. A framework built for a hundred-person platform team solving multi-tenant serving at scale is not obviously better than a simple cron job and a versioned model file, if your team ships one model to production and updates it monthly. Chasing releases optimises for looking current rather than for shipping reliably, and those two goals diverge more often than people admit.</p><p>I think the fix is not to ignore new tools entirely, since some genuinely solve painful problems, but to install a deliberate filter before anything gets a serious look. The filter should be boring and repeatable, the kind of thing you can apply in fifteen minutes rather than a week, so that the default answer to a shiny new release is a quick no unless it clears specific bars.</p></section><section class='psec reveal'><h2>A four-question filter that does most of the work</h2><p>The first question is whether the tool solves a problem you actually have today, not one you might have in eighteen months. If your team retrains one model a month and deploys it behind a single endpoint, an elaborate multi-model feature store solves a problem you do not have yet. Say your current pain is that you cannot remember which hyperparameters produced last month's best checkpoint. That is a concrete, present problem, and it points you towards a lightweight experiment tracker, not towards a full platform rewrite. Anchoring the search in a named, current pain filters out most candidates immediately.</p><p>The second question is the migration cost if the tool disappears or the vendor changes direction in two years. Open source projects get abandoned, startups get acquired and their free tiers vanish, and APIs change in ways that break pipelines quietly. A tool that stores your artefacts in an open format such as plain files, a standard database, or widely supported serialisation is much cheaper to leave than one that locks your metadata into a proprietary schema with no export path. I would rather adopt a slightly less polished tool with an obvious exit than a slick one that requires a rewrite to escape.</p><p>The third question is operational burden relative to team size. A tool that needs a dedicated Kubernetes cluster, a message queue, and a database just to track experiments is a poor fit for a team of three where nobody wants to be an on-call infrastructure engineer on top of their research work. Estimate the number of moving parts honestly: if adopting the tool means learning and maintaining two new services, that is a real ongoing cost, not a one-off setup cost, and it should be weighed against what you gain.</p><p>The fourth question is whether the tool composes with what you already run, or whether it wants to replace your entire stack. Tools that slot into an existing pipeline as a single component, for example a tracking library that just logs to a folder or a lightweight registry that sits next to your existing storage, are far lower risk than platforms that ask you to migrate everything at once. Composability lets you trial a tool on one project without betting the whole team's workflow on it succeeding.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/shortlisting-mlops-tools-small-team-1.jpg' alt='laptop with code editor open on desk' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>A worked example: choosing an experiment tracker</h2><p>Suppose a three-person team is deciding whether to adopt a new experiment tracking tool that just released a well-marketed version two. Applying the filter: the present pain is real, since the team currently tracks runs in a shared spreadsheet and has twice retrained a model because nobody could find which configuration produced the best validation score. That clears question one.</p><p>On migration cost, the new tool stores everything in its own hosted database with no bulk export beyond a paid tier. That is a yellow flag, not necessarily a dealbreaker, but it means the team should check whether a free, open alternative with local file storage covers eighty per cent of the need. If a simpler tool logs metrics and parameters to plain CSV files or a lightweight local database, and that is enough to solve the actual pain of losing track of good runs, the extra features of the hosted platform may not justify the lock-in.</p><p>On operational burden, the hosted tool needs an account, an API key management process, and a dashboard that someone has to check regularly, whereas the simpler tool needs a single pip install and writes to a folder that is already backed up. For a team without a dedicated platform engineer, the simpler tool wins on this axis by a wide margin, even though it lacks some visualisation polish.</p><p>On composability, both tools can sit alongside the existing training script without requiring a rewrite, so this axis does not distinguish them. Weighing the four answers together, the team reasonably picks the simpler, self-hosted option, revisits the decision in six months, and spends the time saved on actually improving the model rather than comparing dashboards. That is the outcome the filter is designed to produce: a decision made once, quickly, and revisited on a schedule rather than every time a new release appears in a newsletter.</p></section><section class='psec reveal'><h2>Practical takeaway</h2><p>Set a fixed cadence, perhaps every six months, where the team is allowed to properly evaluate new tools against the current stack, and treat every other week's new release as noise unless it clears the four questions in under fifteen minutes. Keep a short written note of why each core tool was chosen, since that note is what stops the next enthusiastic team member from re-litigating a decision that was already made for good reasons. The goal is not to have the newest stack; it is to spend your limited engineering time on the model and the data, and to let the tooling underneath be quietly reliable rather than quietly fashionable.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/shortlisting-mlops-tools-small-team-2.jpg' alt='small team meeting around laptop' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

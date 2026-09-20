@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "shortlisting-mlops-tools-small-team",
+      "title": "How to Shortlist MLOps Tools Without Chasing Every Release",
+      "excerpt": "A practical filter for choosing MLOps tools on a small team, so you stop re-evaluating your stack every time something new trends.",
+      "date": "2026-09-20",
+      "read_min": 5,
+      "tag": "MLOps",
+      "color": "a5",
+      "thumb": "assets/blog/shortlisting-mlops-tools-small-team.png",
+      "thumb_alt": "Cover image for the article: How to Shortlist MLOps Tools Without Chasing Every Release"
+    },
+    {
       "slug": "data-science-salary-bands-skills",
       "title": "Data Science Salary Bands Explained by Skill",
       "excerpt": "Salary bands in data science track judgement under uncertainty, not tool familiarity. Here is the skill ladder that actually explains the pay gap.",

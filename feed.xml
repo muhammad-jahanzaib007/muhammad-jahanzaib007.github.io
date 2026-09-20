@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Sat, 19 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 20 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>How to Shortlist MLOps Tools Without Chasing Every Release</title>
+    <link>https://jahanzaibawan.com/blog/shortlisting-mlops-tools-small-team.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/shortlisting-mlops-tools-small-team.html</guid>
+    <pubDate>Sun, 20 Sep 2026 09:00:00 +0000</pubDate>
+    <description>A practical filter for choosing MLOps tools on a small team, so you stop re-evaluating your stack every time something new trends.</description>
+    <category>MLOps</category>
+  </item>
   <item>
     <title>Data Science Salary Bands Explained by Skill</title>
     <link>https://jahanzaibawan.com/blog/data-science-salary-bands-skills.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Thu, 10 Sep 2026 09:00:00 +0000</pubDate>
     <description>How a grid of pixels becomes a sequence a transformer can read, and why that single design choice explains almost everything else about ViTs.</description>
     <category>Deep Learning</category>
-  </item>
-  <item>
-    <title>Explaining a Transformer&#x27;s Attention Mechanism Simply</title>
-    <link>https://jahanzaibawan.com/blog/explaining-attention-to-non-technical.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/explaining-attention-to-non-technical.html</guid>
-    <pubDate>Thu, 10 Sep 2026 09:00:00 +0000</pubDate>
-    <description>How I explain transformer attention to non-technical interviewers using a room full of conversations, not maths.</description>
-    <category>NLP</category>
   </item>
 </channel>
 </rss>
