@@ -9,7 +9,8 @@
       "tag": "MLOps",
       "color": "a5",
       "thumb": "assets/blog/shortlisting-mlops-tools-small-team.png",
-      "thumb_alt": "Cover image for the article: How to Shortlist MLOps Tools Without Chasing Every Release"
+      "thumb_alt": "Cover image for the article: How to Shortlist MLOps Tools Without Chasing Every Release",
+      "li_shared": true
     },
     {
       "slug": "data-science-salary-bands-skills",
