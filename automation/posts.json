@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a6",
       "thumb": "assets/blog/what-eval-frameworks-assume.png",
-      "thumb_alt": "Cover image for the article: What a Model Evaluation Framework Automates and Assumes"
+      "thumb_alt": "Cover image for the article: What a Model Evaluation Framework Automates and Assumes",
+      "li_shared": true
     },
     {
       "slug": "shortlisting-mlops-tools-small-team",
