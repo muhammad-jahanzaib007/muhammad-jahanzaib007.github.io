@@ -1,1 +1,1 @@
-2026-09-20T08:22:15Z slug=shortlisting-mlops-tools-small-team words=1095 title="How to Shortlist MLOps Tools Without Chasing Every Release"
+2026-09-20T20:22:18Z slug=what-eval-frameworks-assume words=1178 title="What a Model Evaluation Framework Automates and Assumes"

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What a Model Evaluation Framework Automates and Assumes | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A look at what model evaluation frameworks handle automatically, and the hidden assumptions about data independence, splitting, and metrics that can silently invalidate results.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="model evaluation, evaluation framework, data leakage, train test split, cross validation, machine learning metrics, reproducibility, benchmark design, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-20">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="What a Model Evaluation Framework Automates and Assumes">
+<meta property="og:description" content="A look at what model evaluation frameworks handle automatically, and the hidden assumptions about data independence, splitting, and metrics that can silently invalidate results.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/what-eval-frameworks-assume.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/what-eval-frameworks-assume.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What a Model Evaluation Framework Automates and Assumes">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/what-eval-frameworks-assume.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/what-eval-frameworks-assume.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "What a Model Evaluation Framework Automates and Assumes",
+  "description": "A look at what model evaluation frameworks handle automatically, and the hidden assumptions about data independence, splitting, and metrics that can silently invalidate results.",
+  "url": "https://jahanzaibawan.com/blog/what-eval-frameworks-assume.html",
+  "image": "https://jahanzaibawan.com/assets/blog/what-eval-frameworks-assume.png",
+  "datePublished": "2026-09-20",
+  "dateModified": "2026-09-20",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/what-eval-frameworks-assume.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "What a Model Evaluation Framework Automates and Assumes", "item": "https://jahanzaibawan.com/blog/what-eval-frameworks-assume.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 6 min read · 20 Sep 2026</div>
+    <h1>What a Model Evaluation Framework Automates and Assumes</h1>
+    <p class="lede">Evaluation harnesses save time by hiding decisions inside defaults. Knowing which decisions are hidden is what separates a trustworthy number from a comforting one.</p>
+  </div>
+
+  <img src="../assets/blog/what-eval-frameworks-assume.png" alt="Cover image for the article: What a Model Evaluation Framework Automates and Assumes" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the automation is seductive</h2><p>Every serious machine learning library now ships an evaluation framework: a function or class that takes your model, your data, and a metric name, and returns a number you can put in a table. This is genuinely useful. Before these tools existed, people rolled their own splitting and scoring logic, and it was common to find off-by-one errors, accidental peeking at test labels, or metrics computed on the wrong axis. Automation removes a whole category of careless mistakes.</p><p>The problem is that automation does not just remove mistakes, it also removes visibility. When a framework handles the split, the scaling, the cross validation folds, and the aggregation in one call, you stop asking whether those steps are appropriate for your specific data. The framework becomes a black box that happens to sit between you and your conclusions, and black boxes are exactly the thing a rigorous evaluator is supposed to be suspicious of.</p><p>I think the healthiest way to use these tools is to treat the number they return as a claim, not a fact, and then interrogate the claim by asking what had to be true for that number to mean what it appears to mean. That interrogation is the actual skill. The library call is just typing.</p></section><section class='psec reveal'><h2>What gets automated, concretely</h2><p>Most evaluation frameworks bundle four things. First, splitting: dividing data into train, validation, and test partitions, often with a single random seed. Second, resampling: k-fold cross validation or repeated holdout, to reduce the variance of a single split. Third, scoring: computing one or more metrics such as accuracy, F1, mean squared error, or AUC, on held-out predictions. Fourth, aggregation: averaging scores across folds or seeds and reporting a mean with, if you are lucky, a spread.</p><p>Consider a concrete case. Suppose you have five thousand rows of tabular customer data and you want to predict churn. You call a standard cross validation routine with five folds and get back accuracy scores of 0.81, 0.83, 0.80, 0.82, 0.84, which averages to 0.82. That is a clean, defensible-looking result, produced in three lines of code. It took the framework a fraction of a second to shuffle the rows, build the folds, fit five models, and average five numbers.</p><p>Underneath that convenience sits a specific, unstated model of your data: that each row is an independent, identically distributed sample, that shuffling rows before splitting does no harm, and that accuracy is the metric that matters for the decision you are actually going to make with the model. All three of those are assumptions, not facts, and none of them are checked by the framework itself.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/what-eval-frameworks-assume-1.jpg' alt='data table spreadsheet on laptop screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>The assumptions that quietly break things</h2><p>The independence assumption is the one that causes the most damage in practice. If your five thousand rows actually come from eight hundred customers, each with several repeated observations over time, then a random shuffle will put some observations from the same customer in both the train and test folds. The model can partly memorise customer-specific quirks rather than learning general churn patterns, and your 0.82 accuracy is inflated by leakage that has nothing to do with real predictive skill. Grouped splitting, keeping all of a customer's rows on one side of the split, is the fix, but the framework will not tell you to do it. It will happily shuffle by row and hand you a confident, wrong number.</p><p>Temporal structure causes a related but distinct problem. If churn depends on external events, a promotion in March, a price rise in June, then a random split mixes future information into the training set relative to the test set. A model evaluated this way can look excellent in cross validation and then degrade sharply in production, because production only ever sees the past predicting the future. The remedy is a time-based split, training on earlier periods and testing on later ones, which usually produces a noticeably less flattering number. That drop is not a bug, it is the framework finally telling you something honest.</p><p>The metric choice assumption is subtler but equally consequential. Accuracy treats every error identically, but if churners are five percent of your customers, a model that predicts nobody churns still scores 0.95 accuracy while being useless. The evaluation framework will compute that 0.95 without complaint, because computing accuracy is exactly what you asked it to do. Whether accuracy is the right question is a decision that belongs to you, informed by the cost of a missed churner versus a false alarm, and no default metric argument in a function call can make that decision for you.</p><p>There is also a quieter assumption about the test set itself: that it represents the population you will actually deploy against. A test set drawn from the same historical window and the same customer segment as training will not reveal how the model behaves on a new region, a new product line, or a shift in customer behaviour after a policy change. The framework reports performance on the data you gave it, not on the world you are about to release the model into, and those are only the same thing if you have deliberately arranged for them to be.</p></section><section class='psec reveal'><h2>A practical way to use the tools honestly</h2><p>None of this is an argument against using evaluation frameworks. Writing your own cross validation loop from scratch does not make you more rigorous, it usually just introduces new bugs alongside the old assumptions. The argument is for a short checklist you run before trusting the output: are my rows truly independent, or do they cluster by entity, time, or source; does a random split reflect how the model will actually be used, or does the deployment setting have structure that a shuffle destroys; and does my chosen metric penalise the errors that actually cost something, or did I pick it because it was the default.</p><p>In the churn example, the honest workflow looks like this: group by customer to prevent leakage, respect chronological order if the business genuinely rolls forward in time, and report precision, recall, and a cost-weighted metric alongside accuracy so the class imbalance cannot hide. The resulting number might drop from 0.82 to something like 0.71, and that is not a worse result, it is a truer one. A model that reports 0.71 under an honest evaluation is far more valuable than one that reports 0.82 under a leaky one, because the first number will still be roughly right after deployment and the second one will not.</p><p>The broader lesson is that a framework automates procedure, not judgement. It will do exactly what you tell it to do, quickly and consistently, which is precisely why an unexamined default is dangerous: it fails silently and reproducibly. Treat every evaluation number as conditional on a set of choices you made, list those choices explicitly, and check each one against how the model will actually be used. That habit costs a few extra minutes per experiment and it is the difference between a metric you can defend and one that merely looks defensible.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/what-eval-frameworks-assume-2.jpg' alt='whiteboard with timeline diagram' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "what-eval-frameworks-assume",
+      "title": "What a Model Evaluation Framework Automates and Assumes",
+      "excerpt": "Evaluation frameworks automate splitting, scoring, and aggregation, but they quietly assume your data is independent, your split reflects deployment, and your metric means what you think.",
+      "date": "2026-09-20",
+      "read_min": 6,
+      "tag": "Evaluation",
+      "color": "a6",
+      "thumb": "assets/blog/what-eval-frameworks-assume.png",
+      "thumb_alt": "Cover image for the article: What a Model Evaluation Framework Automates and Assumes"
+    },
+    {
       "slug": "shortlisting-mlops-tools-small-team",
       "title": "How to Shortlist MLOps Tools Without Chasing Every Release",
       "excerpt": "A practical filter for choosing MLOps tools on a small team, so you stop re-evaluating your stack every time something new trends.",

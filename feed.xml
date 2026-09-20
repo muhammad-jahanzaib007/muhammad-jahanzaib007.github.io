@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Sun, 20 Sep 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>What a Model Evaluation Framework Automates and Assumes</title>
+    <link>https://jahanzaibawan.com/blog/what-eval-frameworks-assume.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/what-eval-frameworks-assume.html</guid>
+    <pubDate>Sun, 20 Sep 2026 09:00:00 +0000</pubDate>
+    <description>Evaluation frameworks automate splitting, scoring, and aggregation, but they quietly assume your data is independent, your split reflects deployment, and your metric means what you think.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>How to Shortlist MLOps Tools Without Chasing Every Release</title>
     <link>https://jahanzaibawan.com/blog/shortlisting-mlops-tools-small-team.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/shortlisting-mlops-tools-small-team.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Fri, 11 Sep 2026 09:00:00 +0000</pubDate>
     <description>A messy corpus quietly caps your model&#x27;s ceiling. Here is a practical, leakage-aware approach to cleaning text data before you touch a single hyperparameter.</description>
     <category>NLP</category>
-  </item>
-  <item>
-    <title>Vision Transformers Explained from the Patch Embedding Upward</title>
-    <link>https://jahanzaibawan.com/blog/vision-transformers-from-patches.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/vision-transformers-from-patches.html</guid>
-    <pubDate>Thu, 10 Sep 2026 09:00:00 +0000</pubDate>
-    <description>How a grid of pixels becomes a sequence a transformer can read, and why that single design choice explains almost everything else about ViTs.</description>
-    <category>Deep Learning</category>
   </item>
 </channel>
 </rss>
