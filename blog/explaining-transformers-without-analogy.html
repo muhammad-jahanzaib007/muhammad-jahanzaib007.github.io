@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explaining Transformers Without the Film Analogy Trap | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical, jargon-light way to explain how transformers work, avoiding loose film analogies in favour of a concrete weighted-attention example.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="transformers explained,attention mechanism,machine learning for beginners,neural networks,self attention,NLP explained,AI communication,plain language AI, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-21">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Explaining Transformers Without the Film Analogy Trap">
+<meta property="og:description" content="A practical, jargon-light way to explain how transformers work, avoiding loose film analogies in favour of a concrete weighted-attention example.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/explaining-transformers-without-analogy.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/explaining-transformers-without-analogy.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Explaining Transformers Without the Film Analogy Trap">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/explaining-transformers-without-analogy.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/explaining-transformers-without-analogy.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Explaining Transformers Without the Film Analogy Trap",
+  "description": "A practical, jargon-light way to explain how transformers work, avoiding loose film analogies in favour of a concrete weighted-attention example.",
+  "url": "https://jahanzaibawan.com/blog/explaining-transformers-without-analogy.html",
+  "image": "https://jahanzaibawan.com/assets/blog/explaining-transformers-without-analogy.png",
+  "datePublished": "2026-09-21",
+  "dateModified": "2026-09-21",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/explaining-transformers-without-analogy.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Explaining Transformers Without the Film Analogy Trap", "item": "https://jahanzaibawan.com/blog/explaining-transformers-without-analogy.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">NLP · 5 min read · 21 Sep 2026</div>
+    <h1>Explaining Transformers Without the Film Analogy Trap</h1>
+    <p class="lede">Most lay explanations of transformers reach for a story about actors or search parties. Here is a way to build real intuition using attention as a weighted vote, not a metaphor.</p>
+  </div>
+
+  <img src="../assets/blog/explaining-transformers-without-analogy.png" alt="Cover image for the article: Explaining Transformers Without the Film Analogy Trap" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the usual explanations fall apart</h2><p>Whenever someone tries to explain transformers to a non-technical audience, they tend to reach for a story. A group of detectives comparing notes. A film crew where every actor pays attention to every other actor on set. A classroom where students glance around before answering. These analogies feel warm and approachable, and that is exactly the problem. They give the listener a comforting picture without giving them anything that actually behaves like the mechanism. Ask a follow-up question, such as why the model sometimes gets the wrong answer, or why longer sentences are harder, and the analogy has nothing left to offer. It was decoration, not explanation.</p><p>I think the failure mode is specific: film analogies describe attention as vague mutual awareness. Everyone looks at everyone, in some fuzzy social sense. But the actual mechanism is a numerical weighting process, and the numbers are the whole point. If you strip out the numbers to make the story simpler, you have removed the one thing that explains the model's behaviour. A good non-technical explanation should be simplified in scope, not falsified in substance. That distinction is the difference between an explanation that helps someone reason about a new example, and one that just makes them nod politely.</p><p>The alternative I use is to explain attention as a weighted vote among words, worked through with a small, concrete sentence, using rough numbers a listener can actually sit with. It takes slightly longer to set up than a metaphor, but it survives scrutiny, and people leave with something they can apply to a sentence you have not shown them yet.</p></section><section class='psec reveal'><h2>A weighted vote, worked through with real numbers</h2><p>Take the sentence: 'The trophy did not fit in the suitcase because it was too big.' A person reads this instantly and knows 'it' refers to the trophy. A transformer has to work this out too, and it does so, roughly, by asking: for the word 'it', how much should each other word in the sentence contribute to understanding what 'it' means here?</p><p>Imagine the model assigns rough contribution scores, out of 100, when processing the word 'it': trophy gets 55, suitcase gets 30, big gets 8, and the remaining words share the last 7 between them. These numbers are not looked up in a dictionary. They come from the model comparing 'it' against every other word and producing a compatibility score, then converting those scores into a set of weights that sum to one. The word 'trophy' wins the vote, so the model's internal representation of 'it' becomes mostly a blend of 'it' and 'trophy', with a smaller contribution from 'suitcase' and a trace from everything else.</p><p>Now change one word: 'The trophy did not fit in the suitcase because it was too small.' The sentence looks almost identical, but 'small' pulls the vote a different way, and now suitcase might score 52 against trophy's 33. This is the part that a film analogy simply cannot carry: the same word, 'it', ends up pointing at a different noun purely because one adjective changed, and the mechanism for that shift is a re-weighted vote, not a change in who is 'paying attention' in some general sense. Every word in a transformer does this for every other word, producing a dense grid of weighted contributions that gets recalculated at every layer of the network.</p><p>This is also where the value of the explanation becomes practical rather than decorative. Once someone understands that meaning is being assembled from weighted contributions of surrounding words, they can predict, correctly, that a model will struggle when the deciding word is very far away in a long document, because the vote has more competitors and the true signal gets diluted among many plausible but wrong contributors. That is a real, testable consequence of the mechanism, and no metaphor about actors or search parties gets you there.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/explaining-transformers-without-analogy-1.jpg' alt='whiteboard with equations' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Why the mechanistic version earns its extra minute</h2><p>People often worry that mentioning weights and scores will lose a non-technical audience, but in my experience the opposite happens. Vague analogies invite vague follow-up questions that go nowhere. Concrete numbers invite concrete follow-up questions that you can actually answer. If someone asks why a chatbot occasionally attributes a pronoun to the wrong noun, you can say the vote was close, the wrong word scored 48 against the right word's 45, and small differences in wording can flip that balance. That is a genuine, falsifiable claim about the system's behaviour, not a restatement of the metaphor in different words.</p><p>There is also a professional reason to care about this, beyond good manners in a conversation. Non-technical stakeholders, including managers, clients, and journalists, make decisions based on the mental model you hand them. If you give them a story about attention as generalised awareness, they will draw wrong conclusions about what the system can and cannot do, and those wrong conclusions tend to surface later as unrealistic expectations or misplaced trust. A slightly harder but accurate explanation, delivered patiently, produces better-calibrated expectations, and calibrated expectations are worth far more than a smooth first impression.</p><p>None of this requires equations or code. It requires one worked sentence, a small table of rough weights, and the honesty to say that the model recalculates these weights at every layer, refining its guess about what each word means in context. That is a story with moving parts a listener can turn over on their own, which is the actual test of whether an explanation worked.</p></section><section class='psec reveal'><h2>A practical takeaway</h2><p>If you need to explain transformers to someone without a technical background, resist the pull toward a tidy analogy. Pick one short sentence with genuine ambiguity, walk through rough attention scores by hand, and show how changing a single word changes the winner. It costs an extra couple of minutes compared with a metaphor, but it leaves people with a mechanism they can reason about rather than a story they can only repeat. That difference matters whenever the explanation has to survive a follow-up question, and it almost always does.</p></section>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
