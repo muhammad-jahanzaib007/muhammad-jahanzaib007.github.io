@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hyperparameter Search: Grid, Random, and Bayesian, Honestly | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="An honest, practical comparison of grid, random, and Bayesian hyperparameter search, with worked intuition on when each strategy actually pays off.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="hyperparameter tuning, grid search, random search, Bayesian optimisation, machine learning, model selection, cross-validation, search strategy, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-21">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Hyperparameter Search: Grid, Random, and Bayesian, Honestly">
+<meta property="og:description" content="An honest, practical comparison of grid, random, and Bayesian hyperparameter search, with worked intuition on when each strategy actually pays off.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/grid-random-bayesian-search-compared.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/grid-random-bayesian-search-compared.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hyperparameter Search: Grid, Random, and Bayesian, Honestly">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/grid-random-bayesian-search-compared.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/grid-random-bayesian-search-compared.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Hyperparameter Search: Grid, Random, and Bayesian, Honestly",
+  "description": "An honest, practical comparison of grid, random, and Bayesian hyperparameter search, with worked intuition on when each strategy actually pays off.",
+  "url": "https://jahanzaibawan.com/blog/grid-random-bayesian-search-compared.html",
+  "image": "https://jahanzaibawan.com/assets/blog/grid-random-bayesian-search-compared.png",
+  "datePublished": "2026-09-21",
+  "dateModified": "2026-09-21",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/grid-random-bayesian-search-compared.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Hyperparameter Search: Grid, Random, and Bayesian, Honestly", "item": "https://jahanzaibawan.com/blog/grid-random-bayesian-search-compared.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 6 min read · 21 Sep 2026</div>
+    <h1>Hyperparameter Search: Grid, Random, and Bayesian, Honestly</h1>
+    <p class="lede">A practical comparison of the three main tuning strategies, including when each one is worth the extra engineering effort and when it is not.</p>
+  </div>
+
+  <img src="../assets/blog/grid-random-bayesian-search-compared.png" alt="Cover image for the article: Hyperparameter Search: Grid, Random, and Bayesian, Honestly" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the search strategy quietly matters</h2><p>Most tutorials treat hyperparameter tuning as an afterthought: pick a few values, run a loop, take the best score. But the search strategy you choose determines how much of the true performance surface you actually see, and how much of your reported improvement is signal versus noise from an unlucky or lucky search. I have come to think of tuning as a small experiment in its own right, one that deserves the same scepticism I apply to the model itself.</p><p>The three strategies people reach for are grid search, random search, and Bayesian optimisation. Each has a genuine niche. The honest answer to which one is best is that it depends on the number of hyperparameters, how expensive each training run is, and how much you already know about the shape of the loss surface. Treating one of them as universally superior is where most of the folklore around this topic goes wrong.</p></section><section class='psec reveal'><h2>Grid search: comfortable but wasteful in high dimensions</h2><p>Grid search evaluates every combination of a fixed set of values for each hyperparameter. With two hyperparameters and five values each, that is twenty five runs. It is easy to reason about and easy to parallelise, which is why it remains popular for small problems. The trouble starts when you add a third or fourth hyperparameter: five values across four parameters is six hundred and twenty five runs, and the cost grows exponentially with dimensionality.</p><p>The deeper problem is not just cost, it is wasted effort. Suppose learning rate matters a great deal to your model's performance but batch size barely matters at all within the range you tested. Grid search still spends equal resources on both, because it treats every axis as equally important by construction. You end up with many runs that only differ in the dimension that does not matter, which tells you almost nothing new.</p><p>Grid search also forces you to commit to specific candidate values in advance, and if the true optimum sits between two grid points, you simply never find it. Making the grid finer helps but multiplies the cost again. It is a reasonable default when you have one or two hyperparameters and cheap training runs, and a poor choice once you have four or more parameters or training takes hours rather than seconds.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/grid-random-bayesian-search-compared-1.jpg' alt='laptop displaying data charts on desk' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Random search: the underrated workhorse</h2><p>Random search samples hyperparameter values from specified distributions rather than a fixed grid. This sounds like a downgrade until you think about what happens when only a subset of hyperparameters truly matters, which is the normal situation in practice. Imagine again that learning rate matters a lot and batch size barely matters. With a budget of twenty five runs, grid search on a five by five grid tests only five distinct learning rate values. Random search with the same budget tests roughly twenty five distinct learning rate values, because each draw is independent across dimensions. You get far denser coverage of the dimension that actually drives performance, for the same computational cost.</p><p>This is not a minor technicality, it is the main reason random search tends to outperform grid search at equal budget once you have more than two or three hyperparameters. It also degrades gracefully: if you can afford more runs, you simply add more samples, no need to redesign a grid. And it is trivially parallel, since each run is independent and does not depend on the outcome of any other run.</p><p>The honest limitation is that random search is still blind. It does not learn anything from earlier runs; a configuration that scored poorly gives you no information that changes where you sample next. When training is very expensive, cheap in run count but expensive in wall clock time, that blindness starts to cost real money and real time.</p></section><section class='psec reveal'><h2>Bayesian optimisation: earns its complexity only sometimes</h2><p>Bayesian optimisation builds a probabilistic surrogate model, often a Gaussian process, of how validation performance depends on hyperparameters, and uses that model to choose the next configuration to try, balancing exploration of uncertain regions against exploitation of promising ones. In principle this should beat random search because it uses information from every previous run. In practice the benefit shows up clearly only under specific conditions: relatively few hyperparameters, usually under about ten to fifteen, and training runs that are expensive enough that the overhead of fitting the surrogate model is negligible by comparison.</p><p>Consider a case where a single training run takes several hours on a large model. Here every wasted run is costly, so spending a few seconds fitting a Gaussian process to decide the next candidate is clearly worth it, and Bayesian methods often find a good configuration in noticeably fewer runs than random search. Now consider the opposite case: a small model that trains in under a second, where you can afford tens of thousands of random samples. The overhead of the surrogate model and its sequential, harder-to-parallelise nature can make Bayesian optimisation slower in wall clock terms than simply throwing compute at random search, even though it uses fewer total evaluations.</p><p>There is also a subtlety around dimensionality that gets glossed over. Gaussian process surrogates tend to lose their advantage as the number of hyperparameters grows, because the space becomes too sparse for the model to fit well with a realistic number of observations. Some practitioners fall back to tree-based surrogates or simply accept diminishing returns once they are tuning fifteen or twenty parameters simultaneously, at which point random search with a generous budget is often just as good and considerably simpler to implement and debug.</p><p>Sequential dependence is the other honest cost. Bayesian optimisation typically chooses one point, waits for the result, then chooses the next, which limits parallelism unless you use batch variants, and those add their own complexity. If your infrastructure can run fifty models in parallel, a fully sequential Bayesian search may finish later in wall clock time than a random search that fires off fifty runs at once, even if it needs fewer total evaluations to reach the same score.</p></section><section class='psec reveal'><h2>A practical way to choose</h2><p>My rule of thumb is this: use grid search only when you have one or two hyperparameters and training is cheap enough that exhaustiveness is affordable. Default to random search for most problems, since it is simple, parallel, and handles the common case where only a few dimensions truly matter. Reach for Bayesian optimisation specifically when individual training runs are expensive, the hyperparameter count is modest, and you have the infrastructure to tolerate its more sequential nature.</p><p>Whichever strategy you choose, keep the validation split leakage-free and fixed across all candidate configurations, and report the search budget alongside the result. A model that looks better after a thousand random search trials is not necessarily better, it may just be the winner of a larger lottery. Reporting the strategy honestly is as important as choosing it well.</p></section>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Mon, 21 Sep 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Hyperparameter Search: Grid, Random, and Bayesian, Honestly</title>
+    <link>https://jahanzaibawan.com/blog/grid-random-bayesian-search-compared.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/grid-random-bayesian-search-compared.html</guid>
+    <pubDate>Mon, 21 Sep 2026 09:00:00 +0000</pubDate>
+    <description>Grid search is comfortable, random search is underrated, and Bayesian optimisation earns its complexity only sometimes. Here is the honest comparison.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Explaining Transformers Without the Film Analogy Trap</title>
     <link>https://jahanzaibawan.com/blog/explaining-transformers-without-analogy.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/explaining-transformers-without-analogy.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Sat, 12 Sep 2026 09:00:00 +0000</pubDate>
     <description>Weight decay shrinks parameters towards zero; dropout forces redundancy across units. Treating them as interchangeable is a common and costly mistake.</description>
     <category>Deep Learning</category>
-  </item>
-  <item>
-    <title>Regression Versus Classification: Framing Messy Problems</title>
-    <link>https://jahanzaibawan.com/blog/regression-versus-classification-framing.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/regression-versus-classification-framing.html</guid>
-    <pubDate>Fri, 11 Sep 2026 09:00:00 +0000</pubDate>
-    <description>The real modelling decision often happens before training starts: is this a number to predict or a category to assign? Choose badly and you fight the problem forever.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>

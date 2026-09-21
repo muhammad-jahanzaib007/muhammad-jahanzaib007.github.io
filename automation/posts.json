@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "grid-random-bayesian-search-compared",
+      "title": "Hyperparameter Search: Grid, Random, and Bayesian, Honestly",
+      "excerpt": "Grid search is comfortable, random search is underrated, and Bayesian optimisation earns its complexity only sometimes. Here is the honest comparison.",
+      "date": "2026-09-21",
+      "read_min": 6,
+      "tag": "Evaluation",
+      "color": "a3",
+      "thumb": "assets/blog/grid-random-bayesian-search-compared.png",
+      "thumb_alt": "Cover image for the article: Hyperparameter Search: Grid, Random, and Bayesian, Honestly"
+    },
+    {
       "slug": "explaining-transformers-without-analogy",
       "title": "Explaining Transformers Without the Film Analogy Trap",
       "excerpt": "Skip the film analogies. Here is how to explain transformers to non-technical people using a concrete weighted-vote example that actually holds up.",
