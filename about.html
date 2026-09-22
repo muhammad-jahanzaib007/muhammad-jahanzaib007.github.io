@@ -72,7 +72,7 @@
 <body style="--hc:var(--a3)">
 <a class="skip" href="#story">Skip to content</a>
 <div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
-<nav aria-label="Primary"><div class="bar"><a class="brand" href="index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="index.html#work">Work</a><a href="about.html" class="active">About</a><a href="blog.html">Writing</a><a href="index.html#contact">Contact</a></div></div></nav>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="index.html#work">Work</a><a href="about.html#experience">Experience</a><a href="about.html" class="active">About</a><a href="blog.html">Writing</a><a href="index.html#contact">Contact</a></div></div></nav>
 
 <div class="wrap narrow">
   <div class="phero">
@@ -115,6 +115,19 @@
     <p>The same discipline runs through everything here: <strong>strong baselines before big models</strong> (a tuned GRU beating a LoRA-fine-tuned GPT-2 on the Cornell Movie-Dialogs Corpus), <strong>the right metric for the data</strong>, and <strong>reproducibility</strong>, fixed seeds, logged configs, and runs tracked in Weights &amp; Biases so every figure on this site can be regenerated.</p>
   </section>
 
+  <section class="psec reveal" id="experience">
+    <h2>Experience</h2>
+    <h3>Automated production system, independent project</h3>
+    <p class="meta">Founder and sole engineer · June 2026 to present · Python, GitHub Actions, Cloudflare Workers, FFmpeg, React, REST APIs</p>
+    <p>I designed, built and run an unattended content production system that has published autonomously twice a day for months. It generates each piece from a topic queue, assembles media, renders video and distributes to four platforms without anyone touching it.</p>
+    <p>The interesting part is not the pipeline, it is what keeping it alive has taught me. It runs a <strong>multi-provider model and speech layer with automatic failover</strong>, because a quota exhaustion or a lapsed card at one vendor should degrade the output, not stop production. It manages <strong>OAuth credentials across five external APIs</strong>, with scope auditing and expiry alerting added after token expiry caused repeated outages. And it gates its own output: every render is measured for transcription error against the source script, speech pace, loudness and frame-level visual completeness, and regenerated until it passes.</p>
+    <p>My favourite bug from it is a lesson in the same thing this whole site is about. Videos were shipping with blank frames over live audio, and every signal was green: the receipts said all assets were staged, the black-frame detector said the picture was fine, the analytics said retention was healthy. All true, and all blind. I pulled frames out of a published file, found five seconds of empty screen, traced it to a token-alignment defect that placed the opening captions on top of the wrong audio, fixed it with regression tests, and added the automated visual check that now refuses to publish a render whose frame is empty. <strong>A passing status check is not the same thing as a working system.</strong></p>
+
+    <h3>Bank Residential Support Worker, Platform Childcare Ltd</h3>
+    <p class="meta">Leicester, UK · December 2025 to present · Part-time</p>
+    <p>Specialist 1:1 support for children and young people with complex needs, including autism, learning disabilities, ADHD and physical disabilities, across residential, educational and community settings. I implement individual support plans, maintain daily records and incident reports to safeguarding standards where accuracy is formally accountable, and adapt how I communicate between a child, their family, colleagues and external professionals. Worked alongside full-time postgraduate study.</p>
+  </section>
+
   <section class="psec reveal">
     <h2>Education</h2>
     <table class="dtable">
@@ -131,13 +144,13 @@
       <span class="chip">Python</span><span class="chip">R</span><span class="chip">SQL</span><span class="chip">MATLAB</span>
       <span class="chip">PyTorch</span><span class="chip">scikit-learn</span><span class="chip">Hugging Face</span><span class="chip">CNNs</span><span class="chip">RNNs (GRU/LSTM)</span><span class="chip">Transformers</span><span class="chip">Transfer Learning</span><span class="chip">LoRA</span>
       <span class="chip">Computer Vision</span><span class="chip">NLP</span><span class="chip">Robotics</span><span class="chip">Data Analytics</span><span class="chip">Fuzzy Logic</span>
-      <span class="chip">Tableau</span><span class="chip">MONAI</span><span class="chip">timm</span><span class="chip">Weights &amp; Biases</span><span class="chip">ROS</span><span class="chip">Gazebo</span><span class="chip">Git</span>
+      <span class="chip">Tableau</span><span class="chip">MONAI</span><span class="chip">timm</span><span class="chip">Weights &amp; Biases</span><span class="chip">ROS</span><span class="chip">Gazebo</span><span class="chip">Git</span><span class="chip">GitHub Actions</span><span class="chip">CI/CD</span><span class="chip">REST APIs</span><span class="chip">OAuth</span><span class="chip">FFmpeg</span><span class="chip">Automation</span>
     </div>
   </section>
 
   <section class="psec reveal">
     <h2>What I'm looking for</h2>
-    <p>Graduate <strong>Machine Learning Engineer</strong> and <strong>Data Scientist</strong> roles where evaluation actually matters, teams that care whether a result is real. I'm Leicester-based and open to remote or relocation, available from October 2026.</p>
+    <p>Graduate <strong>Machine Learning Engineer</strong> and <strong>Data Scientist</strong> roles where evaluation actually matters, teams that care whether a result is real. I'm Leicester-based and open to remote or relocation, available from October 2026. I hold the right to work in the UK on the Graduate visa route after my MSc completes.</p>
     <a class="prepo" href="index.html#contact">Get in touch →</a>
   </section>
 </div>
