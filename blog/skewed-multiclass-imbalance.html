@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class Imbalance Beyond Binary: Skewed Multi-Class Problems | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to handling class imbalance in multi-class classification, covering per-class metrics, resampling pitfalls, and a worked numeric example.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="class imbalance, multi-class classification, macro f1, evaluation metrics, resampling, minority class, confusion matrix, machine learning, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-22">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Class Imbalance Beyond Binary: Skewed Multi-Class Problems">
+<meta property="og:description" content="A practical guide to handling class imbalance in multi-class classification, covering per-class metrics, resampling pitfalls, and a worked numeric example.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/skewed-multiclass-imbalance.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/skewed-multiclass-imbalance.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Class Imbalance Beyond Binary: Skewed Multi-Class Problems">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/skewed-multiclass-imbalance.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/skewed-multiclass-imbalance.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Class Imbalance Beyond Binary: Skewed Multi-Class Problems",
+  "description": "A practical guide to handling class imbalance in multi-class classification, covering per-class metrics, resampling pitfalls, and a worked numeric example.",
+  "url": "https://jahanzaibawan.com/blog/skewed-multiclass-imbalance.html",
+  "image": "https://jahanzaibawan.com/assets/blog/skewed-multiclass-imbalance.png",
+  "datePublished": "2026-09-22",
+  "dateModified": "2026-09-22",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/skewed-multiclass-imbalance.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Class Imbalance Beyond Binary: Skewed Multi-Class Problems", "item": "https://jahanzaibawan.com/blog/skewed-multiclass-imbalance.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 22 Sep 2026</div>
+    <h1>Class Imbalance Beyond Binary: Skewed Multi-Class Problems</h1>
+    <p class="lede">Most imbalance advice assumes two classes. Real problems rarely do, and the fixes that work for binary skew can quietly break down once you have five, ten, or fifty classes.</p>
+  </div>
+
+  <img src="../assets/blog/skewed-multiclass-imbalance.png" alt="Cover image for the article: Class Imbalance Beyond Binary: Skewed Multi-Class Problems" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why binary intuitions break down</h2><p>Most tutorials on class imbalance use a fraud detection or disease screening example: two classes, one rare, one common. You learn about oversampling, class weights, and precision-recall curves, and it all feels tidy. The trouble starts when you move to a real multi-class problem, say ten categories of manufacturing defect, or twenty species of plant disease, where the class frequencies form a long, uneven tail rather than a clean 95-5 split.</p><p>With two classes, there is one minority to worry about and one majority to correct for. With many classes, you can have several minorities of wildly different sizes, classes that are easily confused with each other but not with the rest, and classes that are rare but trivially easy to spot once you see one. A single scalar like accuracy or even a single precision-recall curve cannot represent that structure. The moment you have more than two classes, imbalance stops being a single number problem and becomes a per-class diagnostic problem.</p><p>This matters because the standard fixes, oversampling the minority, undersampling the majority, adjusting a decision threshold, were designed for a world with exactly one boundary to shift. In a multi-class setting there are many boundaries, and moving one to help a rare class can quietly damage another class you were not even monitoring. I have seen this happen in practice: an intervention aimed at improving recall on the smallest class pushed several medium-sized classes into worse confusion with each other, and the headline accuracy barely moved, hiding the damage completely.</p></section><section class='psec reveal'><h2>A worked example with real numbers</h2><p>Suppose you are classifying support tickets into six categories: billing, technical, account access, feature request, bug report, and other. Say the training set has 6,000 billing tickets, 4,500 technical, 2,000 account access, 900 feature request, 400 bug report, and 200 other. That is a ratio of thirty to one between the largest and smallest class, and the middle classes are themselves unevenly spaced.</p><p>If you train a plain classifier and report accuracy, you might see 88 percent, which sounds respectable. But suppose the confusion matrix shows that of the 200 'other' tickets, only 40 are correctly labelled, with the rest scattered mostly into billing and technical. Recall for 'other' is 20 percent. Because 'other' makes up only 1.4 percent of the data, this catastrophic failure barely dents overall accuracy, yet if 'other' tickets are the ones that need urgent manual triage, this is precisely the failure that matters most to the business.</p><p>Now apply a common fix: oversample the minority classes so every class appears roughly equally during training. Recall on 'other' might jump to 65 percent, which looks like a win. But check technical and billing, the two largest classes: their precision may have dropped, because the model now more readily predicts rarer classes and steals some genuine technical tickets away from their correct label. Overall accuracy could actually fall even though you have fixed the original problem, because you have created a new, smaller one elsewhere. Without per-class metrics before and after the change, you would not see this trade-off at all; you would only see one aggregate number move and assume progress.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/skewed-multiclass-imbalance-1.jpg' alt='confusion matrix on whiteboard' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Metrics and methods that actually respect the structure</h2><p>The first fix is reporting, not modelling. Report precision, recall, and F1 for every class individually, not just a single macro or weighted average. Macro F1 treats every class equally regardless of size, which is useful for spotting neglected minorities, but it can also overstate the importance of a class with only twenty test examples where a handful of mistakes swing the score wildly. Weighted F1 respects class frequency but can then hide small-class failures again, which is the exact problem you started with. Report both, alongside the raw confusion matrix, and look at where the errors actually go, not just how many there are.</p><p>Second, be deliberate about where imbalance correction happens. Class weighting in the loss function is often gentler than resampling because it does not distort the data distribution or duplicate examples; it simply tells the optimiser to penalise mistakes on rare classes more heavily. For genuinely tiny classes, a small amount of oversampling combined with careful data augmentation, where sensible for the domain, tends to be more stable than pure duplication, which risks overfitting to a handful of repeated examples.</p><p>Third, watch for classes that are imbalanced with respect to each other rather than the whole dataset. Two classes might each be moderately sized but almost always confused with one another, a much more common failure mode than one class simply being rare overall. This is a pairwise confusion problem, not a frequency problem, and no amount of resampling by overall class count will fix it. You need to inspect the confusion matrix directly and, if two classes are systematically swapped, consider whether your labelling scheme genuinely separates them or whether a hierarchical approach, first predicting a coarse group then a fine-grained label within it, would suit the data better.</p><p>Finally, be strict about how you split data for evaluation. Stratified splitting, which preserves each class's proportion across train, validation, and test sets, is essential in multi-class imbalance; a random split can easily leave your smallest classes with only one or two test examples, making their reported metrics almost meaningless and unstable across runs. If a class has fewer than about thirty examples in total, treat any single-run metric for it with real scepticism and consider cross-validation specifically to stabilise that estimate.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>Multi-class imbalance is not a scaled-up version of binary imbalance; it is a different problem with its own failure modes, chiefly hidden per-class collapse and pairwise confusion that aggregate metrics conceal. Before reaching for oversampling or class weights, build the full confusion matrix and per-class precision and recall table first, on a properly stratified split. Only once you can see exactly which classes are failing and why should you choose a correction, and even then, re-check the same full table afterwards rather than trusting a single summary number to tell you whether things actually improved.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/skewed-multiclass-imbalance-2.jpg' alt='support ticket dashboard screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

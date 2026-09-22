@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Class imbalance beyond binary: handling skewed multi-class problems",
     "Evaluating recommender systems: why accuracy is the wrong first metric",
     "Active learning: choosing what to label next instead of labelling everything",
     "Synthetic data generation for computer vision: when it closes the domain gap",
@@ -189,6 +188,7 @@
     "What a model evaluation framework automates and what it quietly assumes",
     "Explaining transformers to a non-technical audience without the film analogy trap",
     "Hyperparameter search strategies: grid, random, and Bayesian compared honestly",
-    "Data leakage in time series: why lag features need extra care"
+    "Data leakage in time series: why lag features need extra care",
+    "Class imbalance beyond binary: handling skewed multi-class problems"
   ]
 }

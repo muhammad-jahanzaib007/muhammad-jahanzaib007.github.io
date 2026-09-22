@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Tue, 22 Sep 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Class Imbalance Beyond Binary: Skewed Multi-Class Problems</title>
+    <link>https://jahanzaibawan.com/blog/skewed-multiclass-imbalance.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/skewed-multiclass-imbalance.html</guid>
+    <pubDate>Tue, 22 Sep 2026 09:00:00 +0000</pubDate>
+    <description>Binary imbalance tricks do not simply generalise to multi-class problems. Here is how to think about skewed classes properly, with a worked example.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Data Leakage in Time Series: Lag Features Need Care</title>
     <link>https://jahanzaibawan.com/blog/leakage-lag-features-time-series.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/leakage-lag-features-time-series.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/multi-task-learning-shared-backbones.html</guid>
     <pubDate>Sun, 13 Sep 2026 09:00:00 +0000</pubDate>
     <description>A shared backbone sounds efficient, but it only pays off when tasks actually agree on what a good representation looks like.</description>
-    <category>Deep Learning</category>
-  </item>
-  <item>
-    <title>Warm Restarts and Why a Constant Learning Rate Rarely Wins</title>
-    <link>https://jahanzaibawan.com/blog/warm-restarts-learning-rate-schedules.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/warm-restarts-learning-rate-schedules.html</guid>
-    <pubDate>Sat, 12 Sep 2026 09:00:00 +0000</pubDate>
-    <description>A constant learning rate forces a single compromise between speed and stability. Schedules, especially warm restarts, let you have both at different points in training.</description>
     <category>Deep Learning</category>
   </item>
 </channel>

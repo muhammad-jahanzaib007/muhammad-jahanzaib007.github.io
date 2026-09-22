@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "skewed-multiclass-imbalance",
+      "title": "Class Imbalance Beyond Binary: Skewed Multi-Class Problems",
+      "excerpt": "Binary imbalance tricks do not simply generalise to multi-class problems. Here is how to think about skewed classes properly, with a worked example.",
+      "date": "2026-09-22",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a5",
+      "thumb": "assets/blog/skewed-multiclass-imbalance.png",
+      "thumb_alt": "Cover image for the article: Class Imbalance Beyond Binary: Skewed Multi-Class Problems"
+    },
+    {
       "slug": "leakage-lag-features-time-series",
       "title": "Data Leakage in Time Series: Lag Features Need Care",
       "excerpt": "Lag features feel safe because they look backwards, but sloppy construction lets future information leak in and inflates your validation scores.",
