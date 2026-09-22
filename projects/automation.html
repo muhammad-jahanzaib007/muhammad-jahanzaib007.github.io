@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automated Production Pipeline | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="An unattended production system running twice daily for months: multi-provider failover, OAuth lifecycle management across five APIs, and automated quality gates that reject and regenerate their own output.">
+<meta property="og:title" content="Automated Production Pipeline | Case Study">
+<meta property="og:description" content="Building a system that runs without me, and what a green status check does not tell you.">
+<meta property="og:url" content="https://jahanzaibawan.com/projects/automation.html">
+<link rel="canonical" href="https://jahanzaibawan.com/projects/automation.html">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/automation/pipeline.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan, automation, CI/CD, Python, GitHub Actions">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:image:alt" content="Automated production pipeline architecture, Muhammad Jahanzaib Awan">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automated Production Pipeline | Muhammad Jahanzaib Awan">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/automation/pipeline.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Automated Production Pipeline",
+  "description": "An unattended production system running twice daily: multi-provider failover, OAuth lifecycle management across five APIs, and automated quality gates that reject and regenerate their own output.",
+  "url": "https://jahanzaibawan.com/projects/automation.html",
+  "image": "https://jahanzaibawan.com/assets/automation/pipeline.png",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "url": "https://jahanzaibawan.com/" },
+  "publisher": { "@type": "Person", "name": "Muhammad Jahanzaib Awan" },
+  "isPartOf": { "@type": "WebSite", "url": "https://jahanzaibawan.com/", "name": "Muhammad Jahanzaib Awan, Portfolio" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Automated Production Pipeline", "item": "https://jahanzaibawan.com/projects/automation.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<a class="skip" href="#main">Skip to content</a>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html#experience">Experience</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../index.html#work">&larr; All case studies</a>
+    <div class="tag">Systems &middot; automation &middot; production engineering</div>
+    <h1>Automated Production Pipeline</h1>
+    <p class="lede">A system that generates, renders, checks and publishes content twice a day without anyone touching it. Built and operated solo since June 2026. The interesting part is not the pipeline, it is what keeping it alive taught me about the difference between a green status check and a working system.</p>
+    <div class="pmeta"><span class="chip">Python</span><span class="chip">GitHub Actions</span><span class="chip">Cloudflare Workers</span><span class="chip">FFmpeg</span><span class="chip">React</span><span class="chip">REST + OAuth</span><span class="chip">2026</span></div>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi reveal"><div class="n" data-count="2">0</div><div class="l">releases per day, unattended</div></div>
+    <div class="kpi reveal b1"><div class="n" data-count="5">0</div><div class="l">external APIs under OAuth</div></div>
+    <div class="kpi reveal b2"><div class="n" data-count="4">0</div><div class="l">distribution platforms</div></div>
+    <div class="kpi reveal b3"><div class="n" data-count="79">0</div><div class="l">tests run on every change</div></div>
+  </div>
+
+  <figure class="fig reveal">
+    <img src="../assets/automation/pipeline.png" alt="Pipeline architecture: schedule, generate, render, quality gates, distribute, with a regeneration loop when a gate fails" loading="lazy">
+    <figcaption>The pipeline. The only interesting box is the fourth one.</figcaption>
+  </figure>
+
+  <section class="psec reveal">
+    <h2>The problem</h2>
+    <p>Anyone can write a script that produces one artefact. The difficulty is a system that produces one every twelve hours, for months, while nobody is watching, on free infrastructure, against third-party services that rate-limit, expire credentials, change their terms and occasionally just fail.</p>
+    <p>I built this to find out what that actually takes. It turned out to be a much better teacher than any of my coursework, because coursework never wakes you up to a credential that expired at 3am.</p>
+  </section>
+
+  <section class="psec reveal">
+    <h2>Approach</h2>
+    <p><strong>Assume every dependency will fail.</strong> Model and speech generation both run through provider chains that fail over automatically. When one vendor's quota is exhausted or its billing lapses, the next takes over and output quality degrades rather than production stopping. This was not foresight, it was a lesson: a single-provider chain once took the system down for two days because its only fallback had been retired months earlier and nobody had noticed.</p>
+    <p><strong>Credentials are the number one outage cause, so treat them as a system.</strong> Five APIs, each with its own OAuth flow, scope requirements and expiry behaviour. There is now scope auditing, an expiry clock with alerting, and a check that verifies a re-issued token carries every scope the pipeline needs. That last one exists because a token was once re-issued with one scope missing, which silently disabled the analytics reporting for ten weeks while every run still reported success.</p>
+    <p><strong>Schedule from outside the platform that runs the work.</strong> The in-platform scheduler skipped runs, so scheduling moved to an external worker that checks whether a slot is already covered before dispatching, making a double-fire impossible.</p>
+  </section>
+
+  <section class="psec reveal">
+    <h2>The part that matters, gates the system applies to itself</h2>
+    <p>Automated output is only as trustworthy as its checks. Every release is measured before it goes anywhere: transcription error against the source script, speech pace, loudness and peak level, duration, and frame-level visual completeness. If a check fails the output is discarded and regenerated, up to three attempts. If all three fail, nothing is published. A missing release is a much smaller problem than a bad one.</p>
+    <p>The thresholds are set from measured data rather than intuition, and where possible each output is judged against <em>itself</em>. The visual check compares a frame's detail against that same piece's median, so a deliberately sparse style cannot trip it and there is no absolute number to maintain as the design evolves.</p>
+  </section>
+
+  <section class="psec reveal">
+    <h2>The bug I learned the most from</h2>
+    <p>Output was shipping with blank frames over live audio. Every signal was green, and every one of them was true: the run log confirmed all media assets had been fetched and staged, the black-frame detector reported no black frames, and the performance data suggested engagement was healthy.</p>
+    <p>All three were blind to the same thing. The assets were staged but displayed at the wrong time. The frames were not black, they were an empty dark gradient. And the engagement figures were averages over output whose first seconds were empty.</p>
+    <p>I found it by extracting frames from a published file and reading them: nothing at all for the first five and a half seconds, normal from six. The cause was in the alignment between the script and the speech timings. When the transcriber missed the opening words, the code that placed them back on the timeline anchored them to the <em>first word it had heard</em> and filled forward, so the opening lines were positioned several seconds late, on top of the audio that belonged to different words, leaving the start of the piece empty.</p>
+    <p>The fix distributes those words across the span before the anchor instead, and it ships with a regression test built from the exact failing case. The durable part is not the fix though. It is that the pipeline now renders a contact sheet of every output and refuses to publish anything whose frame is empty when it should not be. <strong>The fault survived for weeks not because the checks were wrong, but because none of them looked at the thing a person would have looked at first.</strong></p>
+  </section>
+
+  <section class="psec reveal">
+    <h2>What I took away</h2>
+    <ul class="tk">
+      <li><strong>A passing check is not evidence of a working system.</strong> It is evidence that one specific question returned the expected answer. Ask whether the set of questions covers what a person would notice in five seconds.</li>
+      <li><strong>Silent failures need receipts.</strong> Several faults here hid inside steps that were allowed to fail without stopping the run, which is the correct design for a non-essential step and precisely why the outcome has to be recorded and surfaced somewhere.</li>
+      <li><strong>Redundancy that has never been exercised is not redundancy.</strong> A fallback chain whose alternatives are all dead looks identical to a healthy one until the day it matters.</li>
+      <li><strong>Measure against the artefact itself where you can.</strong> Self-relative thresholds survive redesigns; absolute ones rot.</li>
+    </ul>
+  </section>
+
+  <section class="psec reveal">
+    <h2>Why this is on a machine learning portfolio</h2>
+    <p>Because it is the same argument as the <a href="uav.html">UAV leakage study</a>, made in production instead of in a report. There, a flattering accuracy was an artefact of how the data was split. Here, a healthy dashboard was an artefact of what the checks could see. Both are the same failure: trusting a number without asking what would have to be true for it to be wrong.</p>
+    <div class="pnav">
+      <a class="prepo" href="../about.html#experience">More on this work &rarr;</a>
+    </div>
+  </section>
+</div>
+
+<footer>&copy; 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK &middot; <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> &middot; <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+</body>
+</html>
