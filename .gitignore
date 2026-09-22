@@ -1,2 +1,6 @@
 __pycache__/
 *.pyc
+
+# Saved-page scratch (browser "Save page as") must never reach the live site
+Muhammad Jahanzaib Awan _*
+*_files/
