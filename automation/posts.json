@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a5",
       "thumb": "assets/blog/skewed-multiclass-imbalance.png",
-      "thumb_alt": "Cover image for the article: Class Imbalance Beyond Binary: Skewed Multi-Class Problems"
+      "thumb_alt": "Cover image for the article: Class Imbalance Beyond Binary: Skewed Multi-Class Problems",
+      "li_shared": true
     },
     {
       "slug": "leakage-lag-features-time-series",
