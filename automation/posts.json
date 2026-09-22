@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "leakage-lag-features-time-series",
+      "title": "Data Leakage in Time Series: Lag Features Need Care",
+      "excerpt": "Lag features feel safe because they look backwards, but sloppy construction lets future information leak in and inflates your validation scores.",
+      "date": "2026-09-22",
+      "read_min": 6,
+      "tag": "Evaluation",
+      "color": "a4",
+      "thumb": "assets/blog/leakage-lag-features-time-series.png",
+      "thumb_alt": "Cover image for the article: Data Leakage in Time Series: Lag Features Need Care"
+    },
+    {
       "slug": "grid-random-bayesian-search-compared",
       "title": "Hyperparameter Search: Grid, Random, and Bayesian, Honestly",
       "excerpt": "Grid search is comfortable, random search is underrated, and Bayesian optimisation earns its complexity only sometimes. Here is the honest comparison.",

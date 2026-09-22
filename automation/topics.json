@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Data leakage in time series: why lag features need extra care",
     "Class imbalance beyond binary: handling skewed multi-class problems",
     "Evaluating recommender systems: why accuracy is the wrong first metric",
     "Active learning: choosing what to label next instead of labelling everything",
@@ -189,6 +188,7 @@
     "How to shortlist MLOps tools for a small team without chasing every new release",
     "What a model evaluation framework automates and what it quietly assumes",
     "Explaining transformers to a non-technical audience without the film analogy trap",
-    "Hyperparameter search strategies: grid, random, and Bayesian compared honestly"
+    "Hyperparameter search strategies: grid, random, and Bayesian compared honestly",
+    "Data leakage in time series: why lag features need extra care"
   ]
 }

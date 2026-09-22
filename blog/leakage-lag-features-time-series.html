@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Leakage in Time Series: Lag Features Need Care | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical look at how lag features cause data leakage in time series models, with a worked example and rules for avoiding it.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="data leakage, time series, lag features, feature engineering, cross-validation, forecasting, walk-forward validation, target leakage, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-22">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Data Leakage in Time Series: Lag Features Need Care">
+<meta property="og:description" content="A practical look at how lag features cause data leakage in time series models, with a worked example and rules for avoiding it.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/leakage-lag-features-time-series.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/leakage-lag-features-time-series.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Data Leakage in Time Series: Lag Features Need Care">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/leakage-lag-features-time-series.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/leakage-lag-features-time-series.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Data Leakage in Time Series: Lag Features Need Care",
+  "description": "A practical look at how lag features cause data leakage in time series models, with a worked example and rules for avoiding it.",
+  "url": "https://jahanzaibawan.com/blog/leakage-lag-features-time-series.html",
+  "image": "https://jahanzaibawan.com/assets/blog/leakage-lag-features-time-series.png",
+  "datePublished": "2026-09-22",
+  "dateModified": "2026-09-22",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/leakage-lag-features-time-series.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Data Leakage in Time Series: Lag Features Need Care", "item": "https://jahanzaibawan.com/blog/leakage-lag-features-time-series.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 6 min read · 22 Sep 2026</div>
+    <h1>Data Leakage in Time Series: Lag Features Need Care</h1>
+    <p class="lede">Lag features are the easiest way to smuggle the future into a time series model. Here is why that happens and how to stop it.</p>
+  </div>
+
+  <img src="../assets/blog/leakage-lag-features-time-series.png" alt="Cover image for the article: Data Leakage in Time Series: Lag Features Need Care" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why lag features feel safe but often are not</h2><p>Lag features are one of the first tools anyone reaches for when modelling time series. Sales last week, temperature yesterday, the moving average of the last seven readings: these feel intuitively safe because they only look backwards. Surely nothing about the future can hide in a value that was recorded before the point you are trying to predict. That intuition is exactly why lag features are such a common source of leakage. The danger is never in the concept of a lag, it is in how the lag is computed and split relative to the rest of the pipeline.</p><p>The core problem is that a lag feature is only as trustworthy as the process that generated it. If that process, even briefly, uses information that would not have been available at prediction time, the model gets a sneak preview of the future. Because the leak is small and indirect, it rarely produces an obviously broken model. Instead it produces a model that looks slightly too good on validation and then underperforms once it meets real, live data. That gap between validation performance and production performance is the signature of leakage, and lag features are one of its favourite hiding places.</p><p>I think this matters more than people admit because time series problems are unusually forgiving of sloppy code during development and unusually punishing once deployed. A tabular classification leak often shows up as a suspiciously perfect accuracy score that gets caught quickly. A time series leak through a lag feature might only inflate an error metric by a modest margin, easy to mistake for a genuinely good model, and it will not be discovered until the forecast is running against real future data with no ability to peek.</p></section><section class='psec reveal'><h2>A worked example: the rolling mean that knows too much</h2><p>Suppose I am forecasting daily electricity demand and I build a feature called rolling_mean_7, the average demand over the trailing seven days. A common but wrong way to compute this is to take the full dataframe, sort by date, and apply a rolling window function with the window centred or, worse, computed after the target column has already been shifted incorrectly. If the rolling window is defined as the mean of days t-3 to t+3 instead of t-7 to t-1, the feature for day t now contains demand from three days in the future. The model trains on this, and because future demand is highly correlated with near future demand, the feature becomes a strong, apparently legitimate predictor.</p><p>Here is the numbers version. Say true next day demand has a correlation of around 0.6 with a correctly lagged seven day average, which is a reasonable and honest predictive relationship. If I accidentally centre the window, the correlation with the target might jump to something like 0.85, because I have quietly included demand from the day I am trying to predict and the two days after it. During cross-validation this looks fantastic, error drops sharply, and I might report a validation RMSE of, say, 120 megawatts instead of the honest 180 megawatts. In production, where day t+1 and t+2 genuinely do not exist yet, the feature cannot be computed the same way, so the leaked information disappears and real world error reverts towards that honest 180, or worse if the mismatch causes the model to behave erratically.</p><p>A subtler version of the same mistake happens with normalisation and imputation rather than the lag itself. If I fill missing values in a lag column using the overall mean or median of the full series, computed once across the entire dataset before splitting into train and test, I have again let future values influence a feature that is supposed to represent only the past. The lag column looks perfectly ordinary, dates align, nothing is obviously shifted, yet the imputation constant was calculated using data that had not happened yet relative to earlier rows. This kind of leak is harder to spot precisely because the feature values themselves look sensible.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/leakage-lag-features-time-series-1.jpg' alt='clock and calendar desk' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Building lags and splits that respect time</h2><p>The first defence is to compute every lag, rolling statistic, and derived feature strictly within a function that only ever looks backwards from the current row, and to do this before any split rather than relying on the split to somehow protect you afterwards. A rolling mean over the last seven days should use a window explicitly anchored so that the value at row t only ever touches rows t-7 through t-1. It is worth writing a small unit test that checks, for a synthetic series where each value equals its own timestamp index, that the lag feature at row t exactly equals the expected backward looking calculation and never touches t or later.</p><p>The second defence is the split itself. Ordinary k-fold cross-validation shuffles rows, which for time series is close to guaranteed leakage because a training fold can easily contain rows from after a validation row, and lag features computed globally will have absorbed that future information regardless of how carefully the lag function itself was written. Walk-forward validation, where each fold trains on all data up to a point and validates on a following block, respects the arrow of time and should be the default rather than an afterthought. Any feature engineering step involving statistics computed across the whole series, means, standard deviations, category encodings, needs to be recomputed within each walk-forward fold using only that fold's training window, not fitted once globally and then applied everywhere.</p><p>The third defence is to be suspicious of any lag feature that performs unusually well, rather than simply pleased. If a single lagged variable dominates feature importance and its correlation with the target seems too strong given the domain, that is worth investigating with the same scepticism I would apply to a suspiciously high accuracy score elsewhere. A quick sanity check is to compute the feature manually for a handful of rows by hand or with a slow, obviously correct loop, and compare it against the vectorised production version, since vectorised rolling and shift operations are exactly where off by one errors creep in.</p><p>The practical takeaway is straightforward even if the debugging is not. Treat every lag and rolling feature as a small pipeline in its own right, one that must be provably backward looking, tested against a synthetic series where the correct answer is obvious, and recomputed inside each walk-forward fold rather than fitted once on the whole dataset. Time series leakage rarely announces itself. It shows up quietly as an unusually good validation score, and the only reliable defence is to build the habit of asking, for every single feature, exactly what information was available at the moment that row's target was still unknown.</p></section>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

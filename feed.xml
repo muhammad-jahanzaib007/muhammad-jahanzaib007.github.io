@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Mon, 21 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 22 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Data Leakage in Time Series: Lag Features Need Care</title>
+    <link>https://jahanzaibawan.com/blog/leakage-lag-features-time-series.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/leakage-lag-features-time-series.html</guid>
+    <pubDate>Tue, 22 Sep 2026 09:00:00 +0000</pubDate>
+    <description>Lag features feel safe because they look backwards, but sloppy construction lets future information leak in and inflates your validation scores.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Hyperparameter Search: Grid, Random, and Bayesian, Honestly</title>
     <link>https://jahanzaibawan.com/blog/grid-random-bayesian-search-compared.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/warm-restarts-learning-rate-schedules.html</guid>
     <pubDate>Sat, 12 Sep 2026 09:00:00 +0000</pubDate>
     <description>A constant learning rate forces a single compromise between speed and stability. Schedules, especially warm restarts, let you have both at different points in training.</description>
-    <category>Deep Learning</category>
-  </item>
-  <item>
-    <title>Weight Decay Versus Dropout: Different Jobs Entirely</title>
-    <link>https://jahanzaibawan.com/blog/weight-decay-vs-dropout.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/weight-decay-vs-dropout.html</guid>
-    <pubDate>Sat, 12 Sep 2026 09:00:00 +0000</pubDate>
-    <description>Weight decay shrinks parameters towards zero; dropout forces redundancy across units. Treating them as interchangeable is a common and costly mistake.</description>
     <category>Deep Learning</category>
   </item>
 </channel>
