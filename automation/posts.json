@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a4",
       "thumb": "assets/blog/leakage-lag-features-time-series.png",
-      "thumb_alt": "Cover image for the article: Data Leakage in Time Series: Lag Features Need Care"
+      "thumb_alt": "Cover image for the article: Data Leakage in Time Series: Lag Features Need Care",
+      "li_shared": true
     },
     {
       "slug": "grid-random-bayesian-search-compared",
