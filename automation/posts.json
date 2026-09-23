@@ -9,7 +9,8 @@
       "tag": "Machine Learning",
       "color": "a2",
       "thumb": "assets/blog/active-learning-what-to-label.png",
-      "thumb_alt": "Cover image for the article: Active Learning: Choosing What to Label Next"
+      "thumb_alt": "Cover image for the article: Active Learning: Choosing What to Label Next",
+      "li_shared": true
     },
     {
       "slug": "recommenders-beyond-accuracy",
