@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Tue, 22 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 23 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Evaluating Recommenders: Accuracy Is the Wrong First Metric</title>
+    <link>https://jahanzaibawan.com/blog/recommenders-beyond-accuracy.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/recommenders-beyond-accuracy.html</guid>
+    <pubDate>Wed, 23 Sep 2026 09:00:00 +0000</pubDate>
+    <description>A recommender can top the accuracy leaderboard and still be useless. Here is why offline accuracy metrics need company, not replacement.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Class Imbalance Beyond Binary: Skewed Multi-Class Problems</title>
     <link>https://jahanzaibawan.com/blog/skewed-multiclass-imbalance.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Sun, 13 Sep 2026 09:00:00 +0000</pubDate>
     <description>Distillation can quietly shrink a model&#x27;s failure modes into a smaller package. Here&#x27;s how to check whether you&#x27;ve actually preserved behaviour, not just accuracy.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Multi-Task Learning: When a Shared Backbone Helps or Hurts</title>
-    <link>https://jahanzaibawan.com/blog/multi-task-learning-shared-backbones.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/multi-task-learning-shared-backbones.html</guid>
-    <pubDate>Sun, 13 Sep 2026 09:00:00 +0000</pubDate>
-    <description>A shared backbone sounds efficient, but it only pays off when tasks actually agree on what a good representation looks like.</description>
-    <category>Deep Learning</category>
   </item>
 </channel>
 </rss>
