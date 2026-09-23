@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a6",
       "thumb": "assets/blog/recommenders-beyond-accuracy.png",
-      "thumb_alt": "Cover image for the article: Evaluating Recommenders: Accuracy Is the Wrong First Metric"
+      "thumb_alt": "Cover image for the article: Evaluating Recommenders: Accuracy Is the Wrong First Metric",
+      "li_shared": true
     },
     {
       "slug": "skewed-multiclass-imbalance",
