@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Wed, 23 Sep 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Active Learning: Choosing What to Label Next</title>
+    <link>https://jahanzaibawan.com/blog/active-learning-what-to-label.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/active-learning-what-to-label.html</guid>
+    <pubDate>Wed, 23 Sep 2026 09:00:00 +0000</pubDate>
+    <description>Instead of labelling everything, active learning picks the examples most likely to improve your model, saving budget without sacrificing performance.</description>
+    <category>Machine Learning</category>
+  </item>
+  <item>
     <title>Evaluating Recommenders: Accuracy Is the Wrong First Metric</title>
     <link>https://jahanzaibawan.com/blog/recommenders-beyond-accuracy.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/recommenders-beyond-accuracy.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/read-evaluation-section-like-reviewer.html</guid>
     <pubDate>Mon, 14 Sep 2026 09:00:00 +0000</pubDate>
     <description>Skip the leaderboard instinct. Learn to interrogate splits, baselines, and variance the way a careful reviewer does, not the way a skimmer does.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Knowledge Distillation: Shrinking a Model Without Breaking It</title>
-    <link>https://jahanzaibawan.com/blog/knowledge-distillation-without-breaking-it.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/knowledge-distillation-without-breaking-it.html</guid>
-    <pubDate>Sun, 13 Sep 2026 09:00:00 +0000</pubDate>
-    <description>Distillation can quietly shrink a model&#x27;s failure modes into a smaller package. Here&#x27;s how to check whether you&#x27;ve actually preserved behaviour, not just accuracy.</description>
     <category>Evaluation</category>
   </item>
 </channel>

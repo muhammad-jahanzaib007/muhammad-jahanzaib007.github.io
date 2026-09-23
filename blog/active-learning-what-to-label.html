@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Active Learning: Choosing What to Label Next | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to active learning: why uncertainty sampling works, how to avoid common traps, and how to evaluate labelling strategies honestly.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="active learning, data labelling, uncertainty sampling, machine learning, annotation budget, model evaluation, sample efficiency, human in the loop, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-23">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Active Learning: Choosing What to Label Next">
+<meta property="og:description" content="A practical guide to active learning: why uncertainty sampling works, how to avoid common traps, and how to evaluate labelling strategies honestly.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/active-learning-what-to-label.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/active-learning-what-to-label.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Active Learning: Choosing What to Label Next">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/active-learning-what-to-label.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/active-learning-what-to-label.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Active Learning: Choosing What to Label Next",
+  "description": "A practical guide to active learning: why uncertainty sampling works, how to avoid common traps, and how to evaluate labelling strategies honestly.",
+  "url": "https://jahanzaibawan.com/blog/active-learning-what-to-label.html",
+  "image": "https://jahanzaibawan.com/assets/blog/active-learning-what-to-label.png",
+  "datePublished": "2026-09-23",
+  "dateModified": "2026-09-23",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/active-learning-what-to-label.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Active Learning: Choosing What to Label Next", "item": "https://jahanzaibawan.com/blog/active-learning-what-to-label.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Machine Learning · 5 min read · 23 Sep 2026</div>
+    <h1>Active Learning: Choosing What to Label Next</h1>
+    <p class="lede">Labelling budgets are always smaller than we want. Active learning is the discipline of spending them on the examples that actually change your model&#x27;s mind.</p>
+  </div>
+
+  <img src="../assets/blog/active-learning-what-to-label.png" alt="Cover image for the article: Active Learning: Choosing What to Label Next" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The problem with labelling everything</h2><p>Most supervised learning courses quietly assume that labels are free. In practice they never are. Someone has to read the document, listen to the audio, or draw the bounding box, and that someone charges by the hour or by the item. When you have ten thousand unlabelled examples and a budget for five hundred, the question stops being "how do we train a model" and becomes "which five hundred examples do we choose".</p><p>The naive answer is random sampling: pick five hundred examples uniformly and label them. This is not a bad baseline, and I would never trust an active learning result that failed to beat it convincingly. But random sampling treats every unlabelled example as equally informative, which is rarely true. A model that already classifies easy, common cases correctly gains almost nothing from ten more easy examples. It gains a great deal from the handful of cases sitting right on its decision boundary, the ones it genuinely cannot decide about.</p><p>Active learning formalises this intuition: instead of labelling a random or exhaustive set, you let the model itself help choose what gets labelled next. You train on what you have, ask the model which unlabelled points it is least confident about, send those to an annotator, retrain, and repeat. The goal is to reach a given accuracy with fewer labels, or to reach a higher accuracy with the same labelling budget.</p></section><section class='psec reveal'><h2>Uncertainty sampling and why it works</h2><p>The simplest and most widely used strategy is uncertainty sampling. For a classifier that outputs probabilities, you rank unlabelled examples by how close the predicted probability is to the decision threshold. For a binary classifier, an example predicted at 0.51 is far more interesting than one predicted at 0.98, because the model is essentially guessing on the first one and confident on the second.</p><p>Here is the intuition with numbers. Suppose you are building a spam filter and you have one thousand unlabelled emails. Your current model, trained on a small seed set, predicts that eight hundred of them are spam or not-spam with probability above 0.95 in either direction. The remaining two hundred sit between 0.4 and 0.6. If your budget is one hundred labels, spending them on a random slice of the one thousand emails will mostly land on the eight hundred easy ones, teaching the model very little it does not already know. Spending them on the two hundred ambiguous emails targets exactly the region where a single new label can shift the decision boundary and resolve real confusion.</p><p>This is why active learning curves in papers often show the same accuracy reached with a fraction of the labels compared to random sampling, particularly in the early rounds of training when the model has the most to learn. The gains tend to shrink as the model matures, because eventually there simply are not many genuinely ambiguous examples left to find.</p><p>There are more sophisticated strategies than plain uncertainty. Query by committee trains several models and picks examples where they disagree most. Expected model change estimates which label would most alter the model's parameters if added. Diversity-aware methods make sure you are not just picking a cluster of near-duplicate uncertain examples, which is a real risk: uncertainty sampling alone can happily hand you one hundred near-identical borderline cases instead of one hundred that cover different failure modes.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/active-learning-what-to-label-1.jpg' alt='person annotating data on laptop screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Where it goes wrong in practice</h2><p>Active learning has a reputation problem, partly earned. It is easy to demonstrate impressive results on a clean benchmark and much harder to make it work reliably on messy, real data, and I think it is worth being honest about the failure modes rather than treating the method as a free lunch.</p><p>The first trap is sampling bias compounding on itself. If your seed model is biased, for instance because it was trained on an unrepresentative initial batch, then uncertainty sampling will query examples that are uncertain according to that biased model, which is not the same as examples that are informative in general. You can end up in a loop where the model keeps requesting labels near its own flawed boundary and never discovers an entire region of the input space it is getting confidently wrong. This is a genuine leakage-adjacent risk: your evaluation set has to be held out properly and never touched by the selection process, otherwise you will overestimate how well the strategy generalises.</p><p>The second trap is annotator noise. Uncertainty sampling deliberately seeks out the hardest examples for the model, and hard-for-the-model examples are frequently also hard-for-the-human examples: ambiguous images, borderline sentiment, edge cases that even domain experts disagree on. If your labelling pipeline does not track inter-annotator agreement, you can spend your entire budget acquiring noisy labels on exactly the examples where noise hurts most, since these are the points closest to the decision boundary.</p><p>The third trap is evaluation. To claim that active learning beat random sampling, you need a fixed, held-out test set that is never used for selection, and you need to compare learning curves across multiple random seeds, not a single lucky run. A single active learning run that beats a single random run by two points of accuracy tells you almost nothing; the variance in early-stage learning curves, when training sets are small, can easily be larger than that.</p></section><section class='psec reveal'><h2>A practical takeaway</h2><p>If you are labelling data under a real budget, start with a reasonably diverse random seed set, large enough that your model is not making pure guesses, then apply uncertainty sampling or a query-by-committee approach in batches, retraining after each round rather than after every single label, which is usually impractical anyway. Always keep a fixed held-out test set that no selection strategy ever sees, and always compare against random sampling as your baseline on the same splits.</p><p>Track inter-annotator agreement on the examples your strategy selects, since a spike in disagreement is a useful signal that you are near a genuinely ambiguous region rather than a labelling error. And be sceptical of any active learning result reported from a single run with no variance estimate; ask for multiple seeds before believing the gain is real. Used carefully, active learning will not replace good data collection, but it will make a limited labelling budget go a great deal further than treating every unlabelled example as equally worth your time.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/active-learning-what-to-label-2.jpg' alt='stack of documents being sorted' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

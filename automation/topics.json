@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Active learning: choosing what to label next instead of labelling everything",
     "Synthetic data generation for computer vision: when it closes the domain gap",
     "The exploration versus exploitation tradeoff, explained without a slot machine analogy",
     "Zero-shot classification: what it actually promises and where it falls short",
@@ -189,6 +188,7 @@
     "Hyperparameter search strategies: grid, random, and Bayesian compared honestly",
     "Data leakage in time series: why lag features need extra care",
     "Class imbalance beyond binary: handling skewed multi-class problems",
-    "Evaluating recommender systems: why accuracy is the wrong first metric"
+    "Evaluating recommender systems: why accuracy is the wrong first metric",
+    "Active learning: choosing what to label next instead of labelling everything"
   ]
 }

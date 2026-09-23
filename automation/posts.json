@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "active-learning-what-to-label",
+      "title": "Active Learning: Choosing What to Label Next",
+      "excerpt": "Instead of labelling everything, active learning picks the examples most likely to improve your model, saving budget without sacrificing performance.",
+      "date": "2026-09-23",
+      "read_min": 5,
+      "tag": "Machine Learning",
+      "color": "a2",
+      "thumb": "assets/blog/active-learning-what-to-label.png",
+      "thumb_alt": "Cover image for the article: Active Learning: Choosing What to Label Next"
+    },
+    {
       "slug": "recommenders-beyond-accuracy",
       "title": "Evaluating Recommenders: Accuracy Is the Wrong First Metric",
       "excerpt": "A recommender can top the accuracy leaderboard and still be useless. Here is why offline accuracy metrics need company, not replacement.",
