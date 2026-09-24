@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Wed, 23 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 24 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Synthetic Data for Vision: Closing the Domain Gap</title>
+    <link>https://jahanzaibawan.com/blog/synthetic-data-domain-gap.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/synthetic-data-domain-gap.html</guid>
+    <pubDate>Thu, 24 Sep 2026 09:00:00 +0000</pubDate>
+    <description>Synthetic data can rescue a vision project starved of labels, but only when the gap between rendered and real pixels is measured, not assumed away.</description>
+    <category>Computer Vision</category>
+  </item>
   <item>
     <title>Active Learning: Choosing What to Label Next</title>
     <link>https://jahanzaibawan.com/blog/active-learning-what-to-label.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Mon, 14 Sep 2026 09:00:00 +0000</pubDate>
     <description>Bootcamp or self-taught, the credential says little. The portfolio, read carefully, says almost everything about how someone actually thinks.</description>
     <category>Careers</category>
-  </item>
-  <item>
-    <title>How to Read an Evaluation Section Like a Reviewer</title>
-    <link>https://jahanzaibawan.com/blog/read-evaluation-section-like-reviewer.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/read-evaluation-section-like-reviewer.html</guid>
-    <pubDate>Mon, 14 Sep 2026 09:00:00 +0000</pubDate>
-    <description>Skip the leaderboard instinct. Learn to interrogate splits, baselines, and variance the way a careful reviewer does, not the way a skimmer does.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>

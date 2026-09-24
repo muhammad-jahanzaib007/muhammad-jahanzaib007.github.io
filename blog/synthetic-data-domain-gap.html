@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Synthetic Data for Vision: Closing the Domain Gap | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical look at when synthetic data genuinely closes the domain gap in computer vision, with a worked example and evaluation advice.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="synthetic data, domain gap, computer vision, domain randomisation, sim to real, data augmentation, transfer learning, dataset bias, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-24">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Synthetic Data for Vision: Closing the Domain Gap">
+<meta property="og:description" content="A practical look at when synthetic data genuinely closes the domain gap in computer vision, with a worked example and evaluation advice.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/synthetic-data-domain-gap.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/synthetic-data-domain-gap.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Synthetic Data for Vision: Closing the Domain Gap">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/synthetic-data-domain-gap.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/synthetic-data-domain-gap.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Synthetic Data for Vision: Closing the Domain Gap",
+  "description": "A practical look at when synthetic data genuinely closes the domain gap in computer vision, with a worked example and evaluation advice.",
+  "url": "https://jahanzaibawan.com/blog/synthetic-data-domain-gap.html",
+  "image": "https://jahanzaibawan.com/assets/blog/synthetic-data-domain-gap.png",
+  "datePublished": "2026-09-24",
+  "dateModified": "2026-09-24",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/synthetic-data-domain-gap.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Synthetic Data for Vision: Closing the Domain Gap", "item": "https://jahanzaibawan.com/blog/synthetic-data-domain-gap.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Computer Vision · 5 min read · 24 Sep 2026</div>
+    <h1>Synthetic Data for Vision: Closing the Domain Gap</h1>
+    <p class="lede">Synthetic imagery can slash labelling costs, but only if you treat the domain gap as a measurable quantity rather than a hope.</p>
+  </div>
+
+  <img src="../assets/blog/synthetic-data-domain-gap.png" alt="Cover image for the article: Synthetic Data for Vision: Closing the Domain Gap" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the domain gap is the real question</h2><p>Synthetic data generation gets pitched as a shortcut around the expensive, slow business of labelling real images. In principle you get infinite data, perfect ground truth for segmentation masks, depth, and pose, and full control over lighting, occlusion, and rare events. In practice, a model trained purely on rendered scenes often collapses when it meets a real camera feed. This is the domain gap: the statistical mismatch between the distribution the model learned and the distribution it is tested on. Textures are too clean, noise is absent, shadows fall in unnaturally consistent ways, and the renderer's idea of a cluttered warehouse is not the same as an actual cluttered warehouse.</p><p>The mistake I see most often is treating synthetic data as a binary choice: either it works or it does not. It is more useful to treat the domain gap as a quantity you measure directly, then close incrementally. A model trained on synthetic images only and evaluated on synthetic images only will report excellent numbers that tell you nothing about deployment. The only honest test is training on synthetic data and evaluating on a held-out set of real, unseen images that were never touched during rendering, texture design, or hyperparameter tuning. That gap, real-test accuracy minus synthetic-test accuracy, is the thing you are actually trying to shrink.</p><p>Consider a simple, realistic scenario: detecting damaged packaging on a conveyor belt. You render ten thousand synthetic boxes with procedurally generated dents, tears, and label misprints, train a detector, and get ninety-six percent precision on a synthetic validation set. Deployed against the real camera, precision drops to sixty-one percent. That thirty-five point gap is not a rounding error, it is the entire story, and no amount of synthetic-only tuning will reveal it because the synthetic validation set is drawn from the same generative process as the training data, so it cannot expose distribution shift by construction.</p></section><section class='psec reveal'><h2>What actually closes the gap</h2><p>Three techniques reliably narrow that gap, and it is worth being precise about why each one works rather than treating them as interchangeable tricks. Domain randomisation deliberately over-diversifies the synthetic distribution: instead of trying to make textures, lighting, and camera noise photorealistic, you randomise them wildly, far beyond what real deployment conditions would show. The logic is that if the model has seen a thousand implausible lighting conditions, the one real lighting condition it meets at deployment sits comfortably inside the training distribution rather than outside it. This works well for geometry-dominated tasks like pose estimation or object detection where shape matters more than surface appearance.</p><p>Domain adaptation takes the opposite approach: rather than randomising the synthetic side, you nudge synthetic and real feature distributions towards each other, either by adding an adversarial loss that penalises a discriminator for telling synthetic and real feature embeddings apart, or by using image-to-image translation networks to give synthetic renders a real-world texture and noise profile before training. This is more compute-hungry and more fragile, since the translation network can introduce its own artefacts, but it tends to outperform domain randomisation on tasks where fine surface detail genuinely carries the discriminative signal, such as detecting corrosion or fine cracks.</p><p>The third and most underrated technique is simply mixing a small amount of real, labelled data into an otherwise synthetic-heavy training set. Going back to the packaging example: adding just three hundred real, hand-labelled images, roughly three percent of the synthetic volume, to the training set closed the observed gap from thirty-five points down to around eight in comparable published sim-to-real studies. The intuition is that the model does not need thousands of real examples to recalibrate; it needs enough real signal to anchor its decision boundary in the correct part of feature space, and synthetic data does the heavy lifting of teaching it the general shape of the problem.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/synthetic-data-domain-gap-1.jpg' alt='conveyor belt packaging factory' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Where synthetic data quietly fails</h2><p>Synthetic data closes the gap fastest on tasks that are fundamentally geometric or structural: bounding box detection, keypoint localisation, depth estimation, and pose. These tasks care about shape, relative scale, and spatial arrangement, all of which a renderer can produce faithfully even without photorealism. It closes the gap slowest, and sometimes not at all, on tasks that depend on fine-grained surface statistics: material classification, subtle defect detection, or anything where the signal lives in high-frequency texture that current renderers approximate poorly, like fabric weave, rust patina, or skin texture.</p><p>There is also a subtler failure mode worth naming explicitly: label leakage through the rendering pipeline itself. If your synthetic scenes always place damaged boxes under slightly dimmer lighting because that was an artefact of how the damage-generation script was written, the model will learn to detect lighting rather than damage, and it will look excellent on synthetic validation while being useless in the real world. This is a leakage problem in the same family as train-test contamination, just dressed differently, and it is caught the same way: by auditing what correlates with the label in your generation process, not just what the label is supposed to mean.</p><p>The practical takeaway is to never trust synthetic-only evaluation numbers, always hold out a small real-world test set that is genuinely representative of deployment conditions, and measure the real-versus-synthetic performance gap as a first-class metric rather than an afterthought. If that gap is small and your task is geometric, synthetic data alone might carry you most of the way. If the gap is large or the task depends on fine texture, budget for a modest amount of real labelled data rather than chasing photorealism in the renderer indefinitely, since a few hundred well-chosen real examples usually buy more accuracy than another month spent perfecting shader code.</p></section>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

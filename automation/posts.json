@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "synthetic-data-domain-gap",
+      "title": "Synthetic Data for Vision: Closing the Domain Gap",
+      "excerpt": "Synthetic data can rescue a vision project starved of labels, but only when the gap between rendered and real pixels is measured, not assumed away.",
+      "date": "2026-09-24",
+      "read_min": 5,
+      "tag": "Computer Vision",
+      "color": "a3",
+      "thumb": "assets/blog/synthetic-data-domain-gap.png",
+      "thumb_alt": "Cover image for the article: Synthetic Data for Vision: Closing the Domain Gap"
+    },
+    {
       "slug": "active-learning-what-to-label",
       "title": "Active Learning: Choosing What to Label Next",
       "excerpt": "Instead of labelling everything, active learning picks the examples most likely to improve your model, saving budget without sacrificing performance.",
