@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Thu, 24 Sep 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Exploration Versus Exploitation, Without the Slot Machine</title>
+    <link>https://jahanzaibawan.com/blog/exploration-exploitation-tradeoff-explained.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/exploration-exploitation-tradeoff-explained.html</guid>
+    <pubDate>Thu, 24 Sep 2026 09:00:00 +0000</pubDate>
+    <description>Skip the casino metaphor. Here is the exploration versus exploitation tradeoff explained through a decision you have actually made.</description>
+    <category>Machine Learning</category>
+  </item>
+  <item>
     <title>Synthetic Data for Vision: Closing the Domain Gap</title>
     <link>https://jahanzaibawan.com/blog/synthetic-data-domain-gap.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/synthetic-data-domain-gap.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Tue, 15 Sep 2026 09:00:00 +0000</pubDate>
     <description>MLOps syllabuses teach you the pipeline plumbing well, but often skip the harder judgement calls around evaluation, drift, and leakage.</description>
     <category>MLOps</category>
-  </item>
-  <item>
-    <title>Bootcamps vs Self-Taught Paths: What Portfolios Reveal</title>
-    <link>https://jahanzaibawan.com/blog/bootcamp-vs-self-taught-portfolios.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/bootcamp-vs-self-taught-portfolios.html</guid>
-    <pubDate>Mon, 14 Sep 2026 09:00:00 +0000</pubDate>
-    <description>Bootcamp or self-taught, the credential says little. The portfolio, read carefully, says almost everything about how someone actually thinks.</description>
-    <category>Careers</category>
   </item>
 </channel>
 </rss>

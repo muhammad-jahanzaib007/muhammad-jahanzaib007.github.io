@@ -1,6 +1,5 @@
 {
   "queue": [
-    "The exploration versus exploitation tradeoff, explained without a slot machine analogy",
     "Zero-shot classification: what it actually promises and where it falls short",
     "Feature engineering for tabular data: what still beats a neural network",
     "Choosing a batch size: the quiet hyperparameter everyone forgets to tune",
@@ -189,6 +188,7 @@
     "Class imbalance beyond binary: handling skewed multi-class problems",
     "Evaluating recommender systems: why accuracy is the wrong first metric",
     "Active learning: choosing what to label next instead of labelling everything",
-    "Synthetic data generation for computer vision: when it closes the domain gap"
+    "Synthetic data generation for computer vision: when it closes the domain gap",
+    "The exploration versus exploitation tradeoff, explained without a slot machine analogy"
   ]
 }

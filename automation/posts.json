@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "exploration-exploitation-tradeoff-explained",
+      "title": "Exploration Versus Exploitation, Without the Slot Machine",
+      "excerpt": "Skip the casino metaphor. Here is the exploration versus exploitation tradeoff explained through a decision you have actually made.",
+      "date": "2026-09-24",
+      "read_min": 5,
+      "tag": "Machine Learning",
+      "color": "a4",
+      "thumb": "assets/blog/exploration-exploitation-tradeoff-explained.png",
+      "thumb_alt": "Cover image for the article: Exploration Versus Exploitation, Without the Slot Machine"
+    },
+    {
       "slug": "synthetic-data-domain-gap",
       "title": "Synthetic Data for Vision: Closing the Domain Gap",
       "excerpt": "Synthetic data can rescue a vision project starved of labels, but only when the gap between rendered and real pixels is measured, not assumed away.",

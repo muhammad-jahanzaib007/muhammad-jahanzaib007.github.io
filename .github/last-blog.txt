@@ -1,1 +1,1 @@
-2026-09-24T08:21:47Z slug=synthetic-data-domain-gap words=950 title="Synthetic Data for Vision: Closing the Domain Gap"
+2026-09-24T20:21:48Z slug=exploration-exploitation-tradeoff-explained words=1014 title="Exploration Versus Exploitation, Without the Slot Machine"
