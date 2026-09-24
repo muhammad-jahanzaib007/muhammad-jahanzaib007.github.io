@@ -9,7 +9,8 @@
       "tag": "Machine Learning",
       "color": "a4",
       "thumb": "assets/blog/exploration-exploitation-tradeoff-explained.png",
-      "thumb_alt": "Cover image for the article: Exploration Versus Exploitation, Without the Slot Machine"
+      "thumb_alt": "Cover image for the article: Exploration Versus Exploitation, Without the Slot Machine",
+      "li_shared": true
     },
     {
       "slug": "synthetic-data-domain-gap",
