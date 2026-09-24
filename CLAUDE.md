@@ -153,3 +153,42 @@ commit, so the other sessions know who did what.
   an EXTRA blog post, and a padded post hurts the "genuine business" quality
   signal more than a briefly-missed slot does. KEPT the two schedule crons
   (now Pages-heal-only) + the workflow_run retry/escalate layer untouched.
+- 2026-09-24 — claude.ai/code web session (branch
+  claude/memory-file-github-voe2u3): DISTRIBUTION STRATEGY decided with owner.
+  Context: owner asked about LinkedIn ban risk and expanding to Quora/Reddit.
+  Rulings (so future sessions don't re-litigate):
+  * LinkedIn link-in-body is FINE — no ban risk (official API + OAuth =
+    sanctioned; 2/day is not spam; content is genuine). Cost is reach
+    throttling only, not account safety. Comment+pin can't be automated
+    (Community Management API is org-page-gated; pinning has NO API). Owner
+    chose to LEAVE LinkedIn AS-IS (link-in-body). Do not rebuild.
+  * QUORA — NOT automatable. No official write API; only browser automation,
+    which violates ToS and risks the account. Decided AGAINST. Do not build.
+  * REDDIT auto-POSTING (link or full-article self-posts) — declined as a
+    default: other people's communities gate on account age/karma, ban AI
+    content, and flag self-promo; high ban + brand-damage risk. Only viable
+    manually, on an account with standing. Parked.
+  * REDDIT auto-COMMENTING bot (scrape fresh AI/ML problems → auto-reply the
+    solution) — REJECTED outright. It's undisclosed-bot spam (Reddit
+    content-manipulation policy = fast shadowban/permaban), astroturfing that
+    poisons the "genuine business" signal, and risks confidently-wrong
+    answers under the brand. Do NOT build this in any form.
+  APPROVED & TO BUILD (owner greenlit direction, continuing on desktop):
+  * Reddit as a READ-ONLY DEMAND SIGNAL for blog topics. A daily miner reads
+    fresh `/new` posts from chosen AI/ML subs (read-only Reddit OAuth, NOTHING
+    posted to Reddit = zero ban risk), keeps genuine questions/problems with
+    traction (upvotes/comments = validated demand), and feeds the PROBLEM as a
+    candidate topic into the existing topic step (generate_post.py /
+    topics.json, which already uses Google Suggest + HN signals). The pipeline
+    then writes an ORIGINAL solution article (never rehash the poster's
+    wording — plagiarism/licensing) and publishes via the existing flow
+    (website + LinkedIn). Add dedup so the same problem isn't rewritten.
+    Guardrails: bias topic pick toward well-established solutions (LLM can be
+    confidently wrong = brand risk); use the Reddit API (OAuth read), not web
+    scraping.
+    PENDING INPUTS from owner before build: (1) which subreddits (proposed:
+    r/MachineLearning, r/learnmachinelearning, r/artificial, r/LocalLLaMA,
+    r/OpenAI); (2) augment vs replace the current Google Suggest + HN sources
+    (recommended: AUGMENT, Reddit leads, others fallback); (3) owner to create
+    a Reddit read-only API app (client id/secret → GitHub secrets,
+    human-domain). Build the miner + topic-step integration once these land.
