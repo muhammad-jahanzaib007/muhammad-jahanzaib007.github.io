@@ -9,7 +9,8 @@
       "tag": "Machine Learning",
       "color": "a6",
       "thumb": "assets/blog/feature-engineering-beats-neural-nets.png",
-      "thumb_alt": "Cover image for the article: Feature Engineering for Tabular Data: What Still Wins"
+      "thumb_alt": "Cover image for the article: Feature Engineering for Tabular Data: What Still Wins",
+      "li_shared": true
     },
     {
       "slug": "zero-shot-classification-limits",
