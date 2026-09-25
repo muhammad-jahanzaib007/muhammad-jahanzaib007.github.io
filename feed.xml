@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Fri, 25 Sep 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Feature Engineering for Tabular Data: What Still Wins</title>
+    <link>https://jahanzaibawan.com/blog/feature-engineering-beats-neural-nets.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/feature-engineering-beats-neural-nets.html</guid>
+    <pubDate>Fri, 25 Sep 2026 09:00:00 +0000</pubDate>
+    <description>On tabular data, careful feature engineering often beats a neural network. Here is the intuition, a worked example, and why leakage-aware evaluation matters more than architecture.</description>
+    <category>Machine Learning</category>
+  </item>
+  <item>
     <title>Zero-Shot Classification: Promise Versus Practice</title>
     <link>https://jahanzaibawan.com/blog/zero-shot-classification-limits.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/zero-shot-classification-limits.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Wed, 16 Sep 2026 09:00:00 +0000</pubDate>
     <description>Model training is the smallest part of the job. Here is the honest weekly rhythm of maintaining ML systems in production.</description>
     <category>MLOps</category>
-  </item>
-  <item>
-    <title>When Evaluation Dashboards Hide Silent Model Failures</title>
-    <link>https://jahanzaibawan.com/blog/dashboards-hide-silent-failures.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/dashboards-hide-silent-failures.html</guid>
-    <pubDate>Tue, 15 Sep 2026 09:00:00 +0000</pubDate>
-    <description>A clean accuracy chart on a managed ML dashboard can hide leakage, drift, and slice-level failures that only careful, manual evaluation will reveal.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>

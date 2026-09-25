@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feature Engineering for Tabular Data: What Still Wins | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why thoughtful feature engineering often outperforms neural networks on tabular data, with a worked example and practical guidance on leakage-aware evaluation.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="feature engineering, tabular data, gradient boosting, neural networks, machine learning, data leakage, model evaluation, target encoding, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-25">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Feature Engineering for Tabular Data: What Still Wins">
+<meta property="og:description" content="Why thoughtful feature engineering often outperforms neural networks on tabular data, with a worked example and practical guidance on leakage-aware evaluation.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/feature-engineering-beats-neural-nets.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/feature-engineering-beats-neural-nets.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Feature Engineering for Tabular Data: What Still Wins">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/feature-engineering-beats-neural-nets.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/feature-engineering-beats-neural-nets.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Feature Engineering for Tabular Data: What Still Wins",
+  "description": "Why thoughtful feature engineering often outperforms neural networks on tabular data, with a worked example and practical guidance on leakage-aware evaluation.",
+  "url": "https://jahanzaibawan.com/blog/feature-engineering-beats-neural-nets.html",
+  "image": "https://jahanzaibawan.com/assets/blog/feature-engineering-beats-neural-nets.png",
+  "datePublished": "2026-09-25",
+  "dateModified": "2026-09-25",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/feature-engineering-beats-neural-nets.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Feature Engineering for Tabular Data: What Still Wins", "item": "https://jahanzaibawan.com/blog/feature-engineering-beats-neural-nets.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Machine Learning · 4 min read · 25 Sep 2026</div>
+    <h1>Feature Engineering for Tabular Data: What Still Wins</h1>
+    <p class="lede">Before you reach for a deep model, ask whether a well-built feature can do the job more cheaply and more honestly.</p>
+  </div>
+
+  <img src="../assets/blog/feature-engineering-beats-neural-nets.png" alt="Cover image for the article: Feature Engineering for Tabular Data: What Still Wins" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The quiet advantage of a good feature</h2><p>Every time a new architecture makes headlines, someone asks whether it will finally make feature engineering obsolete for tabular problems. In my experience it rarely does. Images and text have strong local structure that convolutions and attention can exploit directly from raw pixels or tokens. Tabular data usually does not have that structure. A column called <em>days_since_last_purchase</em> and a column called <em>account_balance</em> have no spatial or sequential relationship to each other unless you build one. A neural network has to discover useful interactions from scratch, with limited data and no inductive bias to guide it. A human who understands the domain can often just write the interaction down.</p><p>This is why gradient-boosted trees paired with careful feature construction remain such strong baselines on structured, row-and-column data. Trees are good at finding splits and interactions on their own, but they still benefit enormously from features that encode domain knowledge the raw columns do not expose. The real competition is not really network versus tree. It is implicit representation learning versus explicit, human-guided representation learning. On tabular data with modest sample sizes, explicit usually wins, because there simply is not enough data for a network to rediscover what a domain expert already knows.</p></section><section class='psec reveal'><h2>A worked example: ratios beat raw numbers</h2><p>Suppose you are predicting whether a customer will cancel a subscription next month, and your raw features include <em>total_logins_last_30_days</em> and <em>account_age_days</em>. A neural network fed both raw columns has to learn, through many layers and many examples, that what matters is not the login count in isolation but the login count relative to how long the account has existed. A brand new user with five logins in thirty days is engaged. A three-year veteran with five logins in thirty days is probably drifting away.</p><p>If you instead engineer a feature such as <em>logins_per_day_since_signup</em>, you have handed the model the ratio directly. In a plausible scenario, a logistic regression or a shallow tree ensemble using that single engineered ratio might separate churners from non-churners with an AUC around 0.71, where the same model using only the two raw columns manages something closer to 0.63. The network fed raw columns might eventually close some of that gap with enough data and enough capacity, but on a dataset of, say, twenty thousand customers, it typically will not fully catch up, because it has to spend its limited statistical budget learning the division operation instead of learning the actual churn signal.</p><p>The same logic applies to differences, not just ratios. A feature like <em>balance_change_last_7_days</em> captures momentum that <em>current_balance</em> alone cannot. Time-based aggregates, counts over rolling windows, and rate-of-change features are some of the highest-leverage engineering moves precisely because they encode a relationship the model would otherwise have to infer indirectly from many correlated examples.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/feature-engineering-beats-neural-nets-1.jpg' alt='spreadsheet data on laptop screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Encoding categories without leaking the answer</h2><p>Categorical variables are where feature engineering earns its keep and also where it most easily goes wrong. Take a feature like <em>merchant_category</em> with several hundred distinct values. One-hot encoding blows up the dimensionality and dilutes the signal across sparse columns. Target encoding, replacing each category with the mean of the target for that category, is far more compact and often more predictive. But target encoding computed naively, using the full dataset before splitting into train and test, leaks the label into the feature. The model then appears to perform brilliantly in validation and disappoints badly once deployed, because in production you will never have future outcomes available to encode a category at prediction time.</p><p>The fix is to compute target encodings only on training folds, ideally with cross-fold or out-of-fold schemes so that no row's encoding was influenced by its own label. This sounds like a small implementation detail, but it is the difference between a genuinely useful feature and a number that quietly reports the answer. I have seen validation AUCs sit above 0.90 on leaky target-encoded features that collapsed to something far more modest, close to what a well-tuned baseline achieves, once the encoding was done properly with held-out folds. That gap is not a modelling failure. It is an evaluation failure, and it is exactly the kind of thing that convinces people a fancy technique works when the technique was never actually tested honestly.</p></section><section class='psec reveal'><h2>Where this leaves you in practice</h2><p>None of this is an argument against neural networks for tabular data. There are genuine cases, particularly with very large datasets, high-cardinality categorical structure, or multimodal inputs mixing text and numbers, where learned embeddings do useful work that manual features cannot easily replicate. The argument is narrower: for moderate-sized, well-understood tabular problems, the fastest and most reliable path to a strong model is usually a solid baseline, careful ratio and interval features, properly leakage-checked categorical encodings, and a gradient-boosted tree ensemble, before reaching for anything deeper.</p><p>The practical habit worth building is to always compare a simple model with well-engineered features against your fancier candidate on an identical, leakage-aware split, using the same evaluation protocol for both. If the neural network cannot beat that baseline by a meaningful margin on held-out data that respects the real-world timeline of the problem, the added complexity is not paying for itself. Feature engineering is not a relic from before deep learning. On tabular data, it is often still the cheapest and most trustworthy way to tell your model what actually matters.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/feature-engineering-beats-neural-nets-2.jpg' alt='whiteboard with data flow diagram' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

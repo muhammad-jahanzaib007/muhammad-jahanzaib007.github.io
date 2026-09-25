@@ -1,11 +1,24 @@
 {
   "queue": [
-    "Feature engineering for tabular data: what still beats a neural network",
     "Choosing a batch size: the quiet hyperparameter everyone forgets to tune",
     "Multi-modal models explained: fusing text and image without the hype",
     "Data contracts for machine learning pipelines: catching schema drift early",
     "Explaining a model's decision to a stakeholder who does not trust a p-value",
-    "Curriculum learning: ordering training data on purpose"
+    "Curriculum learning: ordering training data on purpose",
+    "Fine-tuning as a word: how ML borrowed a term from physics and cosmology",
+    "Full fine-tuning versus parameter-efficient methods: a decision framework, not a trend",
+    "What counts as an NLP practitioner: rule-based roots before the deep learning rebrand",
+    "Data annotation quality for NLP: why your labels are the real model",
+    "Choosing between a computer vision book and a course: what each format actually teaches",
+    "Held-out evaluation for recommender systems: offline metrics that mislead online",
+    "Model evaluation as a discipline: what separates a metric from a decision",
+    "Building a threat-aware evaluation harness: borrowing from red-team thinking without the hype",
+    "The vocabulary trap in ML job adverts: what NLP, CV, and MLOps titles actually overlap on",
+    "A worked example of overfitting to the leaderboard, not just the training set",
+    "Why computer vision engineers and ML engineers read papers differently",
+    "Evaluating a model against its own baseline: the comparison everyone skips",
+    "What a fine-tuning run actually costs: compute, data, and the evaluation you still owe",
+    "Choosing a first NLP project: what teaches tokenisation, embeddings, and evaluation at once"
   ],
   "published": [
     "UAV object classification data-leakage case study",
@@ -189,6 +202,7 @@
     "Active learning: choosing what to label next instead of labelling everything",
     "Synthetic data generation for computer vision: when it closes the domain gap",
     "The exploration versus exploitation tradeoff, explained without a slot machine analogy",
-    "Zero-shot classification: what it actually promises and where it falls short"
+    "Zero-shot classification: what it actually promises and where it falls short",
+    "Feature engineering for tabular data: what still beats a neural network"
   ]
 }

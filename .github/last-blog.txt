@@ -1,1 +1,1 @@
-2026-09-25T08:01:49Z slug=zero-shot-classification-limits words=967 title="Zero-Shot Classification: Promise Versus Practice"
+2026-09-25T20:02:00Z slug=feature-engineering-beats-neural-nets words=894 title="Feature Engineering for Tabular Data: What Still Wins"

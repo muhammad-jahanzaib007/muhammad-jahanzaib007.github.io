@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "feature-engineering-beats-neural-nets",
+      "title": "Feature Engineering for Tabular Data: What Still Wins",
+      "excerpt": "On tabular data, careful feature engineering often beats a neural network. Here is the intuition, a worked example, and why leakage-aware evaluation matters more than architecture.",
+      "date": "2026-09-25",
+      "read_min": 4,
+      "tag": "Machine Learning",
+      "color": "a6",
+      "thumb": "assets/blog/feature-engineering-beats-neural-nets.png",
+      "thumb_alt": "Cover image for the article: Feature Engineering for Tabular Data: What Still Wins"
+    },
+    {
       "slug": "zero-shot-classification-limits",
       "title": "Zero-Shot Classification: Promise Versus Practice",
       "excerpt": "Zero-shot classification is genuinely useful, but its accuracy claims often collapse once you check for label leakage, prompt sensitivity, and domain mismatch.",
