@@ -1,1 +1,1 @@
-2026-09-24T20:21:48Z slug=exploration-exploitation-tradeoff-explained words=1014 title="Exploration Versus Exploitation, Without the Slot Machine"
+2026-09-25T08:01:49Z slug=zero-shot-classification-limits words=967 title="Zero-Shot Classification: Promise Versus Practice"

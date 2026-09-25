@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zero-Shot Classification: Promise Versus Practice | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A grounded look at what zero-shot classification really offers, how it works, and the practical failure modes that inflate its apparent accuracy.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="zero-shot classification, natural language processing, NLI models, prompt engineering, evaluation, model robustness, label leakage, machine learning, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-25">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Zero-Shot Classification: Promise Versus Practice">
+<meta property="og:description" content="A grounded look at what zero-shot classification really offers, how it works, and the practical failure modes that inflate its apparent accuracy.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/zero-shot-classification-limits.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/zero-shot-classification-limits.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Zero-Shot Classification: Promise Versus Practice">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/zero-shot-classification-limits.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/zero-shot-classification-limits.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Zero-Shot Classification: Promise Versus Practice",
+  "description": "A grounded look at what zero-shot classification really offers, how it works, and the practical failure modes that inflate its apparent accuracy.",
+  "url": "https://jahanzaibawan.com/blog/zero-shot-classification-limits.html",
+  "image": "https://jahanzaibawan.com/assets/blog/zero-shot-classification-limits.png",
+  "datePublished": "2026-09-25",
+  "dateModified": "2026-09-25",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/zero-shot-classification-limits.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Zero-Shot Classification: Promise Versus Practice", "item": "https://jahanzaibawan.com/blog/zero-shot-classification-limits.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">NLP · 5 min read · 25 Sep 2026</div>
+    <h1>Zero-Shot Classification: Promise Versus Practice</h1>
+    <p class="lede">Zero-shot models let you label text without task-specific training data, but the convenience hides real evaluation traps that a leakage-aware, sceptical reader should know about.</p>
+  </div>
+
+  <img src="../assets/blog/zero-shot-classification-limits.png" alt="Cover image for the article: Zero-Shot Classification: Promise Versus Practice" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why zero-shot feels like magic</h2><p>The pitch is seductive: hand a model a piece of text, give it a list of candidate labels it has never seen during training, and it returns a sensible ranking. No labelled training set, no fine-tuning run, no annotation budget. For anyone who has spent weeks collecting and cleaning labels for a supervised classifier, this looks like a shortcut worth taking seriously.</p><p>Most practical zero-shot text classification today relies on natural language inference, or NLI. A model trained to judge whether one sentence entails, contradicts, or is neutral towards another is repurposed: your input text becomes the premise, and each candidate label is wrapped into a hypothesis such as 'this example is about sport'. The label whose hypothesis the model considers most entailed wins. It is a clever reuse of an unrelated training objective, and it works far better than it has any right to.</p><p>I want to be precise about what this promises, because the framing matters. It promises that you can classify into an arbitrary, open set of categories at inference time without retraining. It does not promise that the resulting accuracy will match a supervised model trained on even a modest labelled set for your specific task. Those are two very different claims, and blog posts and demo notebooks often blur them.</p></section><section class='psec reveal'><h2>A worked example of where it wobbles</h2><p>Suppose you want to route customer support tickets into three categories: billing, technical fault, and account access. You feed a zero-shot NLI pipeline the ticket text and the three label names. On a quick eyeball test of twenty tickets, it gets sixteen right, which feels like eighty percent and seems usable.</p><p>Now look closer. Of the four errors, three involve tickets that mention both a password reset and a charge dispute in the same message, and the model consistently picks 'account access' because the word 'login' appears near the start of the ticket, even though the customer's actual complaint is a duplicate charge. This is not a subtle edge case; it is the single most common real ticket type in many support queues. The model is not reasoning about intent, it is pattern-matching surface lexical overlap between the ticket and the label's hypothesis wording.</p><p>Here is the part that should worry you more: if you rename the label from 'account access' to 'login or password issue', accuracy on that same twenty-ticket sample jumps to eighteen out of twenty. Nothing about the underlying task changed. The label string did. This means the number you report, eighty percent or ninety percent, is partly a property of how cleverly you phrased your categories, not a stable property of the model's understanding. Any accuracy figure you quote for a zero-shot system without also reporting the exact label strings used is close to meaningless for comparison purposes.</p><p>This sensitivity compounds when labels are ambiguous or overlapping, which real-world taxonomies almost always are. A ticket about a fraudulent charge could reasonably sit under billing or under account access depending on how your business defines the categories, and the model has no access to your internal definitions unless you encode them into the hypothesis template.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/zero-shot-classification-limits-1.jpg' alt='customer support helpdesk office' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>The evaluation trap: it looks tested but often isn't</h2><p>Here is where my instinct as someone who cares about leakage-aware evaluation kicks in. Many zero-shot benchmarks report strong numbers on datasets whose label names and topic distributions bear a family resemblance to text the underlying model saw during pretraining or during its NLI fine-tuning. A model fine-tuned on a large NLI corpus scraped broadly from the web has, in some diffuse sense, already encountered sentences resembling 'this document discusses finance' or 'this review expresses negative sentiment', because those are exactly the kinds of paired statements that appear in web text and in NLI training pairs.</p><p>That is not the same as classic train-test leakage where identical examples appear in both splits, but it produces a similar inflation effect: the model performs well on tasks whose label semantics are common and well-represented in general text, and performs noticeably worse on tasks with specialised, jargon-heavy, or internally-defined categories, which is precisely the situation most businesses actually have. A benchmark built from news topic labels like 'sport', 'politics', and 'technology' will make zero-shot classification look excellent. A benchmark built from a company's internal ticket taxonomy with labels like 'tier 2 escalation' will not.</p><p>The honest response to this is not to abandon zero-shot classification, but to test it the way you would test any classifier: build a held-out labelled sample from your actual data, evaluate against it before deployment, and try several phrasings of your labels to check for the kind of sensitivity described above. If accuracy swings by ten or fifteen points depending on label wording, that variance is information; it tells you the model has not learned a stable decision boundary for your task, only a fuzzy semantic association that you can nudge around.</p></section><section class='psec reveal'><h2>Where zero-shot genuinely earns its keep</h2><p>None of this means zero-shot classification is a trick. It is a legitimate and often excellent tool for triage, for exploratory labelling before you commit to a taxonomy, and for cold-start situations where you have no labelled data at all and need something better than keyword matching by next week. It is also a reasonable way to bootstrap a weak-labelling pipeline: use zero-shot predictions as noisy initial labels, have humans review a sample, and use that reviewed sample to train a proper supervised model once you understand your actual label distribution.</p><p>The practical takeaway is simple: treat zero-shot accuracy claims, including any number I might casually quote, as conditional on the exact labels and prompts used, and always validate on a small held-out sample from your own domain before trusting it in production. Zero-shot buys you a starting point, not a finished classifier.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/zero-shot-classification-limits-2.jpg' alt='whiteboard with categories and arrows' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

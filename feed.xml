@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Thu, 24 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 25 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Zero-Shot Classification: Promise Versus Practice</title>
+    <link>https://jahanzaibawan.com/blog/zero-shot-classification-limits.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/zero-shot-classification-limits.html</guid>
+    <pubDate>Fri, 25 Sep 2026 09:00:00 +0000</pubDate>
+    <description>Zero-shot classification is genuinely useful, but its accuracy claims often collapse once you check for label leakage, prompt sensitivity, and domain mismatch.</description>
+    <category>NLP</category>
+  </item>
   <item>
     <title>Exploration Versus Exploitation, Without the Slot Machine</title>
     <link>https://jahanzaibawan.com/blog/exploration-exploitation-tradeoff-explained.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Tue, 15 Sep 2026 09:00:00 +0000</pubDate>
     <description>A clean accuracy chart on a managed ML dashboard can hide leakage, drift, and slice-level failures that only careful, manual evaluation will reveal.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Reading an MLOps Certification Syllabus: Gaps and Gains</title>
-    <link>https://jahanzaibawan.com/blog/reading-mlops-certification-syllabus.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/reading-mlops-certification-syllabus.html</guid>
-    <pubDate>Tue, 15 Sep 2026 09:00:00 +0000</pubDate>
-    <description>MLOps syllabuses teach you the pipeline plumbing well, but often skip the harder judgement calls around evaluation, drift, and leakage.</description>
-    <category>MLOps</category>
   </item>
 </channel>
 </rss>

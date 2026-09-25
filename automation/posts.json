@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "zero-shot-classification-limits",
+      "title": "Zero-Shot Classification: Promise Versus Practice",
+      "excerpt": "Zero-shot classification is genuinely useful, but its accuracy claims often collapse once you check for label leakage, prompt sensitivity, and domain mismatch.",
+      "date": "2026-09-25",
+      "read_min": 5,
+      "tag": "NLP",
+      "color": "a5",
+      "thumb": "assets/blog/zero-shot-classification-limits.png",
+      "thumb_alt": "Cover image for the article: Zero-Shot Classification: Promise Versus Practice"
+    },
+    {
       "slug": "exploration-exploitation-tradeoff-explained",
       "title": "Exploration Versus Exploitation, Without the Slot Machine",
       "excerpt": "Skip the casino metaphor. Here is the exploration versus exploitation tradeoff explained through a decision you have actually made.",
