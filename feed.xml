@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Fri, 25 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 26 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Batch Size: The Quiet Hyperparameter Nobody Tunes</title>
+    <link>https://jahanzaibawan.com/blog/choosing-a-batch-size.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/choosing-a-batch-size.html</guid>
+    <pubDate>Sat, 26 Sep 2026 09:00:00 +0000</pubDate>
+    <description>Batch size is treated as a memory afterthought, but it changes gradient noise, generalisation, and wall-clock time in ways learning rate alone cannot fix.</description>
+    <category>Deep Learning</category>
+  </item>
   <item>
     <title>Feature Engineering for Tabular Data: What Still Wins</title>
     <link>https://jahanzaibawan.com/blog/feature-engineering-beats-neural-nets.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Wed, 16 Sep 2026 09:00:00 +0000</pubDate>
     <description>In electrical engineering a transformer changes voltage. In machine learning it changes how a model attends to context. Same word, unrelated ideas.</description>
     <category>Deep Learning</category>
-  </item>
-  <item>
-    <title>A Realistic Weekly Breakdown of MLOps Work</title>
-    <link>https://jahanzaibawan.com/blog/weekly-life-of-mlops-engineer.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/weekly-life-of-mlops-engineer.html</guid>
-    <pubDate>Wed, 16 Sep 2026 09:00:00 +0000</pubDate>
-    <description>Model training is the smallest part of the job. Here is the honest weekly rhythm of maintaining ML systems in production.</description>
-    <category>MLOps</category>
   </item>
 </channel>
 </rss>

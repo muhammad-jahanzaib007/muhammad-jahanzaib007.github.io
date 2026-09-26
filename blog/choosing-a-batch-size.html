@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Batch Size: The Quiet Hyperparameter Nobody Tunes | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="An honest look at why batch size deserves deliberate tuning, with a worked example showing how it interacts with learning rate and generalisation.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="batch size, hyperparameter tuning, deep learning, generalisation, gradient noise, learning rate, training stability, machine learning practice, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-26">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Batch Size: The Quiet Hyperparameter Nobody Tunes">
+<meta property="og:description" content="An honest look at why batch size deserves deliberate tuning, with a worked example showing how it interacts with learning rate and generalisation.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/choosing-a-batch-size.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/choosing-a-batch-size.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Batch Size: The Quiet Hyperparameter Nobody Tunes">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/choosing-a-batch-size.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/choosing-a-batch-size.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Batch Size: The Quiet Hyperparameter Nobody Tunes",
+  "description": "An honest look at why batch size deserves deliberate tuning, with a worked example showing how it interacts with learning rate and generalisation.",
+  "url": "https://jahanzaibawan.com/blog/choosing-a-batch-size.html",
+  "image": "https://jahanzaibawan.com/assets/blog/choosing-a-batch-size.png",
+  "datePublished": "2026-09-26",
+  "dateModified": "2026-09-26",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/choosing-a-batch-size.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Batch Size: The Quiet Hyperparameter Nobody Tunes", "item": "https://jahanzaibawan.com/blog/choosing-a-batch-size.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Deep Learning · 5 min read · 26 Sep 2026</div>
+    <h1>Batch Size: The Quiet Hyperparameter Nobody Tunes</h1>
+    <p class="lede">Learning rate gets all the attention, but batch size quietly reshapes your optimisation trajectory, your generalisation, and your training budget. Here is why it deserves a proper search.</p>
+  </div>
+
+  <img src="../assets/blog/choosing-a-batch-size.png" alt="Cover image for the article: Batch Size: The Quiet Hyperparameter Nobody Tunes" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The hyperparameter that hides in plain sight</h2><p>Ask most practitioners which hyperparameter matters most and they will say learning rate, and they are not wrong to prioritise it. But ask them why they chose their batch size and the answer is usually something like 'it fit on the GPU' or 'it was the default in the example notebook'. Batch size gets treated as a memory constraint rather than a modelling decision, which is strange given how much it actually influences the shape of training.</p><p>The reason it gets ignored is partly practical. Larger batches often mean faster epochs on modern hardware, so there is a natural pull towards 'as large as fits'. But batch size is not just an efficiency knob. It changes the statistical properties of the gradient estimate at every step, which in turn changes how the optimiser moves through the loss landscape. Treating it as fixed while you carefully tune learning rate is a bit like tuning the steering on a car while ignoring that you have swapped the tyres.</p><p>I want to be precise about what batch size actually controls, because vague appeals to 'noise' do not help anyone make a decision. It controls the variance of the gradient estimate used at each update. A small batch gives a noisy but cheap estimate of the true gradient over the full dataset; a large batch gives a smoother but more expensive one. That single trade-off cascades into almost everything else: how large a learning rate you can safely use, how many updates you need, and even which minima the model tends to settle into.</p></section><section class='psec reveal'><h2>A worked intuition: same data, three batch sizes</h2><p>Suppose you are training a moderate-sized classifier on a dataset of fifty thousand examples. With a batch size of 32, one epoch gives roughly 1,560 gradient updates. With a batch size of 512, the same epoch gives about 98 updates. That is a sixteen-fold difference in how many times the model's weights get nudged per pass through the data, even though the total amount of data seen is identical.</p><p>Now think about what each update actually represents. At batch size 32, each gradient is estimated from a small, noisy sample, so consecutive updates can point in noticeably different directions. This noise acts almost like a mild regulariser: it discourages the optimiser from settling too quickly into sharp, narrow minima that fit the training batch precisely but generalise poorly. At batch size 512, the gradient estimate is much closer to the true full-batch gradient, updates are smoother and more consistent, but you get far fewer of them per epoch, and the optimiser can glide confidently into a sharper minimum simply because there is less noise to knock it out.</p><p>This is why doubling batch size and leaving the learning rate untouched so often produces a worse-performing model, even though the loss curve looks perfectly well-behaved. The learning rate that suited the noisy, frequent updates of batch size 32 is now too timid for the smoother, less frequent updates of batch size 512. A common rule of thumb is to scale the learning rate roughly in proportion to the batch size when moving into this larger regime, but that scaling has limits and needs verifying with a held-out validation curve rather than assumed blindly.</p><p>The practical consequence is that batch size and learning rate are not two independent knobs, they are coupled. If you tune learning rate at batch size 32 and then later decide to increase the batch size for speed, you have quietly invalidated your tuning. Any serious hyperparameter search should treat batch size as part of the same search space as learning rate, not as a separate, earlier decision made once and forgotten.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/choosing-a-batch-size-1.jpg' alt='gpu server rack' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Why this matters beyond training curves</h2><p>The generalisation gap between small and large batch training is not folklore, it shows up reliably enough in careful ablations that it is worth taking seriously as a default expectation, even without citing a specific number. Models trained with very large batches and no compensating adjustments (learning rate warm-up, adjusted regularisation, longer training) tend to reach lower training loss but validation performance that lags behind an equivalent small-batch run. If your evaluation pipeline is leakage-aware and your validation split is trustworthy, this gap is exactly the kind of thing a proper batch size sweep will reveal, and exactly the kind of thing that a single fixed batch size will hide from you entirely.</p><p>There is also a reproducibility angle that I think gets underweighted. If you report results from a model trained at batch size 256 without mentioning that you never checked batch size 64 or batch size 1,024, you are implicitly claiming that 256 was the right choice, when in fact it may have just been the largest size that comfortably fit in memory that afternoon. Reproducing your result later, on different hardware with different memory limits, someone else might reasonably pick a different batch size and get meaningfully different numbers, through no fault of their method.</p><p>Practically, this means batch size deserves the same treatment as any other hyperparameter: a small, deliberate sweep, evaluated on a proper validation split, ideally alongside learning rate rather than in isolation. You do not need an exhaustive grid. Trying two or three batch sizes that differ by a reasonable factor, say 32, 128, and 512, each paired with a learning rate scaled appropriately, will usually tell you whether your model is sensitive to this choice at all. Some architectures and datasets are fairly robust to it; others are surprisingly fragile.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>Batch size is not a memory afterthought, it is a control on gradient noise that shapes both how quickly you train and where you end up in the loss landscape. Treating it as fixed while you tune everything else around it is a subtle form of leakage in your experimental design: your conclusions about learning rate, regularisation, or architecture are all conditioned on a batch size you never actually validated.</p><p>The fix is simple and cheap relative to the risk. Include batch size explicitly in your hyperparameter search, pair it with learning rate rather than tuning them separately, and check validation performance rather than training loss alone when judging whether a larger batch has actually helped. It will not always change your conclusions, but when it does, it is usually because you were about to publish or deploy a model that was quietly undertrained for the batch size you happened to pick.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/choosing-a-batch-size-2.jpg' alt='whiteboard with equations' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

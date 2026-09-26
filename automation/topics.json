@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Choosing a batch size: the quiet hyperparameter everyone forgets to tune",
     "Multi-modal models explained: fusing text and image without the hype",
     "Data contracts for machine learning pipelines: catching schema drift early",
     "Explaining a model's decision to a stakeholder who does not trust a p-value",
@@ -203,6 +202,7 @@
     "Synthetic data generation for computer vision: when it closes the domain gap",
     "The exploration versus exploitation tradeoff, explained without a slot machine analogy",
     "Zero-shot classification: what it actually promises and where it falls short",
-    "Feature engineering for tabular data: what still beats a neural network"
+    "Feature engineering for tabular data: what still beats a neural network",
+    "Choosing a batch size: the quiet hyperparameter everyone forgets to tune"
   ]
 }

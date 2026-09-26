@@ -1,1 +1,1 @@
-2026-09-25T20:02:00Z slug=feature-engineering-beats-neural-nets words=894 title="Feature Engineering for Tabular Data: What Still Wins"
+2026-09-26T08:02:12Z slug=choosing-a-batch-size words=1078 title="Batch Size: The Quiet Hyperparameter Nobody Tunes"
