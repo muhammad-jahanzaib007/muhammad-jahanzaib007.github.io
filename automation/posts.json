@@ -9,7 +9,8 @@
       "tag": "Deep Learning",
       "color": "a3",
       "thumb": "assets/blog/multimodal-fusion-text-image.png",
-      "thumb_alt": "Cover image for the article: Multi-Modal Models Explained: Fusing Text and Image"
+      "thumb_alt": "Cover image for the article: Multi-Modal Models Explained: Fusing Text and Image",
+      "li_shared": true
     },
     {
       "slug": "choosing-a-batch-size",
