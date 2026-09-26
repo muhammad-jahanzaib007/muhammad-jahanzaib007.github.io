@@ -9,7 +9,8 @@
       "tag": "Deep Learning",
       "color": "a2",
       "thumb": "assets/blog/choosing-a-batch-size.png",
-      "thumb_alt": "Cover image for the article: Batch Size: The Quiet Hyperparameter Nobody Tunes"
+      "thumb_alt": "Cover image for the article: Batch Size: The Quiet Hyperparameter Nobody Tunes",
+      "li_shared": true
     },
     {
       "slug": "feature-engineering-beats-neural-nets",
