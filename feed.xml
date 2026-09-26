@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Sat, 26 Sep 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Multi-Modal Models Explained: Fusing Text and Image</title>
+    <link>https://jahanzaibawan.com/blog/multimodal-fusion-text-image.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/multimodal-fusion-text-image.html</guid>
+    <pubDate>Sat, 26 Sep 2026 09:00:00 +0000</pubDate>
+    <description>A grounded look at how text and image models actually get fused, without the hand-waving about &#x27;understanding&#x27;.</description>
+    <category>Deep Learning</category>
+  </item>
+  <item>
     <title>Batch Size: The Quiet Hyperparameter Nobody Tunes</title>
     <link>https://jahanzaibawan.com/blog/choosing-a-batch-size.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/choosing-a-batch-size.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Thu, 17 Sep 2026 09:00:00 +0000</pubDate>
     <description>Module lists promise a lot. Here is how to tell which ones actually build the skills data science jobs use every day.</description>
     <category>Careers</category>
-  </item>
-  <item>
-    <title>Why &#x27;Transformer&#x27; Means Something Different in ML Papers</title>
-    <link>https://jahanzaibawan.com/blog/transformer-word-two-meanings.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/transformer-word-two-meanings.html</guid>
-    <pubDate>Wed, 16 Sep 2026 09:00:00 +0000</pubDate>
-    <description>In electrical engineering a transformer changes voltage. In machine learning it changes how a model attends to context. Same word, unrelated ideas.</description>
-    <category>Deep Learning</category>
   </item>
 </channel>
 </rss>
