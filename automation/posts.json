@@ -9,7 +9,8 @@
       "tag": "MLOps",
       "color": "a4",
       "thumb": "assets/blog/data-contracts-for-ml-pipelines.png",
-      "thumb_alt": "Cover image for the article: Data Contracts for ML Pipelines: Catching Schema Drift Early"
+      "thumb_alt": "Cover image for the article: Data Contracts for ML Pipelines: Catching Schema Drift Early",
+      "li_shared": true
     },
     {
       "slug": "multimodal-fusion-text-image",
