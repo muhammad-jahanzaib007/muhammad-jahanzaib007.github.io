@@ -1,1 +1,1 @@
-2026-09-27T08:02:19Z slug=data-contracts-for-ml-pipelines words=1113 title="Data Contracts for ML Pipelines: Catching Schema Drift Early"
+2026-09-27T20:01:56Z slug=explaining-models-to-skeptical-stakeholders words=974 title="Explaining a Model's Decision When Nobody Trusts the p-value"

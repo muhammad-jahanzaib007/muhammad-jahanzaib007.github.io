@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "explaining-models-to-skeptical-stakeholders",
+      "title": "Explaining a Model's Decision When Nobody Trusts the p-value",
+      "excerpt": "When a p-value fails to persuade, swap it for concrete numbers on money, customers, and risk. Here is how I do that in practice.",
+      "date": "2026-09-27",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a5",
+      "thumb": "assets/blog/explaining-models-to-skeptical-stakeholders.png",
+      "thumb_alt": "Cover image for the article: Explaining a Model's Decision When Nobody Trusts the p-value"
+    },
+    {
       "slug": "data-contracts-for-ml-pipelines",
       "title": "Data Contracts for ML Pipelines: Catching Schema Drift Early",
       "excerpt": "Schema drift breaks models silently. Data contracts catch it at the source, before it poisons training data or corrupts predictions in production.",

@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Sun, 27 Sep 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Explaining a Model&#x27;s Decision When Nobody Trusts the p-value</title>
+    <link>https://jahanzaibawan.com/blog/explaining-models-to-skeptical-stakeholders.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/explaining-models-to-skeptical-stakeholders.html</guid>
+    <pubDate>Sun, 27 Sep 2026 09:00:00 +0000</pubDate>
+    <description>When a p-value fails to persuade, swap it for concrete numbers on money, customers, and risk. Here is how I do that in practice.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Data Contracts for ML Pipelines: Catching Schema Drift Early</title>
     <link>https://jahanzaibawan.com/blog/data-contracts-for-ml-pipelines.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/data-contracts-for-ml-pipelines.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Fri, 18 Sep 2026 09:00:00 +0000</pubDate>
     <description>Interviews want clean definitions of precision, recall and AUC. Real projects want you to know which one lies to you and when.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>The Gap Between a Data Science Internship Advert and the Job</title>
-    <link>https://jahanzaibawan.com/blog/internship-advert-vs-reality.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/internship-advert-vs-reality.html</guid>
-    <pubDate>Thu, 17 Sep 2026 09:00:00 +0000</pubDate>
-    <description>The advert promises neural networks and predictive models. The job mostly delivers spreadsheets, missing values, and meetings about definitions.</description>
-    <category>Careers</category>
   </item>
 </channel>
 </rss>

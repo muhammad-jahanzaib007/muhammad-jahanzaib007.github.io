@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explaining a Model&#x27;s Decision When Nobody Trusts the p-value | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="How to explain model decisions to stakeholders who distrust p-values, using concrete business framing instead of statistical jargon.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="model interpretability, stakeholder communication, p-value, statistical significance, machine learning evaluation, explainability, business metrics, decision science, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-27">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Explaining a Model&#x27;s Decision When Nobody Trusts the p-value">
+<meta property="og:description" content="How to explain model decisions to stakeholders who distrust p-values, using concrete business framing instead of statistical jargon.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/explaining-models-to-skeptical-stakeholders.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/explaining-models-to-skeptical-stakeholders.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Explaining a Model&#x27;s Decision When Nobody Trusts the p-value">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/explaining-models-to-skeptical-stakeholders.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/explaining-models-to-skeptical-stakeholders.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Explaining a Model's Decision When Nobody Trusts the p-value",
+  "description": "How to explain model decisions to stakeholders who distrust p-values, using concrete business framing instead of statistical jargon.",
+  "url": "https://jahanzaibawan.com/blog/explaining-models-to-skeptical-stakeholders.html",
+  "image": "https://jahanzaibawan.com/assets/blog/explaining-models-to-skeptical-stakeholders.png",
+  "datePublished": "2026-09-27",
+  "dateModified": "2026-09-27",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/explaining-models-to-skeptical-stakeholders.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Explaining a Model's Decision When Nobody Trusts the p-value", "item": "https://jahanzaibawan.com/blog/explaining-models-to-skeptical-stakeholders.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 27 Sep 2026</div>
+    <h1>Explaining a Model&#x27;s Decision When Nobody Trusts the p-value</h1>
+    <p class="lede">A stakeholder who distrusts statistics is not being difficult; they are asking you to prove your model works in a language they can act on.</p>
+  </div>
+
+  <img src="../assets/blog/explaining-models-to-skeptical-stakeholders.png" alt="Cover image for the article: Explaining a Model&#x27;s Decision When Nobody Trusts the p-value" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The trust problem is not about maths</h2><p>I used to think that when a stakeholder pushed back on a p-value, the fix was a better explanation of hypothesis testing. It rarely was. Most of the time the person in front of me had been burned before: a model that looked significant in a report and then quietly failed in production, or a confident chart that turned out to hide a data leak. Their scepticism was not innumeracy, it was pattern matching on past disappointment.</p><p>A p-value of 0.03 tells you how surprising your result would be under a null hypothesis, assuming your data collection and testing procedure were exactly as designed. It says nothing about whether the effect is large enough to matter, whether the sample reflects the population you actually care about, or whether you quietly tried five models and reported the one that worked. Stakeholders who have seen statistics used as a rhetorical shield are right to ask what is being hidden behind the number.</p><p>So the first move is not to defend the p-value, it is to stop leading with it. If someone asks 'why should I believe this model', answering with a significance threshold is answering a different question than the one they asked. They want to know what happens if they act on your recommendation and it turns out to be wrong.</p></section><section class='psec reveal'><h2>Translate significance into consequence</h2><p>Suppose I have built a churn model and I tell a stakeholder that a new intervention reduces churn with p less than 0.01. A reasonable response is 'so what'. The useful reframe is to talk in the units they already manage: customers, pounds, and time. Say the baseline monthly churn is 4.2 percent on a base of 50,000 customers, and the intervention brings it down to 3.6 percent in a held-out test group. That is 300 fewer customers lost per month. If average customer lifetime value is 180 pounds, that is roughly 54,000 pounds of retained value monthly, before accounting for the cost of running the intervention.</p><p>Now the p-value has a job: it tells us how likely it is that a difference this size, or larger, would appear by chance alone if the intervention did nothing. But I present that as a supporting fact, not the headline. I would say something like: 'we saw a 0.6 percentage point drop in churn, worth about 50,000 pounds a month; the chance this is just noise is under one percent, based on a test with 8,000 customers per arm.' That last clause matters too, because it tells the stakeholder the claim is falsifiable and scoped, not a black box verdict.</p><p>The other half of this translation is confidence intervals rather than a single point estimate. A 95 percent interval of minus 0.2 to plus 1.4 percentage points on churn reduction tells a very different story to a stakeholder than 0.6 percent with a tidy p-value. It says the true effect could be small, or could be twice what we measured, and that uncertainty is honest information they need before committing budget.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/explaining-models-to-skeptical-stakeholders-1.jpg' alt='business meeting whiteboard discussion' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Show the failure modes, not just the win</h2><p>Trust is built faster by showing where a model is weak than by insisting it is strong. I try to bring a confusion matrix or an error breakdown to these conversations rather than a single accuracy number. If a fraud detection model catches 82 percent of fraudulent transactions but also flags 1 in 40 genuine transactions as suspicious, that trade-off is something a stakeholder can weigh against their own tolerance for customer friction. A bare 'this model is 91 percent accurate' hides that trade-off entirely, especially when fraud might be rare, say 2 percent of transactions, meaning a model that predicts 'not fraud' every time would already score 98 percent.</p><p>I also walk through how the evaluation was done, in plain terms: the test set was collected after the training period, so the model has never seen these customers before, and the split respects time so we are not accidentally letting future information leak backwards into past predictions. Stakeholders who distrust statistics are often, without knowing the vocabulary, worried precisely about leakage: that the test looks good only because it was rigged to look good. Naming that concern and showing the safeguard directly addresses the root distrust rather than the surface complaint about p-values.</p><p>A concrete comparison helps too. I like to show what a simple, transparent baseline does, such as always predicting the majority class, or a basic rule like 'flag anyone over 60 days late'. When the stakeholder can see the model beats that baseline by a specific, meaningful margin, on data it has not seen, in a way that maps to money or risk they recognise, the statistical test becomes a footnote rather than the entire argument.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>A p-value is a tool for the analyst, not a currency for the stakeholder. When someone distrusts it, the right response is to lead with consequences they can act on: customers retained, pounds saved, errors avoided, and the honest range of uncertainty around each of those numbers. Keep the significance test present but secondary, and always pair it with the size of the effect, since a tiny, statistically significant improvement can still be practically worthless.</p><p>Equally important is transparency about method: how the test set was built, what baseline was beaten, and what the model gets wrong as well as right. That combination, concrete consequences, honest uncertainty, and visible failure modes, does more to earn trust than any explanation of statistical theory. In my experience, stakeholders do not distrust p-values so much as they distrust being asked to take things on faith. Give them the numbers that matter to their job, and the statistics can quietly do the job they were always meant to do: back up the claim, not carry it alone.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/explaining-models-to-skeptical-stakeholders-2.jpg' alt='person reviewing charts on laptop' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

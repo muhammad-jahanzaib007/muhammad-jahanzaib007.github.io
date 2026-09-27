@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Explaining a model's decision to a stakeholder who does not trust a p-value",
     "Curriculum learning: ordering training data on purpose",
     "Fine-tuning as a word: how ML borrowed a term from physics and cosmology",
     "Full fine-tuning versus parameter-efficient methods: a decision framework, not a trend",
@@ -203,6 +202,7 @@
     "Feature engineering for tabular data: what still beats a neural network",
     "Choosing a batch size: the quiet hyperparameter everyone forgets to tune",
     "Multi-modal models explained: fusing text and image without the hype",
-    "Data contracts for machine learning pipelines: catching schema drift early"
+    "Data contracts for machine learning pipelines: catching schema drift early",
+    "Explaining a model's decision to a stakeholder who does not trust a p-value"
   ]
 }
