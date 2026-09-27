@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "data-contracts-for-ml-pipelines",
+      "title": "Data Contracts for ML Pipelines: Catching Schema Drift Early",
+      "excerpt": "Schema drift breaks models silently. Data contracts catch it at the source, before it poisons training data or corrupts predictions in production.",
+      "date": "2026-09-27",
+      "read_min": 6,
+      "tag": "MLOps",
+      "color": "a4",
+      "thumb": "assets/blog/data-contracts-for-ml-pipelines.png",
+      "thumb_alt": "Cover image for the article: Data Contracts for ML Pipelines: Catching Schema Drift Early"
+    },
+    {
       "slug": "multimodal-fusion-text-image",
       "title": "Multi-Modal Models Explained: Fusing Text and Image",
       "excerpt": "A grounded look at how text and image models actually get fused, without the hand-waving about 'understanding'.",

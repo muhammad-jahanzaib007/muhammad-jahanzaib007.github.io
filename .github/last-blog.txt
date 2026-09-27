@@ -1,1 +1,1 @@
-2026-09-26T20:01:59Z slug=multimodal-fusion-text-image words=1012 title="Multi-Modal Models Explained: Fusing Text and Image"
+2026-09-27T08:02:19Z slug=data-contracts-for-ml-pipelines words=1113 title="Data Contracts for ML Pipelines: Catching Schema Drift Early"

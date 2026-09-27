@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Contracts for ML Pipelines: Catching Schema Drift Early | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why data contracts matter for machine learning pipelines, with a worked example showing how schema drift silently degrades models and how contracts catch it early.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="data contracts, schema drift, machine learning pipelines, data validation, MLOps, feature engineering, data quality, production ML, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-27">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Data Contracts for ML Pipelines: Catching Schema Drift Early">
+<meta property="og:description" content="Why data contracts matter for machine learning pipelines, with a worked example showing how schema drift silently degrades models and how contracts catch it early.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/data-contracts-for-ml-pipelines.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/data-contracts-for-ml-pipelines.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Data Contracts for ML Pipelines: Catching Schema Drift Early">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/data-contracts-for-ml-pipelines.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/data-contracts-for-ml-pipelines.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Data Contracts for ML Pipelines: Catching Schema Drift Early",
+  "description": "Why data contracts matter for machine learning pipelines, with a worked example showing how schema drift silently degrades models and how contracts catch it early.",
+  "url": "https://jahanzaibawan.com/blog/data-contracts-for-ml-pipelines.html",
+  "image": "https://jahanzaibawan.com/assets/blog/data-contracts-for-ml-pipelines.png",
+  "datePublished": "2026-09-27",
+  "dateModified": "2026-09-27",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/data-contracts-for-ml-pipelines.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Data Contracts for ML Pipelines: Catching Schema Drift Early", "item": "https://jahanzaibawan.com/blog/data-contracts-for-ml-pipelines.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">MLOps · 6 min read · 27 Sep 2026</div>
+    <h1>Data Contracts for ML Pipelines: Catching Schema Drift Early</h1>
+    <p class="lede">A quiet upstream change to a column name or a unit of measure can silently wreck a model. Data contracts turn that silent failure into a loud, early one.</p>
+  </div>
+
+  <img src="../assets/blog/data-contracts-for-ml-pipelines.png" alt="Cover image for the article: Data Contracts for ML Pipelines: Catching Schema Drift Early" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The failure that nobody notices</h2><p>Most model failures I have seen were not caused by a bad algorithm. They were caused by an upstream table quietly changing shape. A currency column switched from pounds to pence. A categorical field gained a new value nobody had seen in training. A timestamp changed from local time to UTC. None of these are exotic bugs. They are ordinary changes made by another team, for perfectly sensible reasons, with no idea that a model three systems downstream depends on the old assumption.</p><p>The reason this is so dangerous in machine learning specifically is that models rarely crash when the input distribution shifts. They just produce worse predictions, calmly and confidently. A broken join in a traditional software pipeline usually throws an error. A subtle unit change in a feature column just shifts every prediction by a constant factor, and the model keeps serving results as if nothing happened. Nobody gets paged. The dashboard looks fine until someone notices the business metric has been sliding for three weeks.</p><p>This is the core argument for data contracts. A data contract is an explicit, enforced agreement between the producer of a dataset and its consumers about what the data will look like: field names, types, allowed ranges, nullability, units, and update cadence. It is not a new idea in spirit, it is essentially an API specification applied to data instead of code. What is new is treating it as a first-class artefact in ML pipelines, checked automatically, rather than as tribal knowledge in someone's head or a stale wiki page.</p></section><section class='psec reveal'><h2>A worked example of drift you would not catch by eye</h2><p>Suppose you maintain a churn model trained on customer usage data refreshed weekly. One of your features is <em>average_session_minutes</em>, and in training it ranges from roughly 2 to 90 minutes, with a mean around 18. One week, the analytics team upgrades their event tracker. The new tracker logs session length in seconds rather than minutes for a subset of newly onboarded customers, because of a default unit setting nobody flagged in the migration notes.</p><p>Your pipeline does not crash. The column is still called <em>average_session_minutes</em>, still a float, still non-null. But for the affected rows, values that should read 18.0 now read 1080.0. If this subset is small, say three percent of incoming rows, the aggregate statistics barely move: the mean creeps from 18.0 to perhaps 20.9, well within the kind of natural fluctuation you would expect week to week. A standard drift monitor watching for a shift in the overall mean or a jump in the Kolmogorov-Smirnov statistic might not fire at all, because three percent of rows is not enough to trip a global threshold.</p><p>Yet those three percent of predictions are now badly wrong, because the model has never seen an input of 1080 for this feature and will extrapolate wildly, likely predicting near-certain churn or near-zero churn depending on how the trees or weights happen to respond to an out-of-range value. If those customers happen to be your newest, highest-value cohort, the business impact is disproportionate to the tiny fraction of corrupted rows. This is exactly the kind of fault that aggregate drift detection is weak at catching and that a schema contract catches immediately.</p><p>A contract for this field would state, explicitly and machine-checkably, that <em>average_session_minutes</em> is a float bounded between 0 and 300, in minutes, non-null, with a documented owner and update frequency. The moment the new tracker output hits that boundary check, at the very first row with value 1080, the pipeline rejects or quarantines the batch and raises an alert naming the exact field and the exact rule violated. You find out on day one, from an automated check, rather than three weeks later from a confused query about churn rates.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/data-contracts-for-ml-pipelines-1.jpg' alt='server data pipeline dashboard' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What a contract actually needs to specify</h2><p>A useful data contract is more than a type signature. At minimum it should cover the schema itself: field names, types, and whether nulls are permitted. It should cover semantic constraints: valid ranges for numeric fields, an enumerated set of allowed categories, and units where relevant, since unit ambiguity is one of the most common and most silent sources of drift. It should cover statistical expectations too, such as an expected range for the proportion of nulls or the cardinality of a categorical field, because a categorical column that suddenly gains forty new values is a signal worth investigating even if every individual value is technically valid.</p><p>It also needs ownership and versioning. When a producing team wants to change a field, that change should be a proposed contract update, reviewed by consuming teams, with a migration window, rather than a silent deploy. This sounds bureaucratic, and a little bit of friction is the point. The cost of a five-minute review is trivial compared with the cost of a model quietly serving degraded predictions to real customers for weeks.</p><p>Practically, contracts are enforced with validation at the boundary, ideally as close to ingestion as possible, using something like a schema validation library or a data quality framework that runs checks before data is allowed into a training or serving pipeline. The checks should fail loudly and specifically: not a generic pipeline error, but a message stating which field, which rule, and which rows violated it. This is the difference between a system that tells you something is wrong and a system that tells you exactly what is wrong, which matters enormously when you are debugging at speed.</p></section><section class='psec reveal'><h2>Why this matters more as pipelines grow</h2><p>The case for contracts scales with organisational complexity, not with model complexity. A single data scientist working alone on one dataset can hold the whole schema in their head and notice a weird value by eye. The moment a feature pipeline has multiple upstream producers, multiple consuming models, and people who change things without knowing who depends on them, informal vigilance stops working. This is precisely the environment most production ML systems live in.</p><p>Data contracts will not catch every kind of drift; genuine concept drift, where the relationship between features and the target changes even though the schema stays perfectly valid, is a separate problem needing separate monitoring, usually based on tracking model performance against ground truth over time. But contracts catch a large and particularly insidious category of failure cheaply, at the source, before it ever reaches a model. The practical takeaway is straightforward: write down what your data is supposed to look like, enforce it automatically at the point of ingestion, and treat any proposed change to that shape as something requiring explicit agreement, not something to discover after the fact in a postmortem.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/data-contracts-for-ml-pipelines-2.jpg' alt='engineer reviewing data on monitor' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

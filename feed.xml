@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Sat, 26 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 27 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Data Contracts for ML Pipelines: Catching Schema Drift Early</title>
+    <link>https://jahanzaibawan.com/blog/data-contracts-for-ml-pipelines.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/data-contracts-for-ml-pipelines.html</guid>
+    <pubDate>Sun, 27 Sep 2026 09:00:00 +0000</pubDate>
+    <description>Schema drift breaks models silently. Data contracts catch it at the source, before it poisons training data or corrupts predictions in production.</description>
+    <category>MLOps</category>
+  </item>
   <item>
     <title>Multi-Modal Models Explained: Fusing Text and Image</title>
     <link>https://jahanzaibawan.com/blog/multimodal-fusion-text-image.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/internship-advert-vs-reality.html</guid>
     <pubDate>Thu, 17 Sep 2026 09:00:00 +0000</pubDate>
     <description>The advert promises neural networks and predictive models. The job mostly delivers spreadsheets, missing values, and meetings about definitions.</description>
-    <category>Careers</category>
-  </item>
-  <item>
-    <title>Choosing a Data Science Degree: What Maps to Real Work</title>
-    <link>https://jahanzaibawan.com/blog/data-science-modules-real-jobs.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/data-science-modules-real-jobs.html</guid>
-    <pubDate>Thu, 17 Sep 2026 09:00:00 +0000</pubDate>
-    <description>Module lists promise a lot. Here is how to tell which ones actually build the skills data science jobs use every day.</description>
     <category>Careers</category>
   </item>
 </channel>
