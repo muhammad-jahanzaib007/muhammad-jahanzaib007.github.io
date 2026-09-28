@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Mon, 28 Sep 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Fine-Tuning as a Word: What Physics Lent Machine Learning</title>
+    <link>https://jahanzaibawan.com/blog/fine-tuning-a-borrowed-word.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/fine-tuning-a-borrowed-word.html</guid>
+    <pubDate>Mon, 28 Sep 2026 09:00:00 +0000</pubDate>
+    <description>Machine learning didn&#x27;t invent fine-tuning. It borrowed a loaded term from physics and cosmology, and the borrowing changes how we should think about it.</description>
+    <category>Deep Learning</category>
+  </item>
+  <item>
     <title>Curriculum Learning: Ordering Training Data on Purpose</title>
     <link>https://jahanzaibawan.com/blog/curriculum-learning-ordering-data.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/curriculum-learning-ordering-data.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Sat, 19 Sep 2026 09:00:00 +0000</pubDate>
     <description>Managed MLOps platforms solve real problems, but most of those problems can be handled first with free tools, discipline, and a bit of scripting.</description>
     <category>MLOps</category>
-  </item>
-  <item>
-    <title>Why Extreme Risk Evaluation Needs More Than a Test Set</title>
-    <link>https://jahanzaibawan.com/blog/beyond-the-held-out-test-set.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/beyond-the-held-out-test-set.html</guid>
-    <pubDate>Fri, 18 Sep 2026 09:00:00 +0000</pubDate>
-    <description>Held-out accuracy answers a narrow question. For rare, high-consequence failures, you need adversarial probing, distribution shift tests, and honest uncertainty, not just a leaderboard score.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>

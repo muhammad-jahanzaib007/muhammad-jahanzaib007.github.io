@@ -1,1 +1,1 @@
-2026-09-28T08:02:46Z slug=curriculum-learning-ordering-data words=1187 title="Curriculum Learning: Ordering Training Data on Purpose"
+2026-09-28T20:01:50Z slug=fine-tuning-a-borrowed-word words=1037 title="Fine-Tuning as a Word: What Physics Lent Machine Learning"

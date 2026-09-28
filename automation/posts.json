@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "fine-tuning-a-borrowed-word",
+      "title": "Fine-Tuning as a Word: What Physics Lent Machine Learning",
+      "excerpt": "Machine learning didn't invent fine-tuning. It borrowed a loaded term from physics and cosmology, and the borrowing changes how we should think about it.",
+      "date": "2026-09-28",
+      "read_min": 5,
+      "tag": "Deep Learning",
+      "color": "a2",
+      "thumb": "assets/blog/fine-tuning-a-borrowed-word.png",
+      "thumb_alt": "Cover image for the article: Fine-Tuning as a Word: What Physics Lent Machine Learning"
+    },
+    {
       "slug": "curriculum-learning-ordering-data",
       "title": "Curriculum Learning: Ordering Training Data on Purpose",
       "excerpt": "Most training pipelines shuffle data and hope. Curriculum learning asks what happens if you don't, and the answer is more nuanced than 'easy first, hard later'.",
