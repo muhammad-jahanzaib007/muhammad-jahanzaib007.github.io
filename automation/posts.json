@@ -9,7 +9,8 @@
       "tag": "Deep Learning",
       "color": "a6",
       "thumb": "assets/blog/curriculum-learning-ordering-data.png",
-      "thumb_alt": "Cover image for the article: Curriculum Learning: Ordering Training Data on Purpose"
+      "thumb_alt": "Cover image for the article: Curriculum Learning: Ordering Training Data on Purpose",
+      "li_shared": true
     },
     {
       "slug": "explaining-models-to-skeptical-stakeholders",
