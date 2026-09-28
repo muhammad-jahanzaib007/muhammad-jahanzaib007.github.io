@@ -9,7 +9,8 @@
       "tag": "Deep Learning",
       "color": "a2",
       "thumb": "assets/blog/fine-tuning-a-borrowed-word.png",
-      "thumb_alt": "Cover image for the article: Fine-Tuning as a Word: What Physics Lent Machine Learning"
+      "thumb_alt": "Cover image for the article: Fine-Tuning as a Word: What Physics Lent Machine Learning",
+      "li_shared": true
     },
     {
       "slug": "curriculum-learning-ordering-data",
