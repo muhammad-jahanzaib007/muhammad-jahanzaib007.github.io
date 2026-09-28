@@ -1,1 +1,1 @@
-2026-09-27T20:01:56Z slug=explaining-models-to-skeptical-stakeholders words=974 title="Explaining a Model's Decision When Nobody Trusts the p-value"
+2026-09-28T08:02:46Z slug=curriculum-learning-ordering-data words=1187 title="Curriculum Learning: Ordering Training Data on Purpose"

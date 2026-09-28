@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Sun, 27 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Mon, 28 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Curriculum Learning: Ordering Training Data on Purpose</title>
+    <link>https://jahanzaibawan.com/blog/curriculum-learning-ordering-data.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/curriculum-learning-ordering-data.html</guid>
+    <pubDate>Mon, 28 Sep 2026 09:00:00 +0000</pubDate>
+    <description>Most training pipelines shuffle data and hope. Curriculum learning asks what happens if you don&#x27;t, and the answer is more nuanced than &#x27;easy first, hard later&#x27;.</description>
+    <category>Deep Learning</category>
+  </item>
   <item>
     <title>Explaining a Model&#x27;s Decision When Nobody Trusts the p-value</title>
     <link>https://jahanzaibawan.com/blog/explaining-models-to-skeptical-stakeholders.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/beyond-the-held-out-test-set.html</guid>
     <pubDate>Fri, 18 Sep 2026 09:00:00 +0000</pubDate>
     <description>Held-out accuracy answers a narrow question. For rare, high-consequence failures, you need adversarial probing, distribution shift tests, and honest uncertainty, not just a leaderboard score.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Evaluation Metrics: Interview Talk vs What You Actually Compute</title>
-    <link>https://jahanzaibawan.com/blog/evaluation-metrics-interview-vs-practice.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/evaluation-metrics-interview-vs-practice.html</guid>
-    <pubDate>Fri, 18 Sep 2026 09:00:00 +0000</pubDate>
-    <description>Interviews want clean definitions of precision, recall and AUC. Real projects want you to know which one lies to you and when.</description>
     <category>Evaluation</category>
   </item>
 </channel>

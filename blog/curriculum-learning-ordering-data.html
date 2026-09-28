@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curriculum Learning: Ordering Training Data on Purpose | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical look at curriculum learning: how ordering training examples affects convergence, when it helps, and how to evaluate it without fooling yourself.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="curriculum learning, training data ordering, deep learning optimisation, sample difficulty, model training, machine learning evaluation, data scheduling, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-28">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Curriculum Learning: Ordering Training Data on Purpose">
+<meta property="og:description" content="A practical look at curriculum learning: how ordering training examples affects convergence, when it helps, and how to evaluate it without fooling yourself.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/curriculum-learning-ordering-data.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/curriculum-learning-ordering-data.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Curriculum Learning: Ordering Training Data on Purpose">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/curriculum-learning-ordering-data.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/curriculum-learning-ordering-data.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Curriculum Learning: Ordering Training Data on Purpose",
+  "description": "A practical look at curriculum learning: how ordering training examples affects convergence, when it helps, and how to evaluate it without fooling yourself.",
+  "url": "https://jahanzaibawan.com/blog/curriculum-learning-ordering-data.html",
+  "image": "https://jahanzaibawan.com/assets/blog/curriculum-learning-ordering-data.png",
+  "datePublished": "2026-09-28",
+  "dateModified": "2026-09-28",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/curriculum-learning-ordering-data.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Curriculum Learning: Ordering Training Data on Purpose", "item": "https://jahanzaibawan.com/blog/curriculum-learning-ordering-data.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Deep Learning · 6 min read · 28 Sep 2026</div>
+    <h1>Curriculum Learning: Ordering Training Data on Purpose</h1>
+    <p class="lede">Feeding a model easy examples before hard ones sounds like a teaching trick, but it changes optimisation dynamics in ways worth understanding before you bolt it onto a project.</p>
+  </div>
+
+  <img src="../assets/blog/curriculum-learning-ordering-data.png" alt="Cover image for the article: Curriculum Learning: Ordering Training Data on Purpose" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the order of examples is not neutral</h2><p>Most of us are taught to shuffle our training data and forget about it. Randomise the order, batch it up, and let stochastic gradient descent do its job. That default is sensible: it prevents the model from learning spurious patterns tied to the order examples happen to appear in, and it keeps each batch a roughly unbiased sample of the underlying distribution. But 'unbiased' is not the same as 'optimal for learning'. The order in which a model sees examples affects the trajectory it takes through parameter space, and some trajectories reach good solutions faster or more reliably than others.</p><p>Curriculum learning takes this seriously. The idea, which has been around in various forms for a long time, is to present training examples in a structured sequence rather than a random one, typically moving from easier or simpler cases toward harder or more ambiguous ones. The intuition is borrowed directly from how humans are taught: nobody hands a first-year student a research paper before they have seen the underlying algebra. The claim is that models, too, can benefit from scaffolding, learning stable, general structure early and only tackling noisy or complex cases once that structure is in place.</p><p>This matters in practice because early training dynamics are fragile. Gradients computed on confusing or mislabelled examples early in training can push weights into a bad region that the optimiser struggles to escape later, even once easier signal becomes available. If you have ever seen a model's loss curve spike or plateau strangely in the first few hundred steps, part of the cause may be the particular mix of easy and hard examples that landed in those early batches. Curriculum learning is one way of taking control of that instead of leaving it to chance.</p></section><section class='psec reveal'><h2>A worked intuition: sorting by difficulty</h2><p>Imagine training a classifier to detect whether a short product review is positive or negative, using a dataset of twenty thousand reviews. Some reviews are unambiguous: 'this is the best purchase I have made all year' or 'complete waste of money, broke on day one'. Others are genuinely hard: sarcastic reviews, mixed reviews that praise the product but criticise the delivery, or reviews where the label itself was applied inconsistently by whoever curated the dataset.</p><p>Suppose we define difficulty using a simple, cheap proxy: the confidence of a small pretrained model, or even just review length and the presence of negation words. We then split the twenty thousand reviews into five bins ordered from easiest to hardest, roughly four thousand per bin. In a naive curriculum, we train several epochs on bin one alone, then introduce bin two alongside bin one, then bin three, and so on, until by the final epochs the model sees the full mixed dataset including the hardest bin.</p><p>What tends to happen, when this works, is that the model's decision boundary forms quickly and cleanly on the easy cases, essentially learning 'positive words versus negative words' as a strong baseline signal within the first epoch. Once that scaffold exists, the harder examples act as refinements rather than shocks. A sarcastic review that the model previously would have latched onto with a confused, noisy gradient now gets interpreted against an already sensible baseline, and the gradient it produces is smaller and more corrective than destructive.</p><p>Compare this with training on the full shuffled set from step one. In early batches, the model might encounter several ambiguous or mislabelled reviews before it has any reliable notion of sentiment at all, and it can end up fitting noise into its early representations. This is not guaranteed to be a disaster, plenty of models converge fine without any curriculum, but on smaller datasets or noisier labels the effect can be a few points of accuracy or, more often, faster and more stable convergence to the same final accuracy. The efficiency gain, not just the final number, is usually the more honest thing to report.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/curriculum-learning-ordering-data-1.jpg' alt='classroom whiteboard with algebra equations' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Where curricula actually help, and where they mislead you</h2><p>The evidence for curriculum learning is genuinely mixed, and I think that mix is worth taking seriously rather than picking the result that flatters the idea. Curricula tend to help most clearly in a few situations: when the dataset is small enough that early noisy gradients have an outsised effect, when there is a natural and reliable notion of difficulty available cheaply, and when training is otherwise unstable, for instance with high learning rates or unusual architectures. Curricula tend to help least, or not at all, when the dataset is large, when difficulty is hard to define without a model you don't yet have, or when the model is already robust enough that batch-to-batch variation washes out over enough steps.</p><p>There is a subtler trap here too. If your notion of 'difficulty' is derived from a model, you have introduced a dependency that can leak information or bias in ways that are hard to see. If you rank examples by the confidence of a model trained on the same test distribution, and that model happens to be systematically wrong about a particular subgroup, marking real signal as 'noise' and deferring it to the end of training, you can end up with a model that never properly learns that subgroup, because by the time it appears in force the learning rate has decayed and the model's capacity to adjust has shrunk. This is a leakage-adjacent failure mode, not literal test set leakage, but it rhymes with it: your evaluation of 'did the curriculum help' can look good on average while quietly degrading performance on a slice you never separately checked.</p><p>The honest way to evaluate a curriculum is to compare it against a strong, well-tuned random-shuffle baseline, not a weak one, and to look at more than the headline metric. Track convergence speed, not just final accuracy, since that is often where the real benefit lives. Check performance broken down by the same difficulty bins you used to build the curriculum, to see whether gains are broad or concentrated in the easy end where they were already achievable. And repeat the comparison across a few random seeds, because ordering effects interact with initialisation in ways that a single run can flatter or hide.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>Curriculum learning is not a trick you should reach for by default, and it is not free. Defining difficulty costs effort, introduces assumptions, and can quietly bias what the model learns first and, by extension, what it learns well. But it is a genuinely useful tool to have in mind, particularly on smaller or noisier datasets where training stability is the bottleneck rather than raw model capacity.</p><p>If you try it, keep the curriculum simple and the difficulty measure transparent, something you can explain in one sentence and audit by eye. Compare against a proper baseline, watch convergence speed as carefully as final accuracy, and check subgroup performance before declaring victory. Ordering your data on purpose is a small change to make and a large one to evaluate honestly, and that second part is where most of the real work sits.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/curriculum-learning-ordering-data-2.jpg' alt='stack of sorted index cards' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

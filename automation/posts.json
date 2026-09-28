@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "curriculum-learning-ordering-data",
+      "title": "Curriculum Learning: Ordering Training Data on Purpose",
+      "excerpt": "Most training pipelines shuffle data and hope. Curriculum learning asks what happens if you don't, and the answer is more nuanced than 'easy first, hard later'.",
+      "date": "2026-09-28",
+      "read_min": 6,
+      "tag": "Deep Learning",
+      "color": "a6",
+      "thumb": "assets/blog/curriculum-learning-ordering-data.png",
+      "thumb_alt": "Cover image for the article: Curriculum Learning: Ordering Training Data on Purpose"
+    },
+    {
       "slug": "explaining-models-to-skeptical-stakeholders",
       "title": "Explaining a Model's Decision When Nobody Trusts the p-value",
       "excerpt": "When a p-value fails to persuade, swap it for concrete numbers on money, customers, and risk. Here is how I do that in practice.",
