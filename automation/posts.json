@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "rule-based-roots-of-nlp",
+      "title": "What Counts as an NLP Practitioner Before Deep Learning",
+      "excerpt": "Deep learning did not invent NLP; it rebranded a field that already had decades of rigorous, rule-based practice worth remembering.",
+      "date": "2026-09-29",
+      "read_min": 5,
+      "tag": "NLP",
+      "color": "a4",
+      "thumb": "assets/blog/rule-based-roots-of-nlp.png",
+      "thumb_alt": "Cover image for the article: What Counts as an NLP Practitioner Before Deep Learning"
+    },
+    {
       "slug": "full-vs-parameter-efficient-tuning",
       "title": "Full Fine-Tuning vs PEFT: A Decision Framework, Not a Trend",
       "excerpt": "LoRA and its cousins are useful, not magic. Here is how to actually decide when full fine-tuning still earns its cost.",

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Counts as an NLP Practitioner Before Deep Learning | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="An argument for recognising rule-based and statistical NLP work as real practitioner experience, with a worked example of regex versus neural tagging.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="NLP history, rule-based NLP, finite-state methods, regular expressions, POS tagging, deep learning, natural language processing, linguistics, evaluation, baselines, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-29">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="What Counts as an NLP Practitioner Before Deep Learning">
+<meta property="og:description" content="An argument for recognising rule-based and statistical NLP work as real practitioner experience, with a worked example of regex versus neural tagging.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/rule-based-roots-of-nlp.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/rule-based-roots-of-nlp.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What Counts as an NLP Practitioner Before Deep Learning">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/rule-based-roots-of-nlp.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/rule-based-roots-of-nlp.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "What Counts as an NLP Practitioner Before Deep Learning",
+  "description": "An argument for recognising rule-based and statistical NLP work as real practitioner experience, with a worked example of regex versus neural tagging.",
+  "url": "https://jahanzaibawan.com/blog/rule-based-roots-of-nlp.html",
+  "image": "https://jahanzaibawan.com/assets/blog/rule-based-roots-of-nlp.png",
+  "datePublished": "2026-09-29",
+  "dateModified": "2026-09-29",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/rule-based-roots-of-nlp.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "What Counts as an NLP Practitioner Before Deep Learning", "item": "https://jahanzaibawan.com/blog/rule-based-roots-of-nlp.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">NLP · 5 min read · 29 Sep 2026</div>
+    <h1>What Counts as an NLP Practitioner Before Deep Learning</h1>
+    <p class="lede">Long before transformers, people were building working language systems with regular expressions, grammars, and finite-state machines. That history still shapes what good practice looks like.</p>
+  </div>
+
+  <img src="../assets/blog/rule-based-roots-of-nlp.png" alt="Cover image for the article: What Counts as an NLP Practitioner Before Deep Learning" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The quiet erasure of a discipline's own history</h2><p>Ask someone what an NLP practitioner does and you will likely hear about transformers, embeddings, and fine-tuning large language models. That answer is not wrong, but it is incomplete in a way that matters. Natural language processing existed for decades before deep learning became the default toolkit, and a great deal of that earlier work was rigorous, useful, and intellectually demanding. Calling someone an NLP practitioner only if they train neural networks quietly erases the people who built spell checkers, machine translation systems, parsers, and information extraction pipelines using grammars, finite-state automata, and hand-crafted rules.</p><p>I think this matters for more than nostalgia. When a field forgets its own methodological roots, it tends to repeat mistakes that were already solved, or dismiss simple, robust solutions in favour of complexity that is not warranted by the task. A tokenizer built from carefully considered regular expressions is still an NLP artefact. A part-of-speech tagger built on hidden Markov models is still NLP. Someone who spent years writing context-free grammars for a parser was doing NLP just as much as someone fine-tuning a transformer today, and often with a sharper understanding of the linguistic structure they were modelling.</p></section><section class='psec reveal'><h2>A worked comparison: rules versus a neural tagger on a narrow task</h2><p>Consider a concrete example: extracting dates from free text, such as invoices or medical notes. A rule-based approach might use a handful of regular expressions tuned to formats like '12/04/2023', '4th April 2023', and 'April 4, 2023'. Suppose this rule set is built and tested against a held-out sample of 500 documents, in which dates appear in one of six known formats. It could plausibly achieve something like 96% recall and 98% precision, because the format space is genuinely narrow and each pattern can be inspected, debugged, and fixed by hand when it fails.</p><p>Now imagine training a small neural sequence tagger for the same task on a similarly sized dataset. Without a large amount of labelled data or transfer from a pretrained language model, that tagger will likely underperform the regex system, perhaps sitting closer to 85 to 90% recall, and its failures will be harder to diagnose because they are distributed across weights rather than isolated in an inspectable pattern. The neural approach only starts to pull ahead once the date formats become genuinely unpredictable, the surrounding context matters for disambiguation, or the volume of labelled data grows large enough to justify the model's flexibility.</p><p>This is not an argument against neural methods; it is an argument for matching the tool to the problem, which is precisely the judgement that rule-based practitioners had to develop out of necessity. When compute and data were expensive, you could not simply throw a large model at a narrow, well-structured problem. You had to understand the structure of the language phenomenon you were modelling, and that understanding produced systems that were transparent, debuggable, and often extremely reliable within their intended scope.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/rule-based-roots-of-nlp-1.jpg' alt='old computer terminal text' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Why the rebrand happened, and what got lost</h2><p>The shift towards deep learning in NLP was driven by genuine wins: neural methods handle ambiguity, long-range dependency, and generalisation across domains far better than hand-written rules ever could, particularly once large pretrained models became available. It made sense for the field's centre of gravity to move. But somewhere in that transition, the framing shifted from 'NLP is the study of computational methods for language' to 'NLP is applying deep learning to text', and that narrower framing has consequences.</p><p>One consequence is a weaker baseline culture. If a practitioner has never had to build a rule-based system, they may not think to compare their neural model against a simple regex, dictionary lookup, or a linear classifier with bag-of-words features before reaching for something heavier. I have seen this pattern in practice: a fairly involved neural pipeline outperforms a naive baseline by a modest margin, but no one checked whether a properly tuned rule-based or statistical baseline would have closed most of that gap at a fraction of the cost and with far greater interpretability. Skipping that comparison is not just intellectually lazy, it is a leakage-adjacent risk in disguise, because without a credible baseline you cannot tell whether your reported gains reflect the model or an artefact of the evaluation setup.</p><p>Another consequence is a loss of linguistic literacy. Building a parser or a morphological analyser by hand forces you to confront the actual structure of language: agreement, tense, ambiguity, compositionality. Practitioners who came up through that route tend to have sharper intuitions about why a model fails on a particular sentence, because they have spent time thinking about sentences as structured objects rather than as token sequences to be embedded.</p></section><section class='psec reveal'><h2>A practical takeaway for anyone working in language technology</h2><p>None of this is an argument for abandoning deep learning or pretending finite-state methods are competitive with modern language models on open-ended tasks; they are not, and it would be dishonest to claim otherwise. The point is narrower and more useful: anyone who has built systems using regular expressions, grammars, lexicons, or classical statistical models for language tasks has legitimate NLP experience, and that experience carries transferable skills that remain valuable today.</p><p>In practice, this suggests a habit worth adopting regardless of which era of methods you come from. Before reaching for a large neural model, spend an hour building the simplest rule-based or statistical baseline you can justify, and evaluate it honestly on a held-out set that reflects how the system will actually be used. If the baseline gets you 90% of the way there, you have learned something important about the task's true difficulty, and you can make a far more informed decision about whether the added complexity of a neural approach is actually earning its keep. That habit, more than any particular architecture, is what being a serious NLP practitioner has always meant.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/rule-based-roots-of-nlp-2.jpg' alt='handwritten grammar rules notebook' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

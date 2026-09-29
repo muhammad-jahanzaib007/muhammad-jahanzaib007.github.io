@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Tue, 29 Sep 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>What Counts as an NLP Practitioner Before Deep Learning</title>
+    <link>https://jahanzaibawan.com/blog/rule-based-roots-of-nlp.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/rule-based-roots-of-nlp.html</guid>
+    <pubDate>Tue, 29 Sep 2026 09:00:00 +0000</pubDate>
+    <description>Deep learning did not invent NLP; it rebranded a field that already had decades of rigorous, rule-based practice worth remembering.</description>
+    <category>NLP</category>
+  </item>
+  <item>
     <title>Full Fine-Tuning vs PEFT: A Decision Framework, Not a Trend</title>
     <link>https://jahanzaibawan.com/blog/full-vs-parameter-efficient-tuning.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/full-vs-parameter-efficient-tuning.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Sun, 20 Sep 2026 09:00:00 +0000</pubDate>
     <description>A practical filter for choosing MLOps tools on a small team, so you stop re-evaluating your stack every time something new trends.</description>
     <category>MLOps</category>
-  </item>
-  <item>
-    <title>Data Science Salary Bands Explained by Skill</title>
-    <link>https://jahanzaibawan.com/blog/data-science-salary-bands-skills.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/data-science-salary-bands-skills.html</guid>
-    <pubDate>Sat, 19 Sep 2026 09:00:00 +0000</pubDate>
-    <description>Salary bands in data science track judgement under uncertainty, not tool familiarity. Here is the skill ladder that actually explains the pay gap.</description>
-    <category>Careers</category>
   </item>
 </channel>
 </rss>

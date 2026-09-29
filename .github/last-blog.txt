@@ -1,1 +1,1 @@
-2026-09-29T08:02:02Z slug=full-vs-parameter-efficient-tuning words=1137 title="Full Fine-Tuning vs PEFT: A Decision Framework, Not a Trend"
+2026-09-29T20:01:56Z slug=rule-based-roots-of-nlp words=978 title="What Counts as an NLP Practitioner Before Deep Learning"
