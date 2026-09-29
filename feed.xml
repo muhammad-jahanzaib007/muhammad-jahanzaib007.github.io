@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Mon, 28 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 29 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Full Fine-Tuning vs PEFT: A Decision Framework, Not a Trend</title>
+    <link>https://jahanzaibawan.com/blog/full-vs-parameter-efficient-tuning.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/full-vs-parameter-efficient-tuning.html</guid>
+    <pubDate>Tue, 29 Sep 2026 09:00:00 +0000</pubDate>
+    <description>LoRA and its cousins are useful, not magic. Here is how to actually decide when full fine-tuning still earns its cost.</description>
+    <category>Deep Learning</category>
+  </item>
   <item>
     <title>Fine-Tuning as a Word: What Physics Lent Machine Learning</title>
     <link>https://jahanzaibawan.com/blog/fine-tuning-a-borrowed-word.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Sat, 19 Sep 2026 09:00:00 +0000</pubDate>
     <description>Salary bands in data science track judgement under uncertainty, not tool familiarity. Here is the skill ladder that actually explains the pay gap.</description>
     <category>Careers</category>
-  </item>
-  <item>
-    <title>Building a Personal MLOps Toolkit Before Paying for a Platform</title>
-    <link>https://jahanzaibawan.com/blog/personal-mlops-toolkit-before-platforms.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/personal-mlops-toolkit-before-platforms.html</guid>
-    <pubDate>Sat, 19 Sep 2026 09:00:00 +0000</pubDate>
-    <description>Managed MLOps platforms solve real problems, but most of those problems can be handled first with free tools, discipline, and a bit of scripting.</description>
-    <category>MLOps</category>
   </item>
 </channel>
 </rss>

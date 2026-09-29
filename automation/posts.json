@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "full-vs-parameter-efficient-tuning",
+      "title": "Full Fine-Tuning vs PEFT: A Decision Framework, Not a Trend",
+      "excerpt": "LoRA and its cousins are useful, not magic. Here is how to actually decide when full fine-tuning still earns its cost.",
+      "date": "2026-09-29",
+      "read_min": 6,
+      "tag": "Deep Learning",
+      "color": "a3",
+      "thumb": "assets/blog/full-vs-parameter-efficient-tuning.png",
+      "thumb_alt": "Cover image for the article: Full Fine-Tuning vs PEFT: A Decision Framework, Not a Trend"
+    },
+    {
       "slug": "fine-tuning-a-borrowed-word",
       "title": "Fine-Tuning as a Word: What Physics Lent Machine Learning",
       "excerpt": "Machine learning didn't invent fine-tuning. It borrowed a loaded term from physics and cosmology, and the borrowing changes how we should think about it.",

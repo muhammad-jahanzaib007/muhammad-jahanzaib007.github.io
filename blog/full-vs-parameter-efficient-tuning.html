@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Full Fine-Tuning vs PEFT: A Decision Framework, Not a Trend | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical, evidence-first framework for choosing full fine-tuning versus parameter-efficient methods like LoRA, based on data size, compute, and deployment needs.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="full fine-tuning, parameter-efficient fine-tuning, LoRA, PEFT, transfer learning, model adaptation, compute budget, deployment constraints, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-29">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Full Fine-Tuning vs PEFT: A Decision Framework, Not a Trend">
+<meta property="og:description" content="A practical, evidence-first framework for choosing full fine-tuning versus parameter-efficient methods like LoRA, based on data size, compute, and deployment needs.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/full-vs-parameter-efficient-tuning.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/full-vs-parameter-efficient-tuning.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Full Fine-Tuning vs PEFT: A Decision Framework, Not a Trend">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/full-vs-parameter-efficient-tuning.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/full-vs-parameter-efficient-tuning.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Full Fine-Tuning vs PEFT: A Decision Framework, Not a Trend",
+  "description": "A practical, evidence-first framework for choosing full fine-tuning versus parameter-efficient methods like LoRA, based on data size, compute, and deployment needs.",
+  "url": "https://jahanzaibawan.com/blog/full-vs-parameter-efficient-tuning.html",
+  "image": "https://jahanzaibawan.com/assets/blog/full-vs-parameter-efficient-tuning.png",
+  "datePublished": "2026-09-29",
+  "dateModified": "2026-09-29",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/full-vs-parameter-efficient-tuning.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Full Fine-Tuning vs PEFT: A Decision Framework, Not a Trend", "item": "https://jahanzaibawan.com/blog/full-vs-parameter-efficient-tuning.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Deep Learning · 6 min read · 29 Sep 2026</div>
+    <h1>Full Fine-Tuning vs PEFT: A Decision Framework, Not a Trend</h1>
+    <p class="lede">Choosing between full fine-tuning and parameter-efficient methods should follow from your data, compute, and deployment constraints, not from whichever paper trended last month.</p>
+  </div>
+
+  <img src="../assets/blog/full-vs-parameter-efficient-tuning.png" alt="Cover image for the article: Full Fine-Tuning vs PEFT: A Decision Framework, Not a Trend" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this choice keeps getting made badly</h2><p>Parameter-efficient fine-tuning, PEFT for short, has become the default answer to almost any adaptation problem. LoRA, adapters, prefix tuning: pick one, freeze the backbone, train a small number of new parameters, and ship it. This is often the right call. But I have seen it applied reflexively, as a trend rather than a decision, and that is where things go wrong. The question is never 'is PEFT good', it obviously can be. The question is whether the specific constraints of your task, your data, and your deployment target actually favour it over full fine-tuning. Those constraints differ from project to project, and treating the choice as settled in advance is a failure of rigour dressed up as pragmatism.</p><p>The appeal of PEFT is genuine and worth stating plainly. You touch a tiny fraction of parameters, so memory for optimiser states drops sharply, you can often fine-tune a large model on a single consumer GPU where full fine-tuning would need a small cluster, and you can store many task-specific adapters cheaply while sharing one frozen backbone. For teams serving dozens of custom models from one base, this is not a nicety, it is what makes the business model work at all. None of that is in dispute.</p><p>What is in dispute, or should be, is the assumption that these benefits always outweigh the cost. Full fine-tuning updates every weight, which means it can reshape the model's internal representations, not just steer them. When your target task is close to the pretraining distribution, steering is enough. When it is genuinely far from it, in vocabulary, structure, or reasoning style, steering can leave real capability on the table. A framework beats a trend precisely because it forces you to ask which situation you are actually in before you touch a config file.</p></section><section class='psec reveal'><h2>A worked comparison with realistic numbers</h2><p>Suppose you are adapting a mid-sized language model, on the order of seven billion parameters, for a narrow internal task: classifying support tickets into twelve categories using a labelled set of four thousand examples. Full fine-tuning here means optimiser states for seven billion parameters, which with a standard optimiser can require memory several times the model's own footprint, easily pushing you towards multi-GPU setups even at modest batch sizes. LoRA, by contrast, might introduce on the order of a few million trainable parameters, a reduction of three orders of magnitude, letting you train on a single GPU with a larger batch size and faster iteration.</p><p>With four thousand labelled examples, the practical risk with full fine-tuning is not underfitting, it is overfitting and catastrophic forgetting of general language ability that you did not mean to disturb. A small, low-rank update is often not just cheaper but genuinely better suited to a small dataset, because it has less capacity to memorise noise. In this regime, PEFT is not a compromise, it is the more appropriate tool, and a careful evaluator would expect it to match or beat full fine-tuning on held-out ticket data while costing a fraction of the compute.</p><p>Now change one variable: instead of four thousand examples you have four hundred thousand, spanning years of tickets with genuine shifts in product terminology and customer language. The dataset is now large enough to meaningfully update deep representations without simply memorising it, and the domain shift is large enough that a frozen backbone with a thin adapter may struggle to fully absorb it. This is the regime where full fine-tuning starts to close the gap and can pull ahead, provided you have the compute budget and, critically, a leakage-aware validation split that actually reflects the temporal drift in the data rather than a random shuffle that hides it.</p><p>The lesson from this comparison is not 'use PEFT for small data and full fine-tuning for large data', though that is a reasonable starting heuristic. The lesson is that the crossover point depends on how far your task sits from the pretraining distribution, and you only find that out by testing both on a properly held-out set, not by assuming it from the size of the dataset alone.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/full-vs-parameter-efficient-tuning-1.jpg' alt='gpu server rack' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>The questions a real framework should ask</h2><p>A decision framework worth the name asks a short list of concrete questions before defaulting to either method. First, how much labelled data do you actually have, and how representative is your validation split of the deployment distribution, including any temporal or source-based leakage that a naive random split would hide. Second, how far is your target domain from the pretraining distribution in vocabulary, task structure, and required reasoning depth. Third, what is your actual compute and memory budget, not the budget you wish you had, and does it change if you need to serve many task variants from one base model. Fourth, what does deployment look like: do you need a single merged model with no runtime overhead, or can you tolerate loading small adapters at inference time.</p><p>These questions matter because the honest answer is often 'it depends, and I should test both'. PEFT methods are cheap enough that running a LoRA baseline alongside a full fine-tuning run, on the same held-out split, is rarely prohibitive, and it gives you an actual number rather than a received wisdom. I would treat any claim that one approach is categorically better as a red flag unless it comes with a comparison on a leakage-free split with a stated data size and domain gap. Trends move fast; the underlying trade-offs, memory, data volume, domain shift, and deployment shape, do not.</p><p>There is also a quieter, structural point. PEFT methods constrain the update to a low-rank or otherwise restricted subspace, which is a strong inductive bias. Strong inductive biases help when data is scarce relative to the gap you are trying to close, and hurt when the gap is large relative to the data. That single sentence is close to the whole decision framework in miniature, and it is worth internalising rather than outsourcing to whichever method a benchmark leaderboard currently favours.</p></section><section class='psec reveal'><h2>A practical takeaway</h2><p>Start with a PEFT baseline by default, because it is cheap, fast to iterate on, and often sufficient. But before committing to it for a real product, run a full fine-tuning comparison at least once on your actual leakage-aware split, with your actual data volume, and check whether the gap is trivial or material. If your dataset is small and close to the pretraining distribution, expect PEFT to hold its own or win outright. If your dataset is large and the domain shift is real, budget the compute to test full fine-tuning properly rather than assuming the efficient option will scale with you. The method that wins should be decided by evidence on your own held-out data, not by which technique happened to be trending when you started the project.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/full-vs-parameter-efficient-tuning-2.jpg' alt='engineer comparing charts on laptop' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

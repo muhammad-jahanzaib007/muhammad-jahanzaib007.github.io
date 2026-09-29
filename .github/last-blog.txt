@@ -1,1 +1,1 @@
-2026-09-28T20:01:50Z slug=fine-tuning-a-borrowed-word words=1037 title="Fine-Tuning as a Word: What Physics Lent Machine Learning"
+2026-09-29T08:02:02Z slug=full-vs-parameter-efficient-tuning words=1137 title="Full Fine-Tuning vs PEFT: A Decision Framework, Not a Trend"
