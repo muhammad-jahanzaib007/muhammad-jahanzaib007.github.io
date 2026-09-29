@@ -9,7 +9,8 @@
       "tag": "Deep Learning",
       "color": "a3",
       "thumb": "assets/blog/full-vs-parameter-efficient-tuning.png",
-      "thumb_alt": "Cover image for the article: Full Fine-Tuning vs PEFT: A Decision Framework, Not a Trend"
+      "thumb_alt": "Cover image for the article: Full Fine-Tuning vs PEFT: A Decision Framework, Not a Trend",
+      "li_shared": true
     },
     {
       "slug": "fine-tuning-a-borrowed-word",
