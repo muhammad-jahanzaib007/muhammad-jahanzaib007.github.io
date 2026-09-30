@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Annotation Quality: Your Labels Are the Real Model | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why annotation quality, not architecture, sets the performance ceiling in NLP, with a worked example on inter-annotator agreement and leakage-aware evaluation.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="data annotation, NLP, inter-annotator agreement, label quality, dataset bias, evaluation, gold standard, annotation guidelines, machine learning reproducibility, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-30">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Data Annotation Quality: Your Labels Are the Real Model">
+<meta property="og:description" content="Why annotation quality, not architecture, sets the performance ceiling in NLP, with a worked example on inter-annotator agreement and leakage-aware evaluation.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/data-annotation-quality-nlp.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/data-annotation-quality-nlp.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Data Annotation Quality: Your Labels Are the Real Model">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/data-annotation-quality-nlp.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/data-annotation-quality-nlp.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Data Annotation Quality: Your Labels Are the Real Model",
+  "description": "Why annotation quality, not architecture, sets the performance ceiling in NLP, with a worked example on inter-annotator agreement and leakage-aware evaluation.",
+  "url": "https://jahanzaibawan.com/blog/data-annotation-quality-nlp.html",
+  "image": "https://jahanzaibawan.com/assets/blog/data-annotation-quality-nlp.png",
+  "datePublished": "2026-09-30",
+  "dateModified": "2026-09-30",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/data-annotation-quality-nlp.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Data Annotation Quality: Your Labels Are the Real Model", "item": "https://jahanzaibawan.com/blog/data-annotation-quality-nlp.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">NLP · 6 min read · 30 Sep 2026</div>
+    <h1>Data Annotation Quality: Your Labels Are the Real Model</h1>
+    <p class="lede">Before you tune a single hyperparameter, ask who labelled your data, how, and whether two of them would agree. The answer often matters more than the architecture you chose.</p>
+  </div>
+
+  <img src="../assets/blog/data-annotation-quality-nlp.png" alt="Cover image for the article: Data Annotation Quality: Your Labels Are the Real Model" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The model you actually trained</h2><p>Every supervised NLP system is a function fitted to a set of labels, and those labels were produced by people following a set of instructions that were themselves ambiguous in places, revised halfway through the project, and interpreted slightly differently by every annotator who touched them. When we talk about a model's performance, we usually mean how well it reproduces this messy human process, not some platonic notion of the correct answer. That distinction sounds pedantic until you sit down and actually read a sample of your own labelled data closely.</p><p>Take a sentiment classification task on product reviews. A review that says 'it works, I suppose, though I expected more for the price' is not obviously positive or negative. One annotator might tag it negative because of the complaint, another positive because the product does work, and a third might tag it neutral because they are trying to be careful. None of them is wrong given the instructions they were handed. If your guidelines never addressed mixed-sentiment or hedged language, this ambiguity gets baked into every downstream number you report.</p><p>The practical consequence is that your model's apparent error is a mixture of two very different things: cases where it genuinely misunderstands language, and cases where the label itself was a coin flip between two defensible readings. You cannot separate these by looking at accuracy alone. A model stuck at 82 percent accuracy might be a mediocre model on a clean dataset, or it might be an excellent model bumping against a noise ceiling created by inconsistent labelling. Without measuring that ceiling, you are guessing.</p></section><section class='psec reveal'><h2>Measuring agreement properly, with a worked example</h2><p>The standard tool for this is inter-annotator agreement, and Cohen's kappa is the workhorse for two annotators on a categorical task. Suppose two annotators label 200 reviews as positive or negative. They agree on 170 of them, giving raw agreement of 85 percent, which sounds respectable. But raw agreement ignores the fact that two annotators could agree by chance even if they were labelling randomly, especially when one class dominates.</p><p>Say 70 percent of the reviews are positive. Two annotators guessing according to that base rate would agree with each other purely by chance roughly 58 percent of the time, just from both being biased toward the majority label. Kappa corrects for this: it is the observed agreement minus chance agreement, divided by one minus chance agreement. Plugging in numbers close to this scenario gives a kappa somewhere in the 0.6 to 0.65 range, which most annotation guidelines classify as only 'moderate' agreement, not the 'excellent' that 85 percent raw agreement might suggest to someone who has not seen the correction applied.</p><p>This matters because a moderate kappa tells you the task itself has genuine ambiguity that your instructions have not resolved. The fix is rarely to hire better annotators; it is almost always to rewrite the guidelines with concrete edge-case examples, run a small pilot, remeasure kappa, and iterate before you commit to labelling thousands of documents. I have seen teams skip this step under deadline pressure and pay for it later when a reviewer asks why validation performance refuses to climb past a certain point no matter what they change in the model.</p><p>For tasks with more than two categories or continuous scales, Krippendorff's alpha generalises the same idea and handles missing labels more gracefully. The specific statistic matters less than the habit: measure agreement before you trust the gold labels, and treat a low score as information about the task, not a nuisance to be reported and forgotten in a footnote.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/data-annotation-quality-nlp-1.jpg' alt='person annotating text on laptop screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Where quality problems hide until deployment</h2><p>Annotation quality issues rarely show up as obvious errors; they show up as systematic bias that a train-test split from the same annotation batch will not reveal. If the same small group of annotators labelled both your training and test sets, their shared blind spots and shared conventions leak into both splits equally. Your held-out accuracy looks fine because the test set inherits the exact same quirks as the training set. The model has learned to imitate the annotators, and the test set confirms that imitation rather than testing generalisation to how language actually varies in the wild.</p><p>This is a subtler form of leakage than the classic case of duplicate documents crossing the split boundary, but it is just as damaging to any claim you make about real-world performance. A model can score well above a naive baseline on an in-distribution test set built by the same three annotators, then degrade sharply the moment it meets text labelled, or produced, by a different population with different conventions or a different demographic background. If your deployment setting involves different writers, different topics, or a different time period than your annotation batch, that gap can be substantial and is very hard to spot from the metrics you already have in hand.</p><p>A useful practical check is to have a second, independent group re-annotate a random sample of your test set from scratch, without seeing the original labels, and compare their agreement with the original annotators against your model's agreement with the original annotators. If your model agrees with the original labels about as often as an independent human does, you are probably near the practical ceiling for that dataset. If the independent humans disagree with the originals far more than your model does, that is a strong signal the original labels themselves have systematic quirks that your model has simply learned to reproduce rather than to understand.</p></section><section class='psec reveal'><h2>What to actually do about it</h2><p>Treat your annotation guidelines as a first-class research artefact, not paperwork. Version them, date each revision, and log which batch of data was labelled under which version, so you can trace disagreement back to a specific instruction change rather than guessing after the fact. Run a small pilot on fifty to a hundred examples before scaling up, compute agreement, and revise the guidelines around the specific cases annotators disagreed on rather than rewriting everything from vague intuition.</p><p>Report inter-annotator agreement alongside model performance whenever you publish or present results, even informally, and be explicit that your accuracy figure is bounded above by that agreement, not by some abstract notion of perfect labelling. When you split data for training and evaluation, split by annotator batch or by source population where feasible, not purely by document, so that your test set actually probes generalisation rather than merely re-testing familiarity with one annotation team's habits.</p><p>None of this is glamorous work compared with trying a new architecture, and that is exactly why it gets skipped. But the ceiling on what any model can learn is set by the consistency of the labels it is asked to imitate, and no amount of clever engineering pushes a model meaningfully past a ceiling built into the data itself.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/data-annotation-quality-nlp-2.jpg' alt='two researchers comparing spreadsheet data' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

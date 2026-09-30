@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Tue, 29 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 30 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Data Annotation Quality: Your Labels Are the Real Model</title>
+    <link>https://jahanzaibawan.com/blog/data-annotation-quality-nlp.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/data-annotation-quality-nlp.html</guid>
+    <pubDate>Wed, 30 Sep 2026 09:00:00 +0000</pubDate>
+    <description>Model architecture gets the glory, but in NLP the annotation guidelines and inter-annotator agreement quietly decide your ceiling. Here is why that ceiling is usually lower than you think.</description>
+    <category>NLP</category>
+  </item>
   <item>
     <title>What Counts as an NLP Practitioner Before Deep Learning</title>
     <link>https://jahanzaibawan.com/blog/rule-based-roots-of-nlp.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Sun, 20 Sep 2026 09:00:00 +0000</pubDate>
     <description>Evaluation frameworks automate splitting, scoring, and aggregation, but they quietly assume your data is independent, your split reflects deployment, and your metric means what you think.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>How to Shortlist MLOps Tools Without Chasing Every Release</title>
-    <link>https://jahanzaibawan.com/blog/shortlisting-mlops-tools-small-team.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/shortlisting-mlops-tools-small-team.html</guid>
-    <pubDate>Sun, 20 Sep 2026 09:00:00 +0000</pubDate>
-    <description>A practical filter for choosing MLOps tools on a small team, so you stop re-evaluating your stack every time something new trends.</description>
-    <category>MLOps</category>
   </item>
 </channel>
 </rss>

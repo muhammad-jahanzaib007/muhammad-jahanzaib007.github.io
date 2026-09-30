@@ -1,1 +1,1 @@
-2026-09-29T20:01:56Z slug=rule-based-roots-of-nlp words=978 title="What Counts as an NLP Practitioner Before Deep Learning"
+2026-09-30T08:02:03Z slug=data-annotation-quality-nlp words=1142 title="Data Annotation Quality: Your Labels Are the Real Model"
