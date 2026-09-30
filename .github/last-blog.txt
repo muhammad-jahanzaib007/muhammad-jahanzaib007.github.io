@@ -1,1 +1,1 @@
-2026-09-30T08:02:03Z slug=data-annotation-quality-nlp words=1142 title="Data Annotation Quality: Your Labels Are the Real Model"
+2026-09-30T20:01:56Z slug=cv-book-versus-course words=1049 title="Computer Vision Book or Course: What Each One Teaches"

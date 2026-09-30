@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "cv-book-versus-course",
+      "title": "Computer Vision Book or Course: What Each One Teaches",
+      "excerpt": "A book gives you the mathematics and the why; a course gives you the workflow and the muscle memory. Most learners need both, in the right order.",
+      "date": "2026-09-30",
+      "read_min": 5,
+      "tag": "Learning",
+      "color": "a6",
+      "thumb": "assets/blog/cv-book-versus-course.png",
+      "thumb_alt": "Cover image for the article: Computer Vision Book or Course: What Each One Teaches"
+    },
+    {
       "slug": "data-annotation-quality-nlp",
       "title": "Data Annotation Quality: Your Labels Are the Real Model",
       "excerpt": "Model architecture gets the glory, but in NLP the annotation guidelines and inter-annotator agreement quietly decide your ceiling. Here is why that ceiling is usually lower than you think.",

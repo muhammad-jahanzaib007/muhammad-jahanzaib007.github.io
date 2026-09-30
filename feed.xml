@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Wed, 30 Sep 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Computer Vision Book or Course: What Each One Teaches</title>
+    <link>https://jahanzaibawan.com/blog/cv-book-versus-course.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/cv-book-versus-course.html</guid>
+    <pubDate>Wed, 30 Sep 2026 09:00:00 +0000</pubDate>
+    <description>A book gives you the mathematics and the why; a course gives you the workflow and the muscle memory. Most learners need both, in the right order.</description>
+    <category>Learning</category>
+  </item>
+  <item>
     <title>Data Annotation Quality: Your Labels Are the Real Model</title>
     <link>https://jahanzaibawan.com/blog/data-annotation-quality-nlp.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/data-annotation-quality-nlp.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Mon, 21 Sep 2026 09:00:00 +0000</pubDate>
     <description>Skip the film analogies. Here is how to explain transformers to non-technical people using a concrete weighted-vote example that actually holds up.</description>
     <category>NLP</category>
-  </item>
-  <item>
-    <title>What a Model Evaluation Framework Automates and Assumes</title>
-    <link>https://jahanzaibawan.com/blog/what-eval-frameworks-assume.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/what-eval-frameworks-assume.html</guid>
-    <pubDate>Sun, 20 Sep 2026 09:00:00 +0000</pubDate>
-    <description>Evaluation frameworks automate splitting, scoring, and aggregation, but they quietly assume your data is independent, your split reflects deployment, and your metric means what you think.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>
