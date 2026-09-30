@@ -9,7 +9,8 @@
       "tag": "Learning",
       "color": "a6",
       "thumb": "assets/blog/cv-book-versus-course.png",
-      "thumb_alt": "Cover image for the article: Computer Vision Book or Course: What Each One Teaches"
+      "thumb_alt": "Cover image for the article: Computer Vision Book or Course: What Each One Teaches",
+      "li_shared": true
     },
     {
       "slug": "data-annotation-quality-nlp",
