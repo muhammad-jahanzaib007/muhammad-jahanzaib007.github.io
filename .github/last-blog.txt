@@ -1,1 +1,1 @@
-2026-10-01T08:02:07Z slug=offline-metrics-mislead-recsys words=1069 title="Held-Out Evaluation for Recommenders: When Offline Lies"
+2026-10-01T20:02:10Z slug=metric-versus-decision words=1115 title="Model Evaluation as a Discipline: Metric Versus Decision"

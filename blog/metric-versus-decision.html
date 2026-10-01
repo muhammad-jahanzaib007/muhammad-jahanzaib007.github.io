@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Model Evaluation as a Discipline: Metric Versus Decision | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why a model metric is not a decision: a practical look at thresholds, costs, and leakage-aware evaluation in machine learning.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="model evaluation, machine learning metrics, decision thresholds, evaluation discipline, precision recall tradeoff, leakage aware validation, confusion matrix, model deployment, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-01">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Model Evaluation as a Discipline: Metric Versus Decision">
+<meta property="og:description" content="Why a model metric is not a decision: a practical look at thresholds, costs, and leakage-aware evaluation in machine learning.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/metric-versus-decision.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/metric-versus-decision.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Model Evaluation as a Discipline: Metric Versus Decision">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/metric-versus-decision.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/metric-versus-decision.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Model Evaluation as a Discipline: Metric Versus Decision",
+  "description": "Why a model metric is not a decision: a practical look at thresholds, costs, and leakage-aware evaluation in machine learning.",
+  "url": "https://jahanzaibawan.com/blog/metric-versus-decision.html",
+  "image": "https://jahanzaibawan.com/assets/blog/metric-versus-decision.png",
+  "datePublished": "2026-10-01",
+  "dateModified": "2026-10-01",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/metric-versus-decision.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Model Evaluation as a Discipline: Metric Versus Decision", "item": "https://jahanzaibawan.com/blog/metric-versus-decision.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 6 min read · 1 Oct 2026</div>
+    <h1>Model Evaluation as a Discipline: Metric Versus Decision</h1>
+    <p class="lede">A high accuracy score is not the same as a good decision. Here is why the gap matters and how to close it.</p>
+  </div>
+
+  <img src="../assets/blog/metric-versus-decision.png" alt="Cover image for the article: Model Evaluation as a Discipline: Metric Versus Decision" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The number on the slide is not the decision</h2><p>Every machine learning project eventually produces a slide with a number on it: 94% accuracy, an F1 of 0.81, an AUC of 0.92. These numbers feel like conclusions. In practice they are inputs to a conclusion, and treating them as the conclusion itself is one of the most common and consequential mistakes in applied machine learning. A metric describes how a model behaves on a fixed test set under a fixed scoring rule. A decision is what happens when that model is wired into a process with real costs attached to being wrong in each direction.</p><p>The distinction matters because a single scalar metric throws away the structure of the problem. Accuracy treats a false positive and a false negative as interchangeable, which is rarely true outside a classroom exercise. AUC describes performance averaged across every possible threshold, most of which you will never use. These are reasonable summaries for comparing models during development, but they are the wrong currency for deciding whether to ship, what threshold to set, or what to tell a stakeholder who has to act on the output.</p><p>I think of this as the difference between measurement and judgement. Measurement is what the evaluation pipeline gives you: a number computed against held-out labels. Judgement is what a person or a system does with that number once it is placed inside a real workflow, where the cost of missing a positive case might be entirely different from the cost of a false alarm. Good evaluation practice is the discipline of keeping these two stages separate and explicit, rather than letting a single metric silently stand in for both.</p></section><section class='psec reveal'><h2>A worked example: the threshold is where the decision actually lives</h2><p>Suppose a classifier for flagging a rare quality defect achieves an AUC of 0.90 on a held-out set of 10,000 items, of which 200 are true positives, a 2% base rate. That AUC is a genuinely good number. But it says nothing yet about what happens when the model is deployed, because deployment requires choosing a threshold, and the threshold is where cost assumptions enter the picture.</p><p>Say we pick a threshold that yields 85% recall and 40% precision. That means we catch 170 of the 200 real defects, which sounds strong. It also means that for every 170 true positives we flag, we raise roughly 255 false alarms, since 40% precision implies 60% of flagged items are not actually defective. If each flagged item triggers a manual inspection costing, say, fifteen minutes of a technician's time, that is over 60 hours of inspection work to catch those 170 defects. Whether that trade is worth it depends entirely on what a missed defect costs downstream, a number that lives nowhere in the AUC and nowhere in the confusion matrix either. It lives in the business, and it has to be supplied by someone who understands the consequences of each error type.</p><p>Now shift the threshold to recover 95% recall. Precision might drop to 25%, meaning for every true positive you now generate three false alarms instead of one and a half. The AUC has not changed at all, because AUC is threshold-independent by construction, but the operational reality of running this model has changed substantially. This is the core point: the metric used to select and compare models during development is often the wrong metric to govern the live threshold, because the live threshold needs a cost model, not a ranking statistic.</p><p>This is also why I am wary of leaderboards and benchmark tables that report a single number without reporting the operating point. A model with slightly lower AUC but a more favourable precision-recall curve in the region that actually matters for the deployment cost structure can be the better choice, even though it loses on the summary statistic. Evaluation as a discipline means reporting the curve, or at minimum the relevant operating points, rather than collapsing everything into one headline figure.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/metric-versus-decision-1.jpg' alt='confusion matrix whiteboard diagram' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Where the discipline actually breaks: leakage and shifting ground</h2><p>None of the threshold reasoning above means anything if the underlying metric was computed on a compromised test set. Leakage is the quiet killer of evaluation discipline, and it rarely looks like an obvious bug. A time series model validated with a random train-test split will often show inflated performance because it has effectively seen fragments of the future folded into training. A model evaluated on data that shares duplicated or near-duplicated records across the split boundary will look better than it is for the same reason. The fix is not exotic: splits should respect whatever grouping or temporal structure exists in the real deployment setting, so that the test set genuinely simulates unseen future cases rather than a reshuffled version of the training distribution.</p><p>There is a second, subtler failure mode: the population the model will see in production drifts away from the population it was evaluated on. A fraud model trained and tested on last year's transaction patterns may report excellent precision and recall on that historical slice while degrading steadily as spending habits, products, or adversarial behaviour shift. A single evaluation number, computed once, is a photograph of a moving target. Treating it as a permanent property of the model rather than a time-stamped observation is another way a metric quietly stops representing the decision it is meant to inform.</p><p>Honest evaluation practice therefore has to include a few unglamorous habits: documenting exactly how the split was constructed and why it mirrors deployment conditions, reporting performance across the relevant operating points rather than a single threshold, stating the cost assumptions that justify a chosen threshold explicitly, and treating any reported number as provisional until it has been checked against fresh, temporally later data. None of this is difficult in principle. It is simply slower and less photogenic than a single clean percentage on a slide, which is exactly why it gets skipped under deadline pressure.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>A metric is a property of a model and a test set. A decision is a property of a model, a threshold, and a cost structure, all three of which must be made explicit before anyone should be allowed to act on a number. The discipline of evaluation is not about computing more sophisticated metrics; it is about refusing to let a scalar substitute for the judgement that only a clear-eyed look at costs, thresholds, and data provenance can provide. If you take one habit from this: before quoting a single performance number, ask what threshold it implies, what it costs to be wrong in each direction, and whether the test set actually resembles the world the model will meet next.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/metric-versus-decision-2.jpg' alt='quality control inspection line factory' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

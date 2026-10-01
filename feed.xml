@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Thu, 01 Oct 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Model Evaluation as a Discipline: Metric Versus Decision</title>
+    <link>https://jahanzaibawan.com/blog/metric-versus-decision.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/metric-versus-decision.html</guid>
+    <pubDate>Thu, 01 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Accuracy is a number. Deployment is a decision. This post explains the discipline that separates the two, with a worked example.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Held-Out Evaluation for Recommenders: When Offline Lies</title>
     <link>https://jahanzaibawan.com/blog/offline-metrics-mislead-recsys.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/offline-metrics-mislead-recsys.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/leakage-lag-features-time-series.html</guid>
     <pubDate>Tue, 22 Sep 2026 09:00:00 +0000</pubDate>
     <description>Lag features feel safe because they look backwards, but sloppy construction lets future information leak in and inflates your validation scores.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Hyperparameter Search: Grid, Random, and Bayesian, Honestly</title>
-    <link>https://jahanzaibawan.com/blog/grid-random-bayesian-search-compared.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/grid-random-bayesian-search-compared.html</guid>
-    <pubDate>Mon, 21 Sep 2026 09:00:00 +0000</pubDate>
-    <description>Grid search is comfortable, random search is underrated, and Bayesian optimisation earns its complexity only sometimes. Here is the honest comparison.</description>
     <category>Evaluation</category>
   </item>
 </channel>

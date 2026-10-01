@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "metric-versus-decision",
+      "title": "Model Evaluation as a Discipline: Metric Versus Decision",
+      "excerpt": "Accuracy is a number. Deployment is a decision. This post explains the discipline that separates the two, with a worked example.",
+      "date": "2026-10-01",
+      "read_min": 6,
+      "tag": "Evaluation",
+      "color": "a3",
+      "thumb": "assets/blog/metric-versus-decision.png",
+      "thumb_alt": "Cover image for the article: Model Evaluation as a Discipline: Metric Versus Decision"
+    },
+    {
       "slug": "offline-metrics-mislead-recsys",
       "title": "Held-Out Evaluation for Recommenders: When Offline Lies",
       "excerpt": "High offline NDCG does not guarantee happy users. A walk through why held-out splits mislead recommender evaluation and how to close the gap.",
