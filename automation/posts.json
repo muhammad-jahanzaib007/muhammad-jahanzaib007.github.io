@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a2",
       "thumb": "assets/blog/offline-metrics-mislead-recsys.png",
-      "thumb_alt": "Cover image for the article: Held-Out Evaluation for Recommenders: When Offline Lies"
+      "thumb_alt": "Cover image for the article: Held-Out Evaluation for Recommenders: When Offline Lies",
+      "li_shared": true
     },
     {
       "slug": "cv-book-versus-course",
