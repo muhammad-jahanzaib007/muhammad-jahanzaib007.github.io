@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Held-Out Evaluation for Recommenders: When Offline Lies | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why offline metrics like NDCG and recall@k mislead recommender system evaluation, with a worked example and practical fixes for leakage-aware testing.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="recommender systems, offline evaluation, NDCG, leakage, A/B testing, held-out splits, recall@k, counterfactual evaluation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-01">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Held-Out Evaluation for Recommenders: When Offline Lies">
+<meta property="og:description" content="Why offline metrics like NDCG and recall@k mislead recommender system evaluation, with a worked example and practical fixes for leakage-aware testing.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/offline-metrics-mislead-recsys.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/offline-metrics-mislead-recsys.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Held-Out Evaluation for Recommenders: When Offline Lies">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/offline-metrics-mislead-recsys.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/offline-metrics-mislead-recsys.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Held-Out Evaluation for Recommenders: When Offline Lies",
+  "description": "Why offline metrics like NDCG and recall@k mislead recommender system evaluation, with a worked example and practical fixes for leakage-aware testing.",
+  "url": "https://jahanzaibawan.com/blog/offline-metrics-mislead-recsys.html",
+  "image": "https://jahanzaibawan.com/assets/blog/offline-metrics-mislead-recsys.png",
+  "datePublished": "2026-10-01",
+  "dateModified": "2026-10-01",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/offline-metrics-mislead-recsys.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Held-Out Evaluation for Recommenders: When Offline Lies", "item": "https://jahanzaibawan.com/blog/offline-metrics-mislead-recsys.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 1 Oct 2026</div>
+    <h1>Held-Out Evaluation for Recommenders: When Offline Lies</h1>
+    <p class="lede">A model that wins on NDCG in your notebook can lose users in production. Here is why offline held-out evaluation for recommender systems so often misleads, and what to do about it.</p>
+  </div>
+
+  <img src="../assets/blog/offline-metrics-mislead-recsys.png" alt="Cover image for the article: Held-Out Evaluation for Recommenders: When Offline Lies" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The seductive clarity of a held-out score</h2><p>Offline evaluation for recommender systems looks like ordinary machine learning evaluation. You hold out some interactions, train on the rest, rank items for each held-out user, and compute recall@k or NDCG. The number is clean, reproducible, and easy to put in a table. That cleanliness is exactly the problem. Recommendation is not a static labelling task; it is an intervention in a feedback loop, and a held-out split taken from historical logs cannot see the counterfactual world where your new model actually chose what the user saw.</p><p>Consider a concrete setup. You have a dataset of user clicks over six months. You split randomly, eighty percent of interactions for training and twenty percent for testing, and you train a matrix factorisation model against a popularity-based baseline. Offline, your model scores NDCG@10 of 0.31 against the baseline's 0.24, a seemingly decisive win. You ship it. Engagement barely moves, and in one segment it actually drops. The offline number was not wrong as a measurement; it was wrong as a proxy for what you actually wanted to know.</p><p>The gap exists because the test set was generated by the old system, not the new one. Users only clicked on items the previous recommender chose to show them. Your held-out labels are a biased sample of relevance, skewed towards whatever the production system already favoured. A model that is good at predicting those historical clicks is good at mimicking the old system's exposure pattern, which is a different skill from being good at satisfying users under new, different exposure.</p></section><section class='psec reveal'><h2>Exposure bias and leakage hiding inside a random split</h2><p>A random train-test split by interaction, rather than by time or by user, is the most common source of quiet leakage in recommender evaluation. If you shuffle all interactions and split randomly, a user's click from March can end up in training while their click from January sits in the test set. Your model effectively gets to see the future to predict the past. In practice this inflates offline accuracy by a meaningful margin, because recommenders exploit short-term patterns such as a user who bought a phone case right after buying a phone; randomly splitting breaks the natural temporal order and lets that adjacency leak across the split boundary.</p><p>A leakage-aware alternative is a temporal split: train on everything before a cutoff date, test on everything after, for every user. This respects the only direction time actually flows. It is also less generous: NDCG numbers under temporal splitting are usually lower than under random splitting, sometimes substantially, which surprises teams the first time they switch. That drop is not a regression, it is the random split's leakage being removed.</p><p>Even a correctly time-ordered split has a second, subtler issue: exposure bias. Items a user never saw cannot appear as positive labels, no matter how much they would have liked them. If your catalogue has ten thousand items and the old system only ever showed each user a few hundred of them, your test set treats the other items as implicitly irrelevant, when really they are simply unobserved. A new model that successfully surfaces previously unshown items that users genuinely like will be penalised offline for not matching the historical click pattern, then rewarded online when those same items get clicked. This is precisely the mechanism behind cases where offline and online results point in opposite directions.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/offline-metrics-mislead-recsys-1.jpg' alt='laptop with data charts dashboard' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What narrows the gap: counterfactual and interleaved evaluation</h2><p>One practical mitigation is inverse propensity weighting, where each historical interaction is weighted by the inverse probability that the old system would have shown that item in that context. If the baseline recommender showed a popular item to ninety percent of users but a niche item to only five percent, the niche item's clicks are upweighted when scoring a new model, roughly correcting for the fact that it had far less chance to be seen in the first place. This does not fully solve the problem, because propensities themselves must be estimated and can be noisy, but it is a genuine improvement over treating all unclicked items as equally irrelevant.</p><p>A second practical technique is interleaving, where two ranked lists from two different models are merged into a single list shown to the same user, and credit is attributed to whichever model's items get clicked. Because both models are evaluated simultaneously within the same user session, interleaving controls for a huge amount of the confounding that separate online A/B arms suffer from, and it typically needs far fewer users to detect a meaningful difference than a full randomised online test. It is still an online method, requiring real traffic, but it sits usefully between a cheap offline score and an expensive full rollout.</p><p>None of this means offline evaluation is worthless; it means it answers a narrower question than people assume. A well-constructed temporal, leakage-checked offline test is good at catching regressions, comparing architectures quickly during development, and ruling out obviously broken models before they reach users. It is poor at predicting absolute online lift, poor at judging models that behave very differently from the system that generated the logs, and almost always poor for diversity or long-term engagement objectives that a single-session click metric was never designed to capture.</p></section><section class='psec reveal'><h2>A practical checklist before you trust a number</h2><p>Before reporting an offline recommender result, I now ask a short list of questions that would have saved me from overclaiming more than once. Is the split temporal rather than random, so that no future interaction leaks into training? Does the metric account for exposure, through propensity weighting or at minimum an explicit note that unclicked does not mean disliked? Is the baseline a genuinely strong one, such as a tuned popularity or co-occurrence model, rather than a weak strawman that makes any new idea look good?</p><p>I also treat a large offline gain as a hypothesis, not a conclusion. If a new model shows a ten-point NDCG improvement, I want an interleaved test or a small online experiment before I believe it translates into real user value, because the history of this field is full of offline wins that evaporated in production. The honest takeaway is simple: offline held-out evaluation is a filter for bad ideas, not a certificate for good ones, and the only evaluation that fully answers the question you actually care about is one run on real users making real choices.</p></section>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

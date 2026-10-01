@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Wed, 30 Sep 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 01 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Held-Out Evaluation for Recommenders: When Offline Lies</title>
+    <link>https://jahanzaibawan.com/blog/offline-metrics-mislead-recsys.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/offline-metrics-mislead-recsys.html</guid>
+    <pubDate>Thu, 01 Oct 2026 09:00:00 +0000</pubDate>
+    <description>High offline NDCG does not guarantee happy users. A walk through why held-out splits mislead recommender evaluation and how to close the gap.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Computer Vision Book or Course: What Each One Teaches</title>
     <link>https://jahanzaibawan.com/blog/cv-book-versus-course.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Mon, 21 Sep 2026 09:00:00 +0000</pubDate>
     <description>Grid search is comfortable, random search is underrated, and Bayesian optimisation earns its complexity only sometimes. Here is the honest comparison.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Explaining Transformers Without the Film Analogy Trap</title>
-    <link>https://jahanzaibawan.com/blog/explaining-transformers-without-analogy.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/explaining-transformers-without-analogy.html</guid>
-    <pubDate>Mon, 21 Sep 2026 09:00:00 +0000</pubDate>
-    <description>Skip the film analogies. Here is how to explain transformers to non-technical people using a concrete weighted-vote example that actually holds up.</description>
-    <category>NLP</category>
   </item>
 </channel>
 </rss>

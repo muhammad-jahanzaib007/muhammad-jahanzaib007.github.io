@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "offline-metrics-mislead-recsys",
+      "title": "Held-Out Evaluation for Recommenders: When Offline Lies",
+      "excerpt": "High offline NDCG does not guarantee happy users. A walk through why held-out splits mislead recommender evaluation and how to close the gap.",
+      "date": "2026-10-01",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a2",
+      "thumb": "assets/blog/offline-metrics-mislead-recsys.png",
+      "thumb_alt": "Cover image for the article: Held-Out Evaluation for Recommenders: When Offline Lies"
+    },
+    {
       "slug": "cv-book-versus-course",
       "title": "Computer Vision Book or Course: What Each One Teaches",
       "excerpt": "A book gives you the mathematics and the why; a course gives you the workflow and the muscle memory. Most learners need both, in the right order.",
