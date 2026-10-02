@@ -1,11 +1,24 @@
 {
   "queue": [
-    "The vocabulary trap in ML job adverts: what NLP, CV, and MLOps titles actually overlap on",
     "A worked example of overfitting to the leaderboard, not just the training set",
     "Why computer vision engineers and ML engineers read papers differently",
     "Evaluating a model against its own baseline: the comparison everyone skips",
     "What a fine-tuning run actually costs: compute, data, and the evaluation you still owe",
-    "Choosing a first NLP project: what teaches tokenisation, embeddings, and evaluation at once"
+    "Choosing a first NLP project: what teaches tokenisation, embeddings, and evaluation at once",
+    "Context engineering versus prompt engineering: what actually changed",
+    "What genetic perturbation models reveal about deep learning for biology",
+    "Machine learning definitions compared: what textbooks quietly disagree on",
+    "Deep learning textbooks compared: what Goodfellow still gets right",
+    "The fine-tuning argument in cosmology and the fine-tuning argument in ML: same word, different claims",
+    "Why 'fine-tuning' means three different things depending on who you ask",
+    "Prompt engineering certifications: what they actually certify",
+    "Context windows and context engineering: feeding a model the right information, not just a longer prompt",
+    "Machine learning engineer job titles decoded: what the posting actually wants",
+    "Deep learning versus classical statistics: where the overlap genuinely lies",
+    "Choosing a deep learning book in a crowded field: what to read first and why",
+    "Retrieval augmented generation as context engineering: where the boundary actually sits",
+    "What a machine learning model learns during training, shown on one small example",
+    "Prompt engineering as a transferable skill: what survives a model change and what does not"
   ],
   "published": [
     "UAV object classification data-leakage case study",
@@ -203,6 +216,7 @@
     "Choosing between a computer vision book and a course: what each format actually teaches",
     "Held-out evaluation for recommender systems: offline metrics that mislead online",
     "Model evaluation as a discipline: what separates a metric from a decision",
-    "Building a threat-aware evaluation harness: borrowing from red-team thinking without the hype"
+    "Building a threat-aware evaluation harness: borrowing from red-team thinking without the hype",
+    "The vocabulary trap in ML job adverts: what NLP, CV, and MLOps titles actually overlap on"
   ]
 }

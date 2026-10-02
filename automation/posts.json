@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "vocabulary-trap-ml-job-titles",
+      "title": "The Vocabulary Trap in ML Job Adverts",
+      "excerpt": "ML job titles like NLP Engineer, CV Engineer, and MLOps Engineer look distinct on paper, but the actual day-to-day skills overlap heavily once you look past the buzzwords.",
+      "date": "2026-10-02",
+      "read_min": 5,
+      "tag": "Careers",
+      "color": "a5",
+      "thumb": "assets/blog/vocabulary-trap-ml-job-titles.png",
+      "thumb_alt": "Cover image for the article: The Vocabulary Trap in ML Job Adverts"
+    },
+    {
       "slug": "threat-aware-evaluation-harness",
       "title": "Building a Threat-Aware Evaluation Harness, Sensibly",
       "excerpt": "Most evaluation harnesses test for competence, not failure. Borrowing a few habits from red-team thinking fixes that, without needing a security team.",

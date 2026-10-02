@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Fri, 02 Oct 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>The Vocabulary Trap in ML Job Adverts</title>
+    <link>https://jahanzaibawan.com/blog/vocabulary-trap-ml-job-titles.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/vocabulary-trap-ml-job-titles.html</guid>
+    <pubDate>Fri, 02 Oct 2026 09:00:00 +0000</pubDate>
+    <description>ML job titles like NLP Engineer, CV Engineer, and MLOps Engineer look distinct on paper, but the actual day-to-day skills overlap heavily once you look past the buzzwords.</description>
+    <category>Careers</category>
+  </item>
+  <item>
     <title>Building a Threat-Aware Evaluation Harness, Sensibly</title>
     <link>https://jahanzaibawan.com/blog/threat-aware-evaluation-harness.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/threat-aware-evaluation-harness.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/recommenders-beyond-accuracy.html</guid>
     <pubDate>Wed, 23 Sep 2026 09:00:00 +0000</pubDate>
     <description>A recommender can top the accuracy leaderboard and still be useless. Here is why offline accuracy metrics need company, not replacement.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Class Imbalance Beyond Binary: Skewed Multi-Class Problems</title>
-    <link>https://jahanzaibawan.com/blog/skewed-multiclass-imbalance.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/skewed-multiclass-imbalance.html</guid>
-    <pubDate>Tue, 22 Sep 2026 09:00:00 +0000</pubDate>
-    <description>Binary imbalance tricks do not simply generalise to multi-class problems. Here is how to think about skewed classes properly, with a worked example.</description>
     <category>Evaluation</category>
   </item>
 </channel>

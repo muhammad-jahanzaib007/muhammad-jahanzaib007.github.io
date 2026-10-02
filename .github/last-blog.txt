@@ -1,1 +1,1 @@
-2026-10-02T08:01:50Z slug=threat-aware-evaluation-harness words=1073 title="Building a Threat-Aware Evaluation Harness, Sensibly"
+2026-10-02T20:02:04Z slug=vocabulary-trap-ml-job-titles words=1030 title="The Vocabulary Trap in ML Job Adverts"
