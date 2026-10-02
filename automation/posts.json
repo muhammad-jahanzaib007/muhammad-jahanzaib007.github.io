@@ -9,7 +9,8 @@
       "tag": "Careers",
       "color": "a5",
       "thumb": "assets/blog/vocabulary-trap-ml-job-titles.png",
-      "thumb_alt": "Cover image for the article: The Vocabulary Trap in ML Job Adverts"
+      "thumb_alt": "Cover image for the article: The Vocabulary Trap in ML Job Adverts",
+      "li_shared": true
     },
     {
       "slug": "threat-aware-evaluation-harness",
