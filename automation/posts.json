@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a4",
       "thumb": "assets/blog/threat-aware-evaluation-harness.png",
-      "thumb_alt": "Cover image for the article: Building a Threat-Aware Evaluation Harness, Sensibly"
+      "thumb_alt": "Cover image for the article: Building a Threat-Aware Evaluation Harness, Sensibly",
+      "li_shared": true
     },
     {
       "slug": "metric-versus-decision",
