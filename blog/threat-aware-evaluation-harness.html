@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building a Threat-Aware Evaluation Harness, Sensibly | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to building a threat-aware evaluation harness for machine learning models, drawing honest lessons from red-team methodology.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="model evaluation, red teaming, adversarial testing, evaluation harness, leakage, robustness testing, ML testing, test set design, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-02">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Building a Threat-Aware Evaluation Harness, Sensibly">
+<meta property="og:description" content="A practical guide to building a threat-aware evaluation harness for machine learning models, drawing honest lessons from red-team methodology.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/threat-aware-evaluation-harness.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/threat-aware-evaluation-harness.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Building a Threat-Aware Evaluation Harness, Sensibly">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/threat-aware-evaluation-harness.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/threat-aware-evaluation-harness.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Building a Threat-Aware Evaluation Harness, Sensibly",
+  "description": "A practical guide to building a threat-aware evaluation harness for machine learning models, drawing honest lessons from red-team methodology.",
+  "url": "https://jahanzaibawan.com/blog/threat-aware-evaluation-harness.html",
+  "image": "https://jahanzaibawan.com/assets/blog/threat-aware-evaluation-harness.png",
+  "datePublished": "2026-10-02",
+  "dateModified": "2026-10-02",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/threat-aware-evaluation-harness.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Building a Threat-Aware Evaluation Harness, Sensibly", "item": "https://jahanzaibawan.com/blog/threat-aware-evaluation-harness.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 2 Oct 2026</div>
+    <h1>Building a Threat-Aware Evaluation Harness, Sensibly</h1>
+    <p class="lede">Red-teaming has a lot of useful discipline buried under the marketing. Here is how to borrow the discipline for ordinary model evaluation without pretending every project is an adversarial war room.</p>
+  </div>
+
+  <img src="../assets/blog/threat-aware-evaluation-harness.png" alt="Cover image for the article: Building a Threat-Aware Evaluation Harness, Sensibly" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why ordinary evaluation misses the point</h2><p>Most evaluation harnesses I have seen are built to answer one question: does the model do the thing it was trained to do, on data that looks like the data it was trained on. That is a reasonable first question, but it is not the question that matters once a model leaves the notebook. The question that matters in production is: what happens when the input stops looking like the training distribution, when someone pushes on the model deliberately, or when the environment around the model changes in a way nobody specified in the test set.</p><p>Red-teaming, in its original security sense, is the practice of adopting an adversarial stance towards your own system before someone else does it for you. The hype version of this, applied to machine learning, tends to involve dramatic language about jailbreaks and attacks. Strip the theatre away and what is left is a genuinely useful habit: before you ship, ask what could make this system fail in a way that matters, and go and check for it deliberately rather than hoping your standard test split will surface it by accident.</p><p>The reason this matters practically is that standard test splits are usually drawn from the same distribution and often the same time window as training data. They are excellent at measuring whether the model has learned the task. They are poor at measuring whether the model has learned the task robustly, because near-duplicate examples, shared preprocessing artefacts, and similar label distributions all leak comfort into the number you report. A threat-aware harness does not replace the standard test set; it sits alongside it and asks harder, more specific questions.</p></section><section class='psec reveal'><h2>A worked example: the leakage you do not see</h2><p>Suppose you are evaluating a text classifier that flags customer complaints as urgent or routine, trained on eighteen months of historical support tickets. A conventional random 80/20 split might give you 94 percent accuracy on the held-out 20 percent. That number looks solid, and it will survive a demo. But a random split draws test examples from the same months as training examples, so if there was a product recall in month eleven that generated a cluster of near-identical urgent tickets, some of those near-duplicates will sit in both train and test. The model is partly being tested on sentences it has effectively already seen.</p><p>A threat-aware version of this evaluation starts by asking what an adversary, or simply reality, might throw at the system later. The obvious first move is a temporal split: train on the first fifteen months, test on the last three. When I have seen teams do this on similar problems, accuracy often drops, sometimes to the high 80s, because the test period contains vocabulary, products, or complaint patterns that genuinely did not exist earlier. That gap between the random-split number and the temporal-split number is not noise; it is a direct estimate of how much the original 94 percent was borrowed from leakage rather than earned from generalisation.</p><p>The next move is to construct a small set of stress cases by hand: tickets with sarcasm, tickets that mix an urgent complaint with routine small talk, tickets translated awkwardly from another language, tickets that mention a competitor's product by mistake. These are not random samples from the distribution; they are deliberately chosen because they probe a specific failure mode. None of this requires exotic tooling. It requires sitting down, thinking like someone who wants the classifier to be wrong, and writing twenty or thirty examples that test exactly that.</p><p>What you get from this exercise is not a single headline metric but a small table: overall accuracy, temporal accuracy, accuracy on the hand-built stress set, and ideally accuracy broken down by ticket category. That table is more honest than the single number, because it tells you where the model is strong and where it is merely lucky.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/threat-aware-evaluation-harness-1.jpg' alt='magnifying glass over documents' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Turning the habit into a repeatable harness</h2><p>The value of red-team thinking only compounds if it is repeatable rather than a one-off exercise before a big demo. A threat-aware harness, practically, is a small library of test suites that sit on top of your usual evaluation pipeline. One suite handles distributional shift, built from a leakage-aware split by time or by source rather than by random shuffling. A second suite handles adversarial or edge-case inputs, built from examples a person specifically constructed to break the model, ideally refreshed every time the model is retrained, because what counted as an edge case last quarter may be routine next quarter. A third suite handles subgroup performance, checking that an aggregate accuracy figure is not hiding a much weaker result on a smaller but important slice of the data.</p><p>None of this needs to be elaborate. A version-controlled set of CSV files with expected labels, a script that runs the model against each suite and reports accuracy or error type per suite, and a short written note explaining why each suite exists, is enough to make the practice stick. The discipline is in maintaining it over time, adding new stress cases as new failure modes are discovered in production, and treating a regression on the stress suite as seriously as a regression on the main metric, not as an afterthought.</p><p>It is worth being honest about the limits here too. A hand-built stress suite of thirty examples cannot claim statistical coverage of all possible adversarial inputs, and it would be dishonest to present it as such. Its value is diagnostic rather than exhaustive: it tells you the model is at least robust to the specific failure modes you anticipated, and a failure on it is a strong, cheap early warning. It should never be mistaken for proof of general robustness.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>You do not need a dedicated security team or a formal red-team programme to benefit from this way of thinking. What you need is the discipline to ask, before every evaluation, what kind of split and what kind of example would make this model's weaknesses visible rather than invisible, and then to build that into the harness as a permanent fixture rather than a one-time check. The single most useful habit is comparing a random split against a leakage-aware split, by time or by source, and treating any large gap between the two as the real signal, because that gap is usually where the hype in a headline accuracy number is hiding.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/threat-aware-evaluation-harness-2.jpg' alt='server room with warning light' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

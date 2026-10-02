@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Building a threat-aware evaluation harness: borrowing from red-team thinking without the hype",
     "The vocabulary trap in ML job adverts: what NLP, CV, and MLOps titles actually overlap on",
     "A worked example of overfitting to the leaderboard, not just the training set",
     "Why computer vision engineers and ML engineers read papers differently",
@@ -203,6 +202,7 @@
     "Data annotation quality for NLP: why your labels are the real model",
     "Choosing between a computer vision book and a course: what each format actually teaches",
     "Held-out evaluation for recommender systems: offline metrics that mislead online",
-    "Model evaluation as a discipline: what separates a metric from a decision"
+    "Model evaluation as a discipline: what separates a metric from a decision",
+    "Building a threat-aware evaluation harness: borrowing from red-team thinking without the hype"
   ]
 }

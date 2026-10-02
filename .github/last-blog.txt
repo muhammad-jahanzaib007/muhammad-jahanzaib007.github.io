@@ -1,1 +1,1 @@
-2026-10-01T20:02:10Z slug=metric-versus-decision words=1115 title="Model Evaluation as a Discipline: Metric Versus Decision"
+2026-10-02T08:01:50Z slug=threat-aware-evaluation-harness words=1073 title="Building a Threat-Aware Evaluation Harness, Sensibly"

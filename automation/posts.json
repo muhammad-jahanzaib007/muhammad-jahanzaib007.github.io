@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "threat-aware-evaluation-harness",
+      "title": "Building a Threat-Aware Evaluation Harness, Sensibly",
+      "excerpt": "Most evaluation harnesses test for competence, not failure. Borrowing a few habits from red-team thinking fixes that, without needing a security team.",
+      "date": "2026-10-02",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a4",
+      "thumb": "assets/blog/threat-aware-evaluation-harness.png",
+      "thumb_alt": "Cover image for the article: Building a Threat-Aware Evaluation Harness, Sensibly"
+    },
+    {
       "slug": "metric-versus-decision",
       "title": "Model Evaluation as a Discipline: Metric Versus Decision",
       "excerpt": "Accuracy is a number. Deployment is a decision. This post explains the discipline that separates the two, with a worked example.",
