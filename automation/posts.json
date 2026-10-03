@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a6",
       "thumb": "assets/blog/overfitting-the-leaderboard.png",
-      "thumb_alt": "Cover image for the article: A Worked Example of Overfitting to the Leaderboard"
+      "thumb_alt": "Cover image for the article: A Worked Example of Overfitting to the Leaderboard",
+      "li_shared": true
     },
     {
       "slug": "vocabulary-trap-ml-job-titles",
