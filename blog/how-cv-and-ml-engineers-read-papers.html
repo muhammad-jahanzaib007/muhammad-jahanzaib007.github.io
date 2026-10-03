@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Computer Vision and ML Engineers Read Papers Differently | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A look at how computer vision engineers and general ML engineers approach reading research papers differently, and what each discipline&#x27;s habits reveal about their priorities.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="computer vision, machine learning, reading papers, evaluation, leakage, benchmarks, reproducibility, deep learning, research methodology, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-03">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Why Computer Vision and ML Engineers Read Papers Differently">
+<meta property="og:description" content="A look at how computer vision engineers and general ML engineers approach reading research papers differently, and what each discipline&#x27;s habits reveal about their priorities.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/how-cv-and-ml-engineers-read-papers.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/how-cv-and-ml-engineers-read-papers.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why Computer Vision and ML Engineers Read Papers Differently">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/how-cv-and-ml-engineers-read-papers.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/how-cv-and-ml-engineers-read-papers.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Why Computer Vision and ML Engineers Read Papers Differently",
+  "description": "A look at how computer vision engineers and general ML engineers approach reading research papers differently, and what each discipline's habits reveal about their priorities.",
+  "url": "https://jahanzaibawan.com/blog/how-cv-and-ml-engineers-read-papers.html",
+  "image": "https://jahanzaibawan.com/assets/blog/how-cv-and-ml-engineers-read-papers.png",
+  "datePublished": "2026-10-03",
+  "dateModified": "2026-10-03",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/how-cv-and-ml-engineers-read-papers.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Why Computer Vision and ML Engineers Read Papers Differently", "item": "https://jahanzaibawan.com/blog/how-cv-and-ml-engineers-read-papers.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 3 Oct 2026</div>
+    <h1>Why Computer Vision and ML Engineers Read Papers Differently</h1>
+    <p class="lede">Two engineers can read the same paper and walk away with completely different mental models. The gap often comes down to what each discipline has been burned by before.</p>
+  </div>
+
+  <img src="../assets/blog/how-cv-and-ml-engineers-read-papers.png" alt="Cover image for the article: Why Computer Vision and ML Engineers Read Papers Differently" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The same paper, two different reads</h2><p>Hand the same paper to a computer vision engineer and a general ML engineer and watch what each one circles first. The vision engineer flips straight to the qualitative figures: the grid of predicted bounding boxes, the segmentation masks overlaid on real images, the failure cases tucked into the appendix. The ML engineer, especially one who works on tabular data, recommendation, or time series, goes straight to the tables, the ablations, and the description of the train, validation, and test splits. Neither is wrong. They have simply been trained by different disasters.</p><p>This difference is not cosmetic. It shapes which claims each person trusts, which results they try to reproduce, and which parts of a method they quietly discount as marketing. Understanding why the two camps read differently is useful even if you work across both worlds, because it tells you where your own blind spots are likely to be.</p><p>I think the root cause is simple: vision engineers have been burned by models that look great on numbers and terrible on pixels, while general ML engineers have been burned by numbers that look great and turn out to be leaked, overfit, or measured on a benchmark that no longer resembles the deployment distribution. Each group reads defensively against the failure they have personally lived through.</p></section><section class='psec reveal'><h2>Why vision engineers trust their eyes first</h2><p>Vision is unusual among ML subfields because the output is directly interpretable by a human without any translation step. If a model segments a pedestrian as part of the road, you see it instantly. If a classifier mislabels a stop sign, the image makes the failure obvious in a way that a confusion matrix cell never quite does. Because of this, vision engineers have learned that a strong headline metric, say a mean average precision of 0.71 against a previous best of 0.68, can hide a model that fails constantly on rain, night scenes, or small distant objects, none of which may be well represented in the test set.</p><p>So the experienced vision reader goes hunting for the qualitative appendix before trusting the quantitative one. They look at what the failure cases actually look like, not just how many there are. They ask whether the test set resembles the conditions the model will actually face, because vision benchmarks are notorious for having a narrow visual distribution: similar lighting, similar camera angles, similar object scales. A three point gain in mAP measured on a benchmark shot entirely in daylight tells you very little about performance at dusk, and a vision engineer who has shipped a model into the real world knows this instinctively.</p><p>There is also a strong culture in vision of checking for subtle train and test overlap, because images are easy to duplicate or near-duplicate across splits without anyone noticing. Two photos taken seconds apart on a dashcam, one landing in training and one in validation, will look almost identical to a convolutional network, and a model can quietly memorise rather than generalise. A vision reader has usually seen this happen at least once, so claims of large gains are treated with polite suspicion until the splitting procedure is spelled out.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/how-cv-and-ml-engineers-read-papers-1.jpg' alt='researcher reading paper at desk' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Why general ML engineers read the tables first</h2><p>General ML engineers, by contrast, rarely get the luxury of eyeballing an output and immediately knowing whether it is right. A predicted churn probability of 0.42 is not visually verifiable the way a bounding box is. This forces a much heavier reliance on the statistics themselves, which in turn makes these readers acutely sensitive to how those statistics were produced.</p><p>So the first thing an experienced ML reader checks is the splitting strategy. Was the validation set a random split, or was it split by time, by user, or by some other grouping variable that actually matters in deployment? I have seen papers report an AUC of 0.89 on a random split of transactional data, where the same model drops to something like 0.74 once the split respects time ordering so that future transactions cannot leak information about past ones through shared customer identifiers. That fifteen point gap is not noise, it is the difference between a paper result and a production result, and a reader trained on tabular and time series problems will look for it before reading a single other number.</p><p>The second instinct is to ask what the baseline actually was. A gradient boosted tree tuned properly is an extremely strong baseline for most tabular problems, and a paper that beats it by a fraction of a percent after introducing a far more complex architecture is making a weak case, even if the complex model wins on paper. ML engineers who have spent time tuning XGBoost or a well regularised linear model against a flashy neural method have learned that a lot of claimed gains evaporate once the baseline is given a fair tuning budget. This makes the ablation table, not the qualitative story, the centre of attention.</p></section><section class='psec reveal'><h2>Reading across the gap</h2><p>The useful move is not to decide which reading style is superior, it is to borrow habits from the other camp. A vision engineer should still ask about the splitting procedure, since near duplicate frames, correlated camera sessions, and biased capture conditions can inflate numbers just as badly as any tabular leakage. A general ML engineer should still demand to see failure cases where possible, even if that means sampling predictions on held out data and manually inspecting the worst ones rather than trusting a single summary statistic.</p><p>In practice I try to run both checks on every paper I read, regardless of domain. First, what would a strong, properly tuned baseline do here, and has the paper actually given it a fair chance. Second, is there any plausible way information from the test distribution could have leaked into training, whether through shared entities, near duplicate samples, or a split that ignores time. If a paper survives both questions, the headline number starts to mean something. If it does not, the number is a hint at best, not evidence.</p><p>The broader lesson is that every subfield develops its reading habits in response to its own characteristic failure mode, and those habits are worth stealing even outside your home discipline. Reading a paper well is less about domain expertise and more about knowing which questions your field has learned to ask the hard way, and asking them anyway, even when the paper is not in your usual area.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/how-cv-and-ml-engineers-read-papers-2.jpg' alt='computer vision bounding box detection screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

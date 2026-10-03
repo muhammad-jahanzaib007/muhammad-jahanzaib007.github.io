@@ -1,1 +1,1 @@
-2026-10-03T08:01:48Z slug=overfitting-the-leaderboard words=1109 title="A Worked Example of Overfitting to the Leaderboard"
+2026-10-03T20:02:02Z slug=how-cv-and-ml-engineers-read-papers words=1081 title="Why Computer Vision and ML Engineers Read Papers Differently"

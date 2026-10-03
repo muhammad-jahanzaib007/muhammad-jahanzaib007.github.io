@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Sat, 03 Oct 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Why Computer Vision and ML Engineers Read Papers Differently</title>
+    <link>https://jahanzaibawan.com/blog/how-cv-and-ml-engineers-read-papers.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/how-cv-and-ml-engineers-read-papers.html</guid>
+    <pubDate>Sat, 03 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Computer vision and general ML engineers scan the same paper for different red flags, shaped by different failure modes they have each been burned by.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>A Worked Example of Overfitting to the Leaderboard</title>
     <link>https://jahanzaibawan.com/blog/overfitting-the-leaderboard.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/overfitting-the-leaderboard.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Thu, 24 Sep 2026 09:00:00 +0000</pubDate>
     <description>Synthetic data can rescue a vision project starved of labels, but only when the gap between rendered and real pixels is measured, not assumed away.</description>
     <category>Computer Vision</category>
-  </item>
-  <item>
-    <title>Active Learning: Choosing What to Label Next</title>
-    <link>https://jahanzaibawan.com/blog/active-learning-what-to-label.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/active-learning-what-to-label.html</guid>
-    <pubDate>Wed, 23 Sep 2026 09:00:00 +0000</pubDate>
-    <description>Instead of labelling everything, active learning picks the examples most likely to improve your model, saving budget without sacrificing performance.</description>
-    <category>Machine Learning</category>
   </item>
 </channel>
 </rss>
