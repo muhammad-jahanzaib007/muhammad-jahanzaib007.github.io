@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Worked Example of Overfitting to the Leaderboard | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A concrete worked example showing how repeated evaluation on a public leaderboard or test set causes overfitting, and how to guard against it.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="overfitting,leaderboard,model evaluation,data leakage,validation strategy,machine learning,hyperparameter tuning,test set contamination, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-03">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="A Worked Example of Overfitting to the Leaderboard">
+<meta property="og:description" content="A concrete worked example showing how repeated evaluation on a public leaderboard or test set causes overfitting, and how to guard against it.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/overfitting-the-leaderboard.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/overfitting-the-leaderboard.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A Worked Example of Overfitting to the Leaderboard">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/overfitting-the-leaderboard.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/overfitting-the-leaderboard.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "A Worked Example of Overfitting to the Leaderboard",
+  "description": "A concrete worked example showing how repeated evaluation on a public leaderboard or test set causes overfitting, and how to guard against it.",
+  "url": "https://jahanzaibawan.com/blog/overfitting-the-leaderboard.html",
+  "image": "https://jahanzaibawan.com/assets/blog/overfitting-the-leaderboard.png",
+  "datePublished": "2026-10-03",
+  "dateModified": "2026-10-03",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/overfitting-the-leaderboard.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "A Worked Example of Overfitting to the Leaderboard", "item": "https://jahanzaibawan.com/blog/overfitting-the-leaderboard.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 6 min read · 3 Oct 2026</div>
+    <h1>A Worked Example of Overfitting to the Leaderboard</h1>
+    <p class="lede">Repeated peeking at a public test score is its own form of overfitting, separate from and sneakier than overfitting the training set.</p>
+  </div>
+
+  <img src="../assets/blog/overfitting-the-leaderboard.png" alt="Cover image for the article: A Worked Example of Overfitting to the Leaderboard" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this matters</h2><p>Most people learn about overfitting as a training set problem: a model memorises noise instead of signal, and its performance on held-out data collapses. That lesson is correct but incomplete. There is a second, quieter form of overfitting that happens even when your model never sees the test labels directly. It happens when you, the researcher, see the test score too many times.</p><p>I mean this literally. Every time you submit a model to a leaderboard, tweak a hyperparameter, and resubmit, you are running a search procedure. The leaderboard score becomes the objective you are optimising, whether you intend that or not. Given enough iterations, you will find a configuration that fits the quirks of that particular test split rather than the underlying task. The model has not overfit the training set in the classical sense; the whole pipeline, including you, has overfit the evaluation set.</p><p>This matters because it is invisible from the inside. Classical overfitting shows up as a gap between training and validation accuracy, something you can plot and catch. Leaderboard overfitting shows up only later, when the model is deployed or evaluated on a fresh, truly unseen set, and the score quietly drops. By then the damage is done and the cause is hard to diagnose, because nothing in your training logs looks wrong.</p></section><section class='psec reveal'><h2>A worked example</h2><p>Suppose you have a held-out test set of 1,000 examples for a binary classification task, and a baseline model that genuinely performs at 70 percent accuracy. You do not know the true figure; you only see the leaderboard score after each submission, which carries some sampling noise. With 1,000 examples, the standard error on a proportion near 0.70 is roughly 1.4 percentage points, so a single evaluation can easily read anywhere from about 67 to 73 percent just from noise, even with no change to the model at all.</p><p>Now imagine you make twenty small, essentially arbitrary tweaks: a different random seed, a slightly different learning rate, a minor change to data augmentation, none of which meaningfully improves the true underlying accuracy. You submit all twenty and keep the best score. Because each submission carries about 1.4 points of noise, the maximum of twenty noisy draws from a distribution centred at 70 will typically land two to three points above the true mean, simply from extreme value statistics. You will report, with complete sincerity, that your best configuration reaches 73 percent, when the true expected performance of that configuration on fresh data is still close to 70.</p><p>This is not fraud and it does not require bad intent. It is the same logic as multiple comparisons in statistics: test enough hypotheses against the same fixed sample, and one of them will look significant by chance. A leaderboard is a fixed sample. Every submission is a comparison. The more comparisons you run against it, the more the best observed score diverges from the true score, and the gap grows roughly with the number of attempts, not with any real improvement in the model.</p><p>The practical sting comes when the model moves to a genuinely new test set, one that was not part of the selection process. There, the lucky two to three points of noise do not reappear, because that noise was specific to the original 1,000 examples and the particular configuration that happened to flatter them. The score reverts towards 70, and the drop looks like deployment failure, even though nothing about the model changed. It was never really at 73.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/overfitting-the-leaderboard-1.jpg' alt='scoreboard with rankings on screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Why the mechanism is easy to miss</h2><p>Part of what makes this trap persistent is that each individual decision looks reasonable. Trying a different learning rate is good practice. Checking the score after a change is good practice. It is only the accumulation, dozens of small reasonable decisions each informed by the same fixed evaluation set, that produces the bias. There is no single moment where you can point and say that was the mistake, which is exactly why teams repeat it across projects.</p><p>It also helps to notice that the problem scales with how small and how reused the evaluation set is. A test set of 1,000 examples is far more vulnerable to this effect than one of 100,000, because the sampling noise per evaluation shrinks as the set grows, so the maximum-of-many-attempts inflation shrinks with it. Public benchmarks that have been used by thousands of submissions over years are a particularly severe case: even if each individual team acts carefully, the collective search across the whole community can push reported state-of-the-art numbers upward partly through selection rather than genuine progress.</p><p>The same mechanism appears inside a single project under the guise of validation set tuning. If you use one validation split to choose among many model variants and then report that validation score as your final number, you have made the validation set function as a second training set. The fix people usually reach for, a separate test set checked once at the very end, only works if it is genuinely checked once. Checking it twice and keeping the better of the two results reintroduces the exact same bias on a smaller scale.</p></section><section class='psec reveal'><h2>What to actually do about it</h2><p>The honest discipline is to treat every look at a test or leaderboard score as spending a limited resource. Decide in advance how many submissions or evaluations you will allow, keep a running log of what changed between attempts, and resist the urge to cherry-pick the best run after the fact and present it as representative. If you must iterate many times, do your comparisons on a separate validation split and reserve the test set strictly for a final, single-shot confirmation.</p><p>When reporting results, it is far more useful to show the distribution of outcomes across seeds and configurations than the single best number you happened to achieve. A mean and spread across five or ten runs tells a reader something stable; a cherry-picked maximum tells them almost nothing except how many attempts you made. If a leaderboard or benchmark is central to your work, read its documentation for how it limits submissions, because many well-designed ones cap the number of times a team can query the test server for exactly this reason.</p><p>The underlying idea is simple enough to carry around: a test set only tells you the truth the first time you ask it. Every subsequent question, if you let the answer influence your choices, nudges that truth a little further from reality. Overfitting is not only something your model does to your data; it is something you can do to your evaluation, and the only defence is counting your questions.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/overfitting-the-leaderboard-2.jpg' alt='researcher checking results on laptop' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Fri, 02 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 03 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>A Worked Example of Overfitting to the Leaderboard</title>
+    <link>https://jahanzaibawan.com/blog/overfitting-the-leaderboard.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/overfitting-the-leaderboard.html</guid>
+    <pubDate>Sat, 03 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Checking the leaderboard too often quietly turns your test set into training data. Here is a worked example showing exactly how.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>The Vocabulary Trap in ML Job Adverts</title>
     <link>https://jahanzaibawan.com/blog/vocabulary-trap-ml-job-titles.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Wed, 23 Sep 2026 09:00:00 +0000</pubDate>
     <description>Instead of labelling everything, active learning picks the examples most likely to improve your model, saving budget without sacrificing performance.</description>
     <category>Machine Learning</category>
-  </item>
-  <item>
-    <title>Evaluating Recommenders: Accuracy Is the Wrong First Metric</title>
-    <link>https://jahanzaibawan.com/blog/recommenders-beyond-accuracy.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/recommenders-beyond-accuracy.html</guid>
-    <pubDate>Wed, 23 Sep 2026 09:00:00 +0000</pubDate>
-    <description>A recommender can top the accuracy leaderboard and still be useless. Here is why offline accuracy metrics need company, not replacement.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>

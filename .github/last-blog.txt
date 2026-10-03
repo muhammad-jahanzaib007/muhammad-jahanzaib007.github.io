@@ -1,1 +1,1 @@
-2026-10-02T20:02:04Z slug=vocabulary-trap-ml-job-titles words=1030 title="The Vocabulary Trap in ML Job Adverts"
+2026-10-03T08:01:48Z slug=overfitting-the-leaderboard words=1109 title="A Worked Example of Overfitting to the Leaderboard"

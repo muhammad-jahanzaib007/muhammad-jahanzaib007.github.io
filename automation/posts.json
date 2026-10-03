@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "overfitting-the-leaderboard",
+      "title": "A Worked Example of Overfitting to the Leaderboard",
+      "excerpt": "Checking the leaderboard too often quietly turns your test set into training data. Here is a worked example showing exactly how.",
+      "date": "2026-10-03",
+      "read_min": 6,
+      "tag": "Evaluation",
+      "color": "a6",
+      "thumb": "assets/blog/overfitting-the-leaderboard.png",
+      "thumb_alt": "Cover image for the article: A Worked Example of Overfitting to the Leaderboard"
+    },
+    {
       "slug": "vocabulary-trap-ml-job-titles",
       "title": "The Vocabulary Trap in ML Job Adverts",
       "excerpt": "ML job titles like NLP Engineer, CV Engineer, and MLOps Engineer look distinct on paper, but the actual day-to-day skills overlap heavily once you look past the buzzwords.",
