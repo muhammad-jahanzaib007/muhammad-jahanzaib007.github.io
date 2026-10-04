@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a3",
       "thumb": "assets/blog/model-versus-its-own-baseline.png",
-      "thumb_alt": "Cover image for the article: Evaluating a Model Against Its Own Baseline, Not Just the Leaderboard"
+      "thumb_alt": "Cover image for the article: Evaluating a Model Against Its Own Baseline, Not Just the Leaderboard",
+      "li_shared": true
     },
     {
       "slug": "how-cv-and-ml-engineers-read-papers",
