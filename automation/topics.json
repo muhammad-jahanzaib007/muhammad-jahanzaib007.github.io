@@ -1,6 +1,5 @@
 {
   "queue": [
-    "What a fine-tuning run actually costs: compute, data, and the evaluation you still owe",
     "Choosing a first NLP project: what teaches tokenisation, embeddings, and evaluation at once",
     "Context engineering versus prompt engineering: what actually changed",
     "What genetic perturbation models reveal about deep learning for biology",
@@ -217,6 +216,7 @@
     "The vocabulary trap in ML job adverts: what NLP, CV, and MLOps titles actually overlap on",
     "A worked example of overfitting to the leaderboard, not just the training set",
     "Why computer vision engineers and ML engineers read papers differently",
-    "Evaluating a model against its own baseline: the comparison everyone skips"
+    "Evaluating a model against its own baseline: the comparison everyone skips",
+    "What a fine-tuning run actually costs: compute, data, and the evaluation you still owe"
   ]
 }

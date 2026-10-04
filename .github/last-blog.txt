@@ -1,1 +1,1 @@
-2026-10-04T08:02:27Z slug=model-versus-its-own-baseline words=1177 title="Evaluating a Model Against Its Own Baseline, Not Just the Leaderboard"
+2026-10-04T20:01:48Z slug=true-cost-of-fine-tuning words=998 title="What a Fine-Tuning Run Actually Costs"

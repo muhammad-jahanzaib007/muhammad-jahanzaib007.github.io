@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "true-cost-of-fine-tuning",
+      "title": "What a Fine-Tuning Run Actually Costs",
+      "excerpt": "GPU hours are the visible cost of fine-tuning. Data curation and honest evaluation are the invisible costs that decide whether the run was worth it.",
+      "date": "2026-10-04",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a4",
+      "thumb": "assets/blog/true-cost-of-fine-tuning.png",
+      "thumb_alt": "Cover image for the article: What a Fine-Tuning Run Actually Costs"
+    },
+    {
       "slug": "model-versus-its-own-baseline",
       "title": "Evaluating a Model Against Its Own Baseline, Not Just the Leaderboard",
       "excerpt": "Beating the leaderboard means little if your model cannot beat a trivial baseline built from its own inputs. Here is why that comparison matters.",

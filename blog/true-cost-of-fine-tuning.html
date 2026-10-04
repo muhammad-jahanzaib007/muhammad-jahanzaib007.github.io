@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What a Fine-Tuning Run Actually Costs | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical breakdown of fine-tuning costs: compute, data curation, and the leakage-aware evaluation work that most teams skip but shouldn&#x27;t.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="fine-tuning cost,compute budget,data curation,model evaluation,leakage,data leakage,train test split,machine learning,reproducibility, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-04">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="What a Fine-Tuning Run Actually Costs">
+<meta property="og:description" content="A practical breakdown of fine-tuning costs: compute, data curation, and the leakage-aware evaluation work that most teams skip but shouldn&#x27;t.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/true-cost-of-fine-tuning.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/true-cost-of-fine-tuning.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What a Fine-Tuning Run Actually Costs">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/true-cost-of-fine-tuning.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/true-cost-of-fine-tuning.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "What a Fine-Tuning Run Actually Costs",
+  "description": "A practical breakdown of fine-tuning costs: compute, data curation, and the leakage-aware evaluation work that most teams skip but shouldn't.",
+  "url": "https://jahanzaibawan.com/blog/true-cost-of-fine-tuning.html",
+  "image": "https://jahanzaibawan.com/assets/blog/true-cost-of-fine-tuning.png",
+  "datePublished": "2026-10-04",
+  "dateModified": "2026-10-04",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/true-cost-of-fine-tuning.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "What a Fine-Tuning Run Actually Costs", "item": "https://jahanzaibawan.com/blog/true-cost-of-fine-tuning.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 4 Oct 2026</div>
+    <h1>What a Fine-Tuning Run Actually Costs</h1>
+    <p class="lede">The GPU bill is the easy part to calculate. The data preparation and the evaluation you still owe afterwards are where the real cost, and the real risk, hides.</p>
+  </div>
+
+  <img src="../assets/blog/true-cost-of-fine-tuning.png" alt="Cover image for the article: What a Fine-Tuning Run Actually Costs" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The bill people quote is only one line item</h2><p>When someone asks what a fine-tuning run costs, they usually mean the compute. How many GPU hours, what instance type, what's the total in pounds or dollars. That number is real and it matters for budgeting, but it is also the easiest part of the whole exercise to measure and the easiest to be misled by. A run that costs forty pounds in compute can still be a bad decision if the model it produces is worse than a simpler baseline, or if nobody can tell whether it's better at all.</p><p>I think the honest cost of a fine-tuning run has three parts: compute, data, and evaluation. Compute is visible and gets all the attention because it arrives as an invoice. Data preparation is semi-visible, it shows up as days of someone's time cleaning and labelling. Evaluation is the part that routinely gets skipped, not because it's unimportant but because it's unglamorous and because a sloppy evaluation will still produce a number, just not a trustworthy one.</p><p>The danger is that all three costs trade off against each other in ways that are easy to miss. Spend less time on data and you'll likely spend more time later debugging why the model behaves oddly. Spend less time on evaluation and you save nothing, you just defer the cost to production, where it shows up as silent failures instead of a line in a report.</p></section><section class='psec reveal'><h2>A worked example of where the money actually goes</h2><p>Suppose you're fine-tuning a mid-sized model on a classification task with twenty thousand labelled examples. The compute for a few epochs on a single reasonable GPU might take an afternoon and cost a modest amount, let's say comparable to a few hours of cloud rental. That's the number that goes in the budget spreadsheet.</p><p>But getting to twenty thousand clean, correctly labelled examples is rarely free. If even five percent of your labels are wrong, which is not an unusual rate for data labelled under time pressure, that's a thousand mislabelled examples quietly teaching the model the wrong thing. Auditing a sample of the data, checking label agreement, and fixing systematic errors can easily take longer than the training run itself. This work doesn't appear as a GPU bill, so it's tempting to shortcut it, but a model trained on noisy labels will plateau at a worse accuracy no matter how much compute you throw at it.</p><p>Then there's evaluation, which is where I think most of the real cost is hidden. Suppose your twenty thousand examples were split into train and test by simply shuffling and taking the last ten percent. If the data has any structure, duplicate near-identical entries, examples from the same source document, or time-ordered records, that shuffle can leak information from train into test. The test accuracy you report might be a few points higher than the model's true generalisation performance, and you won't know by how much unless you deliberately check for that leakage: grouping by source, holding out by time, or deduplicating near-matches before splitting. That checking work takes real hours, and skipping it means your headline number is simply wrong, not approximately right.</p><p>Add it up and the compute might be the smallest of the three costs in actual hours spent, even though it's the only one that shows up on an invoice.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/true-cost-of-fine-tuning-1.jpg' alt='gpu server rack' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Why the evaluation debt compounds</h2><p>The reason I call it a debt you still owe is that an inadequate evaluation doesn't just give you an uncertain number, it actively misleads future decisions. If you report ninety-two percent accuracy on a leaky test set, and the true figure is eighty-six, every subsequent comparison against that baseline is distorted. A genuinely better model might look worse than the leaky baseline, and you'd reject it. A genuinely worse model might inherit the inflated number and get shipped.</p><p>A strong baseline suffers from the same neglect. It's common to compare a fine-tuned model only against a zero-shot or off-the-shelf version of the same base model, skipping a simple baseline like a logistic regression on bag-of-words features or a nearest-neighbour lookup. These baselines are nearly free to compute and often surprisingly competitive. If your fine-tuned model beats a weak comparison by a wide margin but only edges out the simple baseline by a point or two, that's the real signal about how much value the fine-tuning added, and it changes whether the compute spend was justified at all.</p><p>There's also the question of variance. Training a model once and reporting one test score tells you almost nothing about how reliable that score is. Running the same fine-tuning procedure three times with different seeds and reporting the spread is cheap relative to the original training cost, often adding only a fraction more compute, but it tells you whether your headline number is a stable property of the method or a lucky roll. Teams that skip this step are, in effect, borrowing confidence they haven't earned.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>If you're budgeting a fine-tuning project, I'd suggest costing it in three columns rather than one: compute hours, data curation hours, and evaluation hours, including time for leakage checks, baseline comparisons, and repeated runs for variance. In my experience the data and evaluation columns often exceed the compute column, even though compute is the one everyone asks about first.</p><p>The payoff for doing this properly isn't just a more honest number. It's that when the fine-tuned model does get deployed, you actually know what it's good at, what it struggles with, and how much to trust the headline metric. That knowledge is the actual deliverable of a fine-tuning project. The model weights are just the artefact that carries it.</p><p>So the next time someone asks what a run costs, it's worth answering with all three numbers, not just the one on the invoice. The compute bill ends when the job finishes. The evaluation debt keeps accruing interest until someone pays it down properly.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/true-cost-of-fine-tuning-2.jpg' alt='person reviewing data on laptop screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
