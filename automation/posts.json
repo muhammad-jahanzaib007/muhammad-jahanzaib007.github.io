@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a4",
       "thumb": "assets/blog/true-cost-of-fine-tuning.png",
-      "thumb_alt": "Cover image for the article: What a Fine-Tuning Run Actually Costs"
+      "thumb_alt": "Cover image for the article: What a Fine-Tuning Run Actually Costs",
+      "li_shared": true
     },
     {
       "slug": "model-versus-its-own-baseline",
