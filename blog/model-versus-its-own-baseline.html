@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evaluating a Model Against Its Own Baseline, Not Just the Leaderboard | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why comparing a model to its own simple baseline, not just published benchmarks, catches inflated results and reveals what the model actually learned.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="model evaluation, baselines, machine learning, data leakage, benchmarking, ablation studies, evaluation rigour, overfitting, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-04">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Evaluating a Model Against Its Own Baseline, Not Just the Leaderboard">
+<meta property="og:description" content="Why comparing a model to its own simple baseline, not just published benchmarks, catches inflated results and reveals what the model actually learned.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/model-versus-its-own-baseline.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/model-versus-its-own-baseline.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Evaluating a Model Against Its Own Baseline, Not Just the Leaderboard">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/model-versus-its-own-baseline.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/model-versus-its-own-baseline.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Evaluating a Model Against Its Own Baseline, Not Just the Leaderboard",
+  "description": "Why comparing a model to its own simple baseline, not just published benchmarks, catches inflated results and reveals what the model actually learned.",
+  "url": "https://jahanzaibawan.com/blog/model-versus-its-own-baseline.html",
+  "image": "https://jahanzaibawan.com/assets/blog/model-versus-its-own-baseline.png",
+  "datePublished": "2026-10-04",
+  "dateModified": "2026-10-04",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/model-versus-its-own-baseline.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Evaluating a Model Against Its Own Baseline, Not Just the Leaderboard", "item": "https://jahanzaibawan.com/blog/model-versus-its-own-baseline.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 6 min read · 4 Oct 2026</div>
+    <h1>Evaluating a Model Against Its Own Baseline, Not Just the Leaderboard</h1>
+    <p class="lede">Everyone compares new models to the state of the art. Almost nobody checks whether the new model actually beats a trivial version of itself, and that omission hides a lot of false progress.</p>
+  </div>
+
+  <img src="../assets/blog/model-versus-its-own-baseline.png" alt="Cover image for the article: Evaluating a Model Against Its Own Baseline, Not Just the Leaderboard" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The comparison nobody asks for</h2><p>When a new model is proposed, the standard ritual is to compare it against other published models on a shared benchmark. Did it beat the previous state of the art by two points? Did it match a larger model with fewer parameters? These are the questions that get asked, because they are the questions that get published. What almost never gets asked is a quieter and arguably more important one: does this model beat a trivial baseline built from its own training data and its own problem structure?</p><p>I call this the self-baseline comparison, and it is distinct from comparing against other people's models. A self-baseline is something embarrassingly simple that uses the same inputs, the same labels, and the same evaluation protocol as your fancy model, but with almost none of the sophistication. A constant predictor that always outputs the majority class. A linear regression on the raw features. A nearest-neighbour lookup. A rule that just copies the previous time step forward. If your elaborate architecture cannot clear this low bar by a meaningful margin, the benchmark comparison is almost irrelevant, because you have not demonstrated that your model is doing anything beyond what the data trivially affords.</p><p>This matters because benchmark leaderboards are a comparison between methods, not a comparison between a method and the ceiling or floor implied by the data itself. Two models can both beat each other by small margins while both being barely better than guessing based on dataset statistics. Nobody notices because nobody runs the embarrassing baseline. It is not glamorous, it will not get you a publication on its own, and it can be mildly deflating to discover that your three months of architecture tuning gained you one percentage point over a model that took five minutes to write.</p></section><section class='psec reveal'><h2>A worked example: forecasting that isn't</h2><p>Suppose you are building a model to forecast tomorrow's demand for a product given the last thirty days of sales. You train a fairly deep sequence model, tune it carefully, and report a mean absolute percentage error of eight percent on a held-out test set. Compared to a recent paper that reports eleven percent on a similar task, this looks like a strong result. You write it up as a three-point improvement.</p><p>Now add the self-baseline: a naive forecast that simply predicts tomorrow's demand equals today's demand. No model, no training, just copy the last observed value forward. Run it on the same test set with the same metric. Suppose it scores nine percent. Suddenly the picture changes completely. Your sophisticated model is one point better than doing nothing clever at all. The gap between your model and the naive copy-forward baseline is far smaller than the gap between your model and the competing paper, and it is the gap that actually tells you how much the model has learned about genuine temporal structure versus how much of the apparent accuracy is simply because demand tends to be similar from one day to the next.</p><p>This is not a hypothetical embarrassment. Time series problems in particular are notorious for having strong autocorrelation, which means a lazy baseline often performs surprisingly well, and the real contribution of a model should be measured against that floor, not against an arbitrary external number from a different paper on a different dataset with a different train-test split. The external comparison tells you about relative ranking in a leaderboard. The self-baseline tells you about actual signal extraction.</p><p>The same logic applies outside forecasting. In a text classification task with imbalanced classes, check your model against a baseline that always predicts the majority class and see what accuracy that achieves on its own. In a recommendation system, check against a baseline that simply recommends the most popular items to everyone. In a regression task, check against predicting the mean of the training target. These baselines cost almost nothing to compute and they anchor your reported numbers to something interpretable rather than to a number plucked from someone else's paper and someone else's split.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/model-versus-its-own-baseline-1.jpg' alt='whiteboard with line graph forecast' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Why this comparison gets skipped</h2><p>Part of the reason this check is skipped is incentive structure. A paper or a project report that says 'we beat the state of the art by two points' sounds like a result. A paper that says 'we beat a naive copy-forward baseline by one point, and the state of the art beats it by three' sounds like an admission of mediocrity, even though it might be the more honest and more useful framing. Reviewers and readers are trained to scan for comparisons against named prior work, not against silent floors, so the incentive to compute and report the self-baseline is weak even when the scientific value is high.</p><p>Another reason is that the self-baseline often requires you to think carefully about what 'trivial' means for your specific problem, and that thinking does not transfer easily from one domain to another. The right baseline for a time series is not the right baseline for an image classification task, and the right baseline for a ranking problem is not the right baseline for a regression task. There is no single off-the-shelf baseline you can import, which makes this step feel like extra unglamorous work rather than a checkbox you can tick quickly.</p><p>There is also a subtler trap: the self-baseline needs to use the exact same evaluation protocol as the main model, including the same train-test split, the same preprocessing, and the same metric. A sloppy baseline evaluated on a different slice of data, or with a metric computed slightly differently, will give you a false sense of how large your real improvement is. Leakage-aware evaluation matters here just as much as it does for the main model; if your split lets the baseline see information it should not have, the comparison becomes meaningless in the other direction, making your main model look artificially better by comparison.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>Before reporting any model's performance against an external benchmark, spend the small amount of effort needed to construct and evaluate the most trivial baseline that fits your problem shape, using exactly the same test set and metric. Report both numbers side by side: the gap to the external benchmark, and the gap to the trivial floor. If the gap to the trivial floor is small, that is not necessarily a reason to abandon the work, but it is essential information that changes how the result should be interpreted and communicated.</p><p>This habit costs very little and pays off disproportionately. It catches leakage, because a baseline that scores suspiciously well often means the test set is not as hard or as independent as you assumed. It catches overclaiming, because a one-point gain over a trivial method is a different claim from a one-point gain over the previous best method. And it builds a kind of intellectual honesty into your evaluation pipeline that external benchmark chasing alone will never provide. The comparison everyone skips is often the one that tells you the most about what your model has actually learned.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/model-versus-its-own-baseline-2.jpg' alt='researcher comparing two charts on laptop' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

@@ -1,1 +1,1 @@
-2026-10-03T20:02:02Z slug=how-cv-and-ml-engineers-read-papers words=1081 title="Why Computer Vision and ML Engineers Read Papers Differently"
+2026-10-04T08:02:27Z slug=model-versus-its-own-baseline words=1177 title="Evaluating a Model Against Its Own Baseline, Not Just the Leaderboard"
