@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Choosing a First NLP Project That Actually Teaches You Something | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why a simple text classifier beats a flashy generative demo as a first NLP project, with a worked example on tokenisation and evaluation.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="NLP project, tokenisation, word embeddings, model evaluation, text classification, leakage, baselines, machine learning beginners, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-05">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Choosing a First NLP Project That Actually Teaches You Something">
+<meta property="og:description" content="Why a simple text classifier beats a flashy generative demo as a first NLP project, with a worked example on tokenisation and evaluation.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/first-nlp-project-choice.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/first-nlp-project-choice.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Choosing a First NLP Project That Actually Teaches You Something">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/first-nlp-project-choice.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/first-nlp-project-choice.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Choosing a First NLP Project That Actually Teaches You Something",
+  "description": "Why a simple text classifier beats a flashy generative demo as a first NLP project, with a worked example on tokenisation and evaluation.",
+  "url": "https://jahanzaibawan.com/blog/first-nlp-project-choice.html",
+  "image": "https://jahanzaibawan.com/assets/blog/first-nlp-project-choice.png",
+  "datePublished": "2026-10-05",
+  "dateModified": "2026-10-05",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/first-nlp-project-choice.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Choosing a First NLP Project That Actually Teaches You Something", "item": "https://jahanzaibawan.com/blog/first-nlp-project-choice.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">NLP · 5 min read · 5 Oct 2026</div>
+    <h1>Choosing a First NLP Project That Actually Teaches You Something</h1>
+    <p class="lede">A small, well-scoped text classification task can teach tokenisation, embeddings, and evaluation discipline better than any flashy generative demo.</p>
+  </div>
+
+  <img src="../assets/blog/first-nlp-project-choice.png" alt="Cover image for the article: Choosing a First NLP Project That Actually Teaches You Something" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the first project matters more than the tenth</h2><p>When I talk to people starting out in NLP, the instinct is almost always to build something impressive: a chatbot, a summariser, a mini language model. I understand the appeal, but I think it is the wrong place to start. Flashy projects hide too many moving parts behind pretrained weights and clever prompts, so you never actually see tokenisation, embeddings, or evaluation doing their work. You end up with something that demos well and teaches you very little.</p><p>A better first project is boring on purpose: a text classifier on a small, well-understood dataset, built from scratch rather than fine-tuned from a huge pretrained model. Think sentiment on product reviews, topic labelling on news snippets, or spam detection. The task itself is not the point. The point is that a classifier forces you to make every decision explicit, from how you split words into tokens through to how you measure whether the model actually works.</p><p>This matters because the three ideas, tokenisation, embeddings, and evaluation, are not separate topics to learn in sequence. They interact. A poor tokenisation choice changes your vocabulary size, which changes your embedding dimension and training time, which changes how you should evaluate and compare models. A first project that touches all three at once, even in a simple form, gives you an intuition that reading three separate tutorials never will.</p></section><section class='psec reveal'><h2>Tokenisation: the decision you make before you know you are making it</h2><p>Suppose you have five thousand customer reviews labelled positive or negative. The first real decision is how to turn raw text into tokens. Split on whitespace and lowercase everything, and you might get a vocabulary of twelve thousand unique tokens. Switch to a subword tokeniser, and that number might drop to eight thousand pieces, because rare words like 'disappointing' get split into chunks that are shared with other words.</p><p>This is not a cosmetic choice. With whitespace tokenisation, a word that appears only twice in training, say 'overpriced', gets its own rarely-seen embedding and the model struggles to learn anything useful about it. With subword tokenisation, 'overpriced' might decompose into 'over' and 'priced', both of which appear often elsewhere, so the model can generalise from those pieces even when the whole word is rare. Building both versions yourself, by hand, and watching how your out-of-vocabulary rate changes on a held-out set, teaches this far better than being told it in the abstract.</p><p>There is a second lesson hiding here too: punctuation and casing decisions leak into your results. If you lowercase during training but forget to lowercase your test inputs consistently, you silently inflate your out-of-vocabulary rate at evaluation time and your reported accuracy becomes meaningless. I would genuinely recommend writing your tokeniser as its own small function with tests, rather than inlining it, precisely because this class of bug is invisible until you go looking for it.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/first-nlp-project-choice-1.jpg' alt='notebook with handwritten word lists' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Embeddings: where the vocabulary choice shows up again</h2><p>Once you have tokens, you need vectors. A first project is a good place to compare two approaches honestly: train embeddings from scratch on your small dataset, and separately try a set of pretrained embeddings loaded in and frozen. The comparison is instructive precisely because it usually disappoints people's expectations in a useful way.</p><p>With five thousand reviews, training embeddings from scratch gives the model very little signal per word. A word like 'excellent' might appear four hundred times, so its vector becomes reasonably stable, but a word like 'mediocre' might appear only fifteen times, and its vector will be noisy and overfit to the handful of sentences it appeared in. Pretrained embeddings, by contrast, were estimated from a vastly larger corpus, so 'mediocre' already sits in a sensible place relative to 'average' and 'disappointing' before your model has seen a single review.</p><p>The practical upshot, which you only really internalise by measuring it, is that pretrained embeddings tend to help most exactly where your own data is thinnest: rare words and long-tail vocabulary. On the common, frequent words that dominate your training set anyway, the gap between from-scratch and pretrained embeddings often narrows substantially. Seeing this pattern in your own numbers, rather than reading it as a general claim, is what makes it stick.</p></section><section class='psec reveal'><h2>Evaluation: the part people skip, to their own cost</h2><p>Here is where a first project earns its keep. It is entirely possible to build a classifier that reports ninety per cent accuracy and is still badly broken, because your dataset is imbalanced. If eighty five per cent of your reviews are positive, a model that always predicts positive scores eighty five per cent accuracy while learning nothing. The fix is not exotic: look at precision and recall for each class separately, and check a confusion matrix before trusting a single accuracy number.</p><p>The second trap is leakage, and a first project is the cheapest place to learn to fear it. If your reviews include several entries from the same product, and you split train and test randomly rather than by product, your model can effectively memorise product-specific vocabulary during training and then recognise it at test time. Your reported accuracy will look stronger than the model's real ability to generalise to new products. Splitting by a grouping key, not just randomly by row, is a habit worth building early rather than relearning painfully on a larger project later.</p><p>Finally, always build a trivial baseline before celebrating your neural network's score. A model that predicts the majority class, or a simple logistic regression over word counts, takes minutes to build and tells you what 'better than nothing' actually looks like for your specific dataset. If your carefully tuned embedding-based model only beats that baseline by two points, that is a genuinely important result, and one you would never have known without building the baseline first.</p><p>The practical takeaway is simple: pick a small classification task, build the tokeniser yourself, compare from-scratch against pretrained embeddings, and evaluate with class-wise metrics against a leakage-aware split and an honest baseline. That one project, done properly, teaches more durable intuition than a dozen tutorials copied without understanding.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/first-nlp-project-choice-2.jpg' alt='laptop screen showing data table' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

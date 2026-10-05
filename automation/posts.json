@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "first-nlp-project-choice",
+      "title": "Choosing a First NLP Project That Actually Teaches You Something",
+      "excerpt": "Skip the chatbot clone. A simple classifier, built with care, teaches tokenisation, embeddings, and evaluation far better.",
+      "date": "2026-10-05",
+      "read_min": 5,
+      "tag": "NLP",
+      "color": "a5",
+      "thumb": "assets/blog/first-nlp-project-choice.png",
+      "thumb_alt": "Cover image for the article: Choosing a First NLP Project That Actually Teaches You Something"
+    },
+    {
       "slug": "true-cost-of-fine-tuning",
       "title": "What a Fine-Tuning Run Actually Costs",
       "excerpt": "GPU hours are the visible cost of fine-tuning. Data curation and honest evaluation are the invisible costs that decide whether the run was worth it.",

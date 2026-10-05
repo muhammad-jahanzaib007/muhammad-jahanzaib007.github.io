@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Sun, 04 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Mon, 05 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Choosing a First NLP Project That Actually Teaches You Something</title>
+    <link>https://jahanzaibawan.com/blog/first-nlp-project-choice.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/first-nlp-project-choice.html</guid>
+    <pubDate>Mon, 05 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Skip the chatbot clone. A simple classifier, built with care, teaches tokenisation, embeddings, and evaluation far better.</description>
+    <category>NLP</category>
+  </item>
   <item>
     <title>What a Fine-Tuning Run Actually Costs</title>
     <link>https://jahanzaibawan.com/blog/true-cost-of-fine-tuning.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Fri, 25 Sep 2026 09:00:00 +0000</pubDate>
     <description>On tabular data, careful feature engineering often beats a neural network. Here is the intuition, a worked example, and why leakage-aware evaluation matters more than architecture.</description>
     <category>Machine Learning</category>
-  </item>
-  <item>
-    <title>Zero-Shot Classification: Promise Versus Practice</title>
-    <link>https://jahanzaibawan.com/blog/zero-shot-classification-limits.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/zero-shot-classification-limits.html</guid>
-    <pubDate>Fri, 25 Sep 2026 09:00:00 +0000</pubDate>
-    <description>Zero-shot classification is genuinely useful, but its accuracy claims often collapse once you check for label leakage, prompt sensitivity, and domain mismatch.</description>
-    <category>NLP</category>
   </item>
 </channel>
 </rss>

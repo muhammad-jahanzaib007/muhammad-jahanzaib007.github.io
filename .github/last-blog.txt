@@ -1,1 +1,1 @@
-2026-10-04T20:01:48Z slug=true-cost-of-fine-tuning words=998 title="What a Fine-Tuning Run Actually Costs"
+2026-10-05T08:01:54Z slug=first-nlp-project-choice words=1019 title="Choosing a First NLP Project That Actually Teaches You Something"
