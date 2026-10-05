@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Context engineering versus prompt engineering: what actually changed",
     "What genetic perturbation models reveal about deep learning for biology",
     "Machine learning definitions compared: what textbooks quietly disagree on",
     "Deep learning textbooks compared: what Goodfellow still gets right",
@@ -217,6 +216,7 @@
     "Why computer vision engineers and ML engineers read papers differently",
     "Evaluating a model against its own baseline: the comparison everyone skips",
     "What a fine-tuning run actually costs: compute, data, and the evaluation you still owe",
-    "Choosing a first NLP project: what teaches tokenisation, embeddings, and evaluation at once"
+    "Choosing a first NLP project: what teaches tokenisation, embeddings, and evaluation at once",
+    "Context engineering versus prompt engineering: what actually changed"
   ]
 }

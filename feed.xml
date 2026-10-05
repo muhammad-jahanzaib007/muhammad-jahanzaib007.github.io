@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Mon, 05 Oct 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Context Engineering Versus Prompt Engineering: What Changed</title>
+    <link>https://jahanzaibawan.com/blog/context-engineering-vs-prompt-engineering.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/context-engineering-vs-prompt-engineering.html</guid>
+    <pubDate>Mon, 05 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Prompt wording still matters, but the real leverage moved to what you retrieve, structure, and feed a model before it answers.</description>
+    <category>NLP</category>
+  </item>
+  <item>
     <title>Choosing a First NLP Project That Actually Teaches You Something</title>
     <link>https://jahanzaibawan.com/blog/first-nlp-project-choice.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/first-nlp-project-choice.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Sat, 26 Sep 2026 09:00:00 +0000</pubDate>
     <description>Batch size is treated as a memory afterthought, but it changes gradient noise, generalisation, and wall-clock time in ways learning rate alone cannot fix.</description>
     <category>Deep Learning</category>
-  </item>
-  <item>
-    <title>Feature Engineering for Tabular Data: What Still Wins</title>
-    <link>https://jahanzaibawan.com/blog/feature-engineering-beats-neural-nets.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/feature-engineering-beats-neural-nets.html</guid>
-    <pubDate>Fri, 25 Sep 2026 09:00:00 +0000</pubDate>
-    <description>On tabular data, careful feature engineering often beats a neural network. Here is the intuition, a worked example, and why leakage-aware evaluation matters more than architecture.</description>
-    <category>Machine Learning</category>
   </item>
 </channel>
 </rss>

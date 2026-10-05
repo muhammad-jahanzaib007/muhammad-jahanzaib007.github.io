@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "context-engineering-vs-prompt-engineering",
+      "title": "Context Engineering Versus Prompt Engineering: What Changed",
+      "excerpt": "Prompt wording still matters, but the real leverage moved to what you retrieve, structure, and feed a model before it answers.",
+      "date": "2026-10-05",
+      "read_min": 5,
+      "tag": "NLP",
+      "color": "a6",
+      "thumb": "assets/blog/context-engineering-vs-prompt-engineering.png",
+      "thumb_alt": "Cover image for the article: Context Engineering Versus Prompt Engineering: What Changed"
+    },
+    {
       "slug": "first-nlp-project-choice",
       "title": "Choosing a First NLP Project That Actually Teaches You Something",
       "excerpt": "Skip the chatbot clone. A simple classifier, built with care, teaches tokenisation, embeddings, and evaluation far better.",

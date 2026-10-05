@@ -1,1 +1,1 @@
-2026-10-05T08:01:54Z slug=first-nlp-project-choice words=1019 title="Choosing a First NLP Project That Actually Teaches You Something"
+2026-10-05T20:53:41Z slug=context-engineering-vs-prompt-engineering words=1029 title="Context Engineering Versus Prompt Engineering: What Changed"
