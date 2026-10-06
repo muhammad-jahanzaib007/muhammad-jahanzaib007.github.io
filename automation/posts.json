@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a2",
       "thumb": "assets/blog/genetic-perturbation-models-deep-learning.png",
-      "thumb_alt": "Cover image for the article: What Genetic Perturbation Models Teach Us About Deep Learning"
+      "thumb_alt": "Cover image for the article: What Genetic Perturbation Models Teach Us About Deep Learning",
+      "li_shared": true
     },
     {
       "slug": "context-engineering-vs-prompt-engineering",
@@ -20,7 +21,8 @@
       "tag": "NLP",
       "color": "a6",
       "thumb": "assets/blog/context-engineering-vs-prompt-engineering.png",
-      "thumb_alt": "Cover image for the article: Context Engineering Versus Prompt Engineering: What Changed"
+      "thumb_alt": "Cover image for the article: Context Engineering Versus Prompt Engineering: What Changed",
+      "li_shared": true
     },
     {
       "slug": "first-nlp-project-choice",
