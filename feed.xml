@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Mon, 05 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 06 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>What Genetic Perturbation Models Teach Us About Deep Learning</title>
+    <link>https://jahanzaibawan.com/blog/genetic-perturbation-models-deep-learning.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/genetic-perturbation-models-deep-learning.html</guid>
+    <pubDate>Tue, 06 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Models that predict cellular response to gene perturbations look impressive until you check the splits. The lessons generalise far beyond biology.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Context Engineering Versus Prompt Engineering: What Changed</title>
     <link>https://jahanzaibawan.com/blog/context-engineering-vs-prompt-engineering.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/multimodal-fusion-text-image.html</guid>
     <pubDate>Sat, 26 Sep 2026 09:00:00 +0000</pubDate>
     <description>A grounded look at how text and image models actually get fused, without the hand-waving about &#x27;understanding&#x27;.</description>
-    <category>Deep Learning</category>
-  </item>
-  <item>
-    <title>Batch Size: The Quiet Hyperparameter Nobody Tunes</title>
-    <link>https://jahanzaibawan.com/blog/choosing-a-batch-size.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/choosing-a-batch-size.html</guid>
-    <pubDate>Sat, 26 Sep 2026 09:00:00 +0000</pubDate>
-    <description>Batch size is treated as a memory afterthought, but it changes gradient noise, generalisation, and wall-clock time in ways learning rate alone cannot fix.</description>
     <category>Deep Learning</category>
   </item>
 </channel>

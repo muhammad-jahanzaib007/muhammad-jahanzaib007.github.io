@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Genetic Perturbation Models Teach Us About Deep Learning | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A look at genetic perturbation prediction models and what their evaluation pitfalls reveal about honest machine learning practice more broadly.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="genetic perturbation,deep learning,single cell,CRISPR,evaluation,leakage,generalisation,bioinformatics,machine learning,benchmarks, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-06">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="What Genetic Perturbation Models Teach Us About Deep Learning">
+<meta property="og:description" content="A look at genetic perturbation prediction models and what their evaluation pitfalls reveal about honest machine learning practice more broadly.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/genetic-perturbation-models-deep-learning.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/genetic-perturbation-models-deep-learning.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What Genetic Perturbation Models Teach Us About Deep Learning">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/genetic-perturbation-models-deep-learning.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/genetic-perturbation-models-deep-learning.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "What Genetic Perturbation Models Teach Us About Deep Learning",
+  "description": "A look at genetic perturbation prediction models and what their evaluation pitfalls reveal about honest machine learning practice more broadly.",
+  "url": "https://jahanzaibawan.com/blog/genetic-perturbation-models-deep-learning.html",
+  "image": "https://jahanzaibawan.com/assets/blog/genetic-perturbation-models-deep-learning.png",
+  "datePublished": "2026-10-06",
+  "dateModified": "2026-10-06",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/genetic-perturbation-models-deep-learning.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "What Genetic Perturbation Models Teach Us About Deep Learning", "item": "https://jahanzaibawan.com/blog/genetic-perturbation-models-deep-learning.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 6 Oct 2026</div>
+    <h1>What Genetic Perturbation Models Teach Us About Deep Learning</h1>
+    <p class="lede">Predicting how cells respond to gene knockouts sounds like a niche biology problem, but it exposes some of the sharpest evaluation lessons in modern machine learning.</p>
+  </div>
+
+  <img src="../assets/blog/genetic-perturbation-models-deep-learning.png" alt="Cover image for the article: What Genetic Perturbation Models Teach Us About Deep Learning" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>A deceptively simple task</h2><p>Genetic perturbation models try to answer a concrete question: if you knock out or suppress a particular gene in a cell, what happens to the expression of every other gene? This is measured with single cell sequencing, so for each perturbation you get a high dimensional snapshot of the cell's transcriptional state. The task looks like a natural fit for deep learning. You have rich inputs, rich outputs, and an obvious supervised framing where the model learns a mapping from perturbation identity to expression change.</p><p>What makes this domain unusually instructive is that it sits at the intersection of two things researchers usually keep separate: a genuinely hard scientific problem, and a very easy way to fool yourself about how well you have solved it. Gene regulatory networks are highly correlated and modular. Many genes act in pathways, so perturbing one often produces an expression signature that closely resembles the signature of perturbing a related gene. That correlation structure is a gift to any model that wants to look good on a held out test set without doing anything mechanistically interesting.</p><p>I find this domain useful to think about precisely because the failure modes are not exotic. They are the same failure modes that show up in NLP leakage through paraphrased test examples, in computer vision leakage through near duplicate images, and in tabular machine learning through target leakage via proxy columns. Perturbation prediction just makes the problem unusually visible, because biologists already have strong priors about which genes are related, so it is easier to catch a model cheating.</p></section><section class='psec reveal'><h2>The leakage problem, worked through</h2><p>Suppose you train a model on three thousand single gene knockouts and you split your data randomly into train and test sets. Imagine two genes, call them A and B, that belong to the same signalling pathway and have a correlation of roughly 0.85 in their downstream expression effects across the genome. If A ends up in training and B ends up in test, the model can essentially memorise A's effect profile and output something close to it whenever it sees B, because the two profiles are so similar. On a standard metric like mean squared error against the true expression change, this strategy can produce a respectable score, say an improvement of thirty percent over a naive baseline that just predicts no change at all.</p><p>That thirty percent sounds like real signal. The trouble is that it is almost entirely explained by pathway redundancy rather than genuine extrapolation. If you instead split by pathway, holding out entire functional modules so that no test gene has a close relative in training, the same model's advantage over the naive baseline often collapses to something much smaller, sometimes in the single digits. The headline number was real in the sense that it was correctly computed, but it measured interpolation within known biology rather than the thing scientists actually care about: predicting the effect of perturbing a gene whose pathway membership is poorly understood.</p><p>This is not a hypothetical concern invented for the sake of argument. It is the direct analogue of a well known problem in drug discovery, where models trained and tested on randomly split chemical libraries perform beautifully until you test on genuinely novel scaffolds, at which point performance often degrades sharply. The lesson generalises: whenever your examples cluster into natural groups with internal similarity, a random split quietly measures how well the model memorises group structure, not how well it reasons about new instances.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/genetic-perturbation-models-deep-learning-1.jpg' alt='scientist pipetting cell samples' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Why strong baselines matter here especially</h2><p>A second lesson from this domain concerns baselines. A common naive baseline predicts the average perturbation effect across all training examples, or even simpler, predicts no change from the unperturbed cell state. These baselines sound almost too simple to be worth reporting, yet in practice they are startlingly hard to beat by a wide margin, because most genes, when perturbed, produce fairly modest and fairly similar downstream shifts; it is only a minority of perturbations that cause dramatic, distinctive rewiring of the transcriptome.</p><p>This has a direct consequence for how you should read reported improvements. If a paper reports that a new architecture improves over the mean baseline by, say, five percent on an aggregate metric averaged across thousands of perturbations, that average can be almost entirely driven by the easy majority of perturbations where everything, including the naive baseline, already does reasonably well. The genuinely interesting perturbations, the ones with large and specific effects, might show no improvement at all, or might even be where the fancy model does worst, because those are exactly the examples furthest from anything resembling the training distribution.</p><p>The practical fix is to report performance stratified by effect size or by biological novelty, not just as a single pooled number. A model that is excellent on the easy ninety percent and mediocre on the hard ten percent is a very different proposition from one that is uniformly decent, even if their pooled averages happen to match. This stratification habit is cheap to implement and it is one of the clearest signals of whether an evaluation is honest about where the model's competence actually lies.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>None of this means deep learning has nothing to offer biology. Learned representations of gene expression genuinely do capture structure that simpler linear models miss, and there are real cases where a neural network extrapolates sensibly to unseen perturbations because it has learned something closer to a mechanistic embedding of gene function. The point is that you only find out which situation you are in by being deliberate about the split.</p><p>If I had to compress this into one habit worth carrying into any machine learning project, biological or not, it would be this: before trusting a headline number, ask what grouping structure exists in your data and whether your split respects it. Hold out by cluster, by pathway, by scaffold, by source, by whatever the natural correlated unit is in your domain, and always compare against a naive baseline that is embarrassingly simple to compute. If the gap over that baseline survives a split designed to be adversarial to memorisation, you have learned something real. If it does not, you have learned something about your correlation structure, which is useful too, just not the thing the paper probably claimed.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/genetic-perturbation-models-deep-learning-2.jpg' alt='dna sequencing lab equipment' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

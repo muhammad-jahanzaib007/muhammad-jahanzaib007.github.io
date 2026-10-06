@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "genetic-perturbation-models-deep-learning",
+      "title": "What Genetic Perturbation Models Teach Us About Deep Learning",
+      "excerpt": "Models that predict cellular response to gene perturbations look impressive until you check the splits. The lessons generalise far beyond biology.",
+      "date": "2026-10-06",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a2",
+      "thumb": "assets/blog/genetic-perturbation-models-deep-learning.png",
+      "thumb_alt": "Cover image for the article: What Genetic Perturbation Models Teach Us About Deep Learning"
+    },
+    {
       "slug": "context-engineering-vs-prompt-engineering",
       "title": "Context Engineering Versus Prompt Engineering: What Changed",
       "excerpt": "Prompt wording still matters, but the real leverage moved to what you retrieve, structure, and feed a model before it answers.",
