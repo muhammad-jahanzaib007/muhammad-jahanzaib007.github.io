@@ -9,7 +9,8 @@
       "tag": "Foundations",
       "color": "a3",
       "thumb": "assets/blog/ml-definitions-textbooks-disagree.png",
-      "thumb_alt": "Cover image for the article: Machine Learning Definitions Compared: The Quiet Disagreements"
+      "thumb_alt": "Cover image for the article: Machine Learning Definitions Compared: The Quiet Disagreements",
+      "li_shared": true
     },
     {
       "slug": "genetic-perturbation-models-deep-learning",
