@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Tue, 06 Oct 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Machine Learning Definitions Compared: The Quiet Disagreements</title>
+    <link>https://jahanzaibawan.com/blog/ml-definitions-textbooks-disagree.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/ml-definitions-textbooks-disagree.html</guid>
+    <pubDate>Tue, 06 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Textbooks all quote similar definitions of machine learning, but look closely and they disagree on what counts as learning, generalisation, and experience.</description>
+    <category>Foundations</category>
+  </item>
+  <item>
     <title>What Genetic Perturbation Models Teach Us About Deep Learning</title>
     <link>https://jahanzaibawan.com/blog/genetic-perturbation-models-deep-learning.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/genetic-perturbation-models-deep-learning.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Sun, 27 Sep 2026 09:00:00 +0000</pubDate>
     <description>Schema drift breaks models silently. Data contracts catch it at the source, before it poisons training data or corrupts predictions in production.</description>
     <category>MLOps</category>
-  </item>
-  <item>
-    <title>Multi-Modal Models Explained: Fusing Text and Image</title>
-    <link>https://jahanzaibawan.com/blog/multimodal-fusion-text-image.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/multimodal-fusion-text-image.html</guid>
-    <pubDate>Sat, 26 Sep 2026 09:00:00 +0000</pubDate>
-    <description>A grounded look at how text and image models actually get fused, without the hand-waving about &#x27;understanding&#x27;.</description>
-    <category>Deep Learning</category>
   </item>
 </channel>
 </rss>

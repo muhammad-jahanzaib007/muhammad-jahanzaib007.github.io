@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Machine learning definitions compared: what textbooks quietly disagree on",
     "Deep learning textbooks compared: what Goodfellow still gets right",
     "The fine-tuning argument in cosmology and the fine-tuning argument in ML: same word, different claims",
     "Why 'fine-tuning' means three different things depending on who you ask",
@@ -217,6 +216,7 @@
     "What a fine-tuning run actually costs: compute, data, and the evaluation you still owe",
     "Choosing a first NLP project: what teaches tokenisation, embeddings, and evaluation at once",
     "Context engineering versus prompt engineering: what actually changed",
-    "What genetic perturbation models reveal about deep learning for biology"
+    "What genetic perturbation models reveal about deep learning for biology",
+    "Machine learning definitions compared: what textbooks quietly disagree on"
   ]
 }

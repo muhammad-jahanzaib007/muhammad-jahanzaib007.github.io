@@ -1,1 +1,1 @@
-2026-10-06T08:01:46Z slug=genetic-perturbation-models-deep-learning words=1053 title="What Genetic Perturbation Models Teach Us About Deep Learning"
+2026-10-06T20:02:16Z slug=ml-definitions-textbooks-disagree words=1141 title="Machine Learning Definitions Compared: The Quiet Disagreements"

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Machine Learning Definitions Compared: The Quiet Disagreements | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A comparison of how machine learning textbooks define the field, showing where their definitions quietly disagree and why it matters for practice.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="machine learning definition, generalisation, Tom Mitchell definition, statistical learning, overfitting, inductive bias, model evaluation, textbook comparison, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-06">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Machine Learning Definitions Compared: The Quiet Disagreements">
+<meta property="og:description" content="A comparison of how machine learning textbooks define the field, showing where their definitions quietly disagree and why it matters for practice.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/ml-definitions-textbooks-disagree.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/ml-definitions-textbooks-disagree.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Machine Learning Definitions Compared: The Quiet Disagreements">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/ml-definitions-textbooks-disagree.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/ml-definitions-textbooks-disagree.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Machine Learning Definitions Compared: The Quiet Disagreements",
+  "description": "A comparison of how machine learning textbooks define the field, showing where their definitions quietly disagree and why it matters for practice.",
+  "url": "https://jahanzaibawan.com/blog/ml-definitions-textbooks-disagree.html",
+  "image": "https://jahanzaibawan.com/assets/blog/ml-definitions-textbooks-disagree.png",
+  "datePublished": "2026-10-06",
+  "dateModified": "2026-10-06",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/ml-definitions-textbooks-disagree.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Machine Learning Definitions Compared: The Quiet Disagreements", "item": "https://jahanzaibawan.com/blog/ml-definitions-textbooks-disagree.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Foundations · 6 min read · 6 Oct 2026</div>
+    <h1>Machine Learning Definitions Compared: The Quiet Disagreements</h1>
+    <p class="lede">Every textbook defines machine learning slightly differently, and those small differences in wording hide real disagreements about what counts as learning at all.</p>
+  </div>
+
+  <img src="../assets/blog/ml-definitions-textbooks-disagree.png" alt="Cover image for the article: Machine Learning Definitions Compared: The Quiet Disagreements" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the definition you learned first matters</h2><p>Ask most people trained in machine learning to define the field and you will get some version of a sentence that sounds authoritative but has probably been copied from one textbook into another for decades. The most quoted formulation says a program learns from experience with respect to some class of tasks and performance measure if its performance improves with experience. It is tidy, it is quotable, and it is also strangely incomplete. It says nothing about generalisation to unseen data, nothing about the difference between memorising and learning, and nothing about why we bother with held out test sets at all.</p><p>Other textbooks define the field differently, often from a statistics angle, where learning is really estimation: you are trying to approximate an unknown function or distribution from a finite sample, and the whole enterprise is about managing the gap between what you observe and what is true in general. That framing puts generalisation at the centre from the first page, rather than as an afterthought bolted on when someone mentions cross validation three chapters later.</p><p>These are not just stylistic differences. They reflect different intellectual histories: one rooted in computer science and the idea of a program that improves with experience, the other rooted in statistics and the idea of inference under uncertainty. Students who only ever see one definition tend to inherit its blind spots, and the blind spots show up later as confused intuitions about what a model is actually supposed to do.</p></section><section class='psec reveal'><h2>The quiet disagreement about generalisation</h2><p>Here is a concrete example of where the definitions pull apart. Suppose you train a classifier on five thousand labelled emails to detect spam, and it achieves ninety nine per cent accuracy on that same training set. Under the task and performance measure definition, taken literally, this already looks like learning: performance on the task improved as experience, the labelled emails, was provided. Nothing in that wording forces you to check performance on new, unseen emails.</p><p>Under the statistical estimation framing, ninety nine per cent training accuracy tells you almost nothing on its own. What matters is the expected performance on emails the model has never seen, and the gap between training accuracy and that expected performance is precisely the quantity the whole theory is built to control. If your model is complex enough, a decision tree with enough splits, say, or a neural network with far more parameters than training examples, it can reach that ninety nine per cent figure by effectively memorising quirks of those five thousand emails rather than learning anything that transfers.</p><p>This is why some textbooks introduce the bias-variance tradeoff and the notion of a hypothesis space in the very first chapter, while others treat it as a later refinement. If generalisation is not baked into your definition of learning from the start, it is easy to treat a held out test set as a bureaucratic formality rather than as the entire point of the exercise. I have seen students genuinely surprised that a model with excellent training accuracy can be worthless in production, and the surprise traces back to a definition that let training performance stand in for learning.</p><p>A smaller but related disagreement concerns what counts as experience. Some texts treat experience narrowly as labelled examples, which fits supervised learning neatly but struggles to accommodate reinforcement learning, where experience is a stream of interactions and rewards rather than fixed input output pairs, or unsupervised learning, where there are no labels at all. Definitions written before these subfields matured tend to need awkward footnotes to stretch across all three, and the footnotes are where you can see the original assumptions showing through.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/ml-definitions-textbooks-disagree-1.jpg' alt='open textbook with equations on desk' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Inductive bias: the part most definitions skip entirely</h2><p>A third point of quiet disagreement is inductive bias, the set of assumptions a learning algorithm makes to generalise beyond the exact examples it has seen. Almost no textbook puts this in its headline definition, yet it is arguably the most important practical idea in the whole field. Two algorithms can see identical training data and produce wildly different predictions on new inputs, purely because of differing built in assumptions about what kind of function is plausible.</p><p>Consider a simple regression problem with twelve data points that look roughly linear but have some scatter. A linear regression model will fit a straight line and extrapolate a straight line beyond the data. A high degree polynomial fitted to the same twelve points can pass through every single training point exactly, achieving zero training error, while producing wild oscillations just outside the range of the data. Both algorithms have, by the task and performance measure definition, learned from experience. Only one of them has learned something useful, and the difference is entirely down to inductive bias: the polynomial's bias towards fitting every point exactly is a poor match for data generated with noise.</p><p>This matters in practice because inductive bias is not optional and it is not something you can avoid by choosing a sufficiently flexible model. Flexibility without the right bias just gives you more creative ways to overfit. Regularisation, architecture choices, and even the decision to use a decision tree instead of a neural network are all ways of encoding assumptions about the problem, and a definition of learning that omits this entirely leaves people thinking that more parameters or more flexibility is straightforwardly better. It usually is not, and the twelve point polynomial example is a cheap, five minute way to see why.</p></section><section class='psec reveal'><h2>A working definition that earns its keep</h2><p>Given these gaps, I think a more honest working definition is something like this: machine learning is the practice of using data to estimate a function or distribution, under explicit or implicit assumptions about its form, such that the result performs well on data it has not seen. This is clunkier than the quotable textbook version, but it forces three things into view at once: that generalisation is the target, not a bonus; that assumptions, inductive bias, are doing real work whether you state them or not; and that performance is measured on unseen data, which makes the train and test split a logical requirement rather than a convenience.</p><p>None of this means the classic definitions are wrong. They were written to capture something true and useful for their era, and they still work as a first sentence in a lecture. The practical takeaway is simpler: when you read or write a definition of machine learning, check whether it mentions generalisation to new data and whether it acknowledges that the algorithm's built in assumptions shape what it can learn. If a definition is silent on both, it will not mislead you about what the field is called, but it may well mislead you about what counts as success, and that is the mistake worth avoiding.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/ml-definitions-textbooks-disagree-2.jpg' alt='scatter plot graph on whiteboard' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

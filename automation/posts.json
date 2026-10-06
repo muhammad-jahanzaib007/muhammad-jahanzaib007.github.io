@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "ml-definitions-textbooks-disagree",
+      "title": "Machine Learning Definitions Compared: The Quiet Disagreements",
+      "excerpt": "Textbooks all quote similar definitions of machine learning, but look closely and they disagree on what counts as learning, generalisation, and experience.",
+      "date": "2026-10-06",
+      "read_min": 6,
+      "tag": "Foundations",
+      "color": "a3",
+      "thumb": "assets/blog/ml-definitions-textbooks-disagree.png",
+      "thumb_alt": "Cover image for the article: Machine Learning Definitions Compared: The Quiet Disagreements"
+    },
+    {
       "slug": "genetic-perturbation-models-deep-learning",
       "title": "What Genetic Perturbation Models Teach Us About Deep Learning",
       "excerpt": "Models that predict cellular response to gene perturbations look impressive until you check the splits. The lessons generalise far beyond biology.",
