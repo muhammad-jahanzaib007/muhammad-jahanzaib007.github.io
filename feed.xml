@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Tue, 06 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 07 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Deep Learning Textbooks Compared: Goodfellow Revisited</title>
+    <link>https://jahanzaibawan.com/blog/what-goodfellow-still-gets-right.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/what-goodfellow-still-gets-right.html</guid>
+    <pubDate>Wed, 07 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Transformers aside, the Deep Learning textbook still explains the foundations, regularisation, and optimisation better than most modern alternatives.</description>
+    <category>Deep Learning</category>
+  </item>
   <item>
     <title>Machine Learning Definitions Compared: The Quiet Disagreements</title>
     <link>https://jahanzaibawan.com/blog/ml-definitions-textbooks-disagree.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Sun, 27 Sep 2026 09:00:00 +0000</pubDate>
     <description>When a p-value fails to persuade, swap it for concrete numbers on money, customers, and risk. Here is how I do that in practice.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Data Contracts for ML Pipelines: Catching Schema Drift Early</title>
-    <link>https://jahanzaibawan.com/blog/data-contracts-for-ml-pipelines.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/data-contracts-for-ml-pipelines.html</guid>
-    <pubDate>Sun, 27 Sep 2026 09:00:00 +0000</pubDate>
-    <description>Schema drift breaks models silently. Data contracts catch it at the source, before it poisons training data or corrupts predictions in production.</description>
-    <category>MLOps</category>
   </item>
 </channel>
 </rss>

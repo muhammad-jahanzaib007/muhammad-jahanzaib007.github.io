@@ -1,1 +1,1 @@
-2026-10-06T20:02:16Z slug=ml-definitions-textbooks-disagree words=1141 title="Machine Learning Definitions Compared: The Quiet Disagreements"
+2026-10-07T08:02:30Z slug=what-goodfellow-still-gets-right words=1114 title="Deep Learning Textbooks Compared: Goodfellow Revisited"
