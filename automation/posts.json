@@ -9,7 +9,8 @@
       "tag": "Deep Learning",
       "color": "a4",
       "thumb": "assets/blog/what-goodfellow-still-gets-right.png",
-      "thumb_alt": "Cover image for the article: Deep Learning Textbooks Compared: Goodfellow Revisited"
+      "thumb_alt": "Cover image for the article: Deep Learning Textbooks Compared: Goodfellow Revisited",
+      "li_shared": true
     },
     {
       "slug": "ml-definitions-textbooks-disagree",
