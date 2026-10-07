@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a5",
       "thumb": "assets/blog/fine-tuning-cosmology-vs-ml.png",
-      "thumb_alt": "Cover image for the article: Fine-Tuning in Cosmology and ML: One Word, Two Claims"
+      "thumb_alt": "Cover image for the article: Fine-Tuning in Cosmology and ML: One Word, Two Claims",
+      "li_shared": true
     },
     {
       "slug": "what-goodfellow-still-gets-right",
