@@ -1,1 +1,1 @@
-2026-10-07T08:02:30Z slug=what-goodfellow-still-gets-right words=1114 title="Deep Learning Textbooks Compared: Goodfellow Revisited"
+2026-10-07T20:01:46Z slug=fine-tuning-cosmology-vs-ml words=1055 title="Fine-Tuning in Cosmology and ML: One Word, Two Claims"

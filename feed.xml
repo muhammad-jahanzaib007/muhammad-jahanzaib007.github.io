@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Wed, 07 Oct 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Fine-Tuning in Cosmology and ML: One Word, Two Claims</title>
+    <link>https://jahanzaibawan.com/blog/fine-tuning-cosmology-vs-ml.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/fine-tuning-cosmology-vs-ml.html</guid>
+    <pubDate>Wed, 07 Oct 2026 09:00:00 +0000</pubDate>
+    <description>The word &#x27;fine-tuning&#x27; means something precise in cosmology and something else entirely in ML. Mixing them up leads to sloppy arguments on both sides.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Deep Learning Textbooks Compared: Goodfellow Revisited</title>
     <link>https://jahanzaibawan.com/blog/what-goodfellow-still-gets-right.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/what-goodfellow-still-gets-right.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Mon, 28 Sep 2026 09:00:00 +0000</pubDate>
     <description>Most training pipelines shuffle data and hope. Curriculum learning asks what happens if you don&#x27;t, and the answer is more nuanced than &#x27;easy first, hard later&#x27;.</description>
     <category>Deep Learning</category>
-  </item>
-  <item>
-    <title>Explaining a Model&#x27;s Decision When Nobody Trusts the p-value</title>
-    <link>https://jahanzaibawan.com/blog/explaining-models-to-skeptical-stakeholders.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/explaining-models-to-skeptical-stakeholders.html</guid>
-    <pubDate>Sun, 27 Sep 2026 09:00:00 +0000</pubDate>
-    <description>When a p-value fails to persuade, swap it for concrete numbers on money, customers, and risk. Here is how I do that in practice.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>

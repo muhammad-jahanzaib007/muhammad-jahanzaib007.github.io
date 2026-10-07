@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "fine-tuning-cosmology-vs-ml",
+      "title": "Fine-Tuning in Cosmology and ML: One Word, Two Claims",
+      "excerpt": "The word 'fine-tuning' means something precise in cosmology and something else entirely in ML. Mixing them up leads to sloppy arguments on both sides.",
+      "date": "2026-10-07",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a5",
+      "thumb": "assets/blog/fine-tuning-cosmology-vs-ml.png",
+      "thumb_alt": "Cover image for the article: Fine-Tuning in Cosmology and ML: One Word, Two Claims"
+    },
+    {
       "slug": "what-goodfellow-still-gets-right",
       "title": "Deep Learning Textbooks Compared: Goodfellow Revisited",
       "excerpt": "Transformers aside, the Deep Learning textbook still explains the foundations, regularisation, and optimisation better than most modern alternatives.",
