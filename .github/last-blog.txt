@@ -1,1 +1,1 @@
-2026-10-07T20:01:46Z slug=fine-tuning-cosmology-vs-ml words=1055 title="Fine-Tuning in Cosmology and ML: One Word, Two Claims"
+2026-10-08T08:01:58Z slug=fine-tuning-means-three-things words=1090 title="Why 'Fine-Tuning' Means Three Different Things"

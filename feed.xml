@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Wed, 07 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 08 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Why &#x27;Fine-Tuning&#x27; Means Three Different Things</title>
+    <link>https://jahanzaibawan.com/blog/fine-tuning-means-three-things.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/fine-tuning-means-three-things.html</guid>
+    <pubDate>Thu, 08 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Fine-tuning can mean full retraining, LoRA-style adaptation, or just prompt steering. Mixing them up wastes compute and muddles your evaluation.</description>
+    <category>Deep Learning</category>
+  </item>
   <item>
     <title>Fine-Tuning in Cosmology and ML: One Word, Two Claims</title>
     <link>https://jahanzaibawan.com/blog/fine-tuning-cosmology-vs-ml.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/fine-tuning-a-borrowed-word.html</guid>
     <pubDate>Mon, 28 Sep 2026 09:00:00 +0000</pubDate>
     <description>Machine learning didn&#x27;t invent fine-tuning. It borrowed a loaded term from physics and cosmology, and the borrowing changes how we should think about it.</description>
-    <category>Deep Learning</category>
-  </item>
-  <item>
-    <title>Curriculum Learning: Ordering Training Data on Purpose</title>
-    <link>https://jahanzaibawan.com/blog/curriculum-learning-ordering-data.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/curriculum-learning-ordering-data.html</guid>
-    <pubDate>Mon, 28 Sep 2026 09:00:00 +0000</pubDate>
-    <description>Most training pipelines shuffle data and hope. Curriculum learning asks what happens if you don&#x27;t, and the answer is more nuanced than &#x27;easy first, hard later&#x27;.</description>
     <category>Deep Learning</category>
   </item>
 </channel>

@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "fine-tuning-means-three-things",
+      "title": "Why 'Fine-Tuning' Means Three Different Things",
+      "excerpt": "Fine-tuning can mean full retraining, LoRA-style adaptation, or just prompt steering. Mixing them up wastes compute and muddles your evaluation.",
+      "date": "2026-10-08",
+      "read_min": 5,
+      "tag": "Deep Learning",
+      "color": "a6",
+      "thumb": "assets/blog/fine-tuning-means-three-things.png",
+      "thumb_alt": "Cover image for the article: Why 'Fine-Tuning' Means Three Different Things"
+    },
+    {
       "slug": "fine-tuning-cosmology-vs-ml",
       "title": "Fine-Tuning in Cosmology and ML: One Word, Two Claims",
       "excerpt": "The word 'fine-tuning' means something precise in cosmology and something else entirely in ML. Mixing them up leads to sloppy arguments on both sides.",

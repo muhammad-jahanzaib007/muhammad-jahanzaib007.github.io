@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why &#x27;Fine-Tuning&#x27; Means Three Different Things | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A clear breakdown of the three meanings of fine-tuning in machine learning, with a worked example showing why the distinction changes your compute budget and your evaluation.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="fine-tuning, LoRA, parameter-efficient fine-tuning, transfer learning, prompt engineering, model adaptation, large language models, machine learning evaluation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-08">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Why &#x27;Fine-Tuning&#x27; Means Three Different Things">
+<meta property="og:description" content="A clear breakdown of the three meanings of fine-tuning in machine learning, with a worked example showing why the distinction changes your compute budget and your evaluation.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/fine-tuning-means-three-things.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/fine-tuning-means-three-things.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why &#x27;Fine-Tuning&#x27; Means Three Different Things">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/fine-tuning-means-three-things.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/fine-tuning-means-three-things.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Why 'Fine-Tuning' Means Three Different Things",
+  "description": "A clear breakdown of the three meanings of fine-tuning in machine learning, with a worked example showing why the distinction changes your compute budget and your evaluation.",
+  "url": "https://jahanzaibawan.com/blog/fine-tuning-means-three-things.html",
+  "image": "https://jahanzaibawan.com/assets/blog/fine-tuning-means-three-things.png",
+  "datePublished": "2026-10-08",
+  "dateModified": "2026-10-08",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/fine-tuning-means-three-things.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Why 'Fine-Tuning' Means Three Different Things", "item": "https://jahanzaibawan.com/blog/fine-tuning-means-three-things.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Deep Learning · 5 min read · 8 Oct 2026</div>
+    <h1>Why &#x27;Fine-Tuning&#x27; Means Three Different Things</h1>
+    <p class="lede">The same word gets used for full retraining, parameter-efficient adaptation, and prompt-level steering. Confusing the three leads to wasted compute and misread results.</p>
+  </div>
+
+  <img src="../assets/blog/fine-tuning-means-three-things.png" alt="Cover image for the article: Why &#x27;Fine-Tuning&#x27; Means Three Different Things" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The word that quietly does three jobs</h2><p>I have sat in meetings where two people argued about whether 'fine-tuning' a model was expensive or cheap, and it took ten minutes to realise they meant completely different procedures. One person meant retraining every weight in a large network on a new dataset. The other meant writing a better prompt and calling it a day. Both used the same word. Neither was wrong, exactly, but the conversation was useless until we separated the meanings.</p><p>This matters because the word carries an implicit promise about cost, risk, and what kind of evaluation you owe your results. If someone tells you they fine-tuned a model and got a nice accuracy bump, you cannot judge whether that is impressive, expected, or an artefact of leakage until you know which of the three things they actually did. The term has drifted to cover a full spectrum of interventions, from touching every parameter to touching none at all.</p><p>I want to lay out the three meanings plainly, give each a concrete worked example, and then explain why the distinction changes how you should read a results table.</p></section><section class='psec reveal'><h2>Meaning one: full fine-tuning, updating every weight</h2><p>The oldest and most literal meaning is this: you take a pretrained network, keep its architecture, and continue training it on a new, usually smaller, labelled dataset, updating every single parameter with gradient descent. This is what the term meant before large language models made headlines. A vision model pretrained on a broad image collection gets its final layers, and often all its layers, adjusted on a specialised set of medical scans or product photos.</p><p>Concretely, imagine a convolutional network with around 25 million parameters, pretrained on a broad general-purpose image set. You have 8,000 labelled images of a narrow category the original training data barely covered. Full fine-tuning means you run backpropagation through the whole network, usually with a small learning rate so you do not destroy the useful features the pretraining already learned, for maybe 10 to 20 epochs. All 25 million numbers move, even if only slightly.</p><p>The practical cost here is real. You need enough labelled data to avoid overfitting a network that large, you need a GPU with enough memory to hold gradients for every parameter, and you need to be careful about catastrophic forgetting, where the model gets very good at the new narrow task and noticeably worse at everything it used to do. This is the expensive, high-commitment version of fine-tuning, and it is the one that most deserves a proper held-out test set and a sanity check against a simple baseline, because it is easy to overfit a small dataset into looking like a triumph.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/fine-tuning-means-three-things-1.jpg' alt='gpu server rack' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Meaning two: parameter-efficient adaptation</h2><p>The second meaning emerged largely because full fine-tuning of genuinely large models became impractical for most people. If your pretrained model has a few billion parameters, updating all of them, and storing a full separate copy for every downstream task, is a serious infrastructure problem. The response was a family of techniques, low-rank adapters being the most well known example, that freeze almost the entire pretrained network and insert a small number of new, trainable parameters, often less than one percent of the original count.</p><p>Here is the worked intuition. Suppose a language model has roughly 7 billion frozen parameters. A low-rank adapter approach might add two small matrices into each attention layer, together contributing perhaps 10 to 20 million trainable parameters in total, depending on the rank you choose. You train only those, leaving the 7 billion frozen weights untouched. The gradient computation still runs through the full network, but the optimiser only ever updates that tiny slice.</p><p>This is still called fine-tuning, and reasonably so since you are adapting the model to a new task with gradient-based training on labelled examples. But the practical character is utterly different from meaning one. You need far less GPU memory for the optimiser state, you can keep many task-specific adapters around cheaply since each one is small, and the risk of catastrophic forgetting of the base model's general ability is much lower because the bulk of its knowledge is frozen. When someone says they fine-tuned a 7 billion parameter model on a laptop-class GPU, this is almost certainly what they mean, and it is worth asking, because the compute story is wildly different from meaning one.</p></section><section class='psec reveal'><h2>Meaning three: steering behaviour without touching weights</h2><p>The third meaning is the loosest, and the one I think causes the most confusion: using carefully constructed prompts, few-shot examples placed directly in the input, or lightweight instruction templates to change a model's behaviour on a task, with no gradient update at all. Nothing in the model changes. You are not training anything in the conventional sense; you are exploiting the fact that a model conditioned on different input text produces different output text.</p><p>A concrete case: you want a general-purpose language model to classify customer support tickets into five categories. Instead of training anything, you write a prompt that includes the five category definitions and three worked examples of tickets mapped to the correct category, then feed each new ticket through that same template. People sometimes describe this as having 'fine-tuned the model for ticket classification', which is technically imprecise but communicates the intent: the model now behaves as if specialised for this task.</p><p>Why the loose usage persists is understandable, since from the user's point of view the outcome looks similar to the other two meanings: a general model now performs a specific task well. But the properties are not similar at all. There are no new weights to version, store, or risk overfitting on a small sample, because nothing was learned in the statistical sense; the model's underlying parameters are identical before and after. The 'fit' is entirely in the prompt text, which means it is cheap to change, cheap to discard, and fundamentally limited by how much task-relevant signal you can cram into the context window.</p><p>The practical upshot is this: whenever you read or write the word fine-tuning, name which of the three you mean, and demand the same clarity from others. Ask whether every weight moved, a small adapter moved, or nothing moved and only the prompt changed, because the answer changes your compute budget, your risk of overfitting, your storage requirements, and crucially what kind of held-out evaluation the claimed result actually deserves. Treating the three as interchangeable is how perfectly reasonable results end up sounding either more impressive or more suspicious than they really are.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/fine-tuning-means-three-things-2.jpg' alt='laptop with code editor open' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
