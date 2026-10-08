@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a2",
       "thumb": "assets/blog/prompt-engineering-certifications.png",
-      "thumb_alt": "Cover image for the article: Prompt Engineering Certifications: What They Actually Certify"
+      "thumb_alt": "Cover image for the article: Prompt Engineering Certifications: What They Actually Certify",
+      "li_shared": true
     },
     {
       "slug": "fine-tuning-means-three-things",
