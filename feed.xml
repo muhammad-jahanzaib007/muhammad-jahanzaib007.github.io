@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Thu, 08 Oct 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Prompt Engineering Certifications: What They Actually Certify</title>
+    <link>https://jahanzaibawan.com/blog/prompt-engineering-certifications.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/prompt-engineering-certifications.html</guid>
+    <pubDate>Thu, 08 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Most prompt engineering certificates test recall of technique names, not the measurable skill of improving outputs under real constraints.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Why &#x27;Fine-Tuning&#x27; Means Three Different Things</title>
     <link>https://jahanzaibawan.com/blog/fine-tuning-means-three-things.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/fine-tuning-means-three-things.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/full-vs-parameter-efficient-tuning.html</guid>
     <pubDate>Tue, 29 Sep 2026 09:00:00 +0000</pubDate>
     <description>LoRA and its cousins are useful, not magic. Here is how to actually decide when full fine-tuning still earns its cost.</description>
-    <category>Deep Learning</category>
-  </item>
-  <item>
-    <title>Fine-Tuning as a Word: What Physics Lent Machine Learning</title>
-    <link>https://jahanzaibawan.com/blog/fine-tuning-a-borrowed-word.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/fine-tuning-a-borrowed-word.html</guid>
-    <pubDate>Mon, 28 Sep 2026 09:00:00 +0000</pubDate>
-    <description>Machine learning didn&#x27;t invent fine-tuning. It borrowed a loaded term from physics and cosmology, and the borrowing changes how we should think about it.</description>
     <category>Deep Learning</category>
   </item>
 </channel>

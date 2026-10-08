@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "prompt-engineering-certifications",
+      "title": "Prompt Engineering Certifications: What They Actually Certify",
+      "excerpt": "Most prompt engineering certificates test recall of technique names, not the measurable skill of improving outputs under real constraints.",
+      "date": "2026-10-08",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a2",
+      "thumb": "assets/blog/prompt-engineering-certifications.png",
+      "thumb_alt": "Cover image for the article: Prompt Engineering Certifications: What They Actually Certify"
+    },
+    {
       "slug": "fine-tuning-means-three-things",
       "title": "Why 'Fine-Tuning' Means Three Different Things",
       "excerpt": "Fine-tuning can mean full retraining, LoRA-style adaptation, or just prompt steering. Mixing them up wastes compute and muddles your evaluation.",

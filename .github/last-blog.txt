@@ -1,1 +1,1 @@
-2026-10-08T08:01:58Z slug=fine-tuning-means-three-things words=1090 title="Why 'Fine-Tuning' Means Three Different Things"
+2026-10-08T20:01:33Z slug=prompt-engineering-certifications words=1024 title="Prompt Engineering Certifications: What They Actually Certify"
