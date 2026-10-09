@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Thu, 08 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 09 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Context Windows Are Not the Same as Context Engineering</title>
+    <link>https://jahanzaibawan.com/blog/context-engineering-not-just-length.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/context-engineering-not-just-length.html</guid>
+    <pubDate>Fri, 09 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Bigger context windows do not fix bad retrieval. Here is why feeding a model the right information matters more than feeding it more.</description>
+    <category>NLP</category>
+  </item>
   <item>
     <title>Prompt Engineering Certifications: What They Actually Certify</title>
     <link>https://jahanzaibawan.com/blog/prompt-engineering-certifications.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Tue, 29 Sep 2026 09:00:00 +0000</pubDate>
     <description>Deep learning did not invent NLP; it rebranded a field that already had decades of rigorous, rule-based practice worth remembering.</description>
     <category>NLP</category>
-  </item>
-  <item>
-    <title>Full Fine-Tuning vs PEFT: A Decision Framework, Not a Trend</title>
-    <link>https://jahanzaibawan.com/blog/full-vs-parameter-efficient-tuning.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/full-vs-parameter-efficient-tuning.html</guid>
-    <pubDate>Tue, 29 Sep 2026 09:00:00 +0000</pubDate>
-    <description>LoRA and its cousins are useful, not magic. Here is how to actually decide when full fine-tuning still earns its cost.</description>
-    <category>Deep Learning</category>
   </item>
 </channel>
 </rss>

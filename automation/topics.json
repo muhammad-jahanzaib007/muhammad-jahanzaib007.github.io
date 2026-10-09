@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Context windows and context engineering: feeding a model the right information, not just a longer prompt",
     "Machine learning engineer job titles decoded: what the posting actually wants",
     "Deep learning versus classical statistics: where the overlap genuinely lies",
     "Choosing a deep learning book in a crowded field: what to read first and why",
@@ -217,6 +216,7 @@
     "Deep learning textbooks compared: what Goodfellow still gets right",
     "The fine-tuning argument in cosmology and the fine-tuning argument in ML: same word, different claims",
     "Why 'fine-tuning' means three different things depending on who you ask",
-    "Prompt engineering certifications: what they actually certify"
+    "Prompt engineering certifications: what they actually certify",
+    "Context windows and context engineering: feeding a model the right information, not just a longer prompt"
   ]
 }

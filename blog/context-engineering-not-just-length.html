@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Context Windows Are Not the Same as Context Engineering | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why context engineering, not just longer context windows, is the key to reliable model outputs. A worked example with retrieval, ordering, and evaluation.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="context window, context engineering, retrieval augmented generation, prompt engineering, long context, LLM evaluation, RAG, leakage, information retrieval, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-09">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Context Windows Are Not the Same as Context Engineering">
+<meta property="og:description" content="Why context engineering, not just longer context windows, is the key to reliable model outputs. A worked example with retrieval, ordering, and evaluation.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/context-engineering-not-just-length.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/context-engineering-not-just-length.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Context Windows Are Not the Same as Context Engineering">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/context-engineering-not-just-length.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/context-engineering-not-just-length.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Context Windows Are Not the Same as Context Engineering",
+  "description": "Why context engineering, not just longer context windows, is the key to reliable model outputs. A worked example with retrieval, ordering, and evaluation.",
+  "url": "https://jahanzaibawan.com/blog/context-engineering-not-just-length.html",
+  "image": "https://jahanzaibawan.com/assets/blog/context-engineering-not-just-length.png",
+  "datePublished": "2026-10-09",
+  "dateModified": "2026-10-09",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/context-engineering-not-just-length.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Context Windows Are Not the Same as Context Engineering", "item": "https://jahanzaibawan.com/blog/context-engineering-not-just-length.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">NLP · 6 min read · 9 Oct 2026</div>
+    <h1>Context Windows Are Not the Same as Context Engineering</h1>
+    <p class="lede">A longer context window lets you stuff in more text. It does not guarantee the model will find, trust, or use the right part of it.</p>
+  </div>
+
+  <img src="../assets/blog/context-engineering-not-just-length.png" alt="Cover image for the article: Context Windows Are Not the Same as Context Engineering" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The seduction of a bigger window</h2><p>Every few months another model announces a larger context window, and the implicit promise is that more capacity solves more problems. If a model can read two hundred thousand tokens instead of eight thousand, surely you can just paste in the whole knowledge base and let it work things out. I understand the appeal. It feels like the retrieval problem has been engineered away by brute force. In practice, I have found this to be one of the more persistent illusions in applied machine learning right now.</p><p>A context window is a buffer, not a reasoning mechanism. The model still has to decide, token by token, what in that buffer is relevant to the question in front of it. Give it ten relevant sentences buried inside fifty thousand words of loosely related material, and you have not handed it an answer; you have handed it a search problem, and an implicit one at that, since nothing in the architecture guarantees it will search well. The longer the window, the larger the haystack, and the more plausible-sounding but wrong text there is for the model to latch onto.</p><p>This matters because the cost of a longer prompt is not just compute. It is attention diluted across irrelevant tokens, it is a higher chance of contradictory statements somewhere in that pile, and it is a model that has to implicitly rank relevance with no explicit signal telling it which passage was authoritative. Context engineering is the discipline of doing that ranking yourself, before the model ever sees the prompt, so that what arrives in the window is already curated rather than merely abundant.</p></section><section class='psec reveal'><h2>A worked example: the support ticket that goes wrong</h2><p>Picture a customer support assistant built on retrieval augmented generation. A user asks about refund eligibility for an order placed two months ago. The naive approach dumps the entire product and policy documentation, perhaps thirty thousand tokens, into the context window along with the question, on the theory that the model will find the right clause.</p><p>Somewhere in that documentation there are three policies: a general thirty-day refund window, an extended ninety-day window for a specific product category, and a seasonal exception that applied only during a promotional period last year and has since expired but was never deleted from the document store. All three are technically present in the text. The model has no reliable way of knowing which one is current, which one applies to this specific product, and which one is dead text that should have been archived. It picks one, often the one stated most confidently or most recently in the prompt's ordering, and gives the user an answer that is wrong roughly as often as it is right.</p><p>Now contrast that with a context-engineered version of the same system. Before the model is ever called, the ticket metadata, specifically the order date and product category, is used to filter the policy documents down to the one clause that actually applies. The expired seasonal policy is excluded at the retrieval stage because it carries an effective-date field that has passed, not because the model was clever enough to notice. The prompt that reaches the model contains perhaps four hundred tokens: the user's question, the single relevant policy, and a short instruction to answer only from the provided policy. The model's job has shrunk from search-and-reason to read-and-answer, and the failure modes shrink with it.</p><p>The difference in outcome is not subtle. In the first version, correctness depends on the model guessing well under ambiguity that a human engineer could have resolved in advance. In the second version, the ambiguity has already been resolved by metadata filtering, timestamp checks, and category matching, which are ordinary data engineering tasks, not emergent reasoning tasks. That is the core of context engineering: push the disambiguation work upstream, into retrieval and filtering logic you can test and version, rather than downstream into a model call you cannot fully inspect.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/context-engineering-not-just-length-1.jpg' alt='person reading long document at desk' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Ordering, redundancy, and the quiet cost of noise</h2><p>Even when the right information is present, how it is arranged in the context matters more than people expect. Models tend to weight information near the start and end of a long context more heavily than information buried in the middle, a pattern that has shown up repeatedly in careful long-context evaluations. If your single most important fact is sentence four hundred out of six hundred, you are relying on the model to overcome a positional bias baked into how attention behaves over long sequences. Context engineering means placing the load-bearing fact where it is least likely to be lost, typically near the question itself, and treating everything else as background rather than assuming uniform attention.</p><p>Redundancy is another quiet cost. If three retrieved passages all say roughly the same thing in different words, you have not improved the model's confidence; you have tripled the token cost and increased the chance that small inconsistencies between the near-duplicate passages introduce a contradiction the model then has to adjudicate. A good retrieval pipeline deduplicates before it concatenates. This sounds like a minor implementation detail, but at scale it is often the difference between a system that answers cleanly and one that hedges, contradicts itself, or produces a response that reads as if it is averaging over conflicting sources.</p><p>Noise also compounds with length in a way that is easy to underestimate during development. A ten-document context with one irrelevant document is forgiving. A hundred-document context with thirty irrelevant documents is not, because the irrelevant material is no longer a rounding error; it is a third of what the model has to parse before it even reaches the part that matters. This is why naive long-context systems often degrade quietly rather than failing loudly: they still produce fluent, confident answers, just ones that are subtly wrong more often, which is exactly the kind of failure that is hardest to catch in a quick manual review.</p></section><section class='psec reveal'><h2>What this means in practice</h2><p>If I had to compress this into one habit, it would be this: treat the context window as a budget to be spent deliberately, not a container to be filled. Before increasing how much text you feed a model, ask whether you have actually solved the retrieval and filtering problem, or whether you are hoping the larger window will paper over an unsolved one. A bigger window applied to bad retrieval just gives wrong information more room to hide.</p><p>Practically, that means building and evaluating the retrieval stage on its own terms, with held-out queries and known-correct documents, before ever looking at end-to-end model outputs. It means being deliberate about ordering, placing the most load-bearing evidence close to the question. It means deduplicating and timestamping sources so that stale or redundant material does not quietly compete with the correct answer. None of this is glamorous, but it is the part of the system you can actually test, version, and improve with confidence, which is more than can be said for hoping a longer prompt will sort itself out.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/context-engineering-not-just-length-2.jpg' alt='server room data center aisle' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

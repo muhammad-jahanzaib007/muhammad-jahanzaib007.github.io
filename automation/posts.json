@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "context-engineering-not-just-length",
+      "title": "Context Windows Are Not the Same as Context Engineering",
+      "excerpt": "Bigger context windows do not fix bad retrieval. Here is why feeding a model the right information matters more than feeding it more.",
+      "date": "2026-10-09",
+      "read_min": 6,
+      "tag": "NLP",
+      "color": "a3",
+      "thumb": "assets/blog/context-engineering-not-just-length.png",
+      "thumb_alt": "Cover image for the article: Context Windows Are Not the Same as Context Engineering"
+    },
+    {
       "slug": "prompt-engineering-certifications",
       "title": "Prompt Engineering Certifications: What They Actually Certify",
       "excerpt": "Most prompt engineering certificates test recall of technique names, not the measurable skill of improving outputs under real constraints.",

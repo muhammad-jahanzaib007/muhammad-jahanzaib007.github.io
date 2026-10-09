@@ -1,1 +1,1 @@
-2026-10-08T20:01:33Z slug=prompt-engineering-certifications words=1024 title="Prompt Engineering Certifications: What They Actually Certify"
+2026-10-09T08:02:38Z slug=context-engineering-not-just-length words=1177 title="Context Windows Are Not the Same as Context Engineering"
