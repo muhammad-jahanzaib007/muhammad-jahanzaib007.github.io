@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "ml-engineer-job-titles-decoded",
+      "title": "Machine Learning Engineer Titles: What the Posting Really Wants",
+      "excerpt": "Same title, different job. Here is how to decode what a machine learning engineer posting is actually asking for before you apply.",
+      "date": "2026-10-09",
+      "read_min": 5,
+      "tag": "Careers",
+      "color": "a4",
+      "thumb": "assets/blog/ml-engineer-job-titles-decoded.png",
+      "thumb_alt": "Cover image for the article: Machine Learning Engineer Titles: What the Posting Really Wants"
+    },
+    {
       "slug": "context-engineering-not-just-length",
       "title": "Context Windows Are Not the Same as Context Engineering",
       "excerpt": "Bigger context windows do not fix bad retrieval. Here is why feeding a model the right information matters more than feeding it more.",

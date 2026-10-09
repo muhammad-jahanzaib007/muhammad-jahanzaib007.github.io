@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Fri, 09 Oct 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Machine Learning Engineer Titles: What the Posting Really Wants</title>
+    <link>https://jahanzaibawan.com/blog/ml-engineer-job-titles-decoded.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/ml-engineer-job-titles-decoded.html</guid>
+    <pubDate>Fri, 09 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Same title, different job. Here is how to decode what a machine learning engineer posting is actually asking for before you apply.</description>
+    <category>Careers</category>
+  </item>
+  <item>
     <title>Context Windows Are Not the Same as Context Engineering</title>
     <link>https://jahanzaibawan.com/blog/context-engineering-not-just-length.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/context-engineering-not-just-length.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/data-annotation-quality-nlp.html</guid>
     <pubDate>Wed, 30 Sep 2026 09:00:00 +0000</pubDate>
     <description>Model architecture gets the glory, but in NLP the annotation guidelines and inter-annotator agreement quietly decide your ceiling. Here is why that ceiling is usually lower than you think.</description>
-    <category>NLP</category>
-  </item>
-  <item>
-    <title>What Counts as an NLP Practitioner Before Deep Learning</title>
-    <link>https://jahanzaibawan.com/blog/rule-based-roots-of-nlp.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/rule-based-roots-of-nlp.html</guid>
-    <pubDate>Tue, 29 Sep 2026 09:00:00 +0000</pubDate>
-    <description>Deep learning did not invent NLP; it rebranded a field that already had decades of rigorous, rule-based practice worth remembering.</description>
     <category>NLP</category>
   </item>
 </channel>

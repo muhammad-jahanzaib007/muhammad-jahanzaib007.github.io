@@ -1,11 +1,24 @@
 {
   "queue": [
-    "Machine learning engineer job titles decoded: what the posting actually wants",
     "Deep learning versus classical statistics: where the overlap genuinely lies",
     "Choosing a deep learning book in a crowded field: what to read first and why",
     "Retrieval augmented generation as context engineering: where the boundary actually sits",
     "What a machine learning model learns during training, shown on one small example",
-    "Prompt engineering as a transferable skill: what survives a model change and what does not"
+    "Prompt engineering as a transferable skill: what survives a model change and what does not",
+    "Common machine learning algorithms grouped by the problem they actually solve",
+    "Prompt engineering salary claims: what the job actually pays for",
+    "What a prompt engineering course should teach but often skips",
+    "Machine learning engineer salary bands explained through the work, not the title",
+    "Computer vision jobs decoded: what the posting means by entry level",
+    "How to evaluate a machine learning definition before you trust it",
+    "Prompt engineering guide: structuring a prompt from scratch on one task",
+    "Data science degree versus data science minor: what each actually prepares you for",
+    "The machine learning algorithms you should understand before touching a library",
+    "Computer vision models explained from pixels to predictions, on one small example",
+    "Prompt engineering certification versus a portfolio: which one a hiring manager checks",
+    "What a data science internship should teach you that a course cannot",
+    "Machine learning course syllabi compared: what maps to an actual job",
+    "Computer vision in five years: evergreen skills that will not go stale"
   ],
   "published": [
     "UAV object classification data-leakage case study",
@@ -217,6 +230,7 @@
     "The fine-tuning argument in cosmology and the fine-tuning argument in ML: same word, different claims",
     "Why 'fine-tuning' means three different things depending on who you ask",
     "Prompt engineering certifications: what they actually certify",
-    "Context windows and context engineering: feeding a model the right information, not just a longer prompt"
+    "Context windows and context engineering: feeding a model the right information, not just a longer prompt",
+    "Machine learning engineer job titles decoded: what the posting actually wants"
   ]
 }
