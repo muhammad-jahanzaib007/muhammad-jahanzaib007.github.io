@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Fri, 09 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 10 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Deep Learning Versus Classical Statistics: The Real Overlap</title>
+    <link>https://jahanzaibawan.com/blog/deep-learning-versus-classical-statistics.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/deep-learning-versus-classical-statistics.html</guid>
+    <pubDate>Sat, 10 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Deep learning and classical statistics are often framed as rivals, but underneath the tooling they share the same core questions about bias, variance, and generalisation.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Machine Learning Engineer Titles: What the Posting Really Wants</title>
     <link>https://jahanzaibawan.com/blog/ml-engineer-job-titles-decoded.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Wed, 30 Sep 2026 09:00:00 +0000</pubDate>
     <description>A book gives you the mathematics and the why; a course gives you the workflow and the muscle memory. Most learners need both, in the right order.</description>
     <category>Learning</category>
-  </item>
-  <item>
-    <title>Data Annotation Quality: Your Labels Are the Real Model</title>
-    <link>https://jahanzaibawan.com/blog/data-annotation-quality-nlp.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/data-annotation-quality-nlp.html</guid>
-    <pubDate>Wed, 30 Sep 2026 09:00:00 +0000</pubDate>
-    <description>Model architecture gets the glory, but in NLP the annotation guidelines and inter-annotator agreement quietly decide your ceiling. Here is why that ceiling is usually lower than you think.</description>
-    <category>NLP</category>
   </item>
 </channel>
 </rss>

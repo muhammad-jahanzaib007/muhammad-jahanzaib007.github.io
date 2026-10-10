@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "deep-learning-versus-classical-statistics",
+      "title": "Deep Learning Versus Classical Statistics: The Real Overlap",
+      "excerpt": "Deep learning and classical statistics are often framed as rivals, but underneath the tooling they share the same core questions about bias, variance, and generalisation.",
+      "date": "2026-10-10",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a5",
+      "thumb": "assets/blog/deep-learning-versus-classical-statistics.png",
+      "thumb_alt": "Cover image for the article: Deep Learning Versus Classical Statistics: The Real Overlap"
+    },
+    {
       "slug": "ml-engineer-job-titles-decoded",
       "title": "Machine Learning Engineer Titles: What the Posting Really Wants",
       "excerpt": "Same title, different job. Here is how to decode what a machine learning engineer posting is actually asking for before you apply.",
