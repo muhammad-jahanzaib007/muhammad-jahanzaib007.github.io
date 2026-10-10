@@ -9,7 +9,8 @@
       "tag": "Deep Learning",
       "color": "a6",
       "thumb": "assets/blog/choosing-a-deep-learning-book.png",
-      "thumb_alt": "Cover image for the article: Choosing a Deep Learning Book in a Crowded Field"
+      "thumb_alt": "Cover image for the article: Choosing a Deep Learning Book in a Crowded Field",
+      "li_shared": true
     },
     {
       "slug": "deep-learning-versus-classical-statistics",
