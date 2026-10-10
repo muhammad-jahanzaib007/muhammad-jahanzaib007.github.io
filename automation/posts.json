@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a5",
       "thumb": "assets/blog/deep-learning-versus-classical-statistics.png",
-      "thumb_alt": "Cover image for the article: Deep Learning Versus Classical Statistics: The Real Overlap"
+      "thumb_alt": "Cover image for the article: Deep Learning Versus Classical Statistics: The Real Overlap",
+      "li_shared": true
     },
     {
       "slug": "ml-engineer-job-titles-decoded",
