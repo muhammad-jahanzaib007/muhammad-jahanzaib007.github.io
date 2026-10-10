@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Choosing a deep learning book in a crowded field: what to read first and why",
     "Retrieval augmented generation as context engineering: where the boundary actually sits",
     "What a machine learning model learns during training, shown on one small example",
     "Prompt engineering as a transferable skill: what survives a model change and what does not",
@@ -231,6 +230,7 @@
     "Prompt engineering certifications: what they actually certify",
     "Context windows and context engineering: feeding a model the right information, not just a longer prompt",
     "Machine learning engineer job titles decoded: what the posting actually wants",
-    "Deep learning versus classical statistics: where the overlap genuinely lies"
+    "Deep learning versus classical statistics: where the overlap genuinely lies",
+    "Choosing a deep learning book in a crowded field: what to read first and why"
   ]
 }

@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Sat, 10 Oct 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Choosing a Deep Learning Book in a Crowded Field</title>
+    <link>https://jahanzaibawan.com/blog/choosing-a-deep-learning-book.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/choosing-a-deep-learning-book.html</guid>
+    <pubDate>Sat, 10 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Most deep learning books fail not because they are wrong but because they are read at the wrong stage. Here is how to pick one that actually moves you forward.</description>
+    <category>Deep Learning</category>
+  </item>
+  <item>
     <title>Deep Learning Versus Classical Statistics: The Real Overlap</title>
     <link>https://jahanzaibawan.com/blog/deep-learning-versus-classical-statistics.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/deep-learning-versus-classical-statistics.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Thu, 01 Oct 2026 09:00:00 +0000</pubDate>
     <description>High offline NDCG does not guarantee happy users. A walk through why held-out splits mislead recommender evaluation and how to close the gap.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Computer Vision Book or Course: What Each One Teaches</title>
-    <link>https://jahanzaibawan.com/blog/cv-book-versus-course.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/cv-book-versus-course.html</guid>
-    <pubDate>Wed, 30 Sep 2026 09:00:00 +0000</pubDate>
-    <description>A book gives you the mathematics and the why; a course gives you the workflow and the muscle memory. Most learners need both, in the right order.</description>
-    <category>Learning</category>
   </item>
 </channel>
 </rss>

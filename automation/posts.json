@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "choosing-a-deep-learning-book",
+      "title": "Choosing a Deep Learning Book in a Crowded Field",
+      "excerpt": "Most deep learning books fail not because they are wrong but because they are read at the wrong stage. Here is how to pick one that actually moves you forward.",
+      "date": "2026-10-10",
+      "read_min": 5,
+      "tag": "Deep Learning",
+      "color": "a6",
+      "thumb": "assets/blog/choosing-a-deep-learning-book.png",
+      "thumb_alt": "Cover image for the article: Choosing a Deep Learning Book in a Crowded Field"
+    },
+    {
       "slug": "deep-learning-versus-classical-statistics",
       "title": "Deep Learning Versus Classical Statistics: The Real Overlap",
       "excerpt": "Deep learning and classical statistics are often framed as rivals, but underneath the tooling they share the same core questions about bias, variance, and generalisation.",

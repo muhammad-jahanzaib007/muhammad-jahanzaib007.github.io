@@ -1,1 +1,1 @@
-2026-10-10T08:01:40Z slug=deep-learning-versus-classical-statistics words=1067 title="Deep Learning Versus Classical Statistics: The Real Overlap"
+2026-10-10T20:02:05Z slug=choosing-a-deep-learning-book words=942 title="Choosing a Deep Learning Book in a Crowded Field"
