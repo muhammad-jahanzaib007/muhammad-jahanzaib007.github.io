@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "rag-as-context-engineering",
+      "title": "RAG as Context Engineering: Where the Boundary Sits",
+      "excerpt": "RAG succeeds or fails on context engineering, not retrieval cleverness. Here is where the real boundary sits, and how to test it honestly.",
+      "date": "2026-10-11",
+      "read_min": 5,
+      "tag": "NLP",
+      "color": "a2",
+      "thumb": "assets/blog/rag-as-context-engineering.png",
+      "thumb_alt": "Cover image for the article: RAG as Context Engineering: Where the Boundary Sits"
+    },
+    {
       "slug": "choosing-a-deep-learning-book",
       "title": "Choosing a Deep Learning Book in a Crowded Field",
       "excerpt": "Most deep learning books fail not because they are wrong but because they are read at the wrong stage. Here is how to pick one that actually moves you forward.",

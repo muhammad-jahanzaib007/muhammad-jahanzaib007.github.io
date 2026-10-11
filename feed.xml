@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Sat, 10 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 11 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>RAG as Context Engineering: Where the Boundary Sits</title>
+    <link>https://jahanzaibawan.com/blog/rag-as-context-engineering.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/rag-as-context-engineering.html</guid>
+    <pubDate>Sun, 11 Oct 2026 09:00:00 +0000</pubDate>
+    <description>RAG succeeds or fails on context engineering, not retrieval cleverness. Here is where the real boundary sits, and how to test it honestly.</description>
+    <category>NLP</category>
+  </item>
   <item>
     <title>Choosing a Deep Learning Book in a Crowded Field</title>
     <link>https://jahanzaibawan.com/blog/choosing-a-deep-learning-book.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/metric-versus-decision.html</guid>
     <pubDate>Thu, 01 Oct 2026 09:00:00 +0000</pubDate>
     <description>Accuracy is a number. Deployment is a decision. This post explains the discipline that separates the two, with a worked example.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Held-Out Evaluation for Recommenders: When Offline Lies</title>
-    <link>https://jahanzaibawan.com/blog/offline-metrics-mislead-recsys.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/offline-metrics-mislead-recsys.html</guid>
-    <pubDate>Thu, 01 Oct 2026 09:00:00 +0000</pubDate>
-    <description>High offline NDCG does not guarantee happy users. A walk through why held-out splits mislead recommender evaluation and how to close the gap.</description>
     <category>Evaluation</category>
   </item>
 </channel>

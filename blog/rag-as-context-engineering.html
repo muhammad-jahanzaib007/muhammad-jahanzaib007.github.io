@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAG as Context Engineering: Where the Boundary Sits | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical look at retrieval augmented generation as context engineering, with a worked example showing where retrieval quality ends and prompt assembly begins.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="retrieval augmented generation, context engineering, RAG evaluation, prompt design, LLM evaluation, information retrieval, leakage, chunking, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-11">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="RAG as Context Engineering: Where the Boundary Sits">
+<meta property="og:description" content="A practical look at retrieval augmented generation as context engineering, with a worked example showing where retrieval quality ends and prompt assembly begins.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/rag-as-context-engineering.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/rag-as-context-engineering.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="RAG as Context Engineering: Where the Boundary Sits">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/rag-as-context-engineering.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/rag-as-context-engineering.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "RAG as Context Engineering: Where the Boundary Sits",
+  "description": "A practical look at retrieval augmented generation as context engineering, with a worked example showing where retrieval quality ends and prompt assembly begins.",
+  "url": "https://jahanzaibawan.com/blog/rag-as-context-engineering.html",
+  "image": "https://jahanzaibawan.com/assets/blog/rag-as-context-engineering.png",
+  "datePublished": "2026-10-11",
+  "dateModified": "2026-10-11",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/rag-as-context-engineering.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "RAG as Context Engineering: Where the Boundary Sits", "item": "https://jahanzaibawan.com/blog/rag-as-context-engineering.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">NLP · 5 min read · 11 Oct 2026</div>
+    <h1>RAG as Context Engineering: Where the Boundary Sits</h1>
+    <p class="lede">Retrieval augmented generation is often sold as a modelling technique, but most of the hard work, and most of the failure modes, live in how you assemble and bound the context you hand to the model.</p>
+  </div>
+
+  <img src="../assets/blog/rag-as-context-engineering.png" alt="Cover image for the article: RAG as Context Engineering: Where the Boundary Sits" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this distinction matters</h2><p>Retrieval augmented generation gets presented as a single pipeline: embed a query, pull back the nearest documents, feed them to a language model, get a grounded answer. That framing is tidy and it is also misleading, because it hides the fact that two quite different jobs are being done under one name. The first job is information retrieval: finding text that is relevant to the question. The second job is context engineering: deciding what to keep, how to order it, how to compress it, and how to phrase the instructions that sit around it so the model actually uses what it is given. In my experience, when a RAG system underperforms, the postmortem usually blames the retriever or the embedding model, but the actual defect is in the second job.</p><p>This matters because the two jobs fail in different ways and need different fixes. A retrieval failure means the right passage never made it into the candidate set. A context engineering failure means the right passage was there, but the model ignored it, misweighted it against a more confident but wrong prior, or got confused by formatting that buried the answer in the middle of a long block of text. If you only ever measure end-to-end answer accuracy, you cannot tell which failure you are looking at, and you will end up tuning the wrong component for weeks.</p><p>I think the confusion persists because retrieval is the part with the obvious knobs: embedding model, chunk size, index type, number of neighbours. Context engineering is comparatively unglamorous: it is prompt templates, deduplication rules, truncation policy, and citation formatting. But unglamorous does not mean unimportant. It is often the larger share of variance in output quality once retrieval quality clears a reasonable bar.</p></section><section class='psec reveal'><h2>A worked example of the boundary</h2><p>Suppose you are building a system to answer questions from a company's internal policy documents. You chunk documents into passages of around three hundred words, embed them, and retrieve the top eight passages for a given question. Imagine the true answer lives entirely inside passage six, which is syntactically correct but phrased awkwardly, buried among eight chunks that are topically similar but only tangentially useful. Retrieval has done its job: the right passage is in the set.</p><p>Now consider three different ways of assembling the context from those eight passages. In the first, you simply concatenate them in descending order of similarity score and append the question at the end. In the second, you deduplicate near-identical passages, cap total context length to avoid dilution, and place the most relevant passage either first or last, since models are known to attend more reliably to the start and end of a long context than to the middle. In the third, you additionally instruct the model explicitly to quote the specific sentence it used before answering, which forces it to locate rather than paraphrase from vague memory.</p><p>In practice, these three assemblies can produce noticeably different accuracy even though the retrieved set is identical in all three cases. If passage six sits at position four out of eight in the first assembly, there is a real risk the model answers instead from a more verbose but less accurate passage at position one or two, because that passage reads with more apparent authority. Move passage six to the top or bottom and add the quote-first instruction, and the same retrieval output now yields the correct answer far more often. None of this involved touching the retriever. All of it is context engineering, and all of it is measurable separately from retrieval quality if you design your evaluation that way.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/rag-as-context-engineering-1.jpg' alt='person typing at laptop with documents' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Evaluating the two jobs separately</h2><p>The practical fix is to stop measuring RAG systems with a single end-to-end number and instead measure retrieval recall and context utilisation as two distinct quantities. Retrieval recall asks: across a held-out set of questions with known answer locations, how often does the relevant passage appear anywhere in the retrieved set, at any reasonable cutoff such as top five or top ten? This is a pure information retrieval metric and it tells you whether your embeddings, chunking, and indexing are doing their job.</p><p>Context utilisation asks a different question: given that the correct passage is present in the context, how often does the final answer actually reflect it? You compute this by filtering your evaluation set down to only the cases where retrieval recall succeeded, then checking answer correctness on that subset. If retrieval recall is ninety percent but conditional accuracy on the successful-retrieval subset is only sixty percent, you have strong evidence that the bottleneck is context assembly, not search. Teams that skip this decomposition often spend their effort swapping embedding models, chasing marginal recall improvements, while the conditional accuracy gap sits untouched and unexplained.</p><p>It is also worth testing context engineering choices with the retriever held fixed, almost like an ablation study. Fix the top eight retrieved passages for a batch of questions, then vary only the ordering, the deduplication, the length cap, and the instruction wording, and measure accuracy on that frozen set. This isolates the context engineering variable cleanly, in the same way a leakage-aware split isolates genuine generalisation from accidental memorisation. Without this kind of controlled comparison, improvements in answer quality are easy to misattribute to whichever component you changed most recently, rather than to the component that actually mattered.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>Treat retrieval and context engineering as two separate systems with two separate metrics, even though they are usually built, deployed, and discussed as one pipeline. When you ship a RAG improvement, be explicit about which side of the boundary it sits on: did it change what gets found, or did it change how what was found gets presented to the model? Report both retrieval recall and conditional answer accuracy whenever you can, because together they tell you where to spend the next week of engineering effort, and separately neither number alone will. The modelling story around RAG is more glamorous, but the boundary between finding information and using it well is where most of the real, fixable failures live, and it rewards careful, almost boring attention.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/rag-as-context-engineering-2.jpg' alt='server room data storage' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
