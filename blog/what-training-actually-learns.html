@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What a Model Learns During Training, on One Example | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A concrete, worked example showing what gradient descent actually changes during training, using one tiny dataset and no jargon.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="machine learning, gradient descent, training explained, loss function, weights and bias, neural networks, model intuition, overfitting, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-11">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="What a Model Learns During Training, on One Example">
+<meta property="og:description" content="A concrete, worked example showing what gradient descent actually changes during training, using one tiny dataset and no jargon.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/what-training-actually-learns.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/what-training-actually-learns.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What a Model Learns During Training, on One Example">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/what-training-actually-learns.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/what-training-actually-learns.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "What a Model Learns During Training, on One Example",
+  "description": "A concrete, worked example showing what gradient descent actually changes during training, using one tiny dataset and no jargon.",
+  "url": "https://jahanzaibawan.com/blog/what-training-actually-learns.html",
+  "image": "https://jahanzaibawan.com/assets/blog/what-training-actually-learns.png",
+  "datePublished": "2026-10-11",
+  "dateModified": "2026-10-11",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/what-training-actually-learns.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "What a Model Learns During Training, on One Example", "item": "https://jahanzaibawan.com/blog/what-training-actually-learns.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Machine Learning · 5 min read · 11 Oct 2026</div>
+    <h1>What a Model Learns During Training, on One Example</h1>
+    <p class="lede">Forget the mysticism. Training a model is just repeated small corrections to a set of numbers, and you can watch it happen on a single tiny example.</p>
+  </div>
+
+  <img src="../assets/blog/what-training-actually-learns.png" alt="Cover image for the article: What a Model Learns During Training, on One Example" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this needs demystifying</h2><p>I think a lot of confusion about machine learning comes from treating training as a black box that somehow absorbs patterns. People talk about models 'understanding' data as if something conceptual is happening inside. In practice, training is a much more mechanical process: you have some numbers called parameters, a way of scoring how wrong they currently are, and a rule for nudging them to be slightly less wrong. Repeat that nudge enough times and the numbers settle somewhere useful. That is the whole story, minus the scale.</p><p>The scale is what makes it feel mysterious. A large language model has billions of parameters being nudged by an optimiser you cannot watch directly. But the mechanism at billions of parameters is identical in kind to the mechanism at two parameters. So rather than describe training in the abstract, I want to walk through a model so small you can hold the entire thing in your head, and watch every number change.</p></section><section class='psec reveal'><h2>A model with two numbers</h2><p>Suppose I want to predict a house's price from its size in square metres, using a single straight line: price = weight times size plus bias. Before training, I have no idea what weight and bias should be, so I pick something arbitrary, say weight = 0 and bias = 0. My training data is deliberately tiny: three houses. A 50 square metre house sold for 150,000, a 70 square metre house sold for 210,000, and a 100 square metre house sold for 300,000. Notice this data was constructed so that price is exactly 3,000 times size; I did that on purpose so we can check the model's progress against a known answer.</p><p>With weight = 0 and bias = 0, every prediction starts at zero, which is wildly wrong. We measure wrongness with a loss function; a common choice is mean squared error, the average of (predicted minus actual) squared across the three houses. At the start, the errors are 150,000, 210,000 and 300,000, so the loss is enormous. The question training answers is: in which direction should I move weight and bias to make that loss smaller, and by how much?</p><p>That direction comes from the gradient, which is just calculus telling us the slope of the loss with respect to each parameter. For this simple squared error setup, the gradient with respect to weight is proportional to the average of (error times size), and the gradient with respect to bias is proportional to the average error. Both gradients point towards increasing weight and increasing bias, because every prediction is currently too low. Gradient descent takes a small step in the opposite direction of the gradient, scaled by a learning rate, say 0.0001 here because the numbers involved are large.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/what-training-actually-learns-1.jpg' alt='handwritten graph line fitting points' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Watching the numbers move</h2><p>After one update using that first batch, weight moves from 0 to roughly 2.3, and bias moves from 0 to roughly 0.03. These are rough figures to keep the arithmetic readable, but the direction and rough magnitude are what matters: weight has jumped a long way because size values are large, so their influence on the gradient dominates early on; bias has barely moved because it is not multiplied by anything. This asymmetry is worth sitting with, because it is a real practical issue, not a toy quirk: parameters attached to larger-scale inputs tend to get pushed around much more aggressively unless you normalise your features first. Scaling size down to, say, size in hundreds of square metres, would make the two parameters update at more comparable rates.</p><p>Continuing for, say, five hundred more updates, weight keeps climbing towards 3,000 and bias keeps drifting towards 0, because that happens to be the exact relationship I built into the data. At each step, the model is not reasoning about square metres or housing markets; it is purely responding to the sign and size of its current error on the examples it is shown. If the 70 square metre house had sold for 500,000 instead of 210,000, the gradient for that one example would pull weight upward sharply on that step, and the final learned weight would sit somewhere as a compromise between fitting all three houses reasonably well, rather than fitting any one perfectly.</p><p>That compromise is the real content of what a model 'learns': not a rule it has understood, but a setting of its parameters that minimises average error across the examples it has seen, under the particular loss function you chose. Change the loss function, change the data, change the learning rate, and you get a different compromise, even though the underlying relationship you are trying to capture has not changed at all. This is why two people training what looks like the same model on the same data can get noticeably different parameters: initial values, update order, and learning rate all shape which compromise the optimiser settles into.</p></section><section class='psec reveal'><h2>Why this matters beyond toy examples</h2><p>Everything that happens in a two-hundred-layer neural network is this same loop at vastly greater scale: compute a prediction, measure how wrong it is, compute a gradient for every parameter, nudge each parameter a tiny amount, repeat for many thousands of steps. The maths per parameter is more involved because of chained layers and nonlinear activations, but there is no additional ingredient of 'understanding' injected anywhere in the process. A model does not learn what a house is; it learns a function that reduces error on the examples you gave it, and it will happily learn a spurious shortcut if one reduces error more cheaply than the real pattern does.</p><p>This is exactly why I keep returning to leakage-aware splits and honest evaluation in my own work. If your test set shares a subtle shortcut with your training set, your tiny two-parameter house model or your billion-parameter network will both find and exploit that shortcut, and your reported performance will flatter a model that has not learned the thing you think it has. The small example above is not just a teaching toy; it is the same mechanism you are trusting every time you report an accuracy number, so it is worth being able to trace it by hand at least once.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/what-training-actually-learns-2.jpg' alt='whiteboard with simple equations' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

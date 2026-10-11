@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Sun, 11 Oct 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>What a Model Learns During Training, on One Example</title>
+    <link>https://jahanzaibawan.com/blog/what-training-actually-learns.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/what-training-actually-learns.html</guid>
+    <pubDate>Sun, 11 Oct 2026 09:00:00 +0000</pubDate>
+    <description>A worked example showing exactly what changes, step by step, when a model trains, with no hand-waving about magic.</description>
+    <category>Machine Learning</category>
+  </item>
+  <item>
     <title>RAG as Context Engineering: Where the Boundary Sits</title>
     <link>https://jahanzaibawan.com/blog/rag-as-context-engineering.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/rag-as-context-engineering.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/threat-aware-evaluation-harness.html</guid>
     <pubDate>Fri, 02 Oct 2026 09:00:00 +0000</pubDate>
     <description>Most evaluation harnesses test for competence, not failure. Borrowing a few habits from red-team thinking fixes that, without needing a security team.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Model Evaluation as a Discipline: Metric Versus Decision</title>
-    <link>https://jahanzaibawan.com/blog/metric-versus-decision.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/metric-versus-decision.html</guid>
-    <pubDate>Thu, 01 Oct 2026 09:00:00 +0000</pubDate>
-    <description>Accuracy is a number. Deployment is a decision. This post explains the discipline that separates the two, with a worked example.</description>
     <category>Evaluation</category>
   </item>
 </channel>

@@ -1,6 +1,5 @@
 {
   "queue": [
-    "What a machine learning model learns during training, shown on one small example",
     "Prompt engineering as a transferable skill: what survives a model change and what does not",
     "Common machine learning algorithms grouped by the problem they actually solve",
     "Prompt engineering salary claims: what the job actually pays for",
@@ -231,6 +230,7 @@
     "Machine learning engineer job titles decoded: what the posting actually wants",
     "Deep learning versus classical statistics: where the overlap genuinely lies",
     "Choosing a deep learning book in a crowded field: what to read first and why",
-    "Retrieval augmented generation as context engineering: where the boundary actually sits"
+    "Retrieval augmented generation as context engineering: where the boundary actually sits",
+    "What a machine learning model learns during training, shown on one small example"
   ]
 }

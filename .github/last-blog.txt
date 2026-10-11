@@ -1,1 +1,1 @@
-2026-10-11T08:01:55Z slug=rag-as-context-engineering words=1025 title="RAG as Context Engineering: Where the Boundary Sits"
+2026-10-11T20:01:34Z slug=what-training-actually-learns words=1035 title="What a Model Learns During Training, on One Example"

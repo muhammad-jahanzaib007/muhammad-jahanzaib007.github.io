@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "what-training-actually-learns",
+      "title": "What a Model Learns During Training, on One Example",
+      "excerpt": "A worked example showing exactly what changes, step by step, when a model trains, with no hand-waving about magic.",
+      "date": "2026-10-11",
+      "read_min": 5,
+      "tag": "Machine Learning",
+      "color": "a3",
+      "thumb": "assets/blog/what-training-actually-learns.png",
+      "thumb_alt": "Cover image for the article: What a Model Learns During Training, on One Example"
+    },
+    {
       "slug": "rag-as-context-engineering",
       "title": "RAG as Context Engineering: Where the Boundary Sits",
       "excerpt": "RAG succeeds or fails on context engineering, not retrieval cleverness. Here is where the real boundary sits, and how to test it honestly.",
