@@ -9,7 +9,8 @@
       "tag": "Machine Learning",
       "color": "a3",
       "thumb": "assets/blog/what-training-actually-learns.png",
-      "thumb_alt": "Cover image for the article: What a Model Learns During Training, on One Example"
+      "thumb_alt": "Cover image for the article: What a Model Learns During Training, on One Example",
+      "li_shared": true
     },
     {
       "slug": "rag-as-context-engineering",
