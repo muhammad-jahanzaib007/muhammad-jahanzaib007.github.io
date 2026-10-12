@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "prompt-engineering-transferable-skill",
+      "title": "Prompt Engineering: What Survives a Model Change",
+      "excerpt": "A practical look at which prompting habits transfer across model versions, and which were just quirky workarounds that quietly stop working.",
+      "date": "2026-10-12",
+      "read_min": 6,
+      "tag": "NLP",
+      "color": "a4",
+      "thumb": "assets/blog/prompt-engineering-transferable-skill.png",
+      "thumb_alt": "Cover image for the article: Prompt Engineering: What Survives a Model Change"
+    },
+    {
       "slug": "what-training-actually-learns",
       "title": "What a Model Learns During Training, on One Example",
       "excerpt": "A worked example showing exactly what changes, step by step, when a model trains, with no hand-waving about magic.",

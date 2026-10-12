@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompt Engineering: What Survives a Model Change | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="An evergreen look at which prompt engineering techniques transfer across model upgrades, and which are brittle workarounds tied to a specific model&#x27;s quirks.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="prompt engineering, large language models, LLM evaluation, model versioning, in-context learning, reproducibility, NLP, AI engineering, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-12">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Prompt Engineering: What Survives a Model Change">
+<meta property="og:description" content="An evergreen look at which prompt engineering techniques transfer across model upgrades, and which are brittle workarounds tied to a specific model&#x27;s quirks.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/prompt-engineering-transferable-skill.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/prompt-engineering-transferable-skill.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Prompt Engineering: What Survives a Model Change">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/prompt-engineering-transferable-skill.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/prompt-engineering-transferable-skill.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Prompt Engineering: What Survives a Model Change",
+  "description": "An evergreen look at which prompt engineering techniques transfer across model upgrades, and which are brittle workarounds tied to a specific model's quirks.",
+  "url": "https://jahanzaibawan.com/blog/prompt-engineering-transferable-skill.html",
+  "image": "https://jahanzaibawan.com/assets/blog/prompt-engineering-transferable-skill.png",
+  "datePublished": "2026-10-12",
+  "dateModified": "2026-10-12",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/prompt-engineering-transferable-skill.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Prompt Engineering: What Survives a Model Change", "item": "https://jahanzaibawan.com/blog/prompt-engineering-transferable-skill.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">NLP · 6 min read · 12 Oct 2026</div>
+    <h1>Prompt Engineering: What Survives a Model Change</h1>
+    <p class="lede">Some prompting habits are durable engineering practice; others are brittle workarounds for a specific model&#x27;s quirks. Knowing which is which saves you from relearning everything every time a new release ships.</p>
+  </div>
+
+  <img src="../assets/blog/prompt-engineering-transferable-skill.png" alt="Cover image for the article: Prompt Engineering: What Survives a Model Change" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this question keeps coming up</h2><p>Every few months a new model version lands, and a familiar ritual follows: prompts that used to work reliably start producing odd results, people panic, and someone writes a thread claiming prompt engineering is dead. I think both the panic and the obituary are wrong. What actually happens is that a mix of durable skills and model-specific hacks gets exposed for what it always was. The durable part survives because it reflects something true about how these systems process instructions. The hacky part fails because it was never really about communication, it was about exploiting a quirk in one model's training distribution.</p><p>This matters practically because teams build products on top of prompts, and if you cannot tell which parts of your prompting strategy are load-bearing engineering and which are superstition, every model upgrade becomes a fire drill. I have seen prompts that were essentially folklore, phrases repeated because they once worked, with nobody able to explain why. That is a fragile position to build a product from. The goal here is to separate the two categories with enough precision that you can audit your own prompts and predict, roughly, what will break.</p></section><section class='psec reveal'><h2>What tends to survive</h2><p>The most durable prompting skill is simply being unambiguous about the task. If you ask a model to summarise a document, but do not specify length, audience, or what counts as important, you are relying on the model to guess your intent, and different models guess differently. Specifying constraints explicitly, such as 'summarise in three bullet points for a non-technical reader, each under twenty words', removes a layer of guesswork that no amount of model improvement fully eliminates. This survives model changes because it is not a trick, it is just clearer input, and clearer input helps any sufficiently capable system.</p><p>Providing structure also survives well. Asking for output in a defined format, giving a worked example of the input-output mapping you want, or breaking a complex task into explicit sub-steps all tend to keep working because they reduce the model's degrees of freedom. Consider a task like extracting structured data from messy text, say pulling a date, an amount, and a category from an invoice description. A prompt that gives two or three example extractions before the real one, showing the exact field names and format, will usually keep performing well across model generations, because the pattern it demonstrates is explicit rather than implied.</p><p>Decomposition also holds up. If a task is genuinely multi-step, such as 'first identify the relevant clauses, then check each against this rule, then output a verdict', splitting it into stages tends to remain useful even as the underlying model gets better at doing it all in one pass. The reason is structural: decomposition reduces the chance that an error early in reasoning silently propagates unnoticed, and that benefit does not depend on a model's particular training quirks. It is closer to good systems design than to clever wordplay, which is exactly why it ages well.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/prompt-engineering-transferable-skill-1.jpg' alt='person typing on laptop code editor' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What tends to break</h2><p>The fragile end of prompting is anything that depends on a specific model's calibration rather than on clear communication. A classic example is the magic phrase: some earlier models responded noticeably differently to being told to 'think step by step' or to being offered a fictional reward, like being told they would be tipped for a good answer. These phrases worked because of specific patterns in how a model was trained and fine-tuned, not because they conveyed any real information about the task. As newer models are trained with better default reasoning behaviour or with different reinforcement signals, these incantations often stop mattering, or in some cases become actively unhelpful because the model now treats them as noise or, worse, as an instruction to perform theatrical reasoning rather than efficient reasoning.</p><p>Similarly fragile is prompting that compensates for a known weakness in one specific model, such as a particular version being bad at arithmetic unless numbers are spelled out, or being prone to a certain kind of repetition unless told explicitly not to repeat itself. These workarounds are valuable in the short term but they are patches, not principles. When the next model fixes the underlying weakness, the patch becomes either inert or an unnecessary constraint that slightly degrades output, because you are now instructing the model to avoid a failure mode it no longer has.</p><p>Token-level superstition is another casualty. Things like exact capitalisation of keywords, specific punctuation choices believed to 'unlock' better behaviour, or very particular phrasings copied from someone else's successful prompt without understanding why they worked, rarely transfer. I would put a lot of the prompt marketplaces and prompt-sharing culture in this bucket. A prompt that performs well on one model because of some quirk in its tokenizer or fine-tuning data is not a transferable skill, it is a lucky find, and treating it as engineering knowledge is where a lot of wasted effort comes from.</p></section><section class='psec reveal'><h2>A practical way to tell the difference</h2><p>The test I find useful is to ask, for any prompting habit: would this still make sense if I were explaining the task to a new, moderately experienced human colleague rather than a model? Instructions like being explicit about format, giving worked examples, stating constraints, and breaking complex tasks into stages all pass this test, because they are just good task specification. Instructions like 'say please' or 'claim you are an expert in the subject' usually fail it, because a competent human colleague does not need that, and its effect on a model is really a signal about the model's training, not the task itself.</p><p>In practice this means building a small, versioned evaluation set alongside any prompt you rely on, with representative inputs and a clear notion of what a correct or acceptable output looks like. When a new model version appears, rerun that evaluation before touching the prompt. If performance drops, diagnose which part of the prompt was doing the work: was it structural guidance that still should apply, or was it a specific workaround for a model-specific weakness that may no longer exist? Only then adjust, rather than reflexively rewriting the whole prompt from scratch or assuming nothing needs to change.</p><p>The honest takeaway is that prompt engineering as a durable skill looks a lot like good technical writing and good task decomposition, applied to a new kind of reader. The parts of it that feel like magic words and secret incantations were never really engineering, they were reverse-engineering one model's idiosyncrasies, and they deserve to be treated as temporary scaffolding rather than core competence. Build your prompting habits on clarity and structure, keep an evaluation set to catch regressions honestly, and you will spend a lot less time rewriting everything each time the underlying model changes.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/prompt-engineering-transferable-skill-2.jpg' alt='whiteboard with flowchart diagram' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
