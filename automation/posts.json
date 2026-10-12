@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "ml-algorithms-by-problem",
+      "title": "Common ML Algorithms Grouped by the Problem They Solve",
+      "excerpt": "A practical map of machine learning methods organised by the underlying problem they solve, not by buzzword or library.",
+      "date": "2026-10-12",
+      "read_min": 5,
+      "tag": "Fundamentals",
+      "color": "a5",
+      "thumb": "assets/blog/ml-algorithms-by-problem.png",
+      "thumb_alt": "Cover image for the article: Common ML Algorithms Grouped by the Problem They Solve"
+    },
+    {
       "slug": "prompt-engineering-transferable-skill",
       "title": "Prompt Engineering: What Survives a Model Change",
       "excerpt": "A practical look at which prompting habits transfer across model versions, and which were just quirky workarounds that quietly stop working.",

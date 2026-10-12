@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Mon, 12 Oct 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Common ML Algorithms Grouped by the Problem They Solve</title>
+    <link>https://jahanzaibawan.com/blog/ml-algorithms-by-problem.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/ml-algorithms-by-problem.html</guid>
+    <pubDate>Mon, 12 Oct 2026 09:00:00 +0000</pubDate>
+    <description>A practical map of machine learning methods organised by the underlying problem they solve, not by buzzword or library.</description>
+    <category>Fundamentals</category>
+  </item>
+  <item>
     <title>Prompt Engineering: What Survives a Model Change</title>
     <link>https://jahanzaibawan.com/blog/prompt-engineering-transferable-skill.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/prompt-engineering-transferable-skill.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Sat, 03 Oct 2026 09:00:00 +0000</pubDate>
     <description>Checking the leaderboard too often quietly turns your test set into training data. Here is a worked example showing exactly how.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>The Vocabulary Trap in ML Job Adverts</title>
-    <link>https://jahanzaibawan.com/blog/vocabulary-trap-ml-job-titles.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/vocabulary-trap-ml-job-titles.html</guid>
-    <pubDate>Fri, 02 Oct 2026 09:00:00 +0000</pubDate>
-    <description>ML job titles like NLP Engineer, CV Engineer, and MLOps Engineer look distinct on paper, but the actual day-to-day skills overlap heavily once you look past the buzzwords.</description>
-    <category>Careers</category>
   </item>
 </channel>
 </rss>

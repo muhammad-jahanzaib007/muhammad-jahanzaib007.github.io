@@ -1,1 +1,1 @@
-2026-10-12T08:01:39Z slug=prompt-engineering-transferable-skill words=1135 title="Prompt Engineering: What Survives a Model Change"
+2026-10-12T20:01:00Z slug=ml-algorithms-by-problem words=962 title="Common ML Algorithms Grouped by the Problem They Solve"

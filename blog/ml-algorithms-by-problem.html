@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Common ML Algorithms Grouped by the Problem They Solve | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A clear, practical guide grouping common machine learning algorithms by the problem they solve, with worked intuition and honest caveats.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="machine learning algorithms, classification, regression, clustering, dimensionality reduction, supervised learning, unsupervised learning, model selection, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-12">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Common ML Algorithms Grouped by the Problem They Solve">
+<meta property="og:description" content="A clear, practical guide grouping common machine learning algorithms by the problem they solve, with worked intuition and honest caveats.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/ml-algorithms-by-problem.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/ml-algorithms-by-problem.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Common ML Algorithms Grouped by the Problem They Solve">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/ml-algorithms-by-problem.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/ml-algorithms-by-problem.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Common ML Algorithms Grouped by the Problem They Solve",
+  "description": "A clear, practical guide grouping common machine learning algorithms by the problem they solve, with worked intuition and honest caveats.",
+  "url": "https://jahanzaibawan.com/blog/ml-algorithms-by-problem.html",
+  "image": "https://jahanzaibawan.com/assets/blog/ml-algorithms-by-problem.png",
+  "datePublished": "2026-10-12",
+  "dateModified": "2026-10-12",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/ml-algorithms-by-problem.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Common ML Algorithms Grouped by the Problem They Solve", "item": "https://jahanzaibawan.com/blog/ml-algorithms-by-problem.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Fundamentals · 5 min read · 12 Oct 2026</div>
+    <h1>Common ML Algorithms Grouped by the Problem They Solve</h1>
+    <p class="lede">Forget the alphabet soup of algorithm names. Here is how I organise the standard toolkit by what question each method is actually trying to answer.</p>
+  </div>
+
+  <img src="../assets/blog/ml-algorithms-by-problem.png" alt="Cover image for the article: Common ML Algorithms Grouped by the Problem They Solve" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the taxonomy matters more than the names</h2><p>When I started out, I collected algorithm names the way some people collect stamps: logistic regression, random forests, k-means, PCA, support vector machines. The trouble is that a list of names tells you nothing about when to reach for each one. What actually matters is the shape of the problem in front of you. Do you have labelled outcomes or not? Is the target a category or a number? Are you trying to predict something, or just understand the structure of your data? Once you sort algorithms by the question they answer rather than by their mathematical lineage, choosing a method stops feeling arbitrary.</p><p>This matters practically because the wrong grouping leads to wasted effort. I have seen people spend a weekend tuning a clustering algorithm to 'predict' customer churn, when churn is a labelled binary outcome and a supervised classifier would have taken an afternoon and performed better. The tool was fine; the diagnosis of the problem was wrong. So before touching a library, it is worth asking: what is the actual target, and what decision will this model support?</p></section><section class='psec reveal'><h2>Predicting a label: classification</h2><p>Classification answers the question: given these inputs, which category does this example belong to? Logistic regression, decision trees, random forests, gradient boosted trees, support vector machines, and k-nearest neighbours all live here, despite being built on very different mathematics. What unites them is the target: a discrete set of classes, such as spam or not spam, or one of five product categories.</p><p>Here is a worked intuition. Suppose you are building a model to flag fraudulent transactions, and in your historical data, 2% of transactions are fraudulent. A naive classifier that always predicts 'not fraud' gets 98% accuracy and is completely useless. This is why, for classification problems with imbalanced classes, I always check precision, recall, and the confusion matrix before trusting an accuracy figure. A logistic regression baseline that catches 40% of fraud cases with a 10% false positive rate is far more informative than a complex model reported only via accuracy.</p><p>The choice between algorithms in this group is mostly about the shape of the decision boundary and the amount of data you have. Logistic regression draws a straight line (or hyperplane) between classes and is a strong, interpretable baseline. Tree-based ensembles like random forests and gradient boosting can capture non-linear interactions between features without much manual engineering, which is why they tend to win on tabular data competitions. Support vector machines shine when the boundary is complex but the dataset is modest in size, since they scale poorly to millions of rows. None of these is universally best; the honest answer is to try a simple baseline first and only add complexity if it earns its keep on a proper held-out test set.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/ml-algorithms-by-problem-1.jpg' alt='whiteboard with equations' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Predicting a number: regression</h2><p>Regression answers a different question: given these inputs, what numeric value should we expect? Linear regression, ridge and lasso regression, regression trees, and gradient boosted regressors fall here. The mechanics often overlap heavily with classification algorithms (a decision tree can do either job), but the target and the evaluation metric change completely.</p><p>Consider predicting house prices from features like square footage, number of bedrooms, and location. A linear regression model might tell you that each additional bedroom adds roughly £15,000 to the predicted price, holding other factors constant, which is useful both for prediction and for explaining the model's reasoning to a non-technical stakeholder. A gradient boosted regressor might shave the mean absolute error down further, from £28,000 to £22,000 on a held-out set, but it will not hand you a tidy coefficient to quote in a meeting. That trade-off between interpretability and raw predictive accuracy is one of the most practical decisions in applied regression work, and it is worth making deliberately rather than defaulting to whichever model is fashionable.</p><p>One thing I am strict about here is metric choice. Mean squared error punishes large errors heavily, which is appropriate if a single very wrong prediction is costly, such as underpricing a house by £100,000. Mean absolute error treats all errors proportionally, which suits problems where consistent small errors matter more than occasional large ones. Picking the metric before picking the algorithm keeps the whole exercise honest.</p></section><section class='psec reveal'><h2>Finding structure without labels</h2><p>The third family answers a question with no ground truth attached: what structure exists in this data on its own? Clustering algorithms like k-means and hierarchical clustering group similar examples together. Dimensionality reduction methods like PCA and t-SNE compress many correlated features into a smaller set of components, often for visualisation or as a preprocessing step before a supervised model. Anomaly detection methods flag points that do not fit the general pattern, which is genuinely useful for fraud or fault detection when labelled examples of the rare event are scarce or unreliable.</p><p>A concrete example: imagine a retailer with transaction data for 50,000 customers and no existing segment labels. Running k-means with four clusters might reveal a group of high-frequency, low-spend shoppers, a group of occasional big spenders, and so on. There is no 'correct' answer to check against, which is exactly why unsupervised methods demand more scepticism. I always sanity-check clusters against business logic and try a couple of different numbers of clusters, rather than trusting the first output because the silhouette score looked decent.</p><p>The practical takeaway across all three families is the same: identify what kind of target you actually have, pick the simplest method that matches that shape, evaluate it with a metric and a split that reflects how the model will be used, and only escalate to something fancier when the baseline demonstrably falls short. Algorithm names are the least important part of the decision; the structure of the problem is everything.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/ml-algorithms-by-problem-2.jpg' alt='office data analysis charts' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
