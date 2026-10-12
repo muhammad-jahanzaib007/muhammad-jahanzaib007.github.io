@@ -9,7 +9,8 @@
       "tag": "Fundamentals",
       "color": "a5",
       "thumb": "assets/blog/ml-algorithms-by-problem.png",
-      "thumb_alt": "Cover image for the article: Common ML Algorithms Grouped by the Problem They Solve"
+      "thumb_alt": "Cover image for the article: Common ML Algorithms Grouped by the Problem They Solve",
+      "li_shared": true
     },
     {
       "slug": "prompt-engineering-transferable-skill",
