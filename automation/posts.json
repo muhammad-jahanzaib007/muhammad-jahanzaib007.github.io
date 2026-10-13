@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a6",
       "thumb": "assets/blog/prompt-engineering-salary-claims.png",
-      "thumb_alt": "Cover image for the article: Prompt Engineering Salary Claims: What the Job Actually Pays For"
+      "thumb_alt": "Cover image for the article: Prompt Engineering Salary Claims: What the Job Actually Pays For",
+      "li_shared": true
     },
     {
       "slug": "ml-algorithms-by-problem",
