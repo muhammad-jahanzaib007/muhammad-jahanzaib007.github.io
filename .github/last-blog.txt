@@ -1,1 +1,1 @@
-2026-10-13T08:26:50Z slug=prompt-engineering-salary-claims words=980 title="Prompt Engineering Salary Claims: What the Job Actually Pays For"
+2026-10-13T20:26:40Z slug=what-prompt-courses-skip words=1101 title="What a Prompt Engineering Course Should Teach but Skips"

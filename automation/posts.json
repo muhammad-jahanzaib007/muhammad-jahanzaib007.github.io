@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "what-prompt-courses-skip",
+      "title": "What a Prompt Engineering Course Should Teach but Skips",
+      "excerpt": "Clever phrasing is easy to teach. Rigorous evaluation of prompts, under variance and leakage, is the part courses usually skip.",
+      "date": "2026-10-13",
+      "read_min": 6,
+      "tag": "Evaluation",
+      "color": "a2",
+      "thumb": "assets/blog/what-prompt-courses-skip.png",
+      "thumb_alt": "Cover image for the article: What a Prompt Engineering Course Should Teach but Skips"
+    },
+    {
       "slug": "prompt-engineering-salary-claims",
       "title": "Prompt Engineering Salary Claims: What the Job Actually Pays For",
       "excerpt": "The eye-catching prompt engineer salary figures are really paying for evaluation, debugging and systems judgement, not magic phrasing.",

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What a Prompt Engineering Course Should Teach but Skips | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why prompt engineering courses should teach evaluation rigor, variance, and leakage-aware testing, not just clever phrasing tricks.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="prompt engineering, LLM evaluation, prompt testing, evaluation rigor, data leakage, few-shot prompting, reproducibility, AI education, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-13">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="What a Prompt Engineering Course Should Teach but Skips">
+<meta property="og:description" content="Why prompt engineering courses should teach evaluation rigor, variance, and leakage-aware testing, not just clever phrasing tricks.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/what-prompt-courses-skip.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/what-prompt-courses-skip.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What a Prompt Engineering Course Should Teach but Skips">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/what-prompt-courses-skip.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/what-prompt-courses-skip.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "What a Prompt Engineering Course Should Teach but Skips",
+  "description": "Why prompt engineering courses should teach evaluation rigor, variance, and leakage-aware testing, not just clever phrasing tricks.",
+  "url": "https://jahanzaibawan.com/blog/what-prompt-courses-skip.html",
+  "image": "https://jahanzaibawan.com/assets/blog/what-prompt-courses-skip.png",
+  "datePublished": "2026-10-13",
+  "dateModified": "2026-10-13",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/what-prompt-courses-skip.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "What a Prompt Engineering Course Should Teach but Skips", "item": "https://jahanzaibawan.com/blog/what-prompt-courses-skip.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 6 min read · 13 Oct 2026</div>
+    <h1>What a Prompt Engineering Course Should Teach but Skips</h1>
+    <p class="lede">Most courses teach you to write clever prompts. Few teach you how to know, with evidence, whether one prompt actually beats another.</p>
+  </div>
+
+  <img src="../assets/blog/what-prompt-courses-skip.png" alt="Cover image for the article: What a Prompt Engineering Course Should Teach but Skips" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The course that teaches tricks but not truth</h2><p>Search for a prompt engineering course and you will find a reliable pattern: a tour of techniques. Chain of thought, few-shot exemplars, role prompting, system messages, delimiters, output formatting. These are useful things to know, and I do not dismiss them. But almost none of these courses spend real time on the question that actually determines whether any of it was worth doing: how do you know your new prompt is better than your old one, and not just better on the five examples you happened to glance at?</p><p>This matters because prompting feels like writing, and writing feels like something you can judge by eye. You read two outputs, one looks more polished, you conclude the prompt that produced it is superior. That instinct is exactly how people get fooled. A single comparison on a handful of cases tells you almost nothing about how a prompt behaves across the full range of inputs it will actually see in production, because language model outputs are noisy, inputs vary enormously, and your five examples were never a representative sample to begin with.</p><p>A course that skips evaluation is teaching you to cook without ever teaching you to taste properly. You can learn every seasoning technique in the book, but if you cannot reliably tell when a dish has improved, the techniques are decoration. The uncomfortable truth is that most of what separates a competent prompt engineer from someone who just tries things is the discipline of measurement, not the cleverness of the prompt itself.</p></section><section class='psec reveal'><h2>Variance is the thing nobody mentions</h2><p>Here is a concrete scenario. Suppose you are testing two prompts for a classification task, extracting sentiment from customer reviews, and you run each prompt on 20 reviews. Prompt A gets 17 correct, 85 percent. Prompt B gets 15 correct, 75 percent. It looks like a clear win for Prompt A. But with only 20 samples, the uncertainty around each of those numbers is large. A rough binomial confidence interval on 17 out of 20 spans roughly 62 percent to 97 percent. The interval for 15 out of 20 spans roughly 51 percent to 91 percent. Those intervals overlap substantially. The ten point gap you saw could easily be noise rather than a genuine difference in prompt quality.</p><p>Now scale that same ten point gap up to 300 samples instead of 20. At 300 samples, 85 percent versus 75 percent produces confidence intervals that barely touch, and you can say with real confidence that Prompt A is doing something meaningfully different and better. The lesson is not that small samples are useless, it is that the sample size changes what conclusions you are entitled to draw from the same observed gap. A course that never shows this arithmetic leaves students unable to tell the difference between a real improvement and a lucky draw.</p><p>There is a second, subtler source of variance that courses rarely mention: the model itself. Even at low temperature, many models produce different outputs for the same prompt run twice, because of how sampling and batching work on the serving side. If you only run each prompt once per test case, you cannot separate prompt variance from model variance. The fix is simple and cheap: run each test case multiple times per prompt, average the results, and look at the spread, not just the mean. Skipping this step means your entire evaluation might be comparing noise to noise and calling it insight.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/what-prompt-courses-skip-1.jpg' alt='person reviewing data on laptop at desk' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Leakage, held-out sets, and the trap of eyeballing your own test cases</h2><p>The deepest problem, though, is leakage, and it shows up in prompt engineering in a form that is easy to miss because it does not look like the leakage you learn about in a standard machine learning course. There is no training split here, no risk of memorised labels. The leakage happens in your own head. You write a prompt, you test it on ten examples you wrote yourself, it fails on three, you tweak the prompt until it passes all ten, and you declare victory. What you have actually done is overfit a prompt to ten specific cases through manual iteration, using the exact same cases both to diagnose the problem and to judge the fix.</p><p>This is structurally identical to tuning a model on your test set. The honest version requires two separate sets of examples: a development set you are allowed to look at and iterate against, and a held-out set you touch only once, at the end, to report how the final prompt actually performs. If your held-out score is much worse than your development score, that gap is telling you something true and useful, namely that you were fitting to the quirks of your development examples rather than solving the underlying task. A course that never introduces this split teaches students to iterate blindly and report numbers that will not survive contact with new data.</p><p>There is also a more mundane but equally damaging form of leakage worth naming explicitly: building your test examples by lightly editing cases that appear in the model's training data or in widely available benchmark sets. If your evaluation examples resemble things the model has effectively seen before, you are not measuring how well your prompt generalises, you are measuring how well the model recognises a familiar pattern. Good evaluation sets are deliberately drawn from fresh, representative, somewhat awkward real-world inputs, including the edge cases that make the task genuinely hard, because those are the cases where prompt design actually earns its keep.</p></section><section class='psec reveal'><h2>What to actually teach, and what to actually do</h2><p>None of this requires exotic tooling. A rigorous prompt evaluation workflow needs four plain ingredients: a reasonably sized test set drawn from realistic inputs, a clear and consistent scoring rule decided before you look at outputs, multiple runs per prompt to account for sampling variance, and a held-out slice you only check once the prompt is finalised. Compare that against a simple, strong baseline prompt before adding any cleverness, because a surprising number of elaborate prompting tricks fail to beat a plain, well-specified instruction once you measure properly.</p><p>If you are learning prompt engineering on your own, build this habit early: before you tweak a prompt, write down what evidence would convince you it actually improved. Decide the sample size, decide the metric, decide the held-out set, and only then start iterating. It is less exciting than discovering a clever phrasing trick, but it is the difference between a skill you can trust under pressure and a collection of anecdotes that happened to work once.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/what-prompt-courses-skip-2.jpg' alt='whiteboard with statistics notes' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

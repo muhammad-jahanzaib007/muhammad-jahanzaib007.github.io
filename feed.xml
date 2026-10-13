@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Tue, 13 Oct 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>What a Prompt Engineering Course Should Teach but Skips</title>
+    <link>https://jahanzaibawan.com/blog/what-prompt-courses-skip.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/what-prompt-courses-skip.html</guid>
+    <pubDate>Tue, 13 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Clever phrasing is easy to teach. Rigorous evaluation of prompts, under variance and leakage, is the part courses usually skip.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Prompt Engineering Salary Claims: What the Job Actually Pays For</title>
     <link>https://jahanzaibawan.com/blog/prompt-engineering-salary-claims.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/prompt-engineering-salary-claims.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/model-versus-its-own-baseline.html</guid>
     <pubDate>Sun, 04 Oct 2026 09:00:00 +0000</pubDate>
     <description>Beating the leaderboard means little if your model cannot beat a trivial baseline built from its own inputs. Here is why that comparison matters.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Why Computer Vision and ML Engineers Read Papers Differently</title>
-    <link>https://jahanzaibawan.com/blog/how-cv-and-ml-engineers-read-papers.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/how-cv-and-ml-engineers-read-papers.html</guid>
-    <pubDate>Sat, 03 Oct 2026 09:00:00 +0000</pubDate>
-    <description>Computer vision and general ML engineers scan the same paper for different red flags, shaped by different failure modes they have each been burned by.</description>
     <category>Evaluation</category>
   </item>
 </channel>
