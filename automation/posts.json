@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a2",
       "thumb": "assets/blog/what-prompt-courses-skip.png",
-      "thumb_alt": "Cover image for the article: What a Prompt Engineering Course Should Teach but Skips"
+      "thumb_alt": "Cover image for the article: What a Prompt Engineering Course Should Teach but Skips",
+      "li_shared": true
     },
     {
       "slug": "prompt-engineering-salary-claims",
