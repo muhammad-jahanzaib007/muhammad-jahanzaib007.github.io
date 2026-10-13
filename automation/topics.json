@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Prompt engineering salary claims: what the job actually pays for",
     "What a prompt engineering course should teach but often skips",
     "Machine learning engineer salary bands explained through the work, not the title",
     "Computer vision jobs decoded: what the posting means by entry level",
@@ -231,6 +230,7 @@
     "Retrieval augmented generation as context engineering: where the boundary actually sits",
     "What a machine learning model learns during training, shown on one small example",
     "Prompt engineering as a transferable skill: what survives a model change and what does not",
-    "Common machine learning algorithms grouped by the problem they actually solve"
+    "Common machine learning algorithms grouped by the problem they actually solve",
+    "Prompt engineering salary claims: what the job actually pays for"
   ]
 }

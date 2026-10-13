@@ -1,1 +1,1 @@
-2026-10-12T20:01:00Z slug=ml-algorithms-by-problem words=962 title="Common ML Algorithms Grouped by the Problem They Solve"
+2026-10-13T08:26:50Z slug=prompt-engineering-salary-claims words=980 title="Prompt Engineering Salary Claims: What the Job Actually Pays For"

@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "prompt-engineering-salary-claims",
+      "title": "Prompt Engineering Salary Claims: What the Job Actually Pays For",
+      "excerpt": "The eye-catching prompt engineer salary figures are really paying for evaluation, debugging and systems judgement, not magic phrasing.",
+      "date": "2026-10-13",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a6",
+      "thumb": "assets/blog/prompt-engineering-salary-claims.png",
+      "thumb_alt": "Cover image for the article: Prompt Engineering Salary Claims: What the Job Actually Pays For"
+    },
+    {
       "slug": "ml-algorithms-by-problem",
       "title": "Common ML Algorithms Grouped by the Problem They Solve",
       "excerpt": "A practical map of machine learning methods organised by the underlying problem they solve, not by buzzword or library.",

@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Mon, 12 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 13 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Prompt Engineering Salary Claims: What the Job Actually Pays For</title>
+    <link>https://jahanzaibawan.com/blog/prompt-engineering-salary-claims.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/prompt-engineering-salary-claims.html</guid>
+    <pubDate>Tue, 13 Oct 2026 09:00:00 +0000</pubDate>
+    <description>The eye-catching prompt engineer salary figures are really paying for evaluation, debugging and systems judgement, not magic phrasing.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Common ML Algorithms Grouped by the Problem They Solve</title>
     <link>https://jahanzaibawan.com/blog/ml-algorithms-by-problem.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/how-cv-and-ml-engineers-read-papers.html</guid>
     <pubDate>Sat, 03 Oct 2026 09:00:00 +0000</pubDate>
     <description>Computer vision and general ML engineers scan the same paper for different red flags, shaped by different failure modes they have each been burned by.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>A Worked Example of Overfitting to the Leaderboard</title>
-    <link>https://jahanzaibawan.com/blog/overfitting-the-leaderboard.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/overfitting-the-leaderboard.html</guid>
-    <pubDate>Sat, 03 Oct 2026 09:00:00 +0000</pubDate>
-    <description>Checking the leaderboard too often quietly turns your test set into training data. Here is a worked example showing exactly how.</description>
     <category>Evaluation</category>
   </item>
 </channel>
