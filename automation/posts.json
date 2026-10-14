@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "entry-level-computer-vision-jobs",
+      "title": "Computer Vision Jobs Decoded: What 'Entry Level' Really Means",
+      "excerpt": "'Entry level' in computer vision postings rarely means beginner. Here is how to decode the requirements and apply with confidence.",
+      "date": "2026-10-14",
+      "read_min": 5,
+      "tag": "Careers",
+      "color": "a4",
+      "thumb": "assets/blog/entry-level-computer-vision-jobs.png",
+      "thumb_alt": "Cover image for the article: Computer Vision Jobs Decoded: What 'Entry Level' Really Means"
+    },
+    {
       "slug": "ml-engineer-salary-bands-explained",
       "title": "ML Engineer Salary Bands Explained Through the Work",
       "excerpt": "Forget the title. Salary bands in machine learning track the judgement required by the work, not years of experience or a label on a contract.",

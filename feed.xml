@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Wed, 14 Oct 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Computer Vision Jobs Decoded: What &#x27;Entry Level&#x27; Really Means</title>
+    <link>https://jahanzaibawan.com/blog/entry-level-computer-vision-jobs.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/entry-level-computer-vision-jobs.html</guid>
+    <pubDate>Wed, 14 Oct 2026 09:00:00 +0000</pubDate>
+    <description>&#x27;Entry level&#x27; in computer vision postings rarely means beginner. Here is how to decode the requirements and apply with confidence.</description>
+    <category>Careers</category>
+  </item>
+  <item>
     <title>ML Engineer Salary Bands Explained Through the Work</title>
     <link>https://jahanzaibawan.com/blog/ml-engineer-salary-bands-explained.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/ml-engineer-salary-bands-explained.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Mon, 05 Oct 2026 09:00:00 +0000</pubDate>
     <description>Skip the chatbot clone. A simple classifier, built with care, teaches tokenisation, embeddings, and evaluation far better.</description>
     <category>NLP</category>
-  </item>
-  <item>
-    <title>What a Fine-Tuning Run Actually Costs</title>
-    <link>https://jahanzaibawan.com/blog/true-cost-of-fine-tuning.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/true-cost-of-fine-tuning.html</guid>
-    <pubDate>Sun, 04 Oct 2026 09:00:00 +0000</pubDate>
-    <description>GPU hours are the visible cost of fine-tuning. Data curation and honest evaluation are the invisible costs that decide whether the run was worth it.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>
