@@ -1,1 +1,1 @@
-2026-10-13T20:26:40Z slug=what-prompt-courses-skip words=1101 title="What a Prompt Engineering Course Should Teach but Skips"
+2026-10-14T08:01:45Z slug=ml-engineer-salary-bands-explained words=1089 title="ML Engineer Salary Bands Explained Through the Work"

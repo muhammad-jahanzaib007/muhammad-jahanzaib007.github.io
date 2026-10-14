@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "ml-engineer-salary-bands-explained",
+      "title": "ML Engineer Salary Bands Explained Through the Work",
+      "excerpt": "Forget the title. Salary bands in machine learning track the judgement required by the work, not years of experience or a label on a contract.",
+      "date": "2026-10-14",
+      "read_min": 5,
+      "tag": "Careers",
+      "color": "a3",
+      "thumb": "assets/blog/ml-engineer-salary-bands-explained.png",
+      "thumb_alt": "Cover image for the article: ML Engineer Salary Bands Explained Through the Work"
+    },
+    {
       "slug": "what-prompt-courses-skip",
       "title": "What a Prompt Engineering Course Should Teach but Skips",
       "excerpt": "Clever phrasing is easy to teach. Rigorous evaluation of prompts, under variance and leakage, is the part courses usually skip.",
