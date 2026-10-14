@@ -9,7 +9,8 @@
       "tag": "Careers",
       "color": "a4",
       "thumb": "assets/blog/entry-level-computer-vision-jobs.png",
-      "thumb_alt": "Cover image for the article: Computer Vision Jobs Decoded: What 'Entry Level' Really Means"
+      "thumb_alt": "Cover image for the article: Computer Vision Jobs Decoded: What 'Entry Level' Really Means",
+      "li_shared": true
     },
     {
       "slug": "ml-engineer-salary-bands-explained",
