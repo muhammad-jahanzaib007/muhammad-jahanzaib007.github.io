@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "evaluate-ml-definitions",
+      "title": "How to Evaluate a Machine Learning Definition Before Trusting It",
+      "excerpt": "A practical checklist for interrogating machine learning definitions before you let them shape your assumptions, your splits, or your conclusions.",
+      "date": "2026-10-15",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a5",
+      "thumb": "assets/blog/evaluate-ml-definitions.png",
+      "thumb_alt": "Cover image for the article: How to Evaluate a Machine Learning Definition Before Trusting It"
+    },
+    {
       "slug": "entry-level-computer-vision-jobs",
       "title": "Computer Vision Jobs Decoded: What 'Entry Level' Really Means",
       "excerpt": "'Entry level' in computer vision postings rarely means beginner. Here is how to decode the requirements and apply with confidence.",

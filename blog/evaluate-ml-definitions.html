@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Evaluate a Machine Learning Definition Before Trusting It | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A concise guide to testing machine learning definitions for precision, operationalisability and hidden assumptions before relying on them in practice.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="machine learning definitions, evaluation methodology, leakage, operational definitions, reproducibility, ML terminology, rigorous ML practice, generalisation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-15">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="How to Evaluate a Machine Learning Definition Before Trusting It">
+<meta property="og:description" content="A concise guide to testing machine learning definitions for precision, operationalisability and hidden assumptions before relying on them in practice.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/evaluate-ml-definitions.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/evaluate-ml-definitions.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Evaluate a Machine Learning Definition Before Trusting It">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/evaluate-ml-definitions.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/evaluate-ml-definitions.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to Evaluate a Machine Learning Definition Before Trusting It",
+  "description": "A concise guide to testing machine learning definitions for precision, operationalisability and hidden assumptions before relying on them in practice.",
+  "url": "https://jahanzaibawan.com/blog/evaluate-ml-definitions.html",
+  "image": "https://jahanzaibawan.com/assets/blog/evaluate-ml-definitions.png",
+  "datePublished": "2026-10-15",
+  "dateModified": "2026-10-15",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/evaluate-ml-definitions.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "How to Evaluate a Machine Learning Definition Before Trusting It", "item": "https://jahanzaibawan.com/blog/evaluate-ml-definitions.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 15 Oct 2026</div>
+    <h1>How to Evaluate a Machine Learning Definition Before Trusting It</h1>
+    <p class="lede">Not every definition you read in a paper, blog post or textbook deserves equal trust. Here is a short checklist I use before I let a definition shape my thinking.</p>
+  </div>
+
+  <img src="../assets/blog/evaluate-ml-definitions.png" alt="Cover image for the article: How to Evaluate a Machine Learning Definition Before Trusting It" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this matters more than it looks</h2><p>Machine learning is unusually generous with vague definitions that sound rigorous. Terms like <strong>generalisation</strong>, <strong>overfitting</strong>, <strong>robustness</strong> or <strong>interpretability</strong> get used constantly, often with a confident one-sentence gloss that nobody questions. The trouble is that a definition which sounds precise can still be operationally empty: it tells you what the word means in principle but gives you no way to measure it, and no way to know when it has been violated.</p><p>I care about this because the definitions we accept quietly become the assumptions baked into our experiments. If I define generalisation as "performing well on unseen data" and leave it there, I have not actually told myself what counts as unseen, over what distribution, or measured by which metric. Those gaps are where leakage, cherry-picked splits and overstated claims creep in. A sloppy definition does not just mislead you in conversation; it can quietly corrupt an evaluation pipeline for months before anyone notices the gap between what was claimed and what was measured.</p><p>So before I let a definition into my mental toolkit, let alone into a report or a model card, I run it through a small set of questions. None of them are exotic. They are the kind of questions a careful reviewer asks, and the kind I wish I had asked myself earlier in my own work.</p></section><section class='psec reveal'><h2>Is it operational, or just descriptive</h2><p>The first test is whether the definition tells you what to measure, not just what to imagine. Take "a model generalises well if it performs similarly on training and test data." That sounds operational, but it hides a question: similarly according to what tolerance, and on what test set? If the test set was constructed by randomly shuffling rows from the same time period and the same users as the training set, then "similar performance" might just mean the leakage is doing its job, not that the model has learned anything transferable.</p><p>A better operational version specifies the split protocol explicitly: for example, training on data up to a fixed date and testing only on data collected afterwards, with no shared entities between the two sets. Suppose a model scores 91 percent accuracy on a random split and 74 percent on a strictly time-based split with disjoint users. Both numbers are true, but only one of them tells you anything about generalisation in the sense most people actually care about, which is performance on genuinely new, future cases. The definition that does not specify the split protocol cannot distinguish between these two very different stories.</p><p>This is why I treat "define your test conditions in the same sentence as your term" as a non-negotiable rule. A definition of robustness that does not say robust to what, measured how, is not yet a definition; it is a placeholder for one.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/evaluate-ml-definitions-1.jpg' alt='whiteboard with equations' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Does it survive a concrete counterexample</h2><p>The second test is to try to break the definition with a specific, realistic scenario rather than an abstract one. Take "interpretability means a human can understand why the model made a decision." Apply this to a decision tree with four thousand leaves and a depth of thirty. Technically every split is a simple threshold rule, so by a shallow reading the tree is interpretable. In practice, no human is tracing four thousand branching paths to explain a single prediction, so the definition, as stated, lets something through that nobody would actually call interpretable in the way the word is meant to be used.</p><p>Running this kind of stress test quickly exposes whether a definition is doing real work or just restating the obvious case. A definition of fairness that only mentions equal overall accuracy across two groups will pass for a model that is 95 percent accurate on one group and 95 percent accurate on another purely by averaging out large errors on different subpopulations within each group. The counterexample does not need to be contrived or dramatic; it just needs to be plausible enough that you can imagine encountering it in an actual dataset.</p><p>I find it useful to write the counterexample down rather than just picturing it, because vague mental objections tend to evaporate, while a written scenario with rough numbers forces you to check whether the definition actually handles it or quietly assumes it away.</p></section><section class='psec reveal'><h2>A short checklist, and the practical payoff</h2><p>Putting this together, I ask four questions of any definition before I rely on it: does it specify a measurable procedure rather than a vague property; does it state the conditions under which it was validated, such as the data split or the population; does it survive a concrete counterexample rather than only the textbook case; and does it distinguish between two situations that intuitively feel different, such as leakage-inflated accuracy versus genuine out-of-distribution performance.</p><p>The payoff for doing this is not academic tidiness, it is avoiding wasted months. A definition of generalisation that silently permits temporal leakage will let a weak model look strong right up until it is deployed on genuinely future data, at which point the gap between reported and real performance becomes someone else's expensive problem. Catching the loose definition early, at the point where you first write it down or read it in a paper, is far cheaper than catching it after the model has shipped.</p><p>None of this requires new theory. It requires treating every definition in machine learning the way I would treat an unfamiliar function in someone else's codebase: read the signature, check the preconditions, and try at least one input designed to break it before trusting the output.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/evaluate-ml-definitions-2.jpg' alt='researcher reviewing data charts' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

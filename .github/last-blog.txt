@@ -1,1 +1,1 @@
-2026-10-14T20:01:49Z slug=entry-level-computer-vision-jobs words=986 title="Computer Vision Jobs Decoded: What 'Entry Level' Really Means"
+2026-10-15T08:01:38Z slug=evaluate-ml-definitions words=934 title="How to Evaluate a Machine Learning Definition Before Trusting It"

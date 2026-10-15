@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Wed, 14 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 15 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>How to Evaluate a Machine Learning Definition Before Trusting It</title>
+    <link>https://jahanzaibawan.com/blog/evaluate-ml-definitions.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/evaluate-ml-definitions.html</guid>
+    <pubDate>Thu, 15 Oct 2026 09:00:00 +0000</pubDate>
+    <description>A practical checklist for interrogating machine learning definitions before you let them shape your assumptions, your splits, or your conclusions.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Computer Vision Jobs Decoded: What &#x27;Entry Level&#x27; Really Means</title>
     <link>https://jahanzaibawan.com/blog/entry-level-computer-vision-jobs.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/context-engineering-vs-prompt-engineering.html</guid>
     <pubDate>Mon, 05 Oct 2026 09:00:00 +0000</pubDate>
     <description>Prompt wording still matters, but the real leverage moved to what you retrieve, structure, and feed a model before it answers.</description>
-    <category>NLP</category>
-  </item>
-  <item>
-    <title>Choosing a First NLP Project That Actually Teaches You Something</title>
-    <link>https://jahanzaibawan.com/blog/first-nlp-project-choice.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/first-nlp-project-choice.html</guid>
-    <pubDate>Mon, 05 Oct 2026 09:00:00 +0000</pubDate>
-    <description>Skip the chatbot clone. A simple classifier, built with care, teaches tokenisation, embeddings, and evaluation far better.</description>
     <category>NLP</category>
   </item>
 </channel>
