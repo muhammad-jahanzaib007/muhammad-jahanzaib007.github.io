@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a5",
       "thumb": "assets/blog/evaluate-ml-definitions.png",
-      "thumb_alt": "Cover image for the article: How to Evaluate a Machine Learning Definition Before Trusting It"
+      "thumb_alt": "Cover image for the article: How to Evaluate a Machine Learning Definition Before Trusting It",
+      "li_shared": true
     },
     {
       "slug": "entry-level-computer-vision-jobs",
