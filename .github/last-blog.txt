@@ -1,1 +1,1 @@
-2026-10-15T08:01:38Z slug=evaluate-ml-definitions words=934 title="How to Evaluate a Machine Learning Definition Before Trusting It"
+2026-10-15T20:01:43Z slug=structuring-a-prompt-from-scratch words=1153 title="Prompt Engineering Guide: Structuring One Prompt from Scratch"

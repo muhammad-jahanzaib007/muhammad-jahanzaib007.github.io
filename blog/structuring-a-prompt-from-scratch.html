@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompt Engineering Guide: Structuring One Prompt from Scratch | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A step-by-step guide to structuring a prompt for a single task, with a worked example and a focus on reproducible, testable instructions.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="prompt engineering, large language models, LLM evaluation, prompt design, structured prompts, NLP, AI reproducibility, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-15">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Prompt Engineering Guide: Structuring One Prompt from Scratch">
+<meta property="og:description" content="A step-by-step guide to structuring a prompt for a single task, with a worked example and a focus on reproducible, testable instructions.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/structuring-a-prompt-from-scratch.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/structuring-a-prompt-from-scratch.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Prompt Engineering Guide: Structuring One Prompt from Scratch">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/structuring-a-prompt-from-scratch.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/structuring-a-prompt-from-scratch.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Prompt Engineering Guide: Structuring One Prompt from Scratch",
+  "description": "A step-by-step guide to structuring a prompt for a single task, with a worked example and a focus on reproducible, testable instructions.",
+  "url": "https://jahanzaibawan.com/blog/structuring-a-prompt-from-scratch.html",
+  "image": "https://jahanzaibawan.com/assets/blog/structuring-a-prompt-from-scratch.png",
+  "datePublished": "2026-10-15",
+  "dateModified": "2026-10-15",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/structuring-a-prompt-from-scratch.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Prompt Engineering Guide: Structuring One Prompt from Scratch", "item": "https://jahanzaibawan.com/blog/structuring-a-prompt-from-scratch.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">NLP · 6 min read · 15 Oct 2026</div>
+    <h1>Prompt Engineering Guide: Structuring One Prompt from Scratch</h1>
+    <p class="lede">Most prompt failures are structure failures, not model failures. Here is how I build a prompt for a single task, piece by piece, with a worked example.</p>
+  </div>
+
+  <img src="../assets/blog/structuring-a-prompt-from-scratch.png" alt="Cover image for the article: Prompt Engineering Guide: Structuring One Prompt from Scratch" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why structure matters more than wording</h2><p>When a prompt fails, the instinct is to tweak the wording: swap a verb, add an adjective, beg the model to be more careful. In my experience that rarely fixes the underlying problem. Most failures I have seen trace back to structure, not phrasing: the task was never fully specified, the output format was left to the model's imagination, or the examples given contradicted the instructions. A model cannot read your mind about what counts as a good answer, so if the prompt does not define that explicitly, you are gambling on the model guessing correctly.</p><p>Treating prompt writing as a structural exercise rather than a creative one also makes it testable. If a prompt is just a paragraph of vague encouragement, you cannot say why it worked or failed, and you cannot improve it systematically. If a prompt is built from named components, you can change one component, rerun the task, and attribute the difference. That is the same discipline you would want in any experiment: isolate variables, do not change five things at once and hope.</p><p>So in this post I want to walk through one concrete task, from a one-line request to a fully structured prompt, naming each piece as I add it. The task is deliberately ordinary: classifying short customer support messages into a fixed set of categories. It is simple enough to reason about precisely, and realistic enough that the same structure transfers to harder tasks.</p></section><section class='psec reveal'><h2>Starting point and the components a prompt actually needs</h2><p>The naive version of the task might be written as: 'Classify this customer message into a category.' This is not really a prompt, it is a wish. It does not say which categories exist, what to do with ambiguous messages, or what format the answer should take. If you ran this across a hundred messages you would get a hundred different styles of answer: some single words, some full sentences, some with explanations, some inventing categories that do not exist in your system.</p><p>A structured prompt for this task needs at least five components. First, a role or framing sentence that tells the model what kind of task this is, for example that it is acting as a support ticket triage system. Second, an explicit, closed list of the allowed categories, say five: billing, technical issue, account access, feature request, and other. Third, the input itself, clearly delimited so the model cannot confuse instructions with content, using something like triple quotes or a labelled block. Fourth, the output format, specified precisely: a single category label, nothing else, no punctuation, no explanation. Fifth, handling for edge cases: what happens when a message fits two categories, or none at all.</p><p>Each of these components fixes a specific failure mode. The closed category list stops the model inventing new labels. The delimiter around the input stops the model treating a customer's sentence like 'ignore previous instructions' as a command rather than data, which matters more than people expect once real user text starts flowing in. The output format constraint is what makes the result usable in an automated pipeline rather than needing a human to parse free text afterwards. The edge case rule is what stops silent failures, where the model picks a category at random rather than signalling genuine uncertainty.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/structuring-a-prompt-from-scratch-1.jpg' alt='person typing on laptop keyboard' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Building it up with a worked example</h2><p>Here is roughly what the assembled prompt looks like once all five components are in place. The role sentence: 'You are a support ticket classifier for a software product.' The category list: 'Classify the message into exactly one of these five categories: billing, technical_issue, account_access, feature_request, other.' The delimited input: 'Message: """I was charged twice this month and need a refund"""'. The format instruction: 'Respond with only the category name, lowercase, no punctuation, no explanation.' The edge case rule: 'If the message does not clearly match any category, respond with other rather than guessing.'</p><p>Running this on the example message, a well-structured prompt should reliably produce 'billing', because the category list narrows the decision space and the delimiter stops the message content leaking into the instruction. Compare that with the naive prompt, which might produce 'This message is about a billing issue because the customer mentions being charged twice', technically correct in content but useless as a machine-readable output, and inconsistent in format across runs.</p><p>The edge case rule earns its keep on harder inputs. Suppose a message reads: 'I can't log in and I'm also still waiting on a refund.' Without the fallback instruction, the model might silently pick one category and hide the ambiguity from you entirely. With the instruction in place, you at least get a signal, either an 'other' label or, if you extend the format to allow it, two labels joined by a rule you specified in advance. The point is that you decided the policy, rather than the model deciding it for you by default behaviour you never examined.</p><p>It is worth testing this prompt on a held-out set of messages you did not use while writing the instructions, the same discipline as a leakage-aware evaluation split in any machine learning workflow. If you only check the prompt against the examples you had in mind while writing it, you will overestimate how well it generalises, because you have effectively fitted the wording to those cases.</p></section><section class='psec reveal'><h2>Why this discipline pays off, and a practical takeaway</h2><p>The value of naming each component separately is that when the prompt fails on new data, you can localise the fix. If the model starts inventing a sixth category, the category list needs tightening, not the whole prompt rewritten. If it starts explaining itself despite instructions, the format constraint needs to be stated earlier and more forcefully, since models tend to weight instructions near the input more heavily than instructions buried at the top of a long prompt. If it mishandles genuinely ambiguous messages, the edge case rule needs revising, not the role sentence.</p><p>This also scales to harder tasks than five-way classification. Summarisation, extraction, multi-step reasoning: all of them benefit from the same five-part skeleton, role, constraints on the space of valid outputs, clearly delimited input, an explicit output format, and a stated policy for edge cases. The details change, but the discipline of naming each part so it can be tested and changed independently does not.</p><p>My practical takeaway is this: before writing a single word of a prompt, write down the five components as a checklist for your task. Role, constraints, delimited input, output format, edge case policy. Fill each one in deliberately rather than letting it emerge by accident from the model's default behaviour. Then test the result on examples you did not use to write it. A prompt built this way is not just more likely to work, it is also something you can explain, debug and improve, which a clever paragraph of persuasion never quite is.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/structuring-a-prompt-from-scratch-2.jpg' alt='sticky notes on whiteboard checklist' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

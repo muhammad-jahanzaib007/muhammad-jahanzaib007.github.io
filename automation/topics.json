@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Prompt engineering guide: structuring a prompt from scratch on one task",
     "Data science degree versus data science minor: what each actually prepares you for",
     "The machine learning algorithms you should understand before touching a library",
     "Computer vision models explained from pixels to predictions, on one small example",
@@ -231,6 +230,7 @@
     "What a prompt engineering course should teach but often skips",
     "Machine learning engineer salary bands explained through the work, not the title",
     "Computer vision jobs decoded: what the posting means by entry level",
-    "How to evaluate a machine learning definition before you trust it"
+    "How to evaluate a machine learning definition before you trust it",
+    "Prompt engineering guide: structuring a prompt from scratch on one task"
   ]
 }

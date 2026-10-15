@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Thu, 15 Oct 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Prompt Engineering Guide: Structuring One Prompt from Scratch</title>
+    <link>https://jahanzaibawan.com/blog/structuring-a-prompt-from-scratch.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/structuring-a-prompt-from-scratch.html</guid>
+    <pubDate>Thu, 15 Oct 2026 09:00:00 +0000</pubDate>
+    <description>A practical walkthrough of building one prompt from a vague task to a reliable, testable instruction set.</description>
+    <category>NLP</category>
+  </item>
+  <item>
     <title>How to Evaluate a Machine Learning Definition Before Trusting It</title>
     <link>https://jahanzaibawan.com/blog/evaluate-ml-definitions.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/evaluate-ml-definitions.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Tue, 06 Oct 2026 09:00:00 +0000</pubDate>
     <description>Models that predict cellular response to gene perturbations look impressive until you check the splits. The lessons generalise far beyond biology.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Context Engineering Versus Prompt Engineering: What Changed</title>
-    <link>https://jahanzaibawan.com/blog/context-engineering-vs-prompt-engineering.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/context-engineering-vs-prompt-engineering.html</guid>
-    <pubDate>Mon, 05 Oct 2026 09:00:00 +0000</pubDate>
-    <description>Prompt wording still matters, but the real leverage moved to what you retrieve, structure, and feed a model before it answers.</description>
-    <category>NLP</category>
   </item>
 </channel>
 </rss>

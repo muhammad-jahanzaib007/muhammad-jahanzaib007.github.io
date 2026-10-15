@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "structuring-a-prompt-from-scratch",
+      "title": "Prompt Engineering Guide: Structuring One Prompt from Scratch",
+      "excerpt": "A practical walkthrough of building one prompt from a vague task to a reliable, testable instruction set.",
+      "date": "2026-10-15",
+      "read_min": 6,
+      "tag": "NLP",
+      "color": "a6",
+      "thumb": "assets/blog/structuring-a-prompt-from-scratch.png",
+      "thumb_alt": "Cover image for the article: Prompt Engineering Guide: Structuring One Prompt from Scratch"
+    },
+    {
       "slug": "evaluate-ml-definitions",
       "title": "How to Evaluate a Machine Learning Definition Before Trusting It",
       "excerpt": "A practical checklist for interrogating machine learning definitions before you let them shape your assumptions, your splits, or your conclusions.",
