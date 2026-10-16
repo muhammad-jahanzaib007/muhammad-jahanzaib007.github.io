@@ -1,1 +1,1 @@
-2026-10-15T20:01:43Z slug=structuring-a-prompt-from-scratch words=1153 title="Prompt Engineering Guide: Structuring One Prompt from Scratch"
+2026-10-16T08:02:09Z slug=degree-versus-minor-data-science words=1189 title="Data Science Degree Versus Minor: What Each Prepares You For"

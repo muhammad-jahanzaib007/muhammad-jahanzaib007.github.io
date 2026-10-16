@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "degree-versus-minor-data-science",
+      "title": "Data Science Degree Versus Minor: What Each Prepares You For",
+      "excerpt": "A degree builds the judgement to design a pipeline from scratch; a minor builds the fluency to use one well. Neither is a shortcut to the other.",
+      "date": "2026-10-16",
+      "read_min": 6,
+      "tag": "Careers",
+      "color": "a2",
+      "thumb": "assets/blog/degree-versus-minor-data-science.png",
+      "thumb_alt": "Cover image for the article: Data Science Degree Versus Minor: What Each Prepares You For"
+    },
+    {
       "slug": "structuring-a-prompt-from-scratch",
       "title": "Prompt Engineering Guide: Structuring One Prompt from Scratch",
       "excerpt": "A practical walkthrough of building one prompt from a vague task to a reliable, testable instruction set.",

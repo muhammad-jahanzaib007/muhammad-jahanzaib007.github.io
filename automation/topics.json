@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Data science degree versus data science minor: what each actually prepares you for",
     "The machine learning algorithms you should understand before touching a library",
     "Computer vision models explained from pixels to predictions, on one small example",
     "Prompt engineering certification versus a portfolio: which one a hiring manager checks",
@@ -231,6 +230,7 @@
     "Machine learning engineer salary bands explained through the work, not the title",
     "Computer vision jobs decoded: what the posting means by entry level",
     "How to evaluate a machine learning definition before you trust it",
-    "Prompt engineering guide: structuring a prompt from scratch on one task"
+    "Prompt engineering guide: structuring a prompt from scratch on one task",
+    "Data science degree versus data science minor: what each actually prepares you for"
   ]
 }

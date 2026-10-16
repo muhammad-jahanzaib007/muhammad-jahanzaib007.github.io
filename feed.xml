@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Thu, 15 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 16 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Data Science Degree Versus Minor: What Each Prepares You For</title>
+    <link>https://jahanzaibawan.com/blog/degree-versus-minor-data-science.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/degree-versus-minor-data-science.html</guid>
+    <pubDate>Fri, 16 Oct 2026 09:00:00 +0000</pubDate>
+    <description>A degree builds the judgement to design a pipeline from scratch; a minor builds the fluency to use one well. Neither is a shortcut to the other.</description>
+    <category>Careers</category>
+  </item>
   <item>
     <title>Prompt Engineering Guide: Structuring One Prompt from Scratch</title>
     <link>https://jahanzaibawan.com/blog/structuring-a-prompt-from-scratch.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Tue, 06 Oct 2026 09:00:00 +0000</pubDate>
     <description>Textbooks all quote similar definitions of machine learning, but look closely and they disagree on what counts as learning, generalisation, and experience.</description>
     <category>Foundations</category>
-  </item>
-  <item>
-    <title>What Genetic Perturbation Models Teach Us About Deep Learning</title>
-    <link>https://jahanzaibawan.com/blog/genetic-perturbation-models-deep-learning.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/genetic-perturbation-models-deep-learning.html</guid>
-    <pubDate>Tue, 06 Oct 2026 09:00:00 +0000</pubDate>
-    <description>Models that predict cellular response to gene perturbations look impressive until you check the splits. The lessons generalise far beyond biology.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>
