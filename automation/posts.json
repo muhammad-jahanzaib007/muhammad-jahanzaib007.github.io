@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "algorithms-before-the-library",
+      "title": "The ML Algorithms You Should Understand Before Any Library",
+      "excerpt": "Before you import scikit-learn or PyTorch, understand linear models, trees, and gradient descent by hand. It changes how you debug.",
+      "date": "2026-10-16",
+      "read_min": 5,
+      "tag": "Fundamentals",
+      "color": "a3",
+      "thumb": "assets/blog/algorithms-before-the-library.png",
+      "thumb_alt": "Cover image for the article: The ML Algorithms You Should Understand Before Any Library"
+    },
+    {
       "slug": "degree-versus-minor-data-science",
       "title": "Data Science Degree Versus Minor: What Each Prepares You For",
       "excerpt": "A degree builds the judgement to design a pipeline from scratch; a minor builds the fluency to use one well. Neither is a shortcut to the other.",

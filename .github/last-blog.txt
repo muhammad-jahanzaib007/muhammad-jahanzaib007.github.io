@@ -1,1 +1,1 @@
-2026-10-16T08:02:09Z slug=degree-versus-minor-data-science words=1189 title="Data Science Degree Versus Minor: What Each Prepares You For"
+2026-10-16T20:02:04Z slug=algorithms-before-the-library words=1008 title="The ML Algorithms You Should Understand Before Any Library"

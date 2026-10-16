@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Fri, 16 Oct 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>The ML Algorithms You Should Understand Before Any Library</title>
+    <link>https://jahanzaibawan.com/blog/algorithms-before-the-library.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/algorithms-before-the-library.html</guid>
+    <pubDate>Fri, 16 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Before you import scikit-learn or PyTorch, understand linear models, trees, and gradient descent by hand. It changes how you debug.</description>
+    <category>Fundamentals</category>
+  </item>
+  <item>
     <title>Data Science Degree Versus Minor: What Each Prepares You For</title>
     <link>https://jahanzaibawan.com/blog/degree-versus-minor-data-science.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/degree-versus-minor-data-science.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Wed, 07 Oct 2026 09:00:00 +0000</pubDate>
     <description>Transformers aside, the Deep Learning textbook still explains the foundations, regularisation, and optimisation better than most modern alternatives.</description>
     <category>Deep Learning</category>
-  </item>
-  <item>
-    <title>Machine Learning Definitions Compared: The Quiet Disagreements</title>
-    <link>https://jahanzaibawan.com/blog/ml-definitions-textbooks-disagree.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/ml-definitions-textbooks-disagree.html</guid>
-    <pubDate>Tue, 06 Oct 2026 09:00:00 +0000</pubDate>
-    <description>Textbooks all quote similar definitions of machine learning, but look closely and they disagree on what counts as learning, generalisation, and experience.</description>
-    <category>Foundations</category>
   </item>
 </channel>
 </rss>

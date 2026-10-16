@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The ML Algorithms You Should Understand Before Any Library | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why understanding linear regression, decision trees, and gradient descent from first principles matters more than knowing library syntax.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="machine learning basics, linear regression, decision trees, gradient descent, model evaluation, ML fundamentals, overfitting, bias variance, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="The ML Algorithms You Should Understand Before Any Library">
+<meta property="og:description" content="Why understanding linear regression, decision trees, and gradient descent from first principles matters more than knowing library syntax.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/algorithms-before-the-library.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/algorithms-before-the-library.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The ML Algorithms You Should Understand Before Any Library">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/algorithms-before-the-library.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/algorithms-before-the-library.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The ML Algorithms You Should Understand Before Any Library",
+  "description": "Why understanding linear regression, decision trees, and gradient descent from first principles matters more than knowing library syntax.",
+  "url": "https://jahanzaibawan.com/blog/algorithms-before-the-library.html",
+  "image": "https://jahanzaibawan.com/assets/blog/algorithms-before-the-library.png",
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/algorithms-before-the-library.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "The ML Algorithms You Should Understand Before Any Library", "item": "https://jahanzaibawan.com/blog/algorithms-before-the-library.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Fundamentals · 5 min read · 16 Oct 2026</div>
+    <h1>The ML Algorithms You Should Understand Before Any Library</h1>
+    <p class="lede">Calling model.fit() is easy. Knowing what it is doing underneath is what separates a practitioner from someone who got lucky once.</p>
+  </div>
+
+  <img src="../assets/blog/algorithms-before-the-library.png" alt="Cover image for the article: The ML Algorithms You Should Understand Before Any Library" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the library is not the lesson</h2><p>It has never been easier to type <em>from sklearn import something</em> and get a number back. That number might even be a good one. The trouble is that a working call tells you nothing about why it worked, and the first time your data shifts slightly, or a colleague asks why you chose that model, the library will not answer for you. I think the gap between people who can run machine learning and people who understand it comes down to a handful of ideas that predate every modern framework by decades.</p><p>None of these ideas require advanced mathematics to grasp at an intuitive level. What they require is sitting with a small, honest example until the mechanics click. I would rather spend an afternoon fitting a line by hand on fifteen points than spend a week tuning hyperparameters on a model I do not understand. The former teaches transferable intuition; the latter teaches you the quirks of one API.</p></section><section class='psec reveal'><h2>Linear regression: the model that teaches you loss</h2><p>Linear regression looks almost too simple to matter, which is exactly why it is the right place to start. Suppose you are predicting house price from floor area using ten houses. You draw a line through the scatter of points. The vertical distance between each point and the line is the error for that house. Square each error and add them up, and you have the sum of squared errors, the quantity linear regression is built to minimise.</p><p>Say your line predicts £210,000 for a house that actually sold for £230,000. That is a £20,000 error, and squaring it gives 400,000,000, a number dominated far more by large misses than small ones. This is the whole point: squared loss punishes big mistakes disproportionately, which is why a single wildly mispriced house can drag your whole line towards it. Understand that one property and you understand why linear regression is sensitive to outliers long before you read the word in a textbook.</p><p>Once you have fitted that line by trial and error, or with the closed-form normal equation, you have also learned what a loss function is, what a parameter is, and what it means to optimise. Every neural network, every gradient boosted tree, every logistic classifier is doing some version of this same thing: defining a number that measures wrongness and then searching for parameters that make it smaller. Linear regression is the clearest possible window into that idea because there is nowhere for the mechanism to hide.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/algorithms-before-the-library-1.jpg' alt='handwritten graph with line of best fit' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Gradient descent: how models actually learn</h2><p>Most people encounter gradient descent as an abstract diagram of a ball rolling downhill into a bowl. The intuition is correct, but it only becomes useful once you have watched it happen with real numbers. Imagine you are trying to find the minimum of a simple loss curve by hand. You start with a guess for your parameter, say a slope of 0.5. You compute the gradient, the direction of steepest increase, and step a small amount in the opposite direction. If the gradient is 4 and your learning rate is 0.01, you move the parameter by 0.04.</p><p>Do this badly and you will learn more than doing it well. Set the learning rate to 2 instead of 0.01 and the steps overshoot the minimum, bouncing back and forth and sometimes diverging to infinity. Set it to 0.0001 and the model crawls so slowly that after a thousand steps it has barely moved. This single failure mode, choosing a step size that is too large or too small, explains a huge fraction of the training problems people later encounter in deep learning and blame on the architecture rather than the optimiser settings.</p><p>Once you have manually stepped through a few iterations of gradient descent on a toy function, terms like learning rate schedules, momentum, and convergence stop being magic words in a framework's documentation and become specific, mechanical fixes to specific, mechanical problems. You will recognise a loss curve that is oscillating and know immediately to lower the learning rate, rather than reaching for a different model architecture entirely.</p></section><section class='psec reveal'><h2>Decision trees and the bias-variance trade-off</h2><p>Decision trees matter for a different reason: they are the clearest demonstration of overfitting you will ever see. Give a tree ten training examples and let it grow without restriction, and it will create a leaf for nearly every example, achieving close to perfect accuracy on data it has already seen. Ask it to predict an eleventh example it has never encountered and its accuracy can collapse, because it has memorised noise rather than learned a pattern.</p><p>Now limit the tree to a maximum depth of two or three splits. Training accuracy drops, perhaps from 100 percent to 85 percent, but accuracy on new, unseen examples often rises, because the tree is now capturing genuine structure rather than coincidence. This is the bias-variance trade-off made visible: a deep tree has low bias and high variance, a shallow tree has higher bias but lower variance, and somewhere between the two extremes lies the depth that generalises best for your particular data.</p><p>This is also where the discipline of proper evaluation becomes unavoidable. If you only ever check training accuracy, an unrestricted tree looks like the best model every time, which is precisely wrong. You need a held-out test set, or better, cross-validation, to see the collapse in performance that overfitting causes. Anyone who has watched this happen with a tree, where the fix is as simple as a depth parameter, will instinctively distrust a complex model that reports suspiciously perfect training results, no matter what library produced it.</p><p>The practical takeaway is simple. Before reaching for a library's most advanced model, fit a line by hand, step through gradient descent on paper, and grow an unrestricted tree just to watch it overfit. These exercises cost an afternoon and they give you the vocabulary and the instincts to debug every model you will ever train, long after the specific library syntax has been forgotten or replaced.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/algorithms-before-the-library-2.jpg' alt='wooden decision tree diagram on whiteboard' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

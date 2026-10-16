@@ -1,11 +1,24 @@
 {
   "queue": [
-    "The machine learning algorithms you should understand before touching a library",
     "Computer vision models explained from pixels to predictions, on one small example",
     "Prompt engineering certification versus a portfolio: which one a hiring manager checks",
     "What a data science internship should teach you that a course cannot",
     "Machine learning course syllabi compared: what maps to an actual job",
-    "Computer vision in five years: evergreen skills that will not go stale"
+    "Computer vision in five years: evergreen skills that will not go stale",
+    "What counts as a large language model: definitions, confusion, and the wiki version",
+    "Model evaluation versus threat research: what organisations like METR actually test",
+    "Data science versus data analytics: a distinction that actually changes the job",
+    "Why LLM wikis and glossaries disagree on basic terms, and how to pick a definition",
+    "Fine-tuning synonyms: why precise language matters when you describe your method",
+    "How many examples of fine-tuning do you need to understand the general concept",
+    "Data science majors versus minors: what each one actually prepares you for",
+    "Computer vision syndrome and computer vision the field: a naming collision worth clarifying",
+    "Picking a model evaluation technique for the problem you actually have",
+    "What a model evaluation framework hides behind its default settings",
+    "Reading an LLM leaderboard without mistaking rank for capability",
+    "The LLM arena approach to evaluation: pairwise preference versus fixed benchmarks",
+    "Data science certifications mapped against what employers actually screen for",
+    "A plain guide to fine-tuning LLMs: what changes, what stays frozen, and why"
   ],
   "published": [
     "UAV object classification data-leakage case study",
@@ -231,6 +244,7 @@
     "Computer vision jobs decoded: what the posting means by entry level",
     "How to evaluate a machine learning definition before you trust it",
     "Prompt engineering guide: structuring a prompt from scratch on one task",
-    "Data science degree versus data science minor: what each actually prepares you for"
+    "Data science degree versus data science minor: what each actually prepares you for",
+    "The machine learning algorithms you should understand before touching a library"
   ]
 }
