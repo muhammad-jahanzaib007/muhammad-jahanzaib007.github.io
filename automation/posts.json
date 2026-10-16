@@ -9,7 +9,8 @@
       "tag": "Careers",
       "color": "a2",
       "thumb": "assets/blog/degree-versus-minor-data-science.png",
-      "thumb_alt": "Cover image for the article: Data Science Degree Versus Minor: What Each Prepares You For"
+      "thumb_alt": "Cover image for the article: Data Science Degree Versus Minor: What Each Prepares You For",
+      "li_shared": true
     },
     {
       "slug": "structuring-a-prompt-from-scratch",
