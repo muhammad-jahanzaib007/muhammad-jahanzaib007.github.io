@@ -9,7 +9,8 @@
       "tag": "Deep Learning",
       "color": "a4",
       "thumb": "assets/blog/pixels-to-predictions-cv.png",
-      "thumb_alt": "Cover image for the article: Computer Vision From Pixels to Predictions, One Example"
+      "thumb_alt": "Cover image for the article: Computer Vision From Pixels to Predictions, One Example",
+      "li_shared": true
     },
     {
       "slug": "algorithms-before-the-library",
