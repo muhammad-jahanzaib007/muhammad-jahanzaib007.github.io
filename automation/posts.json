@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "certification-versus-prompt-portfolio",
+      "title": "Prompt Engineering Certificate or Portfolio: What Gets Checked",
+      "excerpt": "A certificate proves you sat through a course. A portfolio proves you can ship. Here is what hiring managers actually look at first.",
+      "date": "2026-10-17",
+      "read_min": 5,
+      "tag": "Careers",
+      "color": "a5",
+      "thumb": "assets/blog/certification-versus-prompt-portfolio.png",
+      "thumb_alt": "Cover image for the article: Prompt Engineering Certificate or Portfolio: What Gets Checked"
+    },
+    {
       "slug": "pixels-to-predictions-cv",
       "title": "Computer Vision From Pixels to Predictions, One Example",
       "excerpt": "How a handful of pixel values turns into a confident prediction, traced step by step through one small worked example.",

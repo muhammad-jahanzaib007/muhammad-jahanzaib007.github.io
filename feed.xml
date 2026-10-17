@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Sat, 17 Oct 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Prompt Engineering Certificate or Portfolio: What Gets Checked</title>
+    <link>https://jahanzaibawan.com/blog/certification-versus-prompt-portfolio.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/certification-versus-prompt-portfolio.html</guid>
+    <pubDate>Sat, 17 Oct 2026 09:00:00 +0000</pubDate>
+    <description>A certificate proves you sat through a course. A portfolio proves you can ship. Here is what hiring managers actually look at first.</description>
+    <category>Careers</category>
+  </item>
+  <item>
     <title>Computer Vision From Pixels to Predictions, One Example</title>
     <link>https://jahanzaibawan.com/blog/pixels-to-predictions-cv.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/pixels-to-predictions-cv.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Thu, 08 Oct 2026 09:00:00 +0000</pubDate>
     <description>Fine-tuning can mean full retraining, LoRA-style adaptation, or just prompt steering. Mixing them up wastes compute and muddles your evaluation.</description>
     <category>Deep Learning</category>
-  </item>
-  <item>
-    <title>Fine-Tuning in Cosmology and ML: One Word, Two Claims</title>
-    <link>https://jahanzaibawan.com/blog/fine-tuning-cosmology-vs-ml.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/fine-tuning-cosmology-vs-ml.html</guid>
-    <pubDate>Wed, 07 Oct 2026 09:00:00 +0000</pubDate>
-    <description>The word &#x27;fine-tuning&#x27; means something precise in cosmology and something else entirely in ML. Mixing them up leads to sloppy arguments on both sides.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>
