@@ -9,7 +9,8 @@
       "tag": "Careers",
       "color": "a5",
       "thumb": "assets/blog/certification-versus-prompt-portfolio.png",
-      "thumb_alt": "Cover image for the article: Prompt Engineering Certificate or Portfolio: What Gets Checked"
+      "thumb_alt": "Cover image for the article: Prompt Engineering Certificate or Portfolio: What Gets Checked",
+      "li_shared": true
     },
     {
       "slug": "pixels-to-predictions-cv",
