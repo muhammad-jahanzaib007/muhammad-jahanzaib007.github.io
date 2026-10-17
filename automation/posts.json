@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "pixels-to-predictions-cv",
+      "title": "Computer Vision From Pixels to Predictions, One Example",
+      "excerpt": "How a handful of pixel values turns into a confident prediction, traced step by step through one small worked example.",
+      "date": "2026-10-17",
+      "read_min": 6,
+      "tag": "Deep Learning",
+      "color": "a4",
+      "thumb": "assets/blog/pixels-to-predictions-cv.png",
+      "thumb_alt": "Cover image for the article: Computer Vision From Pixels to Predictions, One Example"
+    },
+    {
       "slug": "algorithms-before-the-library",
       "title": "The ML Algorithms You Should Understand Before Any Library",
       "excerpt": "Before you import scikit-learn or PyTorch, understand linear models, trees, and gradient descent by hand. It changes how you debug.",

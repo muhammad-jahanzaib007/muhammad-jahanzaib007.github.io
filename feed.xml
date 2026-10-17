@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Fri, 16 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 17 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Computer Vision From Pixels to Predictions, One Example</title>
+    <link>https://jahanzaibawan.com/blog/pixels-to-predictions-cv.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/pixels-to-predictions-cv.html</guid>
+    <pubDate>Sat, 17 Oct 2026 09:00:00 +0000</pubDate>
+    <description>How a handful of pixel values turns into a confident prediction, traced step by step through one small worked example.</description>
+    <category>Deep Learning</category>
+  </item>
   <item>
     <title>The ML Algorithms You Should Understand Before Any Library</title>
     <link>https://jahanzaibawan.com/blog/algorithms-before-the-library.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Wed, 07 Oct 2026 09:00:00 +0000</pubDate>
     <description>The word &#x27;fine-tuning&#x27; means something precise in cosmology and something else entirely in ML. Mixing them up leads to sloppy arguments on both sides.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Deep Learning Textbooks Compared: Goodfellow Revisited</title>
-    <link>https://jahanzaibawan.com/blog/what-goodfellow-still-gets-right.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/what-goodfellow-still-gets-right.html</guid>
-    <pubDate>Wed, 07 Oct 2026 09:00:00 +0000</pubDate>
-    <description>Transformers aside, the Deep Learning textbook still explains the foundations, regularisation, and optimisation better than most modern alternatives.</description>
-    <category>Deep Learning</category>
   </item>
 </channel>
 </rss>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Computer Vision From Pixels to Predictions, One Example | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A clear, worked walkthrough of how computer vision models turn raw pixel values into predictions, using one small concrete example.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="computer vision, convolutional neural networks, image classification, feature maps, pixels, deep learning, model interpretability, CNN explained, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-17">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Computer Vision From Pixels to Predictions, One Example">
+<meta property="og:description" content="A clear, worked walkthrough of how computer vision models turn raw pixel values into predictions, using one small concrete example.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/pixels-to-predictions-cv.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/pixels-to-predictions-cv.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Computer Vision From Pixels to Predictions, One Example">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/pixels-to-predictions-cv.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/pixels-to-predictions-cv.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Computer Vision From Pixels to Predictions, One Example",
+  "description": "A clear, worked walkthrough of how computer vision models turn raw pixel values into predictions, using one small concrete example.",
+  "url": "https://jahanzaibawan.com/blog/pixels-to-predictions-cv.html",
+  "image": "https://jahanzaibawan.com/assets/blog/pixels-to-predictions-cv.png",
+  "datePublished": "2026-10-17",
+  "dateModified": "2026-10-17",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/pixels-to-predictions-cv.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Computer Vision From Pixels to Predictions, One Example", "item": "https://jahanzaibawan.com/blog/pixels-to-predictions-cv.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Deep Learning · 6 min read · 17 Oct 2026</div>
+    <h1>Computer Vision From Pixels to Predictions, One Example</h1>
+    <p class="lede">A small grid of numbers becomes a decision. Here is the whole journey a convolutional network takes, worked through with one tiny image.</p>
+  </div>
+
+  <img src="../assets/blog/pixels-to-predictions-cv.png" alt="Cover image for the article: Computer Vision From Pixels to Predictions, One Example" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this is worth slowing down for</h2><p>It is easy to use a computer vision model without ever asking what happens between the image going in and the label coming out. You load a pretrained network, fine-tune it on your dataset, watch accuracy climb, and move on. That workflow is fine for getting results, but it leaves a gap in understanding that eventually costs you, usually at the point where the model fails in a way you cannot explain.</p><p>I think the gap closes fastest with a tiny, concrete example rather than a diagram of a famous architecture. So here is one: a six by six grayscale image of a rough diagonal line, each pixel a number from 0 (black) to 255 (white). The task is binary classification, does the image contain a diagonal line or not. It is a toy problem, but every mechanism that matters in a full-scale vision model is present in miniature.</p><p>Treating the problem this small also forces honesty about what a convolution actually computes, rather than relying on the comforting but vague idea that the network 'learns features'. Once you can trace the arithmetic by hand for one patch of pixels, the behaviour of much larger networks stops feeling mysterious.</p></section><section class='psec reveal'><h2>From a grid of numbers to a feature map</h2><p>Start with the raw input: thirty-six numbers arranged in a six by six grid. A convolutional layer slides a small filter, say three by three, across this grid. Suppose the filter has been trained to detect diagonal edges, with high positive weights along its own diagonal and negative weights elsewhere. At each position, the filter multiplies its weights against the pixel values underneath it and sums the result, producing a single number.</p><p>Where the filter sits over a patch of pixels that actually contains a diagonal edge, the positive weights line up with bright pixels and the negative weights line up with dark ones, so the sum is large. Where the patch is flat or the edge runs the wrong way, positive and negative contributions cancel and the sum stays near zero. Sliding this filter across the whole image produces a smaller grid, perhaps four by four, called a feature map. Each value in that map answers one narrow question: how strongly does a diagonal edge appear at this location.</p><p>This is the entire trick of convolution: instead of learning a separate rule for every pixel, the network learns one small, reusable pattern detector and applies it everywhere. A single filter with nine weights can describe a property that would otherwise require describing every possible position in the image separately. Stack several filters in one layer and you get several feature maps, each tuned to a different pattern, perhaps vertical edges, corners, or small blobs of contrast.</p><p>After the convolution, a non-linearity such as ReLU is applied, which simply sets any negative value to zero. This matters more than it looks. Without it, stacking multiple convolutional layers would mathematically collapse into one larger linear operation, and the network would never be able to represent anything beyond straight lines through the data. The non-linearity is what lets later layers combine edge detectors into corner detectors, and corner detectors into shape detectors.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/pixels-to-predictions-cv-1.jpg' alt='macro photo of pixelated grayscale image' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Pooling, depth, and the march towards a decision</h2><p>Next comes pooling, typically taking the maximum value within small two by two blocks of the feature map. This shrinks the four by four map down to two by two, keeping only the strongest edge response in each region and discarding exact position. For our diagonal line example, pooling means the network stops caring precisely which pixel the edge passed through and starts caring that a strong diagonal response occurred somewhere in that region. This is a deliberate trade: a little spatial precision is given up in exchange for robustness, so that the line being shifted by one or two pixels does not change the outcome.</p><p>In a real network this pattern repeats, convolution, non-linearity, pooling, convolution, non-linearity, pooling, many times over, with the number of filters typically increasing at each stage. Early layers detect edges and simple textures. Middle layers combine these into motifs, curves, corners, repeated patterns. Later layers combine those motifs into parts, and eventually into representations that correspond loosely to whole objects. None of this is programmed explicitly; it falls out of training the filter weights to reduce prediction error on labelled examples.</p><p>Eventually the spatial grid is flattened into a single long vector of numbers, which is fed into one or more fully connected layers. For our toy example, imagine the final pooled map collapses to four numbers, each summarising evidence for a diagonal pattern in one quadrant of the image. A fully connected layer combines these four numbers with learned weights to produce a single score. A sigmoid function squashes that score into a probability, say 0.87, meaning the model is fairly confident a diagonal line is present.</p></section><section class='psec reveal'><h2>What actually makes this trustworthy</h2><p>Understanding the mechanics is only half the job; the other half is knowing how to check the model is doing what you think it is doing. With our diagonal line example, it would be entirely possible for the filters to latch onto something irrelevant, say a slightly brighter corner pixel that happens to correlate with the label in the training set, rather than the diagonal structure itself. On a toy dataset this is obvious once you inspect it, but in a dataset of thousands of real photographs such shortcuts are easy to miss and can quietly inflate accuracy on a test set that shares the same spurious correlation.</p><p>This is why a leakage-aware evaluation split matters more than people expect. If your training and test images come from the same handful of source photographs, or share background and lighting conditions by accident of how the data was collected, a model can appear to generalise well while actually exploiting cues that will not transfer anywhere else. Checking which pixels drive a prediction, through a saliency map or a similar technique, is a cheap and useful habit: if the model is supposedly detecting a diagonal line but the highlighted region is a corner of background noise, that tells you something a validation accuracy number never will.</p><p>The practical takeaway is this: a convolutional network is not a black box so much as a long chain of small, inspectable arithmetic steps, a weighted sum here, a thresholding there, repeated and composed. You do not need to trace every filter in a large model by hand, but you should be able to explain, for at least one input, why the prediction came out the way it did. If you cannot do that for a six by six toy image, you have little hope of trusting the same model on a dataset with millions of real, messy, high-stakes photographs.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/pixels-to-predictions-cv-2.jpg' alt='grid of numbers on paper close up' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
