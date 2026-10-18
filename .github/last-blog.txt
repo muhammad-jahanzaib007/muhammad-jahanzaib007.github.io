@@ -1,1 +1,1 @@
-2026-10-18T08:00:56Z slug=internship-lessons-courses-miss words=964 title="What an Internship Teaches That a Course Cannot"
+2026-10-18T20:00:58Z slug=ml-syllabi-vs-the-job words=1060 title="Machine Learning Syllabi Compared: What Maps to a Job"

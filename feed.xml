@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Sun, 18 Oct 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Machine Learning Syllabi Compared: What Maps to a Job</title>
+    <link>https://jahanzaibawan.com/blog/ml-syllabi-vs-the-job.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/ml-syllabi-vs-the-job.html</guid>
+    <pubDate>Sun, 18 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Most ML courses teach models first and evaluation last. Real jobs run the other way round. Here is where the gap bites.</description>
+    <category>Education</category>
+  </item>
+  <item>
     <title>What an Internship Teaches That a Course Cannot</title>
     <link>https://jahanzaibawan.com/blog/internship-lessons-courses-miss.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/internship-lessons-courses-miss.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Fri, 09 Oct 2026 09:00:00 +0000</pubDate>
     <description>Bigger context windows do not fix bad retrieval. Here is why feeding a model the right information matters more than feeding it more.</description>
     <category>NLP</category>
-  </item>
-  <item>
-    <title>Prompt Engineering Certifications: What They Actually Certify</title>
-    <link>https://jahanzaibawan.com/blog/prompt-engineering-certifications.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/prompt-engineering-certifications.html</guid>
-    <pubDate>Thu, 08 Oct 2026 09:00:00 +0000</pubDate>
-    <description>Most prompt engineering certificates test recall of technique names, not the measurable skill of improving outputs under real constraints.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>
