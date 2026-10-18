@@ -9,7 +9,8 @@
       "tag": "Education",
       "color": "a2",
       "thumb": "assets/blog/ml-syllabi-vs-the-job.png",
-      "thumb_alt": "Cover image for the article: Machine Learning Syllabi Compared: What Maps to a Job"
+      "thumb_alt": "Cover image for the article: Machine Learning Syllabi Compared: What Maps to a Job",
+      "li_shared": true
     },
     {
       "slug": "internship-lessons-courses-miss",
