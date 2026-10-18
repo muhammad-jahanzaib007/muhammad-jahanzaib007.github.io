@@ -9,7 +9,8 @@
       "tag": "Careers",
       "color": "a6",
       "thumb": "assets/blog/internship-lessons-courses-miss.png",
-      "thumb_alt": "Cover image for the article: What an Internship Teaches That a Course Cannot"
+      "thumb_alt": "Cover image for the article: What an Internship Teaches That a Course Cannot",
+      "li_shared": true
     },
     {
       "slug": "certification-versus-prompt-portfolio",
