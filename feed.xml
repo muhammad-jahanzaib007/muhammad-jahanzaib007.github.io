@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Sat, 17 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 18 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>What an Internship Teaches That a Course Cannot</title>
+    <link>https://jahanzaibawan.com/blog/internship-lessons-courses-miss.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/internship-lessons-courses-miss.html</guid>
+    <pubDate>Sun, 18 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Courses optimise for clean data and clean metrics. Internships force you to confront messy data, moving targets, and stakeholders, which is where real skill is built.</description>
+    <category>Careers</category>
+  </item>
   <item>
     <title>Prompt Engineering Certificate or Portfolio: What Gets Checked</title>
     <link>https://jahanzaibawan.com/blog/certification-versus-prompt-portfolio.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Thu, 08 Oct 2026 09:00:00 +0000</pubDate>
     <description>Most prompt engineering certificates test recall of technique names, not the measurable skill of improving outputs under real constraints.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Why &#x27;Fine-Tuning&#x27; Means Three Different Things</title>
-    <link>https://jahanzaibawan.com/blog/fine-tuning-means-three-things.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/fine-tuning-means-three-things.html</guid>
-    <pubDate>Thu, 08 Oct 2026 09:00:00 +0000</pubDate>
-    <description>Fine-tuning can mean full retraining, LoRA-style adaptation, or just prompt steering. Mixing them up wastes compute and muddles your evaluation.</description>
-    <category>Deep Learning</category>
   </item>
 </channel>
 </rss>

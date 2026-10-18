@@ -1,6 +1,5 @@
 {
   "queue": [
-    "What a data science internship should teach you that a course cannot",
     "Machine learning course syllabi compared: what maps to an actual job",
     "Computer vision in five years: evergreen skills that will not go stale",
     "What counts as a large language model: definitions, confusion, and the wiki version",
@@ -245,6 +244,7 @@
     "Data science degree versus data science minor: what each actually prepares you for",
     "The machine learning algorithms you should understand before touching a library",
     "Computer vision models explained from pixels to predictions, on one small example",
-    "Prompt engineering certification versus a portfolio: which one a hiring manager checks"
+    "Prompt engineering certification versus a portfolio: which one a hiring manager checks",
+    "What a data science internship should teach you that a course cannot"
   ]
 }

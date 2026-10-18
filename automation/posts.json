@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "internship-lessons-courses-miss",
+      "title": "What an Internship Teaches That a Course Cannot",
+      "excerpt": "Courses optimise for clean data and clean metrics. Internships force you to confront messy data, moving targets, and stakeholders, which is where real skill is built.",
+      "date": "2026-10-18",
+      "read_min": 5,
+      "tag": "Careers",
+      "color": "a6",
+      "thumb": "assets/blog/internship-lessons-courses-miss.png",
+      "thumb_alt": "Cover image for the article: What an Internship Teaches That a Course Cannot"
+    },
+    {
       "slug": "certification-versus-prompt-portfolio",
       "title": "Prompt Engineering Certificate or Portfolio: What Gets Checked",
       "excerpt": "A certificate proves you sat through a course. A portfolio proves you can ship. Here is what hiring managers actually look at first.",
