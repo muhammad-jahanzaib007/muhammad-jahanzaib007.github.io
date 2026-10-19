@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Counts as a Large Language Model, Really | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A look at the fuzzy definition of large language model, why parameter counts alone do not settle it, and how to think about the term more rigorously.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="large language model, LLM definition, transformer, parameter count, foundation model, NLP terminology, emergent abilities, scaling laws, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-19">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="What Counts as a Large Language Model, Really">
+<meta property="og:description" content="A look at the fuzzy definition of large language model, why parameter counts alone do not settle it, and how to think about the term more rigorously.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/what-counts-as-llm.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/what-counts-as-llm.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What Counts as a Large Language Model, Really">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/what-counts-as-llm.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/what-counts-as-llm.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "What Counts as a Large Language Model, Really",
+  "description": "A look at the fuzzy definition of large language model, why parameter counts alone do not settle it, and how to think about the term more rigorously.",
+  "url": "https://jahanzaibawan.com/blog/what-counts-as-llm.html",
+  "image": "https://jahanzaibawan.com/assets/blog/what-counts-as-llm.png",
+  "datePublished": "2026-10-19",
+  "dateModified": "2026-10-19",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/what-counts-as-llm.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "What Counts as a Large Language Model, Really", "item": "https://jahanzaibawan.com/blog/what-counts-as-llm.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">NLP · 5 min read · 19 Oct 2026</div>
+    <h1>What Counts as a Large Language Model, Really</h1>
+    <p class="lede">The phrase gets used for everything from a ten million parameter classifier to a trillion parameter chatbot. I try to pin down what the label should actually mean.</p>
+  </div>
+
+  <img src="../assets/blog/what-counts-as-llm.png" alt="Cover image for the article: What Counts as a Large Language Model, Really" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the definition keeps slipping</h2><p>If you ask five people in machine learning to define a large language model, you will probably get five different thresholds, and at least two of them will be arguing about something else entirely, usually whether the model counts as intelligent or not. That slipperiness matters because the term now gets used in papers, in marketing copy, and in policy documents, and each of those audiences quietly assumes a different boundary. A regulator might mean anything trained with a certain amount of compute. A researcher might mean anything built on the transformer decoder architecture at scale. A product team might just mean anything that can hold a conversation.</p><p>The wiki version of the definition, the kind you get from a quick encyclopaedia summary, usually says something like: a language model with a large number of parameters, trained on a large corpus of text, typically using a transformer architecture, capable of general purpose language understanding and generation. That is a reasonable starting point and I do not want to dismiss it, but every word in it is doing more work than it looks like, and the boundaries it implies are softer than the sentence suggests.</p><p>Consider the word large on its own. In 2018, a model with 100 million parameters counted as large by the standards of the field at the time. By 2023, models with 100 million parameters were considered small, sometimes used as student models in distillation pipelines rather than as the main event. The threshold is not fixed, it is relative to the current frontier, which means any absolute number you pin to the definition will look dated within a couple of years. That is not a flaw in any one definition, it is a structural problem with defining a category by a moving target.</p></section><section class='psec reveal'><h2>Parameter count is a proxy, not the thing itself</h2><p>Here is a concrete worked example to show why parameter count alone is a weak criterion. Suppose you have two models. Model A has 7 billion parameters, trained on a few hundred billion tokens of general web text, using a standard transformer decoder with next token prediction as the objective. Model B has 7 billion parameters too, but it was trained from scratch on a narrow corpus of structured medical codes, with a vocabulary of a few thousand tokens and a context window of 128. Both have the same parameter count. Only one of them behaves like what practitioners mean by a large language model, because the other lacks the breadth of training data and the generality of task that make the label useful.</p><p>This tells you that parameter count is a proxy for something else: capacity to absorb broad, diverse linguistic patterns and generalise across tasks it was never explicitly trained for. The number of parameters correlates with that capacity, roughly, because more parameters usually means more room to store statistical regularities from a large corpus. But correlation is not the definition. A small model trained cleverly on a narrow domain is not a large language model even if you inflate its parameter count for no good reason, and a genuinely broad model trained with a novel architecture that is not a plain transformer might still deserve the label even if it breaks the architectural part of the wiki sentence.</p><p>There is also the training data side, which gets underweighted in casual definitions. A model trained on 50 billion tokens of narrow, repetitive text is not doing the same job as one trained on a genuinely diverse trillion token corpus spanning code, dialogue, technical writing, and informal prose. Two models with identical architectures and similar parameter counts can behave completely differently depending on what they saw, and the behavioural differences are often more diagnostic of whether something is a large language model in the practical sense than the architecture diagram ever is.</p></section><section class='psec reveal'><h2>Why the fuzziness has practical consequences</h2><p>This is not just pedantry, because the fuzziness causes real confusion in evaluation and claims. I have seen papers compare a 1.3 billion parameter model against a 70 billion parameter model under the same banner of large language model evaluation, as though the comparison tells you something clean about architecture or method, when in fact scale alone could explain most of the gap. If your benchmark results do not control for or at least clearly report scale, training data composition, and compute budget, then calling both systems large language models and comparing them head to head risks a comparison that looks like an apples to apples test but is not.</p><p>There is a related trap around what people call emergent abilities, where a capability appears to show up only once a model crosses some scale threshold. Some of this is genuine and interesting, some of it is an artefact of how a metric is measured, since certain scoring methods are discontinuous and will look flat until a model crosses a quality threshold, then jump suddenly. Before accepting a claim that a capability emerged specifically because a model became large enough to count as an LLM, I want to see the metric checked for that kind of discontinuity, and I want to see the comparison made against models trained with consistent data and recipe, not just models grabbed off different leaderboards.</p><p>For anyone writing about this field, documenting evaluation work, or deciding how to describe their own models, I think the practical rule is to stop asking whether something counts as a large language model and start specifying the three things that actually matter: approximate parameter count or compute budget, the scale and diversity of training data, and the breadth of tasks the model is actually evaluated on. State those three things plainly in any writeup, and the label itself becomes almost unnecessary, because the reader gets the information that the label was trying, and failing, to compress into one adjective.</p></section>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "what-counts-as-llm",
+      "title": "What Counts as a Large Language Model, Really",
+      "excerpt": "Large language model has become a marketing word as much as a technical one. Here is what the definition should hinge on, and why the wiki version only gets you halfway.",
+      "date": "2026-10-19",
+      "read_min": 5,
+      "tag": "NLP",
+      "color": "a4",
+      "thumb": "assets/blog/what-counts-as-llm.png",
+      "thumb_alt": "Cover image for the article: What Counts as a Large Language Model, Really"
+    },
+    {
       "slug": "computer-vision-evergreen-skills",
       "title": "Computer Vision in Five Years: What Still Matters",
       "excerpt": "Models and architectures will churn, but data discipline, evaluation rigour, and error analysis will still matter in five years. Here is what to actually invest in.",

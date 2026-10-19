@@ -1,6 +1,5 @@
 {
   "queue": [
-    "What counts as a large language model: definitions, confusion, and the wiki version",
     "Model evaluation versus threat research: what organisations like METR actually test",
     "Data science versus data analytics: a distinction that actually changes the job",
     "Why LLM wikis and glossaries disagree on basic terms, and how to pick a definition",
@@ -245,6 +244,7 @@
     "Prompt engineering certification versus a portfolio: which one a hiring manager checks",
     "What a data science internship should teach you that a course cannot",
     "Machine learning course syllabi compared: what maps to an actual job",
-    "Computer vision in five years: evergreen skills that will not go stale"
+    "Computer vision in five years: evergreen skills that will not go stale",
+    "What counts as a large language model: definitions, confusion, and the wiki version"
   ]
 }

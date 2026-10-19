@@ -1,1 +1,1 @@
-2026-10-19T08:01:23Z slug=computer-vision-evergreen-skills words=1164 title="Computer Vision in Five Years: What Still Matters"
+2026-10-19T20:00:59Z slug=what-counts-as-llm words=980 title="What Counts as a Large Language Model, Really"
