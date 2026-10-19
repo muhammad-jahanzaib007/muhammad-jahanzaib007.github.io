@@ -1,1 +1,1 @@
-2026-10-18T20:00:58Z slug=ml-syllabi-vs-the-job words=1060 title="Machine Learning Syllabi Compared: What Maps to a Job"
+2026-10-19T08:01:23Z slug=computer-vision-evergreen-skills words=1164 title="Computer Vision in Five Years: What Still Matters"

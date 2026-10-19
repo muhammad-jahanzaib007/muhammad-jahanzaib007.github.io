@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Computer Vision in Five Years: What Still Matters | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical look at which computer vision skills stay valuable long term: data quality, leakage-aware evaluation, strong baselines, and error analysis.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="computer vision, evaluation, data leakage, baselines, error analysis, model evaluation, machine learning skills, reproducibility, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-19">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Computer Vision in Five Years: What Still Matters">
+<meta property="og:description" content="A practical look at which computer vision skills stay valuable long term: data quality, leakage-aware evaluation, strong baselines, and error analysis.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/computer-vision-evergreen-skills.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/computer-vision-evergreen-skills.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Computer Vision in Five Years: What Still Matters">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/computer-vision-evergreen-skills.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/computer-vision-evergreen-skills.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Computer Vision in Five Years: What Still Matters",
+  "description": "A practical look at which computer vision skills stay valuable long term: data quality, leakage-aware evaluation, strong baselines, and error analysis.",
+  "url": "https://jahanzaibawan.com/blog/computer-vision-evergreen-skills.html",
+  "image": "https://jahanzaibawan.com/assets/blog/computer-vision-evergreen-skills.png",
+  "datePublished": "2026-10-19",
+  "dateModified": "2026-10-19",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/computer-vision-evergreen-skills.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Computer Vision in Five Years: What Still Matters", "item": "https://jahanzaibawan.com/blog/computer-vision-evergreen-skills.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Computer Vision · 6 min read · 19 Oct 2026</div>
+    <h1>Computer Vision in Five Years: What Still Matters</h1>
+    <p class="lede">Architectures will keep changing, but the habits that make a vision system trustworthy are far more durable than any backbone network.</p>
+  </div>
+
+  <img src="../assets/blog/computer-vision-evergreen-skills.png" alt="Cover image for the article: Computer Vision in Five Years: What Still Matters" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the backbone you learn today will not save you tomorrow</h2><p>Every few years, computer vision gets a new headline architecture, and every few years someone writes a post claiming the field has finally stabilised. It never has. I have seen convolutional networks treated as permanent infrastructure, then watched attention-based architectures take over benchmark leaderboards, then watched hybrid designs and ever larger pretraining recipes reshuffle the rankings again. If you built your identity around one architecture family, you spent a lot of energy relearning things that were never the point.</p><p>The point, if there is one, is that architectures are a means of extracting useful representations from pixels, and the mechanism for doing that extraction is genuinely an engineering detail. What does not change is the shape of the problem underneath: you have a finite, imperfect sample of images, a task definition that is usually fuzzier than it looks, and a deployment environment that will differ from your training distribution in ways you cannot fully anticipate. Those three facts are where the durable skills live.</p><p>I say this as someone who is still learning the field, not as someone looking back from a position of authority. But the pattern is visible even over a short horizon: papers that introduced a clever layer are cited less each year, while papers about evaluation protocols, dataset bias, or benchmark construction keep getting referenced because the problems they describe never fully go away. That is a useful signal about where to put study time.</p></section><section class='psec reveal'><h2>Data discipline: the unglamorous skill that pays compounding interest</h2><p>Consider a defect-detection system for a manufacturing line, trained on ten thousand images of parts labelled as acceptable or defective. If nine thousand of those images came from one factory shift and one camera angle, the model will look excellent on a held-out split drawn from the same shift, and then underperform once deployed across three other lines with different lighting rigs. This is not an exotic failure mode; it is closer to the default outcome unless someone deliberately checks for it.</p><p>The skill that prevents this is not a modelling trick. It is the habit of asking, before training even starts, how the images were collected, who labelled them, and whether the split boundaries respect real-world groupings such as camera, batch, date, or physical unit. A model evaluated on a split that shares a camera or a production batch with the training set is not being evaluated on generalisation at all; it is being evaluated on memorisation of conditions that happen to recur. I treat this as the single highest-leverage check in any vision project, because it is cheap to do and catastrophic to skip.</p><p>Worked through with numbers: suppose a classifier achieves 97 percent accuracy on a random split but only 84 percent on a split held out by factory site. That thirteen-point gap is not noise, it is the model quietly encoding site-specific cues, perhaps a watermark, a consistent background colour, or a camera's particular noise profile, rather than the defect itself. Five years from now, whatever architecture is fashionable, this gap will still be the thing that determines whether a system survives contact with the real world. Data discipline, including careful de-duplication, leakage-aware splitting, and honest documentation of collection conditions, is a skill that transfers across every future model generation because it addresses the sample, not the mechanism.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/computer-vision-evergreen-skills-1.jpg' alt='factory assembly line camera inspection' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Strong baselines and evaluation rigour as a permanent discipline</h2><p>A second evergreen skill is the instinct to build a strong, boring baseline before reaching for anything sophisticated. If a new segmentation method reports a two-point improvement in mean intersection over union, that number is meaningless on its own. It only becomes meaningful once you know what a careful baseline, trained with the same augmentation budget, the same number of epochs, and the same hyperparameter search effort, actually achieves. I have seen reported gains shrink or vanish entirely once the baseline is given a fair chance, simply because the original baseline was under-tuned.</p><p>This matters practically because teams routinely adopt complex architectures to chase marginal gains that a properly tuned simpler model would have matched. Suppose a lightweight convolutional classifier, trained with standard augmentation and a well-tuned learning rate schedule, reaches 91.2 percent top-one accuracy on a held-out test set, and a much larger transformer-based model reaches 91.8 percent after far more compute and training time. In a latency-constrained deployment, that half-point gain is rarely worth the tenfold increase in inference cost. Knowing how to make that trade-off, and having the discipline to actually measure it rather than assume the fancier model wins, is a skill that will apply regardless of what the state of the art looks like in five years.</p><p>Evaluation rigour extends to the metrics themselves. Accuracy alone can hide a model that performs well on a majority class and poorly on a rare but operationally critical one, such as a rare defect type or a minority demographic group in a face analysis system. Reporting per-class precision and recall, confusion matrices, and calibration curves rather than a single aggregate number is unglamorous work, but it is the difference between a model that looks good in a report and one that behaves predictably in production. This discipline does not depend on which neural network layer is fashionable this year.</p></section><section class='psec reveal'><h2>Error analysis as the habit that outlives every framework</h2><p>The final evergreen skill is the willingness to sit with a model's mistakes rather than simply retraining and hoping the next run is better. Pulling fifty misclassified images, grouping them by apparent cause, lighting, occlusion, unusual pose, ambiguous ground truth, and writing down what you see, is slow and not particularly satisfying, but it routinely surfaces issues that no amount of architecture tuning would fix. A model that keeps failing on images with strong backlighting has a data problem, not an architecture problem, and no amount of extra training compute will resolve that.</p><p>This kind of structured error analysis also protects you from a subtler trap: optimising against a flawed label set. If, on inspection, fifteen of fifty errors turn out to be mislabelled ground truth rather than genuine model failures, that changes the entire interpretation of your reported accuracy and tells you where to spend the next week of annotation effort, not model development effort. These are judgement calls that require sitting with the actual images, not just the summary statistics, and that habit of looking does not expire when the next architecture arrives.</p><p>My practical takeaway, for anyone starting out in computer vision today, is to spend proportionally more time than feels comfortable on data auditing, leakage-aware evaluation, and honest baseline comparisons, and treat architecture choice as the easiest, most replaceable part of the pipeline. The specific libraries and model families you learn this year will be superseded. The instinct to question your split, distrust a suspiciously clean result, and read your own errors carefully will still be exactly what separates a reliable system from an impressive demo in five years' time.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/computer-vision-evergreen-skills-2.jpg' alt='scientist reviewing images on monitor' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Sun, 18 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Mon, 19 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Computer Vision in Five Years: What Still Matters</title>
+    <link>https://jahanzaibawan.com/blog/computer-vision-evergreen-skills.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/computer-vision-evergreen-skills.html</guid>
+    <pubDate>Mon, 19 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Models and architectures will churn, but data discipline, evaluation rigour, and error analysis will still matter in five years. Here is what to actually invest in.</description>
+    <category>Computer Vision</category>
+  </item>
   <item>
     <title>Machine Learning Syllabi Compared: What Maps to a Job</title>
     <link>https://jahanzaibawan.com/blog/ml-syllabi-vs-the-job.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Fri, 09 Oct 2026 09:00:00 +0000</pubDate>
     <description>Same title, different job. Here is how to decode what a machine learning engineer posting is actually asking for before you apply.</description>
     <category>Careers</category>
-  </item>
-  <item>
-    <title>Context Windows Are Not the Same as Context Engineering</title>
-    <link>https://jahanzaibawan.com/blog/context-engineering-not-just-length.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/context-engineering-not-just-length.html</guid>
-    <pubDate>Fri, 09 Oct 2026 09:00:00 +0000</pubDate>
-    <description>Bigger context windows do not fix bad retrieval. Here is why feeding a model the right information matters more than feeding it more.</description>
-    <category>NLP</category>
   </item>
 </channel>
 </rss>

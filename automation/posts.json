@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "computer-vision-evergreen-skills",
+      "title": "Computer Vision in Five Years: What Still Matters",
+      "excerpt": "Models and architectures will churn, but data discipline, evaluation rigour, and error analysis will still matter in five years. Here is what to actually invest in.",
+      "date": "2026-10-19",
+      "read_min": 6,
+      "tag": "Computer Vision",
+      "color": "a3",
+      "thumb": "assets/blog/computer-vision-evergreen-skills.png",
+      "thumb_alt": "Cover image for the article: Computer Vision in Five Years: What Still Matters"
+    },
+    {
       "slug": "ml-syllabi-vs-the-job",
       "title": "Machine Learning Syllabi Compared: What Maps to a Job",
       "excerpt": "Most ML courses teach models first and evaluation last. Real jobs run the other way round. Here is where the gap bites.",
