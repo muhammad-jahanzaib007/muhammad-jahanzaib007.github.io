@@ -9,7 +9,8 @@
       "tag": "Computer Vision",
       "color": "a3",
       "thumb": "assets/blog/computer-vision-evergreen-skills.png",
-      "thumb_alt": "Cover image for the article: Computer Vision in Five Years: What Still Matters"
+      "thumb_alt": "Cover image for the article: Computer Vision in Five Years: What Still Matters",
+      "li_shared": true
     },
     {
       "slug": "ml-syllabi-vs-the-job",
