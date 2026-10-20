@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Mon, 19 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 20 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Model Evaluation Versus Threat Research: What Gets Tested</title>
+    <link>https://jahanzaibawan.com/blog/evaluation-versus-threat-research.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/evaluation-versus-threat-research.html</guid>
+    <pubDate>Tue, 20 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Benchmarks measure capability on fixed tasks; threat research probes what a model could do in the hands of a determined, resourceful actor. They are not interchangeable.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>What Counts as a Large Language Model, Really</title>
     <link>https://jahanzaibawan.com/blog/what-counts-as-llm.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Sat, 10 Oct 2026 09:00:00 +0000</pubDate>
     <description>Most deep learning books fail not because they are wrong but because they are read at the wrong stage. Here is how to pick one that actually moves you forward.</description>
     <category>Deep Learning</category>
-  </item>
-  <item>
-    <title>Deep Learning Versus Classical Statistics: The Real Overlap</title>
-    <link>https://jahanzaibawan.com/blog/deep-learning-versus-classical-statistics.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/deep-learning-versus-classical-statistics.html</guid>
-    <pubDate>Sat, 10 Oct 2026 09:00:00 +0000</pubDate>
-    <description>Deep learning and classical statistics are often framed as rivals, but underneath the tooling they share the same core questions about bias, variance, and generalisation.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>

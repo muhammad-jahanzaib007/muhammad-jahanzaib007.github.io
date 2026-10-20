@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Model Evaluation Versus Threat Research: What Gets Tested | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A clear look at how standard model evaluation differs from organisations&#x27; frontier threat research, and why conflating the two misleads both researchers and policymakers.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="model evaluation, AI safety, threat modelling, benchmarks, METR, dangerous capability evaluation, red teaming, leakage, reproducibility, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-20">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Model Evaluation Versus Threat Research: What Gets Tested">
+<meta property="og:description" content="A clear look at how standard model evaluation differs from organisations&#x27; frontier threat research, and why conflating the two misleads both researchers and policymakers.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/evaluation-versus-threat-research.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/evaluation-versus-threat-research.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Model Evaluation Versus Threat Research: What Gets Tested">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/evaluation-versus-threat-research.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/evaluation-versus-threat-research.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Model Evaluation Versus Threat Research: What Gets Tested",
+  "description": "A clear look at how standard model evaluation differs from organisations' frontier threat research, and why conflating the two misleads both researchers and policymakers.",
+  "url": "https://jahanzaibawan.com/blog/evaluation-versus-threat-research.html",
+  "image": "https://jahanzaibawan.com/assets/blog/evaluation-versus-threat-research.png",
+  "datePublished": "2026-10-20",
+  "dateModified": "2026-10-20",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/evaluation-versus-threat-research.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Model Evaluation Versus Threat Research: What Gets Tested", "item": "https://jahanzaibawan.com/blog/evaluation-versus-threat-research.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 20 Oct 2026</div>
+    <h1>Model Evaluation Versus Threat Research: What Gets Tested</h1>
+    <p class="lede">Benchmark scores and frontier safety testing answer different questions. Confusing them leads to false comfort or false alarm.</p>
+  </div>
+
+  <img src="../assets/blog/evaluation-versus-threat-research.png" alt="Cover image for the article: Model Evaluation Versus Threat Research: What Gets Tested" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Two questions that sound similar but are not</h2><p>When people hear that a model has been 'evaluated', they usually picture a leaderboard: accuracy on a maths benchmark, a win rate against another model, a score out of a hundred on some reasoning suite. That is standard model evaluation, and it answers a narrow question: how well does this system perform on this fixed, pre-specified task distribution, under these fixed conditions? It is comparative and reproducible almost by design. You freeze the test set, freeze the prompt format, freeze the scoring rubric, and you get a number that another lab can, in principle, reproduce.</p><p>Threat research, of the kind organisations focused on frontier model safety actually do, is asking a different question entirely: what is the worst plausible thing a sufficiently motivated person could get this model to help with, given realistic amounts of scaffolding, tool access, and iteration? That is not a fixed-task question. It is an adversarial, open-ended search problem over a space of possible misuse strategies, and the model's raw benchmark score is only weakly informative about the answer.</p><p>The distinction matters because the two activities look superficially similar, both involve prompting a model and recording outputs, but they have opposite failure modes. A benchmark that is too easy just gives you an inflated number. A threat assessment that is too narrow gives you false confidence that a capability does not exist, when in fact nobody tried hard enough to elicit it.</p></section><section class='psec reveal'><h2>A worked example: coding ability versus exploit development</h2><p>Suppose a model scores 72 percent on a standard coding benchmark made of self-contained programming problems with unit tests. That number tells you the model can translate a reasonably well-specified problem into working code most of the time, under a single attempt, with no external tools. It is a genuinely useful signal for, say, deciding whether to use the model as a coding assistant for routine tasks.</p><p>Now ask a threat-relevant question: can this model, given access to a sandboxed environment, a target codebase, and several hours of autonomous iteration, find and weaponise a memory-safety vulnerability? That is not the same task as the benchmark at all. It requires chaining many steps, recovering from dead ends, using tools to test hypotheses, and persisting past failure, none of which a single-shot coding benchmark exercises. A model could plausibly score well below the benchmark leader on routine coding problems while still being unsettlingly effective at the multi-step exploit task, because the skills involved only partially overlap, and because the second task rewards persistence and tool use over raw single-shot accuracy.</p><p>This is roughly the shape of what dangerous-capability evaluation work tries to do: not ask 'how good is this model at coding', but 'how good is this model, plus realistic scaffolding, plus a human or automated operator willing to retry and adapt, at a specific harmful end-to-end task'. The elicitation effort is the whole point. If you only give the model one attempt with a bare prompt, you will systematically underestimate what a patient, resourced adversary could extract from the same underlying weights.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/evaluation-versus-threat-research-1.jpg' alt='security operations control room' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Why elicitation effort changes the answer so much</h2><p>Here is the intuition I keep coming back to. Imagine a capability that the model can only produce correctly 4 percent of the time on a first, unaided attempt. On a standard benchmark, that looks like a near-failing score, easy to dismiss. But if an operator can generate twenty independent attempts, use the model itself to check which attempts look promising, and iterate on the ones that are close, the effective success rate over the whole session can climb dramatically, sometimes to the point where the task is reliably completed within an afternoon. The single-shot number and the sustained-effort number can tell almost opposite stories about risk.</p><p>This is precisely why threat research cannot be reduced to running the model through an existing benchmark suite and reporting the score. It has to include scaffolding choices, tool access, retries, and sometimes human-in-the-loop assistance, because that is what a real adversary would use. It also has to be honest about the uncertainty in that elicitation process: a negative result only tells you that your specific elicitation attempt failed, not that the capability is absent. That asymmetry, where a positive result is informative but a negative result is much weaker evidence, is a core methodological feature of this kind of work, and it is very different from how we read benchmark results, where a low score is usually taken fairly literally.</p><p>There is also a leakage concern that threat research has to take more seriously than most academic benchmarking. If the tasks used to probe dangerous capabilities resemble publicly discussed scenarios too closely, a model might perform well simply because related material was present in training data, not because it is genuinely capable of novel reasoning under adversarial pressure. Careful threat assessment tries to construct scenarios that test transferable capability rather than memorised pattern matching, which is a harder and more expensive design problem than assembling a standard test set.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>If you are reading a report that evaluates a model, the first question worth asking is not 'what score did it get' but 'what question was this test actually designed to answer, and under what effort assumptions'. A benchmark number tells you about typical-case performance on a known task under minimal effort. A threat assessment tells you about worst-case plausible performance under realistic adversarial effort, and it should be read with explicit attention to how much elicitation work went into the negative results, since those are the ones most likely to be overstated.</p><p>For anyone building or evaluating systems, the useful habit is to keep these two purposes separate in your own methodology too. Decide upfront whether you are measuring typical competence or probing worst-case misuse, because the two require different task design, different scoring, and different confidence intervals on your conclusions. Treating a capability benchmark as if it were a safety clearance, or treating a narrow red-team exercise as if it were a general performance measure, is where most of the public confusion about what these organisations actually do comes from.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/evaluation-versus-threat-research-2.jpg' alt='researcher at laptop in dark office' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

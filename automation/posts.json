@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "evaluation-versus-threat-research",
+      "title": "Model Evaluation Versus Threat Research: What Gets Tested",
+      "excerpt": "Benchmarks measure capability on fixed tasks; threat research probes what a model could do in the hands of a determined, resourceful actor. They are not interchangeable.",
+      "date": "2026-10-20",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a5",
+      "thumb": "assets/blog/evaluation-versus-threat-research.png",
+      "thumb_alt": "Cover image for the article: Model Evaluation Versus Threat Research: What Gets Tested"
+    },
+    {
       "slug": "what-counts-as-llm",
       "title": "What Counts as a Large Language Model, Really",
       "excerpt": "Large language model has become a marketing word as much as a technical one. Here is what the definition should hinge on, and why the wiki version only gets you halfway.",
