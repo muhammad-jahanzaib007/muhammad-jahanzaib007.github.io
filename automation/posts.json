@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a6",
       "thumb": "assets/blog/data-science-vs-data-analytics.png",
-      "thumb_alt": "Cover image for the article: Data Science Versus Data Analytics: Why It Matters"
+      "thumb_alt": "Cover image for the article: Data Science Versus Data Analytics: Why It Matters",
+      "li_shared": true
     },
     {
       "slug": "evaluation-versus-threat-research",
