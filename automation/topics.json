@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Data science versus data analytics: a distinction that actually changes the job",
     "Why LLM wikis and glossaries disagree on basic terms, and how to pick a definition",
     "Fine-tuning synonyms: why precise language matters when you describe your method",
     "How many examples of fine-tuning do you need to understand the general concept",
@@ -245,6 +244,7 @@
     "Machine learning course syllabi compared: what maps to an actual job",
     "Computer vision in five years: evergreen skills that will not go stale",
     "What counts as a large language model: definitions, confusion, and the wiki version",
-    "Model evaluation versus threat research: what organisations like METR actually test"
+    "Model evaluation versus threat research: what organisations like METR actually test",
+    "Data science versus data analytics: a distinction that actually changes the job"
   ]
 }

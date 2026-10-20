@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Tue, 20 Oct 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Data Science Versus Data Analytics: Why It Matters</title>
+    <link>https://jahanzaibawan.com/blog/data-science-vs-data-analytics.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/data-science-vs-data-analytics.html</guid>
+    <pubDate>Tue, 20 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Same buzzwords, different jobs. Here is the concrete distinction between data science and data analytics, and why conflating them causes bad hires and worse projects.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Model Evaluation Versus Threat Research: What Gets Tested</title>
     <link>https://jahanzaibawan.com/blog/evaluation-versus-threat-research.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/evaluation-versus-threat-research.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Sun, 11 Oct 2026 09:00:00 +0000</pubDate>
     <description>RAG succeeds or fails on context engineering, not retrieval cleverness. Here is where the real boundary sits, and how to test it honestly.</description>
     <category>NLP</category>
-  </item>
-  <item>
-    <title>Choosing a Deep Learning Book in a Crowded Field</title>
-    <link>https://jahanzaibawan.com/blog/choosing-a-deep-learning-book.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/choosing-a-deep-learning-book.html</guid>
-    <pubDate>Sat, 10 Oct 2026 09:00:00 +0000</pubDate>
-    <description>Most deep learning books fail not because they are wrong but because they are read at the wrong stage. Here is how to pick one that actually moves you forward.</description>
-    <category>Deep Learning</category>
   </item>
 </channel>
 </rss>
