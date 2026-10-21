@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "why-llm-glossaries-disagree",
+      "title": "Why LLM Wikis and Glossaries Disagree on Basic Terms",
+      "excerpt": "Why does every LLM glossary define 'hallucination' or 'grounding' differently? A practical guide to choosing and defending your own working definitions.",
+      "date": "2026-10-21",
+      "read_min": 5,
+      "tag": "NLP",
+      "color": "a2",
+      "thumb": "assets/blog/why-llm-glossaries-disagree.png",
+      "thumb_alt": "Cover image for the article: Why LLM Wikis and Glossaries Disagree on Basic Terms"
+    },
+    {
       "slug": "data-science-vs-data-analytics",
       "title": "Data Science Versus Data Analytics: Why It Matters",
       "excerpt": "Same buzzwords, different jobs. Here is the concrete distinction between data science and data analytics, and why conflating them causes bad hires and worse projects.",

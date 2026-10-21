@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Tue, 20 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 21 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Why LLM Wikis and Glossaries Disagree on Basic Terms</title>
+    <link>https://jahanzaibawan.com/blog/why-llm-glossaries-disagree.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/why-llm-glossaries-disagree.html</guid>
+    <pubDate>Wed, 21 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Why does every LLM glossary define &#x27;hallucination&#x27; or &#x27;grounding&#x27; differently? A practical guide to choosing and defending your own working definitions.</description>
+    <category>NLP</category>
+  </item>
   <item>
     <title>Data Science Versus Data Analytics: Why It Matters</title>
     <link>https://jahanzaibawan.com/blog/data-science-vs-data-analytics.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Sun, 11 Oct 2026 09:00:00 +0000</pubDate>
     <description>A worked example showing exactly what changes, step by step, when a model trains, with no hand-waving about magic.</description>
     <category>Machine Learning</category>
-  </item>
-  <item>
-    <title>RAG as Context Engineering: Where the Boundary Sits</title>
-    <link>https://jahanzaibawan.com/blog/rag-as-context-engineering.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/rag-as-context-engineering.html</guid>
-    <pubDate>Sun, 11 Oct 2026 09:00:00 +0000</pubDate>
-    <description>RAG succeeds or fails on context engineering, not retrieval cleverness. Here is where the real boundary sits, and how to test it honestly.</description>
-    <category>NLP</category>
   </item>
 </channel>
 </rss>

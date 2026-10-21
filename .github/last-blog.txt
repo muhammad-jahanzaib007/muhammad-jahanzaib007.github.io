@@ -1,1 +1,1 @@
-2026-10-20T20:00:57Z slug=data-science-vs-data-analytics words=1087 title="Data Science Versus Data Analytics: Why It Matters"
+2026-10-21T08:01:00Z slug=why-llm-glossaries-disagree words=1057 title="Why LLM Wikis and Glossaries Disagree on Basic Terms"
