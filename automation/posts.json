@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "fine-tuning-synonyms-precise-language",
+      "title": "Fine-Tuning Synonyms: Why Precise Language Matters",
+      "excerpt": "Calling everything 'fine-tuning' hides what you actually did. Precise method language is a reproducibility issue, not pedantry.",
+      "date": "2026-10-21",
+      "read_min": 5,
+      "tag": "NLP",
+      "color": "a3",
+      "thumb": "assets/blog/fine-tuning-synonyms-precise-language.png",
+      "thumb_alt": "Cover image for the article: Fine-Tuning Synonyms: Why Precise Language Matters"
+    },
+    {
       "slug": "why-llm-glossaries-disagree",
       "title": "Why LLM Wikis and Glossaries Disagree on Basic Terms",
       "excerpt": "Why does every LLM glossary define 'hallucination' or 'grounding' differently? A practical guide to choosing and defending your own working definitions.",

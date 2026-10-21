@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Wed, 21 Oct 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Fine-Tuning Synonyms: Why Precise Language Matters</title>
+    <link>https://jahanzaibawan.com/blog/fine-tuning-synonyms-precise-language.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/fine-tuning-synonyms-precise-language.html</guid>
+    <pubDate>Wed, 21 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Calling everything &#x27;fine-tuning&#x27; hides what you actually did. Precise method language is a reproducibility issue, not pedantry.</description>
+    <category>NLP</category>
+  </item>
+  <item>
     <title>Why LLM Wikis and Glossaries Disagree on Basic Terms</title>
     <link>https://jahanzaibawan.com/blog/why-llm-glossaries-disagree.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/why-llm-glossaries-disagree.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Mon, 12 Oct 2026 09:00:00 +0000</pubDate>
     <description>A practical look at which prompting habits transfer across model versions, and which were just quirky workarounds that quietly stop working.</description>
     <category>NLP</category>
-  </item>
-  <item>
-    <title>What a Model Learns During Training, on One Example</title>
-    <link>https://jahanzaibawan.com/blog/what-training-actually-learns.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/what-training-actually-learns.html</guid>
-    <pubDate>Sun, 11 Oct 2026 09:00:00 +0000</pubDate>
-    <description>A worked example showing exactly what changes, step by step, when a model trains, with no hand-waving about magic.</description>
-    <category>Machine Learning</category>
   </item>
 </channel>
 </rss>

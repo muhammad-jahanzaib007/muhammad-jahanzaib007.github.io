@@ -1,1 +1,1 @@
-2026-10-21T08:01:00Z slug=why-llm-glossaries-disagree words=1057 title="Why LLM Wikis and Glossaries Disagree on Basic Terms"
+2026-10-21T20:00:59Z slug=fine-tuning-synonyms-precise-language words=982 title="Fine-Tuning Synonyms: Why Precise Language Matters"
