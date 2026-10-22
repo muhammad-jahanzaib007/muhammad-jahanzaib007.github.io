@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Wed, 21 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 22 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>How Many Fine-Tuning Examples Do You Actually Need</title>
+    <link>https://jahanzaibawan.com/blog/how-many-fine-tuning-examples.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/how-many-fine-tuning-examples.html</guid>
+    <pubDate>Thu, 22 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Fine-tuning does not need thousands of examples to work. It needs the right examples, tested the right way.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Fine-Tuning Synonyms: Why Precise Language Matters</title>
     <link>https://jahanzaibawan.com/blog/fine-tuning-synonyms-precise-language.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Mon, 12 Oct 2026 09:00:00 +0000</pubDate>
     <description>A practical map of machine learning methods organised by the underlying problem they solve, not by buzzword or library.</description>
     <category>Fundamentals</category>
-  </item>
-  <item>
-    <title>Prompt Engineering: What Survives a Model Change</title>
-    <link>https://jahanzaibawan.com/blog/prompt-engineering-transferable-skill.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/prompt-engineering-transferable-skill.html</guid>
-    <pubDate>Mon, 12 Oct 2026 09:00:00 +0000</pubDate>
-    <description>A practical look at which prompting habits transfer across model versions, and which were just quirky workarounds that quietly stop working.</description>
-    <category>NLP</category>
   </item>
 </channel>
 </rss>

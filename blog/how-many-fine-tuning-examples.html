@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Many Fine-Tuning Examples Do You Actually Need | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical look at how many fine-tuning examples are needed to teach a model a pattern, with a worked example and leakage-aware evaluation advice.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="fine-tuning, few-shot learning, machine learning, model evaluation, data efficiency, overfitting, train test split, LLM fine-tuning, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-22">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="How Many Fine-Tuning Examples Do You Actually Need">
+<meta property="og:description" content="A practical look at how many fine-tuning examples are needed to teach a model a pattern, with a worked example and leakage-aware evaluation advice.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/how-many-fine-tuning-examples.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/how-many-fine-tuning-examples.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How Many Fine-Tuning Examples Do You Actually Need">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/how-many-fine-tuning-examples.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/how-many-fine-tuning-examples.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How Many Fine-Tuning Examples Do You Actually Need",
+  "description": "A practical look at how many fine-tuning examples are needed to teach a model a pattern, with a worked example and leakage-aware evaluation advice.",
+  "url": "https://jahanzaibawan.com/blog/how-many-fine-tuning-examples.html",
+  "image": "https://jahanzaibawan.com/assets/blog/how-many-fine-tuning-examples.png",
+  "datePublished": "2026-10-22",
+  "dateModified": "2026-10-22",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/how-many-fine-tuning-examples.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "How Many Fine-Tuning Examples Do You Actually Need", "item": "https://jahanzaibawan.com/blog/how-many-fine-tuning-examples.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 22 Oct 2026</div>
+    <h1>How Many Fine-Tuning Examples Do You Actually Need</h1>
+    <p class="lede">The honest answer is fewer than most people assume, but the number depends entirely on what you are asking the model to learn.</p>
+  </div>
+
+  <img src="../assets/blog/how-many-fine-tuning-examples.png" alt="Cover image for the article: How Many Fine-Tuning Examples Do You Actually Need" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The question people ask wrongly</h2><p>Whenever someone asks me how many examples they need to fine-tune a model, I try to redirect the question before answering it. The number is not a fixed constant like 500 or 5,000. It depends on three things: how narrow the task is, how much the pretrained model already knows about that task, and how you plan to check whether it actually learned anything. Skip that last part and any number you pick is a guess dressed up as an answer.</p><p>Here is the intuition I keep coming back to. Fine-tuning is not teaching a model a skill from nothing. It is nudging a model that already has broad competence towards a narrower behaviour: a tone, a format, a classification boundary, a domain vocabulary. The pretrained weights are doing most of the heavy lifting. Your examples are there to specify, not to educate from scratch. That reframing changes the whole question, because specifying a narrow behaviour usually takes far less data than people expect.</p><p>Consider a concrete case. Suppose you want a model to always respond to customer emails in a fixed three-part structure: acknowledge the issue, state the resolution, close with a specific sign-off phrase. This is a format and style task, not a reasoning task. In my experience with this kind of structural fine-tuning, somewhere between 50 and 200 well-chosen examples is often enough to get consistent adherence, because the underlying language ability is already there. You are not teaching English or empathy, you are teaching a template.</p></section><section class='psec reveal'><h2>Why the number explodes for harder tasks</h2><p>Now change the task. Suppose instead you want the model to correctly classify legal clauses into twelve fine-grained categories that require genuine domain judgement, where the boundaries between categories are subtle and even trained humans disagree sometimes. This is no longer a formatting nudge, it is asking the model to learn a decision boundary that the pretrained weights never explicitly encoded. Here, 200 examples spread across twelve classes gives you perhaps 16 examples per class, which is nowhere near enough to cover the edge cases that make the task hard in the first place.</p><p>A useful mental model is to separate surface tasks from judgement tasks. Surface tasks change how the model expresses what it already knows: format, tone, length, vocabulary. Judgement tasks change what the model decides: classification, extraction under ambiguity, ranking by a custom criterion. Surface tasks are cheap, often tens to a couple of hundred examples. Judgement tasks are expensive, often requiring thousands of examples precisely because you are asking the model to internalise a decision function that did not previously exist in its weights, and every class or edge case needs enough coverage to be learnable rather than memorised.</p><p>There is a second factor that compounds this: how much the task overlaps with something in the pretraining distribution. A model fine-tuned to write in a formal British English house style is drawing on an enormous amount of formal writing it has already seen. A model fine-tuned to apply a bespoke internal risk scoring rubric your company invented last year has nothing to draw on except your examples. The further the task sits from anything in the pretraining corpus, the more examples you need, and no amount of clever prompting at inference time will substitute for that if the behaviour genuinely needs to be learned rather than elicited.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/how-many-fine-tuning-examples-1.jpg' alt='stacked paper documents on desk' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>The number is meaningless without the right test</h2><p>Here is the part that gets skipped most often, and it is the part I care about most. Whatever number of examples you settle on, it is worthless information unless you have a held-out test set that genuinely reflects the deployment scenario and contains no leakage from the training examples. I have seen fine-tuning projects report excellent accuracy on a test split that was drawn from the same batch of documents as the training data, sharing authors, templates, or even near-duplicate paragraphs. The model was not learning the task, it was recognising the source.</p><p>A concrete check I always apply: split by the natural grouping unit before splitting by row. If your examples come from 40 customer accounts, split by account, not by individual email, otherwise the model can learn account-specific quirks that leak across the split and inflate your apparent performance. The same logic applies to time: if the task has any temporal structure, split chronologically and test on the most recent slice, because that is the only split that resembles what deployment will actually look like, where the model sees genuinely new data it could not have memorised patterns from.</p><p>Once the split is honest, the practical way to find your minimum viable example count is to fine-tune on increasing subsets, say 50, 150, 400, 800, and 1,500 examples, and plot test performance against size. If the curve is still climbing steeply at your largest subset, you need more data, full stop. If it has flattened, you have probably found your number, and further examples are likely to help marginally at best while costing you in labelling effort and training time. This learning curve is the actual answer to the question, not a number pulled from a blog post, including this one.</p></section><section class='psec reveal'><h2>A practical takeaway</h2><p>If you need a rule of thumb to start with, I would say this: for format and style nudges, start around 100 examples and check the learning curve. For genuine judgement tasks with several classes or subtle distinctions, start around 1,000 and expect to need more once you see where the model still fails. But treat both numbers as a starting hypothesis, not a target. The only reliable way to know you have enough examples is a leakage-aware test set and a learning curve that has clearly flattened. Everything else is anecdote, including mine.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/how-many-fine-tuning-examples-2.jpg' alt='laptop showing line graph chart' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

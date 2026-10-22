@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "how-many-fine-tuning-examples",
+      "title": "How Many Fine-Tuning Examples Do You Actually Need",
+      "excerpt": "Fine-tuning does not need thousands of examples to work. It needs the right examples, tested the right way.",
+      "date": "2026-10-22",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a4",
+      "thumb": "assets/blog/how-many-fine-tuning-examples.png",
+      "thumb_alt": "Cover image for the article: How Many Fine-Tuning Examples Do You Actually Need"
+    },
+    {
       "slug": "fine-tuning-synonyms-precise-language",
       "title": "Fine-Tuning Synonyms: Why Precise Language Matters",
       "excerpt": "Calling everything 'fine-tuning' hides what you actually did. Precise method language is a reproducibility issue, not pedantry.",
