@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a4",
       "thumb": "assets/blog/how-many-fine-tuning-examples.png",
-      "thumb_alt": "Cover image for the article: How Many Fine-Tuning Examples Do You Actually Need"
+      "thumb_alt": "Cover image for the article: How Many Fine-Tuning Examples Do You Actually Need",
+      "li_shared": true
     },
     {
       "slug": "fine-tuning-synonyms-precise-language",
