@@ -1,1 +1,1 @@
-2026-10-22T08:00:54Z slug=how-many-fine-tuning-examples words=962 title="How Many Fine-Tuning Examples Do You Actually Need"
+2026-10-22T20:01:04Z slug=data-science-major-vs-minor words=1017 title="Data Science Major vs Minor: What Each Prepares You For"

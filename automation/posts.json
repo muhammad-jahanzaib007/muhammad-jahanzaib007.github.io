@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "data-science-major-vs-minor",
+      "title": "Data Science Major vs Minor: What Each Prepares You For",
+      "excerpt": "A data science major builds you to design and evaluate methods; a minor builds you to apply them responsibly. Knowing which one you are getting changes how you plan your career.",
+      "date": "2026-10-22",
+      "read_min": 5,
+      "tag": "Education",
+      "color": "a5",
+      "thumb": "assets/blog/data-science-major-vs-minor.png",
+      "thumb_alt": "Cover image for the article: Data Science Major vs Minor: What Each Prepares You For"
+    },
+    {
       "slug": "how-many-fine-tuning-examples",
       "title": "How Many Fine-Tuning Examples Do You Actually Need",
       "excerpt": "Fine-tuning does not need thousands of examples to work. It needs the right examples, tested the right way.",
