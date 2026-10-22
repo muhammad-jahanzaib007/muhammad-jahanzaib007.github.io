@@ -9,7 +9,8 @@
       "tag": "Education",
       "color": "a5",
       "thumb": "assets/blog/data-science-major-vs-minor.png",
-      "thumb_alt": "Cover image for the article: Data Science Major vs Minor: What Each Prepares You For"
+      "thumb_alt": "Cover image for the article: Data Science Major vs Minor: What Each Prepares You For",
+      "li_shared": true
     },
     {
       "slug": "how-many-fine-tuning-examples",
