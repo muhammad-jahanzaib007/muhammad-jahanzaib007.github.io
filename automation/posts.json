@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a2",
       "thumb": "assets/blog/evaluation-technique-for-your-problem.png",
-      "thumb_alt": "Cover image for the article: Picking a Model Evaluation Technique for Your Actual Problem"
+      "thumb_alt": "Cover image for the article: Picking a Model Evaluation Technique for Your Actual Problem",
+      "li_shared": true
     },
     {
       "slug": "computer-vision-syndrome-naming-collision",
