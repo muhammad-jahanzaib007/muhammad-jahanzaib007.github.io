@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Thu, 22 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 23 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Computer Vision Syndrome vs Computer Vision: A Naming Clash</title>
+    <link>https://jahanzaibawan.com/blog/computer-vision-syndrome-naming-collision.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/computer-vision-syndrome-naming-collision.html</guid>
+    <pubDate>Fri, 23 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Computer vision syndrome is an eye strain condition; computer vision is a branch of AI. The shared name causes real confusion in search, citations, and casual conversation.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Data Science Major vs Minor: What Each Prepares You For</title>
     <link>https://jahanzaibawan.com/blog/data-science-major-vs-minor.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/what-prompt-courses-skip.html</guid>
     <pubDate>Tue, 13 Oct 2026 09:00:00 +0000</pubDate>
     <description>Clever phrasing is easy to teach. Rigorous evaluation of prompts, under variance and leakage, is the part courses usually skip.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Prompt Engineering Salary Claims: What the Job Actually Pays For</title>
-    <link>https://jahanzaibawan.com/blog/prompt-engineering-salary-claims.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/prompt-engineering-salary-claims.html</guid>
-    <pubDate>Tue, 13 Oct 2026 09:00:00 +0000</pubDate>
-    <description>The eye-catching prompt engineer salary figures are really paying for evaluation, debugging and systems judgement, not magic phrasing.</description>
     <category>Evaluation</category>
   </item>
 </channel>

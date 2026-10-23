@@ -1,1 +1,1 @@
-2026-10-22T20:01:04Z slug=data-science-major-vs-minor words=1017 title="Data Science Major vs Minor: What Each Prepares You For"
+2026-10-23T08:00:59Z slug=computer-vision-syndrome-naming-collision words=1042 title="Computer Vision Syndrome vs Computer Vision: A Naming Clash"

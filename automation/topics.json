@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Computer vision syndrome and computer vision the field: a naming collision worth clarifying",
     "Picking a model evaluation technique for the problem you actually have",
     "What a model evaluation framework hides behind its default settings",
     "Reading an LLM leaderboard without mistaking rank for capability",
@@ -245,6 +244,7 @@
     "Why LLM wikis and glossaries disagree on basic terms, and how to pick a definition",
     "Fine-tuning synonyms: why precise language matters when you describe your method",
     "How many examples of fine-tuning do you need to understand the general concept",
-    "Data science majors versus minors: what each one actually prepares you for"
+    "Data science majors versus minors: what each one actually prepares you for",
+    "Computer vision syndrome and computer vision the field: a naming collision worth clarifying"
   ]
 }

@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "computer-vision-syndrome-naming-collision",
+      "title": "Computer Vision Syndrome vs Computer Vision: A Naming Clash",
+      "excerpt": "Computer vision syndrome is an eye strain condition; computer vision is a branch of AI. The shared name causes real confusion in search, citations, and casual conversation.",
+      "date": "2026-10-23",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a6",
+      "thumb": "assets/blog/computer-vision-syndrome-naming-collision.png",
+      "thumb_alt": "Cover image for the article: Computer Vision Syndrome vs Computer Vision: A Naming Clash"
+    },
+    {
       "slug": "data-science-major-vs-minor",
       "title": "Data Science Major vs Minor: What Each Prepares You For",
       "excerpt": "A data science major builds you to design and evaluate methods; a minor builds you to apply them responsibly. Knowing which one you are getting changes how you plan your career.",
