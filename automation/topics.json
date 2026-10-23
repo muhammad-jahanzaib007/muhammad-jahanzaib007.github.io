@@ -1,11 +1,24 @@
 {
   "queue": [
-    "Picking a model evaluation technique for the problem you actually have",
     "What a model evaluation framework hides behind its default settings",
     "Reading an LLM leaderboard without mistaking rank for capability",
     "The LLM arena approach to evaluation: pairwise preference versus fixed benchmarks",
     "Data science certifications mapped against what employers actually screen for",
-    "A plain guide to fine-tuning LLMs: what changes, what stays frozen, and why"
+    "A plain guide to fine-tuning LLMs: what changes, what stays frozen, and why",
+    "Prompt engineering explained from first principles: what the term actually covers",
+    "Deep learning super sampling: what it borrows from and what it has nothing to do with",
+    "A beginner's roadmap into machine learning: what to learn first and why order matters",
+    "Data science versus data analytics job adverts: spotting what role you would actually have",
+    "Machine learning play: why toy demos online rarely resemble production work",
+    "What a deep learning definition should include that most glossaries skip",
+    "Deep learning with Python style books: what they teach well and what they leave for later",
+    "Choosing a machine learning engineer career path: research, platform, or applied",
+    "The real cost of a data science degree versus a focused portfolio",
+    "How model evaluation and threat research organisations actually test a model",
+    "Prompt engineering as a job title: what the posting is really asking you to do",
+    "Machine learning definitions across textbooks: where the disagreements actually matter",
+    "Data science internships worth applying for: what to look for in the job description",
+    "A grounded answer to deep learning versus machine learning for newcomers"
   ],
   "published": [
     "UAV object classification data-leakage case study",
@@ -245,6 +258,7 @@
     "Fine-tuning synonyms: why precise language matters when you describe your method",
     "How many examples of fine-tuning do you need to understand the general concept",
     "Data science majors versus minors: what each one actually prepares you for",
-    "Computer vision syndrome and computer vision the field: a naming collision worth clarifying"
+    "Computer vision syndrome and computer vision the field: a naming collision worth clarifying",
+    "Picking a model evaluation technique for the problem you actually have"
   ]
 }

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Picking a Model Evaluation Technique for Your Actual Problem | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to choosing model evaluation methods based on data structure, deployment conditions and leakage risk, not habit.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="model evaluation, cross validation, data leakage, time series validation, accuracy metrics, train test split, machine learning, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-23">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Picking a Model Evaluation Technique for Your Actual Problem">
+<meta property="og:description" content="A practical guide to choosing model evaluation methods based on data structure, deployment conditions and leakage risk, not habit.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/evaluation-technique-for-your-problem.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/evaluation-technique-for-your-problem.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Picking a Model Evaluation Technique for Your Actual Problem">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/evaluation-technique-for-your-problem.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/evaluation-technique-for-your-problem.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Picking a Model Evaluation Technique for Your Actual Problem",
+  "description": "A practical guide to choosing model evaluation methods based on data structure, deployment conditions and leakage risk, not habit.",
+  "url": "https://jahanzaibawan.com/blog/evaluation-technique-for-your-problem.html",
+  "image": "https://jahanzaibawan.com/assets/blog/evaluation-technique-for-your-problem.png",
+  "datePublished": "2026-10-23",
+  "dateModified": "2026-10-23",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/evaluation-technique-for-your-problem.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Picking a Model Evaluation Technique for Your Actual Problem", "item": "https://jahanzaibawan.com/blog/evaluation-technique-for-your-problem.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 6 min read · 23 Oct 2026</div>
+    <h1>Picking a Model Evaluation Technique for Your Actual Problem</h1>
+    <p class="lede">The right split, metric and validation scheme depend on how your data was generated and how your model will be used, not on habit.</p>
+  </div>
+
+  <img src="../assets/blog/evaluation-technique-for-your-problem.png" alt="Cover image for the article: Picking a Model Evaluation Technique for Your Actual Problem" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the default is usually wrong</h2><p>Most people learn one evaluation recipe early on: shuffle the data, split it eighty-twenty, run k-fold cross validation, report accuracy or an F1 score, and move on. It becomes a reflex rather than a decision. The trouble is that this recipe encodes an assumption, namely that every row in your dataset is independent and identically distributed, and that the deployment setting looks like a random sample from the same distribution as training. That assumption is often false, and when it is false the evaluation number you report is not measuring what you think it is measuring.</p><p>I have come to treat the choice of evaluation technique as a modelling decision in its own right, not an afterthought bolted on after the real work is done. The question to ask first is not 'which metric looks rigorous' but 'what does a new, unseen case actually look like in this problem, and how did my existing data get generated'. Answering that honestly usually points to one evaluation scheme and rules out several others, often including the one you were about to use by default.</p><p>This matters because a mismatched evaluation scheme does not just give you a slightly noisy number, it gives you a systematically biased one. A model can look excellent under the wrong scheme and then fail quietly once deployed, and by the time anyone notices, the cost has already been paid in wasted effort, bad decisions, or worse.</p></section><section class='psec reveal'><h2>Worked intuition: the same dataset, three honest answers</h2><p>Suppose you are building a model to predict whether a patient will be readmitted to hospital within thirty days, using records collected over three years from one hospital. There are several reasonable questions you could be trying to answer, and each demands a different split.</p><p>If your real question is 'how well does this model generalise to a new patient admitted next month', a simple random k-fold split is dangerous. Patients with chronic conditions appear multiple times in the dataset across different admissions, so a random split can place two visits from the same patient in both the training and test folds. The model then partly learns to recognise the patient rather than the underlying risk pattern, and your cross-validated accuracy, say ninety-one percent, is inflated. The honest fix is a grouped split, where every record belonging to a given patient id sits entirely in one fold. Rerun the same model under grouped k-fold and it is entirely plausible the accuracy drops to the low eighties. That drop is not a worse model, it is a more truthful number.</p><p>If instead your real question is 'how well will this model perform next year, trained only on past data', the grouping fix is not enough, because it still lets the model train on April data and test on January data from the same year, which is not how deployment works. Here you need a time-based split: train on year one and two, test on year three, and ideally walk the split forward in a rolling fashion to see whether performance is stable or decaying as conditions drift. A model that scores eighty-five percent under grouped k-fold but seventy-six percent under a forward time split is telling you something important, namely that the relationship between features and outcome is shifting over time, perhaps due to a change in hospital policy or recording practice.</p><p>If your real question is instead about a specific subgroup, say patients over seventy with diabetes, then neither of the above splits is sufficient on its own. You need stratified evaluation on that subgroup specifically, because an aggregate metric across the whole dataset can hide the fact that the model is mediocre precisely where it needs to be good. A model with ninety percent overall accuracy might sit at seventy percent on the subgroup that actually drives most of the readmission cost.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/evaluation-technique-for-your-problem-1.jpg' alt='hospital records on desk' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Matching the metric to the decision, not just the split</h2><p>Getting the split right solves the leakage problem, but the metric itself is a second, independent decision, and it should be driven by what the number is used for downstream. Accuracy is a poor default whenever classes are imbalanced or the cost of different error types is unequal, which is most real problems. If readmission happens in eight percent of cases, a model that predicts 'no readmission' for everyone scores ninety-two percent accuracy while being useless. Precision, recall, and the trade-off between them, or a threshold-independent measure like the area under the precision-recall curve, generally tell you far more than accuracy in this setting, and precision-recall curves in particular are more informative than ROC curves when the positive class is rare.</p><p>The same logic applies in regression. Mean absolute error and root mean squared error answer different questions: RMSE penalises large errors disproportionately, which is right if occasional big misses are genuinely costlier, and wrong if they are not. If you are forecasting demand and a twenty-unit error on a slow day matters as much per unit as a twenty-unit error on a busy day, MAE is the honest choice; if large misses cause stockouts that cascade, RMSE's extra weighting is doing useful work rather than distorting the picture.</p><p>Finally, consider whether a single number is even the right output. For a time series model, a single held-out error figure hides whether errors grow over the forecast horizon, and for a classifier used to triage cases, a single F1 score hides where on the precision-recall curve you actually need to operate. Reporting a curve, a per-segment breakdown, or performance across a rolling set of time windows is more work than reporting one clean figure, but it is the difference between an evaluation that survives contact with deployment and one that does not.</p></section><section class='psec reveal'><h2>A practical takeaway</h2><p>Before you choose a split or a metric, write down two sentences: what does a genuinely new case look like relative to my training data, and what decision will this evaluation number actually inform. If new cases can share structure with old ones, such as the same patient, same user, or same store, group your splits around that structure. If new cases arrive after old ones in time, split by time and check for drift rather than trusting a single random split. If the classes or outcomes are imbalanced, or errors have asymmetric costs, pick a metric that reflects those costs rather than reaching for accuracy by habit. None of this is exotic; it is simply taking the time to match the evaluation to the problem you actually have, rather than the problem that a default scikit-learn call happens to assume.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/evaluation-technique-for-your-problem-2.jpg' alt='whiteboard with timeline diagram' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

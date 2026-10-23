@@ -1,1 +1,1 @@
-2026-10-23T08:00:59Z slug=computer-vision-syndrome-naming-collision words=1042 title="Computer Vision Syndrome vs Computer Vision: A Naming Clash"
+2026-10-23T20:01:08Z slug=evaluation-technique-for-your-problem words=1102 title="Picking a Model Evaluation Technique for Your Actual Problem"

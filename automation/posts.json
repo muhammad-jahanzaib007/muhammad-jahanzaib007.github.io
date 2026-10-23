@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "evaluation-technique-for-your-problem",
+      "title": "Picking a Model Evaluation Technique for Your Actual Problem",
+      "excerpt": "K-fold is not a default you apply everywhere. Match the evaluation scheme to how your data was generated and how the model will actually be used.",
+      "date": "2026-10-23",
+      "read_min": 6,
+      "tag": "Evaluation",
+      "color": "a2",
+      "thumb": "assets/blog/evaluation-technique-for-your-problem.png",
+      "thumb_alt": "Cover image for the article: Picking a Model Evaluation Technique for Your Actual Problem"
+    },
+    {
       "slug": "computer-vision-syndrome-naming-collision",
       "title": "Computer Vision Syndrome vs Computer Vision: A Naming Clash",
       "excerpt": "Computer vision syndrome is an eye strain condition; computer vision is a branch of AI. The shared name causes real confusion in search, citations, and casual conversation.",

@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Fri, 23 Oct 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Picking a Model Evaluation Technique for Your Actual Problem</title>
+    <link>https://jahanzaibawan.com/blog/evaluation-technique-for-your-problem.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/evaluation-technique-for-your-problem.html</guid>
+    <pubDate>Fri, 23 Oct 2026 09:00:00 +0000</pubDate>
+    <description>K-fold is not a default you apply everywhere. Match the evaluation scheme to how your data was generated and how the model will actually be used.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Computer Vision Syndrome vs Computer Vision: A Naming Clash</title>
     <link>https://jahanzaibawan.com/blog/computer-vision-syndrome-naming-collision.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/computer-vision-syndrome-naming-collision.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Wed, 14 Oct 2026 09:00:00 +0000</pubDate>
     <description>Forget the title. Salary bands in machine learning track the judgement required by the work, not years of experience or a label on a contract.</description>
     <category>Careers</category>
-  </item>
-  <item>
-    <title>What a Prompt Engineering Course Should Teach but Skips</title>
-    <link>https://jahanzaibawan.com/blog/what-prompt-courses-skip.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/what-prompt-courses-skip.html</guid>
-    <pubDate>Tue, 13 Oct 2026 09:00:00 +0000</pubDate>
-    <description>Clever phrasing is easy to teach. Rigorous evaluation of prompts, under variance and leakage, is the part courses usually skip.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>
