@@ -1,1 +1,1 @@
-2026-10-24T08:00:55Z slug=evaluation-framework-default-settings words=1088 title="What a Model Evaluation Framework Hides in Its Defaults"
+2026-10-24T20:00:56Z slug=reading-llm-leaderboards-carefully words=1061 title="Reading an LLM Leaderboard Without Mistaking Rank for Capability"

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reading an LLM Leaderboard Without Mistaking Rank for Capability | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to reading LLM leaderboards critically, covering contamination, variance, aggregation, and what rank actually measures.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="llm leaderboards, model evaluation, benchmark contamination, nlp evaluation, ai benchmarking, leakage, reproducibility, machine learning metrics, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-24">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Reading an LLM Leaderboard Without Mistaking Rank for Capability">
+<meta property="og:description" content="A practical guide to reading LLM leaderboards critically, covering contamination, variance, aggregation, and what rank actually measures.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/reading-llm-leaderboards-carefully.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/reading-llm-leaderboards-carefully.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Reading an LLM Leaderboard Without Mistaking Rank for Capability">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/reading-llm-leaderboards-carefully.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/reading-llm-leaderboards-carefully.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Reading an LLM Leaderboard Without Mistaking Rank for Capability",
+  "description": "A practical guide to reading LLM leaderboards critically, covering contamination, variance, aggregation, and what rank actually measures.",
+  "url": "https://jahanzaibawan.com/blog/reading-llm-leaderboards-carefully.html",
+  "image": "https://jahanzaibawan.com/assets/blog/reading-llm-leaderboards-carefully.png",
+  "datePublished": "2026-10-24",
+  "dateModified": "2026-10-24",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/reading-llm-leaderboards-carefully.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Reading an LLM Leaderboard Without Mistaking Rank for Capability", "item": "https://jahanzaibawan.com/blog/reading-llm-leaderboards-carefully.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 24 Oct 2026</div>
+    <h1>Reading an LLM Leaderboard Without Mistaking Rank for Capability</h1>
+    <p class="lede">A leaderboard position is a compressed, leaky summary of a benchmark, not a verdict on how good a model actually is. Here is how to read one properly.</p>
+  </div>
+
+  <img src="../assets/blog/reading-llm-leaderboards-carefully.png" alt="Cover image for the article: Reading an LLM Leaderboard Without Mistaking Rank for Capability" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why rank feels like truth</h2><p>Leaderboards are seductive because they compress a messy, multi-dimensional question, how good is this model, into a single number and a position. A table with model names down the left and a score column on the right looks like a race result. It invites the same reading: whoever is first is best. But a benchmark score is the output of a long chain of choices, which tasks were included, how they were sampled, how answers were graded, which prompt template was used, and each of those choices can move a model several ranks without touching its underlying capability at all.</p><p>I think the right mental model is that a leaderboard is a snapshot of performance on one fixed test under one fixed protocol, not a measurement of a general property called intelligence or reasoning. Treating rank as capability is a bit like judging two runners by who won a single race, ignoring that one ran with the wind at their back, on a shorter track, against weaker competition that day. The number is real. What it licenses you to conclude is much narrower than it looks.</p><p>This matters practically because people make expensive decisions off these tables: which base model to fine-tune, which API to put into production, which paper's claims to trust. If the leaderboard is quietly leaking information or averaging away the thing you actually care about, those decisions are built on sand. None of this means leaderboards are useless. It means they need to be read the way a careful reviewer reads a results table, with an eye for what could be inflating or deflating each number.</p></section><section class='psec reveal'><h2>Contamination and the illusion of generalisation</h2><p>The first thing I check is whether the benchmark data could plausibly have leaked into training. Large language models are trained on enormous, loosely curated web crawls, and popular benchmarks have been online, discussed, and copied for years. If even a modest fraction of test questions or close paraphrases of them appear in training data, a model can score well by recall rather than by reasoning. This is not a hypothetical edge case; it is a structural risk whenever training data and evaluation data are drawn from overlapping sources, which is most of the time.</p><p>Here is a concrete way to think about the size of the effect. Suppose a benchmark has one thousand questions and a model has genuinely memorised answers to one hundred of them through contamination, scoring 95 percent on those by recall. On the remaining nine hundred genuinely unseen questions it reasons honestly and scores 55 percent. The blended leaderboard score comes out at around 59.5 percent. A competitor with zero contamination and a true 58 percent reasoning ability would sit just below it on the table, despite being arguably the more capable general-purpose model. A one or two rank difference on the public board can be entirely explained by differential contamination rather than differential skill.</p><p>Good leaderboards now try to mitigate this with held-out or refreshed test sets, canary strings to detect leakage, and decontamination filtering before training. When I look at a leaderboard, I specifically look for whether the maintainers describe any of these safeguards. If a leaderboard gives no information about how it checked for contamination, I treat the absolute scores as soft and focus more on relative robustness across several independent benchmarks than on the exact ranking of any one.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/reading-llm-leaderboards-carefully-1.jpg' alt='laptop screen showing data table' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Aggregation hides the dimension you actually care about</h2><p>Most public leaderboards report a single composite score averaged across many subtasks: some maths, some coding, some commonsense reasoning, some reading comprehension. Averaging is convenient for producing one sortable column, but it quietly assumes that a point gained on a coding subtask is worth the same as a point gained on a commonsense subtask, and that your use case cares about them in the same proportion as the benchmark designer did. It almost certainly does not.</p><p>Imagine two models on a composite benchmark made of four equally weighted subtasks. Model A scores 80, 80, 80, and 40. Model B scores 65, 65, 65, and 65. Both average exactly 72.5 and would sit at the same position on the leaderboard. But if your application is squarely the subtask where Model A scored 40, say structured data extraction, then Model A is the worse choice for you despite being tied on the headline number. The composite score has erased the one piece of information that mattered for your decision.</p><p>There is also the question of statistical noise, which leaderboards rarely surface at all. A score of 72.5 percent on five hundred test items carries meaningful sampling uncertainty; two models separated by a single percentage point are very often not distinguishable given that uncertainty, yet the table will still rank one strictly above the other. Some evaluation frameworks report confidence intervals or use paired statistical tests across models on the same items, and when they do, it is common to find that a chunk of the visible ranking order is not statistically significant. Treat small gaps as ties unless you have evidence otherwise, and always look for the subtask breakdown before trusting the average.</p></section><section class='psec reveal'><h2>A practical checklist</h2><p>When I actually need to choose a model, I no longer start from the leaderboard position. I start from the task I care about and work backwards. First, I check whether the benchmark's subtasks resemble my actual use case closely enough to be informative at all; a strong score on competitive maths problems tells me very little about summarisation quality. Second, I look for decontamination methodology and treat scores from boards with none as directionally useful but not precise.</p><p>Third, I look past the composite number to the per-category breakdown and weight it by what matters to my application, effectively recomputing my own small leaderboard from the published components. Fourth, I treat any gap smaller than a few percentage points as noise unless the source reports significance testing, and I prefer boards that disclose sample sizes and variance over those that only show a single clean number. Finally, where it is feasible, I run a small, leakage-aware evaluation of my own on held-out examples that resemble my real workload, because the single most reliable signal is still performance on data that the model could not possibly have seen and that looks like the problem I am actually trying to solve.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/reading-llm-leaderboards-carefully-2.jpg' alt='research paper with highlighted statistics' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

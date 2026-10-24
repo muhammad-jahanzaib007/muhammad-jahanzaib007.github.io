@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "reading-llm-leaderboards-carefully",
+      "title": "Reading an LLM Leaderboard Without Mistaking Rank for Capability",
+      "excerpt": "A top rank on an LLM leaderboard tells you less than you think. Here is how to interrogate the numbers before trusting them.",
+      "date": "2026-10-24",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a4",
+      "thumb": "assets/blog/reading-llm-leaderboards-carefully.png",
+      "thumb_alt": "Cover image for the article: Reading an LLM Leaderboard Without Mistaking Rank for Capability"
+    },
+    {
       "slug": "evaluation-framework-default-settings",
       "title": "What a Model Evaluation Framework Hides in Its Defaults",
       "excerpt": "Default settings in evaluation frameworks are design choices, not neutral facts. Knowing what they hide saves you from publishing misleading numbers.",
