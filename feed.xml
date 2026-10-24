@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Fri, 23 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 24 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>What a Model Evaluation Framework Hides in Its Defaults</title>
+    <link>https://jahanzaibawan.com/blog/evaluation-framework-default-settings.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/evaluation-framework-default-settings.html</guid>
+    <pubDate>Sat, 24 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Default settings in evaluation frameworks are design choices, not neutral facts. Knowing what they hide saves you from publishing misleading numbers.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Picking a Model Evaluation Technique for Your Actual Problem</title>
     <link>https://jahanzaibawan.com/blog/evaluation-technique-for-your-problem.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/entry-level-computer-vision-jobs.html</guid>
     <pubDate>Wed, 14 Oct 2026 09:00:00 +0000</pubDate>
     <description>&#x27;Entry level&#x27; in computer vision postings rarely means beginner. Here is how to decode the requirements and apply with confidence.</description>
-    <category>Careers</category>
-  </item>
-  <item>
-    <title>ML Engineer Salary Bands Explained Through the Work</title>
-    <link>https://jahanzaibawan.com/blog/ml-engineer-salary-bands-explained.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/ml-engineer-salary-bands-explained.html</guid>
-    <pubDate>Wed, 14 Oct 2026 09:00:00 +0000</pubDate>
-    <description>Forget the title. Salary bands in machine learning track the judgement required by the work, not years of experience or a label on a contract.</description>
     <category>Careers</category>
   </item>
 </channel>

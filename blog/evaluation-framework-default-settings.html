@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What a Model Evaluation Framework Hides in Its Defaults | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A look at how default settings in model evaluation frameworks shape results, with a worked example showing why defaults deserve scrutiny.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="model evaluation, machine learning evaluation, cross validation, evaluation metrics, data leakage, reproducibility, default hyperparameters, train test split, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-24">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="What a Model Evaluation Framework Hides in Its Defaults">
+<meta property="og:description" content="A look at how default settings in model evaluation frameworks shape results, with a worked example showing why defaults deserve scrutiny.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/evaluation-framework-default-settings.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/evaluation-framework-default-settings.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What a Model Evaluation Framework Hides in Its Defaults">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/evaluation-framework-default-settings.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/evaluation-framework-default-settings.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "What a Model Evaluation Framework Hides in Its Defaults",
+  "description": "A look at how default settings in model evaluation frameworks shape results, with a worked example showing why defaults deserve scrutiny.",
+  "url": "https://jahanzaibawan.com/blog/evaluation-framework-default-settings.html",
+  "image": "https://jahanzaibawan.com/assets/blog/evaluation-framework-default-settings.png",
+  "datePublished": "2026-10-24",
+  "dateModified": "2026-10-24",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/evaluation-framework-default-settings.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "What a Model Evaluation Framework Hides in Its Defaults", "item": "https://jahanzaibawan.com/blog/evaluation-framework-default-settings.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 24 Oct 2026</div>
+    <h1>What a Model Evaluation Framework Hides in Its Defaults</h1>
+    <p class="lede">Every evaluation library ships with sensible-looking defaults, and those defaults quietly decide what your numbers actually mean.</p>
+  </div>
+
+  <img src="../assets/blog/evaluation-framework-default-settings.png" alt="Cover image for the article: What a Model Evaluation Framework Hides in Its Defaults" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why defaults deserve suspicion</h2><p>When I first used a well-known evaluation library, I ran a classifier through its default cross-validation routine and got a tidy accuracy score within minutes. It felt like progress. What I did not appreciate at the time was how many decisions had already been made on my behalf: how the folds were constructed, whether classes were stratified, what counted as a positive prediction, and how ties in probability scores were broken. None of those choices were wrong, but none of them were neutral either. They were defaults chosen by someone else, for a generic use case that may or may not resemble mine.</p><p>This matters because evaluation frameworks are not just measurement tools, they are small pieces of methodology wrapped in code. A default threshold of 0.5 for binary classification assumes that false positives and false negatives cost the same, which is rarely true outside toy problems. A default k of 5 for cross-validation assumes your dataset is large and homogeneous enough that five folds give a stable estimate, which is not always the case with skewed or small datasets. Each default encodes an assumption, and if that assumption does not match your problem, the resulting number can be precise and wrong at the same time.</p><p>The danger is not that defaults exist, it is that they are invisible once you stop looking for them. A reported F1 score of 0.81 looks like a fact. It is actually the output of a long chain of choices: how missing values were handled before splitting, whether the split respected time order, how multi-class averaging was performed, and what random seed was used for shuffling. Strip away any one of those and the number can move by several points without anything being done incorrectly.</p></section><section class='psec reveal'><h2>A worked example: the hidden cost of random splitting</h2><p>Consider a fairly ordinary task: predicting whether a customer will cancel a subscription next month, using twelve months of historical records. A common first step is to call a train-test split function with its default behaviour, which usually performs a random shuffle before splitting, say eighty per cent train and twenty per cent test. The function reports back a clean 0.76 ROC-AUC. That looks respectable.</p><p>The problem is that customer records are not independent draws from a static distribution, they are a time series. A random split means that data from March might end up in the training set while data from January, for the same customer, ends up in the test set. The model can effectively peek at the customer's later behaviour while predicting their earlier behaviour, because features often carry forward information such as cumulative usage or recent support tickets. This is a subtle form of leakage that random splitting does not protect against, precisely because the default treats every row as exchangeable.</p><p>If you instead split by time, training on the first ten months and testing on the last two, the same model might report a ROC-AUC closer to 0.68. That drop of eight points is not noise, it is the removal of an advantage the model should never have had. The random-split number was not fraudulent, it was simply answering a different question than the one the business actually cares about, which is: how will this model perform on genuinely future customers? The default made that substitution silently, and only a deliberate decision to split by time exposed it.</p><p>A similar story plays out with stratification. Imagine the cancellation rate in your data is nine per cent. A default shuffle split usually preserves this ratio roughly by chance in reasonably sized datasets, but with a smaller sample, say six hundred rows, a single unstratified split might place six per cent of positives in the test fold purely by chance. Metrics like precision and recall become noisy under that kind of imbalance, and comparing two models evaluated on differently imbalanced test folds is close to meaningless, even though both numbers came from the same well-regarded library.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/evaluation-framework-default-settings-1.jpg' alt='laptop screen with data charts' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Metrics, averaging and the illusion of a single number</h2><p>Multi-class evaluation introduces its own quiet defaults, particularly around averaging. A library computing F1 for a three-class problem might default to macro averaging, which treats each class equally regardless of how many examples it has, or it might default to weighted averaging, which weights each class by its frequency. These produce different numbers from the same predictions, sometimes by a wide margin, and the choice is rarely surfaced prominently in a results table.</p><p>Suppose a model performs very well on two common classes but poorly on a rare third class that makes up only four per cent of the data. Macro averaging will drag the overall F1 down noticeably because the rare class gets equal weight in the average. Weighted averaging will barely register the poor performance on that class, because its contribution is scaled by its small frequency. If your actual goal is to detect that rare class reliably, say a rare fraud type or a rare disease subtype, the weighted default will flatter the model and hide exactly the weakness you most need to see.</p><p>This is why reading documentation for the specific metric function you are calling is not optional diligence, it is part of doing the evaluation correctly. The same applies to threshold selection, confidence interval computation, and how a library handles ties or missing predictions. None of these are edge cases, they are the ordinary mechanics of evaluation, and defaults are chosen for broad applicability rather than for your particular stakes.</p></section><section class='psec reveal'><h2>A practical takeaway</h2><p>The fix is not to distrust every library, it is to treat defaults as a starting hypothesis rather than a finished answer. Before trusting a number, I now ask three questions: does the splitting strategy respect the real-world structure of the data, such as time order or grouping by entity; does the averaging or thresholding match what actually matters for the decision being made; and would the result survive being recomputed by someone else using slightly different, but equally reasonable, settings.</p><p>In practice this means explicitly setting the parameters that matter, rather than leaving them blank, and writing down why each choice was made. It means checking whether a cross-validation split is grouped by customer or patient where appropriate, and whether class imbalance is handled deliberately rather than left to chance. None of this takes much longer than running the defaults, but it changes a convenient number into a trustworthy one, and that difference is usually the whole point of evaluating a model in the first place.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/evaluation-framework-default-settings-2.jpg' alt='whiteboard with equations' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

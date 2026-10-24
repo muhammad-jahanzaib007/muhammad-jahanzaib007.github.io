@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "evaluation-framework-default-settings",
+      "title": "What a Model Evaluation Framework Hides in Its Defaults",
+      "excerpt": "Default settings in evaluation frameworks are design choices, not neutral facts. Knowing what they hide saves you from publishing misleading numbers.",
+      "date": "2026-10-24",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a3",
+      "thumb": "assets/blog/evaluation-framework-default-settings.png",
+      "thumb_alt": "Cover image for the article: What a Model Evaluation Framework Hides in Its Defaults"
+    },
+    {
       "slug": "evaluation-technique-for-your-problem",
       "title": "Picking a Model Evaluation Technique for Your Actual Problem",
       "excerpt": "K-fold is not a default you apply everywhere. Match the evaluation scheme to how your data was generated and how the model will actually be used.",

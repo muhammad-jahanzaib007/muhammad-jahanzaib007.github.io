@@ -1,1 +1,1 @@
-2026-10-23T20:01:08Z slug=evaluation-technique-for-your-problem words=1102 title="Picking a Model Evaluation Technique for Your Actual Problem"
+2026-10-24T08:00:55Z slug=evaluation-framework-default-settings words=1088 title="What a Model Evaluation Framework Hides in Its Defaults"
