@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a4",
       "thumb": "assets/blog/reading-llm-leaderboards-carefully.png",
-      "thumb_alt": "Cover image for the article: Reading an LLM Leaderboard Without Mistaking Rank for Capability"
+      "thumb_alt": "Cover image for the article: Reading an LLM Leaderboard Without Mistaking Rank for Capability",
+      "li_shared": true
     },
     {
       "slug": "evaluation-framework-default-settings",
