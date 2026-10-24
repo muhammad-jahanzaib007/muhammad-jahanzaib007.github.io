@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a3",
       "thumb": "assets/blog/evaluation-framework-default-settings.png",
-      "thumb_alt": "Cover image for the article: What a Model Evaluation Framework Hides in Its Defaults"
+      "thumb_alt": "Cover image for the article: What a Model Evaluation Framework Hides in Its Defaults",
+      "li_shared": true
     },
     {
       "slug": "evaluation-technique-for-your-problem",
