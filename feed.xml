@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Sun, 25 Oct 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Data Science Certifications Versus What Employers Actually Screen For</title>
+    <link>https://jahanzaibawan.com/blog/certifications-vs-employer-screens.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/certifications-vs-employer-screens.html</guid>
+    <pubDate>Sun, 25 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Certifications prove you finished a syllabus. Hiring screens test whether you can reason under uncertainty, debug, and communicate. The overlap is smaller than people assume.</description>
+    <category>Careers</category>
+  </item>
+  <item>
     <title>LLM Arenas Versus Fixed Benchmarks: Which Evaluation Wins</title>
     <link>https://jahanzaibawan.com/blog/llm-arena-versus-fixed-benchmarks.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/llm-arena-versus-fixed-benchmarks.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Fri, 16 Oct 2026 09:00:00 +0000</pubDate>
     <description>A degree builds the judgement to design a pipeline from scratch; a minor builds the fluency to use one well. Neither is a shortcut to the other.</description>
     <category>Careers</category>
-  </item>
-  <item>
-    <title>Prompt Engineering Guide: Structuring One Prompt from Scratch</title>
-    <link>https://jahanzaibawan.com/blog/structuring-a-prompt-from-scratch.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/structuring-a-prompt-from-scratch.html</guid>
-    <pubDate>Thu, 15 Oct 2026 09:00:00 +0000</pubDate>
-    <description>A practical walkthrough of building one prompt from a vague task to a reliable, testable instruction set.</description>
-    <category>NLP</category>
   </item>
 </channel>
 </rss>

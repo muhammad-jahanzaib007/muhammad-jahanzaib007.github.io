@@ -1,1 +1,1 @@
-2026-10-25T08:00:56Z slug=llm-arena-versus-fixed-benchmarks words=1048 title="LLM Arenas Versus Fixed Benchmarks: Which Evaluation Wins"
+2026-10-25T20:00:57Z slug=certifications-vs-employer-screens words=931 title="Data Science Certifications Versus What Employers Actually Screen For"

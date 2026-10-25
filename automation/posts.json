@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "certifications-vs-employer-screens",
+      "title": "Data Science Certifications Versus What Employers Actually Screen For",
+      "excerpt": "Certifications prove you finished a syllabus. Hiring screens test whether you can reason under uncertainty, debug, and communicate. The overlap is smaller than people assume.",
+      "date": "2026-10-25",
+      "read_min": 5,
+      "tag": "Careers",
+      "color": "a6",
+      "thumb": "assets/blog/certifications-vs-employer-screens.png",
+      "thumb_alt": "Cover image for the article: Data Science Certifications Versus What Employers Actually Screen For"
+    },
+    {
       "slug": "llm-arena-versus-fixed-benchmarks",
       "title": "LLM Arenas Versus Fixed Benchmarks: Which Evaluation Wins",
       "excerpt": "Arenas measure what people prefer; benchmarks measure what models can do. Confusing the two produces confident, misleading leaderboards.",
