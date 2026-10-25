@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a5",
       "thumb": "assets/blog/llm-arena-versus-fixed-benchmarks.png",
-      "thumb_alt": "Cover image for the article: LLM Arenas Versus Fixed Benchmarks: Which Evaluation Wins"
+      "thumb_alt": "Cover image for the article: LLM Arenas Versus Fixed Benchmarks: Which Evaluation Wins",
+      "li_shared": true
     },
     {
       "slug": "reading-llm-leaderboards-carefully",
