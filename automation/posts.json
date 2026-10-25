@@ -9,7 +9,8 @@
       "tag": "Careers",
       "color": "a6",
       "thumb": "assets/blog/certifications-vs-employer-screens.png",
-      "thumb_alt": "Cover image for the article: Data Science Certifications Versus What Employers Actually Screen For"
+      "thumb_alt": "Cover image for the article: Data Science Certifications Versus What Employers Actually Screen For",
+      "li_shared": true
     },
     {
       "slug": "llm-arena-versus-fixed-benchmarks",
