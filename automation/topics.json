@@ -1,6 +1,5 @@
 {
   "queue": [
-    "The LLM arena approach to evaluation: pairwise preference versus fixed benchmarks",
     "Data science certifications mapped against what employers actually screen for",
     "A plain guide to fine-tuning LLMs: what changes, what stays frozen, and why",
     "Prompt engineering explained from first principles: what the term actually covers",
@@ -259,6 +258,7 @@
     "Computer vision syndrome and computer vision the field: a naming collision worth clarifying",
     "Picking a model evaluation technique for the problem you actually have",
     "What a model evaluation framework hides behind its default settings",
-    "Reading an LLM leaderboard without mistaking rank for capability"
+    "Reading an LLM leaderboard without mistaking rank for capability",
+    "The LLM arena approach to evaluation: pairwise preference versus fixed benchmarks"
   ]
 }

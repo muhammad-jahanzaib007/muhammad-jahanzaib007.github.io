@@ -1,1 +1,1 @@
-2026-10-24T20:00:56Z slug=reading-llm-leaderboards-carefully words=1061 title="Reading an LLM Leaderboard Without Mistaking Rank for Capability"
+2026-10-25T08:00:56Z slug=llm-arena-versus-fixed-benchmarks words=1048 title="LLM Arenas Versus Fixed Benchmarks: Which Evaluation Wins"

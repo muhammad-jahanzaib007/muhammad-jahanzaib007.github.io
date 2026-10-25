@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Sat, 24 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 25 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>LLM Arenas Versus Fixed Benchmarks: Which Evaluation Wins</title>
+    <link>https://jahanzaibawan.com/blog/llm-arena-versus-fixed-benchmarks.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/llm-arena-versus-fixed-benchmarks.html</guid>
+    <pubDate>Sun, 25 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Arenas measure what people prefer; benchmarks measure what models can do. Confusing the two produces confident, misleading leaderboards.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Reading an LLM Leaderboard Without Mistaking Rank for Capability</title>
     <link>https://jahanzaibawan.com/blog/reading-llm-leaderboards-carefully.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Thu, 15 Oct 2026 09:00:00 +0000</pubDate>
     <description>A practical walkthrough of building one prompt from a vague task to a reliable, testable instruction set.</description>
     <category>NLP</category>
-  </item>
-  <item>
-    <title>How to Evaluate a Machine Learning Definition Before Trusting It</title>
-    <link>https://jahanzaibawan.com/blog/evaluate-ml-definitions.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/evaluate-ml-definitions.html</guid>
-    <pubDate>Thu, 15 Oct 2026 09:00:00 +0000</pubDate>
-    <description>A practical checklist for interrogating machine learning definitions before you let them shape your assumptions, your splits, or your conclusions.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>

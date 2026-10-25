@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "llm-arena-versus-fixed-benchmarks",
+      "title": "LLM Arenas Versus Fixed Benchmarks: Which Evaluation Wins",
+      "excerpt": "Arenas measure what people prefer; benchmarks measure what models can do. Confusing the two produces confident, misleading leaderboards.",
+      "date": "2026-10-25",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a5",
+      "thumb": "assets/blog/llm-arena-versus-fixed-benchmarks.png",
+      "thumb_alt": "Cover image for the article: LLM Arenas Versus Fixed Benchmarks: Which Evaluation Wins"
+    },
+    {
       "slug": "reading-llm-leaderboards-carefully",
       "title": "Reading an LLM Leaderboard Without Mistaking Rank for Capability",
       "excerpt": "A top rank on an LLM leaderboard tells you less than you think. Here is how to interrogate the numbers before trusting them.",

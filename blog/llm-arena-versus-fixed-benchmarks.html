@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LLM Arenas Versus Fixed Benchmarks: Which Evaluation Wins | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A comparison of LLM arena-style pairwise preference evaluation and fixed benchmark testing, with a worked example showing where each approach misleads.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="LLM evaluation, pairwise preference, LLM arena, benchmark leakage, model evaluation, Elo rating, human preference, evaluation methodology, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-25">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="LLM Arenas Versus Fixed Benchmarks: Which Evaluation Wins">
+<meta property="og:description" content="A comparison of LLM arena-style pairwise preference evaluation and fixed benchmark testing, with a worked example showing where each approach misleads.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/llm-arena-versus-fixed-benchmarks.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/llm-arena-versus-fixed-benchmarks.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LLM Arenas Versus Fixed Benchmarks: Which Evaluation Wins">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/llm-arena-versus-fixed-benchmarks.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/llm-arena-versus-fixed-benchmarks.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "LLM Arenas Versus Fixed Benchmarks: Which Evaluation Wins",
+  "description": "A comparison of LLM arena-style pairwise preference evaluation and fixed benchmark testing, with a worked example showing where each approach misleads.",
+  "url": "https://jahanzaibawan.com/blog/llm-arena-versus-fixed-benchmarks.html",
+  "image": "https://jahanzaibawan.com/assets/blog/llm-arena-versus-fixed-benchmarks.png",
+  "datePublished": "2026-10-25",
+  "dateModified": "2026-10-25",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/llm-arena-versus-fixed-benchmarks.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "LLM Arenas Versus Fixed Benchmarks: Which Evaluation Wins", "item": "https://jahanzaibawan.com/blog/llm-arena-versus-fixed-benchmarks.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 25 Oct 2026</div>
+    <h1>LLM Arenas Versus Fixed Benchmarks: Which Evaluation Wins</h1>
+    <p class="lede">Pairwise preference arenas and static benchmark suites measure different things. Knowing which one you are reading is the first step to not being misled by a leaderboard.</p>
+  </div>
+
+  <img src="../assets/blog/llm-arena-versus-fixed-benchmarks.png" alt="Cover image for the article: LLM Arenas Versus Fixed Benchmarks: Which Evaluation Wins" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Two leaderboards, two different questions</h2><p>If you have followed language model releases over the past couple of years, you have seen two kinds of leaderboards. One is a fixed benchmark suite: a set of questions with known correct answers, scored automatically, producing a single accuracy number. The other is an arena: anonymous model outputs shown side by side to human raters, who pick the one they prefer, with results aggregated into something like an Elo rating. Both get called 'evaluation', and both produce rankings, but they are answering fundamentally different questions, and treating them as interchangeable is where a lot of confusion in this field comes from.</p><p>A fixed benchmark asks: can this model produce the correct answer to this specific, often narrow, task? It is closer to an exam. An arena asks: given two plausible answers, which one does a person prefer? That is closer to a taste test. A model can be excellent at the exam and mediocre at the taste test, or the reverse, and neither result is wrong; they are simply measuring different properties of the system. The practical danger is reading an arena rank as if it told you about factual accuracy, or reading a benchmark score as if it told you about how pleasant the model is to actually use.</p></section><section class='psec reveal'><h2>Why fixed benchmarks drift out of relevance</h2><p>Fixed benchmarks have obvious virtues: they are reproducible, cheap to run repeatedly, and give you a clean number you can track over time. If a benchmark has a thousand maths word problems with verified answers, you can score any model against it in minutes and get the same number every time. That reproducibility is genuinely valuable, and I would never suggest abandoning it.</p><p>The trouble is contamination and narrowness. Suppose a benchmark of two thousand questions has been public for a year. There is a real chance that some fraction of those questions, or close paraphrases, appear somewhere in a model's training data, whether through direct scraping of benchmark repositories or through blog posts and forums discussing the answers. If even fifteen percent of the test set has leaked in some form, a model's reported accuracy can be inflated by several points without anyone deliberately cheating; it is simply an artefact of the training pipeline overlapping with the evaluation set. A score of 82 percent on a leaked benchmark might represent genuine capability of closer to 74 percent on genuinely unseen items. You cannot tell the difference from the leaderboard alone, which is precisely the problem: the number looks exact but its meaning has quietly degraded.</p><p>There is also the narrowness issue. A benchmark built from maths problems and coding exercises tells you almost nothing about how a model handles an ambiguous, conversational request, how it recovers from a vague follow-up, or whether its tone is appropriate for the context. Those are the situations most people actually use these models for, and a fixed benchmark, however well constructed, was never designed to capture them.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/llm-arena-versus-fixed-benchmarks-1.jpg' alt='two people comparing documents side by side' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Why arenas are not a clean substitute</h2><p>The arena approach sidesteps both of those problems in part. Because prompts come from real users or are freshly sampled, there is no fixed answer key for anyone to leak into training data, and because outputs are compared head to head on open-ended tasks, the evaluation captures something closer to real usage. If model A wins sixty percent of its pairwise comparisons against model B across several thousand votes, that is a reasonably stable signal of relative preference, assuming the comparisons are reasonably matched on topic and difficulty.</p><p>But preference is not the same as correctness, and this is the part that gets glossed over. Raters tend to favour longer, more confident-sounding, more fluently formatted answers, even when those answers contain subtle factual errors that a non-expert rater would not catch. Imagine two responses to a technical question: one is a concise, correct, slightly terse answer; the other is a longer, warmly worded answer that gets a key detail wrong but presents it persuasively. In a blind pairwise vote among general raters, the second response wins a noticeable share of the time purely on style. Scale that bias across thousands of comparisons and you get a leaderboard that reliably rewards confident fluency over accuracy, which is a dangerous thing to optimise a model towards if the downstream use case actually requires correctness.</p><p>There is also a selection effect in who votes and on what. If the prompt distribution in an arena skews towards casual chat, creative writing, and general knowledge questions, a model finely tuned for technical precision but slightly less charming in tone will rank lower than its practical usefulness for technical work would suggest. The arena is measuring preference within its specific population and prompt mix, and that population is not neutral; it is a sample with its own biases, just like any other test set.</p></section><section class='psec reveal'><h2>What this means for how you actually evaluate</h2><p>The honest conclusion is that neither approach is sufficient alone, and the right move is to treat them as complementary instruments rather than competing scoreboards. A fixed benchmark, refreshed regularly with genuinely novel items and checked for contamination, is still the right tool for tracking whether a model has improved at a well-defined, checkable task such as arithmetic reasoning or code correctness. An arena-style comparison is the right tool for understanding how a model behaves in open-ended, subjective, conversational settings where there is no single correct answer to check against.</p><p>If you are evaluating models for a specific application, build a small evaluation set that reflects your actual task, hold it out properly so it cannot leak into any future fine-tuning, and consider using both a correctness metric where one is well defined and a lightweight pairwise comparison where it is not. Be explicit with yourself and with anyone reading your results about which question each number answers. A leaderboard rank of third place in an arena says something true and useful, but it is not a substitute for knowing whether the model gets your domain's facts right, and a 90 percent benchmark score is not a substitute for knowing whether people actually find its answers useful. Keep the two separate in your head and you will read every leaderboard with considerably more scepticism, and considerably more accuracy.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/llm-arena-versus-fixed-benchmarks-2.jpg' alt='exam answer sheet with red pen marks' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
