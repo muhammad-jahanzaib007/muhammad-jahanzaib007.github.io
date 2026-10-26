@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Plain Guide to Fine-Tuning LLMs | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A clear, honest explanation of what fine-tuning changes in an LLM, what parameters stay frozen, and why that distinction affects results and evaluation.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="fine-tuning, LLM, parameter efficient fine-tuning, LoRA, transfer learning, pretraining, model evaluation, catastrophic forgetting, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-26">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="A Plain Guide to Fine-Tuning LLMs">
+<meta property="og:description" content="A clear, honest explanation of what fine-tuning changes in an LLM, what parameters stay frozen, and why that distinction affects results and evaluation.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/plain-guide-fine-tuning-llms.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/plain-guide-fine-tuning-llms.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A Plain Guide to Fine-Tuning LLMs">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/plain-guide-fine-tuning-llms.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/plain-guide-fine-tuning-llms.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "A Plain Guide to Fine-Tuning LLMs",
+  "description": "A clear, honest explanation of what fine-tuning changes in an LLM, what parameters stay frozen, and why that distinction affects results and evaluation.",
+  "url": "https://jahanzaibawan.com/blog/plain-guide-fine-tuning-llms.html",
+  "image": "https://jahanzaibawan.com/assets/blog/plain-guide-fine-tuning-llms.png",
+  "datePublished": "2026-10-26",
+  "dateModified": "2026-10-26",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/plain-guide-fine-tuning-llms.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "A Plain Guide to Fine-Tuning LLMs", "item": "https://jahanzaibawan.com/blog/plain-guide-fine-tuning-llms.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Deep Learning · 6 min read · 26 Oct 2026</div>
+    <h1>A Plain Guide to Fine-Tuning LLMs</h1>
+    <p class="lede">What actually moves when you fine-tune a large language model, what stays fixed, and why that split matters more than people admit.</p>
+  </div>
+
+  <img src="../assets/blog/plain-guide-fine-tuning-llms.png" alt="Cover image for the article: A Plain Guide to Fine-Tuning LLMs" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the distinction matters</h2><p>People talk about fine-tuning as if it teaches a model something new, the way a textbook teaches a student. In practice it usually does something narrower: it nudges a model that already has broad competence toward a particular style, format, or task distribution. The model is not learning language again. It already learned language, facts, and reasoning patterns during pretraining on a huge, general corpus. Fine-tuning adjusts a comparatively small number of weight updates on top of that foundation, and understanding which weights move, and which stay frozen, explains both the power and the limits of the approach.</p><p>This matters practically because teams routinely over-promise what fine-tuning can fix. If a base model has never seen a domain's vocabulary or reasoning pattern at all, a modest fine-tuning run will not implant deep new knowledge; it will mostly teach the model to produce outputs in a certain shape using what it already knows, sometimes badly if the underlying knowledge is not there. Conversely, if the base model already has the relevant knowledge but expresses it inconsistently, fine-tuning can be remarkably effective because it is steering something that already exists rather than building it from nothing.</p><p>Think of pretraining as building a vast library with a research assistant who has read almost everything and can speak in almost any register. Fine-tuning is more like giving that assistant a short briefing on house style, preferred tone, and the exact format you want reports in. The assistant does not relearn how to read; they adjust which parts of their knowledge they foreground and how they phrase the answer. That is a useful mental model to keep in your head for the rest of this post.</p></section><section class='psec reveal'><h2>What actually changes during fine-tuning</h2><p>In full fine-tuning, every parameter in the network is technically eligible to update, but gradient magnitudes are not uniform across layers. Later layers, closer to the output, tend to shift more because they are closer to the loss signal and because they encode more task-specific, less general representations. Early layers, which tend to capture broad syntactic and low-level statistical patterns, often shift comparatively little unless the fine-tuning dataset is large and very different from the pretraining distribution. This is not a hard rule, but it is a reasonable intuition backed by how backpropagation distributes gradient signal through depth.</p><p>Consider a concrete, illustrative scenario. Suppose you have a base model pretrained on a broad web-scale corpus, and you fine-tune it on twenty thousand examples of customer support transcripts formatted in a specific question-and-answer style. After fine-tuning, the model reliably produces answers in that format, uses the company's preferred tone, and references the kinds of issues present in the transcripts. What it has not necessarily gained is new factual knowledge about the company's products beyond what appeared in those twenty thousand examples. If a customer asks about a product released after the fine-tuning data was collected, the model will still answer fluently, because fluency was never the limiting factor, but it may confidently invent details, because the underlying facts were never there to begin with.</p><p>This is where parameter-efficient fine-tuning methods, such as low-rank adaptation, make the picture even clearer. Instead of updating all the weights, these methods freeze the entire pretrained network and insert small trainable matrices alongside existing weight matrices, often with a tiny fraction of the total parameter count, sometimes well under one percent. The frozen base still contains essentially all of the model's world knowledge and general capability. The small trainable addition learns a targeted transformation: a kind of steering vector applied at each relevant layer. This makes explicit what was always true in spirit, even in full fine-tuning: most of what the model knows is untouched, and what you are really training is a relatively compact adjustment layered on top.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/plain-guide-fine-tuning-llms-1.jpg' alt='server room data cables' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What stays frozen, and why that is usually a feature</h2><p>The vast bulk of the network, its embeddings, its general attention patterns, its learned associations between concepts, typically remains close to its pretrained state even after fine-tuning, especially with parameter-efficient methods or with full fine-tuning on modest data volumes. This is desirable more often than people assume. If fine-tuning rewired the whole network every time, you would risk catastrophic forgetting, where the model loses general capabilities it had before, in exchange for narrow gains on the new task. A support bot fine-tuned aggressively on a narrow dataset can become excellent at that dataset's patterns while becoming noticeably worse at general reasoning or at handling questions slightly outside its training distribution.</p><p>This also explains why small, well-curated fine-tuning sets often outperform large, noisy ones. If the goal is to adjust behaviour rather than rebuild knowledge, you do not need millions of examples; you need examples that clearly demonstrate the target format, tone, and edge-case handling, without contradicting what the base model already knows reliably. A few thousand carefully written examples that consistently demonstrate a desired behaviour can outperform a much larger dataset scraped together with inconsistent labelling, because the inconsistent dataset sends a noisier gradient signal and risks degrading capabilities that were previously sound.</p><p>The practical implication for evaluation is important too. If you fine-tune a model and test it only on examples drawn from the same distribution as the fine-tuning data, you will likely see strong improvement, but that improvement tells you little about whether the model's general capability improved or degraded elsewhere. A rigorous evaluation should include held-out data from the fine-tuning distribution, held-out data from the original general distribution, and ideally a few adversarial or out-of-domain probes that were never part of training. Without that split, it is easy to mistake narrow overfitting for genuine improvement, and to miss regressions in capabilities the model used to have.</p></section><section class='psec reveal'><h2>A practical takeaway</h2><p>If you remember one thing, let it be this: fine-tuning is far better understood as steering than as teaching. The base model's pretrained weights encode the overwhelming majority of what it knows and can do, and fine-tuning, whether full or parameter-efficient, typically adjusts a comparatively small set of behaviours layered on top of that foundation. This is why fine-tuning works brilliantly for format, tone, and task specialisation, and why it is a poor tool for injecting large amounts of new factual knowledge that was never present at pretraining time.</p><p>Before investing in a fine-tuning run, it is worth asking plainly what you are actually trying to change: behaviour, or knowledge. If it is knowledge, retrieval-based approaches or additional pretraining on relevant data are usually more honest tools. If it is behaviour, format, or consistency, fine-tuning on a carefully curated, leakage-free dataset, evaluated against both in-distribution and out-of-distribution held-out sets, is the right instinct. Knowing which parameters move and which stay frozen is not just a mechanistic curiosity; it is the difference between designing a fine-tuning project that works as intended and one that quietly breaks things you never tested for.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/plain-guide-fine-tuning-llms-2.jpg' alt='laptop screen with code editor' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "plain-guide-fine-tuning-llms",
+      "title": "A Plain Guide to Fine-Tuning LLMs",
+      "excerpt": "Fine-tuning rarely rewrites a model's knowledge. It mostly reweights how existing knowledge gets expressed. Here is the honest version of what changes.",
+      "date": "2026-10-26",
+      "read_min": 6,
+      "tag": "Deep Learning",
+      "color": "a2",
+      "thumb": "assets/blog/plain-guide-fine-tuning-llms.png",
+      "thumb_alt": "Cover image for the article: A Plain Guide to Fine-Tuning LLMs"
+    },
+    {
       "slug": "certifications-vs-employer-screens",
       "title": "Data Science Certifications Versus What Employers Actually Screen For",
       "excerpt": "Certifications prove you finished a syllabus. Hiring screens test whether you can reason under uncertainty, debug, and communicate. The overlap is smaller than people assume.",

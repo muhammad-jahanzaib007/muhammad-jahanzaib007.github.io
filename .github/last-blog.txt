@@ -1,1 +1,1 @@
-2026-10-25T20:00:57Z slug=certifications-vs-employer-screens words=931 title="Data Science Certifications Versus What Employers Actually Screen For"
+2026-10-26T08:01:47Z slug=plain-guide-fine-tuning-llms words=1145 title="A Plain Guide to Fine-Tuning LLMs"

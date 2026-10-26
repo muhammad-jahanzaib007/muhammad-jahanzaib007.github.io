@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Sun, 25 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Mon, 26 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>A Plain Guide to Fine-Tuning LLMs</title>
+    <link>https://jahanzaibawan.com/blog/plain-guide-fine-tuning-llms.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/plain-guide-fine-tuning-llms.html</guid>
+    <pubDate>Mon, 26 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Fine-tuning rarely rewrites a model&#x27;s knowledge. It mostly reweights how existing knowledge gets expressed. Here is the honest version of what changes.</description>
+    <category>Deep Learning</category>
+  </item>
   <item>
     <title>Data Science Certifications Versus What Employers Actually Screen For</title>
     <link>https://jahanzaibawan.com/blog/certifications-vs-employer-screens.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Fri, 16 Oct 2026 09:00:00 +0000</pubDate>
     <description>Before you import scikit-learn or PyTorch, understand linear models, trees, and gradient descent by hand. It changes how you debug.</description>
     <category>Fundamentals</category>
-  </item>
-  <item>
-    <title>Data Science Degree Versus Minor: What Each Prepares You For</title>
-    <link>https://jahanzaibawan.com/blog/degree-versus-minor-data-science.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/degree-versus-minor-data-science.html</guid>
-    <pubDate>Fri, 16 Oct 2026 09:00:00 +0000</pubDate>
-    <description>A degree builds the judgement to design a pipeline from scratch; a minor builds the fluency to use one well. Neither is a shortcut to the other.</description>
-    <category>Careers</category>
   </item>
 </channel>
 </rss>
