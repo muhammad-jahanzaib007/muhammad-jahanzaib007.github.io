@@ -9,7 +9,8 @@
       "tag": "Deep Learning",
       "color": "a2",
       "thumb": "assets/blog/plain-guide-fine-tuning-llms.png",
-      "thumb_alt": "Cover image for the article: A Plain Guide to Fine-Tuning LLMs"
+      "thumb_alt": "Cover image for the article: A Plain Guide to Fine-Tuning LLMs",
+      "li_shared": true
     },
     {
       "slug": "certifications-vs-employer-screens",
