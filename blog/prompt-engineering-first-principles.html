@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompt Engineering From First Principles: What It Covers | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A first-principles breakdown of prompt engineering: specification, context management, and evaluation, beyond the folklore.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="prompt engineering, large language models, LLM evaluation, in-context learning, instruction tuning, few-shot prompting, prompt design, reproducibility, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-26">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Prompt Engineering From First Principles: What It Covers">
+<meta property="og:description" content="A first-principles breakdown of prompt engineering: specification, context management, and evaluation, beyond the folklore.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/prompt-engineering-first-principles.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/prompt-engineering-first-principles.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Prompt Engineering From First Principles: What It Covers">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/prompt-engineering-first-principles.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/prompt-engineering-first-principles.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Prompt Engineering From First Principles: What It Covers",
+  "description": "A first-principles breakdown of prompt engineering: specification, context management, and evaluation, beyond the folklore.",
+  "url": "https://jahanzaibawan.com/blog/prompt-engineering-first-principles.html",
+  "image": "https://jahanzaibawan.com/assets/blog/prompt-engineering-first-principles.png",
+  "datePublished": "2026-10-26",
+  "dateModified": "2026-10-26",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/prompt-engineering-first-principles.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Prompt Engineering From First Principles: What It Covers", "item": "https://jahanzaibawan.com/blog/prompt-engineering-first-principles.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">NLP · 5 min read · 26 Oct 2026</div>
+    <h1>Prompt Engineering From First Principles: What It Covers</h1>
+    <p class="lede">The term gets thrown around loosely, so it helps to separate what prompt engineering actually is from the folklore that has grown up around it.</p>
+  </div>
+
+  <img src="../assets/blog/prompt-engineering-first-principles.png" alt="Cover image for the article: Prompt Engineering From First Principles: What It Covers" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the term needs unpacking</h2><p>Prompt engineering has become one of those phrases that gets used so widely it has nearly stopped meaning anything specific. To some people it is a synonym for typing questions into a chat window with more patience than usual. To others it is a discipline with its own folklore of magic phrases, where adding the words 'think step by step' or threatening the model with a bad performance review is treated as serious methodology. Neither extreme is useful if you actually have to build something that works reliably.</p><p>Underneath the hype, there is a real engineering problem. A large language model does not have access to your intentions, your constraints, or the implicit context you are carrying around in your head. All it has is the text you give it, plus whatever it learned during training. Prompt engineering, stripped of the mysticism, is the practice of constructing that text so the model's output distribution lines up with what you actually need. That is it. It is specification work, not incantation.</p><p>I think the confusion arises because the same surface activity, writing a block of text before an answer appears, can sit at wildly different levels of rigour. Someone tweaking a single prompt until an example looks good is doing something qualitatively different from someone designing a prompt template, testing it against a held-out set of cases, and measuring failure modes. Both get called prompt engineering. Only one of them generalises.</p></section><section class='psec reveal'><h2>The three things a prompt is actually doing</h2><p>It helps to break a prompt down into distinct jobs rather than treating it as one undifferentiated string. The first job is task specification: telling the model what output format you want, what the success criteria are, and what it should do when it is unsure. The second job is context provisioning: giving the model the facts, examples, or constraints it cannot be expected to know or infer on its own. The third job is behavioural framing: nudging the model towards a style, persona, or reasoning pattern that tends to correlate with better answers for that task.</p><p>Consider a concrete case: you want a model to extract structured data from customer support emails, pulling out the product name, the issue category, and the urgency, formatted as JSON. The specification part of the prompt states the exact schema and field names, and says what to put in a field when the information is missing, perhaps a null rather than a guess. The context part might include two or three worked examples of emails and their correct JSON output, chosen to cover edge cases like multi-product complaints. The framing part might instruct the model to act as a careful classifier rather than a conversational assistant, which in practice changes how verbose and hedging its answers are.</p><p>If you ran an evaluation on five hundred real support emails, you would typically find that schema violations, like producing a string where you specified a number, drop sharply once the specification is explicit and includes a worked example, often from double digits in percentage terms down to a handful of cases. That drop is not magic. It is the direct, explainable result of narrowing the space of plausible continuations the model considers. A vague prompt leaves that space wide open; a precise one collapses it towards the structure you actually want.</p><p>This is also where the folklore version of prompt engineering falls apart. Phrases that supposedly unlock better reasoning are not doing anything structurally different from a well-specified instruction; where they appear to help, it is usually because they implicitly add a small amount of task decomposition or context that the original prompt was missing. The fix is rarely the incantation itself, it is making explicit something the prompt had left implicit.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/prompt-engineering-first-principles-1.jpg' alt='person typing on laptop keyboard' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Few-shot examples, formatting, and the evaluation problem</h2><p>A large part of practical prompt engineering is choosing and arranging examples, often called few-shot demonstrations. The intuition is straightforward: showing the model two or three instances of input paired with correctly formatted output anchors its behaviour far more reliably than describing the format in prose. The subtlety is that the choice of examples matters enormously, and changing their order, their count, or which edge cases they cover can shift output quality in ways that are easy to miss if you are only eyeballing a handful of outputs.</p><p>This is where leakage-style thinking becomes essential even outside formal machine learning pipelines. If your few-shot examples are drawn from the same distribution as your test cases, or worse, overlap with them, you will convince yourself a prompt works far better than it does. I would treat prompt development the same way I would treat model development: hold out a representative sample of real cases you never look at while iterating, and only use it at the end to check that your prompt's measured performance was not just overfitting to the three examples you kept staring at.</p><p>The other discipline worth borrowing from evaluation practice is defining success criteria before you start iterating, not after. For the support-email example, that might mean specifying in advance that a correct output must have a valid JSON schema, the right issue category from a fixed list, and an urgency label that matches a human annotator's judgement at least a stated proportion of the time. Without that upfront definition, it is very easy to keep adjusting the prompt until a handful of favourite examples look right, while quietly degrading performance on the cases you are not actively watching.</p></section><section class='psec reveal'><h2>What this means in practice</h2><p>Treat prompt engineering as applied specification and evaluation, not as a search for secret phrases. The actual skill is in being precise about what you want, in choosing representative examples rather than convenient ones, and in measuring outcomes on a held-out set rather than trusting your impression from a few trial runs. A prompt that was tuned against three examples and never checked against anything else is not an engineered artefact, it is an anecdote.</p><p>If you want a quick practical checklist: write the specification down explicitly, including the format and the failure behaviour; choose examples that cover the awkward cases rather than the easy ones; separate your development cases from your evaluation cases; and define what counts as correct before you start iterating. None of this requires any special vocabulary or trick phrasing. It requires the same discipline that makes any other piece of engineering reliable, and that discipline is the part of prompt engineering actually worth the name.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/prompt-engineering-first-principles-2.jpg' alt='whiteboard with text diagram' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

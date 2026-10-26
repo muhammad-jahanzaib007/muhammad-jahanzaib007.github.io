@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "prompt-engineering-first-principles",
+      "title": "Prompt Engineering From First Principles: What It Covers",
+      "excerpt": "A grounded look at what prompt engineering really means: specification, context control, and systematic evaluation, not just clever wording tricks.",
+      "date": "2026-10-26",
+      "read_min": 5,
+      "tag": "NLP",
+      "color": "a3",
+      "thumb": "assets/blog/prompt-engineering-first-principles.png",
+      "thumb_alt": "Cover image for the article: Prompt Engineering From First Principles: What It Covers"
+    },
+    {
       "slug": "plain-guide-fine-tuning-llms",
       "title": "A Plain Guide to Fine-Tuning LLMs",
       "excerpt": "Fine-tuning rarely rewrites a model's knowledge. It mostly reweights how existing knowledge gets expressed. Here is the honest version of what changes.",

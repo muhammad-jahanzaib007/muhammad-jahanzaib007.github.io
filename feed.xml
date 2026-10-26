@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Mon, 26 Oct 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Prompt Engineering From First Principles: What It Covers</title>
+    <link>https://jahanzaibawan.com/blog/prompt-engineering-first-principles.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/prompt-engineering-first-principles.html</guid>
+    <pubDate>Mon, 26 Oct 2026 09:00:00 +0000</pubDate>
+    <description>A grounded look at what prompt engineering really means: specification, context control, and systematic evaluation, not just clever wording tricks.</description>
+    <category>NLP</category>
+  </item>
+  <item>
     <title>A Plain Guide to Fine-Tuning LLMs</title>
     <link>https://jahanzaibawan.com/blog/plain-guide-fine-tuning-llms.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/plain-guide-fine-tuning-llms.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Sat, 17 Oct 2026 09:00:00 +0000</pubDate>
     <description>How a handful of pixel values turns into a confident prediction, traced step by step through one small worked example.</description>
     <category>Deep Learning</category>
-  </item>
-  <item>
-    <title>The ML Algorithms You Should Understand Before Any Library</title>
-    <link>https://jahanzaibawan.com/blog/algorithms-before-the-library.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/algorithms-before-the-library.html</guid>
-    <pubDate>Fri, 16 Oct 2026 09:00:00 +0000</pubDate>
-    <description>Before you import scikit-learn or PyTorch, understand linear models, trees, and gradient descent by hand. It changes how you debug.</description>
-    <category>Fundamentals</category>
   </item>
 </channel>
 </rss>
