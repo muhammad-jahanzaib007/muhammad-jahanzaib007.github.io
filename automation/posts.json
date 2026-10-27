@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "beginners-roadmap-machine-learning",
+      "title": "A Beginner's Roadmap into Machine Learning, and Why Order Matters",
+      "excerpt": "A practical order for learning machine learning, from maths to baselines to evaluation, and why skipping steps costs you later.",
+      "date": "2026-10-27",
+      "read_min": 6,
+      "tag": "Learning",
+      "color": "a5",
+      "thumb": "assets/blog/beginners-roadmap-machine-learning.png",
+      "thumb_alt": "Cover image for the article: A Beginner's Roadmap into Machine Learning, and Why Order Matters"
+    },
+    {
       "slug": "deep-learning-super-sampling-explained",
       "title": "Deep Learning Super Sampling: Borrowed Ideas, False Friends",
       "excerpt": "DLSS borrows the machinery of supervised super-resolution but has nothing to do with language models or generative chat. Here is the actual lineage.",

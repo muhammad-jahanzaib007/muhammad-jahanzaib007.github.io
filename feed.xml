@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Tue, 27 Oct 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>A Beginner&#x27;s Roadmap into Machine Learning, and Why Order Matters</title>
+    <link>https://jahanzaibawan.com/blog/beginners-roadmap-machine-learning.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/beginners-roadmap-machine-learning.html</guid>
+    <pubDate>Tue, 27 Oct 2026 09:00:00 +0000</pubDate>
+    <description>A practical order for learning machine learning, from maths to baselines to evaluation, and why skipping steps costs you later.</description>
+    <category>Learning</category>
+  </item>
+  <item>
     <title>Deep Learning Super Sampling: Borrowed Ideas, False Friends</title>
     <link>https://jahanzaibawan.com/blog/deep-learning-super-sampling-explained.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/deep-learning-super-sampling-explained.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/internship-lessons-courses-miss.html</guid>
     <pubDate>Sun, 18 Oct 2026 09:00:00 +0000</pubDate>
     <description>Courses optimise for clean data and clean metrics. Internships force you to confront messy data, moving targets, and stakeholders, which is where real skill is built.</description>
-    <category>Careers</category>
-  </item>
-  <item>
-    <title>Prompt Engineering Certificate or Portfolio: What Gets Checked</title>
-    <link>https://jahanzaibawan.com/blog/certification-versus-prompt-portfolio.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/certification-versus-prompt-portfolio.html</guid>
-    <pubDate>Sat, 17 Oct 2026 09:00:00 +0000</pubDate>
-    <description>A certificate proves you sat through a course. A portfolio proves you can ship. Here is what hiring managers actually look at first.</description>
     <category>Careers</category>
   </item>
 </channel>
