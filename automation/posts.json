@@ -9,7 +9,8 @@
       "tag": "Deep Learning",
       "color": "a4",
       "thumb": "assets/blog/deep-learning-super-sampling-explained.png",
-      "thumb_alt": "Cover image for the article: Deep Learning Super Sampling: Borrowed Ideas, False Friends"
+      "thumb_alt": "Cover image for the article: Deep Learning Super Sampling: Borrowed Ideas, False Friends",
+      "li_shared": true
     },
     {
       "slug": "prompt-engineering-first-principles",
