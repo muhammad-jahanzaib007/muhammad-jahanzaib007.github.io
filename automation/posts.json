@@ -9,7 +9,8 @@
       "tag": "Learning",
       "color": "a5",
       "thumb": "assets/blog/beginners-roadmap-machine-learning.png",
-      "thumb_alt": "Cover image for the article: A Beginner's Roadmap into Machine Learning, and Why Order Matters"
+      "thumb_alt": "Cover image for the article: A Beginner's Roadmap into Machine Learning, and Why Order Matters",
+      "li_shared": true
     },
     {
       "slug": "deep-learning-super-sampling-explained",
