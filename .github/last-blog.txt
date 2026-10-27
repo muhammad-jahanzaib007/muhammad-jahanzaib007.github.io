@@ -1,1 +1,1 @@
-2026-10-26T20:02:06Z slug=prompt-engineering-first-principles words=1084 title="Prompt Engineering From First Principles: What It Covers"
+2026-10-27T08:01:44Z slug=deep-learning-super-sampling-explained words=1027 title="Deep Learning Super Sampling: Borrowed Ideas, False Friends"

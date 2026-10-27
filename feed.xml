@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Mon, 26 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 27 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Deep Learning Super Sampling: Borrowed Ideas, False Friends</title>
+    <link>https://jahanzaibawan.com/blog/deep-learning-super-sampling-explained.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/deep-learning-super-sampling-explained.html</guid>
+    <pubDate>Tue, 27 Oct 2026 09:00:00 +0000</pubDate>
+    <description>DLSS borrows the machinery of supervised super-resolution but has nothing to do with language models or generative chat. Here is the actual lineage.</description>
+    <category>Deep Learning</category>
+  </item>
   <item>
     <title>Prompt Engineering From First Principles: What It Covers</title>
     <link>https://jahanzaibawan.com/blog/prompt-engineering-first-principles.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Sat, 17 Oct 2026 09:00:00 +0000</pubDate>
     <description>A certificate proves you sat through a course. A portfolio proves you can ship. Here is what hiring managers actually look at first.</description>
     <category>Careers</category>
-  </item>
-  <item>
-    <title>Computer Vision From Pixels to Predictions, One Example</title>
-    <link>https://jahanzaibawan.com/blog/pixels-to-predictions-cv.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/pixels-to-predictions-cv.html</guid>
-    <pubDate>Sat, 17 Oct 2026 09:00:00 +0000</pubDate>
-    <description>How a handful of pixel values turns into a confident prediction, traced step by step through one small worked example.</description>
-    <category>Deep Learning</category>
   </item>
 </channel>
 </rss>

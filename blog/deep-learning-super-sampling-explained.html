@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deep Learning Super Sampling: Borrowed Ideas, False Friends | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A clear look at what deep learning super sampling (DLSS) actually borrows from supervised learning and where the popular analogies to generative AI break down.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="deep learning super sampling, DLSS, super resolution, neural networks, computer graphics, supervised learning, image upscaling, evaluation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-27">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Deep Learning Super Sampling: Borrowed Ideas, False Friends">
+<meta property="og:description" content="A clear look at what deep learning super sampling (DLSS) actually borrows from supervised learning and where the popular analogies to generative AI break down.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/deep-learning-super-sampling-explained.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/deep-learning-super-sampling-explained.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Deep Learning Super Sampling: Borrowed Ideas, False Friends">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/deep-learning-super-sampling-explained.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/deep-learning-super-sampling-explained.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Deep Learning Super Sampling: Borrowed Ideas, False Friends",
+  "description": "A clear look at what deep learning super sampling (DLSS) actually borrows from supervised learning and where the popular analogies to generative AI break down.",
+  "url": "https://jahanzaibawan.com/blog/deep-learning-super-sampling-explained.html",
+  "image": "https://jahanzaibawan.com/assets/blog/deep-learning-super-sampling-explained.png",
+  "datePublished": "2026-10-27",
+  "dateModified": "2026-10-27",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/deep-learning-super-sampling-explained.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Deep Learning Super Sampling: Borrowed Ideas, False Friends", "item": "https://jahanzaibawan.com/blog/deep-learning-super-sampling-explained.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Deep Learning · 5 min read · 27 Oct 2026</div>
+    <h1>Deep Learning Super Sampling: Borrowed Ideas, False Friends</h1>
+    <p class="lede">DLSS looks like magic on a screen, but underneath it is a supervised learning problem with a very particular kind of label. Understanding what it reuses from mainstream deep learning, and what it does not, clarifies both fields.</p>
+  </div>
+
+  <img src="../assets/blog/deep-learning-super-sampling-explained.png" alt="Cover image for the article: Deep Learning Super Sampling: Borrowed Ideas, False Friends" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the name causes confusion</h2><p>Deep learning super sampling, or DLSS, gets lumped into the same mental bucket as chatbots and image generators because it shares the phrase 'deep learning' and because marketing copy loves to imply a single magic ingredient behind every recent advance in computing. That framing does readers a disservice. DLSS is a rendering technique: it takes a frame produced by a video game engine at a lower resolution, sometimes with extra motion information attached, and predicts what that frame would have looked like if it had been rendered natively at a higher resolution. The neural network inside it is doing a narrow, well-specified regression task, not generating novel content from a text prompt or holding a conversation.</p><p>I think the confusion is worth untangling properly because it is a useful case study in how a technique can borrow real machinery from one part of deep learning while having essentially nothing to do with another part that happens to share branding. Once you separate the borrowed parts from the unrelated parts, DLSS stops looking mysterious and starts looking like what it is: a carefully engineered instance of supervised image-to-image learning, bolted onto a rendering pipeline with strict latency budgets.</p></section><section class='psec reveal'><h2>What it genuinely borrows: supervised super-resolution</h2><p>The core idea DLSS borrows is single-image and video super-resolution, a research area that predates modern generative models by a long way. The setup is simple to state: you have pairs of images, a low-resolution version and a high-resolution ground truth, and you train a convolutional network to map one to the other by minimising a pixel-level or perceptual loss. In a game engine, generating that training data is actually easier than in the real world, because you can render the exact same scene at both a cheap resolution and an expensive one, with pixel-perfect alignment, as many times as you like. There is no messy camera noise or ambiguous blur kernel to estimate; you control the ground truth entirely.</p><p>This is where the real deep learning content lives: convolutional feature extraction, residual connections to help the network learn a correction rather than reconstructing an image from nothing, and loss functions that balance raw pixel accuracy against perceptual sharpness. Say a game renders natively at 1080p but DLSS is asked to upscale from 540p. The network has seen millions of paired examples of 540p-to-1080p transformations across many scenes, camera angles and lighting conditions during training, so at inference time it is doing a learned, context-aware interpolation rather than a naive bicubic stretch. The practical gain is real: a scene that would cost, say, 30 frames per second at native 1080p might render its low-resolution pass at 60 or more frames per second, with the network reconstructing detail fast enough to roughly double the effective frame rate.</p><p>DLSS also borrows temporal modelling from video processing, feeding in motion vectors and previous frames so the network can accumulate detail over time rather than reconstructing each frame in isolation. This is the same family of idea used in video denoising and video super-resolution research: treat a sequence as correlated data, not a pile of independent images. That temporal reuse is precisely why DLSS can produce sharper results than single-frame upscaling methods, and it is a genuinely borrowed, well-established idea from the broader deep learning for video literature.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/deep-learning-super-sampling-explained-1.jpg' alt='gpu graphics card close up' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What it has nothing to do with</h2><p>Where the comparison breaks down is anything involving generation of novel content, autoregressive sequence modelling, or large-scale pretraining on internet-scale uncurated corpora. DLSS is not doing anything resembling what a large language model does when it predicts the next token in a sentence, and it is not doing anything resembling what a diffusion model does when it synthesises an image from pure noise and a text description. There is no open-ended creativity involved; the target output is fixed and known during training, because it is simply the native-resolution render of the same frame. The task is closer to compression artefact removal than to invention.</p><p>It also has nothing to do with the kind of emergent reasoning behaviour people discuss around large transformer models. DLSS networks are comparatively small and specialised, trained and run with hard real-time constraints, typically needing to execute in a few milliseconds per frame on dedicated hardware. There is no chain of reasoning, no retrieval of external knowledge, no few-shot adaptation to a new task at inference time. If anything, the honest comparison is to classic signal processing: it is a learned filter, admittedly a very good one, sitting in the same conceptual slot that handcrafted upscaling algorithms used to occupy.</p><p>This distinction matters practically because it shapes how you should evaluate and trust the technique. A language model's failure mode is a plausible-sounding falsehood; a super-sampling network's failure mode is a visual artefact, a smeared edge, or a flickering detail between frames, which you can catch with pixel-wise metrics and human perceptual studies on held-out scenes the network never trained on. The evaluation discipline that matters here is leakage-aware: if your test scenes share assets, textures or camera paths with training scenes, your reported quality gains are inflated, exactly as they would be in any other supervised learning benchmark.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>If you are trying to reason about DLSS, or explain it to someone else, the cleanest mental model is: paired supervised regression, borrowed temporal video modelling, deployed under strict latency constraints, evaluated with image quality metrics on disjoint test scenes. Strip away the branding and it sits comfortably next to decades of super-resolution research rather than next to generative chat or text-to-image systems. The shared phrase 'deep learning' tells you almost nothing about shared mechanics.</p><p>The broader lesson generalises well beyond graphics. Whenever a new product claims to use deep learning, it is worth asking three concrete questions: what exactly is the labelled pair being learned, how was the test set kept separate from training, and what does a failure actually look like. Answering those three questions for DLSS reveals a mature, well-evaluated engineering technique with a clear training signal. Asking the same questions of a system that cannot answer them clearly is usually a sign the marketing has outpaced the method.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/deep-learning-super-sampling-explained-2.jpg' alt='video game screen resolution comparison' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

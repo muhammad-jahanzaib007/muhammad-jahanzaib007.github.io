@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "deep-learning-super-sampling-explained",
+      "title": "Deep Learning Super Sampling: Borrowed Ideas, False Friends",
+      "excerpt": "DLSS borrows the machinery of supervised super-resolution but has nothing to do with language models or generative chat. Here is the actual lineage.",
+      "date": "2026-10-27",
+      "read_min": 5,
+      "tag": "Deep Learning",
+      "color": "a4",
+      "thumb": "assets/blog/deep-learning-super-sampling-explained.png",
+      "thumb_alt": "Cover image for the article: Deep Learning Super Sampling: Borrowed Ideas, False Friends"
+    },
+    {
       "slug": "prompt-engineering-first-principles",
       "title": "Prompt Engineering From First Principles: What It Covers",
       "excerpt": "A grounded look at what prompt engineering really means: specification, context control, and systematic evaluation, not just clever wording tricks.",
