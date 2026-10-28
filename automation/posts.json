@@ -9,7 +9,8 @@
       "tag": "Careers",
       "color": "a6",
       "thumb": "assets/blog/data-science-vs-analytics-adverts.png",
-      "thumb_alt": "Cover image for the article: Data Science vs Data Analytics Adverts: Reading Between the Lines"
+      "thumb_alt": "Cover image for the article: Data Science vs Data Analytics Adverts: Reading Between the Lines",
+      "li_shared": true
     },
     {
       "slug": "beginners-roadmap-machine-learning",
