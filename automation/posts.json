@@ -9,7 +9,8 @@
       "tag": "Evaluation",
       "color": "a2",
       "thumb": "assets/blog/why-toy-demos-mislead.png",
-      "thumb_alt": "Cover image for the article: Machine Learning Play: Why Toy Demos Rarely Mirror Production"
+      "thumb_alt": "Cover image for the article: Machine Learning Play: Why Toy Demos Rarely Mirror Production",
+      "li_shared": true
     },
     {
       "slug": "data-science-vs-analytics-adverts",
