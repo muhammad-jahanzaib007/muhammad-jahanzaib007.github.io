@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "data-science-vs-analytics-adverts",
+      "title": "Data Science vs Data Analytics Adverts: Reading Between the Lines",
+      "excerpt": "Same title, wildly different jobs. Learn to read adverts for the actual work: modelling versus reporting, ambiguity versus dashboards.",
+      "date": "2026-10-28",
+      "read_min": 6,
+      "tag": "Careers",
+      "color": "a6",
+      "thumb": "assets/blog/data-science-vs-analytics-adverts.png",
+      "thumb_alt": "Cover image for the article: Data Science vs Data Analytics Adverts: Reading Between the Lines"
+    },
+    {
       "slug": "beginners-roadmap-machine-learning",
       "title": "A Beginner's Roadmap into Machine Learning, and Why Order Matters",
       "excerpt": "A practical order for learning machine learning, from maths to baselines to evaluation, and why skipping steps costs you later.",

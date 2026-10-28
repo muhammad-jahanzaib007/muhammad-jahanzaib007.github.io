@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Data science versus data analytics job adverts: spotting what role you would actually have",
     "Machine learning play: why toy demos online rarely resemble production work",
     "What a deep learning definition should include that most glossaries skip",
     "Deep learning with Python style books: what they teach well and what they leave for later",
@@ -259,6 +258,7 @@
     "A plain guide to fine-tuning LLMs: what changes, what stays frozen, and why",
     "Prompt engineering explained from first principles: what the term actually covers",
     "Deep learning super sampling: what it borrows from and what it has nothing to do with",
-    "A beginner's roadmap into machine learning: what to learn first and why order matters"
+    "A beginner's roadmap into machine learning: what to learn first and why order matters",
+    "Data science versus data analytics job adverts: spotting what role you would actually have"
   ]
 }
