@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Machine Learning Play: Why Toy Demos Rarely Mirror Production | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why online machine learning demos rarely resemble production systems, and what rigorous evaluation and deployment actually require.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="machine learning,production ML,data leakage,model evaluation,MLOps,overfitting,train test split,model monitoring, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-28">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Machine Learning Play: Why Toy Demos Rarely Mirror Production">
+<meta property="og:description" content="Why online machine learning demos rarely resemble production systems, and what rigorous evaluation and deployment actually require.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/why-toy-demos-mislead.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/why-toy-demos-mislead.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Machine Learning Play: Why Toy Demos Rarely Mirror Production">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/why-toy-demos-mislead.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/why-toy-demos-mislead.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Machine Learning Play: Why Toy Demos Rarely Mirror Production",
+  "description": "Why online machine learning demos rarely resemble production systems, and what rigorous evaluation and deployment actually require.",
+  "url": "https://jahanzaibawan.com/blog/why-toy-demos-mislead.html",
+  "image": "https://jahanzaibawan.com/assets/blog/why-toy-demos-mislead.png",
+  "datePublished": "2026-10-28",
+  "dateModified": "2026-10-28",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/why-toy-demos-mislead.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Machine Learning Play: Why Toy Demos Rarely Mirror Production", "item": "https://jahanzaibawan.com/blog/why-toy-demos-mislead.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 28 Oct 2026</div>
+    <h1>Machine Learning Play: Why Toy Demos Rarely Mirror Production</h1>
+    <p class="lede">A tidy notebook that classifies flowers in thirty lines tells you almost nothing about the mess, drift, and decisions that define real deployed systems.</p>
+  </div>
+
+  <img src="../assets/blog/why-toy-demos-mislead.png" alt="Cover image for the article: Machine Learning Play: Why Toy Demos Rarely Mirror Production" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The comfortable lie of the clean dataset</h2><p>Most tutorials start the same way: load a tidy CSV, split it, train a model, report an accuracy figure, and declare victory. The dataset has no missing values, no duplicated rows, no label noise, and crucially, it was collected once and never changes again. That is not what data looks like in a real system. In production, data arrives continuously, from multiple sources, with schemas that quietly shift and labels that are sometimes wrong, sometimes delayed, and occasionally absent entirely.</p><p>Consider a demo that predicts whether a customer will churn using a classic tabular dataset. You get ninety two percent accuracy with a random forest in fifteen lines of code. That number feels like proof of skill, but it rests on an assumption that rarely survives contact with reality: that the rows are independent and identically distributed, and that the future will resemble the past. In production, churn labels often depend on a window of time that has not fully elapsed yet, so some of your training examples are effectively from the future relative to when a real model would need to make a decision. That is a form of leakage, and it is invisible in a notebook where the whole dataset is handed to you as a fait accompli.</p><p>The deeper issue is that toy demos optimise for a single, static metric computed once. Production systems are judged by how a metric behaves over months, across changing user populations, under adversarial pressure, and when the upstream data pipeline silently breaks. A model that scores well on a frozen test set says nothing about whether it will still be useful in six months, because nobody ever asks that question of a Kaggle-style notebook.</p></section><section class='psec reveal'><h2>Splits, leakage, and the illusion of generalisation</h2><p>Here is a concrete worked example. Suppose you are building a model to flag fraudulent transactions, and your dataset spans eighteen months. A naive random train test split, where eighty percent of rows go to training and twenty percent to testing regardless of date, will scatter transactions from the same merchant, the same device fingerprint, or the same customer across both sets. The model does not need to learn general fraud patterns; it can partially memorise merchant identifiers or device quirks that happen to repeat between train and test. Your reported recall might be eighty five percent, but deployed on genuinely unseen future transactions, it drops to sixty percent because the leakage artificially inflated the test score.</p><p>The fix is a time-based split: train on the first fourteen months, validate on the next two, and test on the final two, with nothing from later periods touching earlier folds. This is less flattering. Your eighty five percent recall might become seventy two percent once leakage is removed, and that is the real number, the one that reflects what will happen when the model meets transactions it has never conceptually seen before. Most public tutorials never do this, because a time-aware split is more code, requires understanding the domain's temporal structure, and often produces a less impressive headline figure.</p><p>Leakage is not limited to time. Group leakage happens when multiple rows belong to the same underlying entity, such as repeated measurements from the same patient or multiple images of the same object from slightly different angles. If the entity appears in both train and test, the model can learn entity-specific shortcuts rather than genuinely generalisable features. A rigorous split groups by entity, not by row, even though this reduces the apparent size of your test set and often reduces your score. Lower but honest beats high but fictional, every time, because production does not care about your validation leaderboard.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/why-toy-demos-mislead-1.jpg' alt='server room data pipeline' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What a demo never has to deal with</h2><p>A notebook demo never has to handle a schema change upstream. Imagine a recommendation system where a product team silently renames a currency field from a float in pounds to a string formatted with a currency symbol. In a notebook, this never happens because the data is static. In production, this kind of change can silently corrupt a feature pipeline for days before anyone notices, because the model still runs, it just runs on garbage, and nothing crashes loudly. Detecting this requires monitoring: tracking feature distributions over time, alerting when a feature's mean or missing rate shifts beyond an expected range, and having a rollback plan.</p><p>Latency and cost are equally absent from toy demos. A model that takes four hundred milliseconds to score one row in a notebook is fine because you run it once. In production, if that model sits in the critical path of a web request serving thousands of users per second, four hundred milliseconds per inference is an outage waiting to happen. Production work involves trade-offs between model complexity and inference speed that a demo never has to consider, because a demo is judged purely on offline accuracy with no service level agreement attached.</p><p>There is also the question of what happens when the model is wrong. A toy classifier that mislabels a handful of test images has no consequence beyond a slightly lower accuracy score. A production model that wrongly denies a loan application, flags a legitimate transaction as fraud, or misroutes a support ticket has a human and often a financial cost attached to every false positive and false negative. This forces real teams to think about calibrated thresholds, asymmetric costs, human review queues for uncertain cases, and audit trails explaining why a decision was made, none of which appear in a demo optimised purely for a leaderboard score.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>None of this means toy demos are worthless. They are genuinely useful for learning an algorithm's mechanics, for quickly sanity-checking an idea, and for teaching intuition about how a model behaves on clean data. The mistake is treating a demo's reported metric as evidence of production readiness. It rarely is, because the demo was never exposed to leakage checks, temporal drift, schema fragility, latency constraints, or the cost of being wrong.</p><p>If you want a single habit that closes most of this gap, it is this: before trusting any reported number, ask how the split was constructed and whether it respects the real-world boundaries your deployed model will face, whether that is time, entity, geography, or some other grouping. Ask what happens to that number a month after deployment, not just on the day it was computed. That single question, asked consistently, will do more for your practical judgement than any number of flashy notebook demos ever could.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/why-toy-demos-mislead-2.jpg' alt='analyst reviewing dashboard charts' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

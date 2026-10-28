@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "why-toy-demos-mislead",
+      "title": "Machine Learning Play: Why Toy Demos Rarely Mirror Production",
+      "excerpt": "Toy ML demos look like competence but hide the hard parts: leakage-free splits, drift, latency, and monitoring. Here is why that gap matters.",
+      "date": "2026-10-28",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a2",
+      "thumb": "assets/blog/why-toy-demos-mislead.png",
+      "thumb_alt": "Cover image for the article: Machine Learning Play: Why Toy Demos Rarely Mirror Production"
+    },
+    {
       "slug": "data-science-vs-analytics-adverts",
       "title": "Data Science vs Data Analytics Adverts: Reading Between the Lines",
       "excerpt": "Same title, wildly different jobs. Learn to read adverts for the actual work: modelling versus reporting, ambiguity versus dashboards.",

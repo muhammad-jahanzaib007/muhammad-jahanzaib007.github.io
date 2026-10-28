@@ -1,1 +1,1 @@
-2026-10-28T08:01:47Z slug=data-science-vs-analytics-adverts words=1144 title="Data Science vs Data Analytics Adverts: Reading Between the Lines"
+2026-10-28T20:01:47Z slug=why-toy-demos-mislead words=1089 title="Machine Learning Play: Why Toy Demos Rarely Mirror Production"

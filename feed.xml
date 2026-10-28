@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Wed, 28 Oct 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Machine Learning Play: Why Toy Demos Rarely Mirror Production</title>
+    <link>https://jahanzaibawan.com/blog/why-toy-demos-mislead.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/why-toy-demos-mislead.html</guid>
+    <pubDate>Wed, 28 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Toy ML demos look like competence but hide the hard parts: leakage-free splits, drift, latency, and monitoring. Here is why that gap matters.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Data Science vs Data Analytics Adverts: Reading Between the Lines</title>
     <link>https://jahanzaibawan.com/blog/data-science-vs-analytics-adverts.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/data-science-vs-analytics-adverts.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Mon, 19 Oct 2026 09:00:00 +0000</pubDate>
     <description>Models and architectures will churn, but data discipline, evaluation rigour, and error analysis will still matter in five years. Here is what to actually invest in.</description>
     <category>Computer Vision</category>
-  </item>
-  <item>
-    <title>Machine Learning Syllabi Compared: What Maps to a Job</title>
-    <link>https://jahanzaibawan.com/blog/ml-syllabi-vs-the-job.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/ml-syllabi-vs-the-job.html</guid>
-    <pubDate>Sun, 18 Oct 2026 09:00:00 +0000</pubDate>
-    <description>Most ML courses teach models first and evaluation last. Real jobs run the other way round. Here is where the gap bites.</description>
-    <category>Education</category>
   </item>
 </channel>
 </rss>
