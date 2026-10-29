@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Wed, 28 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 29 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>What a Deep Learning Definition Should Really Include</title>
+    <link>https://jahanzaibawan.com/blog/what-deep-learning-definitions-miss.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/what-deep-learning-definitions-miss.html</guid>
+    <pubDate>Thu, 29 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Glossary definitions of deep learning describe architecture, not behaviour. Here is what they usually leave out, and why it matters.</description>
+    <category>Deep Learning</category>
+  </item>
   <item>
     <title>Machine Learning Play: Why Toy Demos Rarely Mirror Production</title>
     <link>https://jahanzaibawan.com/blog/why-toy-demos-mislead.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Mon, 19 Oct 2026 09:00:00 +0000</pubDate>
     <description>Large language model has become a marketing word as much as a technical one. Here is what the definition should hinge on, and why the wiki version only gets you halfway.</description>
     <category>NLP</category>
-  </item>
-  <item>
-    <title>Computer Vision in Five Years: What Still Matters</title>
-    <link>https://jahanzaibawan.com/blog/computer-vision-evergreen-skills.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/computer-vision-evergreen-skills.html</guid>
-    <pubDate>Mon, 19 Oct 2026 09:00:00 +0000</pubDate>
-    <description>Models and architectures will churn, but data discipline, evaluation rigour, and error analysis will still matter in five years. Here is what to actually invest in.</description>
-    <category>Computer Vision</category>
   </item>
 </channel>
 </rss>

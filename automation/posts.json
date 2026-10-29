@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "what-deep-learning-definitions-miss",
+      "title": "What a Deep Learning Definition Should Really Include",
+      "excerpt": "Glossary definitions of deep learning describe architecture, not behaviour. Here is what they usually leave out, and why it matters.",
+      "date": "2026-10-29",
+      "read_min": 5,
+      "tag": "Deep Learning",
+      "color": "a3",
+      "thumb": "assets/blog/what-deep-learning-definitions-miss.png",
+      "thumb_alt": "Cover image for the article: What a Deep Learning Definition Should Really Include"
+    },
+    {
       "slug": "why-toy-demos-mislead",
       "title": "Machine Learning Play: Why Toy Demos Rarely Mirror Production",
       "excerpt": "Toy ML demos look like competence but hide the hard parts: leakage-free splits, drift, latency, and monitoring. Here is why that gap matters.",

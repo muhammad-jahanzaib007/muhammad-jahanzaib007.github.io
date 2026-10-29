@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What a Deep Learning Definition Should Really Include | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A look at what standard deep learning definitions omit: representation learning, inductive bias, and the data and compute conditions under which depth helps.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="deep learning definition, representation learning, inductive bias, neural networks, machine learning glossary, model capacity, overfitting, generalisation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-29">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="What a Deep Learning Definition Should Really Include">
+<meta property="og:description" content="A look at what standard deep learning definitions omit: representation learning, inductive bias, and the data and compute conditions under which depth helps.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/what-deep-learning-definitions-miss.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/what-deep-learning-definitions-miss.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What a Deep Learning Definition Should Really Include">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/what-deep-learning-definitions-miss.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/what-deep-learning-definitions-miss.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "What a Deep Learning Definition Should Really Include",
+  "description": "A look at what standard deep learning definitions omit: representation learning, inductive bias, and the data and compute conditions under which depth helps.",
+  "url": "https://jahanzaibawan.com/blog/what-deep-learning-definitions-miss.html",
+  "image": "https://jahanzaibawan.com/assets/blog/what-deep-learning-definitions-miss.png",
+  "datePublished": "2026-10-29",
+  "dateModified": "2026-10-29",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/what-deep-learning-definitions-miss.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "What a Deep Learning Definition Should Really Include", "item": "https://jahanzaibawan.com/blog/what-deep-learning-definitions-miss.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Deep Learning · 5 min read · 29 Oct 2026</div>
+    <h1>What a Deep Learning Definition Should Really Include</h1>
+    <p class="lede">Most glossaries describe stacked layers and gradients, but they skip the parts that actually explain why depth works and when it fails.</p>
+  </div>
+
+  <img src="../assets/blog/what-deep-learning-definitions-miss.png" alt="Cover image for the article: What a Deep Learning Definition Should Really Include" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The definition everyone copies</h2><p>Open almost any glossary and you get some version of the same sentence: deep learning is a subset of machine learning that uses neural networks with many layers to learn from data. It is not wrong, but it is thin. It tells you the shape of the thing without telling you why the shape matters. You could memorise that definition, pass a quiz on it, and still have no working intuition for why a twelve layer network behaves so differently from a two layer one trained on the same data.</p><p>The missing piece is almost always the same: these definitions describe the architecture rather than the behaviour it produces. A good definition should explain what depth actually buys you, not just that depth exists. Otherwise you are left with a description of plumbing rather than an explanation of what the water does.</p><p>I think this matters beyond pedantry. People who only know the glossary version tend to assume that adding layers is a free upgrade, or that deep learning is simply a fancier form of curve fitting with a marketing budget. Neither assumption survives contact with a real project.</p></section><section class='psec reveal'><h2>What is actually missing: representation learning</h2><p>The part most definitions skip is that deep networks learn their own features rather than relying on features you hand-craft. In classical machine learning, you might engineer inputs yourself: edge density, word counts, ratios between measurements. The model then learns a mapping from those engineered features to an output. In a deep network, early layers typically learn simple patterns, and later layers combine them into increasingly abstract ones, without you specifying what those patterns should be.</p><p>Take a concrete example: a network trained to classify photographs of handwritten digits. The first layer might respond to short edges and curves. The second layer might combine edges into loops and strokes. By the fifth or sixth layer, the network might be responding to shapes that correspond to whole digit segments, learned entirely from the pixel data and the labels, with nobody writing a rule that says 'a seven has a horizontal top stroke'. That automatic construction of a feature hierarchy is the actual mechanism that separates deep learning from a shallow model with the same number of parameters spread differently.</p><p>This matters practically because it changes what you should expect from the data. A shallow model with hand-crafted features can sometimes work well on a few thousand examples, because the feature engineering has already done the hard work of representation. A deep network asked to learn representations from scratch usually needs far more examples to discover useful patterns reliably, otherwise it tends to memorise noise instead of structure. A definition that skips representation learning also tends to skip this consequence, and students end up surprised when their deep model underperforms a decision tree on a dataset of two thousand rows.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/what-deep-learning-definitions-miss-1.jpg' alt='stacked computer server room' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>The second omission: inductive bias and when depth helps</h2><p>The second thing glossaries skip is the honest condition under which depth is actually useful. Depth is not a universal upgrade; it is a bet that the right decomposition into hierarchical features exists and is learnable from the available data. For images, audio, and text, that bet tends to pay off, because these domains have a natural compositional structure: pixels form edges, edges form shapes, shapes form objects. For small tabular datasets with a handful of independent-ish columns, that compositional structure often is not there, and adding layers mostly adds parameters without adding useful bias.</p><p>Here is a worked comparison that I find clarifying. Suppose you have a dataset of five thousand rows describing loan applications, with fifteen numeric and categorical features, predicting default. A gradient boosted tree ensemble will often reach, say, 0.82 AUC with careful tuning. A deep network with three or four hidden layers, trained on the same fifteen features, might reach something similar, perhaps slightly worse, and will usually take considerably more tuning effort and more careful regularisation to get there. The depth is not buying you anything because there is no rich compositional structure in fifteen tabular columns for the layers to discover. Compare that with an image dataset of similar size: a convolutional network will usually beat a tree-based model on raw pixels by a wide margin, because convolution encodes a strong and correct assumption about spatial locality that trees have no equivalent for.</p><p>A definition that includes this idea, that depth is a structural assumption rather than a generic capacity boost, gives you something a quiz-ready glossary sentence cannot: a way to predict, before you train anything, whether a deep approach is likely to be the right tool. That predictive power is the entire point of having a definition in the first place; it should let you reason about a case you have not seen yet, not just recognise the term when it appears in a slide deck.</p></section><section class='psec reveal'><h2>A fuller definition and why it is worth the extra sentence</h2><p>Putting this together, a more complete definition reads something like: deep learning is a family of methods that use layered neural networks to learn hierarchical representations directly from data, exploiting compositional structure in the input, and that this approach tends to outperform shallower or hand-engineered methods specifically when enough labelled data and compute are available to let that hierarchy be learned reliably rather than memorised. It is longer than the glossary version, and it should be, because it encodes three testable claims rather than one architectural fact: representation learning happens automatically, it depends on data volume, and it depends on the domain having real compositional structure to exploit.</p><p>None of this is exotic knowledge; it is the kind of thing that becomes obvious after you have trained a few models that underperformed expectations and had to work out why. But that is exactly why it belongs in the definition rather than being left as a lesson you have to learn the hard way. A glossary entry is supposed to save you that lesson, not postpone it.</p><p>If you take one practical habit from this, let it be the following: before reaching for a deep architecture on a new problem, ask whether the inputs have a compositional structure a hierarchy of layers could plausibly discover, and whether you have enough labelled examples for that discovery to generalise rather than memorise. If the answer to either is no, a simpler model is not a compromise; it is usually the correct engineering decision, and a definition of deep learning that cannot tell you that is not doing its job.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/what-deep-learning-definitions-miss-2.jpg' alt='handwritten digit close up' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
