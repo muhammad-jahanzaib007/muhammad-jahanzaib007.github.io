@@ -9,7 +9,8 @@
       "tag": "Deep Learning",
       "color": "a3",
       "thumb": "assets/blog/what-deep-learning-definitions-miss.png",
-      "thumb_alt": "Cover image for the article: What a Deep Learning Definition Should Really Include"
+      "thumb_alt": "Cover image for the article: What a Deep Learning Definition Should Really Include",
+      "li_shared": true
     },
     {
       "slug": "why-toy-demos-mislead",
