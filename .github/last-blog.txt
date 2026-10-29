@@ -1,1 +1,1 @@
-2026-10-29T08:03:34Z slug=what-deep-learning-definitions-miss words=1088 title="What a Deep Learning Definition Should Really Include"
+2026-10-29T20:02:11Z slug=deep-learning-python-style-books words=1100 title="Deep Learning with Python Style Books: What They Teach, What They Skip"

@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "deep-learning-python-style-books",
+      "title": "Deep Learning with Python Style Books: What They Teach, What They Skip",
+      "excerpt": "Python deep learning books build strong intuition fast, but leave evaluation rigour, leakage, and deployment realities largely untouched.",
+      "date": "2026-10-29",
+      "read_min": 6,
+      "tag": "Deep Learning",
+      "color": "a4",
+      "thumb": "assets/blog/deep-learning-python-style-books.png",
+      "thumb_alt": "Cover image for the article: Deep Learning with Python Style Books: What They Teach, What They Skip"
+    },
+    {
       "slug": "what-deep-learning-definitions-miss",
       "title": "What a Deep Learning Definition Should Really Include",
       "excerpt": "Glossary definitions of deep learning describe architecture, not behaviour. Here is what they usually leave out, and why it matters.",

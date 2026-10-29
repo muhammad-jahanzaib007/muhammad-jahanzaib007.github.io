@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Deep learning with Python style books: what they teach well and what they leave for later",
     "Choosing a machine learning engineer career path: research, platform, or applied",
     "The real cost of a data science degree versus a focused portfolio",
     "How model evaluation and threat research organisations actually test a model",
@@ -259,6 +258,7 @@
     "A beginner's roadmap into machine learning: what to learn first and why order matters",
     "Data science versus data analytics job adverts: spotting what role you would actually have",
     "Machine learning play: why toy demos online rarely resemble production work",
-    "What a deep learning definition should include that most glossaries skip"
+    "What a deep learning definition should include that most glossaries skip",
+    "Deep learning with Python style books: what they teach well and what they leave for later"
   ]
 }
