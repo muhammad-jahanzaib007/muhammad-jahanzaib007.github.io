@@ -9,7 +9,8 @@
       "tag": "Deep Learning",
       "color": "a4",
       "thumb": "assets/blog/deep-learning-python-style-books.png",
-      "thumb_alt": "Cover image for the article: Deep Learning with Python Style Books: What They Teach, What They Skip"
+      "thumb_alt": "Cover image for the article: Deep Learning with Python Style Books: What They Teach, What They Skip",
+      "li_shared": true
     },
     {
       "slug": "what-deep-learning-definitions-miss",
