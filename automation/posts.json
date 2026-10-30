@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "degree-versus-focused-portfolio",
+      "title": "The Real Cost of a Data Science Degree vs a Portfolio",
+      "excerpt": "Comparing a data science degree with a focused portfolio means weighing time, credibility, and depth, not just fees.",
+      "date": "2026-10-30",
+      "read_min": 5,
+      "tag": "Careers",
+      "color": "a6",
+      "thumb": "assets/blog/degree-versus-focused-portfolio.png",
+      "thumb_alt": "Cover image for the article: The Real Cost of a Data Science Degree vs a Portfolio"
+    },
+    {
       "slug": "research-platform-applied-ml-paths",
       "title": "Choosing a Machine Learning Engineer Career Path",
       "excerpt": "Research, platform, and applied ML are different jobs wearing the same title. Here is how to tell them apart before you commit years to one.",

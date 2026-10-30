@@ -1,11 +1,27 @@
 {
   "queue": [
-    "The real cost of a data science degree versus a focused portfolio",
     "How model evaluation and threat research organisations actually test a model",
     "Prompt engineering as a job title: what the posting is really asking you to do",
     "Machine learning definitions across textbooks: where the disagreements actually matter",
     "Data science internships worth applying for: what to look for in the job description",
-    "A grounded answer to deep learning versus machine learning for newcomers"
+    "A grounded answer to deep learning versus machine learning for newcomers",
+    "Retrieval augmented generation versus fine-tuning: a worked decision for one small knowledge base",
+    "What makes a dataset leak-proof: a practical checklist before you train anything",
+    "Evaluating zero-shot and few-shot NLP classifiers against a fine-tuned baseline, fairly",
+    "The confusion matrix for multi-class problems: reading errors across classes, not just totals",
+    "Statistical power in ML experiments: why your sample size decides what you can conclude",
+    "Why accuracy alone cannot tell you if a model is ready for production",
+    "Designing a model evaluation protocol before you write a single line of training code",
+    "Fine-tuning a small transformer: a worked walkthrough of what changes and why",
+    "Comparing two NLP pipelines honestly: paired tests instead of a single leaderboard number",
+    "What a loss curve tells you that a final metric cannot",
+    "Evaluating NLP models on out-of-distribution text: why in-domain scores overstate quality",
+    "Choosing an evaluation metric for text classification when classes are imbalanced",
+    "How threat-style red-teaming differs from standard model evaluation, and when you need both",
+    "A worked example of designing a held-out test set that actually resembles deployment",
+    "Why fine-tuning results vary run to run, and how to report that honestly",
+    "Grouped and stratified splits: choosing the right one for the data you actually have",
+    "What an evaluation harness should log beyond the final score"
   ],
   "published": [
     "UAV object classification data-leakage case study",
@@ -259,6 +275,7 @@
     "Machine learning play: why toy demos online rarely resemble production work",
     "What a deep learning definition should include that most glossaries skip",
     "Deep learning with Python style books: what they teach well and what they leave for later",
-    "Choosing a machine learning engineer career path: research, platform, or applied"
+    "Choosing a machine learning engineer career path: research, platform, or applied",
+    "The real cost of a data science degree versus a focused portfolio"
   ]
 }

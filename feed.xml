@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Fri, 30 Oct 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>The Real Cost of a Data Science Degree vs a Portfolio</title>
+    <link>https://jahanzaibawan.com/blog/degree-versus-focused-portfolio.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/degree-versus-focused-portfolio.html</guid>
+    <pubDate>Fri, 30 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Comparing a data science degree with a focused portfolio means weighing time, credibility, and depth, not just fees.</description>
+    <category>Careers</category>
+  </item>
+  <item>
     <title>Choosing a Machine Learning Engineer Career Path</title>
     <link>https://jahanzaibawan.com/blog/research-platform-applied-ml-paths.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/research-platform-applied-ml-paths.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Wed, 21 Oct 2026 09:00:00 +0000</pubDate>
     <description>Why does every LLM glossary define &#x27;hallucination&#x27; or &#x27;grounding&#x27; differently? A practical guide to choosing and defending your own working definitions.</description>
     <category>NLP</category>
-  </item>
-  <item>
-    <title>Data Science Versus Data Analytics: Why It Matters</title>
-    <link>https://jahanzaibawan.com/blog/data-science-vs-data-analytics.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/data-science-vs-data-analytics.html</guid>
-    <pubDate>Tue, 20 Oct 2026 09:00:00 +0000</pubDate>
-    <description>Same buzzwords, different jobs. Here is the concrete distinction between data science and data analytics, and why conflating them causes bad hires and worse projects.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>

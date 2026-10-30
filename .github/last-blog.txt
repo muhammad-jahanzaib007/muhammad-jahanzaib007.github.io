@@ -1,1 +1,1 @@
-2026-10-30T08:01:52Z slug=research-platform-applied-ml-paths words=1032 title="Choosing a Machine Learning Engineer Career Path"
+2026-10-30T20:02:03Z slug=degree-versus-focused-portfolio words=1018 title="The Real Cost of a Data Science Degree vs a Portfolio"
