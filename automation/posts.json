@@ -9,7 +9,8 @@
       "tag": "Careers",
       "color": "a6",
       "thumb": "assets/blog/degree-versus-focused-portfolio.png",
-      "thumb_alt": "Cover image for the article: The Real Cost of a Data Science Degree vs a Portfolio"
+      "thumb_alt": "Cover image for the article: The Real Cost of a Data Science Degree vs a Portfolio",
+      "li_shared": true
     },
     {
       "slug": "research-platform-applied-ml-paths",
