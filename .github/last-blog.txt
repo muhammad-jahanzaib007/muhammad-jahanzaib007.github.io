@@ -1,1 +1,1 @@
-2026-10-29T20:02:11Z slug=deep-learning-python-style-books words=1100 title="Deep Learning with Python Style Books: What They Teach, What They Skip"
+2026-10-30T08:01:52Z slug=research-platform-applied-ml-paths words=1032 title="Choosing a Machine Learning Engineer Career Path"

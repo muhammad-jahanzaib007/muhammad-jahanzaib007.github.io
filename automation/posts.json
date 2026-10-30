@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "research-platform-applied-ml-paths",
+      "title": "Choosing a Machine Learning Engineer Career Path",
+      "excerpt": "Research, platform, and applied ML are different jobs wearing the same title. Here is how to tell them apart before you commit years to one.",
+      "date": "2026-10-30",
+      "read_min": 5,
+      "tag": "Career",
+      "color": "a5",
+      "thumb": "assets/blog/research-platform-applied-ml-paths.png",
+      "thumb_alt": "Cover image for the article: Choosing a Machine Learning Engineer Career Path"
+    },
+    {
       "slug": "deep-learning-python-style-books",
       "title": "Deep Learning with Python Style Books: What They Teach, What They Skip",
       "excerpt": "Python deep learning books build strong intuition fast, but leave evaluation rigour, leakage, and deployment realities largely untouched.",

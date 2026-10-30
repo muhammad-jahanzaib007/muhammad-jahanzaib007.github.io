@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Thu, 29 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 30 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Choosing a Machine Learning Engineer Career Path</title>
+    <link>https://jahanzaibawan.com/blog/research-platform-applied-ml-paths.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/research-platform-applied-ml-paths.html</guid>
+    <pubDate>Fri, 30 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Research, platform, and applied ML are different jobs wearing the same title. Here is how to tell them apart before you commit years to one.</description>
+    <category>Career</category>
+  </item>
   <item>
     <title>Deep Learning with Python Style Books: What They Teach, What They Skip</title>
     <link>https://jahanzaibawan.com/blog/deep-learning-python-style-books.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/data-science-vs-data-analytics.html</guid>
     <pubDate>Tue, 20 Oct 2026 09:00:00 +0000</pubDate>
     <description>Same buzzwords, different jobs. Here is the concrete distinction between data science and data analytics, and why conflating them causes bad hires and worse projects.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Model Evaluation Versus Threat Research: What Gets Tested</title>
-    <link>https://jahanzaibawan.com/blog/evaluation-versus-threat-research.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/evaluation-versus-threat-research.html</guid>
-    <pubDate>Tue, 20 Oct 2026 09:00:00 +0000</pubDate>
-    <description>Benchmarks measure capability on fixed tasks; threat research probes what a model could do in the hands of a determined, resourceful actor. They are not interchangeable.</description>
     <category>Evaluation</category>
   </item>
 </channel>
