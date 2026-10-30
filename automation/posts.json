@@ -9,7 +9,8 @@
       "tag": "Career",
       "color": "a5",
       "thumb": "assets/blog/research-platform-applied-ml-paths.png",
-      "thumb_alt": "Cover image for the article: Choosing a Machine Learning Engineer Career Path"
+      "thumb_alt": "Cover image for the article: Choosing a Machine Learning Engineer Career Path",
+      "li_shared": true
     },
     {
       "slug": "deep-learning-python-style-books",
