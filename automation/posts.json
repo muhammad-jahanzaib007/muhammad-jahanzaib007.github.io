@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "prompt-engineering-job-title",
+      "title": "Prompt Engineering as a Job Title: Reading the Fine Print",
+      "excerpt": "Prompt engineering postings rarely mean just writing prompts. Here is what the job actually tends to involve, and how to tell before you apply.",
+      "date": "2026-10-31",
+      "read_min": 5,
+      "tag": "Careers",
+      "color": "a3",
+      "thumb": "assets/blog/prompt-engineering-job-title.png",
+      "thumb_alt": "Cover image for the article: Prompt Engineering as a Job Title: Reading the Fine Print"
+    },
+    {
       "slug": "how-model-red-teams-test",
       "title": "How Model Evaluation and Red Teams Actually Test Models",
       "excerpt": "A practical look at how evaluation and red team organisations design tests, probe for failure, and avoid the measurement traps that make benchmark numbers misleading.",

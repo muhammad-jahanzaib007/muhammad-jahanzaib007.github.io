@@ -1,1 +1,1 @@
-2026-10-31T08:02:29Z slug=how-model-red-teams-test words=1122 title="How Model Evaluation and Red Teams Actually Test Models"
+2026-10-31T20:01:16Z slug=prompt-engineering-job-title words=1020 title="Prompt Engineering as a Job Title: Reading the Fine Print"

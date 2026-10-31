@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Prompt engineering as a job title: what the posting is really asking you to do",
     "Machine learning definitions across textbooks: where the disagreements actually matter",
     "Data science internships worth applying for: what to look for in the job description",
     "A grounded answer to deep learning versus machine learning for newcomers",
@@ -276,6 +275,7 @@
     "Deep learning with Python style books: what they teach well and what they leave for later",
     "Choosing a machine learning engineer career path: research, platform, or applied",
     "The real cost of a data science degree versus a focused portfolio",
-    "How model evaluation and threat research organisations actually test a model"
+    "How model evaluation and threat research organisations actually test a model",
+    "Prompt engineering as a job title: what the posting is really asking you to do"
   ]
 }

@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Sat, 31 Oct 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Prompt Engineering as a Job Title: Reading the Fine Print</title>
+    <link>https://jahanzaibawan.com/blog/prompt-engineering-job-title.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/prompt-engineering-job-title.html</guid>
+    <pubDate>Sat, 31 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Prompt engineering postings rarely mean just writing prompts. Here is what the job actually tends to involve, and how to tell before you apply.</description>
+    <category>Careers</category>
+  </item>
+  <item>
     <title>How Model Evaluation and Red Teams Actually Test Models</title>
     <link>https://jahanzaibawan.com/blog/how-model-red-teams-test.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/how-model-red-teams-test.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Thu, 22 Oct 2026 09:00:00 +0000</pubDate>
     <description>Fine-tuning does not need thousands of examples to work. It needs the right examples, tested the right way.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Fine-Tuning Synonyms: Why Precise Language Matters</title>
-    <link>https://jahanzaibawan.com/blog/fine-tuning-synonyms-precise-language.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/fine-tuning-synonyms-precise-language.html</guid>
-    <pubDate>Wed, 21 Oct 2026 09:00:00 +0000</pubDate>
-    <description>Calling everything &#x27;fine-tuning&#x27; hides what you actually did. Precise method language is a reproducibility issue, not pedantry.</description>
-    <category>NLP</category>
   </item>
 </channel>
 </rss>
