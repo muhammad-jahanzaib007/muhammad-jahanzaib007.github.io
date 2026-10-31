@@ -1,15 +1,15 @@
 {
   "posts": [
     {
-      "slug": "prompt-engineering-job-title",
-      "title": "Prompt Engineering as a Job Title: Reading the Fine Print",
-      "excerpt": "Prompt engineering postings rarely mean just writing prompts. Here is what the job actually tends to involve, and how to tell before you apply.",
+      "slug": "prompt-engineering-as-job-title",
+      "title": "Prompt Engineering as a Job Title: Reading Between the Lines",
+      "excerpt": "Prompt engineering postings are often a proxy for evaluation, integration, and systems work. Here is how to read them correctly.",
       "date": "2026-10-31",
-      "read_min": 5,
+      "read_min": 6,
       "tag": "Careers",
       "color": "a3",
-      "thumb": "assets/blog/prompt-engineering-job-title.png",
-      "thumb_alt": "Cover image for the article: Prompt Engineering as a Job Title: Reading the Fine Print"
+      "thumb": "assets/blog/prompt-engineering-as-job-title.png",
+      "thumb_alt": "Cover image for the article: Prompt Engineering as a Job Title: Reading Between the Lines"
     },
     {
       "slug": "how-model-red-teams-test",
