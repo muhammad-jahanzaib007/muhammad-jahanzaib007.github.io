@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Model Evaluation and Red Teams Actually Test Models | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="An inside look at how model evaluation and threat research teams design tests, run red teaming, and avoid leakage so their results actually mean something.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="model evaluation, red teaming, AI safety testing, benchmark leakage, adversarial testing, threat modelling, reproducibility, evaluation design, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-31">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="How Model Evaluation and Red Teams Actually Test Models">
+<meta property="og:description" content="An inside look at how model evaluation and threat research teams design tests, run red teaming, and avoid leakage so their results actually mean something.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/how-model-red-teams-test.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/how-model-red-teams-test.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How Model Evaluation and Red Teams Actually Test Models">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/how-model-red-teams-test.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/how-model-red-teams-test.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How Model Evaluation and Red Teams Actually Test Models",
+  "description": "An inside look at how model evaluation and threat research teams design tests, run red teaming, and avoid leakage so their results actually mean something.",
+  "url": "https://jahanzaibawan.com/blog/how-model-red-teams-test.html",
+  "image": "https://jahanzaibawan.com/assets/blog/how-model-red-teams-test.png",
+  "datePublished": "2026-10-31",
+  "dateModified": "2026-10-31",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/how-model-red-teams-test.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "How Model Evaluation and Red Teams Actually Test Models", "item": "https://jahanzaibawan.com/blog/how-model-red-teams-test.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 6 min read · 31 Oct 2026</div>
+    <h1>How Model Evaluation and Red Teams Actually Test Models</h1>
+    <p class="lede">Behind every headline safety claim sits a messy process of threat modelling, adversarial probing and leakage-aware measurement. Here is how that process actually works.</p>
+  </div>
+
+  <img src="../assets/blog/how-model-red-teams-test.png" alt="Cover image for the article: How Model Evaluation and Red Teams Actually Test Models" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this is harder than it looks</h2><p>When people hear that an organisation has 'tested' a model for safety or capability, they tend to picture a single exam: a fixed benchmark, a score, a pass or fail. The reality is much closer to how you would stress test a bridge. You do not just drive one lorry across it and call it done. You model the loads it will actually face, you probe the joints that are most likely to fail, and you keep testing after small changes because a fix in one place can quietly break something else. Model evaluation organisations work the same way, because a single benchmark score tells you almost nothing about how a system behaves outside the narrow conditions under which that score was produced.</p><p>The core difficulty is that models are not static objects with fixed properties waiting to be measured, they are highly context sensitive systems whose behaviour shifts with phrasing, prompt structure, temperature, and even the order in which examples appear. A model that refuses a harmful request when asked directly might comply when the same request is wrapped in a fictional frame or split across several turns. So the first job of a serious evaluation team is not running tests, it is deciding what 'the model's behaviour' even means before you can claim to have measured it.</p><p>This is why threat research groups spend so much time on threat modelling before touching a single prompt. They ask who would realistically try to misuse this system, what they would be trying to achieve, and what resources and patience they would plausibly have. A nation state actor with months of effort available is a different threat to a bored teenager with twenty minutes, and testing only for the second gives you false confidence against the first. Good evaluation starts by writing this down explicitly, because it is the only way to know later whether your test suite actually covers the risks you claim to be managing.</p></section><section class='psec reveal'><h2>Designing tests that resist gaming</h2><p>Once the threat model is clear, the next problem is leakage, and it is more subtle than people assume. The obvious form is a model having seen the exact test questions during training, which is bad enough and does happen when benchmarks are scraped into web corpora. But there is a quieter version: a model can perform well on a benchmark simply because it has learned the surface statistics of that benchmark's style, not the underlying skill the benchmark was designed to measure. A reading comprehension test where the answer is almost always the longest option, or a safety test where harmful requests are always phrased in a recognisably 'test-like' way, can be solved by pattern matching the test format rather than by actually being safe or competent.</p><p>Serious evaluation teams guard against this with holdout sets that are never published, with paraphrasing and rewriting of prompts to break surface patterns, and with periodic refreshes of test items so that a model cannot simply memorise last year's set. Imagine a benchmark for detecting manipulative persuasion techniques in text. If every example that contains the word 'urgent' is manipulative in the training data, a lazy classifier will learn that shortcut and score well without understanding persuasion at all. A competent evaluator deliberately includes benign examples that use urgent language and manipulative examples that avoid it, specifically to catch models that are gaming the keyword rather than solving the task. This is tedious to build and it is exactly the kind of unglamorous work that separates a trustworthy evaluation from a flattering one.</p><p>Red teaming adds a different layer on top of this. Where benchmarks test known categories of failure, red teams try to find failure categories nobody has written a test for yet. A red team exercise might start with a hypothesis, say that a model's safety training is stronger on English than on other languages it supports, and then design probes specifically to test that gap: the same harmful request translated, back translated, or mixed with code switching, to see whether the refusal behaviour holds. When it does not, that finding becomes a new, concrete test case that gets folded back into the permanent evaluation suite, so the next model version is checked against it too. This is how evaluation suites grow over time, not by someone sitting down and imagining every possible failure in advance, but by accumulating real discovered failures and institutionalising them as regression tests.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/how-model-red-teams-test-1.jpg' alt='security operations control room' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Why statistics and reporting matter as much as the probes</h2><p>Finding a worrying behaviour is only half the job; reporting it honestly is the other half, and this is where a lot of public discussion goes wrong. If a red team tries one thousand adversarial prompts and finds that thirty succeed in producing harmful output, the headline number that matters is not just thirty, it is thirty out of one thousand under a specific, documented set of conditions: which model version, which system prompt, which decoding settings, which definition of 'harmful' was used to judge the outputs. Change any of those and the number moves, sometimes a lot. A rate that looks alarming at temperature 1.0 with no system prompt might look very different at temperature 0 with a safety-focused system prompt in place, and a responsible write-up states both rather than quoting whichever number tells the better story.</p><p>This is also where confidence intervals and sample size matter in a way that is easy to skip over. Thirty failures out of one thousand trials is a rate of three percent, but if the sample was only fifty trials, three failures is six percent with a much wider margin of uncertainty, and the difference between those two framings genuinely changes what a reader should conclude. Evaluation organisations that take this seriously report not just the headline rate but the number of trials behind it, and they are explicit about whether failures were found by automated classifiers, which can themselves be wrong, or by human review, which is slower but more reliable for ambiguous cases.</p><p>The practical takeaway for anyone reading or producing evaluation results is to treat a bare percentage as the start of a question, not the end of one. Ask what the threat model was, whether the test set could have leaked into training, whether the probes were adversarially refreshed or reused from a public benchmark, and what exact conditions produced the number being quoted. If those details are missing, the evaluation has not actually told you how the model behaves in the wild, it has told you how the model behaves on one narrow slice of one specific test, under one specific setup, and that is a much smaller claim than it sounds.</p></section>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

@@ -1,15 +1,15 @@
 {
   "posts": [
     {
-      "slug": "how-evaluators-actually-test-models",
-      "title": "How Model Evaluation and Threat Research Actually Works",
-      "excerpt": "Benchmark scores are the easy part. Real evaluation involves red-teaming, contamination checks, and threat modelling that rarely makes it into a press release.",
+      "slug": "how-model-red-teams-test",
+      "title": "How Model Evaluation and Red Teams Actually Test Models",
+      "excerpt": "A practical look at how evaluation and red team organisations design tests, probe for failure, and avoid the measurement traps that make benchmark numbers misleading.",
       "date": "2026-10-31",
-      "read_min": 5,
+      "read_min": 6,
       "tag": "Evaluation",
       "color": "a2",
-      "thumb": "assets/blog/how-evaluators-actually-test-models.png",
-      "thumb_alt": "Cover image for the article: How Model Evaluation and Threat Research Actually Works"
+      "thumb": "assets/blog/how-model-red-teams-test.png",
+      "thumb_alt": "Cover image for the article: How Model Evaluation and Red Teams Actually Test Models"
     },
     {
       "slug": "degree-versus-focused-portfolio",

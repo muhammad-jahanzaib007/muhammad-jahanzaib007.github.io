@@ -8,11 +8,11 @@
   <language>en-gb</language>
   <lastBuildDate>Sat, 31 Oct 2026 09:00:00 +0000</lastBuildDate>
   <item>
-    <title>How Model Evaluation and Threat Research Actually Works</title>
-    <link>https://jahanzaibawan.com/blog/how-evaluators-actually-test-models.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/how-evaluators-actually-test-models.html</guid>
+    <title>How Model Evaluation and Red Teams Actually Test Models</title>
+    <link>https://jahanzaibawan.com/blog/how-model-red-teams-test.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/how-model-red-teams-test.html</guid>
     <pubDate>Sat, 31 Oct 2026 09:00:00 +0000</pubDate>
-    <description>Benchmark scores are the easy part. Real evaluation involves red-teaming, contamination checks, and threat modelling that rarely makes it into a press release.</description>
+    <description>A practical look at how evaluation and red team organisations design tests, probe for failure, and avoid the measurement traps that make benchmark numbers misleading.</description>
     <category>Evaluation</category>
   </item>
   <item>

@@ -1,1 +1,1 @@
-2026-10-31T08:01:21Z slug=how-evaluators-actually-test-models words=1016 title="How Model Evaluation and Threat Research Actually Works"
+2026-10-31T08:02:29Z slug=how-model-red-teams-test words=1122 title="How Model Evaluation and Red Teams Actually Test Models"
