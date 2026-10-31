@@ -1,1 +1,1 @@
-2026-10-30T20:02:03Z slug=degree-versus-focused-portfolio words=1018 title="The Real Cost of a Data Science Degree vs a Portfolio"
+2026-10-31T08:01:21Z slug=how-evaluators-actually-test-models words=1016 title="How Model Evaluation and Threat Research Actually Works"

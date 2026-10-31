@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Model Evaluation and Threat Research Actually Works | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A look at how model evaluation and AI safety organisations actually test models, beyond leaderboard scores, covering red-teaming, contamination, and threat modelling.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="model evaluation, red teaming, AI safety, benchmark contamination, threat modelling, LLM testing, reproducibility, adversarial testing, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-31">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="How Model Evaluation and Threat Research Actually Works">
+<meta property="og:description" content="A look at how model evaluation and AI safety organisations actually test models, beyond leaderboard scores, covering red-teaming, contamination, and threat modelling.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/how-evaluators-actually-test-models.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/how-evaluators-actually-test-models.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How Model Evaluation and Threat Research Actually Works">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/how-evaluators-actually-test-models.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/how-evaluators-actually-test-models.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How Model Evaluation and Threat Research Actually Works",
+  "description": "A look at how model evaluation and AI safety organisations actually test models, beyond leaderboard scores, covering red-teaming, contamination, and threat modelling.",
+  "url": "https://jahanzaibawan.com/blog/how-evaluators-actually-test-models.html",
+  "image": "https://jahanzaibawan.com/assets/blog/how-evaluators-actually-test-models.png",
+  "datePublished": "2026-10-31",
+  "dateModified": "2026-10-31",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/how-evaluators-actually-test-models.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "How Model Evaluation and Threat Research Actually Works", "item": "https://jahanzaibawan.com/blog/how-evaluators-actually-test-models.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 31 Oct 2026</div>
+    <h1>How Model Evaluation and Threat Research Actually Works</h1>
+    <p class="lede">Behind the marketing claims and leaderboard scores sits a slower, messier process of adversarial probing, red-teaming, and leakage-aware testing. Here is what that actually looks like.</p>
+  </div>
+
+  <img src="../assets/blog/how-evaluators-actually-test-models.png" alt="Cover image for the article: How Model Evaluation and Threat Research Actually Works" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The leaderboard is the least interesting part</h2><p>When a new model drops, the number everyone quotes is usually a benchmark score: some percentage on a reasoning test, a coding suite, a safety refusal rate. These numbers are easy to report and easy to misread. They tell you how a model performed on a fixed set of questions under fixed conditions, which is a narrow and often fragile signal. Organisations that take evaluation seriously treat the leaderboard score as a starting point for investigation, not a conclusion.</p><p>The first thing a careful evaluator asks is not 'how high is the score' but 'could this score be contaminated'. Many public benchmarks have existed online for years, scraped into training corpora many times over. If a model has seen a benchmark's questions, or close paraphrases of them, during training, its score tells you about memorisation rather than capability. Detecting this is genuinely hard: you cannot just grep for exact string matches, because paraphrasing and translation hide the overlap. Serious evaluators instead build held-out test sets written after a model's training cutoff, or they perturb existing questions (changing names, numbers, surface wording) and check whether performance collapses. A model that scores 90 percent on the original phrasing but 60 percent on a lightly perturbed version has told you something important about what that 90 percent actually meant.</p><p>This matters practically because a lab deciding whether to deploy a model, or a regulator deciding whether to trust a safety claim, is making a decision based on these numbers. If the underlying test is leaky, the decision is built on sand. I think this is the single most underappreciated failure mode in applied machine learning: not a wrong metric, but a trustworthy-looking metric measuring the wrong thing.</p></section><section class='psec reveal'><h2>Red-teaming: adversaries, not averages</h2><p>Standard benchmarks measure average-case behaviour. Threat research is concerned with worst-case behaviour, which is a completely different statistical question. A model might refuse a harmful request correctly 999 times out of 1000 on a benchmark, but if the 1000th case is findable by a motivated person within an afternoon of trying, the benchmark number was never the right thing to optimise.</p><p>This is why red-teaming looks less like running an eval script and more like a structured adversarial process. A red team will typically work through categories of attack systematically: direct requests, requests wrapped in fictional framing, requests split across multiple turns so no single message looks suspicious, requests in a language the safety training was weaker on, and prompts that exploit the model's tendency to comply with authoritative-sounding instructions. Each category gets tested not once but dozens or hundreds of times with variations, because a single failure could be noise and a single success could be luck.</p><p>Concretely, imagine a model refuses a risky request 98 percent of the time across a thousand straightforward phrasings. That sounds reassuring. But a competent red team doesn't stop there; they try ten different jailbreak templates against the same underlying request. If even one template pushes the refusal rate down to 40 percent, the headline 98 percent figure was describing a model that is easy to manipulate once you know the trick, and tricks propagate fast once discovered. The real deliverable from a red-teaming exercise is not a single number but a map of where the failure surface is thin, which categories of attack work, and how much effort an adversary needs to invest.</p><p>Good red-teaming also tracks transferability: does a jailbreak that works on one model version work on the next, or on a different model family entirely? This matters for prioritisation. A fragile, model-specific exploit is a lower priority than a structural weakness that generalises across architectures, because the structural one suggests something about training methodology rather than a one-off bug.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/how-evaluators-actually-test-models-1.jpg' alt='security operations center monitors' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Threat modelling before testing</h2><p>Before any of this testing starts, serious evaluation work begins with a threat model: who might misuse this system, what would they be trying to achieve, and what is the realistic ceiling of harm given other barriers that already exist. This sounds obvious but it changes what gets tested. A model's ability to describe a well-known fact that is already in any introductory textbook is a very different risk to a model lowering the barrier to something that previously required specialist access or tacit expertise.</p><p>This distinction, sometimes called 'uplift', is central to how capability evaluations in sensitive domains are actually designed. The question is rarely 'can the model produce this information', since a huge amount of information is already searchable. The question is 'does interacting with this model meaningfully reduce the time, cost, or expertise a person would otherwise need'. Measuring uplift requires a control condition: give one group access to the model and another group access only to standard resources like search engines or textbooks, then compare how far each group gets on a defined task within a fixed time. Without that control group, you cannot distinguish 'the model is dangerous' from 'this information was always two clicks away'.</p><p>This is also where reproducibility becomes non-negotiable rather than nice-to-have. If an evaluation finds a concerning capability, other researchers and policymakers need to be able to check that finding without relying on trust alone. That means documenting exact prompts, sampling parameters, the model version and checkpoint, and the scoring rubric used by human reviewers if any. Vague descriptions like 'we tested the model on dangerous chemistry questions' are not evaluations in any rigorous sense; they are anecdotes dressed up as findings.</p></section><section class='psec reveal'><h2>What this means in practice</h2><p>If you take one thing from how this work actually happens, let it be this: a single score is never the output of a good evaluation, a profile is. That profile includes contamination checks against the specific benchmark used, adversarial stress tests rather than single-pass averages, an explicit threat model defining what harm would even mean in context, and a control condition that isolates the model's unique contribution from information that was already accessible elsewhere. Any report that skips these steps and leads with a headline accuracy figure is giving you marketing, not evaluation, regardless of how technical it sounds.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/how-evaluators-actually-test-models-2.jpg' alt='researchers whiteboard red team planning' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

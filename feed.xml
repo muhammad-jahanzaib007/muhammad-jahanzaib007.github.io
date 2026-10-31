@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Fri, 30 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 31 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>How Model Evaluation and Threat Research Actually Works</title>
+    <link>https://jahanzaibawan.com/blog/how-evaluators-actually-test-models.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/how-evaluators-actually-test-models.html</guid>
+    <pubDate>Sat, 31 Oct 2026 09:00:00 +0000</pubDate>
+    <description>Benchmark scores are the easy part. Real evaluation involves red-teaming, contamination checks, and threat modelling that rarely makes it into a press release.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>The Real Cost of a Data Science Degree vs a Portfolio</title>
     <link>https://jahanzaibawan.com/blog/degree-versus-focused-portfolio.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/fine-tuning-synonyms-precise-language.html</guid>
     <pubDate>Wed, 21 Oct 2026 09:00:00 +0000</pubDate>
     <description>Calling everything &#x27;fine-tuning&#x27; hides what you actually did. Precise method language is a reproducibility issue, not pedantry.</description>
-    <category>NLP</category>
-  </item>
-  <item>
-    <title>Why LLM Wikis and Glossaries Disagree on Basic Terms</title>
-    <link>https://jahanzaibawan.com/blog/why-llm-glossaries-disagree.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/why-llm-glossaries-disagree.html</guid>
-    <pubDate>Wed, 21 Oct 2026 09:00:00 +0000</pubDate>
-    <description>Why does every LLM glossary define &#x27;hallucination&#x27; or &#x27;grounding&#x27; differently? A practical guide to choosing and defending your own working definitions.</description>
     <category>NLP</category>
   </item>
 </channel>

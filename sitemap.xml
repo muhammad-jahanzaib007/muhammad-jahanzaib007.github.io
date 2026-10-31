@@ -10,8 +10,9 @@
     <image:image><image:loc>https://jahanzaibawan.com/assets/og.png</image:loc></image:image>
   </url>
   <url><loc>https://jahanzaibawan.com/about.html</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://jahanzaibawan.com/blog.html</loc><lastmod>2026-10-30</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jahanzaibawan.com/blog.html</loc><lastmod>2026-10-31</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <!--BLOGPOSTS:START-->
+  <url><loc>https://jahanzaibawan.com/blog/how-evaluators-actually-test-models.html</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://jahanzaibawan.com/blog/degree-versus-focused-portfolio.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://jahanzaibawan.com/blog/research-platform-applied-ml-paths.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://jahanzaibawan.com/blog/deep-learning-python-style-books.html</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
