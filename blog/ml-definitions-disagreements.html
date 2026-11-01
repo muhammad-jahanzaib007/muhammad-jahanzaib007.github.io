@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Machine Learning Definitions: Where Disagreements Matter | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A look at how competing textbook definitions of machine learning create real disagreements about evaluation, generalisation, and what counts as learning at all.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="machine learning definitions, generalisation, statistical learning theory, model evaluation, overfitting, inductive bias, data leakage, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-01">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Machine Learning Definitions: Where Disagreements Matter">
+<meta property="og:description" content="A look at how competing textbook definitions of machine learning create real disagreements about evaluation, generalisation, and what counts as learning at all.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/ml-definitions-disagreements.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/ml-definitions-disagreements.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Machine Learning Definitions: Where Disagreements Matter">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/ml-definitions-disagreements.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/ml-definitions-disagreements.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Machine Learning Definitions: Where Disagreements Matter",
+  "description": "A look at how competing textbook definitions of machine learning create real disagreements about evaluation, generalisation, and what counts as learning at all.",
+  "url": "https://jahanzaibawan.com/blog/ml-definitions-disagreements.html",
+  "image": "https://jahanzaibawan.com/assets/blog/ml-definitions-disagreements.png",
+  "datePublished": "2026-11-01",
+  "dateModified": "2026-11-01",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/ml-definitions-disagreements.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Machine Learning Definitions: Where Disagreements Matter", "item": "https://jahanzaibawan.com/blog/ml-definitions-disagreements.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 6 min read · 1 Nov 2026</div>
+    <h1>Machine Learning Definitions: Where Disagreements Matter</h1>
+    <p class="lede">Textbooks rarely agree on what machine learning is, and most of the time it does not matter. Here is where it actually does.</p>
+  </div>
+
+  <img src="../assets/blog/ml-definitions-disagreements.png" alt="Cover image for the article: Machine Learning Definitions: Where Disagreements Matter" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the definitions diverge in the first place</h2><p>Open three machine learning textbooks and you will get three slightly different definitions. One frames learning as improving performance on a task through experience, measured by some performance metric. Another frames it as estimating a function from data that generalises to unseen examples drawn from the same distribution. A third, closer to statistical learning theory, frames it as minimising expected risk when you only have access to empirical risk on a finite sample. These sound like restatements of the same idea, and most of the time they are. The trouble is that each framing quietly smuggles in different assumptions about what success looks like, and those assumptions surface the moment you try to evaluate a model rigorously.</p><p>The experience-and-performance definition, the one most students meet first, is deliberately loose. It says nothing about distributions, independence, or identical conditions between training and deployment. That looseness is fine for an introductory course, but it is exactly the gap that lets people build models that technically fit the definition while being useless in practice. A model trained on data that leaks future information into the training set can show improving performance on its task by every naive measure, and still be learning nothing transferable. The definition does not forbid this, because it never specified what kind of experience counts.</p><p>The statistical learning framing is stricter precisely because it was built by people worried about exactly that failure mode. It insists on a fixed, unknown data-generating distribution, and it defines success as low expected risk under that distribution, not low error on whatever sample you happened to collect. This is a meaningfully different claim. It rules out, by construction, the idea that a model which merely memorises its training sample well has learned anything at all.</p></section><section class='psec reveal'><h2>A worked example: the same model, two verdicts</h2><p>Imagine a model trained to predict whether a loan applicant will default, using five years of historical records. Suppose the data is shuffled randomly before an eighty-twenty train-test split, and the model reaches an accuracy of ninety-one per cent on the held-out twenty per cent. Under the loose, performance-based definition, this looks like a clean success story: the model improved its performance on the task through experience, exactly as described.</p><p>Now suppose, as is common in practice, that the records are not independent. Applicants who were co-signers on the same household loan appear on both sides of the split, and macroeconomic conditions in a given month mean that records from the same quarter are correlated with each other in ways the random split ignores. Under the statistical learning definition, this is not a valid estimate of expected risk at all, because the test set is not an independent draw from the same distribution as genuinely unseen future applicants. The ninety-one per cent figure might fall to seventy-eight per cent under a split that respects time order and household grouping, which is a drop large enough to change whether the model is worth deploying.</p><p>Both textbooks would call the original training process machine learning. Only one of them gives you the conceptual vocabulary to say why the ninety-one per cent was never a trustworthy number in the first place. That is the disagreement that matters: not a philosophical quibble about terminology, but a difference in whether the definition forces you to ask about the independence and representativeness of your evaluation data before you trust a result.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/ml-definitions-disagreements-1.jpg' alt='open textbooks stacked on desk' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Where else the gap shows up</h2><p>The same split in emphasis reappears in how textbooks treat inductive bias. Definitions centred on function approximation tend to foreground the hypothesis space: what family of functions can the model even represent, and what assumptions does that family encode about the problem. Definitions centred on experience and performance often skip this entirely, treating the model as a black box that either performs well or does not. In practice, knowing the inductive bias matters enormously when you are choosing a baseline. A linear model with the right bias can outperform a far more flexible model on a small, noisy dataset, and a definition that never asks you to think about hypothesis spaces will not prompt you to try the simpler option first.</p><p>There is also disagreement about whether learning requires generalisation at all, or whether pattern extraction from a fixed dataset counts on its own terms. This matters for interpretability and clustering work, where there may be no clean notion of a held-out distribution, and no natural test set at all. A definition built entirely around risk minimisation on future data struggles to accommodate this kind of work cleanly, while a looser definition accommodates it too easily, by not asking hard questions about what the discovered patterns actually mean or whether they would replicate on a second sample.</p><p>A third place the gap shows up, quieter but just as consequential, is in how textbooks treat the test set itself. Some definitions treat the test set as a neutral oracle: whatever the model scores on it is the truth about how good the model is. Others treat it as a single noisy sample from a distribution, meaning the reported number itself has a confidence interval around it that is rarely reported. A model that scores eighty-four per cent on one test split and seventy-nine per cent on a different random split of the same size has not necessarily changed; the five-point gap may simply be sampling variance in a modest test set. Textbooks that treat the number as sacred encourage overconfidence in single-split results, while those that treat it as an estimate push you towards repeated resampling or cross-validation before drawing conclusions.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>None of this means the textbook definitions are wrong. They are answering different questions, written for different purposes, and a short definition at the start of a chapter was never meant to carry the full weight of rigorous methodology. The useful move is to stop asking which definition is correct and start asking which assumptions a given definition quietly requires you to check. Does it assume independence between training and test data. Does it assume a fixed distribution that will not drift before deployment. Does it treat a single reported score as ground truth or as a noisy estimate.</p><p>When I evaluate a model now, I treat the textbook definition as a checklist rather than a sentence to be recited. If a definition emphasises expected risk, I ask whether my split genuinely approximates an independent draw from the deployment distribution, and I check for leakage through shared entities, time order, or duplicated records. If a definition emphasises improving performance through experience, I ask what exactly counts as experience here, and whether that experience could have quietly included information the model should never have seen. The disagreement between textbooks is not academic noise; it is a map of the places where sloppy evaluation most often hides.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/ml-definitions-disagreements-2.jpg' alt='data table on laptop screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

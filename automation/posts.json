@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "ml-definitions-disagreements",
+      "title": "Machine Learning Definitions: Where Disagreements Matter",
+      "excerpt": "Textbook definitions of machine learning differ in small ways that sound academic, until they quietly change what counts as a valid result.",
+      "date": "2026-11-01",
+      "read_min": 6,
+      "tag": "Evaluation",
+      "color": "a4",
+      "thumb": "assets/blog/ml-definitions-disagreements.png",
+      "thumb_alt": "Cover image for the article: Machine Learning Definitions: Where Disagreements Matter"
+    },
+    {
       "slug": "prompt-engineering-as-job-title",
       "title": "Prompt Engineering as a Job Title: Reading Between the Lines",
       "excerpt": "Prompt engineering postings are often a proxy for evaluation, integration, and systems work. Here is how to read them correctly.",

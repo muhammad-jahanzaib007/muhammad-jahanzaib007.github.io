@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Sat, 31 Oct 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 01 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Machine Learning Definitions: Where Disagreements Matter</title>
+    <link>https://jahanzaibawan.com/blog/ml-definitions-disagreements.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/ml-definitions-disagreements.html</guid>
+    <pubDate>Sun, 01 Nov 2026 09:00:00 +0000</pubDate>
+    <description>Textbook definitions of machine learning differ in small ways that sound academic, until they quietly change what counts as a valid result.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Prompt Engineering as a Job Title: Reading Between the Lines</title>
     <link>https://jahanzaibawan.com/blog/prompt-engineering-as-job-title.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Thu, 22 Oct 2026 09:00:00 +0000</pubDate>
     <description>A data science major builds you to design and evaluate methods; a minor builds you to apply them responsibly. Knowing which one you are getting changes how you plan your career.</description>
     <category>Education</category>
-  </item>
-  <item>
-    <title>How Many Fine-Tuning Examples Do You Actually Need</title>
-    <link>https://jahanzaibawan.com/blog/how-many-fine-tuning-examples.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/how-many-fine-tuning-examples.html</guid>
-    <pubDate>Thu, 22 Oct 2026 09:00:00 +0000</pubDate>
-    <description>Fine-tuning does not need thousands of examples to work. It needs the right examples, tested the right way.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>

@@ -1,1 +1,1 @@
-2026-10-31T20:02:16Z slug=prompt-engineering-as-job-title words=1107 title="Prompt Engineering as a Job Title: Reading Between the Lines"
+2026-11-01T08:02:03Z slug=ml-definitions-disagreements words=1147 title="Machine Learning Definitions: Where Disagreements Matter"
