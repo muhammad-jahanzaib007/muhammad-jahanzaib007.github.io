@@ -2,14 +2,14 @@
   "posts": [
     {
       "slug": "data-science-internships-job-description",
-      "title": "Data Science Internships Worth Applying For",
-      "excerpt": "A practical guide to spotting which data science internship postings actually offer real learning, mentorship and honest scope versus vague, inflated job ads.",
+      "title": "Data Science Internships: Reading Between the Lines",
+      "excerpt": "Not all data science internships are equal. Here is how to spot the ones that will actually teach you something, before you waste a cover letter.",
       "date": "2026-11-01",
       "read_min": 5,
       "tag": "Careers",
       "color": "a5",
       "thumb": "assets/blog/data-science-internships-job-description.png",
-      "thumb_alt": "Cover image for the article: Data Science Internships Worth Applying For"
+      "thumb_alt": "Cover image for the article: Data Science Internships: Reading Between the Lines"
     },
     {
       "slug": "ml-definitions-textbook-disagreements",
