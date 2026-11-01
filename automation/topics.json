@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Data science internships worth applying for: what to look for in the job description",
     "A grounded answer to deep learning versus machine learning for newcomers",
     "Retrieval augmented generation versus fine-tuning: a worked decision for one small knowledge base",
     "What makes a dataset leak-proof: a practical checklist before you train anything",
@@ -276,6 +275,7 @@
     "The real cost of a data science degree versus a focused portfolio",
     "How model evaluation and threat research organisations actually test a model",
     "Prompt engineering as a job title: what the posting is really asking you to do",
-    "Machine learning definitions across textbooks: where the disagreements actually matter"
+    "Machine learning definitions across textbooks: where the disagreements actually matter",
+    "Data science internships worth applying for: what to look for in the job description"
   ]
 }

@@ -1,1 +1,1 @@
-2026-11-01T08:02:58Z slug=ml-definitions-textbook-disagreements words=1003 title="Machine Learning Definitions: Where the Disagreements Matter"
+2026-11-01T20:01:23Z slug=data-science-internships-job-description words=1076 title="Data Science Internships Worth Applying For"

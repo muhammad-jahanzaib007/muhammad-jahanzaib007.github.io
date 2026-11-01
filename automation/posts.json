@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "data-science-internships-job-description",
+      "title": "Data Science Internships Worth Applying For",
+      "excerpt": "A practical guide to spotting which data science internship postings actually offer real learning, mentorship and honest scope versus vague, inflated job ads.",
+      "date": "2026-11-01",
+      "read_min": 5,
+      "tag": "Careers",
+      "color": "a5",
+      "thumb": "assets/blog/data-science-internships-job-description.png",
+      "thumb_alt": "Cover image for the article: Data Science Internships Worth Applying For"
+    },
+    {
       "slug": "ml-definitions-textbook-disagreements",
       "title": "Machine Learning Definitions: Where the Disagreements Matter",
       "excerpt": "Textbook definitions of machine learning disagree in small ways. Most don't matter, but a few shape what we accept as proof a model generalises.",
