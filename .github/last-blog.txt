@@ -1,1 +1,1 @@
-2026-11-01T08:02:03Z slug=ml-definitions-disagreements words=1147 title="Machine Learning Definitions: Where Disagreements Matter"
+2026-11-01T08:02:58Z slug=ml-definitions-textbook-disagreements words=1003 title="Machine Learning Definitions: Where the Disagreements Matter"

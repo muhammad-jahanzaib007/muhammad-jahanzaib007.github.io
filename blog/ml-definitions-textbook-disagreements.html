@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Machine Learning Definitions: Where the Disagreements Matter | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A look at how competing textbook definitions of machine learning diverge, and why the disagreements over generalisation and experience actually affect evaluation practice.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="machine learning definition,generalisation,evaluation methodology,leakage,Tom Mitchell definition,statistical learning theory,model validation,reproducibility, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-01">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Machine Learning Definitions: Where the Disagreements Matter">
+<meta property="og:description" content="A look at how competing textbook definitions of machine learning diverge, and why the disagreements over generalisation and experience actually affect evaluation practice.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/ml-definitions-textbook-disagreements.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/ml-definitions-textbook-disagreements.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Machine Learning Definitions: Where the Disagreements Matter">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/ml-definitions-textbook-disagreements.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/ml-definitions-textbook-disagreements.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Machine Learning Definitions: Where the Disagreements Matter",
+  "description": "A look at how competing textbook definitions of machine learning diverge, and why the disagreements over generalisation and experience actually affect evaluation practice.",
+  "url": "https://jahanzaibawan.com/blog/ml-definitions-textbook-disagreements.html",
+  "image": "https://jahanzaibawan.com/assets/blog/ml-definitions-textbook-disagreements.png",
+  "datePublished": "2026-11-01",
+  "dateModified": "2026-11-01",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/ml-definitions-textbook-disagreements.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Machine Learning Definitions: Where the Disagreements Matter", "item": "https://jahanzaibawan.com/blog/ml-definitions-textbook-disagreements.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 1 Nov 2026</div>
+    <h1>Machine Learning Definitions: Where the Disagreements Matter</h1>
+    <p class="lede">Every textbook defines machine learning slightly differently. Most of the differences are harmless, but a few quietly change what counts as evidence that a model works.</p>
+  </div>
+
+  <img src="../assets/blog/ml-definitions-textbook-disagreements.png" alt="Cover image for the article: Machine Learning Definitions: Where the Disagreements Matter" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why bother comparing definitions</h2><p>Open three machine learning textbooks and you will find three slightly different definitions of the field. One leans on Tom Mitchell's formulation: a program learns from experience E with respect to tasks T and performance measure P if its performance on T, measured by P, improves with E. Another leans on statistical learning theory and defines learning as estimating a function from a hypothesis space that minimises expected risk over an unknown data distribution. A third keeps things informal and just says machine learning is about algorithms that improve automatically through data.</p><p>It is tempting to treat this as pedantry, the kind of thing that matters only to people writing the opening chapter of a book and nobody else. For the most part that is true. Whether you call the thing being learned a function, a hypothesis, or a model does not change how you write training code. But a handful of these disagreements are not cosmetic. They encode different assumptions about what counts as valid evidence that learning has actually happened, and those assumptions show up directly in how people design evaluation.</p><p>The point of this post is not to pick a winner. It is to separate the differences that are genuinely just vocabulary from the one or two that quietly determine whether a reported accuracy number means anything.</p></section><section class='psec reveal'><h2>The disagreement that does not matter much: experience versus data distribution</h2><p>Mitchell's definition talks about experience, which sounds active and procedural, almost like the system is doing something. The statistical learning formulation talks about a data distribution and i.i.d. samples drawn from it, which sounds passive and mathematical. In practice these describe the same thing from two angles. Experience is just a looser word for the training sample; the distribution is the formal object that sample is assumed to come from. Nobody building an actual model agonises over which framing to use before fitting a classifier.</p><p>Similarly, the dispute between calling the output a function, a hypothesis, or a model is almost entirely terminological. A decision tree is a function from feature vectors to labels, a hypothesis in the formal sense, and a model in everyday usage, all at once. Switching between these words when reading different books costs you nothing beyond a moment of translation. These are the disagreements that make definitions feel inconsistent across sources without actually producing inconsistent practice, and they are not worth spending energy on.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/ml-definitions-textbook-disagreements-1.jpg' alt='open textbooks stacked on desk' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>The disagreement that does matter: what counts as improvement on T</h2><p>Here is the one that bites. Mitchell's definition says performance on task T, measured by P, should improve with experience E. It does not say improve on what data. A surprising number of informal treatments quietly let P be measured on the same data E was drawn from, because that is the easiest thing to compute. A model's training accuracy going up is, strictly, an instance of performance improving with experience. But it is not evidence of learning in any useful sense, because a sufficiently flexible function can memorise training data without capturing any pattern that transfers.</p><p>The statistical learning framing forces the issue by explicitly distinguishing empirical risk, measured on the training sample, from expected risk, measured over the full distribution the data came from. Under that framing, a definition of learning that only checks improvement on the training set is not learning at all, it is curve fitting with extra steps. This sounds like a fine philosophical point until you watch it play out numerically.</p><p>Take a concrete case. Suppose you train a model to predict loan default on five thousand historical applications, and training accuracy climbs from 70 percent to 97 percent as you add more features and increase model capacity. Under the loose, training-data reading of Mitchell's definition, this is unambiguous learning: performance on the task has improved with experience, full stop. Under the statistical learning reading, this number tells you almost nothing on its own. What matters is accuracy on a held-out set of applications the model never saw during fitting. If that held-out accuracy sits at 71 percent while training accuracy sits at 97 percent, the honest conclusion is that the model has overfit, memorising quirks of the five thousand training rows rather than learning a generalisable signal. The two readings of the same definition produce opposite verdicts about the same number.</p><p>This is not an abstract worry. It is the exact failure mode that leakage-aware evaluation exists to prevent. If your test set shares duplicated rows with your training set, or if a feature encodes information that would not be available at prediction time, you can produce a model whose test accuracy looks like genuine learning under either definition, while in fact it is memorisation wearing a disguise. The definitional dispute about where P should be measured is really a dispute about whether your evaluation protocol is trustworthy, and that is not a matter of taste.</p></section><section class='psec reveal'><h2>What to actually take from this</h2><p>When you read a definition of machine learning that says a system improves with experience, mentally append the clause on unseen data drawn from the same distribution it was trained on. That clause is doing almost all of the useful work, and plenty of informal definitions leave it implicit or drop it entirely. The textbooks that are careful about distinguishing empirical risk from expected risk are not being needlessly formal, they are encoding the single methodological commitment that separates a useful performance number from a misleading one.</p><p>In practice this means treating any reported accuracy, F1 score, or RMSE with a simple question before anything else: was this measured on data the model could not have seen, directly or indirectly, during training or feature construction? If the answer is no, or unclear, the number is not evidence of learning under any definition worth taking seriously, regardless of which textbook's wording you prefer. Everything else in the definitional debate, the choice between function and hypothesis, the choice of phrasing around experience, is genuinely safe to ignore. This one is not.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/ml-definitions-textbook-disagreements-2.jpg' alt='student writing equations on whiteboard' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

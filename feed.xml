@@ -8,11 +8,11 @@
   <language>en-gb</language>
   <lastBuildDate>Sun, 01 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
-    <title>Machine Learning Definitions: Where Disagreements Matter</title>
-    <link>https://jahanzaibawan.com/blog/ml-definitions-disagreements.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/ml-definitions-disagreements.html</guid>
+    <title>Machine Learning Definitions: Where the Disagreements Matter</title>
+    <link>https://jahanzaibawan.com/blog/ml-definitions-textbook-disagreements.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/ml-definitions-textbook-disagreements.html</guid>
     <pubDate>Sun, 01 Nov 2026 09:00:00 +0000</pubDate>
-    <description>Textbook definitions of machine learning differ in small ways that sound academic, until they quietly change what counts as a valid result.</description>
+    <description>Textbook definitions of machine learning disagree in small ways. Most don&#x27;t matter, but a few shape what we accept as proof a model generalises.</description>
     <category>Evaluation</category>
   </item>
   <item>

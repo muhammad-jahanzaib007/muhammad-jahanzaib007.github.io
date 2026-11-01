@@ -1,15 +1,15 @@
 {
   "posts": [
     {
-      "slug": "ml-definitions-disagreements",
-      "title": "Machine Learning Definitions: Where Disagreements Matter",
-      "excerpt": "Textbook definitions of machine learning differ in small ways that sound academic, until they quietly change what counts as a valid result.",
+      "slug": "ml-definitions-textbook-disagreements",
+      "title": "Machine Learning Definitions: Where the Disagreements Matter",
+      "excerpt": "Textbook definitions of machine learning disagree in small ways. Most don't matter, but a few shape what we accept as proof a model generalises.",
       "date": "2026-11-01",
-      "read_min": 6,
+      "read_min": 5,
       "tag": "Evaluation",
       "color": "a4",
-      "thumb": "assets/blog/ml-definitions-disagreements.png",
-      "thumb_alt": "Cover image for the article: Machine Learning Definitions: Where Disagreements Matter"
+      "thumb": "assets/blog/ml-definitions-textbook-disagreements.png",
+      "thumb_alt": "Cover image for the article: Machine Learning Definitions: Where the Disagreements Matter"
     },
     {
       "slug": "prompt-engineering-as-job-title",
