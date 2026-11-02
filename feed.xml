@@ -8,11 +8,11 @@
   <language>en-gb</language>
   <lastBuildDate>Mon, 02 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
-    <title>Retrieval Augmented Generation vs Fine-Tuning: A Worked Case</title>
+    <title>Retrieval Augmented Generation vs Fine-Tuning: One Small Case</title>
     <link>https://jahanzaibawan.com/blog/rag-versus-fine-tuning-small-kb.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/rag-versus-fine-tuning-small-kb.html</guid>
     <pubDate>Mon, 02 Nov 2026 09:00:00 +0000</pubDate>
-    <description>A concrete walkthrough of deciding between RAG and fine-tuning for a small knowledge base, with numbers, not vibes.</description>
+    <description>A concrete walk-through comparing RAG and fine-tuning on a small knowledge base, with realistic numbers and a practical decision rule.</description>
     <category>NLP</category>
   </item>
   <item>

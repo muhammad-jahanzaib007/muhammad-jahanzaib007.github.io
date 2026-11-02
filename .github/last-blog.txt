@@ -1,1 +1,1 @@
-2026-11-02T20:01:27Z slug=rag-versus-fine-tuning-small-kb words=1019 title="Retrieval Augmented Generation vs Fine-Tuning: A Worked Case"
+2026-11-02T20:02:37Z slug=rag-versus-fine-tuning-small-kb words=965 title="Retrieval Augmented Generation vs Fine-Tuning: One Small Case"
