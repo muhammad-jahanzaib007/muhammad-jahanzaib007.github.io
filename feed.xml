@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Sun, 01 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Mon, 02 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>A Grounded Answer to Deep Learning vs Machine Learning</title>
+    <link>https://jahanzaibawan.com/blog/deep-learning-vs-machine-learning.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/deep-learning-vs-machine-learning.html</guid>
+    <pubDate>Mon, 02 Nov 2026 09:00:00 +0000</pubDate>
+    <description>Deep learning is not a replacement for machine learning, it is a specific tool for a specific kind of problem. Here is how to tell which one you need.</description>
+    <category>Machine Learning</category>
+  </item>
   <item>
     <title>Data Science Internships: Reading Between the Lines</title>
     <link>https://jahanzaibawan.com/blog/data-science-internships-job-description.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/evaluation-technique-for-your-problem.html</guid>
     <pubDate>Fri, 23 Oct 2026 09:00:00 +0000</pubDate>
     <description>K-fold is not a default you apply everywhere. Match the evaluation scheme to how your data was generated and how the model will actually be used.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Computer Vision Syndrome vs Computer Vision: A Naming Clash</title>
-    <link>https://jahanzaibawan.com/blog/computer-vision-syndrome-naming-collision.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/computer-vision-syndrome-naming-collision.html</guid>
-    <pubDate>Fri, 23 Oct 2026 09:00:00 +0000</pubDate>
-    <description>Computer vision syndrome is an eye strain condition; computer vision is a branch of AI. The shared name causes real confusion in search, citations, and casual conversation.</description>
     <category>Evaluation</category>
   </item>
 </channel>
