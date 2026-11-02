@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "rag-versus-fine-tuning-small-kb",
+      "title": "Retrieval Augmented Generation vs Fine-Tuning: A Worked Case",
+      "excerpt": "A concrete walkthrough of deciding between RAG and fine-tuning for a small knowledge base, with numbers, not vibes.",
+      "date": "2026-11-02",
+      "read_min": 5,
+      "tag": "NLP",
+      "color": "a2",
+      "thumb": "assets/blog/rag-versus-fine-tuning-small-kb.png",
+      "thumb_alt": "Cover image for the article: Retrieval Augmented Generation vs Fine-Tuning: A Worked Case"
+    },
+    {
       "slug": "deep-learning-vs-machine-learning",
       "title": "Deep Learning Versus Machine Learning: A Grounded Answer",
       "excerpt": "Deep learning is not a replacement for machine learning; it is one family within it, suited to some problems and poorly suited to others.",

@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Mon, 02 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Retrieval Augmented Generation vs Fine-Tuning: A Worked Case</title>
+    <link>https://jahanzaibawan.com/blog/rag-versus-fine-tuning-small-kb.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/rag-versus-fine-tuning-small-kb.html</guid>
+    <pubDate>Mon, 02 Nov 2026 09:00:00 +0000</pubDate>
+    <description>A concrete walkthrough of deciding between RAG and fine-tuning for a small knowledge base, with numbers, not vibes.</description>
+    <category>NLP</category>
+  </item>
+  <item>
     <title>Deep Learning Versus Machine Learning: A Grounded Answer</title>
     <link>https://jahanzaibawan.com/blog/deep-learning-vs-machine-learning.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/deep-learning-vs-machine-learning.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/evaluation-framework-default-settings.html</guid>
     <pubDate>Sat, 24 Oct 2026 09:00:00 +0000</pubDate>
     <description>Default settings in evaluation frameworks are design choices, not neutral facts. Knowing what they hide saves you from publishing misleading numbers.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Picking a Model Evaluation Technique for Your Actual Problem</title>
-    <link>https://jahanzaibawan.com/blog/evaluation-technique-for-your-problem.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/evaluation-technique-for-your-problem.html</guid>
-    <pubDate>Fri, 23 Oct 2026 09:00:00 +0000</pubDate>
-    <description>K-fold is not a default you apply everywhere. Match the evaluation scheme to how your data was generated and how the model will actually be used.</description>
     <category>Evaluation</category>
   </item>
 </channel>

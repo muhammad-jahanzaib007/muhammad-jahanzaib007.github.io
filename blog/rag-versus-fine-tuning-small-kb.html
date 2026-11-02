@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retrieval Augmented Generation vs Fine-Tuning: A Worked Case | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A worked decision between retrieval augmented generation and fine-tuning for a small knowledge base, with concrete numbers and practical trade-offs.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="retrieval augmented generation, fine-tuning, small knowledge base, LLM evaluation, vector search, model updating, RAG pipeline, practical NLP, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-02">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Retrieval Augmented Generation vs Fine-Tuning: A Worked Case">
+<meta property="og:description" content="A worked decision between retrieval augmented generation and fine-tuning for a small knowledge base, with concrete numbers and practical trade-offs.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/rag-versus-fine-tuning-small-kb.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/rag-versus-fine-tuning-small-kb.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Retrieval Augmented Generation vs Fine-Tuning: A Worked Case">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/rag-versus-fine-tuning-small-kb.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/rag-versus-fine-tuning-small-kb.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Retrieval Augmented Generation vs Fine-Tuning: A Worked Case",
+  "description": "A worked decision between retrieval augmented generation and fine-tuning for a small knowledge base, with concrete numbers and practical trade-offs.",
+  "url": "https://jahanzaibawan.com/blog/rag-versus-fine-tuning-small-kb.html",
+  "image": "https://jahanzaibawan.com/assets/blog/rag-versus-fine-tuning-small-kb.png",
+  "datePublished": "2026-11-02",
+  "dateModified": "2026-11-02",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/rag-versus-fine-tuning-small-kb.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Retrieval Augmented Generation vs Fine-Tuning: A Worked Case", "item": "https://jahanzaibawan.com/blog/rag-versus-fine-tuning-small-kb.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">NLP · 5 min read · 2 Nov 2026</div>
+    <h1>Retrieval Augmented Generation vs Fine-Tuning: A Worked Case</h1>
+    <p class="lede">When you only have a few hundred documents, the choice between retrieval and retraining is not philosophical, it is arithmetic. Here is how I worked through one.</p>
+  </div>
+
+  <img src="../assets/blog/rag-versus-fine-tuning-small-kb.png" alt="Cover image for the article: Retrieval Augmented Generation vs Fine-Tuning: A Worked Case" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The question that actually needs answering</h2><p>Every time someone asks whether to use retrieval augmented generation or fine-tuning, the honest answer is that it depends on the shape of the problem, and most people skip the shape and jump to the tool they already like. I want to work through one concrete scenario instead of giving a general lecture, because the trade-offs only become clear when you attach numbers to them.</p><p>Suppose the knowledge base is three hundred internal documents, perhaps policy pages and product specifications, totalling around two hundred thousand words. The documents change a few times a month. The task is answering employee questions accurately, with the ability to point to a source. That last requirement matters more than it first appears, and I will come back to it.</p><p>Fine-tuning here means taking a base language model and continuing training on examples derived from this corpus, usually question and answer pairs synthesised from the documents or hand written by someone who knows them. Retrieval augmented generation means leaving the base model alone and instead searching the document set at query time, then stuffing the most relevant passages into the prompt before generation. Both approaches can produce a system that answers questions. The decision is about cost, maintenance, and failure mode, not about which one is cleverer.</p></section><section class='psec reveal'><h2>Working the numbers on freshness and volume</h2><p>Two hundred thousand words is a small corpus by any standard. Fine-tuning works best when there is enough signal to shift the model's weights meaningfully without overfitting to a handful of examples, and small corpora make that hard. If I generate, say, four hundred question and answer pairs from three hundred documents, I am training on an average of little more than one question per document. A model fine-tuned on that volume tends to memorise phrasing rather than learn general patterns, and it will often answer confidently and wrongly when asked something slightly off the training distribution. That is the worst failure mode for a knowledge base tool, because it looks authoritative while being unreliable.</p><p>Now consider the update cadence. If the documents change a few times a month, a fine-tuned model is stale the moment any source document changes, and it stays stale until someone notices, regenerates training pairs, retrains, evaluates, and redeploys. Even a lightweight fine-tuning cycle, done carefully with held-out validation and leakage checks between training and test questions, realistically takes a day or two of someone's attention each time. Over a year, if updates happen twice a month, that is twenty four retraining cycles. Compare that with retrieval augmented generation, where updating the knowledge base means re-indexing the changed documents, which for three hundred documents takes minutes and can often be automated to run on every save.</p><p>The arithmetic is not subtle. For a corpus this size and this update frequency, the maintenance burden of fine-tuning dwarfs the maintenance burden of retrieval. Fine-tuning starts to look more attractive only when the corpus is large enough to support genuine generalisation, or when updates are rare enough that the retraining cost is amortised over a long stable period, say a knowledge base that changes once a year rather than twice a month.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/rag-versus-fine-tuning-small-kb-1.jpg' alt='server room document archive' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What each approach actually buys you</h2><p>There is a feature of retrieval augmented generation that often gets underweighted in these comparisons, which is that it gives you provenance almost for free. If the system retrieves three passages and generates an answer grounded in them, you can show the employee which passages were used, and they can check the source themselves. This matters enormously for trust, and it matters for debugging. When the system gets something wrong, you can inspect whether the retrieval step pulled the right passage or whether the generation step misread a correct passage, which tells you precisely where to intervene.</p><p>Fine-tuning gives you no such trail. If a fine-tuned model answers incorrectly, you cannot point to the specific training example responsible, because the error is distributed across millions of weight updates. Debugging becomes a matter of adding more training examples and hoping the behaviour shifts in the right direction, which is a much blunter instrument than fixing a retrieval index.</p><p>What fine-tuning does buy you is speed and consistency of style at inference time, since there is no retrieval step and no risk of pulling an irrelevant passage into the prompt. It also helps when the task is less about facts and more about tone or format, for instance teaching a model to always respond in a particular structure. For a knowledge base question answering task where the facts are the entire point, that benefit is largely irrelevant, and the cost of losing provenance and flexibility is not worth paying.</p><p>It is worth being honest about retrieval's own weaknesses too. A retrieval system is only as good as its index and its ranking, and with only three hundred documents it is tempting to assume retrieval will be trivially accurate. It will not be, if the documents use inconsistent terminology or if the embedding model was not evaluated on this specific corpus. I would still want a held-out set of realistic questions with known correct source documents, used purely to check retrieval precision before trusting the pipeline, rather than assuming a popular embedding model will just work.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>For this specific scenario, a small, frequently changing corpus where traceability matters, retrieval augmented generation is the clear choice, and the decision was never close once the numbers were laid out. The crossover point towards fine-tuning arrives with scale and stability: a corpus large enough to generalise from, and a change frequency low enough that retraining cost is amortised rather than constant.</p><p>The general lesson travels further than this one example. Before picking a technique, write down the corpus size, the update frequency, and whether provenance matters, then estimate the retraining cost against the re-indexing cost in concrete hours or days. The decision usually makes itself once those three numbers are on the page, and most disagreements about RAG versus fine-tuning turn out to be disagreements about which numbers to assume rather than disagreements about the techniques themselves.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/rag-versus-fine-tuning-small-kb-2.jpg' alt='person searching filing cabinet documents' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
