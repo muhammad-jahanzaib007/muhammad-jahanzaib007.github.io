@@ -2,14 +2,14 @@
   "posts": [
     {
       "slug": "deep-learning-vs-machine-learning",
-      "title": "A Grounded Answer to Deep Learning vs Machine Learning",
-      "excerpt": "Deep learning is not a replacement for machine learning, it is a specific tool for a specific kind of problem. Here is how to tell which one you need.",
+      "title": "Deep Learning Versus Machine Learning: A Grounded Answer",
+      "excerpt": "Deep learning is not a replacement for machine learning; it is one family within it, suited to some problems and poorly suited to others.",
       "date": "2026-11-02",
-      "read_min": 6,
+      "read_min": 5,
       "tag": "Machine Learning",
       "color": "a6",
       "thumb": "assets/blog/deep-learning-vs-machine-learning.png",
-      "thumb_alt": "Cover image for the article: A Grounded Answer to Deep Learning vs Machine Learning"
+      "thumb_alt": "Cover image for the article: Deep Learning Versus Machine Learning: A Grounded Answer"
     },
     {
       "slug": "data-science-internships-job-description",
