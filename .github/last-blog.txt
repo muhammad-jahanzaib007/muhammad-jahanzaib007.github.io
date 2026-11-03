@@ -1,1 +1,1 @@
-2026-11-03T08:02:22Z slug=dataset-leak-proof-checklist words=1084 title="What Makes a Dataset Leak-Proof: A Checklist Before You Train"
+2026-11-03T20:03:40Z slug=fair-evaluation-zero-few-shot-nlp words=1129 title="Evaluating Zero-Shot and Few-Shot Classifiers Fairly"

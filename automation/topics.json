@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Evaluating zero-shot and few-shot NLP classifiers against a fine-tuned baseline, fairly",
     "The confusion matrix for multi-class problems: reading errors across classes, not just totals",
     "Statistical power in ML experiments: why your sample size decides what you can conclude",
     "Why accuracy alone cannot tell you if a model is ready for production",
@@ -276,6 +275,7 @@
     "Data science internships worth applying for: what to look for in the job description",
     "A grounded answer to deep learning versus machine learning for newcomers",
     "Retrieval augmented generation versus fine-tuning: a worked decision for one small knowledge base",
-    "What makes a dataset leak-proof: a practical checklist before you train anything"
+    "What makes a dataset leak-proof: a practical checklist before you train anything",
+    "Evaluating zero-shot and few-shot NLP classifiers against a fine-tuned baseline, fairly"
   ]
 }

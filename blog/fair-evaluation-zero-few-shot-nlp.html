@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evaluating Zero-Shot and Few-Shot Classifiers Fairly | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to fairly comparing zero-shot and few-shot NLP classifiers against fine-tuned baselines, covering leakage, label design, and metrics.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="zero-shot classification, few-shot learning, fine-tuning, NLP evaluation, data leakage, baseline comparison, prompt engineering, model selection, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-03">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Evaluating Zero-Shot and Few-Shot Classifiers Fairly">
+<meta property="og:description" content="A practical guide to fairly comparing zero-shot and few-shot NLP classifiers against fine-tuned baselines, covering leakage, label design, and metrics.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/fair-evaluation-zero-few-shot-nlp.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/fair-evaluation-zero-few-shot-nlp.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Evaluating Zero-Shot and Few-Shot Classifiers Fairly">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/fair-evaluation-zero-few-shot-nlp.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/fair-evaluation-zero-few-shot-nlp.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Evaluating Zero-Shot and Few-Shot Classifiers Fairly",
+  "description": "A practical guide to fairly comparing zero-shot and few-shot NLP classifiers against fine-tuned baselines, covering leakage, label design, and metrics.",
+  "url": "https://jahanzaibawan.com/blog/fair-evaluation-zero-few-shot-nlp.html",
+  "image": "https://jahanzaibawan.com/assets/blog/fair-evaluation-zero-few-shot-nlp.png",
+  "datePublished": "2026-11-03",
+  "dateModified": "2026-11-03",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/fair-evaluation-zero-few-shot-nlp.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Evaluating Zero-Shot and Few-Shot Classifiers Fairly", "item": "https://jahanzaibawan.com/blog/fair-evaluation-zero-few-shot-nlp.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 6 min read · 3 Nov 2026</div>
+    <h1>Evaluating Zero-Shot and Few-Shot Classifiers Fairly</h1>
+    <p class="lede">Comparing prompted classifiers against a fine-tuned baseline only means something if the data splits, label sets, and metrics are matched. Here is how I think about doing that properly.</p>
+  </div>
+
+  <img src="../assets/blog/fair-evaluation-zero-few-shot-nlp.png" alt="Cover image for the article: Evaluating Zero-Shot and Few-Shot Classifiers Fairly" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this comparison keeps going wrong</h2><p>Every few months someone publishes a result where a zero-shot prompted model edges out a fine-tuned classifier on some benchmark, and the conclusion drawn is that fine-tuning is dead. I am sceptical of most of these claims, not because prompting is weak, but because the comparisons are rarely apples to apples. Zero-shot and few-shot setups and fine-tuned baselines differ in so many ways beyond the headline method that the single accuracy number at the end tells you almost nothing about which approach is actually better suited to your problem.</p><p>The core issue is that a fine-tuned model and a prompted model are exposed to different information, scored under different implicit rules, and often evaluated on test sets that were not built with either method in mind. If the fine-tuned baseline was trained on a narrow label distribution while the prompted model was given a richer natural-language description of the task, you are not comparing architectures, you are comparing how much task knowledge each model was handed. That is a fair thing to study, but it is a different question from which model classifies better given equal information.</p><p>This matters practically because teams make real decisions off these comparisons: whether to invest in labelling data, whether to fine-tune a small model or call an API, whether a few-shot prompt is good enough for production. Getting the comparison wrong means making the wrong call, often an expensive one.</p></section><section class='psec reveal'><h2>The leakage trap that favours prompted models</h2><p>The most common failure I see is label leakage through the label names themselves. Suppose you are building a sentiment classifier with three classes: positive, negative, and neutral. Your fine-tuned baseline is trained on examples labelled with integers, 0, 1, 2, mapped internally. Your zero-shot classifier is given the literal strings 'positive', 'negative', 'neutral' as candidate labels in the prompt. The zero-shot model is not doing zero-shot classification in any meaningful sense here; it is doing lexical matching against class names that already encode the answer. If the test set texts contain words like 'great' or 'terrible' that correlate strongly with the label name, the prompted model gets a free pass that the fine-tuned model never had access to in such an explicit form.</p><p>A concrete worked example makes this sharper. Imagine a 1,000-example test set where 400 texts contain an adjective from the set {great, excellent, wonderful} and all 400 are labelled positive. A zero-shot model matching 'positive' against those adjectives could get those 400 right almost by construction, lifting its headline accuracy to, say, 78 percent, while a fine-tuned model that was trained on a different, more balanced split might sit at 74 percent. The six point gap looks like a loss for fine-tuning, but it is really a measurement artefact: the prompted model benefited from label strings that happened to overlap with surface features of the text, something a well-designed fine-tuning label scheme would try to avoid depending on.</p><p>The fix is not complicated but it is often skipped. Use label names for the prompted model that are equally uninformative as the fine-tuned model's label encoding, or better, test both models against label sets phrased in multiple equivalent ways and report the range. If performance swings by ten points depending on whether you call a class 'positive' or 'class A', you have learned something important about the prompted model's reliance on surface cues, and that insight is worth more than a single leaderboard number.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/fair-evaluation-zero-few-shot-nlp-1.jpg' alt='laptop with code on screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Matching data splits, shot counts, and metrics</h2><p>A second source of unfairness is the test split itself. Fine-tuned baselines are usually evaluated on a held-out split that was carved from the same distribution as training data, often by a dataset's original curators who controlled for duplicate near-matches between train and test. Few-shot prompted models, by contrast, are frequently evaluated on whatever test set is lying around, sometimes the same one the fine-tuned model used, which sounds fair until you notice that the few examples chosen for the prompt were cherry-picked from the training set by a human who glanced at the test distribution first. That is leakage through the back door: the few-shot demonstrations were selected with implicit knowledge of what the test set looks like.</p><p>To keep this honest, the few-shot exemplars should be drawn from the same training pool the fine-tuned model used, with no visibility into the test set during selection, and ideally with multiple random draws of exemplars averaged together rather than reporting the single best run. If five-shot accuracy varies between 61 and 73 percent depending on which five examples were sampled, reporting only the 73 percent run as 'few-shot performance' is misleading; the honest number is the mean across several draws plus the spread, because in production you do not get to pick the lucky seed.</p><p>Metrics need matching too. Macro-F1 and accuracy tell very different stories on imbalanced classes, and prompted classifiers often default to a mode-seeking behaviour that inflates accuracy on the majority class while quietly failing the minority ones. If your fine-tuned baseline reports macro-F1 because the original authors knew the classes were imbalanced, the prompted model must be scored the same way, on the same class boundaries, with the same handling of ties or refusals to answer. A prompted model that declines to answer on 5 percent of examples and simply drops those from the denominator will look better than a fine-tuned model forced to output a label for every input; decide upfront how abstentions count and apply that rule uniformly.</p></section><section class='psec reveal'><h2>A practical checklist for the comparison</h2><p>Before trusting any result that says prompting beats fine-tuning, or vice versa, I run through a short list: are the label names equally informative or equally obfuscated for both methods; were few-shot exemplars selected without peeking at test data, and averaged over multiple random seeds; is the test split identical in content and size for both models; and is the scoring metric, including how abstentions and ties are handled, applied the same way to both outputs. If any of these differ, the comparison is measuring something other than the thing being claimed.</p><p>None of this means fine-tuning always wins, or that prompting is a trick. Plenty of genuine, carefully controlled studies find real and repeatable advantages for prompted approaches on certain task types, particularly where labelled data is scarce or label definitions shift often. The point is that the advantage has to survive a fair test before you believe it. Build the comparison the way you would build any other experiment: control the variables you are not trying to measure, report variance rather than a single lucky number, and be explicit about every piece of information each model had access to. That discipline is what turns an interesting demo into evidence you can actually act on.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/fair-evaluation-zero-few-shot-nlp-2.jpg' alt='whiteboard with equations' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

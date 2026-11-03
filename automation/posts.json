@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "fair-evaluation-zero-few-shot-nlp",
+      "title": "Evaluating Zero-Shot and Few-Shot Classifiers Fairly",
+      "excerpt": "A prompted model beating your fine-tuned baseline often means your comparison is broken, not that prompting won. Here is how to check.",
+      "date": "2026-11-03",
+      "read_min": 6,
+      "tag": "Evaluation",
+      "color": "a4",
+      "thumb": "assets/blog/fair-evaluation-zero-few-shot-nlp.png",
+      "thumb_alt": "Cover image for the article: Evaluating Zero-Shot and Few-Shot Classifiers Fairly"
+    },
+    {
       "slug": "dataset-leak-proof-checklist",
       "title": "What Makes a Dataset Leak-Proof: A Checklist Before You Train",
       "excerpt": "A practical checklist for catching data leakage before training, with a worked example showing how an innocent-looking split inflates accuracy.",
