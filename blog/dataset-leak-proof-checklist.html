@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Makes a Dataset Leak-Proof: A Checklist Before You Train | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical checklist for detecting data leakage before training, covering splits, timestamps, duplicates, preprocessing, and feature provenance.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="data leakage, train test split, machine learning evaluation, time series leakage, reproducibility, feature engineering, model validation, cross validation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-03">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="What Makes a Dataset Leak-Proof: A Checklist Before You Train">
+<meta property="og:description" content="A practical checklist for detecting data leakage before training, covering splits, timestamps, duplicates, preprocessing, and feature provenance.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/dataset-leak-proof-checklist.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/dataset-leak-proof-checklist.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What Makes a Dataset Leak-Proof: A Checklist Before You Train">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/dataset-leak-proof-checklist.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/dataset-leak-proof-checklist.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "What Makes a Dataset Leak-Proof: A Checklist Before You Train",
+  "description": "A practical checklist for detecting data leakage before training, covering splits, timestamps, duplicates, preprocessing, and feature provenance.",
+  "url": "https://jahanzaibawan.com/blog/dataset-leak-proof-checklist.html",
+  "image": "https://jahanzaibawan.com/assets/blog/dataset-leak-proof-checklist.png",
+  "datePublished": "2026-11-03",
+  "dateModified": "2026-11-03",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/dataset-leak-proof-checklist.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "What Makes a Dataset Leak-Proof: A Checklist Before You Train", "item": "https://jahanzaibawan.com/blog/dataset-leak-proof-checklist.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 6 min read · 3 Nov 2026</div>
+    <h1>What Makes a Dataset Leak-Proof: A Checklist Before You Train</h1>
+    <p class="lede">A high test score means nothing if information from the future, or from the test set itself, quietly slipped into training. Here is how to check before you trust a single metric.</p>
+  </div>
+
+  <img src="../assets/blog/dataset-leak-proof-checklist.png" alt="Cover image for the article: What Makes a Dataset Leak-Proof: A Checklist Before You Train" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why leakage is the quiet killer of good results</h2><p>Most models do not fail loudly. They fail by reporting a test accuracy of ninety-six percent, getting deployed with a round of applause, and then underperforming a simple baseline within a month of going live. By the time anyone notices, the paper trail of decisions that led there is long gone. In my experience the single most common cause of this gap between offline and real-world performance is leakage: information from outside the legitimate training set, or from the future relative to a prediction point, sneaking into the features or the split.</p><p>Leakage is seductive because it does not look like a bug. The code runs, the loss decreases, the validation curve looks healthy. Nothing crashes. The only symptom is that the number is too good, and 'too good' is a judgement call that requires you to already know what realistic performance should look like for the problem. That is precisely why a checklist matters more than intuition here: intuition tells you the model is working, the checklist tells you whether it is allowed to be.</p><p>I think of leakage as any channel through which the model gets to see, directly or indirectly, something it would not have access to at prediction time in production. That definition is broader than the textbook case of 'the target variable is accidentally in the features'. It includes temporal leakage, group leakage, preprocessing leakage, and duplicate leakage, and each has its own tell-tale signs worth checking before you train anything serious.</p></section><section class='psec reveal'><h2>The split: is it actually independent of the task?</h2><p>Start with the most basic question: does a random row-level split respect the structure of the problem, or does it quietly let the model cheat? Consider a dataset of patient visits used to predict a diagnosis, where a single patient contributes several visits over a year. A plain random split will scatter that patient's visits across both training and test sets. The model does not need to learn the underlying medical pattern; it can partly learn to recognise the patient's own baseline values, which appear in both splits. Reported accuracy might sit around ninety-two percent, while a proper split by patient, ensuring every visit from one person lands entirely in train or entirely in test, might reveal the true figure closer to seventy-eight percent. The fourteen-point gap is not noise, it is the model memorising identity rather than learning signal.</p><p>The fix is to split along the unit that defines 'a new, unseen case' in deployment. If the model will one day see a brand new patient it has never encountered, split by patient. If it will see a new day of trading it has never seen before, split by time. If it will see a new document from a source it has not seen, split by source or author. The question to ask every time is: in production, what is genuinely novel about the next example the model will face? Whatever that is, it must be the axis of your split, not row identity.</p><p>Time deserves special mention because it is the leak that evergreen advice keeps having to repeat. If you are predicting anything that unfolds over time, a random split allows the model to be trained on data from after the point it is meant to be predicting from. A model forecasting next month's demand that was trained on a mix of past and future months will look excellent in cross-validation and then flounder the moment it meets a true future it has never brushed against. The checklist item here is simple to state and easy to skip under deadline pressure: sort by time, split by time, and never let a single future timestamp bleed backwards into training.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/dataset-leak-proof-checklist-1.jpg' alt='laboratory data analyst reviewing charts' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Preprocessing, duplicates, and features: the quieter leaks</h2><p>Even with a correct split, leakage can creep in through preprocessing done before the split is respected. A classic example is scaling or imputing missing values using statistics computed on the entire dataset, test rows included, before any model sees them. If you fill missing ages with the overall mean, that mean was computed partly from test rows, so the test set has influenced its own imputation. The leak is subtle, often worth only a fraction of a percentage point, but it accumulates across every feature treated this way, and it means your validation score is validating a slightly different, slightly easier pipeline than the one you would actually deploy. The discipline is to fit every transformer, scaler, encoder, and imputer only on the training fold, then apply it unchanged to validation and test.</p><p>Duplicates are the leak nobody expects until they go looking. It is common in scraped text, image, or tabular datasets for near-identical or exactly identical records to exist, sometimes because of how the data was collected, sometimes because of upstream joins. If even a small fraction of test examples are duplicates, or close paraphrases, of training examples, the model is being tested on material it has effectively memorised. A quick deduplication pass, checking exact matches and near matches via hashing or similarity scoring, before splitting, is cheap insurance against an inflated score that nobody can later explain.</p><p>Finally, scrutinise every feature's provenance and ask when, exactly, it became known. Features derived from aggregates, like a customer's average spend over their full history, can secretly encode information from after the prediction date if the aggregate was computed using the whole dataset rather than only data available up to that point. Similarly, watch for proxy variables that are themselves downstream consequences of the label, such as including a 'cancellation processed' flag when predicting cancellation. These do not look like leakage because they are not the literal target column, but they let the model solve the task by reasoning backwards from an effect rather than forwards from genuine causes.</p></section><section class='psec reveal'><h2>A practical checklist before you train anything</h2><p>Before trusting any score, walk through five questions in order. First, what is the unit of novelty in deployment, and does your split respect it, whether that is patient, user, document, session, or time? Second, are all transformations, scalers, encoders, and imputers fit only on the training fold? Third, have you checked for exact and near duplicates across the split boundary? Fourth, for every feature, can you state the exact moment it became knowable, and is that moment before the prediction point in every single row? Fifth, does the test score feel implausibly strong relative to domain knowledge or a simple baseline, and if so, have you actively tried to find the leak rather than assumed the model is simply good?</p><p>None of this is exotic. It is slower than running a notebook end to end and trusting the first number that appears, and that slowness is the point. A model validated this carefully will usually report a lower, less exciting score than one validated carelessly. That lower number is the one worth publishing, deploying, and standing behind, because it is the only one that tells you something true about how the model will behave on data it has genuinely never seen.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/dataset-leak-proof-checklist-2.jpg' alt='server room data pipeline' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
