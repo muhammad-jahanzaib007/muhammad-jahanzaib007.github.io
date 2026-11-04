@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Tue, 03 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 04 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Reading a Multi-Class Confusion Matrix Properly</title>
+    <link>https://jahanzaibawan.com/blog/multiclass-confusion-matrix-errors.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/multiclass-confusion-matrix-errors.html</guid>
+    <pubDate>Wed, 04 Nov 2026 09:00:00 +0000</pubDate>
+    <description>Accuracy totals hide where a multi-class model actually fails. Learn to read the off-diagonal and find the confusions that matter.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Evaluating Zero-Shot and Few-Shot Classifiers Fairly</title>
     <link>https://jahanzaibawan.com/blog/fair-evaluation-zero-few-shot-nlp.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Sun, 25 Oct 2026 09:00:00 +0000</pubDate>
     <description>Certifications prove you finished a syllabus. Hiring screens test whether you can reason under uncertainty, debug, and communicate. The overlap is smaller than people assume.</description>
     <category>Careers</category>
-  </item>
-  <item>
-    <title>LLM Arenas Versus Fixed Benchmarks: Which Evaluation Wins</title>
-    <link>https://jahanzaibawan.com/blog/llm-arena-versus-fixed-benchmarks.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/llm-arena-versus-fixed-benchmarks.html</guid>
-    <pubDate>Sun, 25 Oct 2026 09:00:00 +0000</pubDate>
-    <description>Arenas measure what people prefer; benchmarks measure what models can do. Confusing the two produces confident, misleading leaderboards.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>

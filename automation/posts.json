@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "multiclass-confusion-matrix-errors",
+      "title": "Reading a Multi-Class Confusion Matrix Properly",
+      "excerpt": "Accuracy totals hide where a multi-class model actually fails. Learn to read the off-diagonal and find the confusions that matter.",
+      "date": "2026-11-04",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a5",
+      "thumb": "assets/blog/multiclass-confusion-matrix-errors.png",
+      "thumb_alt": "Cover image for the article: Reading a Multi-Class Confusion Matrix Properly"
+    },
+    {
       "slug": "fair-evaluation-zero-few-shot-nlp",
       "title": "Evaluating Zero-Shot and Few-Shot Classifiers Fairly",
       "excerpt": "A prompted model beating your fine-tuned baseline often means your comparison is broken, not that prompting won. Here is how to check.",

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reading a Multi-Class Confusion Matrix Properly | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to reading multi-class confusion matrices, focusing on off-diagonal errors rather than overall accuracy, with a worked numeric example.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="confusion matrix, multi-class classification, model evaluation, machine learning metrics, precision recall, error analysis, classification report, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-04">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Reading a Multi-Class Confusion Matrix Properly">
+<meta property="og:description" content="A practical guide to reading multi-class confusion matrices, focusing on off-diagonal errors rather than overall accuracy, with a worked numeric example.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/multiclass-confusion-matrix-errors.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/multiclass-confusion-matrix-errors.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Reading a Multi-Class Confusion Matrix Properly">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/multiclass-confusion-matrix-errors.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/multiclass-confusion-matrix-errors.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Reading a Multi-Class Confusion Matrix Properly",
+  "description": "A practical guide to reading multi-class confusion matrices, focusing on off-diagonal errors rather than overall accuracy, with a worked numeric example.",
+  "url": "https://jahanzaibawan.com/blog/multiclass-confusion-matrix-errors.html",
+  "image": "https://jahanzaibawan.com/assets/blog/multiclass-confusion-matrix-errors.png",
+  "datePublished": "2026-11-04",
+  "dateModified": "2026-11-04",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/multiclass-confusion-matrix-errors.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Reading a Multi-Class Confusion Matrix Properly", "item": "https://jahanzaibawan.com/blog/multiclass-confusion-matrix-errors.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 4 Nov 2026</div>
+    <h1>Reading a Multi-Class Confusion Matrix Properly</h1>
+    <p class="lede">Overall accuracy hides which classes a model actually confuses. The matrix off-diagonal tells the real story.</p>
+  </div>
+
+  <img src="../assets/blog/multiclass-confusion-matrix-errors.png" alt="Cover image for the article: Reading a Multi-Class Confusion Matrix Properly" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the diagonal alone lies to you</h2><p>When I report accuracy on a multi-class problem, I am collapsing an entire grid of possible outcomes into a single number. That number tells you how often the model was right, but it says nothing about how it was wrong. In a three-class problem, being wrong can mean a dozen different things depending on which class got mistaken for which, and those mistakes are rarely interchangeable in consequence.</p><p>Consider a classifier sorting support tickets into three categories: billing, technical, and account access. Accuracy of 85 percent sounds solid. But if nearly all the errors involve account access tickets being routed as billing, you have a specific, fixable, and operationally serious problem, not a vague 15 percent fuzziness. A single scalar cannot distinguish a model with one glaring blind spot from one with evenly spread, low-stakes mistakes.</p><p>This is exactly why the confusion matrix exists as a diagnostic tool rather than a summary statistic. It is a grid where rows represent the true class and columns represent the predicted class (or vice versa, depending on convention, so always check the axis labels). The diagonal cells are correct predictions. Everything off the diagonal is an error, and the pattern of those errors is where the useful information lives.</p></section><section class='psec reveal'><h2>A worked example with numbers</h2><p>Suppose we have 300 test tickets, 100 from each of the three classes, and the model produces this matrix (rows are true labels, columns are predicted labels): billing has 80 correctly predicted as billing, 15 predicted as technical, and 5 predicted as account access. Technical has 10 predicted as billing, 85 correct, and 5 predicted as account access. Account access has 30 predicted as billing, 5 predicted as technical, and only 65 correct.</p><p>Overall accuracy is (80 plus 85 plus 65) divided by 300, which is 230 out of 300, roughly 77 percent. That single figure gives no hint that account access is the weak link. Its recall, the proportion of true account access tickets correctly identified, is only 65 percent, noticeably worse than billing's 80 percent and technical's 85 percent. Worse still, 30 of its 100 true instances are being misclassified as billing specifically, not spread thinly across both other classes. That is a concentrated, structural confusion, probably because the two categories share vocabulary such as 'login', 'charge', or 'subscription'.</p><p>Now look at precision, which asks a different question: of everything predicted as billing, how much was actually billing? Billing received 80 plus 10 plus 30 equals 120 predictions, of which only 80 were correct, giving a precision of about 67 percent. So billing's predictions are being diluted by account access tickets flooding in. A support team trusting the billing label will be routinely handed the wrong ticket type, even though billing's own recall looked fine in isolation. This asymmetry between precision and recall per class is invisible in a single accuracy number and only becomes visible once you read rows and columns separately.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/multiclass-confusion-matrix-errors-1.jpg' alt='support ticket dashboard screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Why this matters beyond the numbers</h2><p>In practice, different confusions carry different costs. Mistaking technical for billing might cause mild annoyance and a quick reroute. Mistaking account access, which often involves security concerns like password resets or suspicious logins, for billing could delay a response that genuinely needed urgency. A model can hit a respectable aggregate accuracy while systematically failing the class that matters most to get right. If you only track accuracy or even macro-averaged F1 as a single leaderboard number, this kind of asymmetric risk is averaged away and disappears from view.</p><p>This is also where class imbalance interacts dangerously with confusion patterns. If account access made up only 10 percent of the data instead of a third, the same 30 percent misclassification rate would barely dent overall accuracy, yet the practical harm would be identical or worse, since a smaller class often correlates with higher-stakes or rarer events. I have seen this pattern repeatedly: a model looks excellent on paper because it nails the dominant class, while quietly failing a minority class that was the actual reason the system was built.</p><p>Reading the matrix well also means checking for symmetry. Is account access being confused with billing in both directions, or only one? In our example, only 5 billing tickets were predicted as account access, versus 30 the other way. That asymmetry suggests the model has learned billing as a kind of default or safe guess, perhaps because it is the most frequent or most linguistically generic class in training. That is a useful clue for fixing the problem, whether through reweighting the loss function, gathering more distinguishing examples, or engineering features that separate the two categories, and none of it would surface from accuracy alone.</p></section><section class='psec reveal'><h2>A practical habit worth keeping</h2><p>My rule of thumb is simple: never accept a single accuracy figure for a multi-class model without also inspecting the full matrix, normalised by row so each row sums to 100 percent and shows per-class recall directly. I also compute precision and recall per class rather than relying solely on a macro average, since the average can mask exactly the kind of lopsided failure shown above. When presenting results, I include the matrix itself, because a reviewer or stakeholder can often spot a concerning pattern faster than I can describe it in prose.</p><p>None of this requires exotic tooling. Most machine learning libraries produce a confusion matrix and a per-class classification report with a single function call. The discipline is in actually reading it row by row and column by column, asking which classes bleed into each other and why, rather than skimming past it on the way to a headline accuracy score. That habit alone catches a surprising number of models that are far less reliable than their summary statistics suggest.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/multiclass-confusion-matrix-errors-2.jpg' alt='data analyst reviewing spreadsheet grid' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

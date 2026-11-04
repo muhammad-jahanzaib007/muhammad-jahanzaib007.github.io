@@ -1,1 +1,1 @@
-2026-11-03T20:03:40Z slug=fair-evaluation-zero-few-shot-nlp words=1129 title="Evaluating Zero-Shot and Few-Shot Classifiers Fairly"
+2026-11-04T08:01:02Z slug=multiclass-confusion-matrix-errors words=959 title="Reading a Multi-Class Confusion Matrix Properly"
