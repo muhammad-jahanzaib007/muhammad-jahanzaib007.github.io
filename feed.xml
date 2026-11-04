@@ -9,10 +9,10 @@
   <lastBuildDate>Wed, 04 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
     <title>Reading a Multi-Class Confusion Matrix Properly</title>
-    <link>https://jahanzaibawan.com/blog/multiclass-confusion-matrix-errors.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/multiclass-confusion-matrix-errors.html</guid>
+    <link>https://jahanzaibawan.com/blog/reading-multiclass-confusion-matrix.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/reading-multiclass-confusion-matrix.html</guid>
     <pubDate>Wed, 04 Nov 2026 09:00:00 +0000</pubDate>
-    <description>Accuracy totals hide where a multi-class model actually fails. Learn to read the off-diagonal and find the confusions that matter.</description>
+    <description>A single accuracy number for a multi-class model can hide systematic, costly confusions between specific classes. Here is how to read the matrix properly.</description>
     <category>Evaluation</category>
   </item>
   <item>

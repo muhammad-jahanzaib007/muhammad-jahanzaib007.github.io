@@ -1,14 +1,14 @@
 {
   "posts": [
     {
-      "slug": "multiclass-confusion-matrix-errors",
+      "slug": "reading-multiclass-confusion-matrix",
       "title": "Reading a Multi-Class Confusion Matrix Properly",
-      "excerpt": "Accuracy totals hide where a multi-class model actually fails. Learn to read the off-diagonal and find the confusions that matter.",
+      "excerpt": "A single accuracy number for a multi-class model can hide systematic, costly confusions between specific classes. Here is how to read the matrix properly.",
       "date": "2026-11-04",
       "read_min": 5,
       "tag": "Evaluation",
       "color": "a5",
-      "thumb": "assets/blog/multiclass-confusion-matrix-errors.png",
+      "thumb": "assets/blog/reading-multiclass-confusion-matrix.png",
       "thumb_alt": "Cover image for the article: Reading a Multi-Class Confusion Matrix Properly"
     },
     {
