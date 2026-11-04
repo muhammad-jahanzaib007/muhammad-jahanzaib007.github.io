@@ -1,1 +1,1 @@
-2026-11-04T20:01:14Z slug=statistical-power-ml-experiments words=1094 title="Statistical Power in ML Experiments: Why Sample Size Matters"
+2026-11-04T20:02:17Z slug=statistical-power-ml-experiments words=1107 title="Statistical Power in ML: Why Sample Size Limits Conclusions"

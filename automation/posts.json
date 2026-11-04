@@ -2,14 +2,14 @@
   "posts": [
     {
       "slug": "statistical-power-ml-experiments",
-      "title": "Statistical Power in ML Experiments: Why Sample Size Matters",
-      "excerpt": "A small test set cannot support a confident claim, no matter how impressive the headline number looks. Power, not accuracy, decides what you can conclude.",
+      "title": "Statistical Power in ML: Why Sample Size Limits Conclusions",
+      "excerpt": "Your test set size decides what differences you can ever detect. Underpowered ML comparisons produce confident-sounding noise, not evidence.",
       "date": "2026-11-04",
-      "read_min": 5,
+      "read_min": 6,
       "tag": "Evaluation",
       "color": "a6",
       "thumb": "assets/blog/statistical-power-ml-experiments.png",
-      "thumb_alt": "Cover image for the article: Statistical Power in ML Experiments: Why Sample Size Matters"
+      "thumb_alt": "Cover image for the article: Statistical Power in ML: Why Sample Size Limits Conclusions"
     },
     {
       "slug": "reading-multiclass-confusion-matrix",
