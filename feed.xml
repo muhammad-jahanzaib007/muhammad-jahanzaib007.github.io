@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Wed, 04 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Statistical Power in ML Experiments: Why Sample Size Matters</title>
+    <link>https://jahanzaibawan.com/blog/statistical-power-ml-experiments.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/statistical-power-ml-experiments.html</guid>
+    <pubDate>Wed, 04 Nov 2026 09:00:00 +0000</pubDate>
+    <description>A small test set cannot support a confident claim, no matter how impressive the headline number looks. Power, not accuracy, decides what you can conclude.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Reading a Multi-Class Confusion Matrix Properly</title>
     <link>https://jahanzaibawan.com/blog/reading-multiclass-confusion-matrix.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/reading-multiclass-confusion-matrix.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Mon, 26 Oct 2026 09:00:00 +0000</pubDate>
     <description>Fine-tuning rarely rewrites a model&#x27;s knowledge. It mostly reweights how existing knowledge gets expressed. Here is the honest version of what changes.</description>
     <category>Deep Learning</category>
-  </item>
-  <item>
-    <title>Data Science Certifications Versus What Employers Actually Screen For</title>
-    <link>https://jahanzaibawan.com/blog/certifications-vs-employer-screens.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/certifications-vs-employer-screens.html</guid>
-    <pubDate>Sun, 25 Oct 2026 09:00:00 +0000</pubDate>
-    <description>Certifications prove you finished a syllabus. Hiring screens test whether you can reason under uncertainty, debug, and communicate. The overlap is smaller than people assume.</description>
-    <category>Careers</category>
   </item>
 </channel>
 </rss>

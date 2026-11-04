@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "statistical-power-ml-experiments",
+      "title": "Statistical Power in ML Experiments: Why Sample Size Matters",
+      "excerpt": "A small test set cannot support a confident claim, no matter how impressive the headline number looks. Power, not accuracy, decides what you can conclude.",
+      "date": "2026-11-04",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a6",
+      "thumb": "assets/blog/statistical-power-ml-experiments.png",
+      "thumb_alt": "Cover image for the article: Statistical Power in ML Experiments: Why Sample Size Matters"
+    },
+    {
       "slug": "reading-multiclass-confusion-matrix",
       "title": "Reading a Multi-Class Confusion Matrix Properly",
       "excerpt": "A single accuracy number for a multi-class model can hide systematic, costly confusions between specific classes. Here is how to read the matrix properly.",
