@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Thu, 05 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Design Your Evaluation Protocol Before You Train Anything</title>
+    <link>https://jahanzaibawan.com/blog/evaluation-protocol-before-code.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/evaluation-protocol-before-code.html</guid>
+    <pubDate>Thu, 05 Nov 2026 09:00:00 +0000</pubDate>
+    <description>Write your evaluation protocol before any training code exists. It is the single cheapest way to stop a project from quietly lying to you.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Why Accuracy Alone Cannot Tell You a Model Is Production-Ready</title>
     <link>https://jahanzaibawan.com/blog/accuracy-not-enough-production.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/accuracy-not-enough-production.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Tue, 27 Oct 2026 09:00:00 +0000</pubDate>
     <description>DLSS borrows the machinery of supervised super-resolution but has nothing to do with language models or generative chat. Here is the actual lineage.</description>
     <category>Deep Learning</category>
-  </item>
-  <item>
-    <title>Prompt Engineering From First Principles: What It Covers</title>
-    <link>https://jahanzaibawan.com/blog/prompt-engineering-first-principles.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/prompt-engineering-first-principles.html</guid>
-    <pubDate>Mon, 26 Oct 2026 09:00:00 +0000</pubDate>
-    <description>A grounded look at what prompt engineering really means: specification, context control, and systematic evaluation, not just clever wording tricks.</description>
-    <category>NLP</category>
   </item>
 </channel>
 </rss>

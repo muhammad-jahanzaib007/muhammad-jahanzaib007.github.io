@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Designing a model evaluation protocol before you write a single line of training code",
     "Fine-tuning a small transformer: a worked walkthrough of what changes and why",
     "Comparing two NLP pipelines honestly: paired tests instead of a single leaderboard number",
     "What a loss curve tells you that a final metric cannot",
@@ -276,6 +275,7 @@
     "Evaluating zero-shot and few-shot NLP classifiers against a fine-tuned baseline, fairly",
     "The confusion matrix for multi-class problems: reading errors across classes, not just totals",
     "Statistical power in ML experiments: why your sample size decides what you can conclude",
-    "Why accuracy alone cannot tell you if a model is ready for production"
+    "Why accuracy alone cannot tell you if a model is ready for production",
+    "Designing a model evaluation protocol before you write a single line of training code"
   ]
 }

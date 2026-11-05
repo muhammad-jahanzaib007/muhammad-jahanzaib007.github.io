@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "evaluation-protocol-before-code",
+      "title": "Design Your Evaluation Protocol Before You Train Anything",
+      "excerpt": "Write your evaluation protocol before any training code exists. It is the single cheapest way to stop a project from quietly lying to you.",
+      "date": "2026-11-05",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a3",
+      "thumb": "assets/blog/evaluation-protocol-before-code.png",
+      "thumb_alt": "Cover image for the article: Design Your Evaluation Protocol Before You Train Anything"
+    },
+    {
       "slug": "accuracy-not-enough-production",
       "title": "Why Accuracy Alone Cannot Tell You a Model Is Production-Ready",
       "excerpt": "High accuracy can mask a model that fails exactly where it matters most. A look at why production readiness needs more than one metric.",

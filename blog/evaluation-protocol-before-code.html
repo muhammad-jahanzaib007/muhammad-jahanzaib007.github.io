@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Your Evaluation Protocol Before You Train Anything | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why defining splits, metrics, and baselines before training prevents leakage, overfitting to the test set, and false confidence in model results.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="model evaluation, evaluation protocol, data leakage, train test split, baselines, reproducibility, machine learning methodology, cross-validation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-05">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Design Your Evaluation Protocol Before You Train Anything">
+<meta property="og:description" content="Why defining splits, metrics, and baselines before training prevents leakage, overfitting to the test set, and false confidence in model results.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/evaluation-protocol-before-code.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/evaluation-protocol-before-code.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Design Your Evaluation Protocol Before You Train Anything">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/evaluation-protocol-before-code.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/evaluation-protocol-before-code.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Design Your Evaluation Protocol Before You Train Anything",
+  "description": "Why defining splits, metrics, and baselines before training prevents leakage, overfitting to the test set, and false confidence in model results.",
+  "url": "https://jahanzaibawan.com/blog/evaluation-protocol-before-code.html",
+  "image": "https://jahanzaibawan.com/assets/blog/evaluation-protocol-before-code.png",
+  "datePublished": "2026-11-05",
+  "dateModified": "2026-11-05",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/evaluation-protocol-before-code.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Design Your Evaluation Protocol Before You Train Anything", "item": "https://jahanzaibawan.com/blog/evaluation-protocol-before-code.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 5 Nov 2026</div>
+    <h1>Design Your Evaluation Protocol Before You Train Anything</h1>
+    <p class="lede">A fixed, written-down evaluation plan is the cheapest insurance you can buy against fooling yourself with a model that looks good but isn&#x27;t.</p>
+  </div>
+
+  <img src="../assets/blog/evaluation-protocol-before-code.png" alt="Cover image for the article: Design Your Evaluation Protocol Before You Train Anything" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the order of operations matters</h2><p>Most machine learning projects go wrong quietly. Nobody writes a bug that crashes the program; instead, someone writes an evaluation setup that is subtly too generous, and the model looks fantastic right up until it meets real data. I have come to think of evaluation design as the one part of a project that must happen before training code exists, not after. If you write your training loop first and bolt on a train/test split as an afterthought, you have already made dozens of small decisions, which rows go where, how you handle duplicates, what counts as a correct answer, without ever treating them as decisions at all. They just happen, usually in the direction that makes the numbers look better.</p><p>The core problem is that a model evaluation protocol is not a technical detail, it is a claim about what question you are answering. If I say my model gets ninety two percent accuracy, that number is meaningless without knowing exactly what was held out, how it was held out, and what a correct prediction actually means for the task. Deciding this upfront forces you to be honest about the claim before you have any emotional investment in a result. Once a number exists, especially a good one, it becomes very hard to go back and admit the split was flawed.</p><p>There is also a practical reason to do this early: it is far cheaper to redesign a split before you have trained twenty models against it than after. I have seen projects where a leakage problem was discovered late, and every single experiment, every hyperparameter search, every ablation, had to be rerun. That is not just wasted compute, it is wasted weeks. A protocol written on day one, even an imperfect one, gives you a stable foundation that later experiments can be compared against fairly.</p></section><section class='psec reveal'><h2>The leakage problem in concrete numbers</h2><p>Leakage is the most common way an evaluation protocol fails, and it rarely looks dramatic. Suppose you are building a model to predict whether a customer will cancel a subscription, using a dataset of 50,000 customer records collected over eighteen months. If you shuffle all rows randomly and split 80/20 into train and test, you might get a test accuracy of 91 percent. That number can be almost entirely fake if customers appear multiple times across different months, because the model has effectively seen that customer's future behaviour during training. The leakage is not a bug in your code, it is a mismatch between how the split was made and how the model will actually be used in deployment, where it only ever sees customers it has not seen before, at a point in time before the outcome is known.</p><p>A leakage-aware protocol would instead split by customer identity and by time: train on customers whose entire history falls before a cutoff date, and test only on customers or events that occur after it. When I imagine running that same 50,000-row dataset through a time-respecting split, it would not be surprising to see accuracy drop to something like 78 or 80 percent. That drop is not the model getting worse, it is the earlier number revealing itself as an illusion. The 91 percent was answering a different, easier question: can the model recognise patterns it has partially memorised, not can it predict genuinely unseen future behaviour.</p><p>The same logic applies far beyond customer churn. Text near-duplicates in NLP datasets, overlapping patients across train and test sets in medical data, images of the same object taken seconds apart ending up on both sides of a split, these are all variations of the same mistake. The fix is always the same in spirit: define the unit that must not leak, whether that is a customer, a patient, a document, or a time window, and split along that boundary deliberately rather than relying on random shuffling.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/evaluation-protocol-before-code-1.jpg' alt='researcher writing on whiteboard with charts' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Baselines, metrics, and the discipline of writing it down</h2><p>A protocol is incomplete without a baseline, because a number without a reference point cannot tell you whether you have actually learned anything useful. Before training a single real model, decide what a trivial model would score. For a binary classification task with a 70/30 class split, a model that always predicts the majority class gets 70 percent accuracy for free. If your carefully engineered model later scores 74 percent, you have not built something impressive, you have barely beaten a model with no intelligence at all. Knowing this threshold before you start changes how you interpret every subsequent result, and it stops you from celebrating a number that sounds good in isolation but is mediocre in context.</p><p>Choosing the metric itself deserves the same upfront rigour. Accuracy is a poor choice for imbalanced problems, as the majority class example above shows; precision, recall, F1, or area under the precision recall curve often tell a more honest story. For a fraud detection task where only two percent of transactions are fraudulent, a model that never flags anything scores 98 percent accuracy and is completely useless. Deciding in advance that you care about recall at a fixed false positive rate, say catching 80 percent of fraud while flagging no more than one percent of legitimate transactions, gives you a concrete, business-relevant target rather than a vague instinct to maximise accuracy.</p><p>Finally, write the whole protocol down before training starts: the exact split logic, the metric and its threshold, the baseline score, and the number of times you are allowed to touch the test set. That last point matters more than people expect. If you evaluate on the test set after every tweak, you are slowly fitting to it through your own decisions, even without meaning to. A disciplined protocol reserves the test set for a small number of final checks and uses a separate validation set, ideally built with the same leakage-aware logic, for everything in between. None of this is exciting work, and it produces nothing you can show off in a demo, but it is what separates a result you can trust from one that merely looks good on a slide.</p></section>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

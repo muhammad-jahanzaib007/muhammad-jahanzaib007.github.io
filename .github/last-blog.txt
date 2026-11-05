@@ -1,1 +1,1 @@
-2026-11-05T08:01:55Z slug=accuracy-not-enough-production words=1019 title="Why Accuracy Alone Cannot Tell You a Model Is Production-Ready"
+2026-11-05T20:01:10Z slug=evaluation-protocol-before-code words=1023 title="Design Your Evaluation Protocol Before You Train Anything"
