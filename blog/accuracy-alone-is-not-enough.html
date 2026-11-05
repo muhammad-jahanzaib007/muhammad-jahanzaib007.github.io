@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Accuracy Alone Cannot Tell You a Model Is Ready | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Accuracy can look impressive while hiding costly failure modes. This post explains why production readiness needs more than one headline metric.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="model evaluation, accuracy, class imbalance, confusion matrix, machine learning metrics, production readiness, model monitoring, precision and recall, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-05">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Why Accuracy Alone Cannot Tell You a Model Is Ready">
+<meta property="og:description" content="Accuracy can look impressive while hiding costly failure modes. This post explains why production readiness needs more than one headline metric.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/accuracy-alone-is-not-enough.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/accuracy-alone-is-not-enough.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why Accuracy Alone Cannot Tell You a Model Is Ready">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/accuracy-alone-is-not-enough.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/accuracy-alone-is-not-enough.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Why Accuracy Alone Cannot Tell You a Model Is Ready",
+  "description": "Accuracy can look impressive while hiding costly failure modes. This post explains why production readiness needs more than one headline metric.",
+  "url": "https://jahanzaibawan.com/blog/accuracy-alone-is-not-enough.html",
+  "image": "https://jahanzaibawan.com/assets/blog/accuracy-alone-is-not-enough.png",
+  "datePublished": "2026-11-05",
+  "dateModified": "2026-11-05",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/accuracy-alone-is-not-enough.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Why Accuracy Alone Cannot Tell You a Model Is Ready", "item": "https://jahanzaibawan.com/blog/accuracy-alone-is-not-enough.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 5 Nov 2026</div>
+    <h1>Why Accuracy Alone Cannot Tell You a Model Is Ready</h1>
+    <p class="lede">A single accuracy number can hide the exact failures that matter most once a model meets real users and real consequences.</p>
+  </div>
+
+  <img src="../assets/blog/accuracy-alone-is-not-enough.png" alt="Cover image for the article: Why Accuracy Alone Cannot Tell You a Model Is Ready" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The seduction of a single number</h2><p>Accuracy is the first metric most of us learn, and it is easy to see why: it is intuitive, it fits in one sentence, and it makes for a clean slide in a meeting. Ninety-six per cent accuracy sounds like a finished product. The trouble is that accuracy answers only one question, which is how often the model is right overall, and says nothing about which kinds of mistakes it makes, who is affected by them, or how costly each type of error actually is. In production, those details are usually what determine whether a model helps people or quietly harms them.</p><p>Consider a fraud detection model evaluated on a dataset where fraudulent transactions make up one per cent of the total. A model that simply predicts 'not fraud' for every single transaction will score ninety-nine per cent accuracy. It will also catch zero fraud, which is the entire point of building the system in the first place. Anyone reading the accuracy figure in isolation would conclude the model is excellent. Anyone who actually used it in production would discover within a week that it is worthless.</p><p>This is not a contrived edge case; it is the normal condition of most interesting real-world problems. Rare diseases, rare defects, rare security breaches, rare customer churn events: the things we most want to predict are usually the minority class, and accuracy rewards models for ignoring them. The metric is not wrong, exactly, it is just answering a question nobody actually asked.</p></section><section class='psec reveal'><h2>What a confusion matrix reveals that accuracy hides</h2><p>Breaking predictions into true positives, false positives, true negatives and false negatives exposes the shape of a model's behaviour in a way that a single accuracy figure cannot. Take a medical screening model tested on ten thousand patients, of whom two hundred actually have the condition. Suppose the model achieves ninety-seven per cent accuracy. That sounds reassuring until you look closer and find it correctly flags only sixty of the two hundred true cases, missing one hundred and forty. The overall accuracy stays high because the nine thousand eight hundred healthy patients are classified correctly, which dwarfs the minority class in the denominator.</p><p>Recall, the proportion of actual positives correctly identified, tells a very different story here: thirty per cent. For a screening tool, that is close to unusable, because the whole purpose is catching cases early. Precision matters too, since a model that flags everyone as positive would achieve perfect recall but would flood clinicians with false alarms until the tool gets switched off in frustration. Neither failure mode shows up clearly in accuracy; both show up immediately in the confusion matrix.</p><p>The deeper lesson is that every deployment context has an implicit cost structure attached to different error types, and accuracy treats all errors as equally bad. A false negative in fraud detection costs the business real money. A false positive costs a customer a moment of mild annoyance when a legitimate transaction gets queried. Those are not symmetric costs, yet accuracy averages them together as if they were. Precision, recall, and the trade-off between them, usually summarised with something like an F1 score or examined directly via the precision-recall curve, force you to confront that asymmetry explicitly rather than letting it hide inside a single tidy percentage.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/accuracy-alone-is-not-enough-1.jpg' alt='confusion matrix on whiteboard' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Readiness depends on slices, stability, and the right baseline</h2><p>Even when precision and recall look reasonable in aggregate, a model can still fail specific groups of users badly. I think of this as the slicing problem: a model might perform well on average across a test set while performing poorly on a particular subgroup, a particular time window, or a particular input distribution that happens to be under-represented in the evaluation data. A model that works well for daytime traffic but degrades sharply overnight, or performs well for one demographic but poorly for another, will still post a healthy aggregate accuracy if the under-served slice is small relative to the whole. Production readiness requires actually looking at performance broken down by the slices that matter for the application, not just the headline figure.</p><p>Comparing against a sensible baseline is just as important as slicing. A model that reaches ninety-two per cent accuracy sounds strong until you learn that always predicting the majority class already achieves ninety per cent, meaning the model's real contribution over doing nothing clever at all is a mere two points. Without a majority-class baseline, or some other naive comparator appropriate to the task, raw accuracy numbers float free of any meaningful reference point. A good evaluation always asks: compared to what?</p><p>There is also the question of stability over time, which accuracy on a single held-out test set cannot capture at all. Data drifts, user behaviour shifts, adversaries adapt, and a model that was accurate at training time can degrade silently in production while the last reported accuracy figure stays frozen on a dashboard somewhere. Readiness is not a one-off measurement, it is a claim about how a model will behave on data it has not yet seen, under conditions that have not yet arisen, which means ongoing monitoring of error rates by slice, calibration checks, and leakage-aware evaluation splits during development are part of the same discipline as choosing the right metric in the first place.</p></section><section class='psec reveal'><h2>A practical takeaway</h2><p>None of this means accuracy is useless; it is a reasonable summary statistic when classes are roughly balanced and errors are roughly equally costly, and it is a fine first check during early development. The mistake is treating it as sufficient evidence of production readiness on its own. Before shipping a classifier, I would want to see the confusion matrix broken down by the classes and slices that matter, precision and recall reported alongside each other rather than collapsed into one number, a comparison against a naive baseline, and some plan for monitoring performance after deployment rather than trusting a single historical test score indefinitely. A model is not ready because its accuracy looks good on a slide; it is ready when you understand exactly how, where, and for whom it fails, and you have decided that those failures are acceptable.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/accuracy-alone-is-not-enough-2.jpg' alt='data dashboard with charts' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

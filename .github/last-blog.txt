@@ -1,1 +1,1 @@
-2026-11-04T20:02:17Z slug=statistical-power-ml-experiments words=1107 title="Statistical Power in ML: Why Sample Size Limits Conclusions"
+2026-11-05T08:00:59Z slug=accuracy-alone-is-not-enough words=1028 title="Why Accuracy Alone Cannot Tell You a Model Is Ready"

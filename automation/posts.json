@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "accuracy-alone-is-not-enough",
+      "title": "Why Accuracy Alone Cannot Tell You a Model Is Ready",
+      "excerpt": "High accuracy can mask dangerous blind spots. Here is why production readiness demands more than a single headline number.",
+      "date": "2026-11-05",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a2",
+      "thumb": "assets/blog/accuracy-alone-is-not-enough.png",
+      "thumb_alt": "Cover image for the article: Why Accuracy Alone Cannot Tell You a Model Is Ready"
+    },
+    {
       "slug": "statistical-power-ml-experiments",
       "title": "Statistical Power in ML: Why Sample Size Limits Conclusions",
       "excerpt": "Your test set size decides what differences you can ever detect. Underpowered ML comparisons produce confident-sounding noise, not evidence.",
