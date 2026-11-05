@@ -8,11 +8,11 @@
   <language>en-gb</language>
   <lastBuildDate>Thu, 05 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
-    <title>Why Accuracy Alone Cannot Tell You a Model Is Ready</title>
-    <link>https://jahanzaibawan.com/blog/accuracy-alone-is-not-enough.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/accuracy-alone-is-not-enough.html</guid>
+    <title>Why Accuracy Alone Cannot Tell You a Model Is Production-Ready</title>
+    <link>https://jahanzaibawan.com/blog/accuracy-not-enough-production.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/accuracy-not-enough-production.html</guid>
     <pubDate>Thu, 05 Nov 2026 09:00:00 +0000</pubDate>
-    <description>High accuracy can mask dangerous blind spots. Here is why production readiness demands more than a single headline number.</description>
+    <description>High accuracy can mask a model that fails exactly where it matters most. A look at why production readiness needs more than one metric.</description>
     <category>Evaluation</category>
   </item>
   <item>

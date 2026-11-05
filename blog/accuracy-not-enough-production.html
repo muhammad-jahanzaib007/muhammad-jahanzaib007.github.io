@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Accuracy Alone Cannot Tell You a Model Is Production-Ready | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical look at why accuracy is a weak signal for production readiness, with a worked example on class imbalance, cost-sensitive errors, and distribution shift.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="model evaluation, accuracy metric, class imbalance, precision recall, distribution shift, machine learning production, confusion matrix, model monitoring, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-05">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Why Accuracy Alone Cannot Tell You a Model Is Production-Ready">
+<meta property="og:description" content="A practical look at why accuracy is a weak signal for production readiness, with a worked example on class imbalance, cost-sensitive errors, and distribution shift.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/accuracy-not-enough-production.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/accuracy-not-enough-production.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why Accuracy Alone Cannot Tell You a Model Is Production-Ready">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/accuracy-not-enough-production.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/accuracy-not-enough-production.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Why Accuracy Alone Cannot Tell You a Model Is Production-Ready",
+  "description": "A practical look at why accuracy is a weak signal for production readiness, with a worked example on class imbalance, cost-sensitive errors, and distribution shift.",
+  "url": "https://jahanzaibawan.com/blog/accuracy-not-enough-production.html",
+  "image": "https://jahanzaibawan.com/assets/blog/accuracy-not-enough-production.png",
+  "datePublished": "2026-11-05",
+  "dateModified": "2026-11-05",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/accuracy-not-enough-production.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Why Accuracy Alone Cannot Tell You a Model Is Production-Ready", "item": "https://jahanzaibawan.com/blog/accuracy-not-enough-production.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 5 Nov 2026</div>
+    <h1>Why Accuracy Alone Cannot Tell You a Model Is Production-Ready</h1>
+    <p class="lede">A single accuracy number can hide class imbalance, shifting data, and costly error types. Here is what to check before you trust a model with real users.</p>
+  </div>
+
+  <img src="../assets/blog/accuracy-not-enough-production.png" alt="Cover image for the article: Why Accuracy Alone Cannot Tell You a Model Is Production-Ready" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The number that lies by omission</h2><p>Accuracy is the first metric most of us learn and it remains the most misused. It answers a narrow question: out of all predictions, how many were correct? That is a reasonable summary when classes are balanced and every mistake costs roughly the same. In production, neither of those conditions usually holds, and that is where accuracy quietly stops meaning what people assume it means.</p><p>Consider a fraud detection model evaluated on a test set where ninety nine percent of transactions are legitimate and one percent are fraudulent. A model that simply predicts 'not fraud' for every single transaction scores ninety nine percent accuracy. It has learned nothing useful, yet the headline number looks excellent on a slide. Anyone who reports only accuracy here, intentionally or not, is presenting a result that sounds like competence but is actually complete failure on the task that matters.</p><p>This is not a hypothetical edge case confined to fraud. Rare disease screening, equipment failure prediction, spam filtering at the tail end, and churn detection on loyal customer bases all share the same shape: the interesting class is small, and accuracy rewards ignoring it. If I am building any of these systems, I treat a high accuracy figure with suspicion until I have seen the breakdown underneath it.</p></section><section class='psec reveal'><h2>A worked example with real numbers</h2><p>Suppose we have a thousand transactions, ten of which are fraudulent. Our model predicts nine hundred and eighty nine as not fraud and eleven as fraud. Of the eleven flagged, three are genuinely fraudulent and eight are false alarms. Of the nine hundred and eighty nine predicted as legitimate, seven are actually fraud that slipped through.</p><p>Accuracy here is nine hundred and eighty two correct predictions out of a thousand, which is ninety eight point two percent. It looks almost as good as the lazy all-negative model from before. But look at recall, the proportion of actual fraud cases we caught: three out of ten, or thirty percent. Seven out of ten frauds went completely undetected. Precision, the proportion of fraud alerts that were genuine, is three out of eleven, about twenty seven percent. Most of the alerts sent to the investigation team were false positives.</p><p>Now imagine the business cost. Each missed fraud costs the company an average of two hundred pounds in losses. Each false alarm costs twenty pounds in analyst time to investigate and clear. The missed frauds alone cost one thousand four hundred pounds, more than ten times the cost of the false alarms. A metric that treats these two error types as interchangeable, which is exactly what accuracy does, cannot tell a decision maker whether this model is safe to deploy or whether it will bleed money quietly every month.</p><p>This is why I always build a confusion matrix before trusting a single summary number, and why I push to attach rough cost weights to each cell wherever the business can supply them, even approximate ones. A model that is ninety eight percent accurate but misses seventy percent of the costly cases is not a nearly-finished product. It is a different model entirely from one that catches eighty percent of fraud at the price of a slightly lower overall accuracy.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/accuracy-not-enough-production-1.jpg' alt='confusion matrix on screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Beyond the confusion matrix: shift and stability</h2><p>Even with precision, recall, and a cost-aware metric like F-beta or expected monetary value in hand, there is a second trap: the test set itself might not represent what the model will see in production. If a test split was built from the same time window as training data, or the same source population, it can look favourable without proving anything about tomorrow's traffic. This is the leakage problem in disguise: not code leaking labels into features, but a static evaluation leaking an unrealistically stable world into a metric that will be used to justify deployment.</p><p>A model trained and tested on transactions from last year might show strong precision and recall in that report, then degrade within weeks once fraud patterns shift, a new product line launches, or customer behaviour changes seasonally. The honest way to probe this is a temporal split: train on older data, evaluate on the most recent slice, and watch whether performance holds. If recall drops sharply on recent data relative to the original test set, that gap is the real production risk, and no amount of accuracy on the old split will reveal it.</p><p>Calibration matters too. A model can rank cases correctly, putting the riskiest transactions near the top, while still being badly miscalibrated in its stated probabilities. If a downstream system treats a predicted probability of 0.9 as meaning ninety percent likelihood, but the model is systematically overconfident, every threshold decision built on that number inherits the error. Checking calibration, through a reliability diagram or Brier score, is a separate question from checking accuracy and neither one substitutes for the other.</p></section><section class='psec reveal'><h2>What readiness actually requires</h2><p>None of this means accuracy is useless. It is a fine sanity check and a reasonable tie-breaker when classes are balanced and errors are symmetric in cost. The mistake is treating it as sufficient evidence of readiness on its own, particularly for imbalanced problems or anything where false positives and false negatives carry different real-world weight.</p><p>Before I would call a classifier production-ready, I want a confusion matrix broken down by class, precision and recall reported separately, a cost-weighted metric tied to actual business consequences where that information exists, a check for performance drift across a genuinely out-of-time or out-of-distribution split, and a calibration check if the output probabilities feed into any downstream threshold or ranking decision. None of these are exotic techniques. They are a half day of extra analysis that routinely changes the decision from 'ship it' to 'not yet'.</p><p>The practical habit worth building is simple: whenever a single accuracy number is offered as proof a model works, ask what the class balance is, what the two error types cost, and whether the test data reflects tomorrow rather than last year. Those three questions catch most of the failures that accuracy alone will never show you.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/accuracy-not-enough-production-2.jpg' alt='analyst reviewing fraud alerts dashboard' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

@@ -1,15 +1,15 @@
 {
   "posts": [
     {
-      "slug": "accuracy-alone-is-not-enough",
-      "title": "Why Accuracy Alone Cannot Tell You a Model Is Ready",
-      "excerpt": "High accuracy can mask dangerous blind spots. Here is why production readiness demands more than a single headline number.",
+      "slug": "accuracy-not-enough-production",
+      "title": "Why Accuracy Alone Cannot Tell You a Model Is Production-Ready",
+      "excerpt": "High accuracy can mask a model that fails exactly where it matters most. A look at why production readiness needs more than one metric.",
       "date": "2026-11-05",
       "read_min": 5,
       "tag": "Evaluation",
       "color": "a2",
-      "thumb": "assets/blog/accuracy-alone-is-not-enough.png",
-      "thumb_alt": "Cover image for the article: Why Accuracy Alone Cannot Tell You a Model Is Ready"
+      "thumb": "assets/blog/accuracy-not-enough-production.png",
+      "thumb_alt": "Cover image for the article: Why Accuracy Alone Cannot Tell You a Model Is Production-Ready"
     },
     {
       "slug": "statistical-power-ml-experiments",
