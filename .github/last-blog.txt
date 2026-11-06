@@ -1,1 +1,1 @@
-2026-11-05T20:01:10Z slug=evaluation-protocol-before-code words=1023 title="Design Your Evaluation Protocol Before You Train Anything"
+2026-11-06T08:01:26Z slug=fine-tuning-small-transformer-walkthrough words=1019 title="Fine-Tuning a Small Transformer: What Actually Changes"

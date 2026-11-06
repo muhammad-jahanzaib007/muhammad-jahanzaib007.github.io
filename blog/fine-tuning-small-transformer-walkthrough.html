@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fine-Tuning a Small Transformer: What Actually Changes | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical, worked explanation of what happens during transformer fine-tuning, with concrete intuition about weights, gradients and evaluation pitfalls.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="fine-tuning, transformers, deep learning, transfer learning, NLP, model evaluation, overfitting, learning rate, pretrained models, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-06">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Fine-Tuning a Small Transformer: What Actually Changes">
+<meta property="og:description" content="A practical, worked explanation of what happens during transformer fine-tuning, with concrete intuition about weights, gradients and evaluation pitfalls.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/fine-tuning-small-transformer-walkthrough.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/fine-tuning-small-transformer-walkthrough.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fine-Tuning a Small Transformer: What Actually Changes">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/fine-tuning-small-transformer-walkthrough.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/fine-tuning-small-transformer-walkthrough.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Fine-Tuning a Small Transformer: What Actually Changes",
+  "description": "A practical, worked explanation of what happens during transformer fine-tuning, with concrete intuition about weights, gradients and evaluation pitfalls.",
+  "url": "https://jahanzaibawan.com/blog/fine-tuning-small-transformer-walkthrough.html",
+  "image": "https://jahanzaibawan.com/assets/blog/fine-tuning-small-transformer-walkthrough.png",
+  "datePublished": "2026-11-06",
+  "dateModified": "2026-11-06",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/fine-tuning-small-transformer-walkthrough.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Fine-Tuning a Small Transformer: What Actually Changes", "item": "https://jahanzaibawan.com/blog/fine-tuning-small-transformer-walkthrough.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Deep Learning · 5 min read · 6 Nov 2026</div>
+    <h1>Fine-Tuning a Small Transformer: What Actually Changes</h1>
+    <p class="lede">A worked walkthrough of what happens inside a small transformer during fine-tuning, and why understanding it saves you from silent failure modes later.</p>
+  </div>
+
+  <img src="../assets/blog/fine-tuning-small-transformer-walkthrough.png" alt="Cover image for the article: Fine-Tuning a Small Transformer: What Actually Changes" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this matters more than it looks</h2><p>Fine-tuning gets treated as a solved problem: load a pretrained checkpoint, add a small head, run a few epochs, done. In practice it is the step where most silent mistakes creep in, because the model already works reasonably well before you touch it. A pretrained transformer has learned general structure from a large corpus: syntax, co-occurrence patterns, some semantics. Fine-tuning nudges that structure towards a specific task. The danger is that a small amount of nudging can look like success on a validation set while actually teaching the model shortcuts that have nothing to do with the underlying problem.</p><p>Consider a small transformer, something in the range of a few million to a few hundred million parameters, being adapted for a binary classification task such as detecting whether a product review is genuine or fabricated. Before fine-tuning, the model's final layer outputs are essentially generic contextual representations. After fine-tuning, those representations get reshaped specifically to separate your two classes. Understanding exactly which parts of the network move, and how far, tells you whether that reshaping is doing something sensible or something brittle.</p></section><section class='psec reveal'><h2>What changes under the hood</h2><p>Start with the embedding and early layers. In most fine-tuning runs these move the least, because gradients from a classification head attenuate as they backpropagate through many layers, and because early layers encode fairly general linguistic features that are useful regardless of task. If you log the magnitude of weight updates per layer, a common pattern is updates an order of magnitude smaller in layer one than in the final two or three layers. This is not a coincidence; it reflects how gradient-based optimisation distributes blame for errors, concentrating correction near the output where the task-specific loss is computed.</p><p>The classification head itself, often a single linear layer mapping a pooled representation to class logits, changes the most, and changes fastest. In a worked example with a learning rate of two times ten to the minus five and a batch size of sixteen, you might see the head's weights shift by a relative norm of fifteen to twenty per cent within the first epoch, while the embedding layer shifts by under one per cent over the same period. This asymmetry is why many practitioners get reasonable results even with very few epochs: the head is doing most of the adaptation work, essentially learning a decision boundary on top of representations that barely move.</p><p>The attention patterns in the upper layers often shift more subtly but more meaningfully. Before fine-tuning, attention heads in the last few layers might spread weight fairly broadly across a sentence. After fine-tuning on, say, a sentiment task, you can sometimes observe heads sharpening their focus onto specific tokens, adjectives and negations in particular, because those tokens carry most of the signal for the loss being minimised. This is the useful kind of change: the model is learning where to look, not just how to classify what it already sees.</p><p>The dangerous kind of change happens when the model finds a shortcut unrelated to the actual task. Suppose your training data for the fake review detector happens to have fabricated reviews that are, on average, twenty words shorter than genuine ones, purely as an artefact of how the dataset was assembled. A small transformer will happily learn to associate length with the label, achieving ninety per cent accuracy on a held-out set drawn from the same distribution, while failing badly the moment it meets real-world reviews where that correlation does not hold. Nothing in the loss curve tells you this is happening. The model looks like it has learned something useful; it has learned a statistical accident.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/fine-tuning-small-transformer-walkthrough-1.jpg' alt='laptop screen with code and graphs' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Catching the difference with evaluation, not vibes</h2><p>This is where evaluation design does more work than architecture choice. A leakage-aware split is the first line of defence: make sure your train, validation and test sets are partitioned by whatever unit actually varies in deployment, not just randomly shuffled rows. If reviews from the same product or the same author appear in both training and test sets, the model can partly memorise author style rather than learn the general task, and your test accuracy will overstate real performance.</p><p>The second line of defence is a strong, boring baseline run alongside the transformer. A logistic regression on word counts, or even a rule based on review length, takes an afternoon to build and tells you immediately whether your fine-tuned model is earning its complexity. If the baseline gets eighty-six per cent and your fine-tuned transformer gets eighty-eight, that two-point gap needs scrutiny before you call it a win, because it might disappear entirely on a differently sourced test set, or it might be the genuine, valuable contribution of contextual understanding. You cannot tell which without the comparison.</p><p>A practical diagnostic I rely on is checking performance on a deliberately shifted slice of data: different time period, different source, different length distribution. If accuracy drops sharply on that slice while staying stable on an identically distributed holdout, that is a strong signal the model leaned on a shortcut during fine-tuning rather than learning the intended signal. This costs almost nothing to set up and catches a failure mode that standard cross-validation simply cannot see, because cross-validation shares the same biases as the training data by construction.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>Fine-tuning a small transformer is not a single uniform operation; it is a layered process where the output head adapts quickly and substantially, the upper attention layers refine what they attend to, and the lower layers barely move at all. That pattern is usually healthy. What turns fine-tuning from a reliable tool into a source of false confidence is not the architecture, it is the data and the evaluation around it. Before trusting a fine-tuned result, check the split for leakage, compare against a simple baseline, and test on a slice that differs from your training distribution in some concrete, specified way. None of this requires more compute. It requires treating the evaluation with the same seriousness as the model itself, which is usually the part that gets rushed.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/fine-tuning-small-transformer-walkthrough-2.jpg' alt='research notebook with handwritten notes' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

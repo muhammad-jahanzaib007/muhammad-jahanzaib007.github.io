@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Thu, 05 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 06 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Fine-Tuning a Small Transformer: What Actually Changes</title>
+    <link>https://jahanzaibawan.com/blog/fine-tuning-small-transformer-walkthrough.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/fine-tuning-small-transformer-walkthrough.html</guid>
+    <pubDate>Fri, 06 Nov 2026 09:00:00 +0000</pubDate>
+    <description>A concrete, numbers-driven walkthrough of what fine-tuning actually changes inside a small transformer, and why that matters for your results.</description>
+    <category>Deep Learning</category>
+  </item>
   <item>
     <title>Design Your Evaluation Protocol Before You Train Anything</title>
     <link>https://jahanzaibawan.com/blog/evaluation-protocol-before-code.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Tue, 27 Oct 2026 09:00:00 +0000</pubDate>
     <description>A practical order for learning machine learning, from maths to baselines to evaluation, and why skipping steps costs you later.</description>
     <category>Learning</category>
-  </item>
-  <item>
-    <title>Deep Learning Super Sampling: Borrowed Ideas, False Friends</title>
-    <link>https://jahanzaibawan.com/blog/deep-learning-super-sampling-explained.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/deep-learning-super-sampling-explained.html</guid>
-    <pubDate>Tue, 27 Oct 2026 09:00:00 +0000</pubDate>
-    <description>DLSS borrows the machinery of supervised super-resolution but has nothing to do with language models or generative chat. Here is the actual lineage.</description>
-    <category>Deep Learning</category>
   </item>
 </channel>
 </rss>
