@@ -12,6 +12,7 @@
   <url><loc>https://jahanzaibawan.com/about.html</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://jahanzaibawan.com/blog.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <!--BLOGPOSTS:START-->
+  <url><loc>https://jahanzaibawan.com/blog/paired-tests-nlp-pipelines.html</loc><lastmod>2026-11-06</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://jahanzaibawan.com/blog/fine-tuning-small-transformer-walkthrough.html</loc><lastmod>2026-11-06</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://jahanzaibawan.com/blog/evaluation-protocol-before-code.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://jahanzaibawan.com/blog/accuracy-not-enough-production.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>

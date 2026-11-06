@@ -1,1 +1,1 @@
-2026-11-06T08:02:24Z slug=fine-tuning-small-transformer-walkthrough words=1124 title="Fine-Tuning a Small Transformer: What Actually Changes"
+2026-11-06T20:01:40Z slug=paired-tests-nlp-pipelines words=1169 title="Comparing Two NLP Pipelines Honestly with Paired Tests"

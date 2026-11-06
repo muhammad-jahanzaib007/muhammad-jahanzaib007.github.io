@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Comparing two NLP pipelines honestly: paired tests instead of a single leaderboard number",
     "What a loss curve tells you that a final metric cannot",
     "Evaluating NLP models on out-of-distribution text: why in-domain scores overstate quality",
     "Choosing an evaluation metric for text classification when classes are imbalanced",
@@ -276,6 +275,7 @@
     "Statistical power in ML experiments: why your sample size decides what you can conclude",
     "Why accuracy alone cannot tell you if a model is ready for production",
     "Designing a model evaluation protocol before you write a single line of training code",
-    "Fine-tuning a small transformer: a worked walkthrough of what changes and why"
+    "Fine-tuning a small transformer: a worked walkthrough of what changes and why",
+    "Comparing two NLP pipelines honestly: paired tests instead of a single leaderboard number"
   ]
 }

@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Fri, 06 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Comparing Two NLP Pipelines Honestly with Paired Tests</title>
+    <link>https://jahanzaibawan.com/blog/paired-tests-nlp-pipelines.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/paired-tests-nlp-pipelines.html</guid>
+    <pubDate>Fri, 06 Nov 2026 09:00:00 +0000</pubDate>
+    <description>One F1 score beating another by a point isn&#x27;t a result, it&#x27;s noise until proven otherwise. Here&#x27;s how paired tests fix that.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Fine-Tuning a Small Transformer: What Actually Changes</title>
     <link>https://jahanzaibawan.com/blog/fine-tuning-small-transformer-walkthrough.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/fine-tuning-small-transformer-walkthrough.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Wed, 28 Oct 2026 09:00:00 +0000</pubDate>
     <description>Same title, wildly different jobs. Learn to read adverts for the actual work: modelling versus reporting, ambiguity versus dashboards.</description>
     <category>Careers</category>
-  </item>
-  <item>
-    <title>A Beginner&#x27;s Roadmap into Machine Learning, and Why Order Matters</title>
-    <link>https://jahanzaibawan.com/blog/beginners-roadmap-machine-learning.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/beginners-roadmap-machine-learning.html</guid>
-    <pubDate>Tue, 27 Oct 2026 09:00:00 +0000</pubDate>
-    <description>A practical order for learning machine learning, from maths to baselines to evaluation, and why skipping steps costs you later.</description>
-    <category>Learning</category>
   </item>
 </channel>
 </rss>

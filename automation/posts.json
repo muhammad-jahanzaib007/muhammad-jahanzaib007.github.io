@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "paired-tests-nlp-pipelines",
+      "title": "Comparing Two NLP Pipelines Honestly with Paired Tests",
+      "excerpt": "One F1 score beating another by a point isn't a result, it's noise until proven otherwise. Here's how paired tests fix that.",
+      "date": "2026-11-06",
+      "read_min": 6,
+      "tag": "Evaluation",
+      "color": "a5",
+      "thumb": "assets/blog/paired-tests-nlp-pipelines.png",
+      "thumb_alt": "Cover image for the article: Comparing Two NLP Pipelines Honestly with Paired Tests"
+    },
+    {
       "slug": "fine-tuning-small-transformer-walkthrough",
       "title": "Fine-Tuning a Small Transformer: What Actually Changes",
       "excerpt": "A concrete walkthrough of fine-tuning a small transformer: what the weights do, why learning rate and freezing choices matter, and how to check it actually worked.",
