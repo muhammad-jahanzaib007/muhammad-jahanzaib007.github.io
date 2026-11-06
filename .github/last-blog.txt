@@ -1,1 +1,1 @@
-2026-11-06T08:01:26Z slug=fine-tuning-small-transformer-walkthrough words=1019 title="Fine-Tuning a Small Transformer: What Actually Changes"
+2026-11-06T08:02:24Z slug=fine-tuning-small-transformer-walkthrough words=1124 title="Fine-Tuning a Small Transformer: What Actually Changes"

@@ -3,9 +3,9 @@
     {
       "slug": "fine-tuning-small-transformer-walkthrough",
       "title": "Fine-Tuning a Small Transformer: What Actually Changes",
-      "excerpt": "A concrete, numbers-driven walkthrough of what fine-tuning actually changes inside a small transformer, and why that matters for your results.",
+      "excerpt": "A concrete walkthrough of fine-tuning a small transformer: what the weights do, why learning rate and freezing choices matter, and how to check it actually worked.",
       "date": "2026-11-06",
-      "read_min": 5,
+      "read_min": 6,
       "tag": "Deep Learning",
       "color": "a4",
       "thumb": "assets/blog/fine-tuning-small-transformer-walkthrough.png",

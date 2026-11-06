@@ -12,7 +12,7 @@
     <link>https://jahanzaibawan.com/blog/fine-tuning-small-transformer-walkthrough.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/fine-tuning-small-transformer-walkthrough.html</guid>
     <pubDate>Fri, 06 Nov 2026 09:00:00 +0000</pubDate>
-    <description>A concrete, numbers-driven walkthrough of what fine-tuning actually changes inside a small transformer, and why that matters for your results.</description>
+    <description>A concrete walkthrough of fine-tuning a small transformer: what the weights do, why learning rate and freezing choices matter, and how to check it actually worked.</description>
     <category>Deep Learning</category>
   </item>
   <item>
