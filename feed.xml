@@ -8,11 +8,11 @@
   <language>en-gb</language>
   <lastBuildDate>Fri, 06 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
-    <title>Comparing Two NLP Pipelines Honestly with Paired Tests</title>
+    <title>Comparing NLP Pipelines Honestly: Paired Tests Over Leaderboards</title>
     <link>https://jahanzaibawan.com/blog/paired-tests-nlp-pipelines.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/paired-tests-nlp-pipelines.html</guid>
     <pubDate>Fri, 06 Nov 2026 09:00:00 +0000</pubDate>
-    <description>One F1 score beating another by a point isn&#x27;t a result, it&#x27;s noise until proven otherwise. Here&#x27;s how paired tests fix that.</description>
+    <description>One leaderboard score is not evidence. Here is how paired tests on the same examples reveal whether a pipeline improvement is real or noise.</description>
     <category>Evaluation</category>
   </item>
   <item>

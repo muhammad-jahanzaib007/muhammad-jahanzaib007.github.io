@@ -2,14 +2,14 @@
   "posts": [
     {
       "slug": "paired-tests-nlp-pipelines",
-      "title": "Comparing Two NLP Pipelines Honestly with Paired Tests",
-      "excerpt": "One F1 score beating another by a point isn't a result, it's noise until proven otherwise. Here's how paired tests fix that.",
+      "title": "Comparing NLP Pipelines Honestly: Paired Tests Over Leaderboards",
+      "excerpt": "One leaderboard score is not evidence. Here is how paired tests on the same examples reveal whether a pipeline improvement is real or noise.",
       "date": "2026-11-06",
-      "read_min": 6,
+      "read_min": 5,
       "tag": "Evaluation",
       "color": "a5",
       "thumb": "assets/blog/paired-tests-nlp-pipelines.png",
-      "thumb_alt": "Cover image for the article: Comparing Two NLP Pipelines Honestly with Paired Tests"
+      "thumb_alt": "Cover image for the article: Comparing NLP Pipelines Honestly: Paired Tests Over Leaderboards"
     },
     {
       "slug": "fine-tuning-small-transformer-walkthrough",
