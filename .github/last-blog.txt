@@ -1,1 +1,1 @@
-2026-11-06T20:02:39Z slug=paired-tests-nlp-pipelines words=1083 title="Comparing NLP Pipelines Honestly: Paired Tests Over Leaderboards"
+2026-11-07T08:01:24Z slug=what-loss-curves-reveal words=1012 title="What a Loss Curve Tells You That a Final Metric Cannot"

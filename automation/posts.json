@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "what-loss-curves-reveal",
+      "title": "What a Loss Curve Tells You That a Final Metric Cannot",
+      "excerpt": "A final metric gives you a number. A loss curve gives you a reason. Here is why I read curves before I trust scores.",
+      "date": "2026-11-07",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a6",
+      "thumb": "assets/blog/what-loss-curves-reveal.png",
+      "thumb_alt": "Cover image for the article: What a Loss Curve Tells You That a Final Metric Cannot"
+    },
+    {
       "slug": "paired-tests-nlp-pipelines",
       "title": "Comparing NLP Pipelines Honestly: Paired Tests Over Leaderboards",
       "excerpt": "One leaderboard score is not evidence. Here is how paired tests on the same examples reveal whether a pipeline improvement is real or noise.",

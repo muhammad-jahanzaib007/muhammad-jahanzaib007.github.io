@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What a Loss Curve Tells You That a Final Metric Cannot | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why tracking the full loss curve during training reveals overfitting, instability, and data issues that a single final metric hides.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="loss curve,model evaluation,overfitting,training diagnostics,machine learning,validation loss,early stopping,leakage,reproducibility, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-07">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="What a Loss Curve Tells You That a Final Metric Cannot">
+<meta property="og:description" content="Why tracking the full loss curve during training reveals overfitting, instability, and data issues that a single final metric hides.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/what-loss-curves-reveal.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/what-loss-curves-reveal.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What a Loss Curve Tells You That a Final Metric Cannot">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/what-loss-curves-reveal.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/what-loss-curves-reveal.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "What a Loss Curve Tells You That a Final Metric Cannot",
+  "description": "Why tracking the full loss curve during training reveals overfitting, instability, and data issues that a single final metric hides.",
+  "url": "https://jahanzaibawan.com/blog/what-loss-curves-reveal.html",
+  "image": "https://jahanzaibawan.com/assets/blog/what-loss-curves-reveal.png",
+  "datePublished": "2026-11-07",
+  "dateModified": "2026-11-07",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/what-loss-curves-reveal.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "What a Loss Curve Tells You That a Final Metric Cannot", "item": "https://jahanzaibawan.com/blog/what-loss-curves-reveal.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 7 Nov 2026</div>
+    <h1>What a Loss Curve Tells You That a Final Metric Cannot</h1>
+    <p class="lede">A single accuracy or F1 score is a snapshot. The loss curve is the film reel, and it is where the real story of your model&#x27;s training lives.</p>
+  </div>
+
+  <img src="../assets/blog/what-loss-curves-reveal.png" alt="Cover image for the article: What a Loss Curve Tells You That a Final Metric Cannot" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>A number without a history</h2><p>When someone hands me a model and says 'it gets 91% accuracy', my first question is not whether that is good. My first question is: what did the training look like? A final metric is a single coordinate in time, measured after training has stopped. It tells you where the model ended up but says nothing about how it got there. Two models can land on exactly the same final accuracy while having taken completely different, and differently trustworthy, paths to get there.</p><p>The loss curve is the record of that path. It is the training loss and validation loss plotted epoch by epoch, and once you get used to reading it, it becomes far more informative than almost any single summary statistic. A metric answers 'how good is the model now'. A curve answers 'why', and 'should I believe it', and 'what happens if I train for ten more epochs'. Those are the questions that actually determine whether a model is safe to deploy.</p><p>This matters practically because final metrics are easy to game by accident. Stop training at a lucky epoch, pick a favourable random seed, or evaluate on a validation set that happens to align well with a noisy checkpoint, and you can report a strong number that reflects variance rather than genuine capability. The curve exposes this because it shows the full distribution of performance across training, not just the one point you chose to report.</p></section><section class='psec reveal'><h2>A worked example: two models, one final score</h2><p>Imagine two image classifiers, both reporting 88% validation accuracy after training. Model A's training loss falls smoothly from 1.8 to 0.3 over 40 epochs, and its validation loss falls alongside it from 1.7 down to 0.45, flattening gently near the end. Model B's training loss falls just as smoothly to 0.3, but its validation loss drops to 0.4 by epoch 15, then climbs steadily back up to 0.6 by epoch 40, even though accuracy at epoch 40 happens to tick up to 88% again due to noise in the validation set.</p><p>If you only look at the final numbers, both models look identical: similar training loss, similar validation accuracy. But Model B is memorising the training set from epoch 15 onwards. Its rising validation loss alongside a stable or fluctuating accuracy is the classic signature of overfitting, where the model becomes more confident, and more wrong, on examples it has not truly learned. Deploy Model B and you are gambling on a checkpoint that happened to catch a favourable fluctuation, not on genuine generalisation.</p><p>Model A, by contrast, shows training and validation loss moving together, which is the signature you actually want: the model is learning patterns that transfer. If you retrain Model A with a different seed, I would expect a similar curve shape and a similar final number. If you retrain Model B, there is a real chance the lucky uptick does not recur, and you report a worse result purely by chance. The curve lets you distinguish a reproducible result from a fluke before you ever touch a test set.</p><p>This is also where early stopping earns its keep. Watching the gap between training and validation loss widen is a far more reliable stopping signal than watching a single metric plateau, because metrics like accuracy are coarse and quantised while loss is continuous and far more sensitive to small shifts in model confidence.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/what-loss-curves-reveal-1.jpg' alt='laptop screen with line graph chart' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Diagnosing problems the metric cannot see</h2><p>Loss curves are also a diagnostic tool for things that have nothing to do with overfitting. A loss that decreases then suddenly spikes upward and never recovers usually points to an unstable learning rate or a batch that contained a corrupted or extreme example. A loss that barely moves for the first several epochs before suddenly dropping often indicates that the model was stuck in a poor initialisation basin, which tells you something useful about your weight initialisation or learning rate warm-up schedule, not about the model's eventual capability.</p><p>A particularly useful case is when training loss decreases nicely but validation loss is erratic and noisy rather than smoothly rising or falling. This pattern often signals a validation set that is too small, or one where leakage from the training set has created a few examples the model can trivially memorise, producing sharp unpredictable swings. A single final metric computed on that same validation set would simply report whatever number happened to land, with no hint that the measurement itself is unstable.</p><p>I have also found loss curves useful for catching leakage before it contaminates a whole project. If validation loss is suspiciously lower than training loss from the very first epoch, before the model has had any chance to generalise, that is a strong signal that information from the validation set has leaked into training, whether through duplicated records, shared preprocessing statistics, or overlapping time windows in a time-series split. A final metric reported at the end of training would only tell you the score looks unusually good; it would not tell you to be suspicious of why.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>None of this means final metrics are useless. You need a single number to compare models, to report results, and to make a go or no-go decision. But a final metric should be treated as a claim, and the loss curve is the evidence behind that claim. Before I trust any reported score, I want to see the shape it came from: did training and validation loss move together, did the gap between them stay narrow, was the descent smooth rather than erratic, and did the final value sit on a stable plateau rather than a brief lucky dip.</p><p>If you are building or reviewing models, make it a habit to plot and inspect the full curve, not just the final epoch, every single time. Save the curve alongside the metric in your experiment logs. It costs almost nothing to record and it will save you from shipping a model that only looks good because you happened to stop the clock at the right moment.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/what-loss-curves-reveal-2.jpg' alt='notebook with handwritten graph sketches' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

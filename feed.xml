@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Fri, 06 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 07 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>What a Loss Curve Tells You That a Final Metric Cannot</title>
+    <link>https://jahanzaibawan.com/blog/what-loss-curves-reveal.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/what-loss-curves-reveal.html</guid>
+    <pubDate>Sat, 07 Nov 2026 09:00:00 +0000</pubDate>
+    <description>A final metric gives you a number. A loss curve gives you a reason. Here is why I read curves before I trust scores.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Comparing NLP Pipelines Honestly: Paired Tests Over Leaderboards</title>
     <link>https://jahanzaibawan.com/blog/paired-tests-nlp-pipelines.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Wed, 28 Oct 2026 09:00:00 +0000</pubDate>
     <description>Toy ML demos look like competence but hide the hard parts: leakage-free splits, drift, latency, and monitoring. Here is why that gap matters.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Data Science vs Data Analytics Adverts: Reading Between the Lines</title>
-    <link>https://jahanzaibawan.com/blog/data-science-vs-analytics-adverts.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/data-science-vs-analytics-adverts.html</guid>
-    <pubDate>Wed, 28 Oct 2026 09:00:00 +0000</pubDate>
-    <description>Same title, wildly different jobs. Learn to read adverts for the actual work: modelling versus reporting, ambiguity versus dashboards.</description>
-    <category>Careers</category>
   </item>
 </channel>
 </rss>
