@@ -9,10 +9,10 @@
   <lastBuildDate>Sat, 07 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
     <title>Why In-Domain Scores Overstate NLP Model Quality</title>
-    <link>https://jahanzaibawan.com/blog/ood-text-evaluation-nlp.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/ood-text-evaluation-nlp.html</guid>
+    <link>https://jahanzaibawan.com/blog/ood-evaluation-nlp-models.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/ood-evaluation-nlp-models.html</guid>
     <pubDate>Sat, 07 Nov 2026 09:00:00 +0000</pubDate>
-    <description>High in-domain accuracy often hides a model&#x27;s real weakness: it has learned the dataset, not the task. Here is how to catch that early.</description>
+    <description>High in-domain accuracy often hides fragile models. I walk through why out-of-distribution evaluation matters and how to build it into your pipeline.</description>
     <category>Evaluation</category>
   </item>
   <item>
