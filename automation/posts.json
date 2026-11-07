@@ -3,7 +3,7 @@
     {
       "slug": "what-loss-curves-reveal",
       "title": "What a Loss Curve Tells You That a Final Metric Cannot",
-      "excerpt": "A final metric gives you a number. A loss curve gives you a reason. Here is why I read curves before I trust scores.",
+      "excerpt": "A final metric is a verdict. A loss curve is the trial. Here is why I read the whole training trajectory before trusting any score.",
       "date": "2026-11-07",
       "read_min": 5,
       "tag": "Evaluation",
