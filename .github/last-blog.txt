@@ -1,1 +1,1 @@
-2026-11-07T08:02:21Z slug=what-loss-curves-reveal words=1056 title="What a Loss Curve Tells You That a Final Metric Cannot"
+2026-11-07T20:01:24Z slug=ood-text-evaluation-nlp words=1059 title="Why In-Domain Scores Overstate NLP Model Quality"

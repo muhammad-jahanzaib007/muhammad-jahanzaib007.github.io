@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why In-Domain Scores Overstate NLP Model Quality | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="An evaluation-focused look at why NLP models score well in-domain but fail on out-of-distribution text, with a worked example and practical fixes.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="out-of-distribution evaluation, NLP generalisation, domain shift, model evaluation, data leakage, robustness testing, benchmark overfitting, test set design, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-07">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Why In-Domain Scores Overstate NLP Model Quality">
+<meta property="og:description" content="An evaluation-focused look at why NLP models score well in-domain but fail on out-of-distribution text, with a worked example and practical fixes.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/ood-text-evaluation-nlp.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/ood-text-evaluation-nlp.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why In-Domain Scores Overstate NLP Model Quality">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/ood-text-evaluation-nlp.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/ood-text-evaluation-nlp.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Why In-Domain Scores Overstate NLP Model Quality",
+  "description": "An evaluation-focused look at why NLP models score well in-domain but fail on out-of-distribution text, with a worked example and practical fixes.",
+  "url": "https://jahanzaibawan.com/blog/ood-text-evaluation-nlp.html",
+  "image": "https://jahanzaibawan.com/assets/blog/ood-text-evaluation-nlp.png",
+  "datePublished": "2026-11-07",
+  "dateModified": "2026-11-07",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/ood-text-evaluation-nlp.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Why In-Domain Scores Overstate NLP Model Quality", "item": "https://jahanzaibawan.com/blog/ood-text-evaluation-nlp.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 7 Nov 2026</div>
+    <h1>Why In-Domain Scores Overstate NLP Model Quality</h1>
+    <p class="lede">A model that scores 94 F1 on its test set can fall apart on text that looks only slightly different. Here is why that gap exists and how to measure it honestly.</p>
+  </div>
+
+  <img src="../assets/blog/ood-text-evaluation-nlp.png" alt="Cover image for the article: Why In-Domain Scores Overstate NLP Model Quality" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The comfortable lie of a held-out test set</h2><p>When I report a number like 91 percent accuracy on a sentiment classifier, the honest version of that sentence is 91 percent accuracy on text that looks a lot like the text it was trained on. A held-out test set drawn from the same source as the training data tells you how well a model has learned the statistical patterns of that particular corpus: its vocabulary, its sentence lengths, its topic distribution, even its labelling quirks. It does not tell you how the model behaves on text that a real user will actually type, which rarely matches the tidy distribution of a benchmark.</p><p>This matters because most deployment failures are not failures of the model's architecture, they are failures of distributional assumption. A named entity recognition model trained on newswire text learns that capitalised multi-word spans following a title are usually people. Feed it informal social media text with inconsistent capitalisation and that heuristic collapses, even though nothing about the underlying task has changed. The model never learned the task in a general sense, it learned a set of shortcuts that happened to correlate with the labels in one specific corpus.</p><p>The danger is that these shortcuts produce scores that look excellent right up until the moment they do not. A paper or a project report showing 94 F1 looks like a strong result, and it is a strong result, but only for the narrow slice of language the test set represents. Treating that number as a general statement about the model's competence is the mistake, and it is an easy mistake to make because the number itself is not wrong, it is just answering a narrower question than the one usually implied.</p></section><section class='psec reveal'><h2>A worked example: sentiment across domains</h2><p>Suppose I train a sentiment classifier on a corpus of product reviews and get 90 percent accuracy on a held-out split from that same corpus. Now I run the same model on restaurant reviews and get 81 percent, and on tweets about a sporting event I get 68 percent. None of these numbers are mistakes or bugs. Each one is an accurate measurement of accuracy on its respective distribution. The drop from 90 to 68 is the real story, and it is a story the original 90 percent completely hides.</p><p>What causes the drop is usually a mix of vocabulary shift, length shift, and label definition shift. Product reviews are long and explicit: people write sentences like 'the build quality is poor and I would not recommend this'. Tweets are short, sarcastic, and rely on context the model has never seen modelled, things like emoji, hashtags used ironically, or abbreviations. A model that has learned to weight words like 'poor' and 'recommend' heavily will do well on reviews and badly on tweets, where sentiment is often conveyed through tone rather than explicit sentiment-bearing vocabulary.</p><p>The practical consequence is that if my actual use case is monitoring sentiment on social media, the 90 percent figure from the review-trained model is close to meaningless, and the 68 percent figure, while disappointing, is the only one that reflects reality. Reporting the in-domain number alongside a claim of general applicability is, in effect, an overstatement of quality even if every individual number was computed correctly.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/ood-text-evaluation-nlp-1.jpg' alt='laptop with text data on screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Why leakage makes this worse than it looks</h2><p>Out-of-distribution evaluation gets harder to interpret once you consider leakage, because leakage can make an in-domain score look even more inflated than the clean comparison above suggests. If training and test splits share near-duplicate sentences, templated phrasing, or the same small set of authors, the test score measures memorisation of surface patterns rather than generalisation, and the gap to genuinely new text will be larger than a clean train-test split would predict.</p><p>A concrete case: a dataset of customer support tickets scraped from a handful of companies, split randomly by ticket rather than by company. Tickets from the same company often share boilerplate phrasing, product names, and issue categories. A random split lets near-identical tickets from the same company appear in both train and test, so the model partly memorises company-specific patterns rather than learning the general task of classifying support intent. A split by company, where no company appears in both sets, gives a lower but far more honest score, and that score is usually much closer to what a new client's tickets will look like in production.</p><p>This is why I favour splitting by whatever unit of leakage actually exists in the data, by author, by source, by time period, rather than just by example. It is also why I treat a single aggregate accuracy figure with suspicion until I know how the split was constructed. The headline number and the honest number can differ by ten or more points, and that gap is usually where the real risk to a deployed system is hiding.</p></section><section class='psec reveal'><h2>Building evaluation that reflects reality</h2><p>The practical fix is not complicated, it just requires deliberate effort rather than relying on the default split a dataset ships with. I try to evaluate on at least one genuinely different distribution: a different source, a different time period, a different register of language, even if that evaluation set is smaller and messier than the main one. A small, honestly out-of-distribution test set is more informative than a large in-distribution one, because it tells you something the main metric cannot.</p><p>Strong baselines matter here too. A simple keyword-matching or logistic regression baseline, evaluated on the same out-of-distribution set as the neural model, tells you how much of the neural model's advantage survives the shift. If a complex model and a simple baseline converge to similar scores once you move out of distribution, that is valuable information about where the model's real strength actually lies.</p><p>Finally, I report both numbers rather than picking the flattering one. An in-domain score paired with an out-of-distribution score, and an explicit description of how the split was constructed, gives anyone reading the work enough information to judge whether the model will hold up for their own use case. That is the real purpose of evaluation: not to produce an impressive headline figure, but to give an honest estimate of how a model will behave on text it has not seen before, because that is the only situation that matters once the model leaves the notebook.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/ood-text-evaluation-nlp-2.jpg' alt='two stacks of paper documents side by side' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

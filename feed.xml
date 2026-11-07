@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Sat, 07 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Why In-Domain Scores Overstate NLP Model Quality</title>
+    <link>https://jahanzaibawan.com/blog/ood-text-evaluation-nlp.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/ood-text-evaluation-nlp.html</guid>
+    <pubDate>Sat, 07 Nov 2026 09:00:00 +0000</pubDate>
+    <description>High in-domain accuracy often hides a model&#x27;s real weakness: it has learned the dataset, not the task. Here is how to catch that early.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>What a Loss Curve Tells You That a Final Metric Cannot</title>
     <link>https://jahanzaibawan.com/blog/what-loss-curves-reveal.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/what-loss-curves-reveal.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Thu, 29 Oct 2026 09:00:00 +0000</pubDate>
     <description>Glossary definitions of deep learning describe architecture, not behaviour. Here is what they usually leave out, and why it matters.</description>
     <category>Deep Learning</category>
-  </item>
-  <item>
-    <title>Machine Learning Play: Why Toy Demos Rarely Mirror Production</title>
-    <link>https://jahanzaibawan.com/blog/why-toy-demos-mislead.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/why-toy-demos-mislead.html</guid>
-    <pubDate>Wed, 28 Oct 2026 09:00:00 +0000</pubDate>
-    <description>Toy ML demos look like competence but hide the hard parts: leakage-free splits, drift, latency, and monitoring. Here is why that gap matters.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>
