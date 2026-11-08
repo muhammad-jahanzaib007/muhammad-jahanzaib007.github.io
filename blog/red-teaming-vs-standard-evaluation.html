@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Red-Teaming Versus Standard Evaluation: Why You Need Both | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical look at how adversarial red-teaming differs from standard model evaluation, with a worked example showing why you need both before deployment.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="red-teaming, model evaluation, adversarial testing, AI safety, benchmarking, evaluation design, leakage, robustness testing, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-08">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Red-Teaming Versus Standard Evaluation: Why You Need Both">
+<meta property="og:description" content="A practical look at how adversarial red-teaming differs from standard model evaluation, with a worked example showing why you need both before deployment.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/red-teaming-vs-standard-evaluation.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/red-teaming-vs-standard-evaluation.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Red-Teaming Versus Standard Evaluation: Why You Need Both">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/red-teaming-vs-standard-evaluation.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/red-teaming-vs-standard-evaluation.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Red-Teaming Versus Standard Evaluation: Why You Need Both",
+  "description": "A practical look at how adversarial red-teaming differs from standard model evaluation, with a worked example showing why you need both before deployment.",
+  "url": "https://jahanzaibawan.com/blog/red-teaming-vs-standard-evaluation.html",
+  "image": "https://jahanzaibawan.com/assets/blog/red-teaming-vs-standard-evaluation.png",
+  "datePublished": "2026-11-08",
+  "dateModified": "2026-11-08",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/red-teaming-vs-standard-evaluation.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Red-Teaming Versus Standard Evaluation: Why You Need Both", "item": "https://jahanzaibawan.com/blog/red-teaming-vs-standard-evaluation.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 8 Nov 2026</div>
+    <h1>Red-Teaming Versus Standard Evaluation: Why You Need Both</h1>
+    <p class="lede">Standard benchmarks tell you how a model performs on average. Threat-style red-teaming tells you how it fails when someone is trying to make it fail. These are different questions and conflating them leaves gaps.</p>
+  </div>
+
+  <img src="../assets/blog/red-teaming-vs-standard-evaluation.png" alt="Cover image for the article: Red-Teaming Versus Standard Evaluation: Why You Need Both" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Two different questions</h2><p>Standard model evaluation asks a fairly narrow question: on a representative sample of inputs drawn from some distribution, how often does the model get the right answer, by whatever metric we have chosen. It assumes the test set is a fair stand-in for the deployment distribution, and it assumes the errors we care about are spread roughly evenly across that distribution. Both assumptions are reasonable for measuring general competence, and both are false for measuring safety against a motivated adversary.</p><p>Threat-style red-teaming asks a different question entirely: can someone who is actively trying to break the model find an input, or a short sequence of inputs, that produces a harmful, policy-violating, or otherwise unacceptable output. The red-teamer is not sampling from the natural distribution of user queries. They are searching, deliberately and often iteratively, through the parts of input space that standard evaluation barely touches, because ordinary users rarely go there. A benchmark accuracy of ninety-eight percent tells you almost nothing about whether a single cleverly worded prompt can bypass a safety filter, because that one prompt might be a one-in-a-million input that never appears in a randomly sampled test set of ten thousand examples.</p><p>This distinction matters because the two approaches optimise for different failure modes. Standard evaluation catches the failures that are common but individually low-stakes: a model that is subtly biased on average, or that underperforms on a demographic subgroup, or that has a calibration problem across the board. Red-teaming catches the failures that are rare but individually catastrophic: a jailbreak that extracts dangerous instructions, a prompt injection that exfiltrates private data, an edge case that causes a autonomous system to behave unsafely. Neither approach is a superset of the other, and treating a strong benchmark score as evidence of safety is a category error that I think is worth naming explicitly.</p></section><section class='psec reveal'><h2>A worked comparison</h2><p>Imagine a content moderation model being evaluated before deployment. The standard evaluation pipeline holds out a labelled test set of five thousand messages, stratified by category, and reports precision and recall per category along with a confusion matrix. Suppose the model achieves ninety-four percent recall on harassment and ninety-six percent precision on spam. These numbers are genuinely useful: they tell the team the model is well calibrated across common, naturally occurring inputs, and they let you compare this model fairly against a previous version using the same split.</p><p>Now put a red team in front of the same model. Their job is not to sample representatively, it is to find the worst case. They will try paraphrasing harmful content using euphemism, splitting a harmful instruction across multiple turns of conversation, embedding the request inside a fictional frame, or using unicode tricks to evade keyword-based filters layered on top of the model. Suppose they find that a two-step conversation, where the first message establishes an innocuous fictional premise and the second message asks the model to continue the story in a way that embeds harmful instructions, succeeds eighty percent of the time against this otherwise well-scoring model. That eighty percent figure will not appear anywhere in the five thousand message test set, because almost none of those naturally collected messages use a two-step fictional framing attack. The standard evaluation and the red-team result are both true and both necessary, and they are telling you about entirely different parts of the risk surface.</p><p>The practical lesson is that a single aggregate number, however well constructed, cannot represent both the average case and the worst case at once. If your only evaluation artefact is a leaderboard score or a held-out accuracy figure, you have implicitly assumed that no one is trying to break your system on purpose. That assumption is false for almost any model that is exposed to the public internet, and it becomes more clearly false the more capable and more widely deployed the model is.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/red-teaming-vs-standard-evaluation-1.jpg' alt='security operations room monitors' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Why you cannot substitute one for the other</h2><p>It is tempting to think red-teaming is just a harder benchmark, and that if you red-team hard enough you can fold the results back into a standard test set and be done with it. This does not quite work, for a structural reason: red-teaming is adaptive and standard evaluation is static. A red team iterates against the current model, learns what works, and refines its attacks; a frozen test set cannot do this, because once an attack is known and patched, the test set still contains the old, now-ineffective version of it. This means red-teaming needs to be an ongoing process tied to each new model version, not a one-off exercise whose outputs get baked into a fixed benchmark and then forgotten.</p><p>Conversely, standard evaluation cannot be replaced by red-teaming either, because red-teaming deliberately does not sample the natural distribution, and so it cannot tell you anything reliable about average-case quality, fairness across subgroups, or whether a model update has regressed on the common, everyday tasks users actually perform. A team that only red-teams risks shipping a model that is robust to jailbreaks but mediocre, or subtly biased, on the ordinary ninety-nine percent of traffic, simply because no one measured that ninety-nine percent carefully.</p><p>There is also a leakage-style trap worth flagging here, close to the kind I care about in any evaluation design. If red-team-discovered attacks are added to the training data to patch them, and then the same or similar attacks are used again to measure robustness, you get an inflated sense of safety that mirrors train-test contamination in ordinary machine learning. The fix is the same in spirit as a leakage-aware split: keep a held-back pool of red-team strategies that were never used for patching, rotate them in for evaluation, and treat any single red-team pass as a lower bound on vulnerability rather than a certificate of safety.</p></section><section class='psec reveal'><h2>Practical takeaway</h2><p>Run both, and keep them organisationally distinct. Standard evaluation should answer: does this model do the job well, on average, for the people who will actually use it, and is it fair and well calibrated across the groups it serves. Red-teaming should answer: what is the worst thing a motivated adversary can make this model do, and how easily. Report both numbers side by side rather than collapsing them into one safety score, because a single number will always hide whichever failure mode it was not designed to catch. If you only have budget for one, ask which failure mode would hurt you more if it went undetected; for most deployed systems with any public exposure, that answer points towards red-teaming being the one you can least afford to skip.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/red-teaming-vs-standard-evaluation-2.jpg' alt='whiteboard with arrows and red marker annotations' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Sun, 08 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Red-Teaming Versus Standard Evaluation: Why You Need Both</title>
+    <link>https://jahanzaibawan.com/blog/red-teaming-vs-standard-evaluation.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/red-teaming-vs-standard-evaluation.html</guid>
+    <pubDate>Sun, 08 Nov 2026 09:00:00 +0000</pubDate>
+    <description>Benchmarks measure average competence; red-teaming measures worst-case failure under adversarial pressure. Skip either and you are flying blind on half the risk surface.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Choosing a Metric for Imbalanced Text Classification</title>
     <link>https://jahanzaibawan.com/blog/metrics-for-imbalanced-text.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/metrics-for-imbalanced-text.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Fri, 30 Oct 2026 09:00:00 +0000</pubDate>
     <description>Research, platform, and applied ML are different jobs wearing the same title. Here is how to tell them apart before you commit years to one.</description>
     <category>Career</category>
-  </item>
-  <item>
-    <title>Deep Learning with Python Style Books: What They Teach, What They Skip</title>
-    <link>https://jahanzaibawan.com/blog/deep-learning-python-style-books.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/deep-learning-python-style-books.html</guid>
-    <pubDate>Thu, 29 Oct 2026 09:00:00 +0000</pubDate>
-    <description>Python deep learning books build strong intuition fast, but leave evaluation rigour, leakage, and deployment realities largely untouched.</description>
-    <category>Deep Learning</category>
   </item>
 </channel>
 </rss>

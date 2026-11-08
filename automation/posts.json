@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "red-teaming-vs-standard-evaluation",
+      "title": "Red-Teaming Versus Standard Evaluation: Why You Need Both",
+      "excerpt": "Benchmarks measure average competence; red-teaming measures worst-case failure under adversarial pressure. Skip either and you are flying blind on half the risk surface.",
+      "date": "2026-11-08",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a4",
+      "thumb": "assets/blog/red-teaming-vs-standard-evaluation.png",
+      "thumb_alt": "Cover image for the article: Red-Teaming Versus Standard Evaluation: Why You Need Both"
+    },
+    {
       "slug": "metrics-for-imbalanced-text",
       "title": "Choosing a Metric for Imbalanced Text Classification",
       "excerpt": "Accuracy can look great on imbalanced data while the model quietly ignores the minority class. Here is how to pick a metric that won't fool you.",
