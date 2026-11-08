@@ -3,7 +3,7 @@
     {
       "slug": "red-teaming-vs-standard-evaluation",
       "title": "Red-Teaming Versus Standard Evaluation: Why You Need Both",
-      "excerpt": "Benchmarks measure average competence; red-teaming measures worst-case failure under adversarial pressure. Skip either and you are flying blind on half the risk surface.",
+      "excerpt": "Standard evaluation measures typical performance; red-teaming hunts for adversarial failure. Here's why neither alone is enough, with a worked example.",
       "date": "2026-11-08",
       "read_min": 5,
       "tag": "Evaluation",

@@ -1,1 +1,1 @@
-2026-11-08T20:02:01Z slug=red-teaming-vs-standard-evaluation words=1097 title="Red-Teaming Versus Standard Evaluation: Why You Need Both"
+2026-11-08T20:03:02Z slug=red-teaming-vs-standard-evaluation words=1040 title="Red-Teaming Versus Standard Evaluation: Why You Need Both"
