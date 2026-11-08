@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Picking the Right Metric for Imbalanced Text Classification | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to choosing evaluation metrics for imbalanced text classification, with a worked example showing why accuracy misleads and what to use instead.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="text classification, class imbalance, evaluation metrics, precision recall, F1 score, PR curve, NLP evaluation, machine learning metrics, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-08">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Picking the Right Metric for Imbalanced Text Classification">
+<meta property="og:description" content="A practical guide to choosing evaluation metrics for imbalanced text classification, with a worked example showing why accuracy misleads and what to use instead.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/evaluation-metrics-imbalanced-text-classification.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/evaluation-metrics-imbalanced-text-classification.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Picking the Right Metric for Imbalanced Text Classification">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/evaluation-metrics-imbalanced-text-classification.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/evaluation-metrics-imbalanced-text-classification.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Picking the Right Metric for Imbalanced Text Classification",
+  "description": "A practical guide to choosing evaluation metrics for imbalanced text classification, with a worked example showing why accuracy misleads and what to use instead.",
+  "url": "https://jahanzaibawan.com/blog/evaluation-metrics-imbalanced-text-classification.html",
+  "image": "https://jahanzaibawan.com/assets/blog/evaluation-metrics-imbalanced-text-classification.png",
+  "datePublished": "2026-11-08",
+  "dateModified": "2026-11-08",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/evaluation-metrics-imbalanced-text-classification.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Picking the Right Metric for Imbalanced Text Classification", "item": "https://jahanzaibawan.com/blog/evaluation-metrics-imbalanced-text-classification.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 8 Nov 2026</div>
+    <h1>Picking the Right Metric for Imbalanced Text Classification</h1>
+    <p class="lede">Accuracy lies to you when classes are imbalanced. Here is how to choose a metric that actually reflects what your classifier is doing.</p>
+  </div>
+
+  <img src="../assets/blog/evaluation-metrics-imbalanced-text-classification.png" alt="Cover image for the article: Picking the Right Metric for Imbalanced Text Classification" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why accuracy quietly fails you</h2><p>Imagine a dataset of ten thousand support tickets where you are trying to flag the ones that mention a safety issue. Only two hundred of them, two per cent, are genuinely safety related. A classifier that simply predicts 'not safety' for every single ticket will be right 98 per cent of the time. Report that number in a meeting and it sounds like a triumph. In reality the model has learned nothing; it has just exploited the fact that the rare class is rare.</p><p>This is the core problem with accuracy on imbalanced text classification: it treats every correct prediction as equally informative, but on skewed data the majority class is easy to get right by default. The metric rewards you for ignoring the thing you actually care about. I have seen this trip up otherwise careful work, not because anyone was being sloppy, but because accuracy is the first number most tooling prints out, and it is tempting to stop there.</p><p>The fix is not a single magic metric. It is understanding what question you are actually asking of your model, and then picking a metric whose arithmetic matches that question. That requires sitting with the confusion matrix for a moment rather than skipping straight to a single scalar.</p></section><section class='psec reveal'><h2>Precision, recall, and the trade-off that matters</h2><p>Go back to the ticket example. Suppose your model flags 150 tickets as safety related. Of those, 90 are genuinely safety issues and 60 are false alarms. Of the 200 real safety tickets, it caught 90 and missed 110. Precision, the fraction of flagged tickets that are correct, is 90 divided by 150, or 60 per cent. Recall, the fraction of real safety tickets the model actually caught, is 90 divided by 200, or 45 per cent. Accuracy, meanwhile, is still sitting above 97 per cent, because the 9750 correctly identified non-safety tickets dominate the arithmetic.</p><p>Precision and recall tell two different stories and they usually trade off against each other. Push the model to flag more tickets and recall rises because you catch more true cases, but precision falls because you also catch more false alarms. Push it to be more conservative and precision rises while recall falls. Which one matters more depends entirely on the cost of each kind of mistake. If missing a genuine safety issue is dangerous, you want high recall even at the cost of some false alarms. If investigating a false alarm wastes a lot of expensive human time, you may need higher precision even if some real cases slip through.</p><p>The F1 score, the harmonic mean of precision and recall, is a reasonable single-number compromise when you have no strong reason to favour one over the other. In the example above, F1 works out to roughly 0.51, which is a far more honest summary of model quality than the 97 per cent accuracy figure. But F1 assumes precision and recall deserve equal weight, and that is an assumption, not a law of nature. If you know the real-world cost asymmetry, a weighted variant such as F-beta, where beta controls how much more recall matters than precision, is usually a better fit than reaching for plain F1 out of habit.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/evaluation-metrics-imbalanced-text-classification-1.jpg' alt='confusion matrix on whiteboard' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Beyond F1: macro averages, PR curves, and what they reveal</h2><p>Multi-class problems add another layer. If you are classifying support tickets into ten categories and one category contains 70 per cent of the data, a single overall accuracy or even a single F1 score can hide the fact that your model is excellent on the dominant class and nearly useless on three rare ones. Macro-averaged F1, which computes F1 for each class separately and then takes the unweighted mean, forces every class to count equally regardless of its frequency. This is usually what you want when the rare classes matter just as much as the common ones, which in practice is most of the time; rare classes are often rare precisely because they describe unusual but important events.</p><p>Weighted F1, by contrast, averages per-class F1 scores but weights them by how many examples each class has. It will look more like accuracy, because the common classes dominate the weighting. I would treat weighted F1 with suspicion on imbalanced data for the same reason I treat accuracy with suspicion: it can mask poor performance on the classes you probably care most about. If you report weighted F1, report macro F1 alongside it so a reader can see whether the two diverge, and if they diverge sharply, that gap is itself informative.</p><p>For binary problems, a precision-recall curve is often more useful than any single threshold-based number, because it shows you the full trade-off across every possible decision threshold rather than locking you into whichever threshold your library happens to use by default. The area under that curve, average precision, is a good summary statistic precisely because it does not depend on a single operating point. This matters because the default 0.5 threshold that most classifiers use is arbitrary; it was not chosen with your specific cost trade-off in mind, and on imbalanced data it is frequently a poor choice. Plotting the curve and picking a threshold deliberately, based on what precision or recall you actually need, is almost always better practice than accepting the default.</p></section><section class='psec reveal'><h2>A practical checklist</h2><p>Before you report a single number, ask what mistake is more expensive in your application, a false positive or a false negative, and let that answer guide you towards recall-weighted, precision-weighted, or balanced metrics. Always compute a confusion matrix, even if you do not put it in the final report, because it is the ground truth that every other metric is derived from and summarising away. For multi-class problems, report macro F1 as your headline number, and show weighted F1 or accuracy only as supporting context, not the other way round.</p><p>Finally, be honest about your test set. A metric calculated correctly on a leaked or poorly stratified split tells you nothing true, no matter how sophisticated it sounds. Stratify your train, validation, and test splits by class so that rare categories are proportionally represented everywhere, and only then trust the numbers you get back. The right metric, measured on the wrong split, is still the wrong answer.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/evaluation-metrics-imbalanced-text-classification-2.jpg' alt='office desk with support ticket screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

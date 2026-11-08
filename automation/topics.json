@@ -1,11 +1,30 @@
 {
   "queue": [
-    "Choosing an evaluation metric for text classification when classes are imbalanced",
     "How threat-style red-teaming differs from standard model evaluation, and when you need both",
     "A worked example of designing a held-out test set that actually resembles deployment",
     "Why fine-tuning results vary run to run, and how to report that honestly",
     "Grouped and stratified splits: choosing the right one for the data you actually have",
-    "What an evaluation harness should log beyond the final score"
+    "What an evaluation harness should log beyond the final score",
+    "MLOps versus DevOps: where the similarities actually end",
+    "What does NLP mean today: linguistics roots versus the therapy buzzword",
+    "NLP versus LLM: why the acronym confusion matters in interviews",
+    "Prompt engineering guides compared: what a free course actually teaches you",
+    "Context engineering explained: feeding a model the right information at the right time",
+    "A plain-English answer to what MLOps actually means, beyond the job title",
+    "Mapping the MLOps community: tools, courses, and where the real learning happens",
+    "Prompt engineering jobs decoded: what the posting is actually asking for",
+    "Fine-tuning as a word borrowed from physics: what it means in machine learning",
+    "The fine-tuned universe argument and the ML sense of fine-tuning: same word, unrelated claims",
+    "Model evaluation metrics glossary: what to compute versus what to say out loud",
+    "How threat research organisations actually evaluate frontier models",
+    "Model evaluation for extreme risks: why a held-out test set is not enough",
+    "Choosing an MLOps zoomcamp or course: what actually maps to the job",
+    "NLP without deep learning: rule-based and statistical methods that still work",
+    "Designing a prompt engineering workflow you can version and test like code",
+    "Why prompt engineering and context engineering are not the same skill",
+    "Model evaluation frameworks compared: what they automate and what they quietly assume",
+    "The vocabulary of fine-tuning: full, parameter-efficient, instruction, and what each changes",
+    "A grounded guide to becoming an NLP practitioner without a linguistics degree"
   ],
   "published": [
     "UAV object classification data-leakage case study",
@@ -276,6 +295,7 @@
     "Fine-tuning a small transformer: a worked walkthrough of what changes and why",
     "Comparing two NLP pipelines honestly: paired tests instead of a single leaderboard number",
     "What a loss curve tells you that a final metric cannot",
-    "Evaluating NLP models on out-of-distribution text: why in-domain scores overstate quality"
+    "Evaluating NLP models on out-of-distribution text: why in-domain scores overstate quality",
+    "Choosing an evaluation metric for text classification when classes are imbalanced"
   ]
 }

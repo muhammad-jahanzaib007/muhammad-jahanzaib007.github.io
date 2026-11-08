@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Sat, 07 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 08 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Picking the Right Metric for Imbalanced Text Classification</title>
+    <link>https://jahanzaibawan.com/blog/evaluation-metrics-imbalanced-text-classification.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/evaluation-metrics-imbalanced-text-classification.html</guid>
+    <pubDate>Sun, 08 Nov 2026 09:00:00 +0000</pubDate>
+    <description>Accuracy can look great on imbalanced data while your model learns nothing useful. Here is how to pick a metric you can trust.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Why In-Domain Scores Overstate NLP Model Quality</title>
     <link>https://jahanzaibawan.com/blog/ood-evaluation-nlp-models.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/deep-learning-python-style-books.html</guid>
     <pubDate>Thu, 29 Oct 2026 09:00:00 +0000</pubDate>
     <description>Python deep learning books build strong intuition fast, but leave evaluation rigour, leakage, and deployment realities largely untouched.</description>
-    <category>Deep Learning</category>
-  </item>
-  <item>
-    <title>What a Deep Learning Definition Should Really Include</title>
-    <link>https://jahanzaibawan.com/blog/what-deep-learning-definitions-miss.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/what-deep-learning-definitions-miss.html</guid>
-    <pubDate>Thu, 29 Oct 2026 09:00:00 +0000</pubDate>
-    <description>Glossary definitions of deep learning describe architecture, not behaviour. Here is what they usually leave out, and why it matters.</description>
     <category>Deep Learning</category>
   </item>
 </channel>
