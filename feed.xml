@@ -8,11 +8,11 @@
   <language>en-gb</language>
   <lastBuildDate>Sun, 08 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
-    <title>Picking the Right Metric for Imbalanced Text Classification</title>
-    <link>https://jahanzaibawan.com/blog/evaluation-metrics-imbalanced-text-classification.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/evaluation-metrics-imbalanced-text-classification.html</guid>
+    <title>Choosing a Metric for Imbalanced Text Classification</title>
+    <link>https://jahanzaibawan.com/blog/metrics-for-imbalanced-text.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/metrics-for-imbalanced-text.html</guid>
     <pubDate>Sun, 08 Nov 2026 09:00:00 +0000</pubDate>
-    <description>Accuracy can look great on imbalanced data while your model learns nothing useful. Here is how to pick a metric you can trust.</description>
+    <description>Accuracy can look great on imbalanced data while the model quietly ignores the minority class. Here is how to pick a metric that won&#x27;t fool you.</description>
     <category>Evaluation</category>
   </item>
   <item>

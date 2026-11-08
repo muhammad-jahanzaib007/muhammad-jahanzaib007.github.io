@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Choosing a Metric for Imbalanced Text Classification | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to choosing evaluation metrics for imbalanced text classification, with a worked example showing why accuracy misleads and what to use instead.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="text classification, class imbalance, evaluation metrics, precision recall, F1 score, macro F1, PR curve, NLP evaluation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-08">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Choosing a Metric for Imbalanced Text Classification">
+<meta property="og:description" content="A practical guide to choosing evaluation metrics for imbalanced text classification, with a worked example showing why accuracy misleads and what to use instead.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/metrics-for-imbalanced-text.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/metrics-for-imbalanced-text.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Choosing a Metric for Imbalanced Text Classification">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/metrics-for-imbalanced-text.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/metrics-for-imbalanced-text.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Choosing a Metric for Imbalanced Text Classification",
+  "description": "A practical guide to choosing evaluation metrics for imbalanced text classification, with a worked example showing why accuracy misleads and what to use instead.",
+  "url": "https://jahanzaibawan.com/blog/metrics-for-imbalanced-text.html",
+  "image": "https://jahanzaibawan.com/assets/blog/metrics-for-imbalanced-text.png",
+  "datePublished": "2026-11-08",
+  "dateModified": "2026-11-08",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/metrics-for-imbalanced-text.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Choosing a Metric for Imbalanced Text Classification", "item": "https://jahanzaibawan.com/blog/metrics-for-imbalanced-text.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 8 Nov 2026</div>
+    <h1>Choosing a Metric for Imbalanced Text Classification</h1>
+    <p class="lede">Accuracy lies to you when classes are skewed. Here is how to pick a metric that actually reflects what your model gets right and wrong.</p>
+  </div>
+
+  <img src="../assets/blog/metrics-for-imbalanced-text.png" alt="Cover image for the article: Choosing a Metric for Imbalanced Text Classification" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why accuracy quietly fails you</h2><p>Imagine a spam filter dataset where 95 out of every 100 emails are legitimate and 5 are spam. A model that simply predicts 'not spam' for everything will score 95% accuracy without ever learning a single thing about spam. That number looks impressive on a slide, but it is measuring the wrong thing: it rewards the model for exploiting the base rate of the classes rather than for actually discriminating between them.</p><p>This is the core problem with accuracy under class imbalance. It treats every correct prediction as equally valuable, but in most real text classification tasks, from detecting abusive comments to flagging fraudulent reviews, the minority class is usually the one you actually care about. A metric that can be gamed by ignoring that class is not a metric worth reporting, no matter how standard it feels to compute.</p><p>I have seen this trip up otherwise careful work: a model is tuned, accuracy climbs, everyone is pleased, and only later does someone notice the confusion matrix shows the minority class recall sitting near zero. The fix is not a better model at that point, it is a better question asked earlier: what does 'good' mean for this task, and does accuracy actually capture it?</p></section><section class='psec reveal'><h2>Precision, recall, and the trade-off they expose</h2><p>Precision and recall force you to be specific about the kind of mistake you care about. Precision asks: of everything the model flagged as spam, how much actually was spam? Recall asks: of everything that actually was spam, how much did the model catch? These are often in tension, and the tension is exactly what accuracy hides.</p><p>Take a concrete case. Suppose a review-flagging model is run over 1,000 reviews, 50 of which are genuinely fraudulent. The model flags 80 reviews as fraudulent, and of those, 40 are correct. It also misses 10 fraudulent reviews entirely. Precision here is 40 out of 80, which is 50%. Recall is 40 out of 50, which is 80%. Accuracy, by contrast, would be calculated over all 1,000 reviews and would land somewhere above 96%, because the 910 correctly identified legitimate reviews dominate the arithmetic. The accuracy figure tells you almost nothing about how the model handles the class you actually built it to catch.</p><p>The F1 score, the harmonic mean of precision and recall, is a useful single number when you need one, because it punishes a model that sacrifices one for the other too aggressively. In the example above, F1 works out to about 61.5%. That number is far less flattering than accuracy, and that is precisely its value: it reflects the thing you are actually trying to measure.</p><p>Where it gets more interesting is multi-class text problems, such as classifying support tickets into a dozen categories with very uneven frequencies. Here you choose between macro-averaged and weighted-averaged F1. Macro F1 treats every class equally regardless of how many examples it has, so a rare category contributes as much to the score as a common one. Weighted F1 scales each class's contribution by its frequency, which can mask poor performance on rare classes behind strong performance on common ones. If your rare categories matter, and in support ticket routing they often matter more because they signal unusual or urgent issues, macro F1 is the honest choice even though it will usually produce a lower, less comfortable number.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/metrics-for-imbalanced-text-1.jpg' alt='confusion matrix on whiteboard' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Beyond a single threshold</h2><p>Most text classifiers do not output a hard label directly, they output a probability or score that gets thresholded into a decision. Precision, recall, and F1 as computed above all depend on wherever that threshold happens to sit, usually 0.5 by default, which is an arbitrary choice with no particular justification on imbalanced data.</p><p>This is why metrics like the area under the precision-recall curve are worth reporting alongside, or instead of, a single threshold-dependent number. The PR curve shows you precision and recall across every possible threshold, which matters a great deal when imbalance is severe, because the ROC curve, a more commonly taught alternative, can look deceptively strong even when the minority class is barely being distinguished. ROC curves plot true positive rate against false positive rate, and when negatives vastly outnumber positives, the false positive rate stays small even with a fair number of false positives in absolute terms, flattering the curve. PR curves do not have this blind spot because they are built from precision, which is directly sensitive to how many of the flagged cases are wrong.</p><p>In practice, I would also recommend looking at the confusion matrix itself rather than relying purely on summary statistics. A matrix immediately reveals which classes are being confused with which others, something no single number, however well chosen, can tell you. If a support ticket classifier is confusing 'billing' with 'account access' far more than any aggregate metric suggests, that is a labelling or feature problem worth investigating directly, not something to average away.</p></section><section class='psec reveal'><h2>A practical way to decide</h2><p>Start by asking what kind of error is more costly in your actual application, not in the abstract. If missing a positive case is expensive, such as failing to catch genuine abuse, prioritise recall and report it alongside precision so the trade-off is visible. If false alarms are expensive, such as a model that keeps flagging legitimate transactions and eroding user trust, precision deserves more weight.</p><p>Then pick an aggregate metric that matches that priority: F1 when you need a balanced single number, F-beta with beta above one when recall matters more, macro F1 for multi-class problems where rare categories count, and always a precision-recall curve rather than a single threshold when you are still deciding how conservative the model should be. Report accuracy too if you like, it is not useless, but never let it stand alone on imbalanced data, and never let a leaderboard number substitute for actually inspecting the confusion matrix.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/metrics-for-imbalanced-text-2.jpg' alt='precision recall curve graph on screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

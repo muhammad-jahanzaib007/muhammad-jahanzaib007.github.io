@@ -1,15 +1,15 @@
 {
   "posts": [
     {
-      "slug": "evaluation-metrics-imbalanced-text-classification",
-      "title": "Picking the Right Metric for Imbalanced Text Classification",
-      "excerpt": "Accuracy can look great on imbalanced data while your model learns nothing useful. Here is how to pick a metric you can trust.",
+      "slug": "metrics-for-imbalanced-text",
+      "title": "Choosing a Metric for Imbalanced Text Classification",
+      "excerpt": "Accuracy can look great on imbalanced data while the model quietly ignores the minority class. Here is how to pick a metric that won't fool you.",
       "date": "2026-11-08",
       "read_min": 5,
       "tag": "Evaluation",
       "color": "a3",
-      "thumb": "assets/blog/evaluation-metrics-imbalanced-text-classification.png",
-      "thumb_alt": "Cover image for the article: Picking the Right Metric for Imbalanced Text Classification"
+      "thumb": "assets/blog/metrics-for-imbalanced-text.png",
+      "thumb_alt": "Cover image for the article: Choosing a Metric for Imbalanced Text Classification"
     },
     {
       "slug": "ood-evaluation-nlp-models",
