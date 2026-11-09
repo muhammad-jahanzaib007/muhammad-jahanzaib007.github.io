@@ -2,14 +2,14 @@
   "posts": [
     {
       "slug": "designing-a-realistic-test-set",
-      "title": "Designing a Held-Out Test Set That Mirrors Deployment",
-      "excerpt": "Random splits often overstate performance. Here is a worked example of building a test set that actually resembles how a model will be used.",
+      "title": "Designing a Held-Out Test Set That Resembles Deployment",
+      "excerpt": "Most test sets are accidentally too easy. Here is a worked example showing how to build one that actually predicts deployment performance.",
       "date": "2026-11-09",
-      "read_min": 6,
+      "read_min": 5,
       "tag": "Evaluation",
       "color": "a5",
       "thumb": "assets/blog/designing-a-realistic-test-set.png",
-      "thumb_alt": "Cover image for the article: Designing a Held-Out Test Set That Mirrors Deployment"
+      "thumb_alt": "Cover image for the article: Designing a Held-Out Test Set That Resembles Deployment"
     },
     {
       "slug": "red-teaming-vs-standard-evaluation",

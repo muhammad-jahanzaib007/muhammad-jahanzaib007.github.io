@@ -8,11 +8,11 @@
   <language>en-gb</language>
   <lastBuildDate>Mon, 09 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
-    <title>Designing a Held-Out Test Set That Mirrors Deployment</title>
+    <title>Designing a Held-Out Test Set That Resembles Deployment</title>
     <link>https://jahanzaibawan.com/blog/designing-a-realistic-test-set.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/designing-a-realistic-test-set.html</guid>
     <pubDate>Mon, 09 Nov 2026 09:00:00 +0000</pubDate>
-    <description>Random splits often overstate performance. Here is a worked example of building a test set that actually resembles how a model will be used.</description>
+    <description>Most test sets are accidentally too easy. Here is a worked example showing how to build one that actually predicts deployment performance.</description>
     <category>Evaluation</category>
   </item>
   <item>

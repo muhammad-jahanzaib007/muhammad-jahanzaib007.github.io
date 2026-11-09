@@ -1,1 +1,1 @@
-2026-11-09T08:02:32Z slug=designing-a-realistic-test-set words=1138 title="Designing a Held-Out Test Set That Mirrors Deployment"
+2026-11-09T08:03:29Z slug=designing-a-realistic-test-set words=1072 title="Designing a Held-Out Test Set That Resembles Deployment"
