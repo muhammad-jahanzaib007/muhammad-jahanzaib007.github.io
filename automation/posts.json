@@ -2,14 +2,14 @@
   "posts": [
     {
       "slug": "why-fine-tuning-results-vary",
-      "title": "Why Fine-Tuning Results Vary Run to Run",
-      "excerpt": "One fine-tuning run can swing several points on the same data and settings. I explain why, and how to report results that actually mean something.",
+      "title": "Why Fine-Tuning Results Vary Run to Run, Honestly Reported",
+      "excerpt": "One fine-tuning run is an anecdote, not evidence. Here is where the noise comes from and how to report results you can actually trust.",
       "date": "2026-11-09",
       "read_min": 5,
       "tag": "Evaluation",
       "color": "a6",
       "thumb": "assets/blog/why-fine-tuning-results-vary.png",
-      "thumb_alt": "Cover image for the article: Why Fine-Tuning Results Vary Run to Run"
+      "thumb_alt": "Cover image for the article: Why Fine-Tuning Results Vary Run to Run, Honestly Reported"
     },
     {
       "slug": "designing-a-realistic-test-set",

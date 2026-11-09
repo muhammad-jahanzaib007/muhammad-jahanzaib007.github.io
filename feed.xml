@@ -8,11 +8,11 @@
   <language>en-gb</language>
   <lastBuildDate>Mon, 09 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
-    <title>Why Fine-Tuning Results Vary Run to Run</title>
+    <title>Why Fine-Tuning Results Vary Run to Run, Honestly Reported</title>
     <link>https://jahanzaibawan.com/blog/why-fine-tuning-results-vary.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/why-fine-tuning-results-vary.html</guid>
     <pubDate>Mon, 09 Nov 2026 09:00:00 +0000</pubDate>
-    <description>One fine-tuning run can swing several points on the same data and settings. I explain why, and how to report results that actually mean something.</description>
+    <description>One fine-tuning run is an anecdote, not evidence. Here is where the noise comes from and how to report results you can actually trust.</description>
     <category>Evaluation</category>
   </item>
   <item>
