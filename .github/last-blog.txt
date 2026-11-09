@@ -1,1 +1,1 @@
-2026-11-08T20:03:02Z slug=red-teaming-vs-standard-evaluation words=1040 title="Red-Teaming Versus Standard Evaluation: Why You Need Both"
+2026-11-09T08:02:32Z slug=designing-a-realistic-test-set words=1138 title="Designing a Held-Out Test Set That Mirrors Deployment"

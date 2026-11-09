@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Sun, 08 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Mon, 09 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Designing a Held-Out Test Set That Mirrors Deployment</title>
+    <link>https://jahanzaibawan.com/blog/designing-a-realistic-test-set.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/designing-a-realistic-test-set.html</guid>
+    <pubDate>Mon, 09 Nov 2026 09:00:00 +0000</pubDate>
+    <description>Random splits often overstate performance. Here is a worked example of building a test set that actually resembles how a model will be used.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Red-Teaming Versus Standard Evaluation: Why You Need Both</title>
     <link>https://jahanzaibawan.com/blog/red-teaming-vs-standard-evaluation.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Fri, 30 Oct 2026 09:00:00 +0000</pubDate>
     <description>Comparing a data science degree with a focused portfolio means weighing time, credibility, and depth, not just fees.</description>
     <category>Careers</category>
-  </item>
-  <item>
-    <title>Choosing a Machine Learning Engineer Career Path</title>
-    <link>https://jahanzaibawan.com/blog/research-platform-applied-ml-paths.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/research-platform-applied-ml-paths.html</guid>
-    <pubDate>Fri, 30 Oct 2026 09:00:00 +0000</pubDate>
-    <description>Research, platform, and applied ML are different jobs wearing the same title. Here is how to tell them apart before you commit years to one.</description>
-    <category>Career</category>
   </item>
 </channel>
 </rss>

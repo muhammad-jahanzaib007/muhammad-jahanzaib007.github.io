@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Designing a Held-Out Test Set That Mirrors Deployment | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A worked example of designing a leakage-aware, deployment-realistic test set, showing why random splits inflate accuracy and how to fix it.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="test set design, evaluation methodology, data leakage, train test split, model evaluation, machine learning deployment, distribution shift, cross validation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-09">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Designing a Held-Out Test Set That Mirrors Deployment">
+<meta property="og:description" content="A worked example of designing a leakage-aware, deployment-realistic test set, showing why random splits inflate accuracy and how to fix it.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/designing-a-realistic-test-set.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/designing-a-realistic-test-set.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Designing a Held-Out Test Set That Mirrors Deployment">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/designing-a-realistic-test-set.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/designing-a-realistic-test-set.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Designing a Held-Out Test Set That Mirrors Deployment",
+  "description": "A worked example of designing a leakage-aware, deployment-realistic test set, showing why random splits inflate accuracy and how to fix it.",
+  "url": "https://jahanzaibawan.com/blog/designing-a-realistic-test-set.html",
+  "image": "https://jahanzaibawan.com/assets/blog/designing-a-realistic-test-set.png",
+  "datePublished": "2026-11-09",
+  "dateModified": "2026-11-09",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/designing-a-realistic-test-set.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Designing a Held-Out Test Set That Mirrors Deployment", "item": "https://jahanzaibawan.com/blog/designing-a-realistic-test-set.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 6 min read · 9 Nov 2026</div>
+    <h1>Designing a Held-Out Test Set That Mirrors Deployment</h1>
+    <p class="lede">A worked example showing how a test set built the lazy way can quietly lie to you, and how to rebuild it so the numbers mean something.</p>
+  </div>
+
+  <img src="../assets/blog/designing-a-realistic-test-set.png" alt="Cover image for the article: Designing a Held-Out Test Set That Mirrors Deployment" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the split matters more than the model</h2><p>Most courses teach the train test split as a formality: shuffle the rows, hold out twenty percent, report accuracy. That recipe is fine for a tidy textbook dataset where every row is independent and identically distributed. It is quietly dangerous for almost everything else, because deployment is never a random shuffle of your training data. Deployment is tomorrow's data, a new customer, a different hospital, a sensor that drifts. If your test set does not reflect that gap, your reported accuracy is a measurement of a problem you will not actually face.</p><p>I want to walk through a concrete example rather than restate the warning in the abstract. Suppose you are building a model to predict whether a piece of equipment will fail within the next week, using sensor readings logged every hour from a fleet of machines. You have eighteen months of data from forty machines, with roughly three hundred confirmed failure events scattered across that period. The naive approach is to pool every hourly row from every machine, shuffle, and take a random twenty percent as the test set. That approach will produce a model that looks excellent on paper and performs much worse once it meets a machine it has never seen, or a week it has never seen.</p><p>The reason is leakage through time and through identity. Readings an hour apart from the same machine are nearly duplicates of each other: temperature, vibration, and load barely change in sixty minutes. If a random split puts the 2pm reading in training and the 3pm reading from the same failure episode in test, the model is not predicting failure, it is interpolating between two almost identical rows it has effectively already seen. The test accuracy becomes a measure of interpolation skill, not forecasting skill, and the gap between that number and real-world performance can be large enough to make a genuinely mediocre model look production-ready.</p></section><section class='psec reveal'><h2>Rebuilding the split around how the model will actually be used</h2><p>The fix starts by asking a precise question: at deployment time, what will the model know and not know? In this example, the model will be deployed on machines that existed during training, but it will always be predicting the future, never the past, and it will occasionally meet a brand new machine added to the fleet. That means the test set needs two properties the random split destroys: a strict time boundary, and some representation of unseen machines.</p><p>So the redesign looks like this. First, pick a cut-off date, say the final three months of the eighteen-month window, and reserve everything after that date for testing, regardless of which machine it comes from. This removes the temporal leakage: the model can only learn from the past and must prove it generalises forward, exactly as it will have to in production. Second, within that final three months, deliberately hold out five of the forty machines entirely, machines whose data never appears in training at all, to check how the model performs on units it has never encountered. The other thirty-five machines appear in both training and the time-based test, which mirrors the realistic case of a fleet that is mostly familiar with occasional new additions.</p><p>This gives three numbers instead of one: performance on familiar machines in the future period, performance on unfamiliar machines in the future period, and, as a sanity check, performance on a conventional random split for comparison. In a plausible version of this experiment, the random split might report an F1 score around 0.89, the time-based split on familiar machines might drop to something like 0.71, and the unfamiliar-machine split might fall further still, perhaps to 0.58. That spread is the entire point. It tells you the model has learned genuine patterns that transfer across time reasonably well, but struggles considerably with equipment it has not seen, which is exactly the kind of thing a stakeholder needs to know before green-lighting a rollout to new sites.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/designing-a-realistic-test-set-1.jpg' alt='industrial sensor equipment factory floor' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What this buys you beyond a lower, more honest number</h2><p>A deployment-shaped test set does more than deflate an inflated metric. It tells you where to invest next. If the unfamiliar-machine score is the weak point, you know the model is relying too heavily on machine-specific quirks, perhaps a particular sensor's baseline drift, rather than learning transferable failure signatures. That is actionable: you might add machine-agnostic features, normalise per-unit, or collect a slightly larger sample of new-machine data before launch. A single random-split number gives you none of that diagnostic power; it just gives you false confidence.</p><p>It is also worth being honest about the cost. A deployment-shaped split is usually smaller and noisier than a random one, because you are not allowed to pool everything into one convenient pile. With only three hundred failure events spread across eighteen months, the final three-month test window might contain as few as thirty or forty positive cases, and the five held-out machines might contribute only a handful more. Confidence intervals on these smaller splits will be wider, and a single new evaluation run could shift the reported F1 by several points just from sampling noise. That is not a flaw in the method, it is the method correctly refusing to pretend a tiny sample is more informative than it is. Reporting a confidence interval, or bootstrapping the test set a few hundred times, is the honest way to communicate that uncertainty rather than hiding it behind a single tidy decimal.</p><p>The general principle extends well beyond predictive maintenance. Ask what varies between your training population and your deployment population, whether that is time, geography, patient cohort, writing style, or camera hardware, and build at least one axis of that variation explicitly into your held-out set rather than letting a random shuffle average it away. It is slower, it produces lower and messier numbers, and it is the only version of evaluation that tells you something true.</p></section><section class='psec reveal'><h2>A practical checklist</h2><p>When you next build a test set, write down three things before you touch the code: what changes between training time and deployment time, what identities (users, machines, patients, documents) must never appear in both splits, and what the smallest acceptable test size is for the metric to be trustworthy. Then design the split to match those answers, not to maximise convenience.</p><ul><li>Separate by time when the deployment task is forecasting, never shuffle across it.</li><li>Hold out entities, not just rows, when the same entity can appear many times.</li><li>Report multiple splits side by side rather than a single flattering number.</li><li>Quantify uncertainty on small test sets instead of trusting one decimal point.</li></ul><p>None of this requires exotic tooling. It requires resisting the convenience of a random shuffle and asking, honestly, what your model will actually be asked to do once it leaves the notebook.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/designing-a-realistic-test-set-2.jpg' alt='engineer reviewing data dashboard screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

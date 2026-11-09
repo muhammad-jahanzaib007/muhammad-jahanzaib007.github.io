@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "designing-a-realistic-test-set",
+      "title": "Designing a Held-Out Test Set That Mirrors Deployment",
+      "excerpt": "Random splits often overstate performance. Here is a worked example of building a test set that actually resembles how a model will be used.",
+      "date": "2026-11-09",
+      "read_min": 6,
+      "tag": "Evaluation",
+      "color": "a5",
+      "thumb": "assets/blog/designing-a-realistic-test-set.png",
+      "thumb_alt": "Cover image for the article: Designing a Held-Out Test Set That Mirrors Deployment"
+    },
+    {
       "slug": "red-teaming-vs-standard-evaluation",
       "title": "Red-Teaming Versus Standard Evaluation: Why You Need Both",
       "excerpt": "Standard evaluation measures typical performance; red-teaming hunts for adversarial failure. Here's why neither alone is enough, with a worked example.",
