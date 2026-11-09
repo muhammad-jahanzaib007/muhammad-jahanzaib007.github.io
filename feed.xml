@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Mon, 09 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Why Fine-Tuning Results Vary Run to Run</title>
+    <link>https://jahanzaibawan.com/blog/why-fine-tuning-results-vary.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/why-fine-tuning-results-vary.html</guid>
+    <pubDate>Mon, 09 Nov 2026 09:00:00 +0000</pubDate>
+    <description>One fine-tuning run can swing several points on the same data and settings. I explain why, and how to report results that actually mean something.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Designing a Held-Out Test Set That Resembles Deployment</title>
     <link>https://jahanzaibawan.com/blog/designing-a-realistic-test-set.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/designing-a-realistic-test-set.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Sat, 31 Oct 2026 09:00:00 +0000</pubDate>
     <description>A practical look at how evaluation and red team organisations design tests, probe for failure, and avoid the measurement traps that make benchmark numbers misleading.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>The Real Cost of a Data Science Degree vs a Portfolio</title>
-    <link>https://jahanzaibawan.com/blog/degree-versus-focused-portfolio.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/degree-versus-focused-portfolio.html</guid>
-    <pubDate>Fri, 30 Oct 2026 09:00:00 +0000</pubDate>
-    <description>Comparing a data science degree with a focused portfolio means weighing time, credibility, and depth, not just fees.</description>
-    <category>Careers</category>
   </item>
 </channel>
 </rss>

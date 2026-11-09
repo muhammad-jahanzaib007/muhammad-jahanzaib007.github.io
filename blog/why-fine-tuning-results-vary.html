@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Fine-Tuning Results Vary Run to Run | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Fine-tuning results vary run to run due to seeds, ordering and optimisation noise. Here is how to measure and report that variance honestly.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="fine-tuning variance, reproducibility, random seeds, model evaluation, statistical significance, deep learning experiments, reporting results, training noise, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-09">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Why Fine-Tuning Results Vary Run to Run">
+<meta property="og:description" content="Fine-tuning results vary run to run due to seeds, ordering and optimisation noise. Here is how to measure and report that variance honestly.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/why-fine-tuning-results-vary.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/why-fine-tuning-results-vary.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why Fine-Tuning Results Vary Run to Run">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/why-fine-tuning-results-vary.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/why-fine-tuning-results-vary.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Why Fine-Tuning Results Vary Run to Run",
+  "description": "Fine-tuning results vary run to run due to seeds, ordering and optimisation noise. Here is how to measure and report that variance honestly.",
+  "url": "https://jahanzaibawan.com/blog/why-fine-tuning-results-vary.html",
+  "image": "https://jahanzaibawan.com/assets/blog/why-fine-tuning-results-vary.png",
+  "datePublished": "2026-11-09",
+  "dateModified": "2026-11-09",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/why-fine-tuning-results-vary.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Why Fine-Tuning Results Vary Run to Run", "item": "https://jahanzaibawan.com/blog/why-fine-tuning-results-vary.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 9 Nov 2026</div>
+    <h1>Why Fine-Tuning Results Vary Run to Run</h1>
+    <p class="lede">A single accuracy number from one training run tells you almost nothing. Here is why fine-tuning is noisy, and how to report results so other people can trust them.</p>
+  </div>
+
+  <img src="../assets/blog/why-fine-tuning-results-vary.png" alt="Cover image for the article: Why Fine-Tuning Results Vary Run to Run" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The same code, the same data, a different number</h2><p>Anyone who has fine-tuned a model more than once has met this problem. You run the exact same script, same hyperparameters, same dataset, same split, and you get a different final accuracy. Not wildly different, but enough to matter: 82.1 percent one time, 83.6 percent the next, 81.4 percent the time after that. If you only ever ran it once and reported 83.6 percent as the result, you have told a story that is at least partly fiction.</p><p>This variance is not a bug in your code. It is a structural feature of how neural networks are trained. Weight initialisation is random. The order in which mini-batches are shuffled is random. Dropout masks are random. On GPUs, certain parallel reduction operations are not even guaranteed to produce bit-identical results across runs due to floating point summation order. Every one of these sources of randomness nudges the optimisation trajectory, and fine-tuning, where you are often adapting a large pretrained model on a comparatively small dataset, is especially sensitive to that nudge because there is less data to average the noise out.</p><p>The practical consequence is that a single number from a single run is a sample from a distribution, not a fixed property of your method. If someone else tries to replicate your result and lands two points lower, that is not necessarily evidence they did something wrong. It might just be the seed they happened to draw. Treating one run as ground truth, and then building a paper, a blog post, or a business decision on top of it, is how a lot of apparent improvements turn out to be noise when someone checks more carefully.</p></section><section class='psec reveal'><h2>Where the variance actually comes from</h2><p>It helps to separate the sources of run-to-run variance because they behave differently and some matter more than others depending on your setup. The first is initialisation and ordering randomness, which I mentioned above: different seeds give different starting points and different gradient update sequences, which can land the model in different regions of a complicated loss surface. Fine-tuning often involves a newly initialised classification head sitting on top of pretrained weights, and that head's random start can have an outsised effect on a small dataset.</p><p>The second is data ordering and batching, which interacts with the first. With small datasets and small batch sizes, the specific sequence of examples the model sees early in training can push it towards a different local solution. This matters more when your training set is a few thousand examples than when it is a few million, because with more data the gradient estimates are smoother and less dependent on any particular ordering.</p><p>The third, and the one people forget most often, is the evaluation split itself. If your validation or test set is small, say a few hundred examples, then the measured accuracy has its own sampling noise on top of the training noise. A model that is truly identical in quality can show a swing of a percentage point or two simply because the test set is small enough that a handful of borderline examples flip from correct to incorrect. Combine that with training variance and you get a number that moves around for two independent reasons, which is easy to misread as one.</p><p>A concrete illustration: suppose you fine-tune the same model five times with different seeds on a dataset where the true underlying performance is around 82 percent, and your test set has 400 examples. You might see results like 80.5, 83.0, 81.8, 84.1, and 82.6. The spread here, roughly three and a half points from lowest to highest, is entirely plausible for this scale of data and says nothing about your method being unstable in some exotic sense. It is just what noise looks like at this sample size.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/why-fine-tuning-results-vary-1.jpg' alt='laptop with graphs on screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Reporting it honestly</h2><p>The fix is not complicated, it is just more work than reporting a single number, which is exactly why people skip it. Run your fine-tuning procedure multiple times, ideally five or more, with different random seeds, keeping everything else fixed. Report the mean and the standard deviation, or the full range, rather than the single best or single most convenient run. If you are comparing two methods, compare the distributions, not the best cherry from each basket.</p><p>This changes how you read small differences. If method A gets 83.6 mean with a standard deviation of 1.2, and method B gets 82.9 mean with a standard deviation of 1.4, you do not have strong evidence that A beats B. The overlap between those distributions is large relative to the gap between the means. A proper comparison, using something like a paired test across matched seeds or a bootstrap over the test set, will often tell you the difference is not distinguishable from noise, even though the headline numbers look different.</p><p>It also changes what counts as a meaningful improvement claim. If your baseline varies by two points across seeds, then a new technique that improves the mean by half a point is not something to build a strong claim around, however exciting that half a point feels. You need either a much larger effect size or a much larger number of runs, or ideally both, before you can say with any confidence that the improvement is real rather than a lucky draw.</p><p>None of this means you should abandon single runs entirely, resources are finite and sometimes one careful run with a fixed, documented seed is all a project can afford. But if you only have one run, say so plainly. Report the seed, report that variance was not measured, and resist the temptation to present the number as more solid than it is. The honest version of a result is often less impressive than the cherry-picked version, but it is the only version that survives contact with someone else trying to reproduce it.</p></section>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

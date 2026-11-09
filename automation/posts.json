@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "why-fine-tuning-results-vary",
+      "title": "Why Fine-Tuning Results Vary Run to Run",
+      "excerpt": "One fine-tuning run can swing several points on the same data and settings. I explain why, and how to report results that actually mean something.",
+      "date": "2026-11-09",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a6",
+      "thumb": "assets/blog/why-fine-tuning-results-vary.png",
+      "thumb_alt": "Cover image for the article: Why Fine-Tuning Results Vary Run to Run"
+    },
+    {
       "slug": "designing-a-realistic-test-set",
       "title": "Designing a Held-Out Test Set That Resembles Deployment",
       "excerpt": "Most test sets are accidentally too easy. Here is a worked example showing how to build one that actually predicts deployment performance.",
