@@ -1,1 +1,1 @@
-2026-11-10T20:01:07Z slug=evaluation-harness-beyond-score words=1003 title="What an Evaluation Harness Should Log Beyond the Score"
+2026-11-10T20:02:19Z slug=beyond-the-final-score words=1058 title="What an Evaluation Harness Should Log Beyond the Score"

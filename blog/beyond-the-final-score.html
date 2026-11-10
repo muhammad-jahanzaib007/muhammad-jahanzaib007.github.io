@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What an Evaluation Harness Should Log Beyond the Score | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why evaluation harnesses need to log more than the final score, with a worked example of what rich logging reveals about model behaviour.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="evaluation harness, model evaluation, ML reproducibility, logging, leakage, baselines, error analysis, machine learning, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-10">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="What an Evaluation Harness Should Log Beyond the Score">
+<meta property="og:description" content="Why evaluation harnesses need to log more than the final score, with a worked example of what rich logging reveals about model behaviour.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/beyond-the-final-score.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/beyond-the-final-score.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What an Evaluation Harness Should Log Beyond the Score">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/beyond-the-final-score.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/beyond-the-final-score.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "What an Evaluation Harness Should Log Beyond the Score",
+  "description": "Why evaluation harnesses need to log more than the final score, with a worked example of what rich logging reveals about model behaviour.",
+  "url": "https://jahanzaibawan.com/blog/beyond-the-final-score.html",
+  "image": "https://jahanzaibawan.com/assets/blog/beyond-the-final-score.png",
+  "datePublished": "2026-11-10",
+  "dateModified": "2026-11-10",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/beyond-the-final-score.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "What an Evaluation Harness Should Log Beyond the Score", "item": "https://jahanzaibawan.com/blog/beyond-the-final-score.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 10 Nov 2026</div>
+    <h1>What an Evaluation Harness Should Log Beyond the Score</h1>
+    <p class="lede">A single accuracy number tells you almost nothing about why a model works or when it will fail. Here is what I log instead.</p>
+  </div>
+
+  <img src="../assets/blog/beyond-the-final-score.png" alt="Cover image for the article: What an Evaluation Harness Should Log Beyond the Score" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The single number lies by omission</h2><p>If a report says a model scored 84.2 percent, I immediately want to ask what the other 15.8 percent looks like. Is it spread evenly across classes, or concentrated in one awkward category that nobody wants to mention in the abstract? A final score is a compression of thousands of individual decisions into one float, and compression always loses information. The question is whether the information you threw away was the information you actually needed.</p><p>I have seen two models with identical headline accuracy behave completely differently in practice. One was confidently wrong on rare classes, the other was uncertain everywhere but rarely catastrophically wrong. If your harness only logs the aggregate score, you cannot tell these two models apart, even though a user would experience them very differently. This is not a hypothetical concern, it is the normal state of affairs once you look past the leaderboard.</p><p>So the point of this post is simple: treat the final score as a summary statistic of a much richer dataset that your harness should be producing, and keep that dataset around. The marginal cost of logging more is small. The cost of not having it when something goes wrong in production is large.</p></section><section class='psec reveal'><h2>Per-example predictions and the data split itself</h2><p>The first thing to log, and the thing most often skipped, is the raw per-example output: the input identifier, the model's prediction, the ground truth, and some confidence or probability if the model produces one. With this alone you can reconstruct any aggregate metric later, slice it by subgroup, and compare two model versions example by example rather than trusting that a 0.6 point improvement in the mean is meaningful.</p><p>Here is a concrete case. Suppose a classifier reports 90 percent accuracy on a 500-example test set. That sounds solid until you log predictions per example and discover that 40 of the 50 errors fall in a single minority class that makes up only 8 percent of the data. The aggregate score barely moves if you fix that class, because it is a small slice, but for anyone actually relying on that class the model is unusable. You only find this by keeping the per-example record, not the summary.</p><p>Equally important, and equally often neglected, is logging exactly which examples were in the train, validation, and test split, along with the hash or version of the split itself. Leakage is one of the most common ways evaluation numbers become fiction, and it rarely announces itself. A near-duplicate example sitting in both train and test, a time-ordered dataset split randomly instead of chronologically, a feature that encodes the label by accident: all of these inflate scores quietly. If you log the split identifiers and can audit them later, you have a chance of catching this. If you only log the score, you have nothing to audit.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/beyond-the-final-score-1.jpg' alt='researcher reviewing data on laptop screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Baselines, seeds, and the conditions of the run</h2><p>A score without a baseline next to it is nearly meaningless. I always log the performance of at least one trivial baseline, such as predicting the majority class or a simple rule-based heuristic, run through the exact same harness as the real model. This matters because the harness itself, not just the model, can be the source of an inflated number. If your fancy model scores 71 percent and a baseline that always predicts the majority class scores 68 percent on the same test set, you have learned that your model is doing almost nothing useful, no matter how sophisticated it sounds in the writeup.</p><p>Random seeds are the second thing that gets silently dropped. A single training run with a single seed gives you one sample from a distribution of possible outcomes, not the outcome. I like to log the seed used, and ideally run several seeds and report the spread, not just the mean. If a model's score moves by two points depending on the random seed, then a half-point improvement from a new technique is noise dressed up as progress. Without the seed and the spread logged, nobody downstream can tell the difference between a genuine gain and a lucky draw.</p><p>Beyond seeds, log the environment conditions that can silently change results: library versions, hardware, batch size, whether mixed precision was used, the exact prompt or preprocessing template if relevant. I have seen a two point swing in reported numbers purely from a tokenisation change between library versions. None of this needs to be glamorous, a plain text or JSON manifest alongside the results is enough, but it needs to exist somewhere other than someone's memory.</p></section><section class='psec reveal'><h2>Failure cases, calibration, and the cost of being wrong</h2><p>Logging a handful of concrete failure examples, not just their count, is one of the highest-value habits I have picked up. Numbers tell you that something failed, examples tell you how. If a translation model mistranslates numbers, or a classifier systematically confuses two specific categories, this becomes obvious within minutes of reading twenty logged failure cases, and nearly invisible if all you have is a confusion matrix of numbers with no examples attached.</p><p>Calibration is the other thing worth logging and almost never is. A model that says it is 95 percent confident should be right roughly 95 percent of the time when it says that. Logging the predicted probability alongside the outcome for every example lets you check this after the fact, using something as simple as grouping predictions into confidence bands and comparing predicted versus actual accuracy per band. A model can have excellent raw accuracy and terrible calibration, which matters enormously if any downstream decision depends on the confidence score rather than just the top prediction.</p><p>Finally, if errors are not all equally costly in your application, log enough detail to compute cost-weighted metrics after the fact, not just accuracy. A medical screening tool that misses a positive case is not equivalent to one that flags a false alarm, yet both get folded into the same accuracy figure by default. If you have logged the raw predictions, the ground truth, and the confidence, you can always recompute a cost-sensitive metric later without rerunning the whole evaluation. If you only kept the final score, you are stuck with whatever metric someone chose at the time, which is rarely the one you need six months later when the real question changes.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/beyond-the-final-score-2.jpg' alt='whiteboard with confusion matrix diagram' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

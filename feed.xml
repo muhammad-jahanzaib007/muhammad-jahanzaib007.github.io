@@ -9,10 +9,10 @@
   <lastBuildDate>Tue, 10 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
     <title>What an Evaluation Harness Should Log Beyond the Score</title>
-    <link>https://jahanzaibawan.com/blog/evaluation-harness-beyond-score.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/evaluation-harness-beyond-score.html</guid>
+    <link>https://jahanzaibawan.com/blog/beyond-the-final-score.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/beyond-the-final-score.html</guid>
     <pubDate>Tue, 10 Nov 2026 09:00:00 +0000</pubDate>
-    <description>A final score hides every interesting failure. Here is what a serious evaluation harness should actually record.</description>
+    <description>A final score hides the interesting part of evaluation. I walk through what to log so you can actually trust and debug your numbers.</description>
     <category>Evaluation</category>
   </item>
   <item>

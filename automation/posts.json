@@ -1,14 +1,14 @@
 {
   "posts": [
     {
-      "slug": "evaluation-harness-beyond-score",
+      "slug": "beyond-the-final-score",
       "title": "What an Evaluation Harness Should Log Beyond the Score",
-      "excerpt": "A final score hides every interesting failure. Here is what a serious evaluation harness should actually record.",
+      "excerpt": "A final score hides the interesting part of evaluation. I walk through what to log so you can actually trust and debug your numbers.",
       "date": "2026-11-10",
       "read_min": 5,
       "tag": "Evaluation",
       "color": "a3",
-      "thumb": "assets/blog/evaluation-harness-beyond-score.png",
+      "thumb": "assets/blog/beyond-the-final-score.png",
       "thumb_alt": "Cover image for the article: What an Evaluation Harness Should Log Beyond the Score"
     },
     {
