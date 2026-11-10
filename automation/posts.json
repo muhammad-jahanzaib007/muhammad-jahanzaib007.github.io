@@ -1,14 +1,14 @@
 {
   "posts": [
     {
-      "slug": "grouped-vs-stratified-splits",
+      "slug": "grouped-and-stratified-splits",
       "title": "Grouped and Stratified Splits: Picking the Right One",
-      "excerpt": "Random splits often lie to you. Here is how to decide between grouped and stratified splitting before you trust a single metric.",
+      "excerpt": "A cross-validation scheme is only as honest as the assumptions behind it. Learn when to group, when to stratify, and when you need both at once.",
       "date": "2026-11-10",
       "read_min": 5,
       "tag": "Evaluation",
       "color": "a2",
-      "thumb": "assets/blog/grouped-vs-stratified-splits.png",
+      "thumb": "assets/blog/grouped-and-stratified-splits.png",
       "thumb_alt": "Cover image for the article: Grouped and Stratified Splits: Picking the Right One"
     },
     {

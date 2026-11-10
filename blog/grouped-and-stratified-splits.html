@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grouped and Stratified Splits: Picking the Right One | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to choosing between grouped, stratified, and combined data splits to avoid leakage and misleading evaluation scores.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="cross validation, grouped k-fold, stratified sampling, data leakage, model evaluation, train test split, machine learning evaluation, class imbalance, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-10">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Grouped and Stratified Splits: Picking the Right One">
+<meta property="og:description" content="A practical guide to choosing between grouped, stratified, and combined data splits to avoid leakage and misleading evaluation scores.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/grouped-and-stratified-splits.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/grouped-and-stratified-splits.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Grouped and Stratified Splits: Picking the Right One">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/grouped-and-stratified-splits.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/grouped-and-stratified-splits.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Grouped and Stratified Splits: Picking the Right One",
+  "description": "A practical guide to choosing between grouped, stratified, and combined data splits to avoid leakage and misleading evaluation scores.",
+  "url": "https://jahanzaibawan.com/blog/grouped-and-stratified-splits.html",
+  "image": "https://jahanzaibawan.com/assets/blog/grouped-and-stratified-splits.png",
+  "datePublished": "2026-11-10",
+  "dateModified": "2026-11-10",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/grouped-and-stratified-splits.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Grouped and Stratified Splits: Picking the Right One", "item": "https://jahanzaibawan.com/blog/grouped-and-stratified-splits.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 10 Nov 2026</div>
+    <h1>Grouped and Stratified Splits: Picking the Right One</h1>
+    <p class="lede">Random splits are the default, but the structure of your data usually tells you which split strategy will actually protect you from fooling yourself.</p>
+  </div>
+
+  <img src="../assets/blog/grouped-and-stratified-splits.png" alt="Cover image for the article: Grouped and Stratified Splits: Picking the Right One" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the default split is rarely the right one</h2><p>Most tutorials teach a random train-test split as if it were a neutral, risk-free operation. It is not. A random split only gives you an honest estimate of generalisation if the rows you are shuffling are genuinely independent and if the thing you care about getting right is represented proportionally in both halves. Real datasets rarely satisfy either condition quietly. There is usually some hidden structure, a patient who appears in multiple scans, a customer with dozens of transactions, a rare class that vanishes from the test set by bad luck, and that structure decides whether your validation score is trustworthy or decorative.</p><p>I think of this as a question you must ask before you ask anything about models: what is the unit that must not leak, and what is the unit that must be represented fairly? The first question points you towards grouped splits. The second points you towards stratified splits. Often the honest answer is that you need both, and ignoring either one produces a number that looks good in a notebook and falls apart in production.</p></section><section class='psec reveal'><h2>Grouped splits: stopping the model from cheating on near-duplicates</h2><p>A grouped split keeps every row belonging to the same entity entirely on one side of the split, either train or test, never both. The entity is whatever group identifier exists in your data: a patient ID, a device ID, a user ID, a document ID if you have chunked a document into passages. The reason this matters is that rows from the same group are usually correlated in ways that have nothing to do with the pattern you want the model to learn, and a model that exploits that correlation will look brilliant on a random split while learning almost nothing transferable.</p><p>Here is a concrete version. Suppose you have ten thousand sensor readings from fifty machines, roughly two hundred readings per machine, and you are predicting whether a machine will fail within the next week. If you split randomly, the test set will contain readings from machines that also appear in the training set, often taken only hours apart. The model can essentially memorise each machine's baseline signature and nudge its prediction from there, since nearby readings from the same machine are nearly identical. You might report ninety-four percent accuracy. Switch to a grouped split where all fifty machines are partitioned so that no machine appears in both sets, and the same model might drop to seventy-eight percent, because now it has to generalise to a machine it has never seen rather than recognise one it has.</p><p>That gap is not noise, it is the leakage you were previously hiding from yourself. The seventy-eight percent is the number that tells you something about deploying this model on machine fifty-one next month. The ninety-four percent tells you about a situation that will never recur, because in production every new machine is, by definition, a machine the model has not seen. Grouped k-fold cross-validation extends this idea across multiple folds, rotating which groups sit in the held-out fold each time, so you get a distribution of honest scores rather than a single lucky or unlucky one.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/grouped-and-stratified-splits-1.jpg' alt='laboratory samples organised in labelled trays' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Stratified splits: keeping rare classes from disappearing</h2><p>Stratification solves a different problem. It ensures that the proportion of each class, or each bucket of a continuous target, stays roughly the same in every fold. This matters most when a class is rare or when you care about a subgroup that makes up a small fraction of the data. Without stratification, a random split can, purely by chance, put almost all of the positive cases into one fold and leave the others nearly empty of them.</p><p>Take a fraud detection dataset where fraudulent transactions make up one and a half percent of all records. With five thousand transactions and plain random five-fold splitting, one fold might end up with eighteen fraud cases and another with only four, just from sampling variance. A model evaluated on the fold with four fraud cases will show a wildly different precision and recall than one evaluated on the fold with eighteen, and neither number reflects the model's real behaviour, they reflect the luck of the split. Stratified k-fold forces each fold to contain close to one and a half percent fraud cases, so the variance you observe across folds comes from the model and the data, not from an accidental imbalance in how you cut the pie.</p><p>The same logic applies beyond binary classification. If you are predicting a continuous value like house price, you can stratify by binning the target into deciles first, which prevents a fold from accidentally containing only mid-range houses while another contains only mansions. Stratification is cheap, it costs you nothing in model complexity, and it removes a whole category of evaluation noise that has nothing to do with the question you are trying to answer.</p></section><section class='psec reveal'><h2>When you need both, and how to decide</h2><p>The two concerns are orthogonal, which means many real datasets need a combined strategy: group by entity to prevent leakage, and within that grouping, try to preserve class balance across folds. This is harder than either technique alone, because moving whole groups between folds in large chunks makes it harder to hit an exact stratification ratio, especially with a highly imbalanced rare class. In practice you accept an approximate balance rather than a perfect one, and you check the realised class proportions per fold after the split rather than assuming the grouping has preserved them.</p><p>My rule of thumb is to start by asking whether any natural identifier in the data could let the model recognise an individual rather than learn a pattern; if so, group on it without exception, since leakage inflates scores far more dangerously than imbalance does. Then ask whether your target has a minority class or a skewed distribution worth protecting; if so, stratify within whatever grouping constraint you already have. If neither grouping nor a target requires special care, a well-seeded random split is fine, and reaching for complexity you do not need just adds a place for bugs to hide.</p><p>The practical habit worth keeping is to always report, alongside your main metric, a sentence describing exactly how the split was constructed: what the group key was, if any, and what was stratified, if anything. That single sentence is often the difference between a result someone can trust and a result someone has to quietly redo six months later when it fails to hold up outside the notebook.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/grouped-and-stratified-splits-2.jpg' alt='server room data storage racks' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
