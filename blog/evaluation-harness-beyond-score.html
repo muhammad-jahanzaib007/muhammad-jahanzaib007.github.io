@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What an Evaluation Harness Should Log Beyond the Score | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why evaluation harnesses need to log more than final scores, including per-example predictions, data versions, and timing, to support honest comparisons.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="evaluation harness, model evaluation, reproducibility, machine learning logging, leakage, benchmarking, experiment tracking, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-10">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="What an Evaluation Harness Should Log Beyond the Score">
+<meta property="og:description" content="Why evaluation harnesses need to log more than final scores, including per-example predictions, data versions, and timing, to support honest comparisons.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/evaluation-harness-beyond-score.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/evaluation-harness-beyond-score.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What an Evaluation Harness Should Log Beyond the Score">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/evaluation-harness-beyond-score.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/evaluation-harness-beyond-score.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "What an Evaluation Harness Should Log Beyond the Score",
+  "description": "Why evaluation harnesses need to log more than final scores, including per-example predictions, data versions, and timing, to support honest comparisons.",
+  "url": "https://jahanzaibawan.com/blog/evaluation-harness-beyond-score.html",
+  "image": "https://jahanzaibawan.com/assets/blog/evaluation-harness-beyond-score.png",
+  "datePublished": "2026-11-10",
+  "dateModified": "2026-11-10",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/evaluation-harness-beyond-score.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "What an Evaluation Harness Should Log Beyond the Score", "item": "https://jahanzaibawan.com/blog/evaluation-harness-beyond-score.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 10 Nov 2026</div>
+    <h1>What an Evaluation Harness Should Log Beyond the Score</h1>
+    <p class="lede">A single accuracy number tells you almost nothing about why a model works or when it will stop working. Here is what else deserves a line in your logs.</p>
+  </div>
+
+  <img src="../assets/blog/evaluation-harness-beyond-score.png" alt="Cover image for the article: What an Evaluation Harness Should Log Beyond the Score" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The score is the least informative number you will produce</h2><p>When I run an evaluation, the final metric is the thing everyone asks for first, and it is also the thing that tells me the least. Suppose two models both score 82% accuracy on a classification task. That single figure says nothing about whether they fail on the same examples, whether the harder model is confidently wrong on the cases that matter most to a downstream user, or whether one of them is secretly relying on a shortcut that will not generalise. Two models can land on the same number through completely different routes, and if your harness only records the final score, you have thrown away the evidence that would let you tell those routes apart.</p><p>This matters more as soon as you start comparing runs over time, across teams, or across papers. A score without context is not reproducible in any meaningful sense. If someone reruns your evaluation six months later and gets 80% instead of 82%, you want to know within minutes whether that is noise, a data drift, a library version change, or a genuine regression. None of that is answerable from the headline number alone. The fix is not complicated, it just requires treating the evaluation harness as an instrument that records its own working, not a calculator that spits out one answer and discards the rest.</p></section><section class='psec reveal'><h2>Per-example predictions and the shape of error</h2><p>The single most useful thing to log is the full set of per-example predictions, alongside the ground truth, the input identifier, and the model's confidence or probability where available. This sounds obvious, but it is routinely skipped because it is tempting to just accumulate a running accuracy counter and discard each example once it has been scored. That is a mistake, because the aggregate hides the shape of the error distribution entirely.</p><p>Here is a concrete case. Imagine a binary classifier evaluated on 1,000 examples that scores 90% accuracy. That sounds solid until you log the per-example results and discover that 95 of the 100 errors are concentrated in a single subgroup that makes up only 15% of the dataset. Within that subgroup the real accuracy is closer to 60%. The aggregate number was arithmetically correct and practically misleading. You only find this by keeping the per-example record and being able to slice it by any metadata you care about afterwards, rather than deciding in advance which breakdowns matter.</p><p>Confidence scores add another layer. A model that is 90% accurate but wildly overconfident on its wrong answers is a different and more dangerous thing than a model that is 90% accurate and appropriately uncertain when it is wrong. Logging predicted probabilities lets you compute calibration after the fact, and calibration is often what separates a model you can safely gate with a threshold from one that will quietly surprise you in production.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/evaluation-harness-beyond-score-1.jpg' alt='laboratory notebook with data charts' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Data lineage, versions, and the leakage you did not notice</h2><p>A score is only meaningful relative to the exact data it was computed on, and data is not as stable as people assume. If your harness does not log the dataset version, the split hashes, and ideally a checksum of the evaluation file itself, you cannot be certain that a later comparison is apples to apples. I have seen leaderboard numbers quietly shift because someone fixed a labelling bug in the test set and nobody downstream knew which version of the file their reported score corresponded to.</p><p>Leakage is the sharper version of this problem. Suppose your training pipeline deduplicates near-identical examples before training but your evaluation set was built from an earlier snapshot of the same raw data pool. If even 3% of your test examples have a near-duplicate in the training set, your score is inflated by an amount that is very hard to detect after the fact unless you logged enough information to check. A good harness logs the split construction process itself, including the random seed, the filtering rules applied, and ideally a record of any overlap check that was run between train and test identifiers. This is tedious to set up once and saves you from publishing a number you later have to retract.</p><p>Environment matters too. Library versions, hardware, and even floating point non-determinism on GPUs can shift a score by a fraction of a percent, which is irrelevant until you are comparing two methods that differ by exactly that amount. Logging the environment is cheap insurance against chasing a difference that was never real.</p></section><section class='psec reveal'><h2>Timing, cost, and the baseline you compared against</h2><p>A score without a cost figure attached is an incomplete comparison. If model A scores two points higher than model B but takes four times as long to run inference, that is a real trade-off that the final metric hides entirely. Logging wall clock time, and ideally compute cost per example, turns your evaluation from a leaderboard entry into something a practitioner can actually use to make a decision.</p><p>Equally important, and equally often skipped, is logging what the baseline was and how it performed under identical conditions. A model that beats a strong, carefully tuned baseline by one point is a genuinely different result from a model that beats a weak or stale baseline by ten points. If your harness always runs the current best-known baseline alongside the candidate model, using the same data version and the same scoring code, the comparison becomes self-documenting. You never have to trust a number in isolation because the context that justifies it travels with it.</p><p>The practical takeaway is simple: treat your evaluation harness as a record-keeping system first and a scoring system second. Log every prediction, not just the aggregate. Log the exact data version and any overlap checks between splits. Log the environment and the cost. Run a baseline every time under the same conditions. None of this is glamorous work, but it is the difference between a number you can defend in six months and one you quietly hope nobody asks about.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/evaluation-harness-beyond-score-2.jpg' alt='server rack with cables' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

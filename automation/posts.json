@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "evaluation-harness-beyond-score",
+      "title": "What an Evaluation Harness Should Log Beyond the Score",
+      "excerpt": "A final score hides every interesting failure. Here is what a serious evaluation harness should actually record.",
+      "date": "2026-11-10",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a3",
+      "thumb": "assets/blog/evaluation-harness-beyond-score.png",
+      "thumb_alt": "Cover image for the article: What an Evaluation Harness Should Log Beyond the Score"
+    },
+    {
       "slug": "grouped-and-stratified-splits",
       "title": "Grouped and Stratified Splits: Picking the Right One",
       "excerpt": "A cross-validation scheme is only as honest as the assumptions behind it. Learn when to group, when to stratify, and when you need both at once.",
