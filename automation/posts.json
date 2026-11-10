@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "grouped-vs-stratified-splits",
+      "title": "Grouped and Stratified Splits: Picking the Right One",
+      "excerpt": "Random splits often lie to you. Here is how to decide between grouped and stratified splitting before you trust a single metric.",
+      "date": "2026-11-10",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a2",
+      "thumb": "assets/blog/grouped-vs-stratified-splits.png",
+      "thumb_alt": "Cover image for the article: Grouped and Stratified Splits: Picking the Right One"
+    },
+    {
       "slug": "why-fine-tuning-results-vary",
       "title": "Why Fine-Tuning Results Vary Run to Run, Honestly Reported",
       "excerpt": "One fine-tuning run is an anecdote, not evidence. Here is where the noise comes from and how to report results you can actually trust.",

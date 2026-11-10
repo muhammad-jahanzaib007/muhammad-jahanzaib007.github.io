@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grouped and Stratified Splits: Picking the Right One | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to choosing grouped versus stratified data splits, with a worked example showing how leakage inflates evaluation scores.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="grouped split, stratified split, data leakage, cross validation, model evaluation, train test split, machine learning evaluation, group k-fold, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-10">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Grouped and Stratified Splits: Picking the Right One">
+<meta property="og:description" content="A practical guide to choosing grouped versus stratified data splits, with a worked example showing how leakage inflates evaluation scores.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/grouped-vs-stratified-splits.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/grouped-vs-stratified-splits.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Grouped and Stratified Splits: Picking the Right One">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/grouped-vs-stratified-splits.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/grouped-vs-stratified-splits.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Grouped and Stratified Splits: Picking the Right One",
+  "description": "A practical guide to choosing grouped versus stratified data splits, with a worked example showing how leakage inflates evaluation scores.",
+  "url": "https://jahanzaibawan.com/blog/grouped-vs-stratified-splits.html",
+  "image": "https://jahanzaibawan.com/assets/blog/grouped-vs-stratified-splits.png",
+  "datePublished": "2026-11-10",
+  "dateModified": "2026-11-10",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/grouped-vs-stratified-splits.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Grouped and Stratified Splits: Picking the Right One", "item": "https://jahanzaibawan.com/blog/grouped-vs-stratified-splits.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 10 Nov 2026</div>
+    <h1>Grouped and Stratified Splits: Picking the Right One</h1>
+    <p class="lede">A random split can quietly leak information between train and test sets. Knowing when to group and when to stratify is the difference between a believable score and a fantasy.</p>
+  </div>
+
+  <img src="../assets/blog/grouped-vs-stratified-splits.png" alt="Cover image for the article: Grouped and Stratified Splits: Picking the Right One" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the split matters more than the model</h2><p>I have seen more evaluation pipelines fail at the splitting stage than at the modelling stage. It is an unglamorous step, so it gets a single line of code and no further thought: shuffle, split eighty-twenty, done. The trouble is that a split encodes an assumption about how your data was generated and how it will be used in production. Get that assumption wrong and every metric downstream becomes a polite fiction.</p><p>The two failure modes I care about most are leakage across groups and imbalance across classes. They are solved by two different tools, grouped splitting and stratified splitting, and the mistake people make is reaching for one when the data actually demands the other, or needs both at once. Neither technique is exotic; the hard part is diagnosing which problem you have.</p><p>A useful habit is to ask, before touching a train_test_split function, what the unit of independence in your data actually is. Is it the row, or is it something coarser, like a patient, a customer, a sensor, or a document? That single question usually tells you whether grouping is required, and it costs nothing to ask it early.</p></section><section class='psec reveal'><h2>Grouped splits: when rows are not independent</h2><p>Grouped splitting exists because many datasets have rows that are not independent samples, they are repeated observations of the same underlying entity. Think of a medical dataset with multiple scans per patient, a fraud dataset with multiple transactions per account, or an audio dataset with multiple clips per speaker. If you split by row at random, scans from the same patient can land in both train and test. The model does not need to learn anything general; it can partly memorise patient-specific quirks and then recognise them at test time. Your accuracy looks excellent and tells you almost nothing about generalisation to a new patient.</p><p>Here is a concrete worked intuition. Suppose you have twenty thousand rows but only four hundred unique patients, so each patient contributes roughly fifty rows. A random eighty-twenty split will place most patients in both sets, because with fifty rows per patient the chance that every single one lands in the same partition is tiny. If the model has even a weak ability to recognise a patient's signature, a modest leakage effect might lift test accuracy from a genuine seventy-two percent to an optimistic eighty-five percent. Neither number is fabricated nonsense from thin air, but only one of them describes what happens when a new patient walks through the door. A grouped split, where all rows for a given patient id are forced into the same fold, removes that shortcut entirely and gives you the number that matters.</p><p>The practical fix is almost always a group-aware cross-validation scheme that treats the group identifier as the thing being split, not the row. It feels wasteful, because it is coarser and sometimes leaves folds slightly uneven in row count, but that unevenness is honest. I would rather have a slightly noisier but truthful estimate than a smooth, confident, wrong one.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/grouped-vs-stratified-splits-1.jpg' alt='medical scan folders on desk' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Stratified splits: when the target is rare or skewed</h2><p>Stratified splitting solves a different problem: making sure the distribution of the target variable, or sometimes an important feature, is preserved across train and test. This matters most when classes are imbalanced. Imagine a churn dataset where six percent of customers churn. A plain random split on a modest sample size can easily produce a test set with four percent churners in one run and nine percent in another, just by chance. Your reported recall or F1 score will bounce around for reasons that have nothing to do with model quality, purely because the test set composition shifted.</p><p>Work through the numbers. With three thousand rows in a test set and a true churn rate of six percent, you expect about one hundred and eighty churners, but the actual count across random splits can easily wander between one hundred and fifty and two hundred and ten. That is a meaningful swing in the denominator used to compute recall, and it can make two models look different when they are not, or look the same when one is genuinely better. A stratified split fixes the proportion directly, so each fold mirrors the full dataset's class balance, and the variance you see in your metric comes from the model and the data, not from an unlucky shuffle.</p><p>Stratification is not limited to the target column either. If you know a feature strongly affects performance, such as a time period, a geographic region, or an acquisition channel, stratifying on that feature keeps comparisons fair across folds, as long as you have enough data in each stratum to avoid creating tiny, unstable subgroups.</p></section><section class='psec reveal'><h2>Combining them, and the practical takeaway</h2><p>Real datasets often need both techniques at once, and this is where people get stuck, because grouping and stratification pull in slightly different directions. Picture a dataset of medical images with multiple scans per patient and a rare disease present in only eight percent of patients. You need every scan from a patient in the same fold, which is grouping, and you also need the disease prevalence to be roughly consistent across folds, which is stratification. The combined approach assigns patients to folds such that the group constraint is respected first and the class balance is approximated as closely as possible afterwards. It will rarely be perfect, because you cannot satisfy two constraints exactly with a finite, lumpy set of groups, but it will be far closer to reality than ignoring either constraint.</p><p>My practical checklist is short. First, identify the true unit of independence in the data and ask whether rows sharing that unit could let a model cheat; if so, group by it. Second, check whether your target, or any feature you consider operationally important, is skewed enough that random variation in composition would materially change your metric; if so, stratify by it. Third, when both conditions hold, group first and stratify as a secondary objective within that constraint, and report the resulting class balance per fold honestly rather than assuming it worked.</p><p>None of this requires sophisticated tooling, most mainstream libraries support group-aware and stratified cross-validation out of the box. What it requires is the discipline to interrogate your data's structure before you interrogate your model's architecture. A carefully chosen split will not make a weak model strong, but a carelessly chosen one will make a weak model look strong, and that is a far more expensive mistake to discover later.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/grouped-vs-stratified-splits-2.jpg' alt='whiteboard with equations' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

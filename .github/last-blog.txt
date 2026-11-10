@@ -1,1 +1,1 @@
-2026-11-09T20:03:09Z slug=why-fine-tuning-results-vary words=1099 title="Why Fine-Tuning Results Vary Run to Run, Honestly Reported"
+2026-11-10T08:01:47Z slug=grouped-vs-stratified-splits words=1088 title="Grouped and Stratified Splits: Picking the Right One"

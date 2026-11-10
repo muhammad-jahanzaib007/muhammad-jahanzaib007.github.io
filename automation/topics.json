@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Grouped and stratified splits: choosing the right one for the data you actually have",
     "What an evaluation harness should log beyond the final score",
     "Why your prompt templates break silently after a model version bump",
     "A practical rubric for scoring prompts before you ship them",
@@ -294,6 +293,7 @@
     "Choosing an evaluation metric for text classification when classes are imbalanced",
     "How threat-style red-teaming differs from standard model evaluation, and when you need both",
     "A worked example of designing a held-out test set that actually resembles deployment",
-    "Why fine-tuning results vary run to run, and how to report that honestly"
+    "Why fine-tuning results vary run to run, and how to report that honestly",
+    "Grouped and stratified splits: choosing the right one for the data you actually have"
   ]
 }
