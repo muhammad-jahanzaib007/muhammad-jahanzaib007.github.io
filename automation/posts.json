@@ -3,9 +3,9 @@
     {
       "slug": "rubric-for-scoring-prompts",
       "title": "A Practical Rubric for Scoring Prompts Before You Ship Them",
-      "excerpt": "A six-criteria rubric for grading prompts before deployment, with a worked example showing how a vague draft becomes a shippable one.",
+      "excerpt": "A five-point rubric for judging prompts before deployment, covering clarity, robustness, grounding, failure behaviour and cost.",
       "date": "2026-11-11",
-      "read_min": 6,
+      "read_min": 5,
       "tag": "Evaluation",
       "color": "a5",
       "thumb": "assets/blog/rubric-for-scoring-prompts.png",
