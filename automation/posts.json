@@ -2,14 +2,14 @@
   "posts": [
     {
       "slug": "prompt-templates-break-silently",
-      "title": "Why Prompt Templates Break Silently After a Model Bump",
-      "excerpt": "Model version bumps rarely crash your pipeline. They just shift behaviour enough that your prompt template stops working the way you tested it.",
+      "title": "Why Your Prompt Templates Break Silently After a Model Bump",
+      "excerpt": "Model version bumps change tokenisation, formatting habits, and instruction sensitivity. If your evals do not probe for that, your prompt template fails silently in production.",
       "date": "2026-11-11",
       "read_min": 5,
       "tag": "Evaluation",
       "color": "a4",
       "thumb": "assets/blog/prompt-templates-break-silently.png",
-      "thumb_alt": "Cover image for the article: Why Prompt Templates Break Silently After a Model Bump"
+      "thumb_alt": "Cover image for the article: Why Your Prompt Templates Break Silently After a Model Bump"
     },
     {
       "slug": "beyond-the-final-score",
