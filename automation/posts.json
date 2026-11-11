@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "rubric-for-scoring-prompts",
+      "title": "A Practical Rubric for Scoring Prompts Before You Ship Them",
+      "excerpt": "A six-criteria rubric for grading prompts before deployment, with a worked example showing how a vague draft becomes a shippable one.",
+      "date": "2026-11-11",
+      "read_min": 6,
+      "tag": "Evaluation",
+      "color": "a5",
+      "thumb": "assets/blog/rubric-for-scoring-prompts.png",
+      "thumb_alt": "Cover image for the article: A Practical Rubric for Scoring Prompts Before You Ship Them"
+    },
+    {
       "slug": "prompt-templates-break-silently",
       "title": "Why Your Prompt Templates Break Silently After a Model Bump",
       "excerpt": "Model version bumps change tokenisation, formatting habits, and instruction sensitivity. If your evals do not probe for that, your prompt template fails silently in production.",

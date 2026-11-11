@@ -1,1 +1,1 @@
-2026-11-11T08:02:01Z slug=prompt-templates-break-silently words=980 title="Why Your Prompt Templates Break Silently After a Model Bump"
+2026-11-11T20:01:12Z slug=rubric-for-scoring-prompts words=1103 title="A Practical Rubric for Scoring Prompts Before You Ship Them"
