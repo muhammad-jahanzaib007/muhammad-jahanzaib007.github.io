@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "prompt-templates-break-silently",
+      "title": "Why Prompt Templates Break Silently After a Model Bump",
+      "excerpt": "Model version bumps rarely crash your pipeline. They just shift behaviour enough that your prompt template stops working the way you tested it.",
+      "date": "2026-11-11",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a4",
+      "thumb": "assets/blog/prompt-templates-break-silently.png",
+      "thumb_alt": "Cover image for the article: Why Prompt Templates Break Silently After a Model Bump"
+    },
+    {
       "slug": "beyond-the-final-score",
       "title": "What an Evaluation Harness Should Log Beyond the Score",
       "excerpt": "A final score hides the interesting part of evaluation. I walk through what to log so you can actually trust and debug your numbers.",

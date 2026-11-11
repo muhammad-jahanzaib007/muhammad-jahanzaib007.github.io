@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Tue, 10 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 11 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Why Prompt Templates Break Silently After a Model Bump</title>
+    <link>https://jahanzaibawan.com/blog/prompt-templates-break-silently.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/prompt-templates-break-silently.html</guid>
+    <pubDate>Wed, 11 Nov 2026 09:00:00 +0000</pubDate>
+    <description>Model version bumps rarely crash your pipeline. They just shift behaviour enough that your prompt template stops working the way you tested it.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>What an Evaluation Harness Should Log Beyond the Score</title>
     <link>https://jahanzaibawan.com/blog/beyond-the-final-score.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Sun, 01 Nov 2026 09:00:00 +0000</pubDate>
     <description>Not all data science internships are equal. Here is how to spot the ones that will actually teach you something, before you waste a cover letter.</description>
     <category>Careers</category>
-  </item>
-  <item>
-    <title>Machine Learning Definitions: Where the Disagreements Matter</title>
-    <link>https://jahanzaibawan.com/blog/ml-definitions-textbook-disagreements.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/ml-definitions-textbook-disagreements.html</guid>
-    <pubDate>Sun, 01 Nov 2026 09:00:00 +0000</pubDate>
-    <description>Textbook definitions of machine learning disagree in small ways. Most don&#x27;t matter, but a few shape what we accept as proof a model generalises.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Prompt Templates Break Silently After a Model Bump | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="An examination of why prompt templates degrade silently after model updates, and how leakage-aware evaluation habits catch the drift before users do.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="prompt engineering, LLM evaluation, prompt drift, model versioning, regression testing, NLP reliability, silent failure, model updates, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-11">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Why Prompt Templates Break Silently After a Model Bump">
+<meta property="og:description" content="An examination of why prompt templates degrade silently after model updates, and how leakage-aware evaluation habits catch the drift before users do.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/prompt-templates-break-silently.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/prompt-templates-break-silently.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why Prompt Templates Break Silently After a Model Bump">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/prompt-templates-break-silently.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/prompt-templates-break-silently.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Why Prompt Templates Break Silently After a Model Bump",
+  "description": "An examination of why prompt templates degrade silently after model updates, and how leakage-aware evaluation habits catch the drift before users do.",
+  "url": "https://jahanzaibawan.com/blog/prompt-templates-break-silently.html",
+  "image": "https://jahanzaibawan.com/assets/blog/prompt-templates-break-silently.png",
+  "datePublished": "2026-11-11",
+  "dateModified": "2026-11-11",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/prompt-templates-break-silently.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Why Prompt Templates Break Silently After a Model Bump", "item": "https://jahanzaibawan.com/blog/prompt-templates-break-silently.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 11 Nov 2026</div>
+    <h1>Why Prompt Templates Break Silently After a Model Bump</h1>
+    <p class="lede">A prompt that scored well last month can quietly degrade when the underlying model changes, and nothing in your logs will shout about it.</p>
+  </div>
+
+  <img src="../assets/blog/prompt-templates-break-silently.png" alt="Cover image for the article: Why Prompt Templates Break Silently After a Model Bump" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The failure mode nobody logs</h2><p>Most engineering failures announce themselves. A service returns a 500, a container restarts, a dashboard turns red. Prompt template failures after a model version bump are different: the API call still succeeds, the response is still well formed text, and nothing in your error monitoring fires. The output is simply worse in a way that only shows up when a human reads it carefully, or when a downstream metric drifts over weeks rather than seconds.</p><p>This matters because prompt templates are brittle in a specific way that code is not. A function either compiles or it does not. A prompt is a set of instructions interpreted by a statistical model, and that interpretation depends on training data, fine tuning choices, and alignment tuning that you do not control and often cannot see. When the provider swaps the model behind an endpoint, or you upgrade to a newer version for cost or speed reasons, you are not patching a dependency. You are replacing the thing that reads your instructions with a different reader.</p><p>I think of this as an evaluation problem disguised as a prompting problem. People reach for prompt tweaks, adding more emphasis, more examples, more capitalised words, when the real issue is that they never had a test suite that would have caught the regression in the first place. The fix is not a better prompt. It is a better harness around the prompt.</p></section><section class='psec reveal'><h2>A worked example of silent drift</h2><p>Suppose you have a template that extracts a delivery date from a customer email and returns it in ISO format, instructed with a single line: "Extract the delivery date and return only YYYY-MM-DD." On the older model, this worked reliably across a few hundred manually checked emails, say ninety seven out of a hundred correct, with the three failures being genuinely ambiguous emails that mentioned two dates.</p><p>You bump to the newer version of the same model family because it is cheaper per token. Nothing in your integration tests changes, because your integration tests check that the response matches a date pattern, not that the date is correct. The new model is slightly more conversational by default and starts returning "The delivery date is 2024-03-15" instead of just the date. Your regex still extracts a date shaped string because it is embedded in the sentence, so the test passes. But now imagine the model also became subtly more willing to guess a date from vague phrasing like "sometime next week" rather than flagging it as ambiguous. Accuracy on the ambiguous cases does not improve, it gets worse, because the new model confidently invents a specific date instead of declining. Your pattern matching test never sees this because it only checks format, not correctness, and your overall accuracy quietly drops from ninety seven percent to something like ninety one percent, invisible unless you rerun your labelled set.</p><p>The insidious part is that ninety one percent still looks fine on a dashboard that only tracks "did we get a parseable date back." The metric that would show the regression, correctness against ground truth, is the one nobody re-measured after the bump, because re-measuring felt unnecessary: the prompt did not change, so why would the result change.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/prompt-templates-break-silently-1.jpg' alt='whiteboard with equations' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Why this is really a leakage and baseline problem</h2><p>The deeper issue is that most prompt evaluation setups have no proper held out test set that gets rerun on every model change, in the same way that a machine learning team would rerun a validation set after retraining. When you tested your template originally, you likely iterated on the same handful of examples you used to judge it, tweaking wording until those examples passed. That is leakage in the same sense as tuning hyperparameters on your test set: the prompt is overfit to the examples you happened to eyeball, not to the underlying task.</p><p>A model version bump exposes this overfitting instantly, because the new model does not share whatever quirks the old model had that your prompt was implicitly compensating for. If your original prompt worked partly because the old model had a bias towards short, literal answers, and you never tested against cases that would expose different behaviour, you had no way of knowing your success was partly luck of the model, not robustness of the prompt.</p><p>The practical fix mirrors standard machine learning hygiene: keep a fixed, reasonably sized labelled evaluation set that you never used to write the prompt, store the exact model version and prompt text alongside every evaluation run, and treat any model swap, even a minor version number change, as a trigger to rerun that evaluation before deploying. This is not exotic advice, it is the same discipline as not touching your test set until the end of a project, just applied to prompts instead of model weights.</p><p>It also helps to separate format checks from correctness checks explicitly. A test that only verifies the shape of the output, like "is this valid JSON" or "does this match a date pattern", will survive almost any model change and give false confidence. A test that checks the content against known correct answers is the one that actually catches drift, and it is worth the extra effort to build even a small set of forty or fifty hand labelled cases rather than relying on format checks alone.</p></section><section class='psec reveal'><h2>What to actually do about it</h2><p>Treat every prompt template as a small model with its own regression suite. Before switching model versions, run the fixed evaluation set and compare accuracy, not just pass rate on format. Log the model identifier string with every production response, so that if quality complaints come in, you can correlate them with a specific version rather than guessing weeks later which update caused the problem.</p><p>Build a handful of deliberately adversarial or ambiguous cases into your evaluation set, not just clean examples. These are the ones most likely to expose behavioural shifts, because models tend to diverge most on edge cases rather than easy ones. Finally, resist the urge to patch a regression with more prompt text the moment you notice it. First confirm with your evaluation set that the new wording actually fixes the underlying error rate rather than just fixing the one example you happened to notice, otherwise you are back to overfitting the prompt to a single case and setting up the next silent failure.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/prompt-templates-break-silently-2.jpg' alt='server rack blinking lights' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
