@@ -1,1 +1,1 @@
-2026-11-11T20:02:07Z slug=rubric-for-scoring-prompts words=1013 title="A Practical Rubric for Scoring Prompts Before You Ship Them"
+2026-11-12T08:01:40Z slug=mlops-before-you-need-cluster words=903 title="MLOps on a Single Machine Before You Need a Cluster"

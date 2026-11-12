@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Wed, 11 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 12 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>MLOps on a Single Machine Before You Need a Cluster</title>
+    <link>https://jahanzaibawan.com/blog/mlops-before-you-need-cluster.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/mlops-before-you-need-cluster.html</guid>
+    <pubDate>Thu, 12 Nov 2026 09:00:00 +0000</pubDate>
+    <description>Before you buy a cluster, get experiment tracking, data versioning, and leakage-aware evaluation right on a single machine. That discipline scales; infrastructure alone does not.</description>
+    <category>MLOps</category>
+  </item>
   <item>
     <title>A Practical Rubric for Scoring Prompts Before You Ship Them</title>
     <link>https://jahanzaibawan.com/blog/rubric-for-scoring-prompts.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Mon, 02 Nov 2026 09:00:00 +0000</pubDate>
     <description>A concrete walk-through comparing RAG and fine-tuning on a small knowledge base, with realistic numbers and a practical decision rule.</description>
     <category>NLP</category>
-  </item>
-  <item>
-    <title>Deep Learning Versus Machine Learning: A Grounded Answer</title>
-    <link>https://jahanzaibawan.com/blog/deep-learning-vs-machine-learning.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/deep-learning-vs-machine-learning.html</guid>
-    <pubDate>Mon, 02 Nov 2026 09:00:00 +0000</pubDate>
-    <description>Deep learning is not a replacement for machine learning; it is one family within it, suited to some problems and poorly suited to others.</description>
-    <category>Machine Learning</category>
   </item>
 </channel>
 </rss>

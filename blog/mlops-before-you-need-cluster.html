@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MLOps on a Single Machine Before You Need a Cluster | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to building reproducible, leakage-aware MLOps foundations on a single machine before scaling to a cluster.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="MLOps, reproducibility, experiment tracking, data versioning, model evaluation, single machine, machine learning infrastructure, leakage-aware splits, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-12">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="MLOps on a Single Machine Before You Need a Cluster">
+<meta property="og:description" content="A practical guide to building reproducible, leakage-aware MLOps foundations on a single machine before scaling to a cluster.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/mlops-before-you-need-cluster.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/mlops-before-you-need-cluster.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MLOps on a Single Machine Before You Need a Cluster">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/mlops-before-you-need-cluster.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/mlops-before-you-need-cluster.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "MLOps on a Single Machine Before You Need a Cluster",
+  "description": "A practical guide to building reproducible, leakage-aware MLOps foundations on a single machine before scaling to a cluster.",
+  "url": "https://jahanzaibawan.com/blog/mlops-before-you-need-cluster.html",
+  "image": "https://jahanzaibawan.com/assets/blog/mlops-before-you-need-cluster.png",
+  "datePublished": "2026-11-12",
+  "dateModified": "2026-11-12",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/mlops-before-you-need-cluster.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "MLOps on a Single Machine Before You Need a Cluster", "item": "https://jahanzaibawan.com/blog/mlops-before-you-need-cluster.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">MLOps · 5 min read · 12 Nov 2026</div>
+    <h1>MLOps on a Single Machine Before You Need a Cluster</h1>
+    <p class="lede">Most teams reach for distributed infrastructure far earlier than they need to. Here is what actually earns its place on one box first.</p>
+  </div>
+
+  <img src="../assets/blog/mlops-before-you-need-cluster.png" alt="Cover image for the article: MLOps on a Single Machine Before You Need a Cluster" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The cluster is not the bottleneck</h2><p>I have seen more projects stall from messy experiment hygiene than from lack of compute. A single modern workstation, one GPU, thirty-two gigabytes of RAM, a few terabytes of disk, can carry you through most of a research project, a thesis, or an early-stage product. The temptation is to skip straight to Kubernetes, distributed training, and a feature store, because that is what the job adverts describe. But if your results are not reproducible on one machine, scattering the same mistakes across ten machines just makes them faster and harder to debug.</p><p>The honest ordering is this: get your evaluation trustworthy first, your artefacts versioned second, and your pipeline automated third. Only after those three are solid does a cluster buy you anything beyond raw speed. I want to walk through what each of those looks like concretely, with numbers that show why skipping them is expensive.</p></section><section class='psec reveal'><h2>Leakage-aware splits, worked through</h2><p>Suppose you have eighteen months of transaction data and you are predicting churn. A naive random split, seventy-thirty, train against test, will often hand you a test accuracy of around ninety-one percent. That number feels solid, so you ship a report with it. The problem is that random splitting lets rows from the same customer, often the same week, sit on both sides of the split. The model is not predicting churn, it is memorising customer identifiers and recent context it should never have seen at prediction time.</p><p>Switch to a time-based split, train on the first fourteen months, test on the last four, and the same model might drop to seventy-eight percent. That thirteen-point gap is not noise, it is the leakage you were quietly rewarding yourself for. On a single machine this is trivial to catch: write one function that enforces chronological or group-based splitting, call it from every notebook and script, and refuse to let any metric be reported without it. No cluster required, just discipline.</p><p>This matters more than people admit because leakage compounds. A model that looks ninety-one percent accurate gets prioritised for deployment over one that is honestly measured at seventy-eight. Stakeholders make resourcing decisions on the inflated number. By the time the gap surfaces in production, you have burned months. The fix costs an afternoon of careful split logic; the failure to fix it costs a quarter of trust.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/mlops-before-you-need-cluster-1.jpg' alt='workstation with gpu tower under desk' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Versioning what you cannot afford to lose</h2><p>The second thing worth building before any cluster is artefact versioning: data, code, and model weights tied together so that any result can be reproduced exactly. On one machine this is approachable. Git handles code. A lightweight data versioning tool, or even disciplined content-hashing of your processed datasets into named folders, handles data. A simple metadata file next to each saved model, recording the git commit, the data hash, the hyperparameters, and the random seed, handles the rest.</p><p>Here is why it matters with a concrete case. Say you train forty models over three weeks while tuning a gradient-boosted tree, varying learning rate and tree depth. Without versioning, by week three you cannot tell which of your saved checkpoints used the cleaned dataset from week one versus the one you patched on day nine to fix a mislabelled column. If the patched version changed only two hundred rows out of eighty thousand, the performance difference between old and new might be under half a percentage point, easy to lose track of, but enough to mean your leaderboard of forty runs is comparing apples to a few lightly bruised oranges.</p><p>The discipline costs very little at small scale: a consistent naming convention, a hash in a filename, a short YAML sidecar file. It becomes expensive to retrofit once you have hundreds of runs and three collaborators, which is usually around the point people start thinking about a cluster for speed, not realising their real problem is traceability, not throughput.</p></section><section class='psec reveal'><h2>Automate the boring parts, then decide on scale</h2><p>The third foundation is a pipeline that runs end to end without manual babysitting: data pull, cleaning, split, train, evaluate, report, all triggered by one command or one scheduled job. On a single machine you can build this with plain scripts and a task runner, no orchestration platform needed. The value is not elegance, it is that you remove yourself as a silent dependency. If a result only exists because you ran four notebook cells in a particular order at eleven at night, that result is not yet real.</p><p>A useful test: can someone else, or you in three months, regenerate your headline number from a clean checkout with one command? If a project trains in under two hours on a single GPU and the dataset fits in memory, that is almost always sufficient for the entire research and early-productionisation phase. I would only reach for distributed infrastructure once training time or data volume genuinely blocks iteration, say when a single epoch takes longer than a working day, or when the dataset no longer fits on a reasonably priced disk.</p><p>The practical takeaway is to sequence your investment correctly. Build leakage-aware evaluation first, because a wrong number is worse than a slow one. Build versioning second, because untraceable results cannot be trusted or improved. Automate third, because manual pipelines quietly rot. A cluster, when you eventually need one, should be scaling up habits you have already proven on one machine, not substituting for habits you never built.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/mlops-before-you-need-cluster-2.jpg' alt='developer looking at terminal and graphs on laptop' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "mlops-before-you-need-cluster",
+      "title": "MLOps on a Single Machine Before You Need a Cluster",
+      "excerpt": "Before you buy a cluster, get experiment tracking, data versioning, and leakage-aware evaluation right on a single machine. That discipline scales; infrastructure alone does not.",
+      "date": "2026-11-12",
+      "read_min": 5,
+      "tag": "MLOps",
+      "color": "a6",
+      "thumb": "assets/blog/mlops-before-you-need-cluster.png",
+      "thumb_alt": "Cover image for the article: MLOps on a Single Machine Before You Need a Cluster"
+    },
+    {
       "slug": "rubric-for-scoring-prompts",
       "title": "A Practical Rubric for Scoring Prompts Before You Ship Them",
       "excerpt": "A five-point rubric for judging prompts before deployment, covering clarity, robustness, grounding, failure behaviour and cost.",
