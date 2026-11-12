@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Thu, 12 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>The MLOps Job Title Spectrum: What Are You Actually Hiring For</title>
+    <link>https://jahanzaibawan.com/blog/mlops-job-title-spectrum.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/mlops-job-title-spectrum.html</guid>
+    <pubDate>Thu, 12 Nov 2026 09:00:00 +0000</pubDate>
+    <description>MLOps titles blur together on job boards. I unpack the three real axes behind them: infrastructure, modelling, and operational ownership.</description>
+    <category>Careers</category>
+  </item>
+  <item>
     <title>MLOps on a Single Machine Before You Need a Cluster</title>
     <link>https://jahanzaibawan.com/blog/mlops-single-machine-basics.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/mlops-single-machine-basics.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Tue, 03 Nov 2026 09:00:00 +0000</pubDate>
     <description>A practical checklist for catching data leakage before training, with a worked example showing how an innocent-looking split inflates accuracy.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Retrieval Augmented Generation vs Fine-Tuning: One Small Case</title>
-    <link>https://jahanzaibawan.com/blog/rag-versus-fine-tuning-small-kb.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/rag-versus-fine-tuning-small-kb.html</guid>
-    <pubDate>Mon, 02 Nov 2026 09:00:00 +0000</pubDate>
-    <description>A concrete walk-through comparing RAG and fine-tuning on a small knowledge base, with realistic numbers and a practical decision rule.</description>
-    <category>NLP</category>
   </item>
 </channel>
 </rss>

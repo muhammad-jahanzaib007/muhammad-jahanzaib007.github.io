@@ -1,6 +1,5 @@
 {
   "queue": [
-    "The MLOps job title spectrum: platform engineer, ML engineer, or something else",
     "Computer vision engineer interview questions: what they are actually probing for",
     "How NLP preprocessing choices from the pre-transformer era still matter today",
     "Machine learning glossary disputes: resolving conflicting definitions with one worked example",
@@ -294,6 +293,7 @@
     "What an evaluation harness should log beyond the final score",
     "Why your prompt templates break silently after a model version bump",
     "A practical rubric for scoring prompts before you ship them",
-    "MLOps on a single machine: what to build before you need a cluster"
+    "MLOps on a single machine: what to build before you need a cluster",
+    "The MLOps job title spectrum: platform engineer, ML engineer, or something else"
   ]
 }

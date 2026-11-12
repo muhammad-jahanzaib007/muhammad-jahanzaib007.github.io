@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "mlops-job-title-spectrum",
+      "title": "The MLOps Job Title Spectrum: What Are You Actually Hiring For",
+      "excerpt": "MLOps titles blur together on job boards. I unpack the three real axes behind them: infrastructure, modelling, and operational ownership.",
+      "date": "2026-11-12",
+      "read_min": 5,
+      "tag": "Careers",
+      "color": "a2",
+      "thumb": "assets/blog/mlops-job-title-spectrum.png",
+      "thumb_alt": "Cover image for the article: The MLOps Job Title Spectrum: What Are You Actually Hiring For"
+    },
+    {
       "slug": "mlops-single-machine-basics",
       "title": "MLOps on a Single Machine Before You Need a Cluster",
       "excerpt": "Before reaching for Kubernetes, get versioning, reproducible environments, experiment tracking and a simple pipeline right on one box.",

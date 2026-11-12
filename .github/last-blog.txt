@@ -1,1 +1,1 @@
-2026-11-12T08:03:13Z slug=mlops-single-machine-basics words=982 title="MLOps on a Single Machine Before You Need a Cluster"
+2026-11-12T20:02:00Z slug=mlops-job-title-spectrum words=1070 title="The MLOps Job Title Spectrum: What Are You Actually Hiring For"
