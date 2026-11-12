@@ -2,14 +2,14 @@
   "posts": [
     {
       "slug": "mlops-job-title-spectrum",
-      "title": "The MLOps Job Title Spectrum: What Are You Actually Hiring For",
-      "excerpt": "MLOps titles blur together on job boards. I unpack the three real axes behind them: infrastructure, modelling, and operational ownership.",
+      "title": "The MLOps Job Title Spectrum: What Are You Actually?",
+      "excerpt": "MLOps titles are inconsistent across companies. I break down the real axes of variation so you can read a job spec instead of guessing from a label.",
       "date": "2026-11-12",
       "read_min": 5,
-      "tag": "Careers",
+      "tag": "Career",
       "color": "a2",
       "thumb": "assets/blog/mlops-job-title-spectrum.png",
-      "thumb_alt": "Cover image for the article: The MLOps Job Title Spectrum: What Are You Actually Hiring For"
+      "thumb_alt": "Cover image for the article: The MLOps Job Title Spectrum: What Are You Actually?"
     },
     {
       "slug": "mlops-single-machine-basics",
