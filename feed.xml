@@ -9,10 +9,10 @@
   <lastBuildDate>Thu, 12 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
     <title>MLOps on a Single Machine Before You Need a Cluster</title>
-    <link>https://jahanzaibawan.com/blog/mlops-before-you-need-cluster.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/mlops-before-you-need-cluster.html</guid>
+    <link>https://jahanzaibawan.com/blog/mlops-single-machine-basics.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/mlops-single-machine-basics.html</guid>
     <pubDate>Thu, 12 Nov 2026 09:00:00 +0000</pubDate>
-    <description>Before you buy a cluster, get experiment tracking, data versioning, and leakage-aware evaluation right on a single machine. That discipline scales; infrastructure alone does not.</description>
+    <description>Before reaching for Kubernetes, get versioning, reproducible environments, experiment tracking and a simple pipeline right on one box.</description>
     <category>MLOps</category>
   </item>
   <item>

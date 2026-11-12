@@ -1,14 +1,14 @@
 {
   "posts": [
     {
-      "slug": "mlops-before-you-need-cluster",
+      "slug": "mlops-single-machine-basics",
       "title": "MLOps on a Single Machine Before You Need a Cluster",
-      "excerpt": "Before you buy a cluster, get experiment tracking, data versioning, and leakage-aware evaluation right on a single machine. That discipline scales; infrastructure alone does not.",
+      "excerpt": "Before reaching for Kubernetes, get versioning, reproducible environments, experiment tracking and a simple pipeline right on one box.",
       "date": "2026-11-12",
       "read_min": 5,
       "tag": "MLOps",
       "color": "a6",
-      "thumb": "assets/blog/mlops-before-you-need-cluster.png",
+      "thumb": "assets/blog/mlops-single-machine-basics.png",
       "thumb_alt": "Cover image for the article: MLOps on a Single Machine Before You Need a Cluster"
     },
     {
