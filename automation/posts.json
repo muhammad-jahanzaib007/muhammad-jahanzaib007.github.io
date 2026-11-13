@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "cv-interview-questions-explained",
+      "title": "Computer Vision Interviews: What the Questions Really Probe",
+      "excerpt": "CV interview questions rarely test trivia. They test whether you understand evaluation, leakage, and what happens when a model meets real data.",
+      "date": "2026-11-13",
+      "read_min": 5,
+      "tag": "Interviews",
+      "color": "a3",
+      "thumb": "assets/blog/cv-interview-questions-explained.png",
+      "thumb_alt": "Cover image for the article: Computer Vision Interviews: What the Questions Really Probe"
+    },
+    {
       "slug": "mlops-job-title-spectrum",
       "title": "The MLOps Job Title Spectrum: What Are You Actually?",
       "excerpt": "MLOps titles are inconsistent across companies. I break down the real axes of variation so you can read a job spec instead of guessing from a label.",

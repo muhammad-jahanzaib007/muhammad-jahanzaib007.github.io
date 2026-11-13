@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Computer Vision Interviews: What the Questions Really Probe | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A look at what computer vision interview questions are actually assessing, from evaluation rigour to data leakage and deployment realism.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="computer vision interview, model evaluation, data leakage, IoU, machine learning interview, overfitting, interview preparation, deep learning, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-13">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Computer Vision Interviews: What the Questions Really Probe">
+<meta property="og:description" content="A look at what computer vision interview questions are actually assessing, from evaluation rigour to data leakage and deployment realism.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/cv-interview-questions-explained.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/cv-interview-questions-explained.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Computer Vision Interviews: What the Questions Really Probe">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/cv-interview-questions-explained.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/cv-interview-questions-explained.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Computer Vision Interviews: What the Questions Really Probe",
+  "description": "A look at what computer vision interview questions are actually assessing, from evaluation rigour to data leakage and deployment realism.",
+  "url": "https://jahanzaibawan.com/blog/cv-interview-questions-explained.html",
+  "image": "https://jahanzaibawan.com/assets/blog/cv-interview-questions-explained.png",
+  "datePublished": "2026-11-13",
+  "dateModified": "2026-11-13",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/cv-interview-questions-explained.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Computer Vision Interviews: What the Questions Really Probe", "item": "https://jahanzaibawan.com/blog/cv-interview-questions-explained.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Interviews · 5 min read · 13 Nov 2026</div>
+    <h1>Computer Vision Interviews: What the Questions Really Probe</h1>
+    <p class="lede">Behind every question about IoU thresholds or data augmentation is a deeper test of whether you understand evaluation, leakage, and failure modes.</p>
+  </div>
+
+  <img src="../assets/blog/cv-interview-questions-explained.png" alt="Cover image for the article: Computer Vision Interviews: What the Questions Really Probe" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why these questions exist at all</h2><p>When I prepare for or think about computer vision interviews, I try to stop treating each question as a trivia prompt and start asking what failure mode it is designed to expose. Nobody actually cares whether you can recite the formula for intersection over union from memory. They care whether you understand why IoU exists, where it breaks down, and what you would do when it gives you a misleading picture of model quality. The question is a proxy for a much more useful trait: can you reason about evaluation under realistic conditions.</p><p>This matters because computer vision has a particular way of looking fine on paper and failing badly in production. A classifier can report ninety-six percent accuracy and still be useless if the test set shares backgrounds, lighting, or even the same physical objects with the training set. Interviewers who have shipped vision systems know this, so their questions are often disguised leakage checks. 'How did you split your data' sounds procedural, but it is really asking whether you have been burned before and learned from it.</p><p>Once you see interviews this way, the whole exercise becomes less about memorising architectures and more about demonstrating judgement. A candidate who says 'I would use a ResNet backbone with a feature pyramid' without being asked about the data pipeline first is answering a question nobody posed. The stronger answer starts with how the data was collected and split, because that is where most real-world vision projects actually go wrong.</p></section><section class='psec reveal'><h2>The data leakage question in disguise</h2><p>Consider a common scenario: you are asked to build a defect detector for images of manufactured parts, and the dataset consists of video frames extracted at several frames per second from a handful of production runs. If you split frames randomly into train and test sets, you will almost certainly get frames from the same run, sometimes the same part, in both sets. Your model does not need to learn what a defect looks like; it can memorise lighting quirks and conveyor belt positions specific to that run. You might report ninety-four percent test accuracy, present it confidently, and still deploy a system that collapses on the next production run because it never saw a genuinely new environment.</p><p>The correct split groups by run or by physical part, so that no instance of the same object or session appears in both train and test. When interviewers ask 'how would you validate this model', they are testing whether you would catch this before it costs a client months of wasted deployment. A candidate who immediately asks 'how were the frames sampled, and could the same scene appear in both splits' is signalling exactly the kind of scepticism that prevents expensive failures.</p><p>The same logic extends to questions about augmentation and test time behaviour. If you augment images before splitting, rather than after, you can leak near-duplicate images across train and validation, inflating validation scores in a way that will not hold on genuinely unseen data. Interviewers who ask about your augmentation pipeline in detail are rarely interested in which library you used; they want to know whether you apply augmentation only to the training fold and keep validation and test data untouched.</p><p>There is also a subtler version of this: temporal leakage in video or sensor-linked datasets, where frames close together in time are highly correlated. A model can appear to generalise well simply because adjacent frames are nearly identical, not because it has learned anything robust. Recognising this and proposing a time-aware or group-aware split is one of the clearest signals of practical maturity an interviewer can look for.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/cv-interview-questions-explained-1.jpg' alt='job interview office setting' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Metrics, baselines, and knowing when a number is lying to you</h2><p>Another recurring theme is metric literacy. Questions about precision, recall, mAP, or calibration are rarely about definitions; they are about whether you know which metric matches the actual cost of errors. Suppose you are building a system to flag suspicious frames in a quality control line, and false negatives are far more costly than false alarms because a missed defect reaches a customer. If you optimise purely for accuracy, you can get a model that predicts 'no defect' almost always, since defects might only occur in two percent of frames, and still score ninety-eight percent accuracy while catching almost nothing. An interviewer asking 'is accuracy the right metric here' is testing whether you would notice this trap before deployment, not whether you can define accuracy.</p><p>Baselines get the same disguised treatment. When someone asks 'what would you compare your model against', they want to know if you understand that a fine-tuned convolutional network claiming ninety-one percent accuracy means little if a simple colour histogram classifier or a nearest-neighbour approach already achieves eighty-seven percent on the same data. Without that baseline, you cannot tell how much of your result comes from genuine learning versus how easy the task happened to be. Strong candidates volunteer a baseline before being asked, because it shows they default to scepticism about their own results rather than needing to be prompted.</p><p>Calibration questions work similarly. A model producing confidence scores that do not reflect true likelihood, for instance predicting ninety-nine percent confidence on images it gets wrong a third of the time, is dangerous in any pipeline where a downstream threshold triggers automated decisions. Asking about calibration is a way of probing whether you think about a model as a component in a larger decision system, not as an isolated classifier chasing a leaderboard score.</p></section><section class='psec reveal'><h2>What to actually do with this</h2><p>The practical takeaway is simple: prepare for computer vision interviews by rehearsing the questions behind the questions. Before an interview, walk through a project you know well and ask yourself how the data was split, whether leakage could have crept in through duplicate scenes or temporal correlation, what a trivial baseline would have scored, and which metric actually reflected the cost of getting things wrong. If you can answer those four things clearly for any project you discuss, most surface-level questions about architectures or specific layers become easy to answer honestly, because you already understand the system you built rather than just the model you trained.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/cv-interview-questions-explained-2.jpg' alt='laptop with code on screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

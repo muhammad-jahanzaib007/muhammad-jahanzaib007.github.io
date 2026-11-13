@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Thu, 12 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 13 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Computer Vision Interviews: What the Questions Really Probe</title>
+    <link>https://jahanzaibawan.com/blog/cv-interview-questions-explained.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/cv-interview-questions-explained.html</guid>
+    <pubDate>Fri, 13 Nov 2026 09:00:00 +0000</pubDate>
+    <description>CV interview questions rarely test trivia. They test whether you understand evaluation, leakage, and what happens when a model meets real data.</description>
+    <category>Interviews</category>
+  </item>
   <item>
     <title>The MLOps Job Title Spectrum: What Are You Actually?</title>
     <link>https://jahanzaibawan.com/blog/mlops-job-title-spectrum.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/fair-evaluation-zero-few-shot-nlp.html</guid>
     <pubDate>Tue, 03 Nov 2026 09:00:00 +0000</pubDate>
     <description>A prompted model beating your fine-tuned baseline often means your comparison is broken, not that prompting won. Here is how to check.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>What Makes a Dataset Leak-Proof: A Checklist Before You Train</title>
-    <link>https://jahanzaibawan.com/blog/dataset-leak-proof-checklist.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/dataset-leak-proof-checklist.html</guid>
-    <pubDate>Tue, 03 Nov 2026 09:00:00 +0000</pubDate>
-    <description>A practical checklist for catching data leakage before training, with a worked example showing how an innocent-looking split inflates accuracy.</description>
     <category>Evaluation</category>
   </item>
 </channel>
