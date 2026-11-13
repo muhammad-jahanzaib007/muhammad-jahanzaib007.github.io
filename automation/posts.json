@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "nlp-preprocessing-still-matters",
+      "title": "Why Old-School NLP Preprocessing Still Matters Now",
+      "excerpt": "Transformers did not kill preprocessing. They hid it inside tokenisers and pipelines, where bad choices still leak labels, inflate scores, and silently cap performance.",
+      "date": "2026-11-13",
+      "read_min": 6,
+      "tag": "NLP",
+      "color": "a4",
+      "thumb": "assets/blog/nlp-preprocessing-still-matters.png",
+      "thumb_alt": "Cover image for the article: Why Old-School NLP Preprocessing Still Matters Now"
+    },
+    {
       "slug": "cv-interview-questions-explained",
       "title": "Computer Vision Interviews: What They Are Really Testing",
       "excerpt": "CV interview questions rarely test trivia. They test whether you understand leakage, evaluation, and trade-offs well enough to be trusted with real data.",
