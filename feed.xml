@@ -8,11 +8,11 @@
   <language>en-gb</language>
   <lastBuildDate>Fri, 13 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
-    <title>Why Old-School NLP Preprocessing Still Matters Now</title>
+    <title>Why Old-School NLP Preprocessing Still Matters</title>
     <link>https://jahanzaibawan.com/blog/nlp-preprocessing-still-matters.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/nlp-preprocessing-still-matters.html</guid>
     <pubDate>Fri, 13 Nov 2026 09:00:00 +0000</pubDate>
-    <description>Transformers did not kill preprocessing. They hid it inside tokenisers and pipelines, where bad choices still leak labels, inflate scores, and silently cap performance.</description>
+    <description>Modern models hide, rather than remove, the effects of classic preprocessing choices. Get them wrong and your evaluation lies to you.</description>
     <category>NLP</category>
   </item>
   <item>
