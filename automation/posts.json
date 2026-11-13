@@ -2,14 +2,14 @@
   "posts": [
     {
       "slug": "cv-interview-questions-explained",
-      "title": "Computer Vision Interviews: What the Questions Really Probe",
-      "excerpt": "CV interview questions rarely test trivia. They test whether you understand evaluation, leakage, and what happens when a model meets real data.",
+      "title": "Computer Vision Interviews: What They Are Really Testing",
+      "excerpt": "CV interview questions rarely test trivia. They test whether you understand leakage, evaluation, and trade-offs well enough to be trusted with real data.",
       "date": "2026-11-13",
       "read_min": 5,
       "tag": "Interviews",
       "color": "a3",
       "thumb": "assets/blog/cv-interview-questions-explained.png",
-      "thumb_alt": "Cover image for the article: Computer Vision Interviews: What the Questions Really Probe"
+      "thumb_alt": "Cover image for the article: Computer Vision Interviews: What They Are Really Testing"
     },
     {
       "slug": "mlops-job-title-spectrum",

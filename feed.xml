@@ -8,11 +8,11 @@
   <language>en-gb</language>
   <lastBuildDate>Fri, 13 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
-    <title>Computer Vision Interviews: What the Questions Really Probe</title>
+    <title>Computer Vision Interviews: What They Are Really Testing</title>
     <link>https://jahanzaibawan.com/blog/cv-interview-questions-explained.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/cv-interview-questions-explained.html</guid>
     <pubDate>Fri, 13 Nov 2026 09:00:00 +0000</pubDate>
-    <description>CV interview questions rarely test trivia. They test whether you understand evaluation, leakage, and what happens when a model meets real data.</description>
+    <description>CV interview questions rarely test trivia. They test whether you understand leakage, evaluation, and trade-offs well enough to be trusted with real data.</description>
     <category>Interviews</category>
   </item>
   <item>
