@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Sat, 14 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>What a Machine Learning Engineer&#x27;s CV Should Prove</title>
+    <link>https://jahanzaibawan.com/blog/cv-beyond-the-certificate.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/cv-beyond-the-certificate.html</guid>
+    <pubDate>Sat, 14 Nov 2026 09:00:00 +0000</pubDate>
+    <description>Certificates show exposure to material; a good ML CV shows evidence of judgement, leakage-aware evaluation, and work that would survive scrutiny.</description>
+    <category>Careers</category>
+  </item>
+  <item>
     <title>Machine Learning Glossary Disputes: One Worked Example</title>
     <link>https://jahanzaibawan.com/blog/ml-glossary-disputes-worked-example.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/ml-glossary-disputes-worked-example.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/accuracy-not-enough-production.html</guid>
     <pubDate>Thu, 05 Nov 2026 09:00:00 +0000</pubDate>
     <description>High accuracy can mask a model that fails exactly where it matters most. A look at why production readiness needs more than one metric.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Statistical Power in ML: Why Sample Size Limits Conclusions</title>
-    <link>https://jahanzaibawan.com/blog/statistical-power-ml-experiments.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/statistical-power-ml-experiments.html</guid>
-    <pubDate>Wed, 04 Nov 2026 09:00:00 +0000</pubDate>
-    <description>Your test set size decides what differences you can ever detect. Underpowered ML comparisons produce confident-sounding noise, not evidence.</description>
     <category>Evaluation</category>
   </item>
 </channel>

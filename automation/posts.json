@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "cv-beyond-the-certificate",
+      "title": "What a Machine Learning Engineer's CV Should Prove",
+      "excerpt": "Certificates show exposure to material; a good ML CV shows evidence of judgement, leakage-aware evaluation, and work that would survive scrutiny.",
+      "date": "2026-11-14",
+      "read_min": 5,
+      "tag": "Careers",
+      "color": "a6",
+      "thumb": "assets/blog/cv-beyond-the-certificate.png",
+      "thumb_alt": "Cover image for the article: What a Machine Learning Engineer's CV Should Prove"
+    },
+    {
       "slug": "ml-glossary-disputes-worked-example",
       "title": "Machine Learning Glossary Disputes: One Worked Example",
       "excerpt": "When teams disagree on basic ML terms, the fix isn't a dictionary, it's a worked example that forces the definitions to earn their keep.",
