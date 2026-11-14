@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Fri, 13 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 14 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>ML Glossary Disputes: One Worked Example to Settle Them</title>
+    <link>https://jahanzaibawan.com/blog/ml-glossary-disputes-worked-example.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/ml-glossary-disputes-worked-example.html</guid>
+    <pubDate>Sat, 14 Nov 2026 09:00:00 +0000</pubDate>
+    <description>Machine learning terms get used inconsistently across papers and teams. One worked example shows exactly where the confusion starts and how to avoid it.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Why Old-School NLP Preprocessing Still Matters</title>
     <link>https://jahanzaibawan.com/blog/nlp-preprocessing-still-matters.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/statistical-power-ml-experiments.html</guid>
     <pubDate>Wed, 04 Nov 2026 09:00:00 +0000</pubDate>
     <description>Your test set size decides what differences you can ever detect. Underpowered ML comparisons produce confident-sounding noise, not evidence.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Reading a Multi-Class Confusion Matrix Properly</title>
-    <link>https://jahanzaibawan.com/blog/reading-multiclass-confusion-matrix.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/reading-multiclass-confusion-matrix.html</guid>
-    <pubDate>Wed, 04 Nov 2026 09:00:00 +0000</pubDate>
-    <description>A single accuracy number for a multi-class model can hide systematic, costly confusions between specific classes. Here is how to read the matrix properly.</description>
     <category>Evaluation</category>
   </item>
 </channel>

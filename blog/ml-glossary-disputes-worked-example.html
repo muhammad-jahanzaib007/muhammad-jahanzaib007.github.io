@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ML Glossary Disputes: One Worked Example to Settle Them | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A worked example resolving common machine learning glossary disputes, covering validation sets, accuracy, and leakage, with practical guidance for reproducible evaluation.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="machine learning glossary,validation set,test set,accuracy definition,data leakage,evaluation methodology,reproducibility,model selection, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-14">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="ML Glossary Disputes: One Worked Example to Settle Them">
+<meta property="og:description" content="A worked example resolving common machine learning glossary disputes, covering validation sets, accuracy, and leakage, with practical guidance for reproducible evaluation.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/ml-glossary-disputes-worked-example.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/ml-glossary-disputes-worked-example.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ML Glossary Disputes: One Worked Example to Settle Them">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/ml-glossary-disputes-worked-example.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/ml-glossary-disputes-worked-example.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "ML Glossary Disputes: One Worked Example to Settle Them",
+  "description": "A worked example resolving common machine learning glossary disputes, covering validation sets, accuracy, and leakage, with practical guidance for reproducible evaluation.",
+  "url": "https://jahanzaibawan.com/blog/ml-glossary-disputes-worked-example.html",
+  "image": "https://jahanzaibawan.com/assets/blog/ml-glossary-disputes-worked-example.png",
+  "datePublished": "2026-11-14",
+  "dateModified": "2026-11-14",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/ml-glossary-disputes-worked-example.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "ML Glossary Disputes: One Worked Example to Settle Them", "item": "https://jahanzaibawan.com/blog/ml-glossary-disputes-worked-example.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 14 Nov 2026</div>
+    <h1>ML Glossary Disputes: One Worked Example to Settle Them</h1>
+    <p class="lede">People argue about what &#x27;validation set&#x27; or &#x27;accuracy&#x27; really means. A single worked example shows why the disagreement happens and how to stop it from costing you.</p>
+  </div>
+
+  <img src="../assets/blog/ml-glossary-disputes-worked-example.png" alt="Cover image for the article: ML Glossary Disputes: One Worked Example to Settle Them" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the argument keeps happening</h2><p>I have sat in enough meetings to know that machine learning has a vocabulary problem. Two people say 'validation set' and mean two different things. Someone reports 'accuracy' on a dataset where the classes are split ninety to ten, and nobody asks whether that number is doing any honest work. These are not pedantic quibbles. They change what a result actually claims, and they are a quiet source of irreproducible papers and overconfident production deployments.</p><p>The usual response to a glossary dispute is to reach for a textbook definition and declare victory. That rarely works, because the textbooks themselves disagree, and because the words were coined in different subfields under different assumptions. A statistician's 'validation' and a Kaggle competitor's 'validation' grew up in different houses. Rather than adjudicate definitions in the abstract, I find it far more useful to run one concrete scenario through every candidate definition and see where they actually diverge. That is the only way to see which disagreements are cosmetic and which ones change your conclusions.</p><p>So here is the scenario. Imagine a dataset of five thousand customer support tickets, labelled as either 'resolved on first contact' or 'escalated'. Nine out of ten tickets are resolved on first contact. You are building a classifier to predict escalation early, so agents can be routed sensibly. This is mundane and realistic, which is exactly why it is a good test bed for glossary disputes: the ambiguity hides in ordinary work, not in exotic edge cases.</p></section><section class='psec reveal'><h2>Dispute one: what counts as the validation set</h2><p>Camp A treats 'validation set' and 'test set' as synonyms: a single held-out slice used once at the end to report a final number. Camp B treats the validation set as something you touch repeatedly during development, to tune hyperparameters and choose between models, while the test set is sealed away and touched exactly once. These are not the same procedure, and conflating them is how leakage creeps in.</p><p>Here is the worked part. Split the five thousand tickets: three thousand five hundred for training, seven hundred fifty for validation, seven hundred fifty for test. Under Camp A's usage, a practitioner might tune the decision threshold, try three different feature sets, and pick a regularisation strength, all while watching performance on that one held-out slice, then report that same number as 'the' result. Under Camp B's usage, all that tuning happens against the seven hundred fifty validation tickets, and only once the model is frozen does it ever see the test set.</p><p>The difference shows up numerically. Suppose after five rounds of tuning against the same held-out slice, the best configuration scores an F1 of 0.71 on it. If that slice was genuinely never touched during tuning, 0.71 is a fair estimate. But if it was the same seven hundred fifty tickets used for every tuning decision, you have implicitly fitted to its noise, and the true generalisation performance, measured on the untouched seven hundred fifty test tickets, often comes in lower, say 0.65. The gap is not a rounding error. It is the cost of calling a tuning set a test set.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/ml-glossary-disputes-worked-example-1.jpg' alt='customer support call centre office' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Dispute two: what 'accuracy' is actually telling you</h2><p>With the splits settled, the second dispute surfaces immediately. Someone reports '91 per cent accuracy' on the test set and treats it as good news. But recall that ninety per cent of tickets are resolved on first contact already. A classifier that predicts 'resolved' for every single ticket, doing no learning whatsoever, scores ninety per cent accuracy by construction. Ninety-one per cent is barely better than guessing the majority class.</p><p>This is the oldest trap in applied classification, yet it keeps resurfacing because 'accuracy' sounds like a complete, self-evident metric. It is not, once the classes are imbalanced, because it weights the easy majority class and the rare, operationally important minority class identically. In our scenario, escalations are the minority class and the one the business actually cares about catching early.</p><p>Running the same worked example through precision, recall, and F1 on the escalation class makes the disagreement concrete. The majority-class baseline scores ninety per cent accuracy but zero recall on escalations: it catches none of them. A genuinely useful model might score eighty-six per cent accuracy, lower than the baseline, but with sixty per cent recall and fifty per cent precision on escalations, meaning it actually flags more than half of the tickets that will go wrong. If your team's glossary lets 'accuracy' stand in unchallenged as the headline metric, you will quietly prefer the useless baseline over the useful model. The dispute over what accuracy means is not academic; it determines which model gets deployed.</p></section><section class='psec reveal'><h2>What this buys you in practice</h2><p>The pattern across both disputes is the same. A term sounds settled until you push a specific, numbered example through it, and then the vague version and the precise version start producing different decisions. The fix is not to memorise a single canonical glossary, because none exists that every subfield honours. The fix is to make your own usage operational and explicit every time a term could be read two ways.</p><p>Concretely, that means stating how many times a held-out slice was used before anyone sees a reported number, and stating which class a reported metric is computed against when classes are imbalanced. It costs two sentences in a report or a README and it closes off the two most common routes to an inflated, non-reproducible result.</p><p>I treat glossary disputes as a diagnostic rather than an annoyance now. If a term is worth arguing about, it is usually because two defensible readings of it lead to different numbers on a real dataset, and that is worth finding out before the model ships rather than after.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/ml-glossary-disputes-worked-example-2.jpg' alt='whiteboard with data split diagram' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

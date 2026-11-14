@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "ml-glossary-disputes-worked-example",
+      "title": "ML Glossary Disputes: One Worked Example to Settle Them",
+      "excerpt": "Machine learning terms get used inconsistently across papers and teams. One worked example shows exactly where the confusion starts and how to avoid it.",
+      "date": "2026-11-14",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a5",
+      "thumb": "assets/blog/ml-glossary-disputes-worked-example.png",
+      "thumb_alt": "Cover image for the article: ML Glossary Disputes: One Worked Example to Settle Them"
+    },
+    {
       "slug": "nlp-preprocessing-still-matters",
       "title": "Why Old-School NLP Preprocessing Still Matters",
       "excerpt": "Modern models hide, rather than remove, the effects of classic preprocessing choices. Get them wrong and your evaluation lies to you.",

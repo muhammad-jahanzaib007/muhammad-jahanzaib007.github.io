@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Machine learning glossary disputes: resolving conflicting definitions with one worked example",
     "What a machine learning engineer's CV should show that a certificate cannot",
     "Evaluating a prompt the way you would evaluate a model: a repeatable protocol",
     "Computer vision pipeline failure modes: lighting, occlusion, and the ones nobody tests for",
@@ -294,6 +293,7 @@
     "MLOps on a single machine: what to build before you need a cluster",
     "The MLOps job title spectrum: platform engineer, ML engineer, or something else",
     "Computer vision engineer interview questions: what they are actually probing for",
-    "How NLP preprocessing choices from the pre-transformer era still matter today"
+    "How NLP preprocessing choices from the pre-transformer era still matter today",
+    "Machine learning glossary disputes: resolving conflicting definitions with one worked example"
   ]
 }
