@@ -2,14 +2,14 @@
   "posts": [
     {
       "slug": "ml-glossary-disputes-worked-example",
-      "title": "ML Glossary Disputes: One Worked Example to Settle Them",
-      "excerpt": "Machine learning terms get used inconsistently across papers and teams. One worked example shows exactly where the confusion starts and how to avoid it.",
+      "title": "Machine Learning Glossary Disputes: One Worked Example",
+      "excerpt": "When teams disagree on basic ML terms, the fix isn't a dictionary, it's a worked example that forces the definitions to earn their keep.",
       "date": "2026-11-14",
-      "read_min": 5,
+      "read_min": 6,
       "tag": "Evaluation",
       "color": "a5",
       "thumb": "assets/blog/ml-glossary-disputes-worked-example.png",
-      "thumb_alt": "Cover image for the article: ML Glossary Disputes: One Worked Example to Settle Them"
+      "thumb_alt": "Cover image for the article: Machine Learning Glossary Disputes: One Worked Example"
     },
     {
       "slug": "nlp-preprocessing-still-matters",
