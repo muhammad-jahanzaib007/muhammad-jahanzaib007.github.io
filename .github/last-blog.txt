@@ -1,1 +1,1 @@
-2026-11-14T20:01:43Z slug=cv-beyond-the-certificate words=1080 title="What a Machine Learning Engineer's CV Should Prove"
+2026-11-14T20:02:50Z slug=cv-beyond-the-certificate words=1198 title="What an ML Engineer's CV Should Show Beyond a Certificate"

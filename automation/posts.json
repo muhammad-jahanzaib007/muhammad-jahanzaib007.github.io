@@ -2,14 +2,14 @@
   "posts": [
     {
       "slug": "cv-beyond-the-certificate",
-      "title": "What a Machine Learning Engineer's CV Should Prove",
-      "excerpt": "Certificates show exposure to material; a good ML CV shows evidence of judgement, leakage-aware evaluation, and work that would survive scrutiny.",
+      "title": "What an ML Engineer's CV Should Show Beyond a Certificate",
+      "excerpt": "Certificates show exposure, not capability. Here is what actually convinces a hiring manager you can do the job.",
       "date": "2026-11-14",
-      "read_min": 5,
+      "read_min": 6,
       "tag": "Careers",
       "color": "a6",
       "thumb": "assets/blog/cv-beyond-the-certificate.png",
-      "thumb_alt": "Cover image for the article: What a Machine Learning Engineer's CV Should Prove"
+      "thumb_alt": "Cover image for the article: What an ML Engineer's CV Should Show Beyond a Certificate"
     },
     {
       "slug": "ml-glossary-disputes-worked-example",
