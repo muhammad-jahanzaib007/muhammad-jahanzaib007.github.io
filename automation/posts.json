@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "evaluating-prompts-like-models",
+      "title": "Evaluating a Prompt the Way You'd Evaluate a Model",
+      "excerpt": "Treat a prompt like a hyperparameter choice: hold out data, pick metrics first, and test against a real baseline before trusting it.",
+      "date": "2026-11-15",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a2",
+      "thumb": "assets/blog/evaluating-prompts-like-models.png",
+      "thumb_alt": "Cover image for the article: Evaluating a Prompt the Way You'd Evaluate a Model"
+    },
+    {
       "slug": "cv-beyond-the-certificate",
       "title": "What an ML Engineer's CV Should Show Beyond a Certificate",
       "excerpt": "Certificates show exposure, not capability. Here is what actually convinces a hiring manager you can do the job.",

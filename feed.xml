@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Sat, 14 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 15 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Evaluating a Prompt the Way You&#x27;d Evaluate a Model</title>
+    <link>https://jahanzaibawan.com/blog/evaluating-prompts-like-models.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/evaluating-prompts-like-models.html</guid>
+    <pubDate>Sun, 15 Nov 2026 09:00:00 +0000</pubDate>
+    <description>Treat a prompt like a hyperparameter choice: hold out data, pick metrics first, and test against a real baseline before trusting it.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>What an ML Engineer&#x27;s CV Should Show Beyond a Certificate</title>
     <link>https://jahanzaibawan.com/blog/cv-beyond-the-certificate.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/evaluation-protocol-before-code.html</guid>
     <pubDate>Thu, 05 Nov 2026 09:00:00 +0000</pubDate>
     <description>Write your evaluation protocol before any training code exists. It is the single cheapest way to stop a project from quietly lying to you.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Why Accuracy Alone Cannot Tell You a Model Is Production-Ready</title>
-    <link>https://jahanzaibawan.com/blog/accuracy-not-enough-production.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/accuracy-not-enough-production.html</guid>
-    <pubDate>Thu, 05 Nov 2026 09:00:00 +0000</pubDate>
-    <description>High accuracy can mask a model that fails exactly where it matters most. A look at why production readiness needs more than one metric.</description>
     <category>Evaluation</category>
   </item>
 </channel>

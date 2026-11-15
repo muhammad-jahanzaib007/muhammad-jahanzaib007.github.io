@@ -1,1 +1,1 @@
-2026-11-14T20:02:50Z slug=cv-beyond-the-certificate words=1198 title="What an ML Engineer's CV Should Show Beyond a Certificate"
+2026-11-15T08:01:25Z slug=evaluating-prompts-like-models words=1064 title="Evaluating a Prompt the Way You'd Evaluate a Model"

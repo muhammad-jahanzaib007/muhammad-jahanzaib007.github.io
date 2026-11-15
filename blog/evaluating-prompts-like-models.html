@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evaluating a Prompt the Way You&#x27;d Evaluate a Model | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A repeatable protocol for evaluating prompts with held-out data, pre-registered metrics, and strong baselines, drawing on standard model evaluation practice.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="prompt evaluation, LLM evaluation, evaluation protocol, leakage, baselines, reproducibility, prompt engineering, machine learning methodology, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-15">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Evaluating a Prompt the Way You&#x27;d Evaluate a Model">
+<meta property="og:description" content="A repeatable protocol for evaluating prompts with held-out data, pre-registered metrics, and strong baselines, drawing on standard model evaluation practice.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/evaluating-prompts-like-models.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/evaluating-prompts-like-models.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Evaluating a Prompt the Way You&#x27;d Evaluate a Model">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/evaluating-prompts-like-models.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/evaluating-prompts-like-models.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Evaluating a Prompt the Way You'd Evaluate a Model",
+  "description": "A repeatable protocol for evaluating prompts with held-out data, pre-registered metrics, and strong baselines, drawing on standard model evaluation practice.",
+  "url": "https://jahanzaibawan.com/blog/evaluating-prompts-like-models.html",
+  "image": "https://jahanzaibawan.com/assets/blog/evaluating-prompts-like-models.png",
+  "datePublished": "2026-11-15",
+  "dateModified": "2026-11-15",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/evaluating-prompts-like-models.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Evaluating a Prompt the Way You'd Evaluate a Model", "item": "https://jahanzaibawan.com/blog/evaluating-prompts-like-models.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 15 Nov 2026</div>
+    <h1>Evaluating a Prompt the Way You&#x27;d Evaluate a Model</h1>
+    <p class="lede">Prompts are not magic spells, they are configurations that deserve the same evaluation discipline as any other model artefact.</p>
+  </div>
+
+  <img src="../assets/blog/evaluating-prompts-like-models.png" alt="Cover image for the article: Evaluating a Prompt the Way You&#x27;d Evaluate a Model" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why prompts deserve the same scrutiny as models</h2><p>When I tune a classifier, I would never accept a single run on whatever examples happened to be lying around as proof that it works. I would split the data, pick a metric before looking at results, and compare against a sensible baseline. Yet a lot of prompt engineering skips all of that. Someone tries a phrasing, glances at three outputs, decides it 'feels better', and ships it. That is not evaluation, it is vibes with extra steps.</p><p>The reason this matters is that a prompt is a configuration, in the same way a learning rate or a regularisation strength is a configuration. It interacts with the underlying model, the task, and the data distribution in ways that are not obvious from inspection. A prompt that looks elegant can quietly degrade performance on edge cases, and a prompt that looks clumsy can be robust precisely because it is explicit. You cannot tell which is which by reading the prompt. You have to measure.</p><p>Treating prompt selection as a modelling decision also forces useful honesty about uncertainty. If I change one word in an instruction and my accuracy jumps from 71 percent to 76 percent on twenty test examples, that is not a finding, it is noise with a story attached. The same scepticism I apply to a model that improves by half a point on a tiny validation set should apply here too.</p></section><section class='psec reveal'><h2>Building the protocol: splits, metrics, and a fixed test set</h2><p>The first step is the same as any supervised evaluation: separate your data into a development set you are allowed to look at while iterating, and a held-out test set you touch exactly once, at the end. This sounds obvious, but in prompt work it is routinely violated because the feedback loop is so fast. You tweak the prompt, run it on your 'test' examples, see the error, tweak again. By the tenth iteration you have effectively trained your prompt on the test set through repeated peeking, and your final number is optimistic in a way you cannot quantify.</p><p>A concrete example: suppose you are building a prompt to extract a delivery date from customer emails. You collect 200 labelled emails. Split 120 for development, 80 for a locked test set. While iterating, you only look at the 120. You try different instructions, different formats for the few-shot examples, different ways of asking the model to say 'no date found' when appropriate. You track exact-match accuracy and also a looser metric, correct date within one day, because customers sometimes write dates ambiguously and you want to know how much that costs you.</p><p>Once you settle on a prompt version using the development set, you run it once on the 80 held-out emails and report that number as your estimate of real-world performance. If someone asks you to tweak the prompt further after seeing the test result, that number is now contaminated and you need a fresh held-out set, or at least an honest caveat. This is identical to the rule about not touching your test set during hyperparameter search, just applied to prompt wording instead of weight decay.</p><p>Metrics matter as much as splits. Exact string match is often too strict for generative outputs and will make a genuinely good prompt look mediocre. Task-specific structured scoring, such as checking whether an extracted field parses correctly and matches within tolerance, usually tells you more than a blunt accuracy number. Decide on the metric before you see results, not after, otherwise you will unconsciously pick whichever metric flatters your favourite prompt.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/evaluating-prompts-like-models-1.jpg' alt='sticky notes on laptop screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Baselines, variance, and why a single number is not enough</h2><p>Every prompt evaluation needs a baseline that is not just 'the previous prompt I happened to write'. A strong baseline might be a simple zero-shot instruction with no few-shot examples, or a rule-based extractor if the task allows one, or even just always predicting the most common class. In the delivery-date example, a baseline of 'always output no date found' might already score surprisingly well if most emails genuinely lack a date, and that tells you something important about how much headroom your clever prompt actually has.</p><p>Suppose your carefully engineered prompt scores 84 percent on the held-out 80 emails, and the trivial baseline scores 79 percent. That five-point gap is real information, but with only 80 examples the confidence interval around each of those numbers is wide, probably plus or minus six or seven points using a standard binomial estimate. The honest conclusion is that your prompt is probably better, not that it is definitely better. Reporting the interval alongside the point estimate, or at minimum acknowledging the sample size, keeps you from overselling a result that would not replicate on a different 80 emails.</p><p>Variance within the model itself is a second source of noise that is easy to forget. Many generative models are not deterministic even at low temperature, and running the same prompt twice on the same input can give different outputs. If you evaluate once, you are measuring one draw from a distribution, not the distribution itself. Running each test example three times and reporting the range, or fixing the decoding settings explicitly and stating them in your write-up, turns an anecdote into something closer to a measurement.</p><p>Finally, log everything: the exact prompt text, the model version, the decoding parameters, and the date you ran it. Models get updated silently by providers, and a prompt that scored 84 percent in March can score differently in June for reasons that have nothing to do with your wording. Without a logged snapshot, you cannot tell whether a regression came from your prompt or from the ground shifting underneath it.</p></section><section class='psec reveal'><h2>A practical takeaway</h2><p>The discipline is not complicated, it is just rarely applied to prompts with the same seriousness it gets applied to models. Fix a held-out set you do not peek at, decide your metric in advance, compare against a real baseline rather than your own earlier draft, account for sample size and model stochasticity when you report a number, and log the exact configuration that produced it. None of this requires special tooling, it requires the same habits that make any empirical claim trustworthy. If you would not accept a model result built on a glance at three examples, do not accept a prompt result built the same way.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/evaluating-prompts-like-models-2.jpg' alt='researcher comparing printed charts' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

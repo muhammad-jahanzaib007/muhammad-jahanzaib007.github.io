@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Evaluating a prompt the way you would evaluate a model: a repeatable protocol",
     "Computer vision pipeline failure modes: lighting, occlusion, and the ones nobody tests for",
     "Deep learning versus machine learning: a worked example that settles the ambiguity",
     "Why NLP practitioners still need rule-based baselines before reaching for a transformer",
@@ -294,6 +293,7 @@
     "Computer vision engineer interview questions: what they are actually probing for",
     "How NLP preprocessing choices from the pre-transformer era still matter today",
     "Machine learning glossary disputes: resolving conflicting definitions with one worked example",
-    "What a machine learning engineer's CV should show that a certificate cannot"
+    "What a machine learning engineer's CV should show that a certificate cannot",
+    "Evaluating a prompt the way you would evaluate a model: a repeatable protocol"
   ]
 }
