@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Computer Vision Failure Modes Nobody Tests For | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical look at computer vision failure modes beyond lighting and occlusion, and why untested edge cases cause most production incidents.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="computer vision, model evaluation, robustness testing, dataset bias, occlusion, lighting conditions, distribution shift, production ML, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-15">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Computer Vision Failure Modes Nobody Tests For">
+<meta property="og:description" content="A practical look at computer vision failure modes beyond lighting and occlusion, and why untested edge cases cause most production incidents.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/cv-pipeline-failure-modes.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/cv-pipeline-failure-modes.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Computer Vision Failure Modes Nobody Tests For">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/cv-pipeline-failure-modes.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/cv-pipeline-failure-modes.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Computer Vision Failure Modes Nobody Tests For",
+  "description": "A practical look at computer vision failure modes beyond lighting and occlusion, and why untested edge cases cause most production incidents.",
+  "url": "https://jahanzaibawan.com/blog/cv-pipeline-failure-modes.html",
+  "image": "https://jahanzaibawan.com/assets/blog/cv-pipeline-failure-modes.png",
+  "datePublished": "2026-11-15",
+  "dateModified": "2026-11-15",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/cv-pipeline-failure-modes.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Computer Vision Failure Modes Nobody Tests For", "item": "https://jahanzaibawan.com/blog/cv-pipeline-failure-modes.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 15 Nov 2026</div>
+    <h1>Computer Vision Failure Modes Nobody Tests For</h1>
+    <p class="lede">Lighting and occlusion get all the attention in robustness testing, but the failures that actually ship to production are usually the ones nobody thought to write a test for.</p>
+  </div>
+
+  <img src="../assets/blog/cv-pipeline-failure-modes.png" alt="Cover image for the article: Computer Vision Failure Modes Nobody Tests For" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The comfortable failure modes</h2><p>Ask any computer vision practitioner to list the ways a model breaks and you get the same answer almost every time: lighting and occlusion. Both are real problems. A detector trained mostly on daylight images will degrade under sodium streetlamps or harsh backlight. A classifier that has only seen fully visible objects will stumble when half the object is behind something else. These are well understood, well documented, and crucially, easy to test for. You can build a validation set with dimmed images, add synthetic shadows, mask out thirty percent of a bounding box, and get a clean robustness curve to put in a slide deck.</p><p>That ease is exactly the problem. Lighting and occlusion are the failure modes we test for because they are convenient to simulate, not necessarily because they are the ones that cause the most damage in deployment. I have seen teams spend weeks tuning augmentation pipelines for brightness and contrast jitter while the model silently fails on something nobody thought to check, because nobody had to imagine it; it only showed up once the system met the real world.</p><p>The deeper issue is that lighting and occlusion are failure modes you can parametrise. You can turn a dial from zero occlusion to eighty percent occlusion and watch accuracy fall in a smooth curve. Most real failure modes do not have a dial. They are discrete, contextual, and often invisible until a specific combination of circumstances occurs that your test harness never encoded.</p></section><section class='psec reveal'><h2>A worked example: the failures with no dial</h2><p>Consider a pedestrian detector trained and validated on a dataset collected across a handful of cities, mostly in dry weather, mostly with cameras mounted at a consistent height. Run it through a standard robustness suite: vary brightness, add blur, mask parts of the body. Suppose it holds up reasonably well, dropping from ninety-four percent recall to eighty-six percent under the harshest occlusion setting. That looks like a defensible result.</p><p>Now put that same model behind a windscreen with a slightly different camera mount angle, three degrees off from training data, in light rain that causes faint droplet refraction on the lens. Recall might collapse to sixty percent, not because of lighting or occlusion in the tested sense, but because of a camera geometry shift combined with an optical artefact that resembles neither condition in the test suite. Nobody wrote a test for lens droplet refraction interacting with mounting angle, because nobody imagined that specific combination until it happened on a wet Tuesday in a location nobody had collected data from.</p><p>Other examples from the same family: a model that performs worse on people using mobility aids, not because of occlusion but because the aid changes the silhouette the network has learned to associate with a pedestrian. A quality control system that fails on products from a new supplier whose packaging reflects light at a slightly different angle, not dim or bright, just different. A medical imaging model that degrades on scans from a machine with a different sensor calibration, where the pixel intensity distribution shifts in a way that has nothing to do with lighting as commonly tested, but everything to do with instrument-level covariate shift.</p><p>What links these cases is that each failure depends on an interaction between variables that the test suite treated as independent. Lighting tests vary lighting while holding everything else fixed. Occlusion tests vary occlusion while holding everything else fixed. Real deployment varies camera angle, sensor type, demographic composition, weather, compression artefacts, and dozens of other factors simultaneously, and it is the joint combinations, not the marginals, that break models.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/cv-pipeline-failure-modes-1.jpg' alt='security camera footage at night' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Why this is a testing problem, not a data problem</h2><p>The instinctive response is to collect more diverse data. That helps, but it does not solve the underlying issue, because you cannot collect data for a scenario you have not thought to look for. The real gap is in how evaluation gets designed. Most robustness checklists are built by listing the variables that are easy to simulate synthetically: brightness, contrast, blur, occlusion masks, rotation. These get ticked off because they are cheap to generate and produce clean-looking metrics. Variables that are hard to simulate, like sensor-specific noise characteristics or the subtle correlation between a demographic group and a camera placement choice in the original data collection, rarely make it onto the list because nobody has an easy script to generate them.</p><p>This is where leakage-aware thinking becomes relevant well beyond its usual home in train-test splits. Just as a model can look good because its test set shares hidden structure with its training set, a robustness evaluation can look good because its stress tests share hidden assumptions with the training distribution. If your occlusion test only ever occludes objects that were already well represented in training, you are not testing occlusion robustness, you are testing a narrow slice of it that happens to be convenient.</p><p>A more honest approach starts by cataloguing the full data generating process behind deployment, not just the image itself. What cameras, what mounting positions, what compression pipelines, what downstream use of the output, what populations will actually appear in front of the lens. Then ask, for each of those factors, whether the current evaluation set has enough variation to say anything meaningful about it. Often the honest answer is no, and the next step is not a clever augmentation trick but an admission that a claim about robustness is currently unsupported.</p></section><section class='psec reveal'><h2>Practical takeaway</h2><p>Treat lighting and occlusion tests as a floor, not a ceiling. They catch the failures that are easy to catch precisely because they were easy to anticipate. The failures that matter most in production are usually the ones that emerge from an interaction nobody specified: a sensor, an angle, a population, a compression step, combined in a way the original dataset never captured. Before trusting a robustness report, ask what assumptions the stress tests inherited from the training data, and whether anyone has tried to break the model along an axis that was not already on the checklist. If the answer is no, the model has not been tested for failure, it has been tested for the failures someone already knew how to imagine.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/cv-pipeline-failure-modes-2.jpg' alt='industrial camera mounted on factory line' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

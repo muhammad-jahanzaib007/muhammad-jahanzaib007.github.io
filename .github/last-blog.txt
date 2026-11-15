@@ -1,1 +1,1 @@
-2026-11-15T08:02:18Z slug=evaluate-prompts-like-models words=1020 title="Evaluating a Prompt the Way You Would Evaluate a Model"
+2026-11-15T20:03:07Z slug=cv-pipeline-failure-modes words=1036 title="Computer Vision Failure Modes Nobody Tests For"

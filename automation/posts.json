@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "cv-pipeline-failure-modes",
+      "title": "Computer Vision Failure Modes Nobody Tests For",
+      "excerpt": "Lighting and occlusion are the easy robustness checks. The failures that actually reach production are the ones your test set never imagined.",
+      "date": "2026-11-15",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a3",
+      "thumb": "assets/blog/cv-pipeline-failure-modes.png",
+      "thumb_alt": "Cover image for the article: Computer Vision Failure Modes Nobody Tests For"
+    },
+    {
       "slug": "evaluate-prompts-like-models",
       "title": "Evaluating a Prompt the Way You Would Evaluate a Model",
       "excerpt": "A prompt is a hyperparameter choice. Treat it with a held-out set, a scoring rubric, and a baseline, not vibes.",
