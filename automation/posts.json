@@ -1,15 +1,15 @@
 {
   "posts": [
     {
-      "slug": "evaluating-prompts-like-models",
-      "title": "Evaluating a Prompt the Way You'd Evaluate a Model",
-      "excerpt": "Treat a prompt like a hyperparameter choice: hold out data, pick metrics first, and test against a real baseline before trusting it.",
+      "slug": "evaluate-prompts-like-models",
+      "title": "Evaluating a Prompt the Way You Would Evaluate a Model",
+      "excerpt": "A prompt is a hyperparameter choice. Treat it with a held-out set, a scoring rubric, and a baseline, not vibes.",
       "date": "2026-11-15",
       "read_min": 5,
       "tag": "Evaluation",
       "color": "a2",
-      "thumb": "assets/blog/evaluating-prompts-like-models.png",
-      "thumb_alt": "Cover image for the article: Evaluating a Prompt the Way You'd Evaluate a Model"
+      "thumb": "assets/blog/evaluate-prompts-like-models.png",
+      "thumb_alt": "Cover image for the article: Evaluating a Prompt the Way You Would Evaluate a Model"
     },
     {
       "slug": "cv-beyond-the-certificate",

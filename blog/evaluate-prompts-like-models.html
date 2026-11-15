@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evaluating a Prompt the Way You Would Evaluate a Model | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A repeatable protocol for evaluating prompts with held-out data, strong baselines, and clear metrics, borrowed from model evaluation practice.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="prompt evaluation, LLM evaluation, prompt engineering, machine learning evaluation, baselines, held-out test set, reproducibility, NLP, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-15">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Evaluating a Prompt the Way You Would Evaluate a Model">
+<meta property="og:description" content="A repeatable protocol for evaluating prompts with held-out data, strong baselines, and clear metrics, borrowed from model evaluation practice.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/evaluate-prompts-like-models.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/evaluate-prompts-like-models.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Evaluating a Prompt the Way You Would Evaluate a Model">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/evaluate-prompts-like-models.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/evaluate-prompts-like-models.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Evaluating a Prompt the Way You Would Evaluate a Model",
+  "description": "A repeatable protocol for evaluating prompts with held-out data, strong baselines, and clear metrics, borrowed from model evaluation practice.",
+  "url": "https://jahanzaibawan.com/blog/evaluate-prompts-like-models.html",
+  "image": "https://jahanzaibawan.com/assets/blog/evaluate-prompts-like-models.png",
+  "datePublished": "2026-11-15",
+  "dateModified": "2026-11-15",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/evaluate-prompts-like-models.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Evaluating a Prompt the Way You Would Evaluate a Model", "item": "https://jahanzaibawan.com/blog/evaluate-prompts-like-models.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 15 Nov 2026</div>
+    <h1>Evaluating a Prompt the Way You Would Evaluate a Model</h1>
+    <p class="lede">Prompts are not magic spells; they are configurations that deserve the same rigour as a model architecture or a training run.</p>
+  </div>
+
+  <img src="../assets/blog/evaluate-prompts-like-models.png" alt="Cover image for the article: Evaluating a Prompt the Way You Would Evaluate a Model" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why prompts deserve the same scepticism as models</h2><p>When I train a classifier, I would never trust a number that comes from eyeballing five predictions. I split data, hold out a test set, pick a metric before I look at results, and compare against a baseline. Yet when people write prompts for large language models, this discipline often disappears. A prompt gets tweaked until three example outputs look good, and that is declared success. The prompt is treated as a clever bit of writing rather than as a configuration with measurable effects on behaviour.</p><p>This is a mistake, because a prompt is functionally similar to a hyperparameter or even a small model component. It maps inputs to outputs through a fixed procedure, it can overfit to the examples you happened to test it on, and it can fail silently on inputs you did not think to try. The only honest way to know whether prompt A is better than prompt B is to evaluate them the way you would evaluate two model checkpoints: on a held-out set, with a fixed metric, against a sensible baseline.</p><p>The reason this matters in practice is that prompts are cheap to iterate on, which makes it tempting to iterate directly against the very examples you are judging quality with. That is leakage in a different costume. If you keep adjusting wording until it nails the ten cases you are staring at, you have not improved the prompt in general; you have fitted it to those ten cases, and you will not know until it meets case eleven.</p></section><section class='psec reveal'><h2>Building the protocol: splits, metrics, and baselines</h2><p>Start by separating your examples into a development set and a held-out test set, exactly as you would for a model. The development set is where you are allowed to read outputs, notice failure patterns, and rewrite instructions. The held-out set is touched only when you think you are finished, and once you have looked at it, that version of the prompt is done; further tweaking means you need a fresh held-out set or you are back to leakage. In practice, even a modest split, say forty examples for development and sixty for held-out testing, is far better than zero separation, because it forces a discipline of not peeking.</p><p>Next, fix a scoring method before you run anything. If the task has a clear correct answer, such as extracting a date or classifying a ticket type, use exact match or a simple rubric with two or three criteria scored independently, for example correctness, completeness, and format compliance. If the task is open-ended, such as summarisation, write a short rubric with concrete anchors: a score of two means the summary omits a key fact, a score of one means it is accurate but misses nuance, a score of zero means it is wrong or irrelevant. Vague instructions like rate the quality from one to five produce noisy, unreplicable numbers because two reviewers, or the same reviewer on two days, will disagree.</p><p>Always include a baseline. The most useful one is often the simplest prompt you can write, a plain instruction with no few-shot examples and no elaborate persona. Suppose that baseline scores 58 percent on your rubric across the held-out set. Your carefully engineered prompt, with role-play framing and five few-shot examples, scores 64 percent. That six-point gap tells you the extra complexity earned its keep. If instead the elaborate prompt scores 59 percent, you have learned that the complexity is decoration, not substance, and you can ship the simpler version with more confidence and lower token cost.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/evaluate-prompts-like-models-1.jpg' alt='person writing notes at laptop with spreadsheet' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>A worked example: comparing two prompts honestly</h2><p>Imagine you are building a prompt to classify customer support messages into billing, technical, or account categories. You collect one hundred real messages, labelled by hand, and split them sixty for development and forty for held-out testing. On the development set, you try a zero-shot prompt and a few-shot prompt with six examples. Reading the outputs, the few-shot version seems to handle ambiguous messages better, so you refine its wording and lock it.</p><p>Now you run both locked prompts, zero-shot and few-shot, once each on the forty held-out messages, scoring strictly by exact category match. Suppose zero-shot gets 31 out of 40 correct, 77.5 percent, and few-shot gets 35 out of 40, 87.5 percent. That ten-point difference, measured on data neither prompt was tuned against, is a result you can trust and report. Compare that to a situation where you had only tested on the same six examples you used to write the few-shot prompt: there you might have seen six out of six correct and concluded falsely that the prompt was essentially perfect.</p><p>It is also worth testing robustness within this same protocol, not as an afterthought. Take the winning few-shot prompt and rerun it on the held-out set with minor paraphrases of the same messages, or with the message order shuffled if the prompt includes multiple messages at once. If accuracy drops from 87.5 percent to 70 percent under paraphrasing, you have discovered that the prompt is brittle, latching onto surface wording rather than meaning, and that finding is only visible because you treated evaluation as a repeatable measurement rather than a one-off check.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>Treat every prompt change as a hypothesis that needs testing, not a tweak that speaks for itself. Keep a held-out set you do not peek at during iteration, fix your rubric or metric in advance, and always compare against a plain baseline so you know whether complexity is actually earning its cost in accuracy. Rerun the final candidate once, cleanly, on unseen data before you trust the number.</p><p>None of this requires heavy infrastructure. A spreadsheet with inputs, two prompt outputs, and a scoring column is enough to start. What matters is the habit: separate exploration from confirmation, write the scoring rule down before you see results, and never let the examples you tuned on also be the examples you judge success by. That single discipline, borrowed directly from ordinary model evaluation, is what turns prompt engineering from folklore into something you can actually trust and reproduce.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/evaluate-prompts-like-models-2.jpg' alt='whiteboard with scoring rubric diagram' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
