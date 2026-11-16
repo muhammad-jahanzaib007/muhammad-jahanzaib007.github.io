@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "rule-based-baselines-before-transformers",
+      "title": "Why You Still Need a Rule-Based Baseline Before a Transformer",
+      "excerpt": "A good rule-based baseline exposes label noise, leakage, and class imbalance before you waste a GPU budget chasing marginal gains.",
+      "date": "2026-11-16",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a5",
+      "thumb": "assets/blog/rule-based-baselines-before-transformers.png",
+      "thumb_alt": "Cover image for the article: Why You Still Need a Rule-Based Baseline Before a Transformer"
+    },
+    {
       "slug": "deep-learning-vs-machine-learning-20261116",
       "title": "Deep Learning versus Machine Learning: A Worked Example",
       "excerpt": "A single worked example, tabular features versus raw pixels, shows exactly where machine learning ends and deep learning begins.",

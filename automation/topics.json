@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Why NLP practitioners still need rule-based baselines before reaching for a transformer",
     "MLOps tooling decision tree: what to adopt at each team size, with reasoning",
     "The real skill gap between a prompt engineering course and a working practitioner",
     "Computer vision in production: why the demo accuracy and the shipped accuracy diverge",
@@ -294,6 +293,7 @@
     "What a machine learning engineer's CV should show that a certificate cannot",
     "Evaluating a prompt the way you would evaluate a model: a repeatable protocol",
     "Computer vision pipeline failure modes: lighting, occlusion, and the ones nobody tests for",
-    "Deep learning versus machine learning: a worked example that settles the ambiguity"
+    "Deep learning versus machine learning: a worked example that settles the ambiguity",
+    "Why NLP practitioners still need rule-based baselines before reaching for a transformer"
   ]
 }

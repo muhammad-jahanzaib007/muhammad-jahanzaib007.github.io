@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Mon, 16 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Why You Still Need a Rule-Based Baseline Before a Transformer</title>
+    <link>https://jahanzaibawan.com/blog/rule-based-baselines-before-transformers.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/rule-based-baselines-before-transformers.html</guid>
+    <pubDate>Mon, 16 Nov 2026 09:00:00 +0000</pubDate>
+    <description>A good rule-based baseline exposes label noise, leakage, and class imbalance before you waste a GPU budget chasing marginal gains.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Deep Learning versus Machine Learning: A Worked Example</title>
     <link>https://jahanzaibawan.com/blog/deep-learning-vs-machine-learning-20261116.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/deep-learning-vs-machine-learning-20261116.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/what-loss-curves-reveal.html</guid>
     <pubDate>Sat, 07 Nov 2026 09:00:00 +0000</pubDate>
     <description>A final metric is a verdict. A loss curve is the trial. Here is why I read the whole training trajectory before trusting any score.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Comparing NLP Pipelines Honestly: Paired Tests Over Leaderboards</title>
-    <link>https://jahanzaibawan.com/blog/paired-tests-nlp-pipelines.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/paired-tests-nlp-pipelines.html</guid>
-    <pubDate>Fri, 06 Nov 2026 09:00:00 +0000</pubDate>
-    <description>One leaderboard score is not evidence. Here is how paired tests on the same examples reveal whether a pipeline improvement is real or noise.</description>
     <category>Evaluation</category>
   </item>
 </channel>

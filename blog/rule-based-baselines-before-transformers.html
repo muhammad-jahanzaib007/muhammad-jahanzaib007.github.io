@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why You Still Need a Rule-Based Baseline Before a Transformer | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Rule-based baselines reveal label noise, leakage, and trivial shortcuts before you commit to transformer fine-tuning. Here is why they still matter.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="rule-based baselines, NLP evaluation, transformers, data leakage, strong baselines, text classification, model evaluation, reproducibility, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-16">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Why You Still Need a Rule-Based Baseline Before a Transformer">
+<meta property="og:description" content="Rule-based baselines reveal label noise, leakage, and trivial shortcuts before you commit to transformer fine-tuning. Here is why they still matter.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/rule-based-baselines-before-transformers.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/rule-based-baselines-before-transformers.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why You Still Need a Rule-Based Baseline Before a Transformer">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/rule-based-baselines-before-transformers.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/rule-based-baselines-before-transformers.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Why You Still Need a Rule-Based Baseline Before a Transformer",
+  "description": "Rule-based baselines reveal label noise, leakage, and trivial shortcuts before you commit to transformer fine-tuning. Here is why they still matter.",
+  "url": "https://jahanzaibawan.com/blog/rule-based-baselines-before-transformers.html",
+  "image": "https://jahanzaibawan.com/assets/blog/rule-based-baselines-before-transformers.png",
+  "datePublished": "2026-11-16",
+  "dateModified": "2026-11-16",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/rule-based-baselines-before-transformers.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Why You Still Need a Rule-Based Baseline Before a Transformer", "item": "https://jahanzaibawan.com/blog/rule-based-baselines-before-transformers.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 16 Nov 2026</div>
+    <h1>Why You Still Need a Rule-Based Baseline Before a Transformer</h1>
+    <p class="lede">Before you fine-tune anything, write a regex. It will tell you more about your task than a leaderboard ever will.</p>
+  </div>
+
+  <img src="../assets/blog/rule-based-baselines-before-transformers.png" alt="Cover image for the article: Why You Still Need a Rule-Based Baseline Before a Transformer" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The temptation to skip the boring step</h2><p>Whenever I start a text classification or information extraction task now, there is a pull towards opening a notebook, loading a pretrained transformer, and fine-tuning within the hour. The tooling makes this almost frictionless, and the results often look respectable on the first try. But I have learned, sometimes the hard way, that skipping a rule-based baseline is skipping the single cheapest source of information about your dataset. A baseline is not a formality to satisfy a reviewer. It is a diagnostic tool.</p><p>Consider a sentiment classification task on product reviews. If I jump straight to fine-tuning a transformer and get 91 percent accuracy, that number means almost nothing on its own. Is 91 percent impressive? Is it barely above chance given the class balance? Is the model actually reading sentiment, or has it learned that reviews mentioning a refund almost always score negative, which would be true of a keyword list as well? Without a comparison point built from simple, interpretable logic, I cannot answer any of these questions, and I am left trusting a number I do not understand.</p><p>A rule-based baseline forces me to engage with the data before I engage with the architecture. Writing a small set of keyword rules, a regex for named entities, or a handful of heuristics based on sentence length and punctuation means reading dozens or hundreds of examples closely. That reading is where I notice mislabelled rows, duplicated text across train and test splits, or a spurious correlation that any model, however sophisticated, will happily exploit.</p></section><section class='psec reveal'><h2>A worked example with made-up but realistic numbers</h2><p>Suppose I am building a classifier to flag customer support tickets as urgent or not urgent, and the dataset has 10,000 labelled tickets with roughly 12 percent marked urgent. A majority-class baseline that always predicts not urgent already achieves 88 percent accuracy, which sounds strong until you realise it has zero recall on the class that actually matters. This is the first and most basic rule-based check, and it costs nothing to compute. If my eventual transformer model reports 89 percent accuracy, I now know it is barely better than doing nothing useful at all.</p><p>Next, I write a handful of keyword rules: tickets containing words like outage, cannot access, or billing error get flagged urgent. Suppose this simple rule set achieves 76 percent precision and 61 percent recall on urgent tickets, giving an F1 score around 0.68. That single afternoon of work has now given me a real target. Any transformer I fine-tune needs to clearly beat an F1 of 0.68 to justify the added complexity, training time, and inference cost. If my fine-tuned model lands at 0.71, that is a modest but genuine improvement. If it lands at 0.69, I have to ask seriously whether the extra GPU hours and maintenance burden are worth it.</p><p>This exercise also surfaces leakage. While building the keyword rules I might notice that tickets from a particular customer account are disproportionately urgent, not because of content but because that account has a support contract requiring faster triage. If that account identifier leaked into my feature set or my train and test split was not stratified by account, both my rule-based system and my transformer could be learning an artefact of the data collection process rather than anything about urgency itself. I would far rather catch this while writing simple rules than after a week of hyperparameter tuning on a model whose internal reasoning I cannot easily inspect.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/rule-based-baselines-before-transformers-1.jpg' alt='handwritten regex notes on whiteboard' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What baselines protect you from</h2><p>The deeper reason rule-based baselines matter is that they are honest about what they are doing. A regex either matches or it does not, and I can read the rule and know exactly why a prediction was made. A fine-tuned transformer, by contrast, can achieve a similar or better score for reasons that are opaque, and sometimes those reasons are shortcuts: a token that happens to correlate with the label in this particular dataset but has no real connection to the task. Without a transparent baseline to compare against, it is far harder to notice when a complex model is right for the wrong reasons.</p><p>There is also a cost argument that gets underweighted in academic settings but matters enormously in practice. Fine-tuning and serving a transformer carries real infrastructure cost, latency, and engineering overhead compared with a rule-based or lightweight statistical system. If a well-constructed baseline using TF-IDF features and logistic regression achieves 85 percent of the performance of a transformer at a fraction of the computational cost, that is a legitimate business decision point, not a failure of ambition. I have seen teams commit to transformer-based pipelines before establishing whether the simpler system was actually inadequate, and the result is unnecessary complexity that nobody wants to maintain eighteen months later.</p><p>None of this is an argument against transformers. They are often genuinely necessary, particularly for tasks involving nuanced context, long-range dependencies, or language where keyword matching simply cannot capture meaning. The point is sequencing. A rule-based baseline, built quickly and evaluated honestly on a leakage-free split, tells you what the floor looks like and what shape of errors exist in your data. It is far cheaper to discover a labelling problem by staring at twenty misclassified examples from a simple rule set than by debugging a transformer that has somehow learned to ignore 30 percent of your training signal.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>Before reaching for a transformer, spend half a day on a baseline that a colleague could understand by reading it rather than by trusting a loss curve. Write the keyword rules, compute the majority class score, check the class balance, and look closely at the split to confirm nothing has leaked across it. Record the baseline's precision, recall, and F1 honestly, including its failure modes. Only then fine-tune the transformer, and judge it against that number rather than against an abstract sense of what feels impressive.</p><p>This habit costs very little time relative to a full training run, and it consistently pays for itself. It gives you a sanity check, a cost-benefit reference point, and, more often than I would like to admit, an early warning that something in the dataset needs fixing before any model, simple or otherwise, can be trusted.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/rule-based-baselines-before-transformers-2.jpg' alt='messy spreadsheet of labelled data' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

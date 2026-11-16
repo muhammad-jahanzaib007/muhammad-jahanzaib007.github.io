@@ -1,1 +1,1 @@
-2026-11-16T08:02:30Z slug=deep-learning-vs-machine-learning-20261116 words=1139 title="Deep Learning versus Machine Learning: A Worked Example"
+2026-11-16T20:01:43Z slug=rule-based-baselines-before-transformers words=1046 title="Why You Still Need a Rule-Based Baseline Before a Transformer"
