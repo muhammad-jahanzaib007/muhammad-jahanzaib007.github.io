@@ -8,11 +8,11 @@
   <language>en-gb</language>
   <lastBuildDate>Mon, 16 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
-    <title>Why You Still Need a Rule-Based Baseline Before a Transformer</title>
+    <title>Why You Still Need Rule-Based Baselines Before Transformers</title>
     <link>https://jahanzaibawan.com/blog/rule-based-baselines-before-transformers.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/rule-based-baselines-before-transformers.html</guid>
     <pubDate>Mon, 16 Nov 2026 09:00:00 +0000</pubDate>
-    <description>A good rule-based baseline exposes label noise, leakage, and class imbalance before you waste a GPU budget chasing marginal gains.</description>
+    <description>A regex or keyword baseline isn&#x27;t a formality. It sets the bar a transformer must clear and reveals what your task really demands.</description>
     <category>Evaluation</category>
   </item>
   <item>

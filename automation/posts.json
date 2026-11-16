@@ -2,14 +2,14 @@
   "posts": [
     {
       "slug": "rule-based-baselines-before-transformers",
-      "title": "Why You Still Need a Rule-Based Baseline Before a Transformer",
-      "excerpt": "A good rule-based baseline exposes label noise, leakage, and class imbalance before you waste a GPU budget chasing marginal gains.",
+      "title": "Why You Still Need Rule-Based Baselines Before Transformers",
+      "excerpt": "A regex or keyword baseline isn't a formality. It sets the bar a transformer must clear and reveals what your task really demands.",
       "date": "2026-11-16",
       "read_min": 5,
       "tag": "Evaluation",
       "color": "a5",
       "thumb": "assets/blog/rule-based-baselines-before-transformers.png",
-      "thumb_alt": "Cover image for the article: Why You Still Need a Rule-Based Baseline Before a Transformer"
+      "thumb_alt": "Cover image for the article: Why You Still Need Rule-Based Baselines Before Transformers"
     },
     {
       "slug": "deep-learning-vs-machine-learning-20261116",
