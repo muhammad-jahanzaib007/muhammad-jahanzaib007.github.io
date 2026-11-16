@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Sun, 15 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Mon, 16 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Deep Learning versus Machine Learning: A Worked Example</title>
+    <link>https://jahanzaibawan.com/blog/deep-learning-vs-machine-learning-20261116.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/deep-learning-vs-machine-learning-20261116.html</guid>
+    <pubDate>Mon, 16 Nov 2026 09:00:00 +0000</pubDate>
+    <description>A worked tabular-versus-image example shows exactly where machine learning ends and deep learning begins, without the hand-waving.</description>
+    <category>Machine Learning</category>
+  </item>
   <item>
     <title>Computer Vision Failure Modes Nobody Tests For</title>
     <link>https://jahanzaibawan.com/blog/cv-pipeline-failure-modes.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Fri, 06 Nov 2026 09:00:00 +0000</pubDate>
     <description>One leaderboard score is not evidence. Here is how paired tests on the same examples reveal whether a pipeline improvement is real or noise.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Fine-Tuning a Small Transformer: What Actually Changes</title>
-    <link>https://jahanzaibawan.com/blog/fine-tuning-small-transformer-walkthrough.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/fine-tuning-small-transformer-walkthrough.html</guid>
-    <pubDate>Fri, 06 Nov 2026 09:00:00 +0000</pubDate>
-    <description>A concrete walkthrough of fine-tuning a small transformer: what the weights do, why learning rate and freezing choices matter, and how to check it actually worked.</description>
-    <category>Deep Learning</category>
   </item>
 </channel>
 </rss>

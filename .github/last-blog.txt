@@ -1,1 +1,1 @@
-2026-11-15T20:03:07Z slug=cv-pipeline-failure-modes words=1036 title="Computer Vision Failure Modes Nobody Tests For"
+2026-11-16T08:01:29Z slug=deep-learning-vs-machine-learning-20261116 words=954 title="Deep Learning versus Machine Learning: A Worked Example"

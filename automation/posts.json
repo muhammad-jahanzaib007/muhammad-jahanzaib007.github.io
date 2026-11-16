@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "deep-learning-vs-machine-learning-20261116",
+      "title": "Deep Learning versus Machine Learning: A Worked Example",
+      "excerpt": "A worked tabular-versus-image example shows exactly where machine learning ends and deep learning begins, without the hand-waving.",
+      "date": "2026-11-16",
+      "read_min": 5,
+      "tag": "Machine Learning",
+      "color": "a4",
+      "thumb": "assets/blog/deep-learning-vs-machine-learning-20261116.png",
+      "thumb_alt": "Cover image for the article: Deep Learning versus Machine Learning: A Worked Example"
+    },
+    {
       "slug": "cv-pipeline-failure-modes",
       "title": "Computer Vision Failure Modes Nobody Tests For",
       "excerpt": "Lighting and occlusion are the easy robustness checks. The failures that actually reach production are the ones your test set never imagined.",
