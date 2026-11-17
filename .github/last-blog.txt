@@ -1,1 +1,1 @@
-2026-11-17T20:02:02Z slug=prompt-engineering-skill-gap words=1039 title="The Real Skill Gap After a Prompt Engineering Course"
+2026-11-17T20:03:08Z slug=prompt-engineering-course-vs-practice words=1124 title="The Real Skill Gap After a Prompt Engineering Course"

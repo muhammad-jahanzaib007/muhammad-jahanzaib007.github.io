@@ -9,10 +9,10 @@
   <lastBuildDate>Tue, 17 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
     <title>The Real Skill Gap After a Prompt Engineering Course</title>
-    <link>https://jahanzaibawan.com/blog/prompt-engineering-skill-gap.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/prompt-engineering-skill-gap.html</guid>
+    <link>https://jahanzaibawan.com/blog/prompt-engineering-course-vs-practice.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/prompt-engineering-course-vs-practice.html</guid>
     <pubDate>Tue, 17 Nov 2026 09:00:00 +0000</pubDate>
-    <description>A weekend course can teach you prompt patterns. It cannot teach you what happens when those patterns meet messy data, drifting models, and real users.</description>
+    <description>A course teaches you prompt patterns. A job teaches you that prompts fail silently, unevenly, and expensively in production.</description>
     <category>Evaluation</category>
   </item>
   <item>
