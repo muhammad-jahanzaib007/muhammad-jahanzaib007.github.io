@@ -1,1 +1,1 @@
-2026-11-17T08:03:12Z slug=mlops-tooling-decision-tree words=1126 title="An MLOps Tooling Decision Tree for Every Team Size"
+2026-11-17T20:02:02Z slug=prompt-engineering-skill-gap words=1039 title="The Real Skill Gap After a Prompt Engineering Course"

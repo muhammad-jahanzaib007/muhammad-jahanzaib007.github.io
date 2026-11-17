@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "prompt-engineering-skill-gap",
+      "title": "The Real Skill Gap After a Prompt Engineering Course",
+      "excerpt": "A weekend course can teach you prompt patterns. It cannot teach you what happens when those patterns meet messy data, drifting models, and real users.",
+      "date": "2026-11-17",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a2",
+      "thumb": "assets/blog/prompt-engineering-skill-gap.png",
+      "thumb_alt": "Cover image for the article: The Real Skill Gap After a Prompt Engineering Course"
+    },
+    {
       "slug": "mlops-tooling-decision-tree",
       "title": "An MLOps Tooling Decision Tree for Every Team Size",
       "excerpt": "A practical guide to choosing MLOps tools by team size, with the reasoning behind each decision rather than just a tool list.",
