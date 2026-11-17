@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "mlops-tooling-decision-tree",
+      "title": "An MLOps Tooling Decision Tree by Team Size",
+      "excerpt": "A practical guide to choosing MLOps tools by team size, with reasoning for why complexity should scale with headcount, not ambition.",
+      "date": "2026-11-17",
+      "read_min": 5,
+      "tag": "MLOps",
+      "color": "a6",
+      "thumb": "assets/blog/mlops-tooling-decision-tree.png",
+      "thumb_alt": "Cover image for the article: An MLOps Tooling Decision Tree by Team Size"
+    },
+    {
       "slug": "rule-based-baselines-before-transformers",
       "title": "Why You Still Need Rule-Based Baselines Before Transformers",
       "excerpt": "A regex or keyword baseline isn't a formality. It sets the bar a transformer must clear and reveals what your task really demands.",

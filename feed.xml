@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Mon, 16 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 17 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>An MLOps Tooling Decision Tree by Team Size</title>
+    <link>https://jahanzaibawan.com/blog/mlops-tooling-decision-tree.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/mlops-tooling-decision-tree.html</guid>
+    <pubDate>Tue, 17 Nov 2026 09:00:00 +0000</pubDate>
+    <description>A practical guide to choosing MLOps tools by team size, with reasoning for why complexity should scale with headcount, not ambition.</description>
+    <category>MLOps</category>
+  </item>
   <item>
     <title>Why You Still Need Rule-Based Baselines Before Transformers</title>
     <link>https://jahanzaibawan.com/blog/rule-based-baselines-before-transformers.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/ood-evaluation-nlp-models.html</guid>
     <pubDate>Sat, 07 Nov 2026 09:00:00 +0000</pubDate>
     <description>High in-domain accuracy often hides fragile models. I walk through why out-of-distribution evaluation matters and how to build it into your pipeline.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>What a Loss Curve Tells You That a Final Metric Cannot</title>
-    <link>https://jahanzaibawan.com/blog/what-loss-curves-reveal.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/what-loss-curves-reveal.html</guid>
-    <pubDate>Sat, 07 Nov 2026 09:00:00 +0000</pubDate>
-    <description>A final metric is a verdict. A loss curve is the trial. Here is why I read the whole training trajectory before trusting any score.</description>
     <category>Evaluation</category>
   </item>
 </channel>

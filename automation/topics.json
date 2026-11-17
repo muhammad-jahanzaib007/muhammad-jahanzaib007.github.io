@@ -1,11 +1,30 @@
 {
   "queue": [
-    "MLOps tooling decision tree: what to adopt at each team size, with reasoning",
     "The real skill gap between a prompt engineering course and a working practitioner",
     "Computer vision in production: why the demo accuracy and the shipped accuracy diverge",
     "A worked walkthrough of writing your first structured prompt and measuring if it helped",
     "Machine learning salary claims versus the work: reconciling job adverts with daily tasks",
-    "How to tell a genuine MLOps certification from a checklist with a certificate at the end"
+    "How to tell a genuine MLOps certification from a checklist with a certificate at the end",
+    "NLP versus LLM: what the acronyms actually mean and where they overlap",
+    "Machine learning versus generative AI: a distinction worth getting right",
+    "What an MLOps pipeline logs that a notebook never does",
+    "Grid search versus random search versus Bayesian optimisation: a fair hyperparameter comparison",
+    "Why a held-out set from the wrong time period gives you a false sense of security",
+    "Evaluating a classifier's calibration curve alongside its accuracy",
+    "Choosing a validation strategy when your data arrives in batches over time",
+    "What a confusion matrix hides when your classes are severely imbalanced",
+    "Reading a loss function's shape before you trust its minimum",
+    "Why reporting a single run's accuracy is not an evaluation",
+    "A worked walkthrough of stratified k-fold on a small imbalanced dataset",
+    "What transfer learning actually transfers, shown on one small model",
+    "Why your test accuracy drops the moment real users touch the model",
+    "Choosing a metric before you choose a model: a worked decision process",
+    "What a precision at k metric tells you that accuracy cannot",
+    "The difference between a benchmark and an evaluation, explained with one example",
+    "Why two models with the same accuracy can fail completely differently",
+    "A worked example of comparing models with a paired statistical test instead of eyeballing scores",
+    "What 'production ready' should mean for a machine learning model",
+    "Choosing between online and offline evaluation for a deployed model"
   ],
   "published": [
     "UAV object classification data-leakage case study",
@@ -294,6 +313,7 @@
     "Evaluating a prompt the way you would evaluate a model: a repeatable protocol",
     "Computer vision pipeline failure modes: lighting, occlusion, and the ones nobody tests for",
     "Deep learning versus machine learning: a worked example that settles the ambiguity",
-    "Why NLP practitioners still need rule-based baselines before reaching for a transformer"
+    "Why NLP practitioners still need rule-based baselines before reaching for a transformer",
+    "MLOps tooling decision tree: what to adopt at each team size, with reasoning"
   ]
 }

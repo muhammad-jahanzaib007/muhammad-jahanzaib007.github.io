@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>An MLOps Tooling Decision Tree by Team Size | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A reasoned decision tree for MLOps tooling adoption at each team size, from solo practitioner to multi-team platform, with concrete triggers.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="mlops, machine learning operations, experiment tracking, model registry, feature store, ml infrastructure, team scaling, ci cd for ml, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-17">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="An MLOps Tooling Decision Tree by Team Size">
+<meta property="og:description" content="A reasoned decision tree for MLOps tooling adoption at each team size, from solo practitioner to multi-team platform, with concrete triggers.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/mlops-tooling-decision-tree.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/mlops-tooling-decision-tree.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="An MLOps Tooling Decision Tree by Team Size">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/mlops-tooling-decision-tree.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/mlops-tooling-decision-tree.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "An MLOps Tooling Decision Tree by Team Size",
+  "description": "A reasoned decision tree for MLOps tooling adoption at each team size, from solo practitioner to multi-team platform, with concrete triggers.",
+  "url": "https://jahanzaibawan.com/blog/mlops-tooling-decision-tree.html",
+  "image": "https://jahanzaibawan.com/assets/blog/mlops-tooling-decision-tree.png",
+  "datePublished": "2026-11-17",
+  "dateModified": "2026-11-17",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/mlops-tooling-decision-tree.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "An MLOps Tooling Decision Tree by Team Size", "item": "https://jahanzaibawan.com/blog/mlops-tooling-decision-tree.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">MLOps · 5 min read · 17 Nov 2026</div>
+    <h1>An MLOps Tooling Decision Tree by Team Size</h1>
+    <p class="lede">Most MLOps regret comes from adopting tools built for a team you are not yet, or clinging to spreadsheets after you have become one. Here is how I would size the stack to the headcount.</p>
+  </div>
+
+  <img src="../assets/blog/mlops-tooling-decision-tree.png" alt="Cover image for the article: An MLOps Tooling Decision Tree by Team Size" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why tool choice is really a staffing decision</h2><p>I have noticed that most MLOps advice reads as if every reader runs a twenty-person platform team. It recommends feature stores, orchestration DAGs, and model registries as if they were free. They are not free. Every tool you adopt needs someone to patch it, someone to explain it to the next hire, and someone to notice when it silently stops logging. The real question is never 'is this tool good', it is 'can my current headcount absorb its maintenance cost without that cost eating the time we should spend on the model itself'.</p><p>I think of MLOps maturity as a staircase that should track team size fairly closely, with a bit of lag in both directions being fine but large gaps being dangerous. A team of one adopting a Kubernetes-based feature store is paying rent on infrastructure nobody else understands. A team of thirty still tracking experiments in a shared spreadsheet is paying a different rent, in the form of irreproducible results and arguments about which run actually shipped. The decision tree below is my attempt to make that trade-off explicit, with reasoning rather than brand names, since the specific vendor matters far less than the category of problem it solves.</p></section><section class='psec reveal'><h2>Solo practitioner or two-person team: reproducibility before anything else</h2><p>At this size, the binding constraint is not scale, it is memory. You will forget why a model from six weeks ago scored differently to the one you are training today, and you will forget it faster than you think. The single highest-leverage investment here is lightweight experiment tracking: a tool or even a disciplined convention that logs the dataset version, the hyperparameters, the code commit, and the resulting metric for every run. I would resist anything that requires a server you have to keep alive, because at this size the person who would restart that server on a Sunday is you, and you have better things to do.</p><p>Version control for data matters here too, but in a minimal form. You do not need a full feature store; you need a way to point to exactly which snapshot of a dataset produced a given result, even if that is as simple as hashing the file and recording the hash next to the metric. Consider a concrete case: you train a classifier that scores 0.81 on a validation set, then two weeks later retrain with 'the same data' and get 0.76. Without a recorded hash, you will spend an afternoon guessing whether the drop came from a code change, a data change, or a seed. With a hash, you check one line and move on.</p><p>What I would deliberately skip at this size: orchestration frameworks, model registries with approval workflows, and automated retraining pipelines. These solve coordination problems between people, and with one or two people the coordination problem barely exists. Building them now is optimising for a team you do not have yet, and the opportunity cost is real work on the model.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/mlops-tooling-decision-tree-1.jpg' alt='engineers looking at laptop dashboard' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Small team, three to eight people: shared state becomes the bottleneck</h2><p>Once a few people are training models against the same problem, the failure mode shifts from forgetting to colliding. Two people retrain the same model with slightly different preprocessing and cannot agree on which version is 'the' production model. This is the point where a model registry earns its keep: a single source of truth that says which artefact is staged, which is in production, and who approved the transition. It does not need to be elaborate; it needs to be the one place everyone checks before deploying, rather than a Slack message that gets lost.</p><p>This is also roughly the size at which a proper train and test split discipline needs to be codified rather than left to individual judgement, because now the leakage risk compounds across people. If one engineer's preprocessing script joins features computed after the prediction timestamp, and another engineer reuses that script without knowing, the leakage propagates silently into every subsequent model. A shared, reviewed data pipeline, even a simple one, is worth more at this size than any amount of additional compute.</p><p>I would add lightweight CI for model code around now too: a check that runs the training script end to end on a small sample and confirms it does not error, plus a check that the evaluation metric on a frozen holdout does not regress beyond some tolerance. This is not full continuous training, it is a tripwire. A concrete example: a refactor accidentally swaps two feature columns, the sample run still completes without error, but the frozen holdout check catches the metric dropping from 0.74 to 0.52 before it reaches review. That single check, cheap to write, pays for itself the first time it fires.</p></section><section class='psec reveal'><h2>Larger team or multiple teams: now the heavier tools justify themselves</h2><p>Beyond roughly ten to fifteen people, or once you have more than one team sharing underlying data and infrastructure, the calculus changes again. A feature store starts to make sense, not because any single model needs it, but because multiple teams are independently recomputing the same features with subtly different logic, and that divergence is itself a source of bugs. At this size the maintenance cost of the feature store is justified because it replaces several teams' worth of duplicated, drifting pipelines with one.</p><p>Orchestration frameworks for scheduled retraining and monitoring for data and prediction drift also become worth the overhead here, because manual checking does not scale across many models owned by many people. The reasoning is the same throughout this whole tree: adopt a tool when the coordination or duplication cost it removes exceeds the maintenance cost it adds, and not a moment before. A useful habit is to write down, before adopting anything, who specifically will own it in six months, because 'the team' is not an owner and tools without owners rot quietly.</p><p>My honest takeaway is that the biggest mistake I see is not under-investment, it is premature sophistication: small teams building platform-grade infrastructure because a blog post from a much larger company recommended it. Match the tool to the size and shape of the team you have today, instrument the handful of checks that catch real failures cheaply, and let the heavier machinery arrive exactly when the pain it solves actually shows up.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/mlops-tooling-decision-tree-2.jpg' alt='server rack data center' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

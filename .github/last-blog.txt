@@ -1,1 +1,1 @@
-2026-11-16T20:02:43Z slug=rule-based-baselines-before-transformers words=1019 title="Why You Still Need Rule-Based Baselines Before Transformers"
+2026-11-17T08:02:00Z slug=mlops-tooling-decision-tree words=1057 title="An MLOps Tooling Decision Tree by Team Size"
