@@ -1,1 +1,1 @@
-2026-11-17T08:02:00Z slug=mlops-tooling-decision-tree words=1057 title="An MLOps Tooling Decision Tree by Team Size"
+2026-11-17T08:03:12Z slug=mlops-tooling-decision-tree words=1126 title="An MLOps Tooling Decision Tree for Every Team Size"

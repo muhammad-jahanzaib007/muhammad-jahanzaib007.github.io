@@ -2,14 +2,14 @@
   "posts": [
     {
       "slug": "mlops-tooling-decision-tree",
-      "title": "An MLOps Tooling Decision Tree by Team Size",
-      "excerpt": "A practical guide to choosing MLOps tools by team size, with reasoning for why complexity should scale with headcount, not ambition.",
+      "title": "An MLOps Tooling Decision Tree for Every Team Size",
+      "excerpt": "A practical guide to choosing MLOps tools by team size, with the reasoning behind each decision rather than just a tool list.",
       "date": "2026-11-17",
-      "read_min": 5,
+      "read_min": 6,
       "tag": "MLOps",
       "color": "a6",
       "thumb": "assets/blog/mlops-tooling-decision-tree.png",
-      "thumb_alt": "Cover image for the article: An MLOps Tooling Decision Tree by Team Size"
+      "thumb_alt": "Cover image for the article: An MLOps Tooling Decision Tree for Every Team Size"
     },
     {
       "slug": "rule-based-baselines-before-transformers",

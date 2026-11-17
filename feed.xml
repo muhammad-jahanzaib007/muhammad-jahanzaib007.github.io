@@ -8,11 +8,11 @@
   <language>en-gb</language>
   <lastBuildDate>Tue, 17 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
-    <title>An MLOps Tooling Decision Tree by Team Size</title>
+    <title>An MLOps Tooling Decision Tree for Every Team Size</title>
     <link>https://jahanzaibawan.com/blog/mlops-tooling-decision-tree.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/mlops-tooling-decision-tree.html</guid>
     <pubDate>Tue, 17 Nov 2026 09:00:00 +0000</pubDate>
-    <description>A practical guide to choosing MLOps tools by team size, with reasoning for why complexity should scale with headcount, not ambition.</description>
+    <description>A practical guide to choosing MLOps tools by team size, with the reasoning behind each decision rather than just a tool list.</description>
     <category>MLOps</category>
   </item>
   <item>
