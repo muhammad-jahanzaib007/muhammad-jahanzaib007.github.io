@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Computer Vision Demo Accuracy Isn&#x27;t Shipped Accuracy | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why computer vision models that score well in demos often underperform in production, and how leakage-aware evaluation closes the gap.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="computer vision, model evaluation, data leakage, train test split, domain shift, production machine learning, deployment, overfitting, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-18">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Why Computer Vision Demo Accuracy Isn&#x27;t Shipped Accuracy">
+<meta property="og:description" content="Why computer vision models that score well in demos often underperform in production, and how leakage-aware evaluation closes the gap.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/demo-accuracy-vs-shipped-accuracy.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/demo-accuracy-vs-shipped-accuracy.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why Computer Vision Demo Accuracy Isn&#x27;t Shipped Accuracy">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/demo-accuracy-vs-shipped-accuracy.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/demo-accuracy-vs-shipped-accuracy.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Why Computer Vision Demo Accuracy Isn't Shipped Accuracy",
+  "description": "Why computer vision models that score well in demos often underperform in production, and how leakage-aware evaluation closes the gap.",
+  "url": "https://jahanzaibawan.com/blog/demo-accuracy-vs-shipped-accuracy.html",
+  "image": "https://jahanzaibawan.com/assets/blog/demo-accuracy-vs-shipped-accuracy.png",
+  "datePublished": "2026-11-18",
+  "dateModified": "2026-11-18",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/demo-accuracy-vs-shipped-accuracy.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Why Computer Vision Demo Accuracy Isn't Shipped Accuracy", "item": "https://jahanzaibawan.com/blog/demo-accuracy-vs-shipped-accuracy.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 18 Nov 2026</div>
+    <h1>Why Computer Vision Demo Accuracy Isn&#x27;t Shipped Accuracy</h1>
+    <p class="lede">A model that scores 97% in a notebook can quietly fail in production. The gap usually lives in the data pipeline, not the architecture.</p>
+  </div>
+
+  <img src="../assets/blog/demo-accuracy-vs-shipped-accuracy.png" alt="Cover image for the article: Why Computer Vision Demo Accuracy Isn&#x27;t Shipped Accuracy" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The number on the slide and the number in the warehouse</h2><p>I have seen the pattern enough times to trust it as a rule rather than a coincidence: a computer vision model scores 96 or 97 percent accuracy in the notebook, gets presented confidently in a meeting, and then quietly underperforms once it meets real cameras, real lighting, and real operators. Nobody lied in the slide. The evaluation was probably run correctly against the test set that existed at the time. The problem is that the test set was never a faithful stand-in for production.</p><p>Take a concrete example. Suppose you are building a defect detector for a production line that inspects metal brackets. You collect ten thousand images from one camera rig over three days, label them, and split them 80/20 into train and test. Your model hits 97 percent accuracy. Six months later, in the actual factory, accuracy on live footage drops to around 85 percent. Nothing in the architecture changed. What changed is that the test set was drawn from the same three days, the same lighting rig, the same batch of brackets, and often the same physical objects photographed from slightly different angles. The model learned to recognise that lighting and that batch, not defects in general.</p><p>This is the core idea worth internalising: demo accuracy measures how well a model fits the distribution it was evaluated on, and that distribution is frequently narrower and more correlated than the deployment distribution. The gap between demo and shipped accuracy is not a mysterious regression, it is a measurable consequence of how the split was constructed and what assumptions about independence it quietly violates.</p></section><section class='psec reveal'><h2>Where the leakage actually hides</h2><p>The most common culprit is near-duplicate leakage across a naive random split. If your ten thousand images come from video frames or from multiple shots of the same physical bracket, a random 80/20 split will place near-identical images in both train and test. The model does not need to generalise; it just needs to memorise texture and lighting quirks that repeat across frames of the same object. Your 97 percent is real, but it is measuring memorisation, not detection capability. A split by object identity, batch, or capture session, rather than by individual image, would have told you the truth much earlier and much more cheaply than a failed deployment.</p><p>A second source is sampling bias in the data collection itself. Suppose defective brackets make up 4 percent of your training data because you deliberately oversampled them for class balance during labelling, but they only occur at 1 percent in the live line. Precision and recall calculated on your balanced test set do not translate directly to the operating point you will see in production, where false positives from the much larger pool of normal items will dominate the alert queue. A model with 90 percent precision on a 50/50 test set can produce an unusable number of false alarms per shift once the true base rate drops to 1 in 100, simply because of how precision interacts with prevalence.</p><p>A third, subtler issue is covariate shift introduced by hardware and environment changes between data collection and deployment. The training images might have been captured with a fixed-focus industrial camera under consistent LED lighting. The deployed line might use a different camera firmware, variable ambient light near a window, or a slightly different mounting angle after a maintenance crew adjusted the rig. None of this shows up in a train and test split drawn from the original dataset, because both sets share the same camera and lighting conditions. The model was never tested against the variation it would actually face.</p><p>Finally, there is temporal leakage, which is easy to miss because it looks identical to a correct split on paper. If you collect data over a month and split randomly rather than by time, your test set contains images from the same week as your training set, meaning any slow drift in lighting, dust accumulation on the lens, or seasonal changes in ambient light gets shared between train and test rather than tested against. A time-based split, training on the first three weeks and testing on the fourth, is a much harder and more honest test, and it often reveals degradation that a random split hides completely.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/demo-accuracy-vs-shipped-accuracy-1.jpg' alt='factory production line camera inspection' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Building an evaluation that will not lie to you</h2><p>The fix is not a better model; it is a better evaluation protocol, built before any architecture decisions are made. Start by defining the unit of independence in your data: is it the physical object, the camera session, the day, or the individual frame. Split along that unit, not along the image index. In the bracket example, this means grouping all images of a given physical bracket into either train or test, never both, even if that makes the split harder to balance perfectly.</p><p>Second, match your test set's class prevalence and conditions to what you expect in production, or at minimum report metrics at the true operating prevalence rather than only on a balanced set. If defects are rare, report expected false positives per thousand items at your chosen threshold, not just precision and recall on a curated sample. This single change forces an honest conversation with stakeholders about what the alert queue will actually look like.</p><p>Third, build a small held-out set that is deliberately drawn from a different time window, and ideally a different camera or site if you have access to one, specifically to probe for shift. This set should never be touched during model development or hyperparameter tuning. Its only job is to be the last honest check before deployment, and its score should be the number you actually trust and report, not the number from the original random split.</p><p>Finally, treat the gap itself as a diagnostic signal rather than a disappointment to hide. If demo accuracy is 97 percent and a properly leakage-aware, prevalence-matched, time-shifted test gives you 85 percent, that ten to twelve point gap tells you roughly how much headroom exists between what the model has learned and what the deployment environment will demand. Shipping with that number known and communicated is far better than shipping with 97 percent on the slide and an unpleasant surprise three months into production. The honest number is slower to produce and less flattering to present, but it is the only one that will still be true after deployment.</p></section>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

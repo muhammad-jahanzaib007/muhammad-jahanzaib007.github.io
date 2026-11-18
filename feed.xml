@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Tue, 17 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 18 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Why Computer Vision Demo Accuracy Isn&#x27;t Shipped Accuracy</title>
+    <link>https://jahanzaibawan.com/blog/demo-accuracy-vs-shipped-accuracy.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/demo-accuracy-vs-shipped-accuracy.html</guid>
+    <pubDate>Wed, 18 Nov 2026 09:00:00 +0000</pubDate>
+    <description>A 97% demo accuracy can collapse in production. The cause is rarely the model; it&#x27;s usually the camera, the lighting, or the split.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>The Real Skill Gap After a Prompt Engineering Course</title>
     <link>https://jahanzaibawan.com/blog/prompt-engineering-course-vs-practice.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/red-teaming-vs-standard-evaluation.html</guid>
     <pubDate>Sun, 08 Nov 2026 09:00:00 +0000</pubDate>
     <description>Standard evaluation measures typical performance; red-teaming hunts for adversarial failure. Here&#x27;s why neither alone is enough, with a worked example.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Choosing a Metric for Imbalanced Text Classification</title>
-    <link>https://jahanzaibawan.com/blog/metrics-for-imbalanced-text.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/metrics-for-imbalanced-text.html</guid>
-    <pubDate>Sun, 08 Nov 2026 09:00:00 +0000</pubDate>
-    <description>Accuracy can look great on imbalanced data while the model quietly ignores the minority class. Here is how to pick a metric that won&#x27;t fool you.</description>
     <category>Evaluation</category>
   </item>
 </channel>

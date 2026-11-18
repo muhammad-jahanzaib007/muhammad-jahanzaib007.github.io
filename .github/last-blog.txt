@@ -1,1 +1,1 @@
-2026-11-17T20:03:08Z slug=prompt-engineering-course-vs-practice words=1124 title="The Real Skill Gap After a Prompt Engineering Course"
+2026-11-18T08:02:07Z slug=demo-accuracy-vs-shipped-accuracy words=1071 title="Why Computer Vision Demo Accuracy Isn't Shipped Accuracy"

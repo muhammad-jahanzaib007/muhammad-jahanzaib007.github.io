@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "demo-accuracy-vs-shipped-accuracy",
+      "title": "Why Computer Vision Demo Accuracy Isn't Shipped Accuracy",
+      "excerpt": "A 97% demo accuracy can collapse in production. The cause is rarely the model; it's usually the camera, the lighting, or the split.",
+      "date": "2026-11-18",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a3",
+      "thumb": "assets/blog/demo-accuracy-vs-shipped-accuracy.png",
+      "thumb_alt": "Cover image for the article: Why Computer Vision Demo Accuracy Isn't Shipped Accuracy"
+    },
+    {
       "slug": "prompt-engineering-course-vs-practice",
       "title": "The Real Skill Gap After a Prompt Engineering Course",
       "excerpt": "A course teaches you prompt patterns. A job teaches you that prompts fail silently, unevenly, and expensively in production.",
