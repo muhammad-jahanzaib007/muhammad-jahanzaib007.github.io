@@ -2,14 +2,14 @@
   "posts": [
     {
       "slug": "demo-accuracy-vs-shipped-accuracy",
-      "title": "Why Computer Vision Demo Accuracy Isn't Shipped Accuracy",
-      "excerpt": "A 97% demo accuracy can collapse in production. The cause is rarely the model; it's usually the camera, the lighting, or the split.",
+      "title": "Computer Vision in Production: Why Accuracy Diverges",
+      "excerpt": "Demo accuracy is measured on curated frames. Shipped accuracy is measured on reality. The gap between them is predictable once you know where to look.",
       "date": "2026-11-18",
       "read_min": 5,
       "tag": "Evaluation",
       "color": "a3",
       "thumb": "assets/blog/demo-accuracy-vs-shipped-accuracy.png",
-      "thumb_alt": "Cover image for the article: Why Computer Vision Demo Accuracy Isn't Shipped Accuracy"
+      "thumb_alt": "Cover image for the article: Computer Vision in Production: Why Accuracy Diverges"
     },
     {
       "slug": "prompt-engineering-course-vs-practice",

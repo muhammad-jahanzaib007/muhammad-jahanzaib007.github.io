@@ -1,1 +1,1 @@
-2026-11-18T08:02:07Z slug=demo-accuracy-vs-shipped-accuracy words=1071 title="Why Computer Vision Demo Accuracy Isn't Shipped Accuracy"
+2026-11-18T08:03:03Z slug=demo-accuracy-vs-shipped-accuracy words=995 title="Computer Vision in Production: Why Accuracy Diverges"

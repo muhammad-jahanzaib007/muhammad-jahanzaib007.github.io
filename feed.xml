@@ -8,11 +8,11 @@
   <language>en-gb</language>
   <lastBuildDate>Wed, 18 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
-    <title>Why Computer Vision Demo Accuracy Isn&#x27;t Shipped Accuracy</title>
+    <title>Computer Vision in Production: Why Accuracy Diverges</title>
     <link>https://jahanzaibawan.com/blog/demo-accuracy-vs-shipped-accuracy.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/demo-accuracy-vs-shipped-accuracy.html</guid>
     <pubDate>Wed, 18 Nov 2026 09:00:00 +0000</pubDate>
-    <description>A 97% demo accuracy can collapse in production. The cause is rarely the model; it&#x27;s usually the camera, the lighting, or the split.</description>
+    <description>Demo accuracy is measured on curated frames. Shipped accuracy is measured on reality. The gap between them is predictable once you know where to look.</description>
     <category>Evaluation</category>
   </item>
   <item>
