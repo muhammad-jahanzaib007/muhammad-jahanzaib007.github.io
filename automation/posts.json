@@ -2,14 +2,14 @@
   "posts": [
     {
       "slug": "structured-prompt-worked-walkthrough",
-      "title": "Writing Your First Structured Prompt and Proving It Worked",
-      "excerpt": "I turn a loose prompt into a structured one and show the exact comparison that proves whether it genuinely improved outputs.",
+      "title": "A Worked Walkthrough of Structuring and Testing a Prompt",
+      "excerpt": "I build a structured prompt step by step, then show how to measure whether it genuinely beat the naive version, not just felt better.",
       "date": "2026-11-18",
-      "read_min": 6,
+      "read_min": 5,
       "tag": "Evaluation",
       "color": "a4",
       "thumb": "assets/blog/structured-prompt-worked-walkthrough.png",
-      "thumb_alt": "Cover image for the article: Writing Your First Structured Prompt and Proving It Worked"
+      "thumb_alt": "Cover image for the article: A Worked Walkthrough of Structuring and Testing a Prompt"
     },
     {
       "slug": "demo-accuracy-vs-shipped-accuracy",

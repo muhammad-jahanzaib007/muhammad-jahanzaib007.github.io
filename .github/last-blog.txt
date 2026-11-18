@@ -1,1 +1,1 @@
-2026-11-18T20:01:15Z slug=structured-prompt-worked-walkthrough words=1143 title="Writing Your First Structured Prompt and Proving It Worked"
+2026-11-18T20:02:17Z slug=structured-prompt-worked-walkthrough words=1000 title="A Worked Walkthrough of Structuring and Testing a Prompt"

@@ -8,11 +8,11 @@
   <language>en-gb</language>
   <lastBuildDate>Wed, 18 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
-    <title>Writing Your First Structured Prompt and Proving It Worked</title>
+    <title>A Worked Walkthrough of Structuring and Testing a Prompt</title>
     <link>https://jahanzaibawan.com/blog/structured-prompt-worked-walkthrough.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/structured-prompt-worked-walkthrough.html</guid>
     <pubDate>Wed, 18 Nov 2026 09:00:00 +0000</pubDate>
-    <description>I turn a loose prompt into a structured one and show the exact comparison that proves whether it genuinely improved outputs.</description>
+    <description>I build a structured prompt step by step, then show how to measure whether it genuinely beat the naive version, not just felt better.</description>
     <category>Evaluation</category>
   </item>
   <item>
