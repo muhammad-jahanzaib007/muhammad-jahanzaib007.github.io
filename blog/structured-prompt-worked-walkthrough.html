@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing Your First Structured Prompt and Proving It Worked | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A worked example of building a structured prompt and running a leakage-aware evaluation to measure whether it actually improved output quality.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="structured prompts, prompt engineering, prompt evaluation, LLM evaluation, baseline comparison, reproducibility, few-shot prompting, test set design, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-18">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Writing Your First Structured Prompt and Proving It Worked">
+<meta property="og:description" content="A worked example of building a structured prompt and running a leakage-aware evaluation to measure whether it actually improved output quality.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/structured-prompt-worked-walkthrough.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/structured-prompt-worked-walkthrough.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Writing Your First Structured Prompt and Proving It Worked">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/structured-prompt-worked-walkthrough.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/structured-prompt-worked-walkthrough.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Writing Your First Structured Prompt and Proving It Worked",
+  "description": "A worked example of building a structured prompt and running a leakage-aware evaluation to measure whether it actually improved output quality.",
+  "url": "https://jahanzaibawan.com/blog/structured-prompt-worked-walkthrough.html",
+  "image": "https://jahanzaibawan.com/assets/blog/structured-prompt-worked-walkthrough.png",
+  "datePublished": "2026-11-18",
+  "dateModified": "2026-11-18",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/structured-prompt-worked-walkthrough.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Writing Your First Structured Prompt and Proving It Worked", "item": "https://jahanzaibawan.com/blog/structured-prompt-worked-walkthrough.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 6 min read · 18 Nov 2026</div>
+    <h1>Writing Your First Structured Prompt and Proving It Worked</h1>
+    <p class="lede">A step-by-step look at turning a vague instruction into a structured prompt, and the small evaluation that tells you whether the change actually helped.</p>
+  </div>
+
+  <img src="../assets/blog/structured-prompt-worked-walkthrough.png" alt="Cover image for the article: Writing Your First Structured Prompt and Proving It Worked" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why 'it feels better' is not evidence</h2><p>Most people's first encounter with prompt engineering goes something like this: you write a loose instruction, the model gives back something plausible, you tweak the wording, and the new output feels a bit more on-target. That feeling is almost worthless as evidence. Language models are good at producing text that sounds competent, and our own pattern-matching brains are good at noticing whatever confirms we did something useful. Without a fixed task, a fixed set of inputs, and a fixed way of scoring the outputs, you cannot tell whether your prompt change improved anything or whether you just got lucky on the three examples you happened to try.</p><p>This matters because prompts are, functionally, a piece of your system's logic. If you would not ship a change to a scoring function without testing it, you should not ship a change to a prompt without testing it either. The good news is that you do not need anything elaborate to start doing this properly. You need a small, held-out set of inputs that represents the task, a simple scoring rule, and the discipline to compare two things under exactly the same conditions. That is the whole idea, and it is worth working through once by hand so it stops feeling abstract.</p></section><section class='psec reveal'><h2>From a vague instruction to a structured prompt</h2><p>Say the task is extracting a shipping address and a requested delivery date from customer emails, which then get passed to a logistics system. A first attempt might be: 'Read this email and tell me the address and delivery date.' That is a free-text instruction with no shape. The model might answer in a sentence, a bulleted list, or a paragraph, and the date might appear as '12 March', 'next Tuesday', or '03/12', depending on how the email phrased it. Every one of those variations is a small parsing headache downstream.</p><p>A structured version fixes the shape of the answer rather than just asking nicely for the content. Something like: 'Extract the shipping address and delivery date from the email below. Return only valid JSON with exactly two keys, address and delivery_date. The address should be a single string. The delivery_date should be in YYYY-MM-DD format; if no explicit date is given, use the string unknown. Do not include any text outside the JSON object.' This is longer, less friendly to read, and far more useful, because it constrains the format, specifies the fallback behaviour for the awkward case of a missing date, and removes ambiguity about where the answer starts and ends.</p><p>The temptation at this point is to eyeball five emails, see nicely formatted JSON come back, and declare victory. Resist that. The structured prompt might produce perfect JSON on those five and silently fail on the sixth, where the email mentions two addresses, one for billing and one for shipping, and the model picks the wrong one. You only find that by testing against a representative set, not a convenient one.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/structured-prompt-worked-walkthrough-1.jpg' alt='handwritten notes with code on whiteboard' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Building the actual test and the comparison</h2><p>Pull together, say, 40 real or realistic customer emails, each with a known correct address and delivery date that you or a colleague have labelled by hand. Split them so you are not tuning and evaluating on the same examples: use maybe 10 for trying out prompt wording and the remaining 30 as a held-out set you only look at once you have settled on a final version. This is the same leakage-aware logic that applies to any machine learning evaluation. If you keep adjusting the prompt based on how it performs on your 'test' set, that set has become part of your development process and can no longer tell you how the prompt will do on new emails.</p><p>For scoring, keep it simple and automatable. For each email, check whether the extracted address string matches the labelled one closely enough, for instance via exact match after basic normalisation like lowercasing and stripping punctuation, and separately check whether the delivery date matches exactly in YYYY-MM-DD form or is correctly marked unknown. Report two numbers: address accuracy and date accuracy, rather than one blended score, because a prompt that is excellent at addresses but weak on dates needs a different fix than one that is weak at both.</p><p>Run the vague prompt and the structured prompt over the same 30 held-out emails, with the same model, same temperature setting, and nothing else changed. Suppose the vague prompt gets address accuracy of 61 percent and date accuracy of 48 percent, largely because free-text answers are hard to parse reliably and dates come back in inconsistent formats. The structured prompt gets address accuracy of 83 percent and date accuracy of 77 percent. That gap, on a fixed set under fixed conditions, is a real signal, not a feeling. You can also inspect the failures: perhaps most of the remaining date errors come from emails that mention a date range rather than a single date, which tells you exactly what to address in version three of the prompt, such as adding an explicit instruction for how to handle ranges.</p></section><section class='psec reveal'><h2>What this buys you in practice</h2><p>Once you have this harness, prompt iteration stops being guesswork and becomes something closer to normal engineering. You can try a few-shot version that includes two worked examples inside the prompt, rerun it against the same 30 emails, and see whether 77 percent date accuracy moves to 85 percent or drops to 70 percent because the examples biased the model towards one date format. You can also check something easy to miss: does the structured prompt do worse on a subset, say emails written in a casual tone with slang, even if it does better overall? A single aggregate number can hide a regression that matters a lot for a specific slice of your real traffic.</p><p>The other benefit is reproducibility. If a colleague asks why you switched prompts, you have an artefact: the held-out set, the scoring script, and two numbers before and after, rather than an anecdote about how the output 'seemed cleaner'. That artefact also protects you from a quieter failure mode, which is a prompt that happens to work well on the handful of cases you tested during development but was never checked against anything resembling the full range of real inputs.</p><p>None of this requires sophisticated tooling. A spreadsheet or a short script, a few dozen labelled examples, and a fixed scoring rule will take you most of the way. The discipline is the valuable part: separate the examples you tune on from the examples you judge on, fix everything except the one thing you are testing, and report the breakdown rather than a single comfortable average. Do that once on a small task, and it becomes obvious how much of what passes for prompt engineering elsewhere is really just untested intuition.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/structured-prompt-worked-walkthrough-2.jpg' alt='person comparing two documents at desk' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Wed, 18 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Writing Your First Structured Prompt and Proving It Worked</title>
+    <link>https://jahanzaibawan.com/blog/structured-prompt-worked-walkthrough.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/structured-prompt-worked-walkthrough.html</guid>
+    <pubDate>Wed, 18 Nov 2026 09:00:00 +0000</pubDate>
+    <description>I turn a loose prompt into a structured one and show the exact comparison that proves whether it genuinely improved outputs.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>Computer Vision in Production: Why Accuracy Diverges</title>
     <link>https://jahanzaibawan.com/blog/demo-accuracy-vs-shipped-accuracy.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/demo-accuracy-vs-shipped-accuracy.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/designing-a-realistic-test-set.html</guid>
     <pubDate>Mon, 09 Nov 2026 09:00:00 +0000</pubDate>
     <description>Most test sets are accidentally too easy. Here is a worked example showing how to build one that actually predicts deployment performance.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Red-Teaming Versus Standard Evaluation: Why You Need Both</title>
-    <link>https://jahanzaibawan.com/blog/red-teaming-vs-standard-evaluation.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/red-teaming-vs-standard-evaluation.html</guid>
-    <pubDate>Sun, 08 Nov 2026 09:00:00 +0000</pubDate>
-    <description>Standard evaluation measures typical performance; red-teaming hunts for adversarial failure. Here&#x27;s why neither alone is enough, with a worked example.</description>
     <category>Evaluation</category>
   </item>
 </channel>

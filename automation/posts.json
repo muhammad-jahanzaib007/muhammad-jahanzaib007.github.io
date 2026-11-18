@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "structured-prompt-worked-walkthrough",
+      "title": "Writing Your First Structured Prompt and Proving It Worked",
+      "excerpt": "I turn a loose prompt into a structured one and show the exact comparison that proves whether it genuinely improved outputs.",
+      "date": "2026-11-18",
+      "read_min": 6,
+      "tag": "Evaluation",
+      "color": "a4",
+      "thumb": "assets/blog/structured-prompt-worked-walkthrough.png",
+      "thumb_alt": "Cover image for the article: Writing Your First Structured Prompt and Proving It Worked"
+    },
+    {
       "slug": "demo-accuracy-vs-shipped-accuracy",
       "title": "Computer Vision in Production: Why Accuracy Diverges",
       "excerpt": "Demo accuracy is measured on curated frames. Shipped accuracy is measured on reality. The gap between them is predictable once you know where to look.",
