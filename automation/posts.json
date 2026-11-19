@@ -2,14 +2,14 @@
   "posts": [
     {
       "slug": "ml-salary-claims-versus-work",
-      "title": "Machine Learning Salaries Versus the Actual Job",
-      "excerpt": "Six-figure ML job adverts rarely describe the actual day job. Here is how to decode them before accepting an offer.",
+      "title": "Machine Learning Salaries Versus the Actual Day Job",
+      "excerpt": "Job adverts sell deep learning glamour and big salaries, but most ML roles are data cleaning and stakeholder management. Learn to read the signal.",
       "date": "2026-11-19",
-      "read_min": 6,
+      "read_min": 5,
       "tag": "Careers",
       "color": "a5",
       "thumb": "assets/blog/ml-salary-claims-versus-work.png",
-      "thumb_alt": "Cover image for the article: Machine Learning Salaries Versus the Actual Job"
+      "thumb_alt": "Cover image for the article: Machine Learning Salaries Versus the Actual Day Job"
     },
     {
       "slug": "structured-prompt-worked-walkthrough",
