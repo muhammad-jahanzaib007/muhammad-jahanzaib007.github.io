@@ -1,15 +1,15 @@
 {
   "posts": [
     {
-      "slug": "spotting-genuine-mlops-certification",
-      "title": "How to Spot a Genuine MLOps Certification",
-      "excerpt": "A quick checklist test versus a real MLOps course: what separates genuine skill-building from a certificate mill with a modern vocabulary.",
+      "slug": "genuine-mlops-certification-checklist",
+      "title": "Spotting a Real MLOps Certification Versus a Checklist",
+      "excerpt": "Most MLOps certificates test whether you can follow slides, not whether you can run a pipeline under real failure conditions. Here is how to spot the difference.",
       "date": "2026-11-19",
       "read_min": 5,
       "tag": "MLOps",
       "color": "a6",
-      "thumb": "assets/blog/spotting-genuine-mlops-certification.png",
-      "thumb_alt": "Cover image for the article: How to Spot a Genuine MLOps Certification"
+      "thumb": "assets/blog/genuine-mlops-certification-checklist.png",
+      "thumb_alt": "Cover image for the article: Spotting a Real MLOps Certification Versus a Checklist"
     },
     {
       "slug": "ml-salary-claims-versus-work",
