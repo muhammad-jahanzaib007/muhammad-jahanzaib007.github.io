@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Machine learning salary claims versus the work: reconciling job adverts with daily tasks",
     "How to tell a genuine MLOps certification from a checklist with a certificate at the end",
     "How a multi-head attention block actually processes one sentence, step by step",
     "Positional encodings versus recurrence: two ways to give a model a sense of order",
@@ -314,6 +313,7 @@
     "MLOps tooling decision tree: what to adopt at each team size, with reasoning",
     "The real skill gap between a prompt engineering course and a working practitioner",
     "Computer vision in production: why the demo accuracy and the shipped accuracy diverge",
-    "A worked walkthrough of writing your first structured prompt and measuring if it helped"
+    "A worked walkthrough of writing your first structured prompt and measuring if it helped",
+    "Machine learning salary claims versus the work: reconciling job adverts with daily tasks"
   ]
 }

@@ -1,1 +1,1 @@
-2026-11-18T20:02:17Z slug=structured-prompt-worked-walkthrough words=1000 title="A Worked Walkthrough of Structuring and Testing a Prompt"
+2026-11-19T08:01:19Z slug=ml-salary-claims-versus-work words=1143 title="Machine Learning Salaries Versus the Actual Job"

@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Wed, 18 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 19 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Machine Learning Salaries Versus the Actual Job</title>
+    <link>https://jahanzaibawan.com/blog/ml-salary-claims-versus-work.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/ml-salary-claims-versus-work.html</guid>
+    <pubDate>Thu, 19 Nov 2026 09:00:00 +0000</pubDate>
+    <description>Six-figure ML job adverts rarely describe the actual day job. Here is how to decode them before accepting an offer.</description>
+    <category>Careers</category>
+  </item>
   <item>
     <title>A Worked Walkthrough of Structuring and Testing a Prompt</title>
     <link>https://jahanzaibawan.com/blog/structured-prompt-worked-walkthrough.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/why-fine-tuning-results-vary.html</guid>
     <pubDate>Mon, 09 Nov 2026 09:00:00 +0000</pubDate>
     <description>One fine-tuning run is an anecdote, not evidence. Here is where the noise comes from and how to report results you can actually trust.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Designing a Held-Out Test Set That Resembles Deployment</title>
-    <link>https://jahanzaibawan.com/blog/designing-a-realistic-test-set.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/designing-a-realistic-test-set.html</guid>
-    <pubDate>Mon, 09 Nov 2026 09:00:00 +0000</pubDate>
-    <description>Most test sets are accidentally too easy. Here is a worked example showing how to build one that actually predicts deployment performance.</description>
     <category>Evaluation</category>
   </item>
 </channel>

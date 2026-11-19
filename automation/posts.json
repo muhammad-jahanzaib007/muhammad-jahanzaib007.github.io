@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "ml-salary-claims-versus-work",
+      "title": "Machine Learning Salaries Versus the Actual Job",
+      "excerpt": "Six-figure ML job adverts rarely describe the actual day job. Here is how to decode them before accepting an offer.",
+      "date": "2026-11-19",
+      "read_min": 6,
+      "tag": "Careers",
+      "color": "a5",
+      "thumb": "assets/blog/ml-salary-claims-versus-work.png",
+      "thumb_alt": "Cover image for the article: Machine Learning Salaries Versus the Actual Job"
+    },
+    {
       "slug": "structured-prompt-worked-walkthrough",
       "title": "A Worked Walkthrough of Structuring and Testing a Prompt",
       "excerpt": "I build a structured prompt step by step, then show how to measure whether it genuinely beat the naive version, not just felt better.",
