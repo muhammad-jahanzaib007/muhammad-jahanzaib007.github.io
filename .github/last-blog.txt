@@ -1,1 +1,1 @@
-2026-11-19T08:02:16Z slug=ml-salary-claims-versus-work words=1010 title="Machine Learning Salaries Versus the Actual Day Job"
+2026-11-19T20:01:07Z slug=spotting-genuine-mlops-certification words=1010 title="How to Spot a Genuine MLOps Certification"

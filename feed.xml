@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Thu, 19 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>How to Spot a Genuine MLOps Certification</title>
+    <link>https://jahanzaibawan.com/blog/spotting-genuine-mlops-certification.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/spotting-genuine-mlops-certification.html</guid>
+    <pubDate>Thu, 19 Nov 2026 09:00:00 +0000</pubDate>
+    <description>A quick checklist test versus a real MLOps course: what separates genuine skill-building from a certificate mill with a modern vocabulary.</description>
+    <category>MLOps</category>
+  </item>
+  <item>
     <title>Machine Learning Salaries Versus the Actual Day Job</title>
     <link>https://jahanzaibawan.com/blog/ml-salary-claims-versus-work.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/ml-salary-claims-versus-work.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/grouped-and-stratified-splits.html</guid>
     <pubDate>Tue, 10 Nov 2026 09:00:00 +0000</pubDate>
     <description>A cross-validation scheme is only as honest as the assumptions behind it. Learn when to group, when to stratify, and when you need both at once.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Why Fine-Tuning Results Vary Run to Run, Honestly Reported</title>
-    <link>https://jahanzaibawan.com/blog/why-fine-tuning-results-vary.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/why-fine-tuning-results-vary.html</guid>
-    <pubDate>Mon, 09 Nov 2026 09:00:00 +0000</pubDate>
-    <description>One fine-tuning run is an anecdote, not evidence. Here is where the noise comes from and how to report results you can actually trust.</description>
     <category>Evaluation</category>
   </item>
 </channel>
