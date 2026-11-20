@@ -1,15 +1,15 @@
 {
   "posts": [
     {
-      "slug": "positional-encodings-versus-recurrence",
-      "title": "Positional Encodings vs Recurrence: Order Without Loops",
-      "excerpt": "Two very different ways of teaching a model that word order matters: step-by-step recurrence versus baked-in positional encodings. Here is how each actually works.",
+      "slug": "positional-encodings-vs-recurrence",
+      "title": "Positional Encodings Versus Recurrence: Order Without Steps",
+      "excerpt": "Two ways to tell a model what comes before what: step-by-step recurrence, or injected positional signals. The difference shapes speed, memory, and what a model can actually learn.",
       "date": "2026-11-20",
       "read_min": 5,
       "tag": "Deep Learning",
       "color": "a3",
-      "thumb": "assets/blog/positional-encodings-versus-recurrence.png",
-      "thumb_alt": "Cover image for the article: Positional Encodings vs Recurrence: Order Without Loops"
+      "thumb": "assets/blog/positional-encodings-vs-recurrence.png",
+      "thumb_alt": "Cover image for the article: Positional Encodings Versus Recurrence: Order Without Steps"
     },
     {
       "slug": "multi-head-attention-step-by-step",

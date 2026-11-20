@@ -8,11 +8,11 @@
   <language>en-gb</language>
   <lastBuildDate>Fri, 20 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
-    <title>Positional Encodings vs Recurrence: Order Without Loops</title>
-    <link>https://jahanzaibawan.com/blog/positional-encodings-versus-recurrence.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/positional-encodings-versus-recurrence.html</guid>
+    <title>Positional Encodings Versus Recurrence: Order Without Steps</title>
+    <link>https://jahanzaibawan.com/blog/positional-encodings-vs-recurrence.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/positional-encodings-vs-recurrence.html</guid>
     <pubDate>Fri, 20 Nov 2026 09:00:00 +0000</pubDate>
-    <description>Two very different ways of teaching a model that word order matters: step-by-step recurrence versus baked-in positional encodings. Here is how each actually works.</description>
+    <description>Two ways to tell a model what comes before what: step-by-step recurrence, or injected positional signals. The difference shapes speed, memory, and what a model can actually learn.</description>
     <category>Deep Learning</category>
   </item>
   <item>

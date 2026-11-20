@@ -1,1 +1,1 @@
-2026-11-20T20:01:24Z slug=positional-encodings-versus-recurrence words=1099 title="Positional Encodings vs Recurrence: Order Without Loops"
+2026-11-20T20:02:24Z slug=positional-encodings-vs-recurrence words=1057 title="Positional Encodings Versus Recurrence: Order Without Steps"
