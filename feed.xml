@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Thu, 19 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 20 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>How Multi-Head Attention Processes One Sentence</title>
+    <link>https://jahanzaibawan.com/blog/multi-head-attention-step-by-step.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/multi-head-attention-step-by-step.html</guid>
+    <pubDate>Fri, 20 Nov 2026 09:00:00 +0000</pubDate>
+    <description>Forget the diagrams for a moment. Here is what a multi-head attention block literally does to one sentence, token by token, head by head.</description>
+    <category>Deep Learning</category>
+  </item>
   <item>
     <title>Spotting a Real MLOps Certification Versus a Checklist</title>
     <link>https://jahanzaibawan.com/blog/genuine-mlops-certification-checklist.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/beyond-the-final-score.html</guid>
     <pubDate>Tue, 10 Nov 2026 09:00:00 +0000</pubDate>
     <description>A final score hides the interesting part of evaluation. I walk through what to log so you can actually trust and debug your numbers.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Grouped and Stratified Splits: Picking the Right One</title>
-    <link>https://jahanzaibawan.com/blog/grouped-and-stratified-splits.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/grouped-and-stratified-splits.html</guid>
-    <pubDate>Tue, 10 Nov 2026 09:00:00 +0000</pubDate>
-    <description>A cross-validation scheme is only as honest as the assumptions behind it. Learn when to group, when to stratify, and when you need both at once.</description>
     <category>Evaluation</category>
   </item>
 </channel>

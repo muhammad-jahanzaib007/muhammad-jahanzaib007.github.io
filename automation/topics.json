@@ -1,6 +1,5 @@
 {
   "queue": [
-    "How a multi-head attention block actually processes one sentence, step by step",
     "Positional encodings versus recurrence: two ways to give a model a sense of order",
     "What a loss function change actually does to gradients, shown on one toy example",
     "Why softmax temperature changes what a classifier appears confident about",
@@ -314,6 +313,7 @@
     "Computer vision in production: why the demo accuracy and the shipped accuracy diverge",
     "A worked walkthrough of writing your first structured prompt and measuring if it helped",
     "Machine learning salary claims versus the work: reconciling job adverts with daily tasks",
-    "How to tell a genuine MLOps certification from a checklist with a certificate at the end"
+    "How to tell a genuine MLOps certification from a checklist with a certificate at the end",
+    "How a multi-head attention block actually processes one sentence, step by step"
   ]
 }

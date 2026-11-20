@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Multi-Head Attention Processes One Sentence | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A step-by-step, worked explanation of how multi-head attention transforms one sentence inside a transformer, with concrete intuition and no hand-waving.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="multi-head attention,transformers,self-attention,attention mechanism,NLP,deep learning,query key value,neural networks, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-20">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="How Multi-Head Attention Processes One Sentence">
+<meta property="og:description" content="A step-by-step, worked explanation of how multi-head attention transforms one sentence inside a transformer, with concrete intuition and no hand-waving.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/multi-head-attention-step-by-step.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/multi-head-attention-step-by-step.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How Multi-Head Attention Processes One Sentence">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/multi-head-attention-step-by-step.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/multi-head-attention-step-by-step.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How Multi-Head Attention Processes One Sentence",
+  "description": "A step-by-step, worked explanation of how multi-head attention transforms one sentence inside a transformer, with concrete intuition and no hand-waving.",
+  "url": "https://jahanzaibawan.com/blog/multi-head-attention-step-by-step.html",
+  "image": "https://jahanzaibawan.com/assets/blog/multi-head-attention-step-by-step.png",
+  "datePublished": "2026-11-20",
+  "dateModified": "2026-11-20",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/multi-head-attention-step-by-step.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "How Multi-Head Attention Processes One Sentence", "item": "https://jahanzaibawan.com/blog/multi-head-attention-step-by-step.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Deep Learning · 5 min read · 20 Nov 2026</div>
+    <h1>How Multi-Head Attention Processes One Sentence</h1>
+    <p class="lede">A concrete walk-through of what actually happens to a sentence inside a transformer&#x27;s attention block, from tokens to weighted context.</p>
+  </div>
+
+  <img src="../assets/blog/multi-head-attention-step-by-step.png" alt="Cover image for the article: How Multi-Head Attention Processes One Sentence" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this matters more than the diagram suggests</h2><p>Most explanations of attention jump straight to the formula: softmax of QK transpose over the square root of the dimension, times V. That is correct, but it tells you almost nothing about what happens to an actual sentence as it passes through. I think the formula is the least useful part of the story for building real intuition. The useful part is tracing one sentence through the mechanics, word by word, and watching the representation of each token change because of its neighbours.</p><p>This matters practically because so much of what goes wrong in transformer-based systems, whether you are fine-tuning a small model or debugging why an architecture underperforms on your data, traces back to a shaky mental model of what attention is actually computing. If you think of it as "the model looks at everything and decides what is important" you have a slogan, not a mechanism. A mechanism lets you reason about failure modes: why a model might conflate two entities with similar context, or why very long sentences dilute the signal for any single token.</p><p>So let us take one short sentence and walk it through a single multi-head attention block, step by step, with concrete numbers standing in for the real computation.</p></section><section class='psec reveal'><h2>From words to vectors: setting the stage</h2><p>Take the sentence "the bank raised rates". After tokenisation and embedding, each of the four tokens becomes a vector, say of size 512 in a typical mid-sized model. Positional information is added so the model knows "the" came before "bank" rather than after. At this point we have a matrix of shape four tokens by 512 dimensions. Nothing has interacted yet; each row is still an isolated representation of its word, blind to context. "Bank" here has no idea yet whether it means a financial institution or a riverbank.</p><p>The attention block's job is to let each token's representation absorb relevant information from the other tokens before moving on. It does this by learning three separate linear projections of the input: queries, keys and values. For every token, the query vector asks "what am I looking for in this sentence", the key vector answers "what do I offer", and the value vector carries "what I actually contribute if someone attends to me". These are produced by multiplying the input matrix by three separate weight matrices, learned during training, nothing exotic.</p><p>Crucially, for "bank" to resolve its meaning, its query vector needs to find that "rates" is nearby and financial in flavour, and the keys from "rates" need to be constructed so that this match is strong. This is exactly what training pushes the weight matrices to do: shape queries and keys so that semantically relevant pairs produce high dot products, and irrelevant pairs produce low ones.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/multi-head-attention-step-by-step-1.jpg' alt='abstract neural network visualization' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>The actual computation: scores, softmax, weighted sum</h2><p>Here is the part people skip over too fast. Take the query vector for "bank" and compute its dot product with the key vector of every token in the sentence, including itself. Say these raw scores come out as 2.1 with "the", 3.4 with itself, 1.0 with "raised", and 4.8 with "rates". These numbers are divided by the square root of the key dimension, purely to keep the scale sane as dimensionality grows, then passed through a softmax. Suppose this yields weights of roughly 0.07, 0.19, 0.03 and 0.71 respectively.</p><p>That 0.71 is the whole point. It means that when building the new representation for "bank", the block takes the value vector of "rates" and weights it at 71 percent, folding in a much smaller contribution from itself and almost nothing from "the" or "raised". The new vector for "bank" is the weighted sum of all four value vectors using these weights. It is no longer an isolated word embedding; it is now a context-aware representation that leans heavily on "rates", which is precisely the cue that disambiguates it towards finance rather than geography.</p><p>Every token goes through this same process simultaneously, each with its own query and therefore its own distinct set of weights. "Raised" might attend strongly to both "bank" and "rates" to capture the full predicate. "The" probably attends mostly to itself, since a determiner rarely needs much external context. The output of this single attention operation is a brand new matrix, same shape as the input, but every row now encodes information borrowed from across the sentence according to learned relevance.</p></section><section class='psec reveal'><h2>Why multiple heads, and what to take away</h2><p>A single attention operation like the one above is one head. The "multi" in multi-head attention means this entire process, separate queries, keys, values, scores, softmax, weighted sum, is run several times in parallel, each with its own independently learned projection matrices, typically eight or sixteen heads in common configurations. One head might specialise in tracking subject-verb relationships, another in resolving word sense from nearby nouns, another in tracking longer-range dependencies like pronoun references several words back. Each head produces its own version of the new "bank" vector, and these are concatenated and passed through one more linear layer to merge them back into a single representation of the right dimension.</p><p>Why not just use one head with a bigger dimension? Because a single softmax distribution can really only express one dominant pattern of relevance at a time. If "bank" needs to simultaneously track its financial sense from "rates" and its grammatical role as subject from "raised", one attention distribution has to compromise between both signals. Multiple heads let these patterns be captured independently and combined afterwards, which empirically gives the model much richer representational capacity for the same overall parameter budget.</p><p>The practical takeaway, if you are building or debugging systems that rely on this, is to stop treating attention as a black box that "figures out importance" and instead ask concrete questions when something misbehaves: are the relevant tokens close enough, in positional and semantic terms, that a learned query-key match could plausibly find them; is the sentence long enough that the relevant signal gets diluted across too many competing keys; are you fine-tuning on data where the token relationships you care about actually resemble what the pretrained heads learned to track. None of that requires rereading the softmax formula. It requires picturing one sentence, four tokens, a handful of dot products, and a weighted sum done many times over in parallel.</p></section>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

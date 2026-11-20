@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "multi-head-attention-step-by-step",
+      "title": "How Multi-Head Attention Processes One Sentence",
+      "excerpt": "Forget the diagrams for a moment. Here is what a multi-head attention block literally does to one sentence, token by token, head by head.",
+      "date": "2026-11-20",
+      "read_min": 5,
+      "tag": "Deep Learning",
+      "color": "a2",
+      "thumb": "assets/blog/multi-head-attention-step-by-step.png",
+      "thumb_alt": "Cover image for the article: How Multi-Head Attention Processes One Sentence"
+    },
+    {
       "slug": "genuine-mlops-certification-checklist",
       "title": "Spotting a Real MLOps Certification Versus a Checklist",
       "excerpt": "Most MLOps certificates test whether you can follow slides, not whether you can run a pipeline under real failure conditions. Here is how to spot the difference.",

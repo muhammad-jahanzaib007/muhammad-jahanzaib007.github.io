@@ -1,1 +1,1 @@
-2026-11-19T20:02:12Z slug=genuine-mlops-certification-checklist words=1067 title="Spotting a Real MLOps Certification Versus a Checklist"
+2026-11-20T08:01:09Z slug=multi-head-attention-step-by-step words=1061 title="How Multi-Head Attention Processes One Sentence"
