@@ -2,14 +2,14 @@
   "posts": [
     {
       "slug": "multi-head-attention-step-by-step",
-      "title": "How Multi-Head Attention Processes One Sentence",
-      "excerpt": "Forget the diagrams for a moment. Here is what a multi-head attention block literally does to one sentence, token by token, head by head.",
+      "title": "How a Multi-Head Attention Block Processes One Sentence",
+      "excerpt": "Tracing one sentence through a multi-head attention block, step by step, with concrete numbers and no hand-waving.",
       "date": "2026-11-20",
       "read_min": 5,
       "tag": "Deep Learning",
       "color": "a2",
       "thumb": "assets/blog/multi-head-attention-step-by-step.png",
-      "thumb_alt": "Cover image for the article: How Multi-Head Attention Processes One Sentence"
+      "thumb_alt": "Cover image for the article: How a Multi-Head Attention Block Processes One Sentence"
     },
     {
       "slug": "genuine-mlops-certification-checklist",

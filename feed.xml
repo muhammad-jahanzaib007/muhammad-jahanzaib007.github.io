@@ -8,11 +8,11 @@
   <language>en-gb</language>
   <lastBuildDate>Fri, 20 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
-    <title>How Multi-Head Attention Processes One Sentence</title>
+    <title>How a Multi-Head Attention Block Processes One Sentence</title>
     <link>https://jahanzaibawan.com/blog/multi-head-attention-step-by-step.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/multi-head-attention-step-by-step.html</guid>
     <pubDate>Fri, 20 Nov 2026 09:00:00 +0000</pubDate>
-    <description>Forget the diagrams for a moment. Here is what a multi-head attention block literally does to one sentence, token by token, head by head.</description>
+    <description>Tracing one sentence through a multi-head attention block, step by step, with concrete numbers and no hand-waving.</description>
     <category>Deep Learning</category>
   </item>
   <item>
