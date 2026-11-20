@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Fri, 20 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Positional Encodings vs Recurrence: Order Without Loops</title>
+    <link>https://jahanzaibawan.com/blog/positional-encodings-versus-recurrence.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/positional-encodings-versus-recurrence.html</guid>
+    <pubDate>Fri, 20 Nov 2026 09:00:00 +0000</pubDate>
+    <description>Two very different ways of teaching a model that word order matters: step-by-step recurrence versus baked-in positional encodings. Here is how each actually works.</description>
+    <category>Deep Learning</category>
+  </item>
+  <item>
     <title>How a Multi-Head Attention Block Processes One Sentence</title>
     <link>https://jahanzaibawan.com/blog/multi-head-attention-step-by-step.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/multi-head-attention-step-by-step.html</guid>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/prompt-templates-break-silently.html</guid>
     <pubDate>Wed, 11 Nov 2026 09:00:00 +0000</pubDate>
     <description>Model version bumps change tokenisation, formatting habits, and instruction sensitivity. If your evals do not probe for that, your prompt template fails silently in production.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>What an Evaluation Harness Should Log Beyond the Score</title>
-    <link>https://jahanzaibawan.com/blog/beyond-the-final-score.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/beyond-the-final-score.html</guid>
-    <pubDate>Tue, 10 Nov 2026 09:00:00 +0000</pubDate>
-    <description>A final score hides the interesting part of evaluation. I walk through what to log so you can actually trust and debug your numbers.</description>
     <category>Evaluation</category>
   </item>
 </channel>

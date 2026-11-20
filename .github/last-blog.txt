@@ -1,1 +1,1 @@
-2026-11-20T08:02:11Z slug=multi-head-attention-step-by-step words=1026 title="How a Multi-Head Attention Block Processes One Sentence"
+2026-11-20T20:01:24Z slug=positional-encodings-versus-recurrence words=1099 title="Positional Encodings vs Recurrence: Order Without Loops"

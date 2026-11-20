@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Positional Encodings vs Recurrence: Order Without Loops | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A clear, worked explanation of how recurrent networks and positional encodings each give sequence models a sense of order, with practical trade-offs.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="positional encoding, recurrent neural networks, transformers, sequence order, self-attention, RNN, NLP, deep learning architecture, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-20">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Positional Encodings vs Recurrence: Order Without Loops">
+<meta property="og:description" content="A clear, worked explanation of how recurrent networks and positional encodings each give sequence models a sense of order, with practical trade-offs.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/positional-encodings-versus-recurrence.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/positional-encodings-versus-recurrence.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Positional Encodings vs Recurrence: Order Without Loops">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/positional-encodings-versus-recurrence.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/positional-encodings-versus-recurrence.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Positional Encodings vs Recurrence: Order Without Loops",
+  "description": "A clear, worked explanation of how recurrent networks and positional encodings each give sequence models a sense of order, with practical trade-offs.",
+  "url": "https://jahanzaibawan.com/blog/positional-encodings-versus-recurrence.html",
+  "image": "https://jahanzaibawan.com/assets/blog/positional-encodings-versus-recurrence.png",
+  "datePublished": "2026-11-20",
+  "dateModified": "2026-11-20",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/positional-encodings-versus-recurrence.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Positional Encodings vs Recurrence: Order Without Loops", "item": "https://jahanzaibawan.com/blog/positional-encodings-versus-recurrence.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Deep Learning · 5 min read · 20 Nov 2026</div>
+    <h1>Positional Encodings vs Recurrence: Order Without Loops</h1>
+    <p class="lede">Transformers process tokens all at once, recurrent networks one step at a time; both end up needing a way to tell a model where things sit in a sequence.</p>
+  </div>
+
+  <img src="../assets/blog/positional-encodings-versus-recurrence.png" alt="Cover image for the article: Positional Encodings vs Recurrence: Order Without Loops" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why order needs to be taught at all</h2><p>Here is a fact that surprises people the first time they sit with it: a basic self-attention layer, on its own, has no idea what order the tokens came in. If you feed it the words in 'the cat sat on the mat' and then feed it the same words shuffled, the attention computation treats both as the same multiset. Every token looks at every other token through a dot product of queries and keys, and that dot product does not care whether a token was first, third, or last. Attention is, in a precise sense, permutation equivariant.</p><p>That is a problem, because order is often the entire point. 'Dog bites man' and 'man bites dog' contain identical words and wildly different meanings. A model that cannot distinguish them is not going to get very far on translation, summarisation, or anything else involving syntax. So any architecture that processes a sequence needs some mechanism, explicit or implicit, for injecting a sense of position.</p><p>Recurrent networks solve this almost by accident, as a side effect of how they compute. Transformers solve it on purpose, by adding extra information to the input. These are two genuinely different philosophies, and understanding why each one works, and where each one strains, tells you something useful about sequence modelling more generally.</p></section><section class='psec reveal'><h2>Recurrence: order as a consequence of computation</h2><p>A recurrent neural network reads a sequence one element at a time, updating a hidden state at each step: h_t is a function of h_{t-1} and the current input x_t. Position is never represented as a number anywhere in the model. Instead, position is implicit in the order of computation itself. The hidden state at step five has, by construction, already absorbed everything from steps one through four, in that exact order, before it sees step five's input. You cannot compute h_5 without first computing h_4, h_3, h_2, and h_1 in sequence.</p><p>This gives recurrence a kind of order-awareness for free. Consider a toy task: detecting whether the word 'not' appears before the word 'good' in a short sentence, as a crude proxy for negation. A recurrent model can carry a simple flag in its hidden state once it sees 'not', and that flag persists forward through subsequent time steps, so by the time it reaches 'good' the state already encodes 'negation pending'. The order is baked into the sequential nature of the update rule; there is no separate positional signal to learn.</p><p>The cost is that this sequential dependency is exactly what makes RNNs slow to train. Step 500 cannot be computed until step 499 finishes, so you cannot parallelise across the sequence dimension during the forward pass. On a sequence of length 2,000, that is 2,000 sequential matrix operations that must happen one after another, even if you have a GPU sitting idle with capacity for thousands of parallel operations. There is also the well-documented difficulty of carrying information over long distances: gradients that have to flow back through hundreds of multiplicative steps tend to vanish or explode, which is why gated variants like LSTMs and GRUs were built, essentially to give the gradient a straighter path backward through time.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/positional-encodings-versus-recurrence-1.jpg' alt='server room cables' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Positional encodings: order as an added signal</h2><p>Transformers took a different route. Since self-attention processes all tokens in parallel with no inherent sense of sequence, the designers simply added a vector to each token's embedding that encodes its position, before anything else happens. The original approach used sinusoids: for position pos and dimension index i, you add sin(pos / 10000^(2i/d)) and cos(pos / 10000^(2i/d)) terms across the embedding dimensions. The specific formula matters less than what it achieves: every position gets a distinct, deterministic vector, and because sine and cosine of a sum can be written in terms of sine and cosine of the parts, the relative offset between two positions is recoverable through a fixed linear transformation of their encodings.</p><p>Concretely, imagine two tokens eight positions apart anywhere in a 512-token sequence. Their positional encodings differ by the same fixed linear relationship whether they appear near position 3 or near position 300, because the sinusoidal construction depends only on the offset, not on the absolute location. That is what lets the model generalise notions like 'the word three steps to the left' across the entire sequence, without ever being explicitly told what 'three steps to the left' means.</p><p>Other variants exist: learned positional embeddings, which simply let the model learn a vector per position from data rather than using a fixed formula, and relative position schemes, which inject position information directly into the attention score computation rather than into the input embedding. Rotary position embeddings, popular in recent large language models, rotate query and key vectors by an angle proportional to their position, which has the convenient property that the attention score between two tokens ends up depending only on their relative distance. Whichever variant you pick, the underlying move is the same: order is not a side effect of computation, it is a feature you deliberately manufacture and hand to the model.</p><p>This buys full parallelism: every position is processed simultaneously, so a 2,000-token sequence costs one pass through the attention mechanism rather than 2,000 sequential steps. The trade-off is that the model has to learn to use the positional signal correctly, and encodings tuned for sequences up to length 512 do not always extrapolate cleanly to length 4,000, which is precisely why extrapolation to longer contexts than seen in training remains an active area of engineering effort.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>When I think about which approach suits a given problem, I come back to a simple trade: recurrence gets order for free but pays for it with sequential computation and fragile long-range gradients; positional encodings buy parallelism but require the model to learn how to exploit an artificial signal, and that signal has to be designed carefully to generalise beyond the lengths seen during training. Neither is strictly superior; they solve the same problem from opposite directions.</p><p>If you are building something today, the practical default for most text and sequence tasks is attention with some form of positional encoding, simply because training speed and parallelism tend to dominate once sequences and datasets get large. But it is worth remembering, especially when debugging a model that seems to ignore word order, that this sense of order is not something attention has inherently; it is something you gave it, and it is always worth checking that the positional scheme you chose actually matches the lengths and structure of the data you are feeding it.</p></section>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
