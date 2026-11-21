@@ -1,15 +1,15 @@
 {
   "posts": [
     {
-      "slug": "loss-function-change-gradients",
-      "title": "What Changing Your Loss Function Really Does to Gradients",
-      "excerpt": "Loss functions are chosen for the gradients they produce, not their formulas. A toy example shows exactly how.",
+      "slug": "loss-function-gradients-toy-example",
+      "title": "What a Loss Function Change Really Does to Gradients",
+      "excerpt": "A single-point worked example showing how squared error, absolute error, and a hinge-style loss hand the optimiser completely different gradients.",
       "date": "2026-11-21",
-      "read_min": 5,
+      "read_min": 6,
       "tag": "Deep Learning",
       "color": "a4",
-      "thumb": "assets/blog/loss-function-change-gradients.png",
-      "thumb_alt": "Cover image for the article: What Changing Your Loss Function Really Does to Gradients"
+      "thumb": "assets/blog/loss-function-gradients-toy-example.png",
+      "thumb_alt": "Cover image for the article: What a Loss Function Change Really Does to Gradients"
     },
     {
       "slug": "positional-encodings-vs-recurrence",

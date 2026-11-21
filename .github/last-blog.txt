@@ -1,1 +1,1 @@
-2026-11-21T08:01:28Z slug=loss-function-change-gradients words=1087 title="What Changing Your Loss Function Really Does to Gradients"
+2026-11-21T08:02:30Z slug=loss-function-gradients-toy-example words=1103 title="What a Loss Function Change Really Does to Gradients"

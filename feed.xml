@@ -8,11 +8,11 @@
   <language>en-gb</language>
   <lastBuildDate>Sat, 21 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
-    <title>What Changing Your Loss Function Really Does to Gradients</title>
-    <link>https://jahanzaibawan.com/blog/loss-function-change-gradients.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/loss-function-change-gradients.html</guid>
+    <title>What a Loss Function Change Really Does to Gradients</title>
+    <link>https://jahanzaibawan.com/blog/loss-function-gradients-toy-example.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/loss-function-gradients-toy-example.html</guid>
     <pubDate>Sat, 21 Nov 2026 09:00:00 +0000</pubDate>
-    <description>Loss functions are chosen for the gradients they produce, not their formulas. A toy example shows exactly how.</description>
+    <description>A single-point worked example showing how squared error, absolute error, and a hinge-style loss hand the optimiser completely different gradients.</description>
     <category>Deep Learning</category>
   </item>
   <item>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What a Loss Function Change Really Does to Gradients | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A concrete, numeric walkthrough of how changing a loss function alters the gradients a model trains on, using one toy regression example.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="loss functions, gradients, mean squared error, mean absolute error, hinge loss, gradient descent, machine learning fundamentals, optimisation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-21">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="What a Loss Function Change Really Does to Gradients">
+<meta property="og:description" content="A concrete, numeric walkthrough of how changing a loss function alters the gradients a model trains on, using one toy regression example.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/loss-function-gradients-toy-example.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/loss-function-gradients-toy-example.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What a Loss Function Change Really Does to Gradients">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/loss-function-gradients-toy-example.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/loss-function-gradients-toy-example.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "What a Loss Function Change Really Does to Gradients",
+  "description": "A concrete, numeric walkthrough of how changing a loss function alters the gradients a model trains on, using one toy regression example.",
+  "url": "https://jahanzaibawan.com/blog/loss-function-gradients-toy-example.html",
+  "image": "https://jahanzaibawan.com/assets/blog/loss-function-gradients-toy-example.png",
+  "datePublished": "2026-11-21",
+  "dateModified": "2026-11-21",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/loss-function-gradients-toy-example.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "What a Loss Function Change Really Does to Gradients", "item": "https://jahanzaibawan.com/blog/loss-function-gradients-toy-example.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Deep Learning · 6 min read · 21 Nov 2026</div>
+    <h1>What a Loss Function Change Really Does to Gradients</h1>
+    <p class="lede">Swapping one loss for another is never just a cosmetic choice. Here is a worked example showing exactly how it reshapes the gradient a model actually learns from.</p>
+  </div>
+
+  <img src="../assets/blog/loss-function-gradients-toy-example.png" alt="Cover image for the article: What a Loss Function Change Really Does to Gradients" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this matters more than it looks</h2><p>In most tutorials, the loss function is treated as a single line near the top of the code, chosen and forgotten. In practice, it is the thing that decides what 'better' means to your optimiser, and every gradient step your model ever takes is a direct consequence of that choice. Two models with identical architectures, identical data, and identical learning rates can converge to visibly different solutions purely because one was trained with squared error and the other with absolute error.</p><p>The reason this is easy to overlook is that most of us reason about loss functions as curves on a graph, not as gradient generators. A loss function is really a recipe for turning a prediction error into a learning signal. Two recipes that look similar on paper, both penalising wrong predictions, can produce wildly different signals depending on how large or small the error happens to be. I want to make that concrete with one toy example rather than wave my hands at it.</p><p>So here is the plan. I will take a single data point, a single prediction, and run it through three common losses: mean squared error, mean absolute error, and a hinge-style loss. I will compute the actual gradient with respect to the prediction in each case, and show what each one tells the model to do next. No architecture, no dataset, just the arithmetic that sits underneath every training run.</p></section><section class='psec reveal'><h2>Setting up the toy example</h2><p>Suppose the true target value is <strong>y = 10</strong>, and our model currently predicts <strong>y_hat = 7</strong>. The error is 3. We want to know: for each loss function, what gradient does the model receive with respect to its own prediction, and what does that gradient imply about the next update?</p><p>For <strong>mean squared error</strong>, the loss for a single point is L = (y - y_hat)^2, and the derivative with respect to y_hat is -2(y - y_hat). Plugging in our numbers gives -2(3) = -6. The magnitude of this gradient is proportional to the size of the error itself. A small error gives a small nudge; a large error gives a large, even more forceful nudge, because the squaring amplifies big mistakes disproportionately.</p><p>For <strong>mean absolute error</strong>, the loss is L = |y - y_hat|, and the derivative with respect to y_hat is -sign(y - y_hat), which is just -1 here, regardless of whether the error was 3 or 300. The gradient has constant magnitude; only its direction changes. This is the key structural difference: squared error gradients scale with error size, absolute error gradients do not.</p><p>For a <strong>hinge-style loss</strong>, commonly used in margin-based classification, imagine a simplified regression analogue where the loss is max(0, m - (y - y_hat)) for some margin m, say m = 1. If the current gap (y - y_hat) is already larger than the margin, the loss is zero and the gradient is exactly zero: no update happens at all. If the gap is smaller than the margin, the gradient is constant, similar in spirit to absolute error, but the loss only activates near the decision boundary rather than everywhere.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/loss-function-gradients-toy-example-1.jpg' alt='whiteboard with equations' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What these three numbers actually mean for training</h2><p>Look at what just happened. With an error of 3, squared error tells the optimiser 'move by 6 units of signal', absolute error tells it 'move by 1 unit of signal, in this direction', and hinge tells it either 'move by 1 unit' or 'do nothing', depending on where the margin sits. Same data point, same model, three entirely different instructions.</p><p>Now push the error up to 30, as would happen with a single bad outlier or a noisy label. Squared error's gradient becomes -2(30) = -60, ten times larger than before. The model will take a correspondingly huge step to chase that one point, potentially at the expense of everything it learned from well-behaved examples. Absolute error, by contrast, still outputs a gradient of magnitude 1. The optimiser treats a wildly wrong prediction with the same urgency as a mildly wrong one. This is precisely why squared error losses are notorious for being sensitive to outliers, and why absolute error is the standard recommendation when your data contains noisy or mislabelled points: the gradient simply refuses to be dominated by a handful of extreme errors.</p><p>This also explains a pattern that trips people up in practice: a model trained with squared error can appear to 'ignore' the bulk of well-fit data points late in training. Once most errors shrink to something small, say 0.2, the squared error gradient shrinks to -2(0.2) = -0.4, a tiny signal, while a handful of remaining large-error points keep generating gradients an order of magnitude bigger. The optimiser ends up spending its remaining capacity almost entirely on the stragglers. Switching to absolute error flattens that imbalance, because every point, regardless of how badly it is currently predicted, contributes the same unit of pull.</p><p>The hinge case illustrates a third, distinct behaviour: sparsity of updates. Once a prediction clears the margin, it stops contributing gradient at all. This is deliberate and useful in classification settings, where you often do not want to keep pushing on examples the model already classifies confidently, since doing so can distort the decision boundary and waste capacity on points that were never ambiguous in the first place.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>None of this is really about memorising three formulas. The habit I would encourage is this: before choosing or changing a loss function, write out its derivative with respect to the prediction and plug in a small error and a large error by hand. That five-minute exercise tells you, honestly and without hand-waving, whether the loss will amplify outliers, treat all errors equally, or switch off entirely past some threshold.</p><p>This matters well beyond toy examples. If your real-world labels are noisy, a squared error loss will quietly let a small number of mislabelled points dominate your gradients, and no amount of architecture tuning will fix that; the fix lives in the loss function itself, or in explicit outlier handling. If your task has a natural margin or confidence threshold, a hinge-style loss can stop wasted updates on already-easy examples, freeing up gradient signal for the genuinely hard cases.</p><p>The one-line version I keep coming back to is this: a loss function is not a scoring rule you report at the end, it is a gradient generator you live with at every single step. Choose it with that in mind, and always sanity-check it on a single point before trusting it on a million.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/loss-function-gradients-toy-example-2.jpg' alt='hand drawn graph on paper' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
