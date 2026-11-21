@@ -1,1 +1,1 @@
-2026-11-20T20:02:24Z slug=positional-encodings-vs-recurrence words=1057 title="Positional Encodings Versus Recurrence: Order Without Steps"
+2026-11-21T08:01:28Z slug=loss-function-change-gradients words=1087 title="What Changing Your Loss Function Really Does to Gradients"

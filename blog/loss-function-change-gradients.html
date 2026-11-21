@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Changing Your Loss Function Really Does to Gradients | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A worked toy example showing how changing a loss function reshapes gradients, with practical implications for training stability and optimisation.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="loss functions, gradients, backpropagation, cross entropy, mean squared error, optimisation, deep learning, machine learning, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-21">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="What Changing Your Loss Function Really Does to Gradients">
+<meta property="og:description" content="A worked toy example showing how changing a loss function reshapes gradients, with practical implications for training stability and optimisation.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/loss-function-change-gradients.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/loss-function-change-gradients.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What Changing Your Loss Function Really Does to Gradients">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/loss-function-change-gradients.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/loss-function-change-gradients.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "What Changing Your Loss Function Really Does to Gradients",
+  "description": "A worked toy example showing how changing a loss function reshapes gradients, with practical implications for training stability and optimisation.",
+  "url": "https://jahanzaibawan.com/blog/loss-function-change-gradients.html",
+  "image": "https://jahanzaibawan.com/assets/blog/loss-function-change-gradients.png",
+  "datePublished": "2026-11-21",
+  "dateModified": "2026-11-21",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/loss-function-change-gradients.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "What Changing Your Loss Function Really Does to Gradients", "item": "https://jahanzaibawan.com/blog/loss-function-change-gradients.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Deep Learning · 5 min read · 21 Nov 2026</div>
+    <h1>What Changing Your Loss Function Really Does to Gradients</h1>
+    <p class="lede">Swapping one loss for another is often sold as a free lunch, but the real effect shows up in the gradients it produces. A tiny worked example makes this concrete.</p>
+  </div>
+
+  <img src="../assets/blog/loss-function-change-gradients.png" alt="Cover image for the article: What Changing Your Loss Function Really Does to Gradients" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this matters more than it looks</h2><p>When people talk about choosing a loss function, the conversation usually stays at the level of formulas: mean squared error versus cross entropy, hinge loss versus log loss, and so on. That framing hides the actual mechanism by which a loss function influences a trained model. A loss is never evaluated in isolation. It is differentiated, and that derivative is what gets multiplied through the network during backpropagation. Two losses can look similar on paper and produce wildly different training dynamics simply because their gradients behave differently near the predictions a model is likely to make.</p><p>I find it useful to stop thinking of a loss as a scoring rule and start thinking of it as a gradient generator. The number the loss outputs barely matters during training; what matters is the slope at the current prediction, because that slope is the signal every parameter update is built from. If you change the loss, you are not changing how harshly you punish a bad prediction in the abstract. You are changing how hard the model gets pushed, and in which direction, for every single example in the batch.</p><p>A toy example strips away the noise of real datasets and lets you see this directly. I will use a single scalar prediction problem: one output, one target, and two candidate losses, so that every number can be computed by hand and the contrast is unmistakable.</p></section><section class='psec reveal'><h2>The toy setup</h2><p>Suppose a model outputs a single probability-like value <strong>p</strong> for a binary target <strong>y</strong>, produced by squashing a raw logit <strong>z</strong> through a sigmoid. Let the true label be <strong>y = 1</strong>. I will compare two losses as functions of <strong>p</strong>: squared error, <strong>L = (y - p)^2</strong>, and binary cross entropy, <strong>L = -log(p)</strong> for a positive target.</p><p>Take a case where the model is badly wrong: <strong>p = 0.01</strong>, meaning it is almost certain the answer is 0 when the true label is 1. For squared error, the gradient with respect to <strong>p</strong> is <strong>-2(y - p) = -2(1 - 0.01) = -1.98</strong>. For cross entropy, the gradient is <strong>-1/p = -1/0.01 = -100</strong>. That is a factor of roughly fifty between the two signals, for the exact same prediction and the exact same mistake.</p><p>Now take a case where the model is only mildly wrong: <strong>p = 0.4</strong>. Squared error gives <strong>-2(1 - 0.4) = -1.2</strong>. Cross entropy gives <strong>-1/0.4 = -2.5</strong>. The gap has shrunk from fifty times to about two times. This is the core fact worth internalising: cross entropy's gradient explodes as a confidently wrong prediction approaches the wrong extreme, while squared error's gradient stays bounded and fairly flat across the whole range of <strong>p</strong>.</p><p>When you push these gradients back through the sigmoid, the effect compounds. The sigmoid's own derivative, <strong>p(1 - p)</strong>, is tiny when <strong>p</strong> is near 0 or 1, which squashes gradients for confident predictions. Cross entropy's <strong>-1/p</strong> term cancels a large part of that squashing near the bad end, while squared error does not, which is why cross entropy famously avoids the vanishing gradient problem that plagues squared error on classification tasks with sigmoid outputs.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/loss-function-change-gradients-1.jpg' alt='handwritten calculus equations on whiteboard' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What this buys you, and what it costs</h2><p>The practical upshot is that cross entropy keeps teaching the model aggressively even when it is extremely confident and extremely wrong, exactly the regime where you most want a strong corrective signal. Squared error, by contrast, treats a confidently wrong prediction almost the same as a mildly wrong one, because its gradient is roughly linear in the error and never blows up. For classification problems this usually makes cross entropy converge faster and more reliably, which is why it is the default choice almost everywhere a sigmoid or softmax sits at the output.</p><p>But the same property that makes cross entropy attractive also makes it less forgiving of label noise and poorly calibrated confident mistakes during early training. If a handful of training examples are mislabelled, and the model happens to become confident on the wrong side, the gradient contribution from those examples can dominate the batch, because <strong>-1/p</strong> grows without bound as <strong>p</strong> approaches zero. Squared error's bounded gradient acts as an implicit form of robustness: a single badly wrong, mislabelled example cannot generate an arbitrarily large update, because the gradient magnitude is capped by the range of the target and prediction.</p><p>This is also why loss functions are rarely swapped in isolation without touching other hyperparameters. If you move from squared error to cross entropy without adjusting the learning rate, you can inherit gradients that are an order of magnitude larger on hard examples, which in practice often means the first few epochs look unstable or the loss spikes before settling. Conversely, moving the other way, from cross entropy back to squared error, frequently looks like training has stalled, because the gradients for genuinely hard examples are no longer being amplified.</p><p>None of this is a reason to treat loss choice as fragile or arbitrary. It is a reason to actually plot the gradient of a candidate loss as a function of the prediction before adopting it, rather than relying on the formula's reputation. A five minute derivative check against a toy example like the one above tells you more about how a loss will behave during training than any amount of reading about which loss is theoretically more appropriate for a task.</p></section><section class='psec reveal'><h2>A practical takeaway</h2><p>Whenever a loss function change is proposed, whether it is swapping squared error for cross entropy, or cross entropy for a focal loss variant, or anything else, I now default to writing out the derivative with respect to the model's output and evaluating it at a few representative prediction values: very wrong, mildly wrong, and nearly correct. That small exercise reveals whether the new loss amplifies hard examples, suppresses them, or leaves them roughly unchanged relative to the old one, and that is almost always the real reason a loss swap changes training behaviour, rather than anything to do with the loss values themselves.</p><p>If you take one thing from this, let it be that a loss function's job is to shape a gradient landscape, not to produce an interpretable score. Reading the formula tells you what is being measured. Differentiating it tells you what the model is actually going to do about it, and that second question is the one worth answering before you commit to a change.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/loss-function-change-gradients-2.jpg' alt='close up graph plotted on paper' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

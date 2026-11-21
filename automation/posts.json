@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "loss-function-change-gradients",
+      "title": "What Changing Your Loss Function Really Does to Gradients",
+      "excerpt": "Loss functions are chosen for the gradients they produce, not their formulas. A toy example shows exactly how.",
+      "date": "2026-11-21",
+      "read_min": 5,
+      "tag": "Deep Learning",
+      "color": "a4",
+      "thumb": "assets/blog/loss-function-change-gradients.png",
+      "thumb_alt": "Cover image for the article: What Changing Your Loss Function Really Does to Gradients"
+    },
+    {
       "slug": "positional-encodings-vs-recurrence",
       "title": "Positional Encodings Versus Recurrence: Order Without Steps",
       "excerpt": "Two ways to tell a model what comes before what: step-by-step recurrence, or injected positional signals. The difference shapes speed, memory, and what a model can actually learn.",
