@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Softmax Temperature Changes Apparent Confidence | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="An explainer on how softmax temperature rescales logits into probabilities, why this changes apparent confidence, and what it means for calibration and evaluation.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="softmax temperature, model calibration, classifier confidence, logits, temperature scaling, probability calibration, deep learning evaluation, overconfidence, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-21">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Why Softmax Temperature Changes Apparent Confidence">
+<meta property="og:description" content="An explainer on how softmax temperature rescales logits into probabilities, why this changes apparent confidence, and what it means for calibration and evaluation.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/softmax-temperature-and-confidence.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/softmax-temperature-and-confidence.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why Softmax Temperature Changes Apparent Confidence">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/softmax-temperature-and-confidence.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/softmax-temperature-and-confidence.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Why Softmax Temperature Changes Apparent Confidence",
+  "description": "An explainer on how softmax temperature rescales logits into probabilities, why this changes apparent confidence, and what it means for calibration and evaluation.",
+  "url": "https://jahanzaibawan.com/blog/softmax-temperature-and-confidence.html",
+  "image": "https://jahanzaibawan.com/assets/blog/softmax-temperature-and-confidence.png",
+  "datePublished": "2026-11-21",
+  "dateModified": "2026-11-21",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/softmax-temperature-and-confidence.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Why Softmax Temperature Changes Apparent Confidence", "item": "https://jahanzaibawan.com/blog/softmax-temperature-and-confidence.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 21 Nov 2026</div>
+    <h1>Why Softmax Temperature Changes Apparent Confidence</h1>
+    <p class="lede">A classifier&#x27;s reported probabilities are not a fixed fact about the model; they are a choice of scaling that you can dial up or down after training.</p>
+  </div>
+
+  <img src="../assets/blog/softmax-temperature-and-confidence.png" alt="Cover image for the article: Why Softmax Temperature Changes Apparent Confidence" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The number that looks like certainty</h2><p>Most classifiers end with a softmax layer, and most people treat the resulting numbers as the model's honest opinion about how sure it is. A score of 0.97 for one class feels like a strong claim. But that number is not some raw fact pulled out of the network; it is the result of a specific transformation applied to a vector of logits, and that transformation has a free parameter called temperature. Change the temperature and the predicted class stays exactly the same, while the probability attached to it can swing from barely-above-random to near-certainty.</p><p>This matters because people routinely read softmax outputs as calibrated confidence: a probability that should match the actual frequency of being correct. In practice it rarely does, and temperature is one of the clearest ways to see why. Two models, or even the same model at two checkpoints, can disagree wildly on how confident they 'feel' while agreeing on every single prediction. If you are building a system that thresholds on confidence, flags uncertain cases for human review, or compares models by their average top-probability, you are implicitly making a decision about temperature whether you realise it or not.</p></section><section class='psec reveal'><h2>What temperature actually does to the numbers</h2><p>The softmax function takes a vector of logits, divides each by a temperature value T, exponentiates, and normalises. At T equal to 1 you get the standard softmax. Push T above 1 and the distribution flattens: differences between logits get squashed, so the output probabilities move toward uniform. Push T below 1 and the distribution sharpens: the gap between the largest logit and the rest gets exaggerated, so the top class's probability gets pulled toward 1.</p><p>Here is a concrete case. Suppose a three-class classifier produces logits of 3.0, 1.0, and 0.5 for classes A, B, and C. At T equal to 1, softmax gives roughly 0.76 for A, 0.10 for B, and 0.06 for C (after normalising), so A is predicted with about 76 percent apparent confidence. Now set T to 2. Dividing the logits by 2 gives 1.5, 0.5, 0.25, and running softmax on those produces something closer to 0.52 for A, 0.21 for B, and 0.16 for C. The same model, the same input, the same winning class, but confidence has dropped from 76 percent to roughly 52 percent. Push T down to 0.5 instead, doubling the logits to 6.0, 2.0, 1.0, and the top probability climbs past 0.97. Nothing about the model's actual reasoning changed; only the lens through which we read it out did.</p><p>The reason this is possible is that softmax is a monotonic, order-preserving function of the logits, but it is not scale-invariant. The ranking of classes depends only on the ranking of logits, which temperature never touches. The spread of the resulting probabilities, however, depends heavily on the absolute size of the logit gaps relative to T. A network trained to produce large-magnitude logits will look confident at T equal to 1 even if its ranking is barely better than chance; a network with small, well-separated logits might look falsely modest.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/softmax-temperature-and-confidence-1.jpg' alt='whiteboard with probability equations' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Why this is more than a mathematical curiosity</h2><p>Training dynamics push logit magnitudes around in ways that have nothing to do with how reliable the model actually is. Longer training, certain regularisation choices, and particular loss functions can all inflate logit scale over time, which inflates apparent confidence even as true accuracy plateaus. This is why it is common to see a network become more and more 'confident' late in training on examples it was already getting right, without any corresponding gain in correctness on held-out data. If you only look at the softmax outputs, this looks like the model learning to trust itself more; it is often just the logits growing.</p><p>This has direct consequences for evaluation. Suppose you compare two architectures and report their average top predicted probability as a proxy for how 'sure' each one is, perhaps to argue that one is more decisive. If one model happens to produce larger logit spreads, purely as a side effect of its training recipe, it will look more confident regardless of whether its predictions are actually more trustworthy. Any comparison of raw softmax confidence across models, or across checkpoints of the same model, is only meaningful once you have accounted for scale, which is exactly what temperature controls.</p><p>The practical fix is temperature scaling as a post-hoc calibration step: fit a single scalar T on a held-out validation set, chosen so that the resulting probabilities match observed accuracy as closely as possible, typically measured with something like expected calibration error. Because T is a single number fitted after training, it cannot change which class wins, so it leaves accuracy untouched while making the confidence numbers actually mean something closer to 'probability of being correct'. This is cheap, does not require retraining, and is one of the few calibration methods simple enough to have little excuse for skipping.</p></section><section class='psec reveal'><h2>What to actually do about it</h2><p>If you are reporting or consuming softmax confidence for anything beyond picking the top class, treat the raw number with suspicion until you know the temperature it was produced at. Three habits help. First, never compare confidence scores across models or checkpoints without first checking whether they have been calibrated on the same footing; an uncalibrated comparison is comparing two different rulers. Second, if your downstream system makes decisions based on a confidence threshold, such as routing low-confidence cases to a human, fit that threshold on a properly held-out, leakage-free calibration set, and re-check it whenever the model changes, since the right threshold at one temperature is wrong at another. Third, keep calibration and accuracy as separate reported metrics; a model can be highly accurate and poorly calibrated, or modestly accurate and well calibrated, and conflating the two hides useful information.</p><p>The deeper lesson is that 'confidence' from a softmax is a construction, not an observation. It is shaped by an arbitrary but influential scalar that training does not explicitly control and that most people never inspect. Once you see temperature at work, it becomes hard to read a softmax output as a direct window into what the model 'really believes', and that is a healthier, more accurate way to treat it.</p></section>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

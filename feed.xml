@@ -8,11 +8,11 @@
   <language>en-gb</language>
   <lastBuildDate>Sat, 21 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
-    <title>Why Softmax Temperature Reshapes Apparent Confidence</title>
-    <link>https://jahanzaibawan.com/blog/softmax-temperature-confidence.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/softmax-temperature-confidence.html</guid>
+    <title>Why Softmax Temperature Changes Apparent Confidence</title>
+    <link>https://jahanzaibawan.com/blog/softmax-temperature-and-confidence.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/softmax-temperature-and-confidence.html</guid>
     <pubDate>Sat, 21 Nov 2026 09:00:00 +0000</pubDate>
-    <description>Temperature scaling leaves rankings untouched but rewrites the confidence story a classifier tells, which matters whenever you trust its probabilities.</description>
+    <description>Softmax temperature reshapes probability outputs without touching predictions, which means &#x27;confidence&#x27; is partly a calibration choice, not a pure signal.</description>
     <category>Evaluation</category>
   </item>
   <item>

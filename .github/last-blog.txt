@@ -1,1 +1,1 @@
-2026-11-21T20:01:29Z slug=softmax-temperature-confidence words=1013 title="Why Softmax Temperature Reshapes Apparent Confidence"
+2026-11-21T20:02:32Z slug=softmax-temperature-and-confidence words=1042 title="Why Softmax Temperature Changes Apparent Confidence"
