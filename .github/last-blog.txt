@@ -1,1 +1,1 @@
-2026-11-21T08:02:30Z slug=loss-function-gradients-toy-example words=1103 title="What a Loss Function Change Really Does to Gradients"
+2026-11-21T20:01:29Z slug=softmax-temperature-confidence words=1013 title="Why Softmax Temperature Reshapes Apparent Confidence"

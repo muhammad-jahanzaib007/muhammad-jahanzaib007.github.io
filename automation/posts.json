@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "softmax-temperature-confidence",
+      "title": "Why Softmax Temperature Reshapes Apparent Confidence",
+      "excerpt": "Temperature scaling leaves rankings untouched but rewrites the confidence story a classifier tells, which matters whenever you trust its probabilities.",
+      "date": "2026-11-21",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a5",
+      "thumb": "assets/blog/softmax-temperature-confidence.png",
+      "thumb_alt": "Cover image for the article: Why Softmax Temperature Reshapes Apparent Confidence"
+    },
+    {
       "slug": "loss-function-gradients-toy-example",
       "title": "What a Loss Function Change Really Does to Gradients",
       "excerpt": "A single-point worked example showing how squared error, absolute error, and a hinge-style loss hand the optimiser completely different gradients.",
