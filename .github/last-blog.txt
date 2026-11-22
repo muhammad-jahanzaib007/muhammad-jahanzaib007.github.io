@@ -1,1 +1,1 @@
-2026-11-22T08:01:28Z slug=parameter-vs-hyperparameter words=1081 title="Parameter vs Hyperparameter: One Small Model, Made Concrete"
+2026-11-22T08:02:25Z slug=parameters-vs-hyperparameters words=1048 title="Parameters vs Hyperparameters, Shown on One Small Model"

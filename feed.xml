@@ -8,11 +8,11 @@
   <language>en-gb</language>
   <lastBuildDate>Sun, 22 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
-    <title>Parameter vs Hyperparameter: One Small Model, Made Concrete</title>
-    <link>https://jahanzaibawan.com/blog/parameter-vs-hyperparameter.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/parameter-vs-hyperparameter.html</guid>
+    <title>Parameters vs Hyperparameters, Shown on One Small Model</title>
+    <link>https://jahanzaibawan.com/blog/parameters-vs-hyperparameters.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/parameters-vs-hyperparameters.html</guid>
     <pubDate>Sun, 22 Nov 2026 09:00:00 +0000</pubDate>
-    <description>Using a tiny regularised regression, I separate what the model learns from what you choose, and show why confusing the two quietly wrecks evaluation.</description>
+    <description>Using a one-line linear regression, I show exactly which numbers are learned and which are chosen, and why mixing them up ruins your evaluation.</description>
     <category>Evaluation</category>
   </item>
   <item>

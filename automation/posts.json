@@ -1,15 +1,15 @@
 {
   "posts": [
     {
-      "slug": "parameter-vs-hyperparameter",
-      "title": "Parameter vs Hyperparameter: One Small Model, Made Concrete",
-      "excerpt": "Using a tiny regularised regression, I separate what the model learns from what you choose, and show why confusing the two quietly wrecks evaluation.",
+      "slug": "parameters-vs-hyperparameters",
+      "title": "Parameters vs Hyperparameters, Shown on One Small Model",
+      "excerpt": "Using a one-line linear regression, I show exactly which numbers are learned and which are chosen, and why mixing them up ruins your evaluation.",
       "date": "2026-11-22",
       "read_min": 5,
       "tag": "Evaluation",
       "color": "a6",
-      "thumb": "assets/blog/parameter-vs-hyperparameter.png",
-      "thumb_alt": "Cover image for the article: Parameter vs Hyperparameter: One Small Model, Made Concrete"
+      "thumb": "assets/blog/parameters-vs-hyperparameters.png",
+      "thumb_alt": "Cover image for the article: Parameters vs Hyperparameters, Shown on One Small Model"
     },
     {
       "slug": "softmax-temperature-and-confidence",
