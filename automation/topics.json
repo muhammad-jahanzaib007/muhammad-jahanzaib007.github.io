@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Why 'understanding' is the wrong word for what a language model does",
     "Choosing between a decoder-only and encoder-decoder transformer for a small task",
     "What tokeniser vocabulary size changes about model behaviour, shown on one example",
     "A worked example of why a model memorises before it generalises",
@@ -314,6 +313,7 @@
     "Positional encodings versus recurrence: two ways to give a model a sense of order",
     "What a loss function change actually does to gradients, shown on one toy example",
     "Why softmax temperature changes what a classifier appears confident about",
-    "The difference between a parameter and a hyperparameter, shown on one small model"
+    "The difference between a parameter and a hyperparameter, shown on one small model",
+    "Why 'understanding' is the wrong word for what a language model does"
   ]
 }

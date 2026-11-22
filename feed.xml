@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Sun, 22 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Why &#x27;Understanding&#x27; Is the Wrong Word for a Language Model</title>
+    <link>https://jahanzaibawan.com/blog/why-understanding-is-wrong-word.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/why-understanding-is-wrong-word.html</guid>
+    <pubDate>Sun, 22 Nov 2026 09:00:00 +0000</pubDate>
+    <description>Calling it &#x27;understanding&#x27; smuggles in assumptions about minds that language models simply do not satisfy, and that mismatch costs us at evaluation time.</description>
+    <category>NLP</category>
+  </item>
+  <item>
     <title>Parameters vs Hyperparameters, Shown on One Small Model</title>
     <link>https://jahanzaibawan.com/blog/parameters-vs-hyperparameters.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/parameters-vs-hyperparameters.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Fri, 13 Nov 2026 09:00:00 +0000</pubDate>
     <description>CV interview questions rarely test trivia. They test whether you understand leakage, evaluation, and trade-offs well enough to be trusted with real data.</description>
     <category>Interviews</category>
-  </item>
-  <item>
-    <title>The MLOps Job Title Spectrum: What Are You Actually?</title>
-    <link>https://jahanzaibawan.com/blog/mlops-job-title-spectrum.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/mlops-job-title-spectrum.html</guid>
-    <pubDate>Thu, 12 Nov 2026 09:00:00 +0000</pubDate>
-    <description>MLOps titles are inconsistent across companies. I break down the real axes of variation so you can read a job spec instead of guessing from a label.</description>
-    <category>Career</category>
   </item>
 </channel>
 </rss>

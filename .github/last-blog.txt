@@ -1,1 +1,1 @@
-2026-11-22T08:02:25Z slug=parameters-vs-hyperparameters words=1048 title="Parameters vs Hyperparameters, Shown on One Small Model"
+2026-11-22T20:01:41Z slug=why-understanding-is-wrong-word words=951 title="Why 'Understanding' Is the Wrong Word for a Language Model"
