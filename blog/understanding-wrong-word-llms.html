@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why &#x27;Understanding&#x27; Is the Wrong Word for Language Models | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A look at why &#x27;understanding&#x27; is a misleading description of language model behaviour, with a worked example and a practical alternative vocabulary.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="language models, interpretability, NLP evaluation, machine learning, model behaviour, AI terminology, large language models, evaluation methodology, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-22">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Why &#x27;Understanding&#x27; Is the Wrong Word for Language Models">
+<meta property="og:description" content="A look at why &#x27;understanding&#x27; is a misleading description of language model behaviour, with a worked example and a practical alternative vocabulary.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/understanding-wrong-word-llms.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/understanding-wrong-word-llms.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why &#x27;Understanding&#x27; Is the Wrong Word for Language Models">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/understanding-wrong-word-llms.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/understanding-wrong-word-llms.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Why 'Understanding' Is the Wrong Word for Language Models",
+  "description": "A look at why 'understanding' is a misleading description of language model behaviour, with a worked example and a practical alternative vocabulary.",
+  "url": "https://jahanzaibawan.com/blog/understanding-wrong-word-llms.html",
+  "image": "https://jahanzaibawan.com/assets/blog/understanding-wrong-word-llms.png",
+  "datePublished": "2026-11-22",
+  "dateModified": "2026-11-22",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/understanding-wrong-word-llms.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Why 'Understanding' Is the Wrong Word for Language Models", "item": "https://jahanzaibawan.com/blog/understanding-wrong-word-llms.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">NLP · 5 min read · 22 Nov 2026</div>
+    <h1>Why &#x27;Understanding&#x27; Is the Wrong Word for Language Models</h1>
+    <p class="lede">The word we reach for to describe what a language model does smuggles in assumptions it cannot support. A more careful vocabulary makes us better at evaluating these systems.</p>
+  </div>
+
+  <img src="../assets/blog/understanding-wrong-word-llms.png" alt="Cover image for the article: Why &#x27;Understanding&#x27; Is the Wrong Word for Language Models" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The word does more work than it should</h2><p>When a language model answers a question correctly, the natural thing to say is that it 'understood' the question. I use the word myself, casually, because English does not give us a convenient alternative. But the word is doing more work than it has earned. 'Understanding' in ordinary usage implies a grasp of meaning that persists, generalises, and can be checked against a model of the world. None of that is guaranteed by a correct output, and treating the word as a neutral description rather than a claim quietly changes how we evaluate these systems.</p><p>The risk is not philosophical squeamishness. It is practical. If I believe a model 'understands' arithmetic because it gets two-digit addition right, I will under-test it on five-digit addition, on addition framed as a word problem, on addition where the numbers are written as words instead of digits. Each of those is a reasonable probe of whether the competence generalises the way human understanding of addition does. A model trained on next-token prediction has no obligation to generalise along the same axes a human would, and plenty of evidence across tasks shows performance dropping sharply once a problem is rephrased in a way that looks trivial to a person but shifts the surface statistics the model relies on.</p><p>So the issue is not that 'understanding' is too generous a word in some vague moral sense. It is that it predicts the wrong failure modes. A better description predicts the failure modes we actually see: brittleness under rephrasing, sensitivity to the exact wording of a prompt, strong performance on common patterns and weak performance on rare but structurally identical ones.</p></section><section class='psec reveal'><h2>A worked example: the word problem that breaks</h2><p>Consider a model that correctly solves: 'A train travels 60 miles in 2 hours. What is its average speed?' It answers 30 miles per hour, and the answer is right. Now change the surface form without changing the structure: 'A train covers 2 hours' worth of distance, 60 miles total. What speed, on average, did it go?' If the model's accuracy drops noticeably on this rephrasing while a competent student's would not, that gap is the measurement that matters, not the single correct answer on the first phrasing.</p><p>This is not a hypothetical concern; it is the standard shape of findings when people construct paired test sets that vary surface form while holding the underlying task constant. The model has learned a strong association between a particular linguistic pattern, the canonical 'distance over time' phrasing, and the correct arithmetic operation. It has not necessarily learned the general relationship between speed, distance, and time in a form that is indifferent to how the sentence is built. Calling the first success 'understanding division of distance by time' overstates what was demonstrated, because the demonstration was narrower than the claim.</p><p>The fix in practice is cheap and worth doing as a habit: for any claim of competence, write at least one paraphrase, one distractor variant, and one structurally identical problem in a different domain, and check all three before trusting the first result. If accuracy survives all three, you have genuine evidence of a generalising capability, whatever you choose to call it. If it does not, you have found the actual shape of what was learned, which is more useful than a comforting label.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/understanding-wrong-word-llms-1.jpg' alt='person writing equations on whiteboard' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What to say instead, and why the alternative is more honest</h2><p>I prefer to describe model behaviour in terms of competence on a defined distribution, because that phrase forces me to say which distribution I mean. 'This model is competent at two-digit arithmetic phrased as a direct equation' is a falsifiable, bounded claim. 'This model understands arithmetic' is not bounded, and it invites exactly the kind of overgeneralised trust that leads to deploying a system in a setting where its actual competence does not reach.</p><p>This is also why leakage-aware evaluation matters so much alongside vocabulary. A model can score well on a benchmark not because it has any generalising skill but because near-duplicate examples existed in its training data. The score looks like evidence of understanding; it is actually evidence of memorisation plus retrieval along statistical lines. The only way to tell the difference is to construct held-out variants that are provably novel in structure, not just in surface wording, and to measure the drop-off. A model that keeps its accuracy on genuinely novel structural variants is demonstrating something closer to what people mean by understanding. A model that collapses is demonstrating pattern completion, and the two deserve different names because they warrant different levels of trust.</p><p>None of this means the capabilities are not useful, or that we should dismiss what these systems do as 'mere' pattern matching in a sneering way. Statistical pattern completion over enormous data can produce genuinely useful, often impressively robust behaviour across a wide range of everyday tasks. The point is narrower and more technical: using the word 'understanding' collapses a spectrum of possible explanations into one comforting story, and that collapse makes evaluation lazier than it needs to be.</p><p>The practical takeaway is simple to apply. Whenever you are tempted to say a model 'understands' something, replace the sentence with a claim about measured competence on a specific, named test distribution, and then ask what rephrasing or structural variant would falsify it. If you cannot name the variant, you have not yet tested the claim; you have only repeated it in different words.</p></section>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

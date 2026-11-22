@@ -8,11 +8,11 @@
   <language>en-gb</language>
   <lastBuildDate>Sun, 22 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
-    <title>Why &#x27;Understanding&#x27; Is the Wrong Word for a Language Model</title>
-    <link>https://jahanzaibawan.com/blog/why-understanding-is-wrong-word.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/why-understanding-is-wrong-word.html</guid>
+    <title>Why &#x27;Understanding&#x27; Is the Wrong Word for Language Models</title>
+    <link>https://jahanzaibawan.com/blog/understanding-wrong-word-llms.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/understanding-wrong-word-llms.html</guid>
     <pubDate>Sun, 22 Nov 2026 09:00:00 +0000</pubDate>
-    <description>Calling it &#x27;understanding&#x27; smuggles in assumptions about minds that language models simply do not satisfy, and that mismatch costs us at evaluation time.</description>
+    <description>Calling a language model&#x27;s output &#x27;understanding&#x27; hides what&#x27;s actually happening and makes failures harder to diagnose. Here&#x27;s a more useful way to talk about it.</description>
     <category>NLP</category>
   </item>
   <item>

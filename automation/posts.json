@@ -1,15 +1,15 @@
 {
   "posts": [
     {
-      "slug": "why-understanding-is-wrong-word",
-      "title": "Why 'Understanding' Is the Wrong Word for a Language Model",
-      "excerpt": "Calling it 'understanding' smuggles in assumptions about minds that language models simply do not satisfy, and that mismatch costs us at evaluation time.",
+      "slug": "understanding-wrong-word-llms",
+      "title": "Why 'Understanding' Is the Wrong Word for Language Models",
+      "excerpt": "Calling a language model's output 'understanding' hides what's actually happening and makes failures harder to diagnose. Here's a more useful way to talk about it.",
       "date": "2026-11-22",
       "read_min": 5,
       "tag": "NLP",
       "color": "a2",
-      "thumb": "assets/blog/why-understanding-is-wrong-word.png",
-      "thumb_alt": "Cover image for the article: Why 'Understanding' Is the Wrong Word for a Language Model"
+      "thumb": "assets/blog/understanding-wrong-word-llms.png",
+      "thumb_alt": "Cover image for the article: Why 'Understanding' Is the Wrong Word for Language Models"
     },
     {
       "slug": "parameters-vs-hyperparameters",

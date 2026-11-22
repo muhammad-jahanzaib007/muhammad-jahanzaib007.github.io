@@ -1,1 +1,1 @@
-2026-11-22T20:01:41Z slug=why-understanding-is-wrong-word words=951 title="Why 'Understanding' Is the Wrong Word for a Language Model"
+2026-11-22T20:02:40Z slug=understanding-wrong-word-llms words=912 title="Why 'Understanding' Is the Wrong Word for Language Models"
