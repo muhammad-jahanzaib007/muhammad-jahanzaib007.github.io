@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Sat, 21 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 22 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Parameter vs Hyperparameter: One Small Model, Made Concrete</title>
+    <link>https://jahanzaibawan.com/blog/parameter-vs-hyperparameter.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/parameter-vs-hyperparameter.html</guid>
+    <pubDate>Sun, 22 Nov 2026 09:00:00 +0000</pubDate>
+    <description>Using a tiny regularised regression, I separate what the model learns from what you choose, and show why confusing the two quietly wrecks evaluation.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Why Softmax Temperature Changes Apparent Confidence</title>
     <link>https://jahanzaibawan.com/blog/softmax-temperature-and-confidence.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Thu, 12 Nov 2026 09:00:00 +0000</pubDate>
     <description>MLOps titles are inconsistent across companies. I break down the real axes of variation so you can read a job spec instead of guessing from a label.</description>
     <category>Career</category>
-  </item>
-  <item>
-    <title>MLOps on a Single Machine Before You Need a Cluster</title>
-    <link>https://jahanzaibawan.com/blog/mlops-single-machine-basics.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/mlops-single-machine-basics.html</guid>
-    <pubDate>Thu, 12 Nov 2026 09:00:00 +0000</pubDate>
-    <description>Before reaching for Kubernetes, get versioning, reproducible environments, experiment tracking and a simple pipeline right on one box.</description>
-    <category>MLOps</category>
   </item>
 </channel>
 </rss>

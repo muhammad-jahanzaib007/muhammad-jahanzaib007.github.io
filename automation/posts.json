@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "parameter-vs-hyperparameter",
+      "title": "Parameter vs Hyperparameter: One Small Model, Made Concrete",
+      "excerpt": "Using a tiny regularised regression, I separate what the model learns from what you choose, and show why confusing the two quietly wrecks evaluation.",
+      "date": "2026-11-22",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a6",
+      "thumb": "assets/blog/parameter-vs-hyperparameter.png",
+      "thumb_alt": "Cover image for the article: Parameter vs Hyperparameter: One Small Model, Made Concrete"
+    },
+    {
       "slug": "softmax-temperature-and-confidence",
       "title": "Why Softmax Temperature Changes Apparent Confidence",
       "excerpt": "Softmax temperature reshapes probability outputs without touching predictions, which means 'confidence' is partly a calibration choice, not a pure signal.",

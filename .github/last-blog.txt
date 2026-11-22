@@ -1,1 +1,1 @@
-2026-11-21T20:02:32Z slug=softmax-temperature-and-confidence words=1042 title="Why Softmax Temperature Changes Apparent Confidence"
+2026-11-22T08:01:28Z slug=parameter-vs-hyperparameter words=1081 title="Parameter vs Hyperparameter: One Small Model, Made Concrete"

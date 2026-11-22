@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parameter vs Hyperparameter: One Small Model, Made Concrete | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A worked example with a small regularised regression model explains the practical difference between parameters and hyperparameters, and why mixing them up breaks evaluation.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="parameters, hyperparameters, machine learning basics, ridge regression, model evaluation, overfitting, cross-validation, regularisation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-22">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Parameter vs Hyperparameter: One Small Model, Made Concrete">
+<meta property="og:description" content="A worked example with a small regularised regression model explains the practical difference between parameters and hyperparameters, and why mixing them up breaks evaluation.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/parameter-vs-hyperparameter.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/parameter-vs-hyperparameter.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Parameter vs Hyperparameter: One Small Model, Made Concrete">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/parameter-vs-hyperparameter.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/parameter-vs-hyperparameter.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Parameter vs Hyperparameter: One Small Model, Made Concrete",
+  "description": "A worked example with a small regularised regression model explains the practical difference between parameters and hyperparameters, and why mixing them up breaks evaluation.",
+  "url": "https://jahanzaibawan.com/blog/parameter-vs-hyperparameter.html",
+  "image": "https://jahanzaibawan.com/assets/blog/parameter-vs-hyperparameter.png",
+  "datePublished": "2026-11-22",
+  "dateModified": "2026-11-22",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/parameter-vs-hyperparameter.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Parameter vs Hyperparameter: One Small Model, Made Concrete", "item": "https://jahanzaibawan.com/blog/parameter-vs-hyperparameter.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 22 Nov 2026</div>
+    <h1>Parameter vs Hyperparameter: One Small Model, Made Concrete</h1>
+    <p class="lede">A linear regression with a single slope and a single regularisation strength is enough to see exactly what the model learns and what you, the modeller, must decide.</p>
+  </div>
+
+  <img src="../assets/blog/parameter-vs-hyperparameter.png" alt="Cover image for the article: Parameter vs Hyperparameter: One Small Model, Made Concrete" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this distinction keeps causing trouble</h2><p>I still see the words parameter and hyperparameter used almost interchangeably in casual conversation, and it rarely matters until it suddenly does. The moment it matters is evaluation. If you tune something on the same data you later report a score on, and that something is actually a hyperparameter rather than a parameter, you have leaked information from your test set into your model selection process, and your reported accuracy is quietly optimistic. This is one of the most common silent bugs in applied machine learning, and it is entirely avoidable once the distinction is clear in your head.</p><p>The cleanest way I know to fix this in intuition is to shrink the problem down to something small enough to compute by hand, or at least close to it. So rather than reasoning about a neural network with millions of weights, I want to use a single feature linear regression with ridge regularisation. It has exactly one parameter worth discussing, a slope, and exactly one hyperparameter, the regularisation strength. Everything that is true about parameters and hyperparameters in large models is already true here, just without the noise of scale.</p><p>Once you can hold this small example in your head, the general rule falls out naturally: a parameter is a quantity the learning algorithm sets by looking at the training data, through some optimisation procedure, and a hyperparameter is a quantity you, the practitioner, fix before that optimisation even starts. The model cannot choose its own hyperparameters from training data alone, because doing so would always favour whichever hyperparameter lets it fit the training data best, which is a recipe for overfitting.</p></section><section class='psec reveal'><h2>The worked example: slope and lambda</h2><p>Suppose I have ten data points relating hours of sleep to a reaction time score, and I fit a ridge regression of the form predicted score equals slope times hours, plus an intercept, with a penalty term lambda multiplied by the square of the slope. The training process, typically solved analytically or via gradient descent, finds the slope and intercept that minimise squared error on those ten points plus the penalty. Say it finds a slope of minus 4.2 and an intercept of 90. Those two numbers, slope and intercept, are the parameters. They were learned; nobody typed them in.</p><p>Now, lambda is different. I did not learn lambda from the training data by minimising the same loss, because if I did, the optimiser would always set lambda to zero, since a penalty of zero always fits training data at least as well as any positive penalty. Lambda has to be fixed from outside the training loop. Maybe I try lambda equals 0.1, lambda equals 1, and lambda equals 10, refit the slope and intercept under each, and see which lambda gives the best performance on a held out validation set of, say, three further points that the training process never touched. Suppose lambda equals 1 wins, giving a validation error of 2.3 reaction-time units versus 3.1 for lambda equals 0.1 and 4.0 for lambda equals 10.</p><p>That selection step, comparing three candidate lambdas against validation data, is the hyperparameter search. Lambda equals 1 is now fixed, and only then do I refit the slope and intercept on this lambda, using training data, to get my final parameters. Notice the two-tier structure: an inner loop that learns parameters given a fixed hyperparameter, and an outer loop that chooses the hyperparameter by checking how the inner loop's output performs on data it has not fitted. Collapse those two loops into one and you lose the entire point of the exercise.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/parameter-vs-hyperparameter-1.jpg' alt='handwritten regression equation whiteboard' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Why the inner and outer loop must use different data</h2><p>Here is where it gets practically dangerous rather than just conceptually tidy. If I had chosen lambda by checking which value gives the lowest error on the same ten training points used to fit slope and intercept, I would have reproduced the exact failure mode ridge regression was invented to prevent: lambda equals zero would always look best on training error, because less regularisation always fits the training points at least as tightly. The penalty exists precisely to trade a little training fit for better generalisation, so judging it by training fit defeats its purpose entirely.</p><p>This is why practitioners split data three ways in careful work: training data for fitting parameters under a given hyperparameter, validation data for choosing between hyperparameters, and a test set that is touched exactly once, at the very end, to report an honest final number. In my ten-plus-three-point toy example this looks almost silly, splitting thirteen points three ways, but the logic scales without changing. With k-fold cross-validation the same roles exist, just rotated across folds: parameters are refitted inside each fold, and the hyperparameter is scored by averaging validation performance across folds before a single hyperparameter value is chosen for the full dataset.</p><p>The temporal and procedural ordering is the part that matters, not the sample size. A hyperparameter chosen by looking at test performance, even once, even informally, even just to decide you are happy with the result, has contaminated that test score's usefulness as an unbiased estimate. This applies equally to lambda in ridge regression, learning rate in a neural network, number of trees in a forest, or the number of layers you decide to use after noticing that four layers happened to beat three on your test split.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>The rule I now apply automatically: if a quantity is set by minimising a loss function on training data through calculus or gradient descent, it is a parameter. If a quantity is set by a human decision, a grid search, or a search algorithm that evaluates candidates against held-out data, it is a hyperparameter, and its selection constitutes a second, outer experiment that deserves its own clean data split. Parameters live inside the model's weights, hyperparameters live inside your experimental design.</p><p>In the small ridge regression example, the slope and intercept are what the algorithm learned for you; lambda is what you decided and then checked. Scale that model up to a deep network with millions of weights and a dozen hyperparameters such as learning rate, batch size, number of layers, and dropout rate, and nothing about the underlying logic changes, only the bookkeeping gets harder. Keep the inner loop and outer loop separated by data that genuinely has not been seen by the earlier stage, and your reported numbers will mean what they claim to mean.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/parameter-vs-hyperparameter-2.jpg' alt='scatter plot graph paper with fitted line' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
