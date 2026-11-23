@@ -1,1 +1,1 @@
-2026-11-23T08:02:46Z slug=decoder-only-vs-encoder-decoder words=1061 title="Decoder-Only or Encoder-Decoder for a Small Task"
+2026-11-23T20:01:41Z slug=tokeniser-vocabulary-size-behaviour words=990 title="How Tokeniser Vocabulary Size Quietly Shapes a Model"

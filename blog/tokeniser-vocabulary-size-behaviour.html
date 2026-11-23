@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Tokeniser Vocabulary Size Quietly Shapes a Model | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="An evergreen look at how tokeniser vocabulary size affects sequence length, rare words, and training, shown through one worked example.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="tokenisation, vocabulary size, subword tokenisers, BPE, NLP preprocessing, language models, sequence length, model behaviour, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-23">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="How Tokeniser Vocabulary Size Quietly Shapes a Model">
+<meta property="og:description" content="An evergreen look at how tokeniser vocabulary size affects sequence length, rare words, and training, shown through one worked example.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/tokeniser-vocabulary-size-behaviour.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/tokeniser-vocabulary-size-behaviour.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How Tokeniser Vocabulary Size Quietly Shapes a Model">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/tokeniser-vocabulary-size-behaviour.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/tokeniser-vocabulary-size-behaviour.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How Tokeniser Vocabulary Size Quietly Shapes a Model",
+  "description": "An evergreen look at how tokeniser vocabulary size affects sequence length, rare words, and training, shown through one worked example.",
+  "url": "https://jahanzaibawan.com/blog/tokeniser-vocabulary-size-behaviour.html",
+  "image": "https://jahanzaibawan.com/assets/blog/tokeniser-vocabulary-size-behaviour.png",
+  "datePublished": "2026-11-23",
+  "dateModified": "2026-11-23",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/tokeniser-vocabulary-size-behaviour.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "How Tokeniser Vocabulary Size Quietly Shapes a Model", "item": "https://jahanzaibawan.com/blog/tokeniser-vocabulary-size-behaviour.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">NLP · 5 min read · 23 Nov 2026</div>
+    <h1>How Tokeniser Vocabulary Size Quietly Shapes a Model</h1>
+    <p class="lede">A single word, broken down three different ways, reveals why vocabulary size is not just a storage decision but a behavioural one.</p>
+  </div>
+
+  <img src="../assets/blog/tokeniser-vocabulary-size-behaviour.png" alt="Cover image for the article: How Tokeniser Vocabulary Size Quietly Shapes a Model" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why vocabulary size is not a footnote</h2><p>When people describe a language model, they usually lead with parameter count or architecture, and the tokeniser gets mentioned, if at all, as a preprocessing detail. I think that is a mistake. The tokeniser decides what the model's fundamental unit of thought is, and the size of its vocabulary changes behaviour in ways that ripple through training speed, generalisation, and how the model handles rare or unusual words. It is one of the few design choices that touches almost everything downstream, and it is often fixed early and never revisited.</p><p>The core tension is simple to state. A small vocabulary forces the tokeniser to break words into many small pieces, which keeps the vocabulary table compact but makes sequences longer. A large vocabulary lets common words stay whole, shortening sequences, but it bloats the embedding table and leaves the model with less exposure to each individual rare token during training. Neither extreme is free, and the right answer depends on what you are optimising for. A worked example makes this concrete rather than abstract.</p></section><section class='psec reveal'><h2>One word, three vocabularies</h2><p>Take the word 'unhappiness'. With a tiny subword vocabulary of a few hundred tokens, a byte pair encoding tokeniser might only have learned very short, frequent fragments, so it could split this into something like 'un', 'happi', 'ness', or even further into 'un', 'ha', 'pp', 'i', 'ness' if the merges have not progressed far. That is four or five tokens to represent one word. With a mid-sized vocabulary of around 30,000 tokens, typical of many general-purpose subword tokenisers, 'unhappiness' is common enough that it might be covered by two tokens, perhaps 'unhappi' and 'ness', or even held whole if it appeared often enough in the training corpus used to fit the tokeniser. With a very large vocabulary of 100,000 or more tokens, 'unhappiness' is very likely a single token on its own.</p><p>Now scale this up. Imagine encoding a sentence of roughly fifteen words. With the tiny vocabulary, that sentence might expand to forty or more tokens because almost every word gets chopped into fragments. With the mid-sized vocabulary, the same sentence might land at eighteen to twenty tokens, close to one token per word with some exceptions. With the very large vocabulary, it could compress to fourteen or fifteen tokens, occasionally fewer than the word count if common multi-word patterns get merged. That difference, forty tokens versus fifteen, is not cosmetic. It means the tiny-vocabulary model needs roughly three times as many computation steps to process the same sentence, and every one of those steps consumes context window budget and attention computation that scales quadratically in many architectures.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/tokeniser-vocabulary-size-behaviour-1.jpg' alt='open dictionary pages close up' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What this does to training and generalisation</h2><p>Sequence length is the most visible effect, but it is not the only one. Consider how often each token gets seen during training. With the tiny vocabulary, the fragment 'un' appears in hundreds of different words, so the model sees it constantly and learns a very robust representation, but that representation carries little specific meaning on its own. It is a workhorse piece, not a concept. With the huge vocabulary, 'unhappiness' as a whole token might appear only a few hundred times in a large training corpus, compared to millions of appearances for the fragment 'un'. That token's embedding is undertrained relative to the common fragments, and the model has fewer opportunities to learn how it behaves in context.</p><p>This is the rare-word problem in miniature. A model built on a very large vocabulary will handle common words efficiently but can stumble on genuinely rare, technical, or domain-specific terms, because those terms either got their own barely-trained token or got split in an inconsistent, almost arbitrary way depending on what happened to be frequent in the tokeniser's training data. A model built on a small vocabulary never has this problem in the same form, because everything is built from a shared alphabet of frequent fragments, but it pays for that robustness with longer sequences and a harder compositional task, since the model must reconstruct meaning from more, smaller pieces every time.</p><p>There is also a subtler effect on what the model finds easy to generalise. Morphologically related words like 'happy', 'unhappy', and 'unhappiness' share the fragment 'happi' under a small or mid-sized vocabulary, which can help the model transfer sentiment or meaning across related forms almost for free, since the shared token carries shared signal. Under a very large vocabulary where each of these becomes its own whole token, that shared structure is invisible to the model unless it learns the relationship purely from co-occurrence statistics, which takes more data and more capacity. This is one reason agglutinative or morphologically rich languages often benefit from smaller, more fragment-heavy vocabularies, while vocabularies tuned mainly on English text can behave oddly when applied elsewhere.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>If you are choosing or evaluating a tokeniser, do not treat vocabulary size as a hyperparameter you set once and forget. Check what happens to your actual domain text under different vocabulary sizes before committing. Measure average tokens per word or per sentence on a representative sample, because that number predicts both your effective context length and your training cost. If your domain has many rare technical terms, a mid-sized vocabulary that still fragments gracefully may generalise more reliably than a huge vocabulary tuned on generic web text, even though the huge vocabulary looks more efficient on paper.</p><p>It is also worth testing behaviour directly on the kind of rare or compound words that matter for your task, rather than trusting aggregate statistics alone. Encode a handful of genuinely unusual but important terms from your domain and look at how many pieces they become and whether those pieces are shared with related words you care about. That five-minute check, done before training rather than after something goes wrong, tells you more about expected model behaviour than the vocabulary size number by itself ever will.</p></section>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

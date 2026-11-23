@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Mon, 23 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>How Tokeniser Vocabulary Size Quietly Shapes a Model</title>
+    <link>https://jahanzaibawan.com/blog/tokeniser-vocabulary-size-behaviour.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/tokeniser-vocabulary-size-behaviour.html</guid>
+    <pubDate>Mon, 23 Nov 2026 09:00:00 +0000</pubDate>
+    <description>Vocabulary size changes sequence length, rare word handling, and training dynamics. One worked example shows exactly how.</description>
+    <category>NLP</category>
+  </item>
+  <item>
     <title>Decoder-Only or Encoder-Decoder for a Small Task</title>
     <link>https://jahanzaibawan.com/blog/decoder-only-vs-encoder-decoder.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/decoder-only-vs-encoder-decoder.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Sat, 14 Nov 2026 09:00:00 +0000</pubDate>
     <description>When teams disagree on basic ML terms, the fix isn&#x27;t a dictionary, it&#x27;s a worked example that forces the definitions to earn their keep.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Why Old-School NLP Preprocessing Still Matters</title>
-    <link>https://jahanzaibawan.com/blog/nlp-preprocessing-still-matters.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/nlp-preprocessing-still-matters.html</guid>
-    <pubDate>Fri, 13 Nov 2026 09:00:00 +0000</pubDate>
-    <description>Modern models hide, rather than remove, the effects of classic preprocessing choices. Get them wrong and your evaluation lies to you.</description>
-    <category>NLP</category>
   </item>
 </channel>
 </rss>
