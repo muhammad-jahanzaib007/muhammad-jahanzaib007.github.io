@@ -8,11 +8,11 @@
   <language>en-gb</language>
   <lastBuildDate>Mon, 23 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
-    <title>How Tokeniser Vocabulary Size Quietly Shapes a Model</title>
+    <title>How Tokeniser Vocabulary Size Quietly Shapes Model Behaviour</title>
     <link>https://jahanzaibawan.com/blog/tokeniser-vocabulary-size-behaviour.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/tokeniser-vocabulary-size-behaviour.html</guid>
     <pubDate>Mon, 23 Nov 2026 09:00:00 +0000</pubDate>
-    <description>Vocabulary size changes sequence length, rare word handling, and training dynamics. One worked example shows exactly how.</description>
+    <description>One word, three tokenisations: a concrete look at how vocabulary size changes sequence length, rare word handling, and what a model actually has to learn.</description>
     <category>NLP</category>
   </item>
   <item>

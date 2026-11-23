@@ -1,1 +1,1 @@
-2026-11-23T20:01:41Z slug=tokeniser-vocabulary-size-behaviour words=990 title="How Tokeniser Vocabulary Size Quietly Shapes a Model"
+2026-11-23T20:02:55Z slug=tokeniser-vocabulary-size-behaviour words=965 title="How Tokeniser Vocabulary Size Quietly Shapes Model Behaviour"

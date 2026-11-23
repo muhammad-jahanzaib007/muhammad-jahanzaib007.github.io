@@ -2,14 +2,14 @@
   "posts": [
     {
       "slug": "tokeniser-vocabulary-size-behaviour",
-      "title": "How Tokeniser Vocabulary Size Quietly Shapes a Model",
-      "excerpt": "Vocabulary size changes sequence length, rare word handling, and training dynamics. One worked example shows exactly how.",
+      "title": "How Tokeniser Vocabulary Size Quietly Shapes Model Behaviour",
+      "excerpt": "One word, three tokenisations: a concrete look at how vocabulary size changes sequence length, rare word handling, and what a model actually has to learn.",
       "date": "2026-11-23",
       "read_min": 5,
       "tag": "NLP",
       "color": "a4",
       "thumb": "assets/blog/tokeniser-vocabulary-size-behaviour.png",
-      "thumb_alt": "Cover image for the article: How Tokeniser Vocabulary Size Quietly Shapes a Model"
+      "thumb_alt": "Cover image for the article: How Tokeniser Vocabulary Size Quietly Shapes Model Behaviour"
     },
     {
       "slug": "decoder-only-vs-encoder-decoder",
