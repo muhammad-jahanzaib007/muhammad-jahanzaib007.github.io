@@ -2,14 +2,14 @@
   "posts": [
     {
       "slug": "decoder-only-vs-encoder-decoder",
-      "title": "Decoder-Only or Encoder-Decoder for a Small Task?",
-      "excerpt": "A practical, leakage-aware guide to picking between decoder-only and encoder-decoder transformers for small, real-world tasks.",
+      "title": "Decoder-Only or Encoder-Decoder for a Small Task",
+      "excerpt": "A practical guide to choosing between decoder-only and encoder-decoder transformers when your dataset is small and your compute is limited.",
       "date": "2026-11-23",
-      "read_min": 6,
+      "read_min": 5,
       "tag": "NLP",
       "color": "a3",
       "thumb": "assets/blog/decoder-only-vs-encoder-decoder.png",
-      "thumb_alt": "Cover image for the article: Decoder-Only or Encoder-Decoder for a Small Task?"
+      "thumb_alt": "Cover image for the article: Decoder-Only or Encoder-Decoder for a Small Task"
     },
     {
       "slug": "understanding-wrong-word-llms",

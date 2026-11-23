@@ -1,1 +1,1 @@
-2026-11-23T08:01:49Z slug=decoder-only-vs-encoder-decoder words=1183 title="Decoder-Only or Encoder-Decoder for a Small Task?"
+2026-11-23T08:02:46Z slug=decoder-only-vs-encoder-decoder words=1061 title="Decoder-Only or Encoder-Decoder for a Small Task"

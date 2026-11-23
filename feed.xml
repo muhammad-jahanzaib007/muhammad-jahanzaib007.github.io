@@ -8,11 +8,11 @@
   <language>en-gb</language>
   <lastBuildDate>Mon, 23 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
-    <title>Decoder-Only or Encoder-Decoder for a Small Task?</title>
+    <title>Decoder-Only or Encoder-Decoder for a Small Task</title>
     <link>https://jahanzaibawan.com/blog/decoder-only-vs-encoder-decoder.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/decoder-only-vs-encoder-decoder.html</guid>
     <pubDate>Mon, 23 Nov 2026 09:00:00 +0000</pubDate>
-    <description>A practical, leakage-aware guide to picking between decoder-only and encoder-decoder transformers for small, real-world tasks.</description>
+    <description>A practical guide to choosing between decoder-only and encoder-decoder transformers when your dataset is small and your compute is limited.</description>
     <category>NLP</category>
   </item>
   <item>
