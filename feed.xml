@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Sun, 22 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Mon, 23 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Decoder-Only or Encoder-Decoder for a Small Task?</title>
+    <link>https://jahanzaibawan.com/blog/decoder-only-vs-encoder-decoder.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/decoder-only-vs-encoder-decoder.html</guid>
+    <pubDate>Mon, 23 Nov 2026 09:00:00 +0000</pubDate>
+    <description>A practical, leakage-aware guide to picking between decoder-only and encoder-decoder transformers for small, real-world tasks.</description>
+    <category>NLP</category>
+  </item>
   <item>
     <title>Why &#x27;Understanding&#x27; Is the Wrong Word for Language Models</title>
     <link>https://jahanzaibawan.com/blog/understanding-wrong-word-llms.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Fri, 13 Nov 2026 09:00:00 +0000</pubDate>
     <description>Modern models hide, rather than remove, the effects of classic preprocessing choices. Get them wrong and your evaluation lies to you.</description>
     <category>NLP</category>
-  </item>
-  <item>
-    <title>Computer Vision Interviews: What They Are Really Testing</title>
-    <link>https://jahanzaibawan.com/blog/cv-interview-questions-explained.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/cv-interview-questions-explained.html</guid>
-    <pubDate>Fri, 13 Nov 2026 09:00:00 +0000</pubDate>
-    <description>CV interview questions rarely test trivia. They test whether you understand leakage, evaluation, and trade-offs well enough to be trusted with real data.</description>
-    <category>Interviews</category>
   </item>
 </channel>
 </rss>

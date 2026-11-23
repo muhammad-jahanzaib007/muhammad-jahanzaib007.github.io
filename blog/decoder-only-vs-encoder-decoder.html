@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Decoder-Only or Encoder-Decoder for a Small Task? | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A grounded comparison of decoder-only and encoder-decoder transformers for small datasets, with a worked example and practical selection advice.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="transformers, encoder-decoder, decoder-only, sequence to sequence, small datasets, model selection, NLP architecture, evaluation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-23">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Decoder-Only or Encoder-Decoder for a Small Task?">
+<meta property="og:description" content="A grounded comparison of decoder-only and encoder-decoder transformers for small datasets, with a worked example and practical selection advice.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/decoder-only-vs-encoder-decoder.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/decoder-only-vs-encoder-decoder.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Decoder-Only or Encoder-Decoder for a Small Task?">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/decoder-only-vs-encoder-decoder.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/decoder-only-vs-encoder-decoder.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Decoder-Only or Encoder-Decoder for a Small Task?",
+  "description": "A grounded comparison of decoder-only and encoder-decoder transformers for small datasets, with a worked example and practical selection advice.",
+  "url": "https://jahanzaibawan.com/blog/decoder-only-vs-encoder-decoder.html",
+  "image": "https://jahanzaibawan.com/assets/blog/decoder-only-vs-encoder-decoder.png",
+  "datePublished": "2026-11-23",
+  "dateModified": "2026-11-23",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/decoder-only-vs-encoder-decoder.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Decoder-Only or Encoder-Decoder for a Small Task?", "item": "https://jahanzaibawan.com/blog/decoder-only-vs-encoder-decoder.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">NLP · 6 min read · 23 Nov 2026</div>
+    <h1>Decoder-Only or Encoder-Decoder for a Small Task?</h1>
+    <p class="lede">When your dataset is small and your compute budget is modest, the architecture choice stops being a style preference and starts being an evaluation decision.</p>
+  </div>
+
+  <img src="../assets/blog/decoder-only-vs-encoder-decoder.png" alt="Cover image for the article: Decoder-Only or Encoder-Decoder for a Small Task?" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this choice actually matters at small scale</h2><p>When people talk about transformer architecture these days, the conversation is usually dominated by decoder-only models, because that is what the large general-purpose language models are built from. It is tempting to assume that this architecture is simply the correct default for everything, including small, narrow tasks with a few thousand labelled examples. I think that assumption deserves more scrutiny than it usually gets, because the trade-offs that matter at the scale of billions of parameters and trillions of tokens are not the same trade-offs that matter when you have a modest dataset and a specific, well-defined transformation to learn.</p><p>A small task, in the sense I mean here, is something like translating short technical sentences, converting a semi-structured log line into a normalised record, summarising a one-paragraph abstract, or mapping a question to a database query. These tasks have a clear input and a clear output, the mapping is fairly constrained, and you are not trying to build an open-ended conversational system. In that setting, the architecture decision has a direct, measurable effect on sample efficiency, training stability, and how much supervision you actually need to get something working. Getting it wrong does not just cost elegance, it costs you accuracy on a budget you cannot easily expand.</p><p>The core structural difference is simple to state but easy to under-appreciate. An encoder-decoder model reads the entire input with bidirectional attention before generating anything, so every output token can attend to the full input context, left and right, in one pass. A decoder-only model processes everything, input and output together, as a single left-to-right sequence, meaning the model must build its understanding of the input in exactly the order it was written, with no second look backwards once generation starts. For some tasks this distinction barely matters. For others, it is the whole game.</p></section><section class='psec reveal'><h2>A worked example: short-form structured conversion</h2><p>Imagine you are building a model that converts a sentence describing a meeting into a structured record: date, time, attendees, and topic. Your training set has three thousand examples, hand-labelled, with genuinely held-out test data drawn from a different set of source documents to avoid leakage between near-duplicate sentences. This is a small, well-scoped task, exactly the kind where architecture choice is not an afterthought.</p><p>With an encoder-decoder setup, the encoder reads the whole sentence once, bidirectionally, and produces a fixed set of contextual representations. The decoder then attends to that full representation at every generation step through cross-attention, meaning that when it is deciding what the attendee list is, it can also already see the topic mentioned later in the sentence and use that to disambiguate, say, a name that could be a person or a project. Because the encoder is not also responsible for generating text, it can be trained with a denoising or reconstruction objective that tends to be sample efficient, which matters a great deal with three thousand examples rather than three hundred million.</p><p>With a decoder-only setup, you would typically concatenate the input sentence and the target record into one sequence and train the model to predict the record tokens conditioned on everything before them. This works, and it works well once the model is large enough and has seen enough similar structure during pretraining. But with a small fine-tuning set, the model has to relearn, inside the causal mask, how to represent the input sentence well, purely through the lens of left-to-right prediction, without the benefit of a dedicated bidirectional encoding pass. In practice this often means it needs either a stronger pretrained backbone or more fine-tuning examples to reach the same accuracy, because it is doing more work with the same parameters and the same causal constraint.</p><p>Where decoder-only pulls ahead is flexibility and simplicity of the pipeline. If your task is less about strict input-to-output transformation and more about open-ended generation conditioned loosely on a prompt, such as drafting varied explanations or continuing a style, the single-sequence format is a natural fit and avoids the extra complexity of cross-attention. It also benefits enormously if you can lean on a strong general-purpose pretrained decoder-only model and only need light fine-tuning or even careful prompting, because then you are not training representations from scratch at all.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/decoder-only-vs-encoder-decoder-1.jpg' alt='researcher writing equations on whiteboard' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What actually decides it, and why evaluation has to be leakage-aware</h2><p>In my experience the decision comes down to three honest questions. First, is the input-output relationship a tight, well-defined transformation, or an open-ended generative task? Tight transformations favour encoder-decoder, because bidirectional encoding genuinely helps the model understand the input before it commits to any output tokens. Second, how much labelled data do you actually have, and is there a strong pretrained model available in the architecture you are considering? A mediocre encoder-decoder pretrained on a narrow domain can lose to a excellent general-purpose decoder-only model, simply because the latter has seen vastly more text, even if the architecture is theoretically less suited to the task. Third, what is your inference budget, because decoder-only models re-process the whole concatenated sequence as they generate, which can be slower for tasks with long, fixed inputs and short outputs, whereas encoder-decoder models encode the input once and reuse it across all decoding steps.</p><p>Whichever architecture you pick, the comparison is only meaningful if your evaluation is leakage-aware. A small dataset is exactly where leakage quietly inflates your numbers: near-duplicate sentences split across train and test, or templates that repeat with only names changed, will make both architectures look better than they are, and will hide the real difference between them. Split by source document or by template, not by individual example, and keep a genuinely held-out test set that was never touched during model selection, not even by looking at its error patterns while tuning hyperparameters.</p><p>I would also push back gently on using validation loss alone to decide between architectures, because loss scales differ across objectives and are not always comparable in a way that reflects downstream accuracy. Use the actual task metric, such as exact match on the structured fields or edit distance on the generated sequence, and report it with a measure of variance across several random seeds, because small datasets produce noisy single-run results that can flip the apparent winner by chance alone.</p></section><section class='psec reveal'><h2>A practical takeaway</h2><p>If you are converting a bounded input into a well-defined structured output and you have a modest but real amount of labelled data, start with encoder-decoder, because the bidirectional read of the input tends to pay off exactly in the small-data regime where you cannot rely on scale to compensate for architectural mismatch. If your task is more open-ended, or if a strong pretrained decoder-only model is readily available and well suited to your domain, do not discard it just because the architecture looks less bespoke, test it properly instead. Either way, build your leakage-aware split and your held-out test metric before you compare architectures, not after, because the real risk in small-task work is not choosing the wrong transformer, it is drawing a confident conclusion from a comparison that was quietly contaminated from the start.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/decoder-only-vs-encoder-decoder-2.jpg' alt='laptop screen showing text data and code' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

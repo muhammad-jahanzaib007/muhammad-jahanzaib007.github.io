@@ -1,1 +1,1 @@
-2026-11-22T20:02:40Z slug=understanding-wrong-word-llms words=912 title="Why 'Understanding' Is the Wrong Word for Language Models"
+2026-11-23T08:01:49Z slug=decoder-only-vs-encoder-decoder words=1183 title="Decoder-Only or Encoder-Decoder for a Small Task?"
