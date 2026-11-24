@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Two Runs of the Same Script Can Disagree | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A look at the hidden sources of randomness in model training, from weight initialisation to GPU non-determinism, and why single-run results mislead.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="reproducibility, random seeds, non-determinism, model training, evaluation, deep learning, variance, experiment design, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-24">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Why Two Runs of the Same Script Can Disagree">
+<meta property="og:description" content="A look at the hidden sources of randomness in model training, from weight initialisation to GPU non-determinism, and why single-run results mislead.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/why-training-runs-disagree.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/why-training-runs-disagree.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why Two Runs of the Same Script Can Disagree">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/why-training-runs-disagree.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/why-training-runs-disagree.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Why Two Runs of the Same Script Can Disagree",
+  "description": "A look at the hidden sources of randomness in model training, from weight initialisation to GPU non-determinism, and why single-run results mislead.",
+  "url": "https://jahanzaibawan.com/blog/why-training-runs-disagree.html",
+  "image": "https://jahanzaibawan.com/assets/blog/why-training-runs-disagree.png",
+  "datePublished": "2026-11-24",
+  "dateModified": "2026-11-24",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/why-training-runs-disagree.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Why Two Runs of the Same Script Can Disagree", "item": "https://jahanzaibawan.com/blog/why-training-runs-disagree.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 24 Nov 2026</div>
+    <h1>Why Two Runs of the Same Script Can Disagree</h1>
+    <p class="lede">Same code, same data, same hyperparameters, yet different results. Here is what actually varies, and why it matters more than most people admit.</p>
+  </div>
+
+  <img src="../assets/blog/why-training-runs-disagree.png" alt="Cover image for the article: Why Two Runs of the Same Script Can Disagree" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The uncomfortable truth about identical scripts</h2><p>I have run the same training script twice, back to back, with no changes whatsoever, and watched validation accuracy move by a point or two. The first time this happened to me I assumed I had broken something. I had not. This is normal, and it is one of the least discussed problems in applied machine learning. We report a single number from a single run as if it were a fixed property of the method, when in reality it is one sample drawn from a distribution of possible outcomes.</p><p>This matters because decisions get made on the back of these numbers. A paper claims a new method beats a baseline by half a point. A team decides to ship model A over model B because it scored higher on a held-out set. If the gap between A and B is smaller than the natural run-to-run variation of either method, the comparison is noise dressed up as a finding. Understanding where that variation comes from is the first step towards not being fooled by it.</p></section><section class='psec reveal'><h2>Where the randomness actually lives</h2><p>The most obvious source is weight initialisation. Most networks start from randomly sampled parameters, and the specific values they start at genuinely affect which local region of the loss landscape the optimiser ends up exploring. Change the seed controlling initialisation and you can get a model that converges to a meaningfully different point, even with everything else held fixed. For small or shallow networks this effect is modest. For deep networks trained on limited data, it can shift accuracy by a percentage point or more.</p><p>Data shuffling is the second big one. Stochastic gradient descent and its variants process data in mini-batches, and the order in which examples arrive changes the sequence of gradient updates the model actually sees. Two runs with different shuffle orders are, in a real sense, two different optimisation trajectories. Add dropout, which randomly zeroes activations during training, and data augmentation, which randomly perturbs inputs, and you have several independent sources of stochasticity compounding on top of each other.</p><p>Then there is hardware-level non-determinism, which surprises people the most. Many GPU operations, particularly reductions and certain convolution algorithms, do not guarantee a fixed order of floating-point summation across runs. Floating-point addition is not associative, so summing the same numbers in a different order produces a slightly different result. These differences are tiny at first, often in the tenth or eleventh decimal place, but they get amplified through hundreds of thousands of gradient updates. By the end of training, a difference that started as rounding noise can translate into genuinely different final weights.</p><p>Library versions and backend settings add a quieter layer of variation. A minor update to a numerical library can change which low-level kernel gets selected for a given operation, which changes the exact arithmetic performed, which changes the trajectory again. None of this is a bug. It is the normal behaviour of systems optimised for speed rather than bit-for-bit reproducibility.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/why-training-runs-disagree-1.jpg' alt='gpu server rack' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>A worked example of why this matters</h2><p>Imagine two text classifiers, model A and model B, trained on the same dataset with the same architecture, differing only in a tweak to the learning rate schedule. You train each once and get eighty-seven point four per cent accuracy for A and eighty-six point nine per cent for B. It is tempting to conclude A is better by half a point.</p><p>Now suppose you had instead trained each model five times with different random seeds, keeping everything else fixed. Model A gives you accuracies of 86.8, 87.4, 87.1, 86.6, and 87.5, averaging around 87.1 with a spread of roughly one point. Model B gives you 86.5, 87.0, 86.9, 87.3, and 86.6, averaging around 86.9 with a similar spread. The two distributions overlap heavily. The single-run comparison you started with, 87.4 versus 86.9, sits comfortably inside the noise band of either model. You cannot responsibly claim A is better based on that one pair of numbers, even though the headline figures look decisive.</p><p>This is not a hypothetical edge case. It is the default situation whenever the true effect of a change is small relative to training variance, which in my experience is most of the time for incremental tweaks. Large architectural changes or genuinely better data tend to produce effects big enough to survive this scrutiny. Small hyperparameter nudges usually do not, and treating a single lucky or unlucky run as proof of superiority is one of the most common errors I see in applied work.</p></section><section class='psec reveal'><h2>What to actually do about it</h2><p>The practical fix is not glamorous: run multiple seeds and report a mean with a spread, whether that is a standard deviation, a range, or a confidence interval. Three to five runs is a reasonable minimum for most applied comparisons, more if the stakes are high or the expected effect is small. This costs compute, and I understand why it gets skipped under deadline pressure, but a single number without any sense of its variability is not really evidence of anything.</p><p>It also helps to separate the sources of variance you can control from the ones you cannot. Fixing the random seed for data shuffling and initialisation makes a run reproducible on the same hardware and software stack, which is useful for debugging and for verifying that a code change did what you intended. But it gives a false sense of security if you then claim the result is representative of the method in general, because you have only sampled one point from the distribution, deterministically.</p><p>Finally, be honest in how results are presented, to others and to yourself. If a new method beats a baseline by an amount smaller than the observed run-to-run spread, say so plainly rather than quietly picking the best run. Reviewers, colleagues, and future you will thank you for the extra rigour, and you will spend far less time chasing improvements that were never really there.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/why-training-runs-disagree-2.jpg' alt='scientist reviewing graphs on monitor' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

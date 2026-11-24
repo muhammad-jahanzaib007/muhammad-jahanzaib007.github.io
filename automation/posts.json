@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "why-training-runs-disagree",
+      "title": "Why Two Runs of the Same Script Can Disagree",
+      "excerpt": "Identical scripts can give different accuracy numbers. I break down the real sources of randomness and why reporting one run is poor practice.",
+      "date": "2026-11-24",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a6",
+      "thumb": "assets/blog/why-training-runs-disagree.png",
+      "thumb_alt": "Cover image for the article: Why Two Runs of the Same Script Can Disagree"
+    },
+    {
       "slug": "memorise-before-generalise",
       "title": "A Worked Example of Why Models Memorise Before They Generalise",
       "excerpt": "Why neural networks often nail the training set long before they learn the underlying rule, worked through with a small modular arithmetic example.",

@@ -1,1 +1,1 @@
-2026-11-24T08:02:15Z slug=memorise-before-generalise words=1098 title="A Worked Example of Why Models Memorise Before They Generalise"
+2026-11-24T20:01:22Z slug=why-training-runs-disagree words=993 title="Why Two Runs of the Same Script Can Disagree"

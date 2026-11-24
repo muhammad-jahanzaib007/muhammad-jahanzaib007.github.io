@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Why two runs of the same training script can disagree, and what actually varies",
     "The difference between a benchmark and an evaluation, and why people conflate them",
     "What 'context length' actually buys a model, and where it stops helping",
     "Reading a model card properly: what it tells you and what it quietly omits",
@@ -314,6 +313,7 @@
     "Why 'understanding' is the wrong word for what a language model does",
     "Choosing between a decoder-only and encoder-decoder transformer for a small task",
     "What tokeniser vocabulary size changes about model behaviour, shown on one example",
-    "A worked example of why a model memorises before it generalises"
+    "A worked example of why a model memorises before it generalises",
+    "Why two runs of the same training script can disagree, and what actually varies"
   ]
 }

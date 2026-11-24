@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Tue, 24 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Why Two Runs of the Same Script Can Disagree</title>
+    <link>https://jahanzaibawan.com/blog/why-training-runs-disagree.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/why-training-runs-disagree.html</guid>
+    <pubDate>Tue, 24 Nov 2026 09:00:00 +0000</pubDate>
+    <description>Identical scripts can give different accuracy numbers. I break down the real sources of randomness and why reporting one run is poor practice.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>A Worked Example of Why Models Memorise Before They Generalise</title>
     <link>https://jahanzaibawan.com/blog/memorise-before-generalise.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/memorise-before-generalise.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Sun, 15 Nov 2026 09:00:00 +0000</pubDate>
     <description>A prompt is a hyperparameter choice. Treat it with a held-out set, a scoring rubric, and a baseline, not vibes.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>What an ML Engineer&#x27;s CV Should Show Beyond a Certificate</title>
-    <link>https://jahanzaibawan.com/blog/cv-beyond-the-certificate.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/cv-beyond-the-certificate.html</guid>
-    <pubDate>Sat, 14 Nov 2026 09:00:00 +0000</pubDate>
-    <description>Certificates show exposure, not capability. Here is what actually convinces a hiring manager you can do the job.</description>
-    <category>Careers</category>
   </item>
 </channel>
 </rss>
