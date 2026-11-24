@@ -12,8 +12,8 @@
     <link>https://jahanzaibawan.com/blog/memorise-before-generalise.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/memorise-before-generalise.html</guid>
     <pubDate>Tue, 24 Nov 2026 09:00:00 +0000</pubDate>
-    <description>Why training accuracy hits 100% while validation lags: a worked example showing memorisation is the easy local optimum, generalisation the slow one.</description>
-    <category>Evaluation</category>
+    <description>Why neural networks often nail the training set long before they learn the underlying rule, worked through with a small modular arithmetic example.</description>
+    <category>Deep Learning</category>
   </item>
   <item>
     <title>How Tokeniser Vocabulary Size Quietly Shapes Model Behaviour</title>
