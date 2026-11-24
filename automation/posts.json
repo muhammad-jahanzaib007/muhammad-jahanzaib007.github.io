@@ -3,7 +3,7 @@
     {
       "slug": "why-training-runs-disagree",
       "title": "Why Two Runs of the Same Script Can Disagree",
-      "excerpt": "Identical scripts can give different accuracy numbers. I break down the real sources of randomness and why reporting one run is poor practice.",
+      "excerpt": "Identical scripts can still give different accuracy numbers. I unpack the hidden sources of randomness and how to control them properly.",
       "date": "2026-11-24",
       "read_min": 5,
       "tag": "Evaluation",
