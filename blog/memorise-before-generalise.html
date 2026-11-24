@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Worked Example of Why Models Memorise Before They Generalise | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A concrete worked example explaining why neural networks tend to memorise training data before they learn to generalise, and what this means for evaluation.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="memorisation,generalisation,overfitting,grokking,neural networks,model evaluation,training dynamics,machine learning, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-24">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="A Worked Example of Why Models Memorise Before They Generalise">
+<meta property="og:description" content="A concrete worked example explaining why neural networks tend to memorise training data before they learn to generalise, and what this means for evaluation.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/memorise-before-generalise.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/memorise-before-generalise.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A Worked Example of Why Models Memorise Before They Generalise">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/memorise-before-generalise.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/memorise-before-generalise.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "A Worked Example of Why Models Memorise Before They Generalise",
+  "description": "A concrete worked example explaining why neural networks tend to memorise training data before they learn to generalise, and what this means for evaluation.",
+  "url": "https://jahanzaibawan.com/blog/memorise-before-generalise.html",
+  "image": "https://jahanzaibawan.com/assets/blog/memorise-before-generalise.png",
+  "datePublished": "2026-11-24",
+  "dateModified": "2026-11-24",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/memorise-before-generalise.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "A Worked Example of Why Models Memorise Before They Generalise", "item": "https://jahanzaibawan.com/blog/memorise-before-generalise.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 24 Nov 2026</div>
+    <h1>A Worked Example of Why Models Memorise Before They Generalise</h1>
+    <p class="lede">A small, concrete walk-through of how a network finds the shortcut of memorisation long before it stumbles onto the slower, more useful path of generalisation.</p>
+  </div>
+
+  <img src="../assets/blog/memorise-before-generalise.png" alt="Cover image for the article: A Worked Example of Why Models Memorise Before They Generalise" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The puzzle that confuses a lot of beginners</h2><p>If you have ever watched a training curve for more than a few epochs, you will have seen the pattern: training accuracy climbs to 99% or 100% quickly, while validation accuracy creeps up far more slowly, sometimes stalling well below it. The instinctive reaction is to call this overfitting and stop there. But the more interesting question is <em>why</em> the model reaches perfect training accuracy so much faster than it reaches good generalisation. The answer is not mysterious once you look at what the optimiser is actually being asked to do, and a small worked example makes it concrete.</p><p>I want to separate two things that get conflated: memorisation, which is fitting the specific examples in front of the model, and generalisation, which is learning the underlying rule that produced those examples. Both reduce training loss. The reason memorisation wins the race is that it is almost always the cheaper, more accessible solution for gradient descent to find, given how most networks are initialised and how most loss surfaces are shaped near the start of training.</p></section><section class='psec reveal'><h2>A toy problem with numbers</h2><p>Suppose I build a tiny dataset of 200 examples where the label is simply whether a number is even or odd, but I represent each number as a 16-dimensional random binary vector rather than its actual digits. There is no way to learn the real rule from that encoding; the vectors carry no mathematical structure related to parity. If I train a small multilayer perceptron on this, it will reach 100% training accuracy within a few dozen epochs, because with enough parameters it can simply assign each of the 200 inputs to its label as a lookup table. Validation accuracy on unseen vectors will sit at roughly 50%, which is chance, because there is genuinely nothing to generalise. This is pure memorisation, and it is instructive precisely because it has no generalisable signal to compete with.</p><p>Now change the setup so the input actually encodes the number in binary, say using 8 bits, so the last bit literally equals the parity label. Train the same architecture. In early epochs, something interesting happens: the model still often reduces training loss fastest by exploiting quirks of the specific 200 training examples, for instance weighting a combination of several bits that happens to correlate with the label in this particular sample, rather than isolating the one bit that is the true rule. On a held-out set of a few thousand examples, this spurious combination may get you to 70 or 80% accuracy, clearly better than chance but clearly not the real rule either. It typically takes more epochs, often a tenfold increase or more in my own small experiments with toy parity tasks, before the weights sharpen onto just the last bit and validation accuracy snaps up to 100%.</p><p>The gap between those two moments, the early plateau at 70 to 80% and the later jump to 100%, is the gap between memorisation and generalisation happening inside a single training run. Training accuracy was at or near 100% for the entire stretch. If you were only watching the training curve, you would have no idea anything was still changing.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/memorise-before-generalise-1.jpg' alt='whiteboard with equations' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Why memorisation gets there first</h2><p>The core reason is combinatorial. There are vastly more ways to fit 200 specific training points using spurious or partial correlations than there are ways to encode the one true underlying rule. Gradient descent does not search for the simplest explanation; it follows the steepest reduction in loss given the current parameters, and early in training, with small, roughly random weights, the steepest path usually runs through whichever features happen to correlate with the labels in that particular sample, true signal or not. Only with continued training, and often with the quiet pressure of weight decay, implicit regularisation from the optimiser, or just enough data that spurious correlations stop being reliable, does the loss landscape favour the sparser, more general solution over the noisier, more memorised one.</p><p>This is the same mechanism behind the phenomenon researchers have labelled grokking, where a model trained well past the point of perfect training accuracy suddenly, after a long plateau, generalises almost overnight on tasks like modular arithmetic. The training loss looks finished long before the validation loss agrees. It is tempting to think of this as the model being stubborn, but it is really the optimiser continuing to reshape a solution that already satisfies the training objective, gradually trading away idiosyncratic shortcuts for weights that happen to encode the actual structure, often nudged along by regularisation that penalises unnecessary complexity.</p><p>None of this requires anything exotic. The same dynamic shows up, in a milder form, in ordinary classification problems with convolutional or transformer architectures: the first few epochs often rely heavily on easy, superficial correlations, texture over shape in image models, surface word overlap over semantic entailment in text models, and only with more training, more data, or more explicit regularisation does the model's behaviour drift towards features that hold up out of distribution.</p></section><section class='psec reveal'><h2>What this means for how you evaluate models</h2><p>The practical lesson is not to add more epochs blindly and hope generalisation turns up. It is to stop trusting training accuracy as a stopping signal at all, and to build evaluation around a validation set that is genuinely independent of anything the model could exploit, including near-duplicates, shared sources, or leaked features. A model that has reached 100% training accuracy has told you almost nothing about whether it has learned the rule or just learned the dataset; only a clean split designed with the same care as the toy parity example above, where you know exactly what the true signal is and what the spurious shortcuts are, can tell you which one actually happened.</p><p>In practice I treat an early, unusually fast rise to high training accuracy as a prompt to check for shortcuts, not as good news. I look at whether the gap between training and validation metrics is shrinking over time, not just whether both are improving, because a shrinking gap is weak evidence that memorised shortcuts are being replaced by generalisable structure. I would also resist the urge to pick a checkpoint purely because the training curve has flattened; if the architecture and data allow it, training for longer with proper regularisation and re-checking validation performance later is often cheap insurance against stopping exactly at the point where the model has memorised but not yet generalised.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/memorise-before-generalise-2.jpg' alt='laptop showing training graph' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

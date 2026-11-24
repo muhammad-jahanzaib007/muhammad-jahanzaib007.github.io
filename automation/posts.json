@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "memorise-before-generalise",
+      "title": "A Worked Example of Why Models Memorise Before They Generalise",
+      "excerpt": "Why training accuracy hits 100% while validation lags: a worked example showing memorisation is the easy local optimum, generalisation the slow one.",
+      "date": "2026-11-24",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a5",
+      "thumb": "assets/blog/memorise-before-generalise.png",
+      "thumb_alt": "Cover image for the article: A Worked Example of Why Models Memorise Before They Generalise"
+    },
+    {
       "slug": "tokeniser-vocabulary-size-behaviour",
       "title": "How Tokeniser Vocabulary Size Quietly Shapes Model Behaviour",
       "excerpt": "One word, three tokenisations: a concrete look at how vocabulary size changes sequence length, rare word handling, and what a model actually has to learn.",

@@ -1,1 +1,1 @@
-2026-11-23T20:02:55Z slug=tokeniser-vocabulary-size-behaviour words=965 title="How Tokeniser Vocabulary Size Quietly Shapes Model Behaviour"
+2026-11-24T08:01:12Z slug=memorise-before-generalise words=1079 title="A Worked Example of Why Models Memorise Before They Generalise"
