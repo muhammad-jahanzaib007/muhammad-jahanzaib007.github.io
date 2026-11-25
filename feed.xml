@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Tue, 24 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 25 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>A Benchmark Is Not an Evaluation, and That Gap Matters</title>
+    <link>https://jahanzaibawan.com/blog/benchmark-versus-evaluation.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/benchmark-versus-evaluation.html</guid>
+    <pubDate>Wed, 25 Nov 2026 09:00:00 +0000</pubDate>
+    <description>A high benchmark score tells you a model beat a fixed test. It does not tell you the model works. Here is why that gap keeps causing trouble.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Why Two Runs of the Same Script Can Disagree</title>
     <link>https://jahanzaibawan.com/blog/why-training-runs-disagree.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/cv-pipeline-failure-modes.html</guid>
     <pubDate>Sun, 15 Nov 2026 09:00:00 +0000</pubDate>
     <description>Lighting and occlusion are the easy robustness checks. The failures that actually reach production are the ones your test set never imagined.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Evaluating a Prompt the Way You Would Evaluate a Model</title>
-    <link>https://jahanzaibawan.com/blog/evaluate-prompts-like-models.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/evaluate-prompts-like-models.html</guid>
-    <pubDate>Sun, 15 Nov 2026 09:00:00 +0000</pubDate>
-    <description>A prompt is a hyperparameter choice. Treat it with a held-out set, a scoring rubric, and a baseline, not vibes.</description>
     <category>Evaluation</category>
   </item>
 </channel>

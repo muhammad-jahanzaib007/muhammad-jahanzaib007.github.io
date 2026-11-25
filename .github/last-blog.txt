@@ -1,1 +1,1 @@
-2026-11-24T20:02:26Z slug=why-training-runs-disagree words=996 title="Why Two Runs of the Same Script Can Disagree"
+2026-11-25T08:01:19Z slug=benchmark-versus-evaluation words=993 title="A Benchmark Is Not an Evaluation, and That Gap Matters"

@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "benchmark-versus-evaluation",
+      "title": "A Benchmark Is Not an Evaluation, and That Gap Matters",
+      "excerpt": "A high benchmark score tells you a model beat a fixed test. It does not tell you the model works. Here is why that gap keeps causing trouble.",
+      "date": "2026-11-25",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a2",
+      "thumb": "assets/blog/benchmark-versus-evaluation.png",
+      "thumb_alt": "Cover image for the article: A Benchmark Is Not an Evaluation, and That Gap Matters"
+    },
+    {
       "slug": "why-training-runs-disagree",
       "title": "Why Two Runs of the Same Script Can Disagree",
       "excerpt": "Identical scripts can still give different accuracy numbers. I unpack the hidden sources of randomness and how to control them properly.",

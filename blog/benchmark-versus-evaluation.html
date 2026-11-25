@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Benchmark Is Not an Evaluation, and That Gap Matters | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="Why benchmarks and evaluations are not the same thing, how conflating them leads to false confidence in model performance, and what a proper evaluation needs.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="benchmark vs evaluation, machine learning evaluation, model evaluation methodology, leakage, test set overfitting, evaluation design, AI benchmarking, reproducibility, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-25">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="A Benchmark Is Not an Evaluation, and That Gap Matters">
+<meta property="og:description" content="Why benchmarks and evaluations are not the same thing, how conflating them leads to false confidence in model performance, and what a proper evaluation needs.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/benchmark-versus-evaluation.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/benchmark-versus-evaluation.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A Benchmark Is Not an Evaluation, and That Gap Matters">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/benchmark-versus-evaluation.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/benchmark-versus-evaluation.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "A Benchmark Is Not an Evaluation, and That Gap Matters",
+  "description": "Why benchmarks and evaluations are not the same thing, how conflating them leads to false confidence in model performance, and what a proper evaluation needs.",
+  "url": "https://jahanzaibawan.com/blog/benchmark-versus-evaluation.html",
+  "image": "https://jahanzaibawan.com/assets/blog/benchmark-versus-evaluation.png",
+  "datePublished": "2026-11-25",
+  "dateModified": "2026-11-25",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/benchmark-versus-evaluation.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "A Benchmark Is Not an Evaluation, and That Gap Matters", "item": "https://jahanzaibawan.com/blog/benchmark-versus-evaluation.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 25 Nov 2026</div>
+    <h1>A Benchmark Is Not an Evaluation, and That Gap Matters</h1>
+    <p class="lede">Benchmarks measure a model against a fixed test. Evaluations measure whether a model actually works for a purpose. Confusing the two produces confident, misleading claims.</p>
+  </div>
+
+  <img src="../assets/blog/benchmark-versus-evaluation.png" alt="Cover image for the article: A Benchmark Is Not an Evaluation, and That Gap Matters" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the distinction gets lost</h2><p>In most papers and product announcements, the word 'evaluation' is used to mean 'we ran the benchmark and here is the number'. That usage is so common that people stop noticing the slide. A benchmark is a fixed artefact: a dataset, a metric, and a protocol for scoring predictions against known answers. An evaluation is a broader claim: does this system do the thing we actually need, under the conditions we actually care about. The benchmark can be part of an evaluation, but on its own it is not one.</p><p>The conflation happens because benchmarks are convenient and evaluations are expensive. A benchmark gives you a single number you can put in a table and compare across papers. A proper evaluation requires you to think about what the number means, whether the test distribution resembles the deployment distribution, what failure modes are invisible to the metric, and what happens when the data shifts. It is much easier to report 92.4 percent accuracy than to argue, with evidence, that 92.4 percent accuracy on this particular dataset implies anything useful about real-world performance.</p><p>This matters because decisions get made on the back of benchmark numbers. A team picks a model for production because it tops a leaderboard. A reviewer accepts a paper because the method beats a prior state of the art by a point and a half. A manager approves a deployment because the accuracy figure looks strong. In each case, the benchmark score is being asked to do the job of an evaluation, and it is not equipped for that job.</p></section><section class='psec reveal'><h2>A worked example of the gap</h2><p>Suppose you build a classifier to flag fraudulent transactions, and you test it on a public benchmark dataset of labelled transactions with a reported F1 score of 0.89. That is a benchmark result. It tells you how the model performs on that specific dataset, with that specific label distribution, collected at that specific time, using that specific definition of fraud. It does not tell you how the model will perform on your bank's transactions next quarter, where the fraud patterns have shifted, the feature distributions differ, and the cost of a false negative is not symmetric with a false positive.</p><p>Turning that benchmark result into an evaluation means asking harder questions. What is the actual base rate of fraud in your deployment setting, and does the benchmark's class balance resemble it. If the benchmark has 5 percent positive cases and your real traffic has 0.2 percent, the same F1 score implies a very different number of false alarms per day. What is the cost structure: is missing a genuine fraud case ten times worse than annoying a legitimate customer, or the other way round, and does the benchmark's F1 metric even reflect that asymmetry. Has the model seen anything resembling the test transactions during training, directly or through a vendor's pretraining data, which would make the benchmark score optimistic.</p><p>Concretely, imagine two models. Model A scores 0.91 F1 on the benchmark and model B scores 0.87. On the benchmark alone, A wins. But suppose A achieves its score mostly by being very good at the easy, high-volume fraud pattern that dominates the benchmark, while B is weaker on that pattern but noticeably better at the rare, high-value fraud pattern that barely appears in the test set but accounts for most of the financial loss in your real traffic. The benchmark cannot see this because it was not built to measure it. An evaluation would stratify performance by fraud type and loss magnitude, and might conclude that B is the better choice despite the lower headline number.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/benchmark-versus-evaluation-1.jpg' alt='bank fraud detection analyst screen' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What a real evaluation adds on top</h2><p>A genuine evaluation starts from the deployment question, not the dataset. It asks what decisions the model's output will drive, what the cost of each error type is, and what population of inputs the model will actually see. Only after answering those does it choose or construct a test set, and that test set is judged by how well it represents the deployment distribution, not by how widely cited it is.</p><p>It also takes leakage seriously in a way benchmark reporting often does not. A benchmark score is only meaningful if the test set was genuinely unseen during training and tuning. In practice, hyperparameters get tuned against the same test split repeatedly across a research community, pretraining corpora scrape the internet and absorb benchmark data, and a model that looks like it generalises is sometimes just leaking the answer key through a side channel. An evaluation asks pointed questions about data provenance and split construction before trusting the number at all.</p><p>A real evaluation also reports more than one number. Aggregate accuracy or F1 hides the shape of the error distribution. Breaking performance down by subgroup, by input difficulty, by time period if the data is temporal, and by error cost reveals whether the model is reliably good or whether its headline score is propped up by strong performance on an easy majority case. It also includes a comparison against a deliberately simple baseline, because a benchmark score in isolation tells you nothing about how much of the performance is coming from the sophistication of the method versus the structure already present in the data.</p><p>Finally, an evaluation is honest about uncertainty and about what it did not test. A single number from a single test set, without confidence intervals, without a description of what population it covers, and without a statement of known limitations, is a benchmark result dressed up as an evaluation. The fix is not complicated, but it requires discipline: define the deployment question first, check the test set is not contaminated, report performance broken down by what matters, compare against a real baseline, and say plainly what the test does not cover. None of that is exotic. It is just more work than quoting a leaderboard number, which is exactly why it gets skipped.</p></section>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
