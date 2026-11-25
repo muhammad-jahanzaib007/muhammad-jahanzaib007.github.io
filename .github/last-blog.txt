@@ -1,1 +1,1 @@
-2026-11-25T08:02:22Z slug=benchmark-versus-evaluation words=977 title="A Benchmark Is Not an Evaluation, and That Gap Matters"
+2026-11-25T20:01:05Z slug=what-context-length-buys-you words=1015 title="What Context Length Actually Buys a Model"

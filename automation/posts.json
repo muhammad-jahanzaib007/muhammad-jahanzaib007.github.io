@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "what-context-length-buys-you",
+      "title": "What Context Length Actually Buys a Model",
+      "excerpt": "A longer context window is not a free upgrade. Here is what it genuinely buys a model, and where the returns quietly flatten.",
+      "date": "2026-11-25",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a3",
+      "thumb": "assets/blog/what-context-length-buys-you.png",
+      "thumb_alt": "Cover image for the article: What Context Length Actually Buys a Model"
+    },
+    {
       "slug": "benchmark-versus-evaluation",
       "title": "A Benchmark Is Not an Evaluation, and That Gap Matters",
       "excerpt": "Topping a benchmark is not the same as being evaluated well. Confusing the two produces models that look great on paper and fail in production.",

@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Wed, 25 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>What Context Length Actually Buys a Model</title>
+    <link>https://jahanzaibawan.com/blog/what-context-length-buys-you.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/what-context-length-buys-you.html</guid>
+    <pubDate>Wed, 25 Nov 2026 09:00:00 +0000</pubDate>
+    <description>A longer context window is not a free upgrade. Here is what it genuinely buys a model, and where the returns quietly flatten.</description>
+    <category>Evaluation</category>
+  </item>
+  <item>
     <title>A Benchmark Is Not an Evaluation, and That Gap Matters</title>
     <link>https://jahanzaibawan.com/blog/benchmark-versus-evaluation.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/benchmark-versus-evaluation.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Mon, 16 Nov 2026 09:00:00 +0000</pubDate>
     <description>A single worked example, tabular features versus raw pixels, shows exactly where machine learning ends and deep learning begins.</description>
     <category>Machine Learning</category>
-  </item>
-  <item>
-    <title>Computer Vision Failure Modes Nobody Tests For</title>
-    <link>https://jahanzaibawan.com/blog/cv-pipeline-failure-modes.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/cv-pipeline-failure-modes.html</guid>
-    <pubDate>Sun, 15 Nov 2026 09:00:00 +0000</pubDate>
-    <description>Lighting and occlusion are the easy robustness checks. The failures that actually reach production are the ones your test set never imagined.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>
