@@ -1,1 +1,1 @@
-2026-11-25T08:01:19Z slug=benchmark-versus-evaluation words=993 title="A Benchmark Is Not an Evaluation, and That Gap Matters"
+2026-11-25T08:02:22Z slug=benchmark-versus-evaluation words=977 title="A Benchmark Is Not an Evaluation, and That Gap Matters"

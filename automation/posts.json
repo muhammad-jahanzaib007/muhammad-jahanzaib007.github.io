@@ -3,7 +3,7 @@
     {
       "slug": "benchmark-versus-evaluation",
       "title": "A Benchmark Is Not an Evaluation, and That Gap Matters",
-      "excerpt": "A high benchmark score tells you a model beat a fixed test. It does not tell you the model works. Here is why that gap keeps causing trouble.",
+      "excerpt": "Topping a benchmark is not the same as being evaluated well. Confusing the two produces models that look great on paper and fail in production.",
       "date": "2026-11-25",
       "read_min": 5,
       "tag": "Evaluation",
