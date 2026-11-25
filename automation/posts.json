@@ -3,7 +3,7 @@
     {
       "slug": "what-context-length-buys-you",
       "title": "What Context Length Actually Buys a Model",
-      "excerpt": "A longer context window is not a free upgrade. Here is what it genuinely buys a model, and where the returns quietly flatten.",
+      "excerpt": "Longer context windows promise more memory, but what you actually get is more room to search, not more skill at using what's found.",
       "date": "2026-11-25",
       "read_min": 5,
       "tag": "Evaluation",
