@@ -1,1 +1,1 @@
-2026-11-25T20:02:07Z slug=what-context-length-buys-you words=1014 title="What Context Length Actually Buys a Model"
+2026-11-26T08:01:06Z slug=reading-model-cards-properly words=1063 title="Reading a Model Card Properly: What It Hides"

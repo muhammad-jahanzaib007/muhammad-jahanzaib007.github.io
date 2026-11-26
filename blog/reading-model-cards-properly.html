@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reading a Model Card Properly: What It Hides | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to reading model cards critically, covering what the documented metrics mean, what gets left out, and how to ask better questions.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="model cards, model documentation, evaluation, data leakage, machine learning transparency, responsible AI, benchmark reporting, reproducibility, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-26">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Reading a Model Card Properly: What It Hides">
+<meta property="og:description" content="A practical guide to reading model cards critically, covering what the documented metrics mean, what gets left out, and how to ask better questions.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/reading-model-cards-properly.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/reading-model-cards-properly.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Reading a Model Card Properly: What It Hides">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/reading-model-cards-properly.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/reading-model-cards-properly.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Reading a Model Card Properly: What It Hides",
+  "description": "A practical guide to reading model cards critically, covering what the documented metrics mean, what gets left out, and how to ask better questions.",
+  "url": "https://jahanzaibawan.com/blog/reading-model-cards-properly.html",
+  "image": "https://jahanzaibawan.com/assets/blog/reading-model-cards-properly.png",
+  "datePublished": "2026-11-26",
+  "dateModified": "2026-11-26",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/reading-model-cards-properly.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Reading a Model Card Properly: What It Hides", "item": "https://jahanzaibawan.com/blog/reading-model-cards-properly.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a4)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 26 Nov 2026</div>
+    <h1>Reading a Model Card Properly: What It Hides</h1>
+    <p class="lede">Model cards promise transparency, but the gap between what is documented and what is actually true in deployment is where most surprises live.</p>
+  </div>
+
+  <img src="../assets/blog/reading-model-cards-properly.png" alt="Cover image for the article: Reading a Model Card Properly: What It Hides" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the document matters more than it looks</h2><p>A model card reads like a spec sheet: intended use, training data, evaluation metrics, limitations, a tidy table of numbers. It gives the impression that someone has already done the hard work of scrutiny, so you can skim it and move on. I think that impression is the whole problem. A model card is written by the people who built the model, usually after it has already been chosen for release, which means it is closer to a marketing document with a conscience than an independent audit.</p><p>That is not cynicism, it is just incentives. Nobody writes a model card for the version that failed. The numbers you see are the numbers that survived internal review, and the limitations section is the set of caveats the team felt comfortable admitting in public. Reading a model card properly means treating it the way you would treat a reference from an applicant's chosen referee: useful, often honest, but structurally unable to tell you the whole story.</p><p>This matters in practice because model cards increasingly stand in for due diligence. Procurement teams, researchers choosing a baseline, and engineers picking a component all treat the card as sufficient evidence of fitness for purpose. If the card says 94 per cent accuracy on a benchmark, that number quietly becomes the number everyone repeats, even though it was measured under conditions that may bear little resemblance to how the model will actually be used.</p></section><section class='psec reveal'><h2>What the numbers actually tell you</h2><p>Start with the evaluation section, because it is usually the most concrete part of the card and also the easiest to misread. Suppose a card reports an F1 score of 0.89 on a held-out test set for a text classification model. That single number hides several decisions: how the test set was split from training data, whether the split was random or by time or by source, whether classes were balanced, and whether the reported figure is a mean across several runs or the single best run out of many attempts.</p><p>The split matters enormously. If the test set was created by random shuffling of a dataset that contains near-duplicate documents, such as the same news story reported by five outlets, then training and test sets can leak into each other even though no row is literally repeated. I have seen reported accuracy drop by ten or more points once a dataset was re-split by document cluster or by date rather than at random. A model card rarely tells you how the split was constructed in enough detail to judge this, it usually just names the dataset and the metric.</p><p>Averaging practices matter too. A single F1 of 0.89 could be the mean of five runs with a standard deviation of 0.01, which is a stable and trustworthy result, or it could be the best of twenty runs with no variance reported at all, which tells you almost nothing about what to expect on your own data. Few cards disclose how many runs were attempted before the reported one, and that silence is itself informative: if variance mattered to the authors, they would usually show it.</p><p>Finally, check what the comparison baseline was. A model card that reports improvement over a weak baseline, such as a simple keyword matcher, is making a much smaller claim than one that beats a carefully tuned prior state of the art. The card will state the number was better, it will rarely volunteer how strong the comparison point actually was.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/reading-model-cards-properly-1.jpg' alt='open laptop with spreadsheet of data' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What tends to be missing entirely</h2><p>The training data description is usually the vaguest part of the whole document, and that vagueness is rarely accidental. Phrases like 'a large corpus of publicly available text' or 'internal customer data, anonymised' tell you almost nothing about composition, time range, or domain balance. If a model was trained mostly on data from 2018 to 2021 and you plan to deploy it on 2025 language, slang, or product names, the card will not warn you, because the authors may not have characterised the temporal distribution themselves.</p><p>Subgroup performance is another common gap. A card might report overall accuracy without breaking it down by language variety, demographic group, input length, or domain. I have found that aggregate numbers can hide performance that is excellent on the majority case and poor on a minority case that happens to matter most for a specific application. Unless the card explicitly reports disaggregated metrics, assume the aggregate figure is hiding variance you have not seen.</p><p>Failure modes described in qualitative terms, such as 'may produce inaccurate information' or 'performance may degrade on out-of-distribution inputs', sound like disclosure but carry almost no operational content. They do not tell you which inputs, how often, or how severe the failure looks. Compare that to a card that gives a concrete example of a failure case with the actual output shown: the second kind is rare, and its rarity tells you something about how much candour the field actually rewards.</p><p>Finally, watch for silence about retraining and drift. A model card is a snapshot. It describes the model as evaluated at release, not as it behaves six months later once the underlying data distribution has shifted or once the model has been fine-tuned downstream by someone else entirely. The card cannot promise anything about a version of itself that does not yet exist, but it is easy to forget that when citing it as current evidence.</p></section><section class='psec reveal'><h2>A practical way to read one</h2><p>Treat the evaluation numbers as a starting hypothesis, not a settled fact, and re-test on a slice of your own data before trusting the headline figure. If you cannot run your own evaluation, at minimum look for the split methodology, the number of runs behind the reported metric, and whether subgroup results exist. Absence of this detail is itself a signal worth weighing, not a neutral gap.</p><p>Read the limitations section for what it does not say as much as for what it does. If a card discusses bias in general terms but gives no concrete example or disaggregated number, assume the real limitations are broader than stated. And remember that the card describes a model at one point in time, trained on data whose composition you may never fully see, so any deployment decision should build in monitoring rather than resting on the document alone.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/reading-model-cards-properly-2.jpg' alt='researcher reviewing documents at desk' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

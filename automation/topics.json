@@ -1,6 +1,5 @@
 {
   "queue": [
-    "Reading a model card properly: what it tells you and what it quietly omits",
     "Why a pretrained model's training data matters more than its parameter count",
     "A worked walkthrough of fine-tuning a small classifier and reporting it honestly",
     "What changes inside a transformer during instruction tuning, shown layer by layer",
@@ -314,6 +313,7 @@
     "A worked example of why a model memorises before it generalises",
     "Why two runs of the same training script can disagree, and what actually varies",
     "The difference between a benchmark and an evaluation, and why people conflate them",
-    "What 'context length' actually buys a model, and where it stops helping"
+    "What 'context length' actually buys a model, and where it stops helping",
+    "Reading a model card properly: what it tells you and what it quietly omits"
   ]
 }

@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Wed, 25 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 26 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Reading a Model Card Properly: What It Hides</title>
+    <link>https://jahanzaibawan.com/blog/reading-model-cards-properly.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/reading-model-cards-properly.html</guid>
+    <pubDate>Thu, 26 Nov 2026 09:00:00 +0000</pubDate>
+    <description>Model cards look rigorous but are often written by the winning team. Here is how to read one critically and spot what it leaves out.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>What Context Length Actually Buys a Model</title>
     <link>https://jahanzaibawan.com/blog/what-context-length-buys-you.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Mon, 16 Nov 2026 09:00:00 +0000</pubDate>
     <description>A regex or keyword baseline isn&#x27;t a formality. It sets the bar a transformer must clear and reveals what your task really demands.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Deep Learning versus Machine Learning: A Worked Example</title>
-    <link>https://jahanzaibawan.com/blog/deep-learning-vs-machine-learning-20261116.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/deep-learning-vs-machine-learning-20261116.html</guid>
-    <pubDate>Mon, 16 Nov 2026 09:00:00 +0000</pubDate>
-    <description>A single worked example, tabular features versus raw pixels, shows exactly where machine learning ends and deep learning begins.</description>
-    <category>Machine Learning</category>
   </item>
 </channel>
 </rss>

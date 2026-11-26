@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "reading-model-cards-properly",
+      "title": "Reading a Model Card Properly: What It Hides",
+      "excerpt": "Model cards look rigorous but are often written by the winning team. Here is how to read one critically and spot what it leaves out.",
+      "date": "2026-11-26",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a4",
+      "thumb": "assets/blog/reading-model-cards-properly.png",
+      "thumb_alt": "Cover image for the article: Reading a Model Card Properly: What It Hides"
+    },
+    {
       "slug": "what-context-length-buys-you",
       "title": "What Context Length Actually Buys a Model",
       "excerpt": "Longer context windows promise more memory, but what you actually get is more room to search, not more skill at using what's found.",
