@@ -1,1 +1,1 @@
-2026-11-26T08:02:17Z slug=reading-a-model-card-properly words=1185 title="Reading a Model Card Properly: What It Hides"
+2026-11-26T20:01:01Z slug=training-data-beats-parameter-count words=990 title="Why Training Data Matters More Than Parameter Count"

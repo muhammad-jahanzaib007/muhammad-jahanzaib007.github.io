@@ -8,6 +8,14 @@
   <language>en-gb</language>
   <lastBuildDate>Thu, 26 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
+    <title>Why Training Data Matters More Than Parameter Count</title>
+    <link>https://jahanzaibawan.com/blog/training-data-beats-parameter-count.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/training-data-beats-parameter-count.html</guid>
+    <pubDate>Thu, 26 Nov 2026 09:00:00 +0000</pubDate>
+    <description>Bigger models grab headlines, but the data behind a pretrained model usually decides what it can and cannot do.</description>
+    <category>Deep Learning</category>
+  </item>
+  <item>
     <title>Reading a Model Card Properly: What It Hides</title>
     <link>https://jahanzaibawan.com/blog/reading-a-model-card-properly.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/reading-a-model-card-properly.html</guid>
@@ -158,14 +166,6 @@
     <pubDate>Tue, 17 Nov 2026 09:00:00 +0000</pubDate>
     <description>A practical guide to choosing MLOps tools by team size, with the reasoning behind each decision rather than just a tool list.</description>
     <category>MLOps</category>
-  </item>
-  <item>
-    <title>Why You Still Need Rule-Based Baselines Before Transformers</title>
-    <link>https://jahanzaibawan.com/blog/rule-based-baselines-before-transformers.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/rule-based-baselines-before-transformers.html</guid>
-    <pubDate>Mon, 16 Nov 2026 09:00:00 +0000</pubDate>
-    <description>A regex or keyword baseline isn&#x27;t a formality. It sets the bar a transformer must clear and reveals what your task really demands.</description>
-    <category>Evaluation</category>
   </item>
 </channel>
 </rss>

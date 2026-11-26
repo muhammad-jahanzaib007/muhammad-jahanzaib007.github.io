@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "training-data-beats-parameter-count",
+      "title": "Why Training Data Matters More Than Parameter Count",
+      "excerpt": "Bigger models grab headlines, but the data behind a pretrained model usually decides what it can and cannot do.",
+      "date": "2026-11-26",
+      "read_min": 5,
+      "tag": "Deep Learning",
+      "color": "a5",
+      "thumb": "assets/blog/training-data-beats-parameter-count.png",
+      "thumb_alt": "Cover image for the article: Why Training Data Matters More Than Parameter Count"
+    },
+    {
       "slug": "reading-a-model-card-properly",
       "title": "Reading a Model Card Properly: What It Hides",
       "excerpt": "Model cards look like accountability documents, but gaps in their reporting often matter more than what they state outright.",

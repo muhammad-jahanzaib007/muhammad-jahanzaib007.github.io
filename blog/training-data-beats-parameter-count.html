@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Training Data Matters More Than Parameter Count | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A look at why the composition and quality of training data shapes a pretrained model&#x27;s real-world behaviour more than its parameter count.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="pretrained models, training data, model evaluation, data quality, machine learning, deep learning, dataset curation, leakage, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-26">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Why Training Data Matters More Than Parameter Count">
+<meta property="og:description" content="A look at why the composition and quality of training data shapes a pretrained model&#x27;s real-world behaviour more than its parameter count.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/training-data-beats-parameter-count.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/training-data-beats-parameter-count.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why Training Data Matters More Than Parameter Count">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/training-data-beats-parameter-count.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/training-data-beats-parameter-count.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Why Training Data Matters More Than Parameter Count",
+  "description": "A look at why the composition and quality of training data shapes a pretrained model's real-world behaviour more than its parameter count.",
+  "url": "https://jahanzaibawan.com/blog/training-data-beats-parameter-count.html",
+  "image": "https://jahanzaibawan.com/assets/blog/training-data-beats-parameter-count.png",
+  "datePublished": "2026-11-26",
+  "dateModified": "2026-11-26",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/training-data-beats-parameter-count.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Why Training Data Matters More Than Parameter Count", "item": "https://jahanzaibawan.com/blog/training-data-beats-parameter-count.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a5)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Deep Learning · 5 min read · 26 Nov 2026</div>
+    <h1>Why Training Data Matters More Than Parameter Count</h1>
+    <p class="lede">Parameter counts make for easy headlines, but what a model actually learns is shaped far more by what it was trained on than by how big it is.</p>
+  </div>
+
+  <img src="../assets/blog/training-data-beats-parameter-count.png" alt="Cover image for the article: Why Training Data Matters More Than Parameter Count" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The parameter count obsession</h2><p>Every time a new model is released, the headline number is almost always the parameter count. Seven billion, seventy billion, however many hundred billion. It is an easy number to print and an easy number to compare, which is precisely why it has become shorthand for capability. But parameter count tells you how much capacity a model has to store patterns, not what patterns it actually stored. Those are very different questions, and conflating them leads to a lot of poor decisions when choosing or evaluating a model for a real task.</p><p>Think of parameters as shelf space in a warehouse. A bigger warehouse can hold more stock, but if nobody ever delivers the items you need, the extra shelves are useless to you. The training data is the delivery schedule: it determines what actually ends up on those shelves. A model with fewer parameters trained on data closely matched to your domain will often outperform a much larger model trained on a broad, generic mixture, simply because the smaller model's shelves are stocked with the right items.</p><p>I find it useful to separate two things that often get blurred together: raw capability and applied usefulness. Capability is about what a model could in principle represent given enough capacity. Usefulness is about what it actually does well on the inputs you care about. Training data governs usefulness far more directly than architecture or scale does, and usefulness is what matters when you deploy something.</p></section><section class='psec reveal'><h2>A worked example: two models, same size</h2><p>Suppose we have two models of identical architecture and identical parameter count, say around three hundred million parameters each. Model A is trained on a broad web crawl with a bit of everything: news, forums, product reviews, some code, some scientific abstracts. Model B is trained on the same total number of tokens, but the mixture is deliberately weighted towards clinical case notes, medical guidelines, and biomedical literature.</p><p>If we then evaluate both models on a task like extracting symptoms and medications from a clinical note, Model B will very likely win, and not by a small margin. It has seen the vocabulary, the abbreviations, the typical sentence structures, and the implicit conventions of that domain thousands of times more often than Model A has. Model A has the same number of parameters to work with, but most of that capacity has been spent learning things that are irrelevant to the clinical task: sports commentary, product descriptions, forum arguments.</p><p>Now imagine we scale Model A up to three billion parameters, ten times larger, still trained on the same generic web mixture. It will likely get better at the clinical extraction task too, because scale tends to improve general language competence and few-shot adaptation. But in my experience the gain from that tenfold increase in size is often smaller than the gain from simply swapping in domain-relevant data at the original size. Data composition acts almost like a multiplier on how efficiently parameters get used, and an inefficient multiplier applied to a huge model still leaves a lot of value on the table.</p><p>This is not an argument against scale. Larger models trained on better data will usually beat smaller models trained on better data too. The point is that if you can only change one variable, data composition tends to move task performance more reliably than parameter count does, particularly for anything resembling a specialised or narrow domain.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/training-data-beats-parameter-count-1.jpg' alt='warehouse shelves with boxes' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Why this matters for evaluation and deployment</h2><p>This has direct consequences for how we evaluate and select models. If a benchmark leaderboard ranks models purely by parameter count or by a single aggregate score, it hides the fact that two models of similar size can behave completely differently depending on what they absorbed during pretraining. A model that scores well on a general benchmark may have simply seen more benchmark-adjacent text during training, which is a separate concern from genuine capability, and brings us uncomfortably close to data leakage.</p><p>Leakage is the sharper version of this problem. If evaluation data, or text very similar to it, appeared anywhere in the pretraining corpus, then performance on that evaluation stops measuring generalisation and starts measuring memorisation. I have seen this catch people out in practical settings: a model appears to handle a specialised test set well, until someone checks the pretraining data sources and finds the test set, or something close to it, was scraped as part of a public web crawl months earlier. The apparent skill evaporates once you construct a genuinely held-out set with no temporal or topical overlap.</p><p>The practical upshot is that anyone choosing a pretrained model for a real task should ask about the training data composition before looking at the parameter count. What languages, domains, time periods, and licences does it cover? Is there any plausible overlap with your evaluation data? Was the data deduplicated, and against what? These questions are less glamorous than quoting a parameter figure, but they predict real-world behaviour far more reliably.</p></section><section class='psec reveal'><h2>A practical takeaway</h2><p>When you are assessing a pretrained model, treat the parameter count as a rough indicator of capacity and nothing more. Spend your attention instead on understanding what the model was trained on: the domain mixture, the recency, the language coverage, and whether there is any risk that your evaluation set overlaps with it. If documentation on training data is thin or vague, treat that as a warning sign rather than a minor inconvenience.</p><p>In practice, I would rather use a smaller, well-documented model trained on data close to my target domain than a larger one with an opaque or mismatched training mixture. The smaller model is also cheaper to run and easier to reason about when something goes wrong. Scale is useful, but it is a multiplier on top of data quality, not a substitute for it, and no amount of extra shelf space fixes a warehouse that was stocked with the wrong goods.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/training-data-beats-parameter-count-2.jpg' alt='server room data center' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
