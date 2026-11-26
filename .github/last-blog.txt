@@ -1,1 +1,1 @@
-2026-11-26T08:01:06Z slug=reading-model-cards-properly words=1063 title="Reading a Model Card Properly: What It Hides"
+2026-11-26T08:02:17Z slug=reading-a-model-card-properly words=1185 title="Reading a Model Card Properly: What It Hides"

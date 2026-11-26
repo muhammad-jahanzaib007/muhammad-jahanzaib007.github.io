@@ -1,14 +1,14 @@
 {
   "posts": [
     {
-      "slug": "reading-model-cards-properly",
+      "slug": "reading-a-model-card-properly",
       "title": "Reading a Model Card Properly: What It Hides",
-      "excerpt": "Model cards look rigorous but are often written by the winning team. Here is how to read one critically and spot what it leaves out.",
+      "excerpt": "Model cards look like accountability documents, but gaps in their reporting often matter more than what they state outright.",
       "date": "2026-11-26",
-      "read_min": 5,
+      "read_min": 6,
       "tag": "Evaluation",
       "color": "a4",
-      "thumb": "assets/blog/reading-model-cards-properly.png",
+      "thumb": "assets/blog/reading-a-model-card-properly.png",
       "thumb_alt": "Cover image for the article: Reading a Model Card Properly: What It Hides"
     },
     {
