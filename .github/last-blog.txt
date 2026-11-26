@@ -1,1 +1,1 @@
-2026-11-26T20:01:01Z slug=training-data-beats-parameter-count words=990 title="Why Training Data Matters More Than Parameter Count"
+2026-11-26T20:01:56Z slug=training-data-beats-parameter-count words=1016 title="Why Training Data Matters More Than Parameter Count"

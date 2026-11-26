@@ -12,8 +12,8 @@
     <link>https://jahanzaibawan.com/blog/training-data-beats-parameter-count.html</link>
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/training-data-beats-parameter-count.html</guid>
     <pubDate>Thu, 26 Nov 2026 09:00:00 +0000</pubDate>
-    <description>Bigger models grab headlines, but the data behind a pretrained model usually decides what it can and cannot do.</description>
-    <category>Deep Learning</category>
+    <description>Parameter counts sell headlines, but a model&#x27;s training data quietly sets the ceiling on what it can ever learn.</description>
+    <category>Evaluation</category>
   </item>
   <item>
     <title>Reading a Model Card Properly: What It Hides</title>

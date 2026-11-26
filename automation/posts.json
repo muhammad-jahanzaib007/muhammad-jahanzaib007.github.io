@@ -3,10 +3,10 @@
     {
       "slug": "training-data-beats-parameter-count",
       "title": "Why Training Data Matters More Than Parameter Count",
-      "excerpt": "Bigger models grab headlines, but the data behind a pretrained model usually decides what it can and cannot do.",
+      "excerpt": "Parameter counts sell headlines, but a model's training data quietly sets the ceiling on what it can ever learn.",
       "date": "2026-11-26",
       "read_min": 5,
-      "tag": "Deep Learning",
+      "tag": "Evaluation",
       "color": "a5",
       "thumb": "assets/blog/training-data-beats-parameter-count.png",
       "thumb_alt": "Cover image for the article: Why Training Data Matters More Than Parameter Count"
