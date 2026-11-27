@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "inside-transformer-instruction-tuning",
+      "title": "What Instruction Tuning Actually Changes Inside a Transformer",
+      "excerpt": "Instruction tuning rarely rewires a model from scratch. Here is what actually moves, layer by layer, and why that matters for how you should think about fine-tuning.",
+      "date": "2026-11-27",
+      "read_min": 5,
+      "tag": "Deep Learning",
+      "color": "a2",
+      "thumb": "assets/blog/inside-transformer-instruction-tuning.png",
+      "thumb_alt": "Cover image for the article: What Instruction Tuning Actually Changes Inside a Transformer"
+    },
+    {
       "slug": "fine-tuning-small-classifier-honestly",
       "title": "Fine-Tuning a Small Classifier and Reporting It Honestly",
       "excerpt": "A concrete walkthrough of fine-tuning a small classifier, with the splitting, baselining and reporting habits that stop good numbers from being accidental.",

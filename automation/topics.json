@@ -1,6 +1,5 @@
 {
   "queue": [
-    "What changes inside a transformer during instruction tuning, shown layer by layer",
     "Why prompt wording changes outputs more than people expect, and how to test it",
     "A practical definition of a large language model that survives scrutiny",
     "Why 'machine learning model' and 'algorithm' are not the same thing, despite common use",
@@ -328,6 +327,7 @@
     "What 'context length' actually buys a model, and where it stops helping",
     "Reading a model card properly: what it tells you and what it quietly omits",
     "Why a pretrained model's training data matters more than its parameter count",
-    "A worked walkthrough of fine-tuning a small classifier and reporting it honestly"
+    "A worked walkthrough of fine-tuning a small classifier and reporting it honestly",
+    "What changes inside a transformer during instruction tuning, shown layer by layer"
   ]
 }

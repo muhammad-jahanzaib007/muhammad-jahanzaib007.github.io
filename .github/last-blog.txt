@@ -1,1 +1,1 @@
-2026-11-27T08:02:46Z slug=fine-tuning-small-classifier-honestly words=1068 title="Fine-Tuning a Small Classifier and Reporting It Honestly"
+2026-11-27T20:03:06Z slug=inside-transformer-instruction-tuning words=1074 title="What Instruction Tuning Actually Changes Inside a Transformer"

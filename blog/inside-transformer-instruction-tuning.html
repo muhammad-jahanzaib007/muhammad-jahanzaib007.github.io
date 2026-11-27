@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Instruction Tuning Actually Changes Inside a Transformer | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A layer-by-layer explanation of what instruction tuning changes inside a transformer, with a worked intuition and practical implications for fine-tuning.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="instruction tuning, transformers, fine-tuning, layer analysis, LLM internals, attention heads, representation learning, model interpretability, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-27">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="What Instruction Tuning Actually Changes Inside a Transformer">
+<meta property="og:description" content="A layer-by-layer explanation of what instruction tuning changes inside a transformer, with a worked intuition and practical implications for fine-tuning.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/inside-transformer-instruction-tuning.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/inside-transformer-instruction-tuning.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What Instruction Tuning Actually Changes Inside a Transformer">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/inside-transformer-instruction-tuning.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/inside-transformer-instruction-tuning.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "What Instruction Tuning Actually Changes Inside a Transformer",
+  "description": "A layer-by-layer explanation of what instruction tuning changes inside a transformer, with a worked intuition and practical implications for fine-tuning.",
+  "url": "https://jahanzaibawan.com/blog/inside-transformer-instruction-tuning.html",
+  "image": "https://jahanzaibawan.com/assets/blog/inside-transformer-instruction-tuning.png",
+  "datePublished": "2026-11-27",
+  "dateModified": "2026-11-27",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/inside-transformer-instruction-tuning.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "What Instruction Tuning Actually Changes Inside a Transformer", "item": "https://jahanzaibawan.com/blog/inside-transformer-instruction-tuning.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a2)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Deep Learning · 5 min read · 27 Nov 2026</div>
+    <h1>What Instruction Tuning Actually Changes Inside a Transformer</h1>
+    <p class="lede">A layer-by-layer look at what shifts, and what barely moves, when a pretrained model is fine-tuned to follow instructions.</p>
+  </div>
+
+  <img src="../assets/blog/inside-transformer-instruction-tuning.png" alt="Cover image for the article: What Instruction Tuning Actually Changes Inside a Transformer" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this question matters</h2><p>When people talk about instruction tuning, they usually describe it in behavioural terms: the model stops rambling, starts answering the actual question, and follows formatting requests. That description is true but it skips the part I find more interesting, which is what is physically happening inside the network's weights and activations to produce that change. If you are deciding how much data to use, which layers to freeze, or whether a lightweight adapter will suffice, the answer depends heavily on where in the network the useful change actually lives.</p><p>The common assumption, especially among people new to fine-tuning, is that instruction tuning teaches the model new knowledge or new reasoning ability. In most cases that is not what is happening. The base model, having been pretrained on a huge amount of text, already contains the raw capability to answer questions, summarise, and follow a pattern, because all of those behaviours exist somewhere in its training data in some form. Instruction tuning is largely about selecting and amplifying behaviours that are already latent, rather than installing new ones. That reframing is the key to understanding why the changes are concentrated where they are.</p></section><section class='psec reveal'><h2>A layer-by-layer picture</h2><p>Start at the bottom of the stack, the early layers close to the embedding. These layers tend to do fairly generic work: tokenisation artefacts, local syntax, part-of-speech-like structure, and short-range dependencies. Across instruction tuning, these early layers typically shift the least. The embeddings for ordinary words barely move, and the attention patterns that track local grammar remain largely intact. This makes sense if you think of these layers as a shared toolkit, equally useful whether the model is completing a news article or answering a direct question.</p><p>Move into the middle layers and the picture changes. This is where a lot of the action happens. Middle layers in a transformer tend to encode more abstract, task-relevant structure, things like whether the input looks like a question, a command, or a statement, and what kind of continuation is expected. During instruction tuning, probes trained on these middle-layer activations often become noticeably better at predicting features like task type or whether the model is in Hmm, let me give a concrete worked version of this. Imagine a model fine-tuned on instruction data where prompts are phrased as direct requests such as 'summarise the following text in two sentences.' Before tuning, a middle-layer representation of that prompt might sit close to representations of ordinary declarative text about similar content. After tuning, that same representation tends to cluster much more tightly with other instruction-style prompts, regardless of their topic. The model has learned to represent 'this is an instruction, respond accordingly' as a distinct, reusable direction in its activation space, separate from the topic itself.</p><p>The late layers, closest to the output, show the most visible shift, but it is narrower in character than people expect. Rather than wholesale rewriting, what changes most is the final mapping from internal representation to output token probabilities, effectively recalibrating which tokens get boosted given a particular internal state. A plain language model, given a half-finished question, might assign reasonable probability to continuing with more question text, because that pattern appeared constantly in its pretraining data. An instruction-tuned model, given the same internal state, redirects probability mass toward starting an answer. The underlying understanding of the content has not necessarily deepened; the decision of what to do with that understanding has changed.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/inside-transformer-instruction-tuning-1.jpg' alt='layered network diagram on whiteboard' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>What this implies about attention heads and parameter movement</h2><p>If you look at attention head behaviour specifically, a consistent finding across multiple analyses of fine-tuned models is that only a small subset of heads shift meaningfully, and they tend to cluster in the middle-to-late layers rather than being spread evenly. Heads that previously attended broadly across a passage sometimes narrow their focus toward the most recent instruction-like span of text, effectively learning to prioritise 'what was I just asked to do' over general context. This is a small, surgical change in attention pattern, not a redesign of the attention mechanism.</p><p>This also explains, in a very practical sense, why parameter-efficient fine-tuning methods such as low-rank adapters work as well as they do. If the useful change during instruction tuning really were distributed evenly and deeply across every weight matrix in every layer, a low-rank update injected into a handful of layers would be a poor approximation of what is needed. The fact that it often performs close to full fine-tuning is itself evidence that the actual shift is lower-dimensional and concentrated, consistent with the layer-by-layer story above: light touch early, moderate reorganisation in the middle, and sharper recalibration late.</p><p>There is a caution worth stating plainly. Observing that middle and late layers change the most does not mean early layers are irrelevant, and it does not mean you can safely freeze everything except the last few layers and expect identical results to full fine-tuning. Small changes to early representations can still matter, particularly for instruction formats that are unusual relative to pretraining data, such as structured outputs or multi-turn formatting. The generalisation holds on average across typical instruction-tuning datasets, not as a guarantee for every dataset and every model architecture.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>If you are designing an instruction-tuning run, this layer-by-layer picture should change how you think about a few decisions. First, do not expect instruction tuning to teach new factual knowledge reliably; it is far better understood as reshaping which existing capabilities get surfaced and how, so if your use case genuinely needs new knowledge, that is a retrieval or continued-pretraining problem, not an instruction-tuning problem. Second, when debugging a model that is not following instructions well, look at middle-layer representations and late-layer output calibration before assuming the model lacks the underlying skill; often the skill is there and the routing is off.</p><p>Finally, treat the concentration of change in the middle and late layers as a reason to evaluate carefully rather than a reason to cut corners. A small, surgical shift is easy to overfit to superficial patterns in your instruction data, such as particular phrasings or formatting cues, without the model genuinely improving at the underlying task. Leakage-aware evaluation, with held-out instruction styles and topics that were not seen during tuning, matters more here than it would if the change were genuinely deep and general. Knowing where the change lives is only useful if your evaluation is honest enough to tell you whether that change actually generalises.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/inside-transformer-instruction-tuning-2.jpg' alt='server room with glowing cables' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
