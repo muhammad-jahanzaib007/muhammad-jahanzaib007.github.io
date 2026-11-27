@@ -1,11 +1,30 @@
 {
   "queue": [
-    "A worked walkthrough of fine-tuning a small classifier and reporting it honestly",
     "What changes inside a transformer during instruction tuning, shown layer by layer",
     "Why prompt wording changes outputs more than people expect, and how to test it",
     "A practical definition of a large language model that survives scrutiny",
     "Why 'machine learning model' and 'algorithm' are not the same thing, despite common use",
-    "The honest difference between supervised, unsupervised, and reinforcement learning, with one example each"
+    "The honest difference between supervised, unsupervised, and reinforcement learning, with one example each",
+    "Retrieval-augmented generation evaluation: building a test set that reflects real queries",
+    "Prompt injection and jailbreaks: evaluating robustness, not just correctness",
+    "What a RAG pipeline needs before you reach for a vector database",
+    "Evaluating chatbots for helpfulness without a human in the loop every time",
+    "The difference between a leaderboard score and a deployment decision",
+    "Designing an evaluation rubric for open-ended LLM outputs",
+    "Why pairwise preference data is easier to collect than absolute scores, and what it costs you",
+    "Context stuffing versus retrieval: diagnosing why a RAG answer is wrong",
+    "Evaluating hallucination rate: what counts as a hallucination in the first place",
+    "A worked example of scoring an LLM output with a rubric instead of a gut feeling",
+    "Choosing evaluation metrics for summarisation when ROUGE is not enough",
+    "Testing a prompt across model versions: what breaks and what quietly degrades",
+    "Building a small, honest benchmark for your own use case instead of trusting a public one",
+    "What makes an evaluation framework trustworthy: transparency over automation",
+    "Grouping failure cases: why aggregate scores hide the errors that matter most",
+    "Why human evaluation disagreements are a signal, not noise, in model assessment",
+    "A practical introduction to model cards for anyone shipping an LLM feature",
+    "Evaluating retrieval quality separately from generation quality in a RAG system",
+    "What changes when you move from accuracy to risk-based evaluation",
+    "Writing an evaluation plan before you build the model, not after"
   ],
   "published": [
     "UAV object classification data-leakage case study",
@@ -314,6 +333,7 @@
     "The difference between a benchmark and an evaluation, and why people conflate them",
     "What 'context length' actually buys a model, and where it stops helping",
     "Reading a model card properly: what it tells you and what it quietly omits",
-    "Why a pretrained model's training data matters more than its parameter count"
+    "Why a pretrained model's training data matters more than its parameter count",
+    "A worked walkthrough of fine-tuning a small classifier and reporting it honestly"
   ]
 }

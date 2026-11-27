@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Thu, 26 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 27 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Fine-Tuning a Small Classifier and Reporting It Honestly</title>
+    <link>https://jahanzaibawan.com/blog/fine-tuning-classifier-honest-reporting.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/fine-tuning-classifier-honest-reporting.html</guid>
+    <pubDate>Fri, 27 Nov 2026 09:00:00 +0000</pubDate>
+    <description>A concrete walkthrough of fine-tuning a small classifier, with the splits, baselines, and honest reporting that most write-ups skip.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>Why Training Data Matters More Than Parameter Count</title>
     <link>https://jahanzaibawan.com/blog/training-data-beats-parameter-count.html</link>
@@ -158,14 +166,6 @@
     <pubDate>Tue, 17 Nov 2026 09:00:00 +0000</pubDate>
     <description>A course teaches you prompt patterns. A job teaches you that prompts fail silently, unevenly, and expensively in production.</description>
     <category>Evaluation</category>
-  </item>
-  <item>
-    <title>An MLOps Tooling Decision Tree for Every Team Size</title>
-    <link>https://jahanzaibawan.com/blog/mlops-tooling-decision-tree.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/mlops-tooling-decision-tree.html</guid>
-    <pubDate>Tue, 17 Nov 2026 09:00:00 +0000</pubDate>
-    <description>A practical guide to choosing MLOps tools by team size, with the reasoning behind each decision rather than just a tool list.</description>
-    <category>MLOps</category>
   </item>
 </channel>
 </rss>

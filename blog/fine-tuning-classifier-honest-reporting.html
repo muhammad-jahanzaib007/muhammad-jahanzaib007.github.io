@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fine-Tuning a Small Classifier and Reporting It Honestly | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A worked, concrete walkthrough of fine-tuning a small classifier, covering leakage-aware splits, strong baselines, and honest evaluation reporting.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="fine-tuning, model evaluation, data leakage, classification baselines, confidence intervals, reproducibility, machine learning methodology, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-27">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Fine-Tuning a Small Classifier and Reporting It Honestly">
+<meta property="og:description" content="A worked, concrete walkthrough of fine-tuning a small classifier, covering leakage-aware splits, strong baselines, and honest evaluation reporting.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/fine-tuning-classifier-honest-reporting.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/fine-tuning-classifier-honest-reporting.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fine-Tuning a Small Classifier and Reporting It Honestly">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/fine-tuning-classifier-honest-reporting.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/fine-tuning-classifier-honest-reporting.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Fine-Tuning a Small Classifier and Reporting It Honestly",
+  "description": "A worked, concrete walkthrough of fine-tuning a small classifier, covering leakage-aware splits, strong baselines, and honest evaluation reporting.",
+  "url": "https://jahanzaibawan.com/blog/fine-tuning-classifier-honest-reporting.html",
+  "image": "https://jahanzaibawan.com/assets/blog/fine-tuning-classifier-honest-reporting.png",
+  "datePublished": "2026-11-27",
+  "dateModified": "2026-11-27",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/fine-tuning-classifier-honest-reporting.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Fine-Tuning a Small Classifier and Reporting It Honestly", "item": "https://jahanzaibawan.com/blog/fine-tuning-classifier-honest-reporting.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 27 Nov 2026</div>
+    <h1>Fine-Tuning a Small Classifier and Reporting It Honestly</h1>
+    <p class="lede">A worked walkthrough of what actually happens when you fine-tune a small classifier, and the reporting habits that keep your results trustworthy.</p>
+  </div>
+
+  <img src="../assets/blog/fine-tuning-classifier-honest-reporting.png" alt="Cover image for the article: Fine-Tuning a Small Classifier and Reporting It Honestly" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why the honest version is harder than the demo version</h2><p>Fine-tuning a small classifier is one of the easiest things to do badly while still producing a plausible-looking number. You take a pretrained encoder, bolt on a linear head, run a few epochs, and report accuracy. The problem is that almost every step in that chain has a quiet failure mode that inflates the final figure, and none of them show up unless you go looking. I want to walk through a realistic example end to end, not to show off a result, but to show the decisions that make a reported number mean something.</p><p>Suppose the task is classifying short product reviews into three sentiment classes: negative, neutral, positive. We have around six thousand labelled examples scraped over time from one retailer. It is a small, unglamorous dataset, which is exactly the kind of setting where sloppy evaluation does the most damage, because there is no massive test set to dilute the mistakes.</p></section><section class='psec reveal'><h2>Building the split before touching the model</h2><p>The first decision, and the one most often skipped, is how to split the data. A random row-level split sounds neutral but is rarely safe. If reviews from the same product appear in both training and test sets, the model can learn product-specific vocabulary rather than general sentiment, and the test score becomes an estimate of memorisation, not generalisation. The fix is to split by product or by time, whichever mirrors how the model will actually be used. If it will score new products in the future, a time-based split, training on reviews before a cut-off date and testing on reviews after it, is the honest choice even though it usually produces a lower, less flattering number.</p><p>With six thousand examples, I would set aside roughly 15 percent for validation and 15 percent for test, grouped by product so no product leaks across sets. That leaves around four thousand two hundred for training. It is tempting to skip a separate validation set and tune on the test set directly to save data, but that quietly turns the test score into a validation score, and you lose the one number that tells you how the model behaves on data it has never influenced in any way.</p><p>Before any neural network is involved, I would fit a baseline: a logistic regression on TF-IDF features, or a simple bag-of-words model. Say this baseline reaches 71 percent accuracy on the test split. This number matters enormously, because it sets the bar that fine-tuning has to clear to justify its cost. If a pretrained transformer only gets to 73 percent after hours of GPU time, that two-point gain needs to be weighed honestly against the simplicity and speed of the baseline.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/fine-tuning-classifier-honest-reporting-1.jpg' alt='laptop with spreadsheet of data' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Fine-tuning, and the small decisions that change the answer</h2><p>Now the fine-tuning itself. A small pretrained encoder, a classification head, a modest learning rate, perhaps three to five epochs with early stopping on validation loss. Here is where another leakage path opens up: if the tokenizer or any preprocessing statistics, such as vocabulary frequency cut-offs, are computed on the full dataset including test examples, information has already crossed the boundary before training even starts. All preprocessing decisions should be fit on the training split alone and then applied unchanged to validation and test.</p><p>Suppose after training, the model reaches 76 percent accuracy on the held-out test set, a five-point improvement over the baseline. Before reporting that as the headline number, two more questions need answering. First, how stable is it? Training the same model with three different random seeds and averaging might give 75, 76, and 78 percent, a spread of three points. Reporting only the best run, which is a common and dishonest shortcut, overstates what a user can expect from the method; reporting the mean and spread across seeds gives a truer picture of what fine-tuning this way reliably delivers.</p><p>Second, is the five-point gap meaningful given the test set size? With roughly nine hundred test examples split across three classes, a few dozen examples flipping between correct and incorrect can shift accuracy by a couple of points purely by chance. A simple way to express this honestly is to compute a confidence interval around the accuracy, for instance using a bootstrap over the test predictions, and report something like 76 percent with a 95 percent interval of 73 to 79 percent. If the baseline's interval overlaps substantially with that range, the improvement is real but modest, not a decisive win, and the write-up should say so plainly rather than implying a clean victory.</p></section><section class='psec reveal'><h2>What goes in the write-up</h2><p>A report that respects the reader includes the split strategy and why it was chosen, the baseline and its score, the fine-tuned model's score averaged across multiple seeds with a measure of spread, and an honest statement of overlap or separation between the two. It also includes the per-class breakdown, because an aggregate accuracy can hide a model that performs well on the majority class and poorly on neutral reviews, which are often the hardest and most useful class to get right in practice.</p><p>None of this is exotic statistics. It is mostly discipline: splitting data the way it will actually be used, fitting a baseline before reaching for a bigger model, running more than one seed, and reporting uncertainty instead of a single flattering number. The payoff is that when someone else tries to reproduce or build on the work, the reported numbers hold up, and that, more than any leaderboard position, is what makes a small classifier project worth trusting.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/fine-tuning-classifier-honest-reporting-2.jpg' alt='whiteboard with equations' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

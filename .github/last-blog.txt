@@ -1,1 +1,1 @@
-2026-11-26T20:01:56Z slug=training-data-beats-parameter-count words=1016 title="Why Training Data Matters More Than Parameter Count"
+2026-11-27T08:01:41Z slug=fine-tuning-classifier-honest-reporting words=930 title="Fine-Tuning a Small Classifier and Reporting It Honestly"

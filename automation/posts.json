@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "fine-tuning-classifier-honest-reporting",
+      "title": "Fine-Tuning a Small Classifier and Reporting It Honestly",
+      "excerpt": "A concrete walkthrough of fine-tuning a small classifier, with the splits, baselines, and honest reporting that most write-ups skip.",
+      "date": "2026-11-27",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a6",
+      "thumb": "assets/blog/fine-tuning-classifier-honest-reporting.png",
+      "thumb_alt": "Cover image for the article: Fine-Tuning a Small Classifier and Reporting It Honestly"
+    },
+    {
       "slug": "training-data-beats-parameter-count",
       "title": "Why Training Data Matters More Than Parameter Count",
       "excerpt": "Parameter counts sell headlines, but a model's training data quietly sets the ceiling on what it can ever learn.",
