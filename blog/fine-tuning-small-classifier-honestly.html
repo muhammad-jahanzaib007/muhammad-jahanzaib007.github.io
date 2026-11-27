@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fine-Tuning a Small Classifier and Reporting It Honestly | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A worked example of fine-tuning a small text classifier, covering leakage-aware splits, strong baselines and honest reporting of results.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="fine-tuning, classifier evaluation, data leakage, train test split, baseline models, machine learning reproducibility, confidence intervals, honest reporting, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-27">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Fine-Tuning a Small Classifier and Reporting It Honestly">
+<meta property="og:description" content="A worked example of fine-tuning a small text classifier, covering leakage-aware splits, strong baselines and honest reporting of results.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/fine-tuning-small-classifier-honestly.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/fine-tuning-small-classifier-honestly.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fine-Tuning a Small Classifier and Reporting It Honestly">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/fine-tuning-small-classifier-honestly.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/fine-tuning-small-classifier-honestly.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Fine-Tuning a Small Classifier and Reporting It Honestly",
+  "description": "A worked example of fine-tuning a small text classifier, covering leakage-aware splits, strong baselines and honest reporting of results.",
+  "url": "https://jahanzaibawan.com/blog/fine-tuning-small-classifier-honestly.html",
+  "image": "https://jahanzaibawan.com/assets/blog/fine-tuning-small-classifier-honestly.png",
+  "datePublished": "2026-11-27",
+  "dateModified": "2026-11-27",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/fine-tuning-small-classifier-honestly.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Fine-Tuning a Small Classifier and Reporting It Honestly", "item": "https://jahanzaibawan.com/blog/fine-tuning-small-classifier-honestly.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a6)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 27 Nov 2026</div>
+    <h1>Fine-Tuning a Small Classifier and Reporting It Honestly</h1>
+    <p class="lede">A worked walkthrough of what actually happens when you fine-tune a small model, and the habits that keep your results trustworthy rather than merely impressive.</p>
+  </div>
+
+  <img src="../assets/blog/fine-tuning-small-classifier-honestly.png" alt="Cover image for the article: Fine-Tuning a Small Classifier and Reporting It Honestly" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>Why this is harder than it looks</h2><p>Fine-tuning a small classifier sounds like the easy part of a machine learning project. You take a pretrained encoder, bolt on a linear head, run a few epochs over labelled examples, and watch the accuracy climb. In practice this is exactly where quiet mistakes creep in, because the pipeline looks finished long before it is trustworthy. The model trains, the loss goes down, the accuracy number looks respectable, and it is tempting to write that number in a report and move on.</p><p>The trouble is that a single accuracy figure tells you almost nothing about whether the model has learned something real or has simply exploited a shortcut in how the data was collected or split. I want to walk through a concrete example: fine-tuning a small transformer encoder to classify customer support tickets into three categories, billing, technical, and account access. The task is mundane on purpose, because the lessons generalise far beyond it.</p><p>Say we have twelve thousand labelled tickets. A naive approach shuffles everything and takes an eighty-ten-ten split for train, validation and test. This is the default in most tutorials, and it is often wrong, because it ignores how the data was actually generated. If tickets from the same customer, or the same support agent, or the same week of a product outage, end up scattered across all three splits, the model can learn patterns tied to that customer or that incident rather than the underlying language of the category. The test score then measures memorisation of context, not generalisation.</p></section><section class='psec reveal'><h2>Building the split and the baseline first</h2><p>Before touching the model, I would group the data by customer ID and split at the group level, so every ticket from a given customer lands entirely in train, validation, or test. With twelve thousand tickets from, say, three thousand unique customers, a group-aware split might give roughly nine thousand six hundred training tickets, twelve hundred validation, and twelve hundred test, with no customer appearing in more than one split. This single decision changes what the final number means. It is no longer measuring how well the model recognises familiar customers' phrasing; it is measuring how well it generalises to people it has never seen.</p><p>Next, before any fine-tuning, I would establish baselines. A simple bag-of-words model with logistic regression, run on the same split, might reach seventy-eight per cent accuracy. A majority-class baseline, predicting the most common category every time, might reach forty-five per cent if the classes are imbalanced. These numbers matter enormously, because they define the floor the fine-tuned model has to clear to justify its cost. If the fine-tuned transformer later scores eighty per cent, that is a much less exciting result once you know a linear model got most of the way there with a fraction of the compute.</p><p>Class imbalance deserves its own check. If billing tickets make up sixty per cent of the data, technical twenty-five per cent, and account access fifteen per cent, then accuracy alone is a weak metric, because a model that leans heavily towards predicting billing will still score respectably. I would report per-class precision, recall and F1, alongside a macro-averaged F1 that treats all three classes equally regardless of their frequency. It is common to see a model with eighty-two per cent overall accuracy but only fifty-eight per cent recall on the account access class, because that class is rarer and the model has learned to hedge towards the common ones. That gap is the real story, and burying it inside one headline accuracy figure would be dishonest by omission.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/fine-tuning-small-classifier-honestly-1.jpg' alt='laptop with spreadsheet of model results' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>Fine-tuning and what the numbers actually mean</h2><p>With the split and baselines fixed, fine-tuning itself is comparatively mechanical: freeze or lightly adjust the encoder, add a small classification head, train for a handful of epochs with early stopping based on validation macro-F1 rather than training loss. Suppose after three epochs the validation macro-F1 peaks at seventy-six per cent and then starts declining as the model overfits to training quirks. I would checkpoint at that peak rather than at the final epoch, because the final epoch is often worse, not better.</p><p>On the held-out test set, imagine this model reaches seventy-nine per cent accuracy and seventy-two per cent macro-F1, compared with the bag-of-words baseline's seventy-eight per cent accuracy and sixty-six per cent macro-F1. That is a modest but real improvement, concentrated mostly in better recall on the smaller account access class. Reporting this honestly means stating both numbers side by side, not just the fine-tuned model's score in isolation, and being explicit that the gain is six points of macro-F1, not thirteen points of raw accuracy, because accuracy alone flatters the majority class.</p><p>It also means reporting uncertainty. With twelve hundred test examples, a difference of one or two percentage points between two models is often within noise. Running the evaluation with several random seeds for the classification head, or computing a simple confidence interval via bootstrap resampling of the test predictions, might show that macro-F1 ranges from seventy to seventy-four per cent across seeds. If a competing approach scores seventy-three per cent, you cannot honestly claim your model is better; you can only say the two are statistically indistinguishable on this test set. Most published comparisons skip this step entirely, and it is one of the cheapest ways to make a report more credible.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>None of this requires exotic tooling. It requires discipline applied in the right order: split by the real unit of independence in your data before you look at the model, establish a baseline that is embarrassingly simple, choose metrics that reflect class imbalance rather than hiding it, and quantify the uncertainty around your final comparison before declaring a winner. The fine-tuning step itself, the part most tutorials obsess over, is often the least consequential decision in the whole pipeline.</p><p>When I write up results now, I try to include the baseline score, the per-class breakdown, the split methodology, and some notion of variance across runs, even when the numbers are less flattering than a single clean percentage. A six-point macro-F1 improvement with honest uncertainty bounds is a far more useful contribution than an eighty-five per cent accuracy figure that quietly depends on customer overlap between train and test. The goal is not to make the model look good; it is to make the report survive someone else trying to reproduce it.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/fine-tuning-small-classifier-honestly-2.jpg' alt='whiteboard with data split diagram' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>

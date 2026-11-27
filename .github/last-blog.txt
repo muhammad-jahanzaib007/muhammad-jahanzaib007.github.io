@@ -1,1 +1,1 @@
-2026-11-27T08:01:41Z slug=fine-tuning-classifier-honest-reporting words=930 title="Fine-Tuning a Small Classifier and Reporting It Honestly"
+2026-11-27T08:02:46Z slug=fine-tuning-small-classifier-honestly words=1068 title="Fine-Tuning a Small Classifier and Reporting It Honestly"

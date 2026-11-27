@@ -1,14 +1,14 @@
 {
   "posts": [
     {
-      "slug": "fine-tuning-classifier-honest-reporting",
+      "slug": "fine-tuning-small-classifier-honestly",
       "title": "Fine-Tuning a Small Classifier and Reporting It Honestly",
-      "excerpt": "A concrete walkthrough of fine-tuning a small classifier, with the splits, baselines, and honest reporting that most write-ups skip.",
+      "excerpt": "A concrete walkthrough of fine-tuning a small classifier, with the splitting, baselining and reporting habits that stop good numbers from being accidental.",
       "date": "2026-11-27",
       "read_min": 5,
       "tag": "Evaluation",
       "color": "a6",
-      "thumb": "assets/blog/fine-tuning-classifier-honest-reporting.png",
+      "thumb": "assets/blog/fine-tuning-small-classifier-honestly.png",
       "thumb_alt": "Cover image for the article: Fine-Tuning a Small Classifier and Reporting It Honestly"
     },
     {

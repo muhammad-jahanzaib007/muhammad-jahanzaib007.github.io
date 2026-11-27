@@ -9,10 +9,10 @@
   <lastBuildDate>Fri, 27 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
     <title>Fine-Tuning a Small Classifier and Reporting It Honestly</title>
-    <link>https://jahanzaibawan.com/blog/fine-tuning-classifier-honest-reporting.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/fine-tuning-classifier-honest-reporting.html</guid>
+    <link>https://jahanzaibawan.com/blog/fine-tuning-small-classifier-honestly.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/fine-tuning-small-classifier-honestly.html</guid>
     <pubDate>Fri, 27 Nov 2026 09:00:00 +0000</pubDate>
-    <description>A concrete walkthrough of fine-tuning a small classifier, with the splits, baselines, and honest reporting that most write-ups skip.</description>
+    <description>A concrete walkthrough of fine-tuning a small classifier, with the splitting, baselining and reporting habits that stop good numbers from being accidental.</description>
     <category>Evaluation</category>
   </item>
   <item>
