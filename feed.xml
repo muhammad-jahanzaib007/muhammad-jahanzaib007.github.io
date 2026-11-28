@@ -8,11 +8,11 @@
   <language>en-gb</language>
   <lastBuildDate>Sat, 28 Nov 2026 09:00:00 +0000</lastBuildDate>
   <item>
-    <title>Why Prompt Wording Changes Outputs More Than You&#x27;d Expect</title>
-    <link>https://jahanzaibawan.com/blog/prompt-wording-and-evaluation.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/prompt-wording-and-evaluation.html</guid>
+    <title>Why Prompt Wording Changes Outputs More Than You&#x27;d Think</title>
+    <link>https://jahanzaibawan.com/blog/prompt-wording-sensitivity-testing.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/prompt-wording-sensitivity-testing.html</guid>
     <pubDate>Sat, 28 Nov 2026 09:00:00 +0000</pubDate>
-    <description>Small wording tweaks can swing model outputs by a lot. Here is a disciplined way to measure that instead of guessing.</description>
+    <description>Rewording a prompt can swing accuracy by double digits. I explain why, and how to build a small, honest test to measure prompt sensitivity.</description>
     <category>Evaluation</category>
   </item>
   <item>

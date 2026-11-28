@@ -1,1 +1,1 @@
-2026-11-28T08:00:58Z slug=prompt-wording-and-evaluation words=975 title="Why Prompt Wording Changes Outputs More Than You'd Expect"
+2026-11-28T08:01:55Z slug=prompt-wording-sensitivity-testing words=1053 title="Why Prompt Wording Changes Outputs More Than You'd Think"

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Prompt Wording Changes Outputs More Than You&#x27;d Think | Muhammad Jahanzaib Awan</title>
+<meta name="description" content="A practical guide to why prompt wording has an outsized effect on model outputs, with a worked example and a leakage-aware method for testing prompt sensitivity.">
+<meta name="author" content="Muhammad Jahanzaib Awan">
+<meta name="keywords" content="prompt engineering, prompt sensitivity, LLM evaluation, robustness testing, reproducibility, NLP evaluation, prompt variance, model evaluation, Jahanzaib, Jahanzaib Awan, Muhammad Jahanzaib, Muhammad Jahanzaib Awan">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-28">
+<meta property="og:site_name" content="Muhammad Jahanzaib Awan">
+<meta property="og:title" content="Why Prompt Wording Changes Outputs More Than You&#x27;d Think">
+<meta property="og:description" content="A practical guide to why prompt wording has an outsized effect on model outputs, with a worked example and a leakage-aware method for testing prompt sensitivity.">
+<meta property="og:image" content="https://jahanzaibawan.com/assets/blog/prompt-wording-sensitivity-testing.png">
+<meta property="og:url" content="https://jahanzaibawan.com/blog/prompt-wording-sensitivity-testing.html">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why Prompt Wording Changes Outputs More Than You&#x27;d Think">
+<meta name="twitter:image" content="https://jahanzaibawan.com/assets/blog/prompt-wording-sensitivity-testing.png">
+<link rel="canonical" href="https://jahanzaibawan.com/blog/prompt-wording-sensitivity-testing.html">
+<link rel="alternate" type="application/rss+xml" title="Muhammad Jahanzaib Awan — Writing" href="https://jahanzaibawan.com/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060a'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%2334d399' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23f6f6f8' text-anchor='middle'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Why Prompt Wording Changes Outputs More Than You'd Think",
+  "description": "A practical guide to why prompt wording has an outsized effect on model outputs, with a worked example and a leakage-aware method for testing prompt sensitivity.",
+  "url": "https://jahanzaibawan.com/blog/prompt-wording-sensitivity-testing.html",
+  "image": "https://jahanzaibawan.com/assets/blog/prompt-wording-sensitivity-testing.png",
+  "datePublished": "2026-11-28",
+  "dateModified": "2026-11-28",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan", "alternateName": ["Jahanzaib", "Jahanzaib Awan", "Muhammad Jahanzaib"], "url": "https://jahanzaibawan.com/", "sameAs": ["https://www.linkedin.com/in/muhammad-jahanzaib-awan", "https://github.com/muhammad-jahanzaib007"] },
+  "publisher": { "@type": "Person", "@id": "https://jahanzaibawan.com/#person", "name": "Muhammad Jahanzaib Awan" },
+  "mainEntityOfPage": "https://jahanzaibawan.com/blog/prompt-wording-sensitivity-testing.html",
+  "isPartOf": { "@type": "Blog", "@id": "https://jahanzaibawan.com/blog.html#blog" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jahanzaibawan.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://jahanzaibawan.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "Why Prompt Wording Changes Outputs More Than You'd Think", "item": "https://jahanzaibawan.com/blog/prompt-wording-sensitivity-testing.html" }
+  ]
+}
+</script>
+</head>
+<body style="--hc:var(--a3)">
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog"></div><div class="aurora"><b></b><b></b><b></b></div><div class="grain"></div><div id="glow"></div>
+<nav aria-label="Primary"><div class="bar"><a class="brand" href="../index.html"><span class="d"></span>Jahanzaib Awan</a><button class="menubtn" id="menubtn" type="button" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="navlinks"><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../blog.html">Writing</a><a href="../index.html#contact">Contact</a></div></div></nav>
+
+<div class="wrap narrow" id="main">
+  <div class="phero">
+    <a class="back" href="../blog.html">← All writing</a>
+    <div class="tag">Evaluation · 5 min read · 28 Nov 2026</div>
+    <h1>Why Prompt Wording Changes Outputs More Than You&#x27;d Think</h1>
+    <p class="lede">Small edits to a prompt, a comma here, a reordered clause there, can shift a model&#x27;s answer dramatically. Here is why that happens and how to test for it properly.</p>
+  </div>
+
+  <img src="../assets/blog/prompt-wording-sensitivity-testing.png" alt="Cover image for the article: Why Prompt Wording Changes Outputs More Than You&#x27;d Think" style="width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);margin:6px 0 20px;display:block">
+
+<section class='psec reveal'><h2>The problem hiding in plain sight</h2><p>Anyone who has spent time with large language models has noticed something odd: asking the same question two slightly different ways can produce two very different answers. Swap 'summarise' for 'explain', move the instruction from the start of the prompt to the end, or add a single example, and accuracy on the same underlying task can move by a wide margin. This is not a quirk of a particular model or a sign that the system is broken. It is a predictable consequence of how these models are trained and how they represent instructions.</p><p>The reason this matters is practical, not academic. Teams building products on top of language models often pick a prompt once, test it informally on a handful of examples, ship it, and move on. If that prompt happens to sit in a fragile region of the input space, performance in production can look wildly different from performance in the demo. Worse, two people comparing 'model A versus model B' might really be comparing 'my slightly better prompt for A versus my slightly worse prompt for B', and drawing a confident conclusion from noise.</p><p>It helps to be precise about what is actually varying. A prompt is not just content, it is also format: the presence of a system message, the ordering of instructions and examples, whether the question appears before or after supporting context, the choice of delimiters, and even whitespace. Models are extremely good at pattern completion, which means they are also sensitive to superficial patterns that have nothing to do with the task's logic. A model that was trained on data where instructions typically appear as imperative sentences at the start of a block may behave worse when the same instruction is phrased as a polite question at the end.</p></section><section class='psec reveal'><h2>A concrete worked example</h2><p>Suppose you are testing a model on a simple classification task: deciding whether a short customer message expresses a complaint or not, across five hundred held-out messages. You try three prompt variants that are, in your judgement, semantically identical.</p><ul><li>Variant one: 'Classify the following message as Complaint or Not Complaint.'</li><li>Variant two: 'Is this message a complaint? Answer Complaint or Not Complaint.'</li><li>Variant three: a one-line instruction followed by two worked examples before the target message.</li></ul><p>Imagine the results come out as 81 percent, 74 percent, and 89 percent accuracy respectively. That is a fifteen-point spread from wording alone, with no change to the model, the data, or the decoding settings. The third variant does better partly because the examples anchor the expected answer format, reducing cases where the model answers in full sentences instead of the two fixed labels, which then get marked wrong by a strict string-matching scorer. The second variant does worse partly because 'Is this message a complaint?' invites a yes or no answer, and the model sometimes answers 'Yes' instead of 'Complaint', again failing a brittle parser rather than failing the actual task.</p><p>This is the uncomfortable part: a meaningful chunk of that fifteen-point gap is not about reasoning ability at all, it is about output formatting colliding with an unforgiving evaluation script. If you only ever tested variant two, you might conclude the model is mediocre at this task. If you only tested variant three, you might conclude it is excellent. Both conclusions would be wrong, because neither captures the model's actual range of behaviour, and neither tells you how robust your chosen prompt will be when real users phrase things their own way.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/prompt-wording-sensitivity-testing-1.jpg' alt='person typing on laptop with notebook' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure><section class='psec reveal'><h2>How to actually test for this</h2><p>The fix is not to find the one magic prompt and declare victory. It is to treat prompt choice as a variable you measure, not a constant you assume. A sensible procedure starts with generating a small family of genuinely paraphrased prompts, perhaps five to eight, that vary in surface form while preserving the task instruction. Include variation in instruction phrasing, in the position of examples, and in output format requests, since these are the dimensions most likely to interact with your scoring method.</p><p>Run every variant across the same held-out set, using the same decoding settings each time, and report the full spread of results rather than a single number. A result summarised as '85 percent, range 74 to 91 across prompt variants' is far more honest and more useful than '85 percent' on its own, because it tells the next person what to expect if they alter the wording even slightly. Where possible, separate failures caused by format mismatch from failures caused by genuine reasoning errors; a quick manual pass on fifty of the lowest-scoring examples usually reveals which category dominates, and that distinction changes what you should fix.</p><p>It is also worth checking for leakage into your prompt design itself. If you iterated your wording by looking at performance on the same test set you now report results on, you have effectively tuned on the test set, and your final number is optimistic. The cleaner approach is to develop and compare prompt variants on a separate validation split, lock the winning variant, and only then evaluate once on a held-out test set that none of the wording decisions were based on. This mirrors ordinary model selection discipline, and prompts deserve the same treatment as hyperparameters because, functionally, that is what they are.</p><p>Finally, keep records. Store the exact prompt text, the model version, the decoding parameters, and the scoring logic alongside every reported number. Prompt behaviour can shift when a provider updates a model silently, and without a saved record of the exact conditions, a result from three months ago becomes nearly impossible to reproduce or explain.</p></section><section class='psec reveal'><h2>The practical takeaway</h2><p>Prompt wording is not a cosmetic detail sitting outside the evaluation, it is part of the system under test. Treat it that way: vary it deliberately, measure the spread it produces, separate formatting failures from reasoning failures, and keep your wording decisions on a validation split away from your final test numbers. A single accuracy figure attached to a single prompt tells you almost nothing about how the system will behave once real users start phrasing things their own way. A range, built honestly across several reasonable phrasings, tells you a great deal, and it is the only version of the result worth trusting enough to build on.</p></section><figure style='margin:24px 0'><img src='../assets/blog/body/prompt-wording-sensitivity-testing-2.jpg' alt='sticky notes on whiteboard with arrows' loading='lazy' style='width:100%;height:auto;border-radius:12px;border:1px solid var(--line2);display:block'></figure>
+
+  <div class="pnav">
+    <a href="../blog.html">← All writing</a>
+    <a href="../index.html#work">See the project case studies →</a>
+  </div>
+</div>
+
+<footer>© 2026 Muhammad Jahanzaib Awan, AI / Machine Learning Engineer &amp; Data Scientist, Leicester, UK · <a href="https://www.linkedin.com/in/muhammad-jahanzaib-awan" rel="me noopener" target="_blank">LinkedIn</a> · <a href="https://github.com/muhammad-jahanzaib007" rel="me noopener" target="_blank">GitHub</a></footer>
+<div id="toast"></div>
+<script src="../app.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2787df95dbb546388bbf0bac8f5cb230"}'></script><!-- End Cloudflare Web Analytics -->
+</body></html>
