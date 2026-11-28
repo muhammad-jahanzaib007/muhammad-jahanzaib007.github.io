@@ -10,8 +10,9 @@
     <image:image><image:loc>https://jahanzaibawan.com/assets/og.png</image:loc></image:image>
   </url>
   <url><loc>https://jahanzaibawan.com/about.html</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://jahanzaibawan.com/blog.html</loc><lastmod>2026-11-27</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jahanzaibawan.com/blog.html</loc><lastmod>2026-11-28</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <!--BLOGPOSTS:START-->
+  <url><loc>https://jahanzaibawan.com/blog/prompt-wording-and-evaluation.html</loc><lastmod>2026-11-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://jahanzaibawan.com/blog/inside-transformer-instruction-tuning.html</loc><lastmod>2026-11-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://jahanzaibawan.com/blog/fine-tuning-small-classifier-honestly.html</loc><lastmod>2026-11-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://jahanzaibawan.com/blog/training-data-beats-parameter-count.html</loc><lastmod>2026-11-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>

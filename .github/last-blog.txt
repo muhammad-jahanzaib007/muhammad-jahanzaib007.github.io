@@ -1,1 +1,1 @@
-2026-11-27T20:03:06Z slug=inside-transformer-instruction-tuning words=1074 title="What Instruction Tuning Actually Changes Inside a Transformer"
+2026-11-28T08:00:58Z slug=prompt-wording-and-evaluation words=975 title="Why Prompt Wording Changes Outputs More Than You'd Expect"

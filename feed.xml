@@ -6,7 +6,15 @@
   <atom:link href="https://jahanzaibawan.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Short technical posts on machine learning, evaluation and data science.</description>
   <language>en-gb</language>
-  <lastBuildDate>Fri, 27 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 28 Nov 2026 09:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Why Prompt Wording Changes Outputs More Than You&#x27;d Expect</title>
+    <link>https://jahanzaibawan.com/blog/prompt-wording-and-evaluation.html</link>
+    <guid isPermaLink="true">https://jahanzaibawan.com/blog/prompt-wording-and-evaluation.html</guid>
+    <pubDate>Sat, 28 Nov 2026 09:00:00 +0000</pubDate>
+    <description>Small wording tweaks can swing model outputs by a lot. Here is a disciplined way to measure that instead of guessing.</description>
+    <category>Evaluation</category>
+  </item>
   <item>
     <title>What Instruction Tuning Actually Changes Inside a Transformer</title>
     <link>https://jahanzaibawan.com/blog/inside-transformer-instruction-tuning.html</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://jahanzaibawan.com/blog/structured-prompt-worked-walkthrough.html</guid>
     <pubDate>Wed, 18 Nov 2026 09:00:00 +0000</pubDate>
     <description>I build a structured prompt step by step, then show how to measure whether it genuinely beat the naive version, not just felt better.</description>
-    <category>Evaluation</category>
-  </item>
-  <item>
-    <title>Computer Vision in Production: Why Accuracy Diverges</title>
-    <link>https://jahanzaibawan.com/blog/demo-accuracy-vs-shipped-accuracy.html</link>
-    <guid isPermaLink="true">https://jahanzaibawan.com/blog/demo-accuracy-vs-shipped-accuracy.html</guid>
-    <pubDate>Wed, 18 Nov 2026 09:00:00 +0000</pubDate>
-    <description>Demo accuracy is measured on curated frames. Shipped accuracy is measured on reality. The gap between them is predictable once you know where to look.</description>
     <category>Evaluation</category>
   </item>
 </channel>

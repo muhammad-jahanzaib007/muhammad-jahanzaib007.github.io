@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "prompt-wording-and-evaluation",
+      "title": "Why Prompt Wording Changes Outputs More Than You'd Expect",
+      "excerpt": "Small wording tweaks can swing model outputs by a lot. Here is a disciplined way to measure that instead of guessing.",
+      "date": "2026-11-28",
+      "read_min": 5,
+      "tag": "Evaluation",
+      "color": "a3",
+      "thumb": "assets/blog/prompt-wording-and-evaluation.png",
+      "thumb_alt": "Cover image for the article: Why Prompt Wording Changes Outputs More Than You'd Expect"
+    },
+    {
       "slug": "inside-transformer-instruction-tuning",
       "title": "What Instruction Tuning Actually Changes Inside a Transformer",
       "excerpt": "Instruction tuning rarely rewires a model from scratch. Here is what actually moves, layer by layer, and why that matters for how you should think about fine-tuning.",
